@@ -10,9 +10,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "city")
-@NamedQueries({ @NamedQuery(name = "City.findAll", query = "select c from City c") })
-public class City implements Essence {
+@Table(name = "role")
+@NamedQueries({ @NamedQuery(name = "Role.findAll", query = "select r from Role r") })
+public class Role implements Essence {
 
 	/**
 	 * 
@@ -20,35 +20,35 @@ public class City implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
-	@Column(name = "id_city")
+	@Column(name = "id_role")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCity;
+	private int idRole;
 
-	@Column(name = "title")
-	private String title;
+	@Column(name = "name")
+	private String name;
 
-	public int getIdCity() {
-		return idCity;
+	public int getIdRole() {
+		return idRole;
 	}
 
-	public void setIdCity(int idCity) {
-		this.idCity = idCity;
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idCity;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + idRole;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -60,21 +60,20 @@ public class City implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
-		if (idCity != other.idCity)
+		Role other = (Role) obj;
+		if (idRole != other.idRole)
 			return false;
-		if (title == null) {
-			if (other.title != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "City [idCity=" + idCity + ", title=" + title + "]";
+		return "Role [idRole=" + idRole + ", name=" + name + "]";
 	}
 
-	
 }

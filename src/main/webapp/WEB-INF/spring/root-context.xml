@@ -18,6 +18,10 @@
 	<context:annotation-config />
 
 	<context:component-scan base-package="by.robotun.webapp.dao" />
+	<context:component-scan base-package="by.robotun.webapp.security" />
+	<context:component-scan base-package="by.robotun.webapp.property" />
+	<context:component-scan base-package="by.robotun.webapp.service" />
+	<context:component-scan base-package="by.robotun.webapp.form" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />

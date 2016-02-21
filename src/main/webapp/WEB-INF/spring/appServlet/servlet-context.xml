@@ -21,6 +21,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Загрузка файлов -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="419430400" />
+	</beans:bean>
+	
 	<context:component-scan base-package="by.robotun.webapp.controller" />
 	
 </beans:beans>

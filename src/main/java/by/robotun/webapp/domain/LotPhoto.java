@@ -10,9 +10,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "city")
-@NamedQueries({ @NamedQuery(name = "City.findAll", query = "select c from City c") })
-public class City implements Essence {
+@Table(name = "lot_photo")
+@NamedQueries({ @NamedQuery(name = "LotPhoto.findAll", query = "select l from LotPhoto l") })
+public class LotPhoto implements Essence {
 
 	/**
 	 * 
@@ -20,35 +20,35 @@ public class City implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
-	@Column(name = "id_city")
+	@Column(name = "id_lot_photo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCity;
+	private int idLotPhoto;
 
-	@Column(name = "title")
-	private String title;
+	@Column(name = "path")
+	private String path;
 
-	public int getIdCity() {
-		return idCity;
+	public int getIdLotPhoto() {
+		return idLotPhoto;
 	}
 
-	public void setIdCity(int idCity) {
-		this.idCity = idCity;
+	public void setIdLotPhoto(int idLotPhoto) {
+		this.idLotPhoto = idLotPhoto;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPath() {
+		return path;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idCity;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + idLotPhoto;
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
 		return result;
 	}
 
@@ -60,20 +60,20 @@ public class City implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
-		if (idCity != other.idCity)
+		LotPhoto other = (LotPhoto) obj;
+		if (idLotPhoto != other.idLotPhoto)
 			return false;
-		if (title == null) {
-			if (other.title != null)
+		if (path == null) {
+			if (other.path != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!path.equals(other.path))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "City [idCity=" + idCity + ", title=" + title + "]";
+		return "LotPhoto [idLotPhoto=" + idLotPhoto + ", path=" + path + "]";
 	}
 
 	
