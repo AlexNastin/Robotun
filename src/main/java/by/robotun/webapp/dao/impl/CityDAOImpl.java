@@ -12,6 +12,8 @@ import by.robotun.webapp.domain.City;
 @Component
 public class CityDAOImpl implements ICityDAO {
 
+
+
 	@PersistenceContext
 	private EntityManager em;
 

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.robotun.webapp.dao.ICityDAO;
 import by.robotun.webapp.domain.City;
-
 /**
  * Handles requests for the application home page.
  */
