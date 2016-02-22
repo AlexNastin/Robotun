@@ -23,7 +23,6 @@ public class Legal implements Essence {
 
 	@Id
 	@Column(name = "id_user")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
 
 	@Column(name = "name_enterprise")

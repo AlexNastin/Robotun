@@ -80,15 +80,13 @@ public class GuestService implements IGuestService {
 		user.setIdCity(addUserPhysicalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_PHYSICAL);
 		user.setRegistrationDate(new Date());
-		
 		String md5Password = DigestUtils.md5Hex(addUserPhysicalForm.getPassword());
 		user.setPassword(md5Password);
-		
 		physical.setName(addUserPhysicalForm.getName());
 		physical.setSurname(addUserPhysicalForm.getSurname());
 		physical.setMiddleName(addUserPhysicalForm.getMiddleName());
+		physical.setUser(user);
 		user.setPhysical(physical);
-		
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {

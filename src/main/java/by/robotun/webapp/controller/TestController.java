@@ -18,18 +18,13 @@ public class TestController {
 	@Autowired
 	IUserDAO userDao;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String test(Locale locale, Model model) {
-		return "test";
-	}
-
 	@RequestMapping(value = "/test1", method = RequestMethod.GET)
 	public String test1(Locale locale, Model model) {
 		return "test1";
 	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Locale locale, Model model) {
 		return "test";
 	}
 

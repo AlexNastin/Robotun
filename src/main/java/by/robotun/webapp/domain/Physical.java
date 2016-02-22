@@ -22,9 +22,9 @@ public class Physical implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
-	@Column(name = "id_user")
+	@Column(name = "id_physical")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUser;
+	private int idPhysical;
 
 	@Column(name = "name")
 	private String name;
@@ -34,17 +34,21 @@ public class Physical implements Essence {
 
 	@Column(name = "middle_name")
 	private String middleName;
-	
+
 	@OneToOne
 	@JoinColumn(name = "id_user")
 	private User user;
 
-	public int getIdUser() {
-		return idUser;
+	public Physical() {
+		super();
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public int getIdPhysical() {
+		return idPhysical;
+	}
+
+	public void setIdPhysical(int idPhysical) {
+		this.idPhysical = idPhysical;
 	}
 
 	public String getName() {
@@ -83,10 +87,11 @@ public class Physical implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idUser;
+		result = prime * result + idPhysical;
 		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -99,7 +104,7 @@ public class Physical implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Physical other = (Physical) obj;
-		if (idUser != other.idUser)
+		if (idPhysical != other.idPhysical)
 			return false;
 		if (middleName == null) {
 			if (other.middleName != null)
@@ -116,14 +121,18 @@ public class Physical implements Essence {
 				return false;
 		} else if (!surname.equals(other.surname))
 			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Physical [idUser=" + idUser + ", name=" + name + ", surname=" + surname + ", middleName=" + middleName
-				+ "]";
+		return "Physical [idPhysical=" + idPhysical + ", name=" + name + ", surname=" + surname + ", middleName="
+				+ middleName + ", user=" + user + "]";
 	}
 
-	
 }
