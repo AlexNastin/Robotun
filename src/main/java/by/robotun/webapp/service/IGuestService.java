@@ -4,6 +4,7 @@ import java.util.List;
 
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.City;
+import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.AddUserLegalForm;
@@ -22,6 +23,12 @@ public interface IGuestService {
 	public void addUserPhysical(AddUserPhysicalForm addUserPhysicalForm) throws ServiceException;
 
 	public void addUserLegal(AddUserLegalForm addUserLegalForm) throws ServiceException;
+	
+	public List<Lot> getAllLots() throws ServiceException;
+	
+	public List<Lot> getAllLotsByCategory() throws ServiceException;
+	
+	public List<Lot> getAllLotsByCategoryAndSubcategory() throws ServiceException;
 
 	
 	

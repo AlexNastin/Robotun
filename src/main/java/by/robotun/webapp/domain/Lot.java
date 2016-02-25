@@ -13,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "lot")
-@NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l") })
+@NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
+	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l where l.idLot = :id")})
 public class Lot implements Essence {
 
 	/**

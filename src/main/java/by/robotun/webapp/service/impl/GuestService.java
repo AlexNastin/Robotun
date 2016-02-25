@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;
+import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.dao.ISubcategoryDAO;
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Legal;
+import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Physical;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.domain.User;
@@ -39,6 +41,9 @@ public class GuestService implements IGuestService {
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private ILotDAO lotDAO;
 
 	@Override
 	public List<City> getAllCities() throws ServiceException {
@@ -131,6 +136,29 @@ public class GuestService implements IGuestService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public List<Lot> getAllLots() throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectAllLots();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
+	@Override
+	public List<Lot> getAllLotsByCategory() throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Lot> getAllLotsByCategoryAndSubcategory() throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

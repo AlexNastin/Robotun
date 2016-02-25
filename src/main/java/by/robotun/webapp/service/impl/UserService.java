@@ -42,10 +42,16 @@ public class UserService implements IUserService {
 			lot.setIdUser(11);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
-			new ServiceException(e);
+			throw new ServiceException(e);
 		}
 		
 		
+	}
+
+	@Override
+	public Lot getLotById(Integer idLot) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

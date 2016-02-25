@@ -12,7 +12,14 @@ public final class ControllerParamConstant {
 	// LIST
 	public static final String LIST_CITIES = "listCities";
 	
+	public static final String LIST_LOTS = "listLots";
+	
+	// ONE
+	public static final String LOT = "lot";
+	
 	// OTHER
 	public static final String FLAG_MESSAGE = "flagMessage";
+
+
 
 }
