@@ -45,4 +45,10 @@ public class LotDAOImpl implements ILotDAO {
 		entityManager.merge(lot);
 		
 	}
+
+	@Override
+	public Lot selectLotById(int idLot) throws DaoException {
+		Lot lot = (Lot) entityManager.createNamedQuery("Lot.findLotById").setParameter("id", idLot).getSingleResult();
+		return lot;
+	}
 }

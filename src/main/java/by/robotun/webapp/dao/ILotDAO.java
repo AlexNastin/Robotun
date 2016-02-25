@@ -14,5 +14,7 @@ public interface ILotDAO {
 	public void deleteLot(Integer id) throws DaoException;
 	
 	public void insertLot(Lot lot) throws DaoException;
+	
+	public Lot selectLotById(int idLot) throws DaoException;
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Category;
+import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.AddLotForm;
@@ -52,6 +53,15 @@ public class UserController {
 		userService.addLot(addLotForm);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_ADD_LOT);
 		modelAndView.addObject(ControllerParamConstant.FLAG_MESSAGE, true);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/user/lot", method = RequestMethod.GET)
+	public ModelAndView result(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
+		Lot lot = userService.getLotById(idLot);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.RESULT);
+		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		return modelAndView;
 	}
 
