@@ -35,11 +35,12 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		if (!authenticationValidator.validation(authentication.getPrincipal().toString().toLowerCase())) {
-			throw new BadCredentialsException("BadCredentialsException");
-		}
+//		if (!authenticationValidator.validation(authentication.getPrincipal().toString().toLowerCase())) {
+//			throw new BadCredentialsException("BadCredentialsException");
+//		}
 		User profile = null;
 		try {
+			
 			profile = userDAO.selectUser(authentication.getPrincipal().toString().toLowerCase());
 		} catch (DaoException e) {
 			LOGGER.error("Problems dao select user in authenticating");

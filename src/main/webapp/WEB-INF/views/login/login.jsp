@@ -73,9 +73,11 @@
 					</a>
 				</div>
 			</form>
-			<c:if test="${message != null}">
-			  <div class="alert alert-success" role="alert" style="padding: 1%; text-align:center">${message}</div> 
-			   </c:if>
+		<c:if test="${not empty param.error}">
+											<div class="alert alert-danger" role=""> 
+												<font color="red">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
+											</div>
+										</c:if>
 			   
 		</div>
 </body>
