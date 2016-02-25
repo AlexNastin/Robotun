@@ -23,4 +23,13 @@ public class CategoryDAOImpl implements ICategoryDAO {
 		List<Category> categories = entityManager.createNamedQuery("Category.findAll").getResultList();
 		return categories;
 	}
+	
+	@Override
+	public Category selectCategoryById(int idCategory) throws DaoException {
+		Category category = (Category) entityManager
+				.createNamedQuery("Category.findCategoryById")
+				.setParameter("idCategory", idCategory).getSingleResult();
+		return category;
+
+	}
 }

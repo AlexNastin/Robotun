@@ -35,7 +35,6 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		System.out.println("AAAAAA");
 		if (!authenticationValidator.validation(authentication.getPrincipal().toString().toLowerCase())) {
 			throw new BadCredentialsException("BadCredentialsException");
 		}
@@ -55,7 +54,6 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 		}
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(profile, null,
 				getAuthorities(profile.getIdRole()));
-		System.out.println(profile);
 		return token;
 	}
 

@@ -19,7 +19,7 @@ public class AuthenticationValidator {
 		boolean isValid = false;
 		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_EMAIL);
 		Matcher matcher = pattern.matcher(login);
-		if (!matcher.matches()) {
+		if (matcher.matches()) {
 			isValid = true;
 		}
 		return isValid;

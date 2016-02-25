@@ -8,4 +8,6 @@ import by.robotun.webapp.exeption.DaoException;
 public interface ICategoryDAO {
 	
 	public List<Category> selectAllCategories() throws DaoException;
+	
+	public Category selectCategoryById(int idCategory) throws DaoException;
 }

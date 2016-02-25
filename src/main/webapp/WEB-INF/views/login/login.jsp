@@ -45,13 +45,13 @@
 					<div class="col-md-6">
 						<div class="checkbox" style="padding-left:0px">
 							<label class="signin-text-color"> <input type="checkbox"
-								name="_spring_security_remember_me">${rememberme}
+								name="_spring_security_remember_me">Запомнить меня
 							</label>
 						</div>
 						</div>
 						<div class="col-md-6">
 						<c:if test="${login_error != null}">
-					<div style="text-align:center;"><span class="alert alert-danger" role="alert" style="padding: 1.1%; text-align:center">${login_error}</span></div>
+					<div style="text-align:center;"><span class="alert alert-danger" role="alert" style="padding: 1.1%; text-align:center">Ошибка</span></div>
 				</c:if>
 					</div>
 					</div>
@@ -59,17 +59,17 @@
 				<div class="form-group">
 					<div class="col-md-8">
 						<button type="submit"
-							class="btn btn-default btn-outline btn-circle">${signinnew}</button>
+							class="btn btn-default btn-outline btn-circle">Войти</button>
 						<button type="button"
 							class="btn btn-default btn-outline btn-circle"
 							onClick='location.href="<c:url value="/signup"  />"'>
-							${signupnew}</button>
+							Зарегистрироваться</button>
 							
 					</div>
 				</div>
 				
 				<div class="margin-forgot-password">
-					<a href="<c:url value="/forgotPassword.html" />">${forgotpassword}
+					<a href="<c:url value="/forgotPassword.html" />">Забыли пароль?
 					</a>
 				</div>
 			</form>

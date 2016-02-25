@@ -17,6 +17,8 @@ public interface IGuestService {
 	
 	public List<Category> getAllCategories() throws ServiceException;
 	
+	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException;
+	
 	public void addUserPhysical(AddUserPhysicalForm addUserPhysicalForm) throws ServiceException;
 
 	public void addUserLegal(AddUserLegalForm addUserLegalForm) throws ServiceException;

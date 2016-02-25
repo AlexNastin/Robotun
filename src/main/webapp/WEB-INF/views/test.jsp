@@ -15,5 +15,6 @@
 <a href="<c:url value="/addUserPhysical"/>">Добавить пользователя физ</a>
 <a href="<c:url value="/addUserLegal"/>">Добавить пользователя юр</a>
 <a href="<c:url value="/login"/>">Login</a>
+<a href="<c:url value="/user/addLot"/>">Добавить работу</a>
 </body>
 </html>

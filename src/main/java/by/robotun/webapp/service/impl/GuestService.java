@@ -1,5 +1,6 @@
 package by.robotun.webapp.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,6 +56,19 @@ public class GuestService implements IGuestService {
 		List<Subcategory> subcategories;
 		try {
 			subcategories = subcategoryDAO.selectAllSubcategories();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return subcategories;
+	}
+	
+	@Override
+	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException {
+		List<Subcategory> subcategories = new ArrayList<Subcategory>();
+		Category category;
+		try {
+			category = categoryDAO.selectCategoryById(idCategory);
+			subcategories = category.getSubcategories();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

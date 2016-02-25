@@ -15,6 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "category")
 @NamedQueries({ @NamedQuery(name = "Category.findAll", query = "select c from Category c"),
@@ -34,6 +36,7 @@ public class Category implements Essence {
 	@Column(name = "title")
 	private String title;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 

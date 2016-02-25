@@ -11,6 +11,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "subcategory")
 @NamedQueries({ @NamedQuery(name = "Subcategory.findAll", query = "select s from Subcategory s") })
@@ -32,6 +34,7 @@ public class Subcategory implements Essence {
 	@Column(name = "title")
 	private String title;
 	
+	@JsonIgnore
 	@JoinColumn(name = "id_category", referencedColumnName = "id_category", insertable=false, updatable=false)
 	@ManyToOne(optional = false)
 	private Category category;

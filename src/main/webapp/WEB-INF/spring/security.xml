@@ -30,11 +30,10 @@
 
 		<!-- Role links -->
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/designer/**" access="hasRole('ROLE_DESIGNER')" />
+		<intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" />
 		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
 		<intercept-url pattern="/**"
-			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
+			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER_LEGAL', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_USER_PHYSICAL')" />
 	</http>
 
 
