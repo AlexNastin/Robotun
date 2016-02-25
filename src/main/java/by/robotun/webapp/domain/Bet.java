@@ -4,12 +4,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "bet")
@@ -38,6 +43,16 @@ public class Bet implements Essence {
 	
 	@Column(name = "cost")
 	private double cost;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_user", insertable=false, updatable=false)
+	private User user;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_lot", insertable=false, updatable=false)
+	private Lot lot;
 
 	public int getIdBet() {
 		return idBet;
@@ -77,6 +92,22 @@ public class Bet implements Essence {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Lot getLot() {
+		return lot;
+	}
+
+	public void setLot(Lot lot) {
+		this.lot = lot;
 	}
 
 	@Override

@@ -1,15 +1,21 @@
 package by.robotun.webapp.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "lot")
@@ -53,6 +59,10 @@ public class Lot implements Essence {
 	
 	@Column(name = "is_visible")
 	private boolean isVisible;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Bet> bets;
 
 	public int getIdLot() {
 		return idLot;
@@ -132,6 +142,14 @@ public class Lot implements Essence {
 
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
+	}
+
+	public List<Bet> getBets() {
+		return bets;
+	}
+
+	public void setBets(List<Bet> bets) {
+		this.bets = bets;
 	}
 
 	@Override

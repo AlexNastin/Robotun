@@ -6,7 +6,7 @@ import by.robotun.webapp.form.AddLotForm;
 
 public interface IUserService {
 
-	public void addLot(AddLotForm addLotForm) throws ServiceException;
+	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException;
 
 	public Lot getLotById(Integer idLot) throws ServiceException;
 

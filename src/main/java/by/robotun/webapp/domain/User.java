@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "users")
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "select u from User u"),
@@ -54,8 +56,13 @@ public class User implements Essence {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Legal legal;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Phone> phones;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Bet> bets;
 
 	public int getIdUser() {
 		return idUser;
@@ -127,6 +134,14 @@ public class User implements Essence {
 
 	public void setPhones(List<Phone> phones) {
 		this.phones = phones;
+	}
+
+	public List<Bet> getBets() {
+		return bets;
+	}
+
+	public void setBets(List<Bet> bets) {
+		this.bets = bets;
 	}
 
 	@Override

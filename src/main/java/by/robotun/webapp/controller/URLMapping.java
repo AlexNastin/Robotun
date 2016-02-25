@@ -8,6 +8,7 @@ public final class URLMapping {
 	public static final String LEGAL_SIGNUP = "login/legal_signup";
 	public static final String ADD_LOT = "lot/add_lot";
 	public static final String RESULT = "result";
+	public static final String LOT = "lot/lot";
 	
 	// FORWARD
 	public static final String FORWARD_ADD_USER_PHYSICAL_TO_DB = "forward:/addUserPhysicalToDB";

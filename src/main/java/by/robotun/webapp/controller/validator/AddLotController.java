@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
-import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.validator.AddLotValidator;
 import by.robotun.webapp.service.IUserService;
@@ -33,12 +32,6 @@ public class AddLotController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addLot(@RequestParam(value = "flagMessage", required = false) Boolean flagMessage, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
-		System.out.println(person);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.ADD_LOT);
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
 		if (flagMessage != null) {

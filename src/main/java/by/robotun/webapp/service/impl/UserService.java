@@ -23,7 +23,7 @@ public class UserService implements IUserService {
 	ILotDAO lotDAO;
 
 	@Override
-	public void addLot(AddLotForm addLotForm) throws ServiceException {
+	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException {
 		try {
 			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 			Date startDate = new Date();
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
 			lot.setDescription(addLotForm.getDescription());
 			// изменить на false когда будет добавлена система модерации
 			lot.setVisible(true);
-			lot.setIdUser(11);
+			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
 			throw new ServiceException(e);
@@ -50,8 +50,13 @@ public class UserService implements IUserService {
 
 	@Override
 	public Lot getLotById(Integer idLot) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		Lot lot;
+		try {
+			lot = lotDAO.selectLotById(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lot;
 	}
 	
 
