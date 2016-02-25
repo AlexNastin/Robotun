@@ -3,6 +3,7 @@ package by.robotun.webapp.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -48,7 +49,14 @@ public class LotDAOImpl implements ILotDAO {
 
 	@Override
 	public Lot selectLotById(int idLot) throws DaoException {
-		Lot lot = (Lot) entityManager.createNamedQuery("Lot.findLotById").setParameter("id", idLot).getSingleResult();
+		Lot lot = null;
+		try {
+			lot = (Lot) entityManager.createNamedQuery("Lot.findLotById").setParameter("id", idLot).getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(lot.toString());
+			
+		}
+		
 		return lot;
 	}
 }

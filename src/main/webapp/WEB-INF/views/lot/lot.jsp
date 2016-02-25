@@ -13,6 +13,23 @@
 	
 	${lot.name} <br>
 	${lot.budget} <br>
+	
+	<input type="text" id="cost">
+	<a id="btn" href="#">Send</a>
+	
+	<div id="output">
+	<c:forEach items="${lot.bets}" var="bet">
+			<div>${bet.cost}</div>
+			</c:forEach>
+	</div>
 
+<script type="text/javascript">
+var id = ${lot.idLot};
+var idUser = ${idUser}
+</script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
 </body>
 </html>

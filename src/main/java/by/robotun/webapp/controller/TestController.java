@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.robotun.webapp.dao.IUserDAO;
-import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.DaoException;
 
 @Controller
 public class TestController {

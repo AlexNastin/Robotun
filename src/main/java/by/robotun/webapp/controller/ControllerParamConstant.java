@@ -21,6 +21,8 @@ public final class ControllerParamConstant {
 	public static final String FLAG_MESSAGE = "flagMessage";
 
 	public static final String PERSON = "person";
+	
+	public static final String ID_USER = "idUser";
 
 
 }

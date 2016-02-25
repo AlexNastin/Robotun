@@ -22,6 +22,7 @@
 	<context:component-scan base-package="by.robotun.webapp.property" />
 	<context:component-scan base-package="by.robotun.webapp.service" />
 	<context:component-scan base-package="by.robotun.webapp.form" />
+	<context:component-scan base-package="by.robotun.webapp.socket" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />

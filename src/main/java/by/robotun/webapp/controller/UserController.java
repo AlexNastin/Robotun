@@ -65,9 +65,15 @@ public class UserController {
 	@RequestMapping(value = "/user/lot", method = RequestMethod.GET)
 	public ModelAndView result(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		Lot lot = userService.getLotById(idLot);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.LOT);
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
+		modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 		return modelAndView;
 	}
 

@@ -9,6 +9,8 @@ public interface IUserService {
 	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException;
 
 	public Lot getLotById(Integer idLot) throws ServiceException;
+	
+	public void addBet(String cost, int idUser, int idLot) throws ServiceException;
 
 	
 	

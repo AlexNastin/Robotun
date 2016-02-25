@@ -8,7 +8,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ILotDAO;
+import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
@@ -21,6 +23,9 @@ public class UserService implements IUserService {
 	
 	@Autowired
 	ILotDAO lotDAO;
+	
+	@Autowired
+	IBetDAO betDAO;
 
 	@Override
 	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException {
@@ -57,6 +62,23 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		return lot;
+	}
+
+	@Override
+	public void addBet(String cost, int idUser, int idLot) throws ServiceException {
+		Date date = new Date();
+		Bet bet = new Bet();
+		bet.setCost(Double.parseDouble(cost));
+		bet.setDate(date);
+		bet.setIdUser(idUser);
+		bet.setIdLot(idLot);
+		System.out.println(bet);
+		try {
+			betDAO.insertBet(bet);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
 	}
 	
 
