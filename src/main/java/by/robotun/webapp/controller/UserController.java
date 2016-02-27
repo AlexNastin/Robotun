@@ -19,7 +19,7 @@ import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.AddLotForm;
+import by.robotun.webapp.form.LotFormAdd;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 
@@ -49,7 +49,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/addLotToDB", method = RequestMethod.POST)
-	public ModelAndView addLotDB(AddLotForm addLotForm, Locale locale,
+	public ModelAndView addLotDB(LotFormAdd addLotForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -71,7 +71,7 @@ public class UserController {
 			return modelAndView;
 		}
 		Lot lot = userService.getLotById(idLot);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.LOT);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 		return modelAndView;

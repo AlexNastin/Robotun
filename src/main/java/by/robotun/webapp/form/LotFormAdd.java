@@ -2,7 +2,7 @@ package by.robotun.webapp.form;
 
 import by.robotun.webapp.domain.Essence;
 
-public class AddLotForm implements Essence {
+public class LotFormAdd implements Essence {
 
 	/**
 	 * 
@@ -85,7 +85,7 @@ public class AddLotForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AddLotForm other = (AddLotForm) obj;
+		LotFormAdd other = (LotFormAdd) obj;
 		if (budget != other.budget)
 			return false;
 		if (description == null) {

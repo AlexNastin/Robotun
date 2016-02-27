@@ -7,8 +7,8 @@ import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.AddUserLegalForm;
-import by.robotun.webapp.form.AddUserPhysicalForm;
+import by.robotun.webapp.form.SignupUserLegalForm;
+import by.robotun.webapp.form.SignupUserPhysicalForm;
 
 public interface IGuestService {
 	
@@ -20,9 +20,9 @@ public interface IGuestService {
 	
 	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException;
 	
-	public void addUserPhysical(AddUserPhysicalForm addUserPhysicalForm) throws ServiceException;
+	public void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException;
 
-	public void addUserLegal(AddUserLegalForm addUserLegalForm) throws ServiceException;
+	public void addUserLegal(SignupUserLegalForm addUserLegalForm) throws ServiceException;
 	
 	public List<Lot> getAllLots() throws ServiceException;
 	

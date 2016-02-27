@@ -14,7 +14,7 @@ import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.AddLotForm;
+import by.robotun.webapp.form.LotFormAdd;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -28,7 +28,7 @@ public class UserService implements IUserService {
 	IBetDAO betDAO;
 
 	@Override
-	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException {
+	public void addLot(LotFormAdd addLotForm, int idUser) throws ServiceException {
 		try {
 			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 			Date startDate = new Date();

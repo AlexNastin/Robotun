@@ -12,5 +12,6 @@
 </head>
 <body>
 <a href="<c:url value="/test"/>">Test1</a>
+<a href="<c:url value="/signup"/>">signup</a>
 </body>
 </html>

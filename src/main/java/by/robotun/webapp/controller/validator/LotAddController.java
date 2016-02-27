@@ -16,24 +16,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
-import by.robotun.webapp.form.AddLotForm;
-import by.robotun.webapp.form.validator.AddLotValidator;
+import by.robotun.webapp.form.LotFormAdd;
+import by.robotun.webapp.form.validator.LotFormAddValidator;
 import by.robotun.webapp.service.IUserService;
 
 @Controller
 @RequestMapping("/user/addLot")
-public class AddLotController {
+public class LotAddController {
 
 	@Autowired
-	private AddLotValidator addLotValidator;
+	private LotFormAddValidator addLotValidator;
 	
 	@Autowired
 	IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addLot(@RequestParam(value = "flagMessage", required = false) Boolean flagMessage, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.ADD_LOT);
-		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
+		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new LotFormAdd());
 		if (flagMessage != null) {
 			modelAndView.addObject(ControllerParamConstant.FLAG_MESSAGE, flagMessage);
 		}
@@ -41,7 +41,7 @@ public class AddLotController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addLotValidation(@ModelAttribute(ControllerParamConstant.ADD_LOT_FORM) AddLotForm addLotForm,
+	public ModelAndView addLotValidation(@ModelAttribute(ControllerParamConstant.ADD_LOT_FORM) LotFormAdd addLotForm,
 		BindingResult result, HttpSession httpSession) throws Exception {
 		addLotValidator.validate(addLotForm, result);
 

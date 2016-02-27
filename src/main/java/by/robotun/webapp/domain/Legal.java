@@ -2,8 +2,6 @@ package by.robotun.webapp.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
@@ -33,10 +31,10 @@ public class Legal implements Essence {
 
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "zip_code")
-	private String zipCode;
-	
+	private int zipCode;
+
 	@OneToOne
 	@JoinColumn(name = "id_user")
 	private User user;
@@ -73,11 +71,11 @@ public class Legal implements Essence {
 		this.address = address;
 	}
 
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -97,7 +95,8 @@ public class Legal implements Essence {
 		result = prime * result + idUser;
 		result = prime * result + ((nameEnterprise == null) ? 0 : nameEnterprise.hashCode());
 		result = prime * result + ((unp == null) ? 0 : unp.hashCode());
-		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + zipCode;
 		return result;
 	}
 
@@ -127,10 +126,12 @@ public class Legal implements Essence {
 				return false;
 		} else if (!unp.equals(other.unp))
 			return false;
-		if (zipCode == null) {
-			if (other.zipCode != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!zipCode.equals(other.zipCode))
+		} else if (!user.equals(other.user))
+			return false;
+		if (zipCode != other.zipCode)
 			return false;
 		return true;
 	}
@@ -138,8 +139,7 @@ public class Legal implements Essence {
 	@Override
 	public String toString() {
 		return "Legal [idUser=" + idUser + ", nameEnterprise=" + nameEnterprise + ", unp=" + unp + ", address="
-				+ address + ", zipCode=" + zipCode + "]";
+				+ address + ", zipCode=" + zipCode + ", user=" + user + "]";
 	}
 
-	
 }

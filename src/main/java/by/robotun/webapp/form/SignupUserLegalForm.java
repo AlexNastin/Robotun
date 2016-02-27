@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import by.robotun.webapp.domain.Essence;
 
-public class AddUserLegalForm implements Essence {
+public class SignupUserLegalForm implements Essence {
 
 	/**
 	 * 
@@ -119,7 +119,7 @@ public class AddUserLegalForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AddUserLegalForm other = (AddUserLegalForm) obj;
+		SignupUserLegalForm other = (SignupUserLegalForm) obj;
 		if (address == null) {
 			if (other.address != null)
 				return false;
@@ -164,10 +164,12 @@ public class AddUserLegalForm implements Essence {
 
 	@Override
 	public String toString() {
-		return "AddUserLegalForm [login=" + login + ", idCity=" + idCity + ", nameEnterprise=" + nameEnterprise
+		return "SignupUserLegalForm [login=" + login + ", idCity=" + idCity + ", nameEnterprise=" + nameEnterprise
 				+ ", unp=" + unp + ", address=" + address + ", zipCode=" + zipCode + ", password=" + password
 				+ ", confirmPassword=" + confirmPassword + ", phones=" + Arrays.toString(phones) + "]";
 	}
+
+
 
 	
 }

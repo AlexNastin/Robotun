@@ -11,21 +11,21 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import by.robotun.webapp.form.AddUserPhysicalForm;
+import by.robotun.webapp.form.SignupUserPhysicalForm;
 
 @Component
-public class AddUserPhysicalValidator implements Validator {
+public class SignupUserPhysicalFormValidator implements Validator {
 
-	private static Logger LOGGER = Logger.getLogger(AddUserPhysicalValidator.class);
+	private static Logger LOGGER = Logger.getLogger(SignupUserPhysicalFormValidator.class);
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return AddUserPhysicalForm.class.isAssignableFrom(arg0);
+		return SignupUserPhysicalForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		AddUserPhysicalForm addUserPhysicalForm = (AddUserPhysicalForm) target;
+		SignupUserPhysicalForm addUserPhysicalForm = (SignupUserPhysicalForm) target;
 		Matcher matcher = null;
 		Pattern pattern = null;
 //		List<String> emails = null;

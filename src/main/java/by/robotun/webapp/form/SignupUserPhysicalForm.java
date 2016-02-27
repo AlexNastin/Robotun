@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import by.robotun.webapp.domain.Essence;
 
-public class AddUserPhysicalForm implements Essence {
+public class SignupUserPhysicalForm implements Essence {
 
 	/**
 	 * 
@@ -109,7 +109,7 @@ public class AddUserPhysicalForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AddUserPhysicalForm other = (AddUserPhysicalForm) obj;
+		SignupUserPhysicalForm other = (SignupUserPhysicalForm) obj;
 		if (confirmPassword == null) {
 			if (other.confirmPassword != null)
 				return false;

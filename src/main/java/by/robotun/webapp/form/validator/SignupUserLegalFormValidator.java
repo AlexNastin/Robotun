@@ -11,23 +11,22 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import by.robotun.webapp.form.AddLotForm;
-import by.robotun.webapp.form.AddUserLegalForm;
-import by.robotun.webapp.form.AddUserPhysicalForm;
+import by.robotun.webapp.form.SignupUserLegalForm;
+import by.robotun.webapp.form.SignupUserPhysicalForm;
 
 @Component
-public class AddLotValidator implements Validator {
+public class SignupUserLegalFormValidator implements Validator {
 
-	private static Logger LOGGER = Logger.getLogger(AddLotValidator.class);
+	private static Logger LOGGER = Logger.getLogger(SignupUserLegalFormValidator.class);
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return AddLotForm.class.isAssignableFrom(arg0);
+		return SignupUserLegalForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		AddLotForm addLotForm = (AddLotForm) target;
+		SignupUserLegalForm addUserLegalForm = (SignupUserLegalForm) target;
 		Matcher matcher = null;
 		Pattern pattern = null;
 //		List<String> emails = null;

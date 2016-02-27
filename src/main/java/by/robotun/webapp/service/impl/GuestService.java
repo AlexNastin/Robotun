@@ -22,8 +22,8 @@ import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.AddUserLegalForm;
-import by.robotun.webapp.form.AddUserPhysicalForm;
+import by.robotun.webapp.form.SignupUserLegalForm;
+import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -92,7 +92,7 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public void addUserPhysical(AddUserPhysicalForm addUserPhysicalForm) throws ServiceException {
+	public void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException {
 		User user = new User();
 		Physical physical = new Physical();
 		user.setLogin(addUserPhysicalForm.getLogin());
@@ -114,21 +114,21 @@ public class GuestService implements IGuestService {
 	}
 	
 	@Override
-	public void addUserLegal(AddUserLegalForm addUserLegalForm) throws ServiceException {
+	public void addUserLegal(SignupUserLegalForm signupUserLegalForm) throws ServiceException {
 		User user = new User();
 		Legal legal = new Legal();
-		user.setLogin(addUserLegalForm.getLogin());
-		user.setIdCity(addUserLegalForm.getIdCity());
+		user.setLogin(signupUserLegalForm.getLogin());
+		user.setIdCity(signupUserLegalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_LEGAL);
 		user.setRegistrationDate(new Date());
 		
-		String md5Password = DigestUtils.md5Hex(addUserLegalForm.getPassword());
+		String md5Password = DigestUtils.md5Hex(signupUserLegalForm.getPassword());
 		user.setPassword(md5Password);
 		
-		legal.setAddress(addUserLegalForm.getAddress());
-		legal.setNameEnterprise(addUserLegalForm.getNameEnterprise());
-		legal.setUnp(addUserLegalForm.getUnp());
-		legal.setZipCode(addUserLegalForm.getZipCode());
+		legal.setAddress(signupUserLegalForm.getAddress());
+		legal.setNameEnterprise(signupUserLegalForm.getNameEnterprise());
+		legal.setUnp(signupUserLegalForm.getUnp());
+		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
 		user.setLegal(legal);
 		
 		try {

@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.AddUserLegalForm;
-import by.robotun.webapp.form.AddUserPhysicalForm;
 import by.robotun.webapp.service.IGuestService;
 
 
@@ -24,23 +22,8 @@ import by.robotun.webapp.service.IGuestService;
 public class GuestController {
 	
 	@Autowired
-	IGuestService guestService;
-	
-	@RequestMapping(value = "/addUserPhysicalToDB", method = RequestMethod.POST)
-	public ModelAndView addUserPhysicalDB(AddUserPhysicalForm addUserPhysicalForm, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		guestService.addUserPhysical(addUserPhysicalForm);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_MAIN);
-		return modelAndView;
-	}
-	
-	@RequestMapping(value = "/addUserLegalToDB", method = RequestMethod.POST)
-	public ModelAndView addUserLegalDB(AddUserLegalForm addUserLegalForm, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		guestService.addUserLegal(addUserLegalForm);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_MAIN);
-		return modelAndView;
-	}
+	private IGuestService guestService;
+
 	
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public ModelAndView result(@RequestParam(value = "idCategory", required = false) Integer idCategory,
@@ -56,7 +39,7 @@ public class GuestController {
 			// дописать метод
 			lots = guestService.getAllLotsByCategoryAndSubcategory();
 		}
-		ModelAndView modelAndView = new ModelAndView(URLMapping.RESULT);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		return modelAndView;
 	}

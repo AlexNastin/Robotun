@@ -19,6 +19,8 @@ public final class ControllerParamConstant {
 	
 	// OTHER
 	public static final String FLAG_MESSAGE = "flagMessage";
+	
+	public static final String MESSAGE = "message";
 
 	public static final String PERSON = "person";
 	
