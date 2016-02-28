@@ -4,9 +4,11 @@ import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 
+import org.springframework.web.socket.server.standard.SpringConfigurator;
+
 import by.robotun.webapp.domain.json.Message;
 
-public class MessageEncoder implements Encoder.Text<Message> {
+public class MessageEncoder extends SpringConfigurator implements Encoder.Text<Message> {
 
 	@Override
     public String encode(Message message) throws EncodeException {

@@ -49,7 +49,13 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.1.6.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.1.6.RELEASE</version>
+		</dependency>
 		
+
 		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -169,14 +175,14 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- MD5 -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
-		
+
 		<!-- File Upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -189,14 +195,14 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		
+
 		<!-- WebSockets API -->
 		<dependency>
 			<groupId>javax.websocket</groupId>
 			<artifactId>javax.websocket-api</artifactId>
 			<version>1.1</version>
 		</dependency>
-		
+
 		<!-- JSON -->
 		<dependency>
 			<groupId>javax.json</groupId>
@@ -215,7 +221,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
 		</dependency>
-		
+
 		<!-- Jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

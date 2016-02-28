@@ -9,27 +9,16 @@ import javax.websocket.DecodeException;
 import javax.websocket.Decoder;
 import javax.websocket.EndpointConfig;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.socket.server.standard.SpringConfigurator;
 
 import by.robotun.webapp.domain.json.Message;
 
-@Controller
-public class MessageDecoder implements Decoder.Text<Message> {
-	
+public class MessageDecoder extends SpringConfigurator implements Decoder.Text<Message> {
+
 	@Override
 	public Message decode(String string) throws DecodeException {
 		JsonObject jsonObject = Json.createReader(new StringReader(string))
 				.readObject();
-		String cost = jsonObject.getString("cost");
-		int idUser = jsonObject.getInt("idUser");
-		int idLot = jsonObject.getInt("idLot");
-//		try {
-//			userService.addBet(cost, idUser, idLot);
-//		} catch (ServiceException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
 		return new Message(jsonObject);
 	}
 
