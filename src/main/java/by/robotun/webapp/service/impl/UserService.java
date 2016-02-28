@@ -20,12 +20,12 @@ import by.robotun.webapp.service.ServiceParamConstant;
 
 @Service
 public class UserService implements IUserService {
-	
+
 	@Autowired
-	ILotDAO lotDAO;
-	
+	private ILotDAO lotDAO;
+
 	@Autowired
-	IBetDAO betDAO;
+	private IBetDAO betDAO;
 
 	@Override
 	public void addLot(LotFormAdd addLotForm, int idUser) throws ServiceException {
@@ -49,8 +49,7 @@ public class UserService implements IUserService {
 		} catch (ParseException | DaoException e) {
 			throw new ServiceException(e);
 		}
-		
-		
+
 	}
 
 	@Override
@@ -78,9 +77,7 @@ public class UserService implements IUserService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
-	}
-	
 
+	}
 
 }

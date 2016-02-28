@@ -29,21 +29,29 @@ import by.robotun.webapp.service.ServiceParamConstant;
 
 @Service
 public class GuestService implements IGuestService {
-	
+
 	@Autowired
 	private ICityDAO cityDAO;
-	
+
 	@Autowired
 	private ISubcategoryDAO subcategoryDAO;
-	
+
 	@Autowired
 	private ICategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private IUserDAO userDAO;
-	
+
 	@Autowired
 	private ILotDAO lotDAO;
+
+	public User getUserById(int idUser) throws ServiceException {
+		try {
+			return userDAO.selectUserById(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
 
 	@Override
 	public List<City> getAllCities() throws ServiceException {
@@ -66,7 +74,7 @@ public class GuestService implements IGuestService {
 		}
 		return subcategories;
 	}
-	
+
 	@Override
 	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
@@ -112,7 +120,7 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 	}
-	
+
 	@Override
 	public void addUserLegal(SignupUserLegalForm signupUserLegalForm) throws ServiceException {
 		User user = new User();
@@ -121,16 +129,16 @@ public class GuestService implements IGuestService {
 		user.setIdCity(signupUserLegalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_LEGAL);
 		user.setRegistrationDate(new Date());
-		
+
 		String md5Password = DigestUtils.md5Hex(signupUserLegalForm.getPassword());
 		user.setPassword(md5Password);
-		
+
 		legal.setAddress(signupUserLegalForm.getAddress());
 		legal.setNameEnterprise(signupUserLegalForm.getNameEnterprise());
 		legal.setUnp(signupUserLegalForm.getUnp());
 		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
+		legal.setUser(user);
 		user.setLegal(legal);
-		
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {

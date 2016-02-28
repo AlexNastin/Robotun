@@ -19,9 +19,13 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	public User selectUserById(int idUser) throws DaoException {
-
-		User user = (User) entityManager.createNamedQuery("User.findUserById").setParameter("idUser", idUser)
-				.getSingleResult();
+		User user = null;
+		try {
+			user = (User) entityManager.createNamedQuery("User.findUserById").setParameter("idUser", idUser)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return user;
+		}
 		return user;
 	}
 
@@ -42,5 +46,4 @@ public class UserDAOImpl implements IUserDAO {
 	public void insertUser(User user) throws DaoException {
 		entityManager.persist(user);
 	}
-
 }

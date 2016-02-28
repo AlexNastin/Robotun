@@ -1,7 +1,12 @@
 package by.robotun.webapp.domain;
 
-public class Person {
+public class Person extends User{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 
 	public int getId() {

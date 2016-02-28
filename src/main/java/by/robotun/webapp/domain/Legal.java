@@ -2,6 +2,8 @@ package by.robotun.webapp.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
@@ -20,8 +22,9 @@ public class Legal implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
-	@Column(name = "id_user")
-	private int idUser;
+	@Column(name = "id_legal")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idLegal;
 
 	@Column(name = "name_enterprise")
 	private String nameEnterprise;
@@ -39,12 +42,12 @@ public class Legal implements Essence {
 	@JoinColumn(name = "id_user")
 	private User user;
 
-	public int getIdUser() {
-		return idUser;
+	public int getIdLegal() {
+		return idLegal;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setIdLegal(int idLegal) {
+		this.idLegal = idLegal;
 	}
 
 	public String getNameEnterprise() {
@@ -92,7 +95,7 @@ public class Legal implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + idUser;
+		result = prime * result + idLegal;
 		result = prime * result + ((nameEnterprise == null) ? 0 : nameEnterprise.hashCode());
 		result = prime * result + ((unp == null) ? 0 : unp.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -114,7 +117,7 @@ public class Legal implements Essence {
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (idUser != other.idUser)
+		if (idLegal != other.idLegal)
 			return false;
 		if (nameEnterprise == null) {
 			if (other.nameEnterprise != null)
@@ -138,7 +141,7 @@ public class Legal implements Essence {
 
 	@Override
 	public String toString() {
-		return "Legal [idUser=" + idUser + ", nameEnterprise=" + nameEnterprise + ", unp=" + unp + ", address="
+		return "Legal [idLegal=" + idLegal + ", nameEnterprise=" + nameEnterprise + ", unp=" + unp + ", address="
 				+ address + ", zipCode=" + zipCode + ", user=" + user + "]";
 	}
 

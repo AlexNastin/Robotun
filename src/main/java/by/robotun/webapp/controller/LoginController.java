@@ -18,6 +18,7 @@ import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 
 @Controller
@@ -25,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	private IUserDAO userService;
+	
+	@Autowired
+	private IGuestService guestService;
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -35,7 +39,8 @@ public class LoginController {
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView start(Locale locale, Model model) {
+	public ModelAndView start(Locale locale, Model model) throws ServiceException {
+		User user = guestService.getUserById(15);
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
