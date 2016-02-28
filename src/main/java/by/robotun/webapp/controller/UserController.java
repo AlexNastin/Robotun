@@ -48,7 +48,7 @@ public class UserController {
 		return guestService.getAllCategories();
 	}
 	
-	@RequestMapping(value = "/addLotToDB", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/addLotToDB", method = RequestMethod.POST)
 	public ModelAndView addLotDB(LotFormAdd addLotForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
