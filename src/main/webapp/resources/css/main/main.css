@@ -1,0 +1,196 @@
+.header-background-color {
+    background-color: black;
+    border-radius: 0px;
+    border: 0px;
+    margin-bottom: 0px;
+}
+.text-color {
+    color: white !important;
+    font-weight: bold;
+}
+.text-color:hover {
+    color: #bababa !important;
+}
+.active-block {
+    background-color: #07B0DE !important;
+}
+.burger-button {
+    border-color:white !important;
+    border-width: 1px;
+}
+.burger-button:hover,.burger-button:focus {
+    background-color: #07B0DE !important;
+}
+.background-main-image {
+    background-image: url(../images/main-banner.jpg);
+    min-height: 35em;
+    background-size: 100%;
+    background-repeat:no-repeat;
+    background-position: bottom 40px;
+
+}
+.search-margin-top {
+    padding-top: 4em;
+}
+.main-button-style {
+    color: white;
+    background-color: inherit;
+    border-color: white;
+    font-weight: bold;
+    border-radius: 40px;
+    border-width: 4px;
+}
+.main-button-style:hover,.main-button-style:active, .main-button-style:focus {
+    color: inherit !important;
+    background-color:  white !important;
+    border-color:  white !important;
+    font-weight: bold !important;
+}
+.main-text-style {
+    font-size: 30pt;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1em;
+    color: white;
+    font-family: Helvetica Neue, Helvetica, Arial;
+}
+.row-margin {
+    min-height: 15em;
+    margin-top: 3em;
+}
+.search-style {
+    height: 4em;
+    border-top-left-radius:30px;
+    border-bottom-left-radius: 30px;
+    border-color: white !important;
+}
+.search-style:focus {
+    border-color: white !important;
+}
+
+.search-button-style {
+    height: 4em;
+    border-top-right-radius:30px;
+    border-bottom-right-radius:30px;
+    border-color: white;
+    background-color: inherit;
+    color: white;
+    font-weight: bold;
+    width: 8em;
+    border-width: 4px;
+    padding: 0px;
+}
+.search-button-style:hover,.search-button-style:active, .search-button-style:focus {
+    border-color: white !important;
+    background-color: white !important;
+    color: inherit !important;
+}
+.footer {
+    background-color: black;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 250px;
+    text-align: center;
+    padding-top:3em;
+    margin-top: 0%;
+}
+.footer_grids {
+    text-align: left;
+    padding-bottom:3em;
+}
+.footer-grid {
+    float: left;
+    width: 17.7%;
+    margin-right: 7%;
+}
+ul.list1 {
+    padding: 0;
+    list-style: none;
+}
+.footer-grid h4 {
+    color: white;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    width: 70%;
+}
+ul.list1 li a {
+    color: #bababa;
+    font-size: 0.85em;
+    font-weight: 100;
+    line-height: 1.8em;
+    text-decoration: none;
+}
+@media (max-width: 768px){
+    .button-align-left {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .button-align-right {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .search-margin-top {
+        padding-top: 0em;
+    }
+    .row-margin {
+        min-height: 13.3em;
+        margin-top: 0.2em;
+    }
+    .main-text-style {
+        margin-top: 0.2em;
+    }
+    .background-main-image {
+        background-image: url(../images/main-banner.jpg);
+        min-height: 23em;
+        background-size: 200%;
+        background-repeat:no-repeat;
+        background-position: bottom 40px;
+
+    }
+}
+@media (min-width: 768px) {
+    .button-align-left {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .button-align-right {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .search-margin-top {
+        padding-top: 4em;
+    }
+    .row-margin {
+        min-height: 15em;
+        margin-top: 1em;
+    }
+}
+@media (min-width: 992px) {
+    .button-align-left {
+        text-align: right !important;
+        margin-top: 70px;
+    }
+    .button-align-right {
+        text-align: left !important;
+        margin-top: 70px;
+    }
+    .search-margin-top {
+        padding-top: 4em;
+    }
+}
+@media (min-width: 1200px) {
+    .button-align-left{
+        text-align: right !important;
+        margin-top: 70px;
+    }
+    .button-align-right {
+        text-align:left !important;
+        margin-top: 70px;
+    }
+    .search-margin-top {
+        padding-top: 4em;
+    }
+}
