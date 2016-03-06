@@ -10,34 +10,86 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 <spring:url var="addUserPhysical" value="/signup/userPhysical" />
 <spring:url var="addUserLegal" value="/signup/userLegal" />
-<title>Регестрация</title>
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
+<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/login/login.css"  />" rel="stylesheet" />
+<title>Регистрация</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/header.jsp"%>
+		<div class="background-main-image height-main-block">
+		<!-- Начало табов -->
+		<div class="col-md-2"></div>		
+		<div class="col-md-8 form-login-style">
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">In
+						English</a></li>
+				<li><a data-toggle="tab" href="#menu1">На русском языке</a></li>
+			</ul>
+			<div class="form-main-text">Регистрация</div>
+		<div class="tab-content">
+		<div id="home" class="tab-pane fade in active">
 		<form:form modelAttribute="addUserPhysicalForm" action="${addUserPhysical}" method="POST">
-		<form:input path="login" placeholder="login" />
+		<div class="col-md-6">
+		<div class="form-group">
+		<form:input class="form-control" path="login" placeholder="login" />
 			<form:errors path="login" />
-		<form:select path="idCity">
+		</div>
+		<div class="form-group">
+		<form:select class="form-control" path="idCity">
 			<c:forEach items="${listCities}" var="city">
 				<form:option value="${city.idCity}">${city.title}</form:option>
 			</c:forEach>
 		</form:select>
-		<form:input path="name" placeholder="name" />
+	    </div>
+		<div class="form-group">
+		<form:input class="form-control" path="name" placeholder="name" />
 		<form:errors path="name" />
-		<form:input path="surname" placeholder="surname" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="surname" placeholder="surname" />
 		<form:errors path="surname" />
-		<form:input path="middleName" placeholder="middleName" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="middleName" placeholder="middleName" />
 		<form:errors path="middleName" />
-		<form:input path="phones" placeholder="phone1" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone1" />
 		<form:errors path="phones" />
-		<form:input path="phones" placeholder="phone2" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone2" />
 		<form:errors path="phones" />
-		<form:password path="password" placeholder="password" />
-		<form:errors path="password" />
-		<form:password path="confirmPassword" placeholder="confirmPassword" />
+		</div>
+		<div class="form-group">
+		<form:password class="form-control" path="password" placeholder="password" />
+		<form:errors class="form-control" path="password" />
+		</div>
+		<div class="form-group">
+		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
 		<form:errors path="confirmPassword" />
-		<input type="submit" value="Отправить" />
+		</div>
+		</div>
+		<div class="col-md-6">
+		<div class="form-login-text-color">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum, ex gravida blandit porttitor, lectus libero blandit tellus, eu tempor sapien enim non velit. Curabitur hendrerit leo at nisl consectetur hendrerit. Fusce tincidunt, est ac accumsan finibus, elit sapien tempus magna, vitae imperdiet tortor nisi vitae nisi. Vivamus iaculis ullamcorper quam non malesuada. Morbi imperdiet diam non ex gravida, ac porttitor ipsum vehicula. 
+		</div>
+		<div style="margin-top: 4em;">
+		<div class="col-md-6">
+		<input class="btn btn-default login-button-style" type="submit" value="Зарегистрироваться" />
+	    </div>
+	    <div class="col-md-6">
+	    <button class="btn btn-default login-button-style" type="button">Войти</button>
+	    </div>
+	    </div>
+	    </div>
 	</form:form>
-	<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
+	</div>
+		<!-- 2блок -->
+		<div id="menu1" class="tab-pane fade">
+		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
 		<form:input path="login" placeholder="login" />
 		<form:errors path="login" />
 		<form:select path="idCity">
@@ -63,8 +115,19 @@
 		<form:errors path="confirmPassword" />
 		<input type="submit" value="Отправить" />
 	</form:form>
+	</div>
+	</div>
+	</div>
+	
+	<div class="col-md-2"></div>
+	
+
+	</div>
 	<c:if test="${message != null }">
 	${message}
 	</c:if>
+	<%@include file="/WEB-INF/views/footer.jsp"%>
+<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>
