@@ -22,7 +22,7 @@
     background-color: #07B0DE !important;
 }
 .background-main-image {
-    background-image: url(../images/main-banner.jpg);
+    background-image: url(../../images/main-banner.jpg);
     min-height: 35em;
     background-size: 100%;
     background-repeat:no-repeat;

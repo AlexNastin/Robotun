@@ -65,7 +65,6 @@
     </div>
     </div>
     </div>
-</div>
 <!--Footer-->
 <div class="footer position-sign sign-footer-margin">
     <div class="container">
