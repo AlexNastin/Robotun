@@ -17,15 +17,14 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header.jsp"%>
-		<div class="background-main-image height-main-block">
+		<div class="background-main-image height-main-block position-image-banner">
 		<!-- Начало табов -->
 		<div class="col-md-2"></div>		
 		<div class="col-md-8 form-login-style">
 
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#home">In
-						English</a></li>
-				<li><a data-toggle="tab" href="#menu1">На русском языке</a></li>
+			<ul class="nav nav-tabs tab-style">
+				<li class="active"><a data-toggle="tab"  href="#home">Физическиое лицо</a></li>
+				<li><a data-toggle="tab" href="#menu1">Юридическое лицо</a></li>
 			</ul>
 			<div class="form-main-text">Регистрация</div>
 		<div class="tab-content">
@@ -87,41 +86,72 @@
 	    </div>
 	</form:form>
 	</div>
-		<!-- 2блок -->
+		<!-- 2 блок -->
 		<div id="menu1" class="tab-pane fade">
 		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
-		<form:input path="login" placeholder="login" />
+		<div class="col-md-6">
+		<div class="form-group">
+		<form:input class="form-control" path="login" placeholder="login" />
 		<form:errors path="login" />
-		<form:select path="idCity">
+		</div>
+		<div class="form-group">
+		<form:select class="form-control" path="idCity">
 			<c:forEach items="${listCities}" var="city">
 				<form:option value="${city.idCity}">${city.title}</form:option>
 			</c:forEach>
 		</form:select>
-		<form:input path="nameEnterprise" placeholder="nameEnterprise" />
-		<form:errors path="nameEnterprise" />
-		<form:input path="unp" placeholder="unp" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="nameEnterprise" placeholder="nameEnterprise" />
+		<form:errors  path="nameEnterprise" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="unp" placeholder="unp" />
 		<form:errors path="unp" />
-		<form:input path="address" placeholder="address" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="address" placeholder="address" />
 		<form:errors path="address" />
-		<form:input path="zipCode" placeholder="zipCode" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="zipCode" placeholder="zipCode" />
 		<form:errors path="zipCode" />
-		<form:input path="phones" placeholder="phone1" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone1" />
 		<form:errors path="phones" />
-		<form:input path="phones" placeholder="phone2" />
+		</div>
+		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone2" />
 		<form:errors path="phones" />
-		<form:password path="password" placeholder="password" />
+		</div>
+		<div class="form-group">
+		<form:password class="form-control" path="password" placeholder="password" />
 		<form:errors path="password" />
-		<form:password path="confirmPassword" placeholder="confirmPassword" />
+		</div>
+		<div class="form-group">
+		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
 		<form:errors path="confirmPassword" />
-		<input type="submit" value="Отправить" />
+		</div>
+		</div>
+		<div class="col-md-6">
+		<div class="form-login-text-color">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum, ex gravida blandit porttitor, lectus libero blandit tellus, eu tempor sapien enim non velit. Curabitur hendrerit leo at nisl consectetur hendrerit. Fusce tincidunt, est ac accumsan finibus, elit sapien tempus magna, vitae imperdiet tortor nisi vitae nisi. Vivamus iaculis ullamcorper quam non malesuada. Morbi imperdiet diam non ex gravida, ac porttitor ipsum vehicula. 
+		</div>
+		<div style="margin-top: 4em;">
+		<div class="col-md-6">
+		<input class="btn btn-default login-button-style" type="submit" value="Зарегистрироваться" />
+		</div>
+		<div class="col-md-6">
+		<button class="btn btn-default login-button-style" type="button">Войти</button>
+		</div>
+		</div>
+		</div>
 	</form:form>
 	</div>
 	</div>
 	</div>
-	
 	<div class="col-md-2"></div>
-	
-
 	</div>
 	<c:if test="${message != null }">
 	${message}

@@ -16,7 +16,7 @@
 	font-size: 14pt;
 }
 .height-main-block {
-	min-height: 41em;
+	min-height: 45em;
 }
 .login-button-style {
 	margin-top:0.5em;
@@ -37,4 +37,13 @@
     font-weight: bold !important;
     font-size: 12pt;
     outline-style: none !important;
+}
+a {
+	color: white;
+}
+a:active {
+	color:inherit;
+}
+a:hover {
+	color:inherit;
 }
