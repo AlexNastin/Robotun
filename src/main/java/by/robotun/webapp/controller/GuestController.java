@@ -1,5 +1,6 @@
 package by.robotun.webapp.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
@@ -30,16 +32,17 @@ public class GuestController {
 			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		List<Lot> lots;
+		Date endDate = new Date();
 		if(idCategory == null && idSubcategory == null) {
-			lots = guestService.getAllLots();
+			lots = guestService.getAllLots(endDate);
 		} else if(idSubcategory == null) {
-			// дописать метод
-			lots = guestService.getAllLotsByCategory();
+			lots = guestService.getAllLotsByCategory(idCategory, endDate);
 		} else {
-			// дописать метод
-			lots = guestService.getAllLotsByCategoryAndSubcategory();
+			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
 		}
+		List<Category> categories = guestService.getAllCategories();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		return modelAndView;
 	}

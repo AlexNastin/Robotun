@@ -14,6 +14,8 @@ public final class ControllerParamConstant {
 	
 	public static final String LIST_LOTS = "listLots";
 	
+	public static final String LIST_CATEGORIES = "listCategories";
+	
 	// ONE
 	public static final String LOT = "lot";
 	

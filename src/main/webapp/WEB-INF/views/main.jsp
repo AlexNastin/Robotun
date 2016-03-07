@@ -32,7 +32,7 @@
     <div class="col-lg-4"></div>
     <div class="container">
         <div class="col-md-5 button-align-left">
-            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href="#" role="button">Хочу работать</a>
+            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href='<c:url value="/result"/>' role="button">Хочу работать</a>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-5 button-align-right">

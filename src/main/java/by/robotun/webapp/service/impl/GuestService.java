@@ -147,10 +147,10 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public List<Lot> getAllLots() throws ServiceException {
+	public List<Lot> getAllLots(Date endDate) throws ServiceException {
 		List<Lot> lots = new ArrayList<>();
 		try {
-			lots = lotDAO.selectAllLots();
+			lots = lotDAO.selectAllLots(endDate);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -158,15 +158,25 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public List<Lot> getAllLotsByCategory() throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Lot> getAllLotsByCategory(int idCategory, Date endDate) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotByCategory(idCategory, endDate);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;
 	}
 
 	@Override
-	public List<Lot> getAllLotsByCategoryAndSubcategory() throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;
 	}
 
 }

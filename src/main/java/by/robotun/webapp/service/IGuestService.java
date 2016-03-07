@@ -1,5 +1,6 @@
 package by.robotun.webapp.service;
 
+import java.util.Date;
 import java.util.List;
 
 import by.robotun.webapp.domain.Category;
@@ -25,11 +26,11 @@ public interface IGuestService {
 
 	public void addUserLegal(SignupUserLegalForm addUserLegalForm) throws ServiceException;
 	
-	public List<Lot> getAllLots() throws ServiceException;
+	public List<Lot> getAllLots(Date endDate) throws ServiceException;
 	
-	public List<Lot> getAllLotsByCategory() throws ServiceException;
+	public List<Lot> getAllLotsByCategory(int idCategory, Date endDate) throws ServiceException;
 	
-	public List<Lot> getAllLotsByCategoryAndSubcategory() throws ServiceException;
+	public List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws ServiceException;
 	
 	public User getUserById(int idUser) throws ServiceException;
 }

@@ -1,5 +1,6 @@
 package by.robotun.webapp.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,8 +29,8 @@ public class LotDAOImpl implements ILotDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Lot> selectAllLots() throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAll").getResultList();
+	public List<Lot> selectAllLots(Date endDate) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", endDate).getResultList();
 		return lots;
 	}
 	
@@ -58,5 +59,19 @@ public class LotDAOImpl implements ILotDAO {
 		}
 		
 		return lot;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotByCategory(int idCategory, Date endDate) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotByCategory").setParameter("idCategory", idCategory).setParameter("endDate", endDate).getResultList();
+		return lots;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotByCategoryAndSubcategory").setParameter("idCategory", idCategory).setParameter("idSubcategory", idSubcategory).setParameter("endDate", endDate).getResultList();
+		return lots;
 	}
 }
