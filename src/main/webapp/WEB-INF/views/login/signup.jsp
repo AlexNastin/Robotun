@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header.jsp"%>
-		<div class="background-main-image height-main-block position-image-banner">
+		<div class="background-main-image height-main-block">
 		<!-- Начало табов -->
 		<div class="col-md-2"></div>		
 		<div class="col-md-8 form-login-style">
@@ -80,7 +80,7 @@
 		<input class="btn btn-default login-button-style" type="submit" value="Зарегистрироваться" />
 	    </div>
 	    <div class="col-md-6">
-	    <button class="btn btn-default login-button-style" type="button">Войти</button>
+	    <a href="<c:url value="/login"/>" class="text-color"><button class="btn btn-default login-button-style" type="button">Войти</button></a>
 	    </div>
 	    </div>
 	    </div>
@@ -143,7 +143,7 @@
 		<input class="btn btn-default login-button-style" type="submit" value="Зарегистрироваться" />
 		</div>
 		<div class="col-md-6">
-		<button class="btn btn-default login-button-style" type="button">Войти</button>
+		<a href="<c:url value="/login"/>" class="text-color"><button class="btn btn-default login-button-style" type="button">Войти</button></a>
 		</div>
 		</div>
 		</div>

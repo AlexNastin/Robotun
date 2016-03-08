@@ -14,7 +14,7 @@
                 <span class="icon-bar" style="background-color: white"></span>
                 <span class="icon-bar" style="background-color: white"></span>
             </button>
-            <a class="navbar-brand text-color" href="#">Brand</a>
+            <a class="navbar-brand text-color" href="<c:url value="index"/>">Brand</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
