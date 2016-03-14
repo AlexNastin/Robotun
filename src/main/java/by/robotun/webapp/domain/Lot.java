@@ -23,9 +23,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate"),
 	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets where l.idLot = :id"),
 	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate"),
-	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate")})
+	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate"),
+	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),})
 public class Lot implements Essence {
-
+	
 	/**
 	 * 
 	 */

@@ -18,8 +18,8 @@ function defineText(evt) {
         sendText(json);
 }
 
-function printText(cost) {
-    var json = JSON.parse(cost);
+function printText(json) {
+    var json = JSON.parse(json);
     var content = document.getElementById("output").innerHTML;
     document.getElementById("output").innerHTML = "<div>"+json.cost+"</div>" + content;
 }

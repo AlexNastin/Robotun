@@ -22,4 +22,6 @@ public interface ILotDAO {
 	
 	public List<Lot> selectLotByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws DaoException;
 
+	public Date selectDateLotById(Integer idLot) throws DaoException;
+
 }

@@ -80,4 +80,15 @@ public class UserService implements IUserService {
 
 	}
 
+	@Override
+	public Date getDateLotById(Integer idLot) throws ServiceException {
+		Date endDate;
+		try {
+			endDate = lotDAO.selectDateLotById(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return endDate;
+	}
+
 }

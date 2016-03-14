@@ -74,4 +74,10 @@ public class LotDAOImpl implements ILotDAO {
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotByCategoryAndSubcategory").setParameter("idCategory", idCategory).setParameter("idSubcategory", idSubcategory).setParameter("endDate", endDate).getResultList();
 		return lots;
 	}
+
+	@Override
+	public Date selectDateLotById(Integer idLot) throws DaoException {
+		Date endDate = (Date) entityManager.createNamedQuery("Lot.findDateLotById").setParameter("idLot", idLot).getSingleResult();
+		return endDate;
+	}
 }
