@@ -66,6 +66,7 @@ public class MessageSocket {
 			for (Session peer : peers) {
 				if (peer.isOpen() && !peer.equals(session) && id.equals(peer.getUserProperties().get("id"))) {
 					peer.getBasicRemote().sendObject(message);
+					System.err.println(message.toString());
 				}
 			}
 		}
@@ -82,9 +83,9 @@ public class MessageSocket {
 		peers.remove(peer);
 	}
 
-	// @OnError
-	// public void onError(Session peer, Throwable t) {
-	// peers.remove(peer);
-	// }
+	@OnError
+	public void onError(Session peer, Throwable t) {
+		peers.remove(peer);
+	}
 
 }

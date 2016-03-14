@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-5 button-align-right">
-            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href="#" role="button">Предлагаю работу</a>
+            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href='<c:url value="/user/addLot"/>' role="button">Предлагаю работу</a>
         </div>
     </div>
     </div>

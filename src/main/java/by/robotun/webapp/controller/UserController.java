@@ -72,6 +72,7 @@ public class UserController {
 		}
 		Lot lot = userService.getLotById(idLot);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
+		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 		return modelAndView;

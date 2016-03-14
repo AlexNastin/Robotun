@@ -119,7 +119,7 @@
                                     <a href='<c:url value="/user/lot?id=${lot.idLot}"/>' class="list-group-item">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
-                                                <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="placehold.it/350x250" >
+                                                <img class="media-object img-rounded img-responsive"  src="<c:url value="/resources/images/logoJob.png"/>">
                                             </figure>
                                         </div>
                                         <div class="col-md-6">

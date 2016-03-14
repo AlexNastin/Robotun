@@ -22,7 +22,7 @@
 			<div>${bet.cost}</div>
 			</c:forEach>
 	</div>
-
+${dateEndLot}
 <script type="text/javascript">
 var id = ${lot.idLot};
 var idUser = ${idUser}
