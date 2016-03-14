@@ -17,5 +17,10 @@
 <a href="<c:url value="/login"/>">Login</a>
 <a href="<c:url value="/user/addLot"/>">Добавить работу</a>
 <a href="<c:url value="/result"/>">Результат</a>
+
+<a href="<c:url value="/user/profile"/>">Кабинет юрика</a>
+<a href="<c:url value="/user/profile/physical"/>">Кабинет физика</a>
+<a href="<c:url value="/admin/profile"/>">Кабинет админа</a>
+<a href="<c:url value="/moderator/profile"/>">Кабинет модератора</a>
 </body>
 </html>
