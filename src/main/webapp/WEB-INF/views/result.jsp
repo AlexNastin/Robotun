@@ -10,7 +10,6 @@
 <security:authorize access="hasRole('ROLE_MODERATOR')"
 	var="moderatorBool" />
 <security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
-
 <c:if test="${userBool}">
 	<c:set value="/user/profile" var="profileURL" />
 </c:if>
@@ -26,8 +25,7 @@
 <head>
 <title>Результаты поиска</title>
 
-<c:url value="/get/subcategories" var="getSubcategories" />
-<c:url value="/get/categories" var="getCategories" />
+<c:url value="/user/lot" var="userLot" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -150,7 +148,7 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class="list-group">
+                                <div class="list-group" id="list-group">
                                 <c:forEach items="${listLots}" var="lot">
                                     <a href='<c:url value="/user/lot?id=${lot.idLot}"/>' class="list-group-item">
                                         <div class="media col-md-3">
@@ -177,6 +175,7 @@
                                     </a>
                                     </c:forEach>
                                 </div>
+                                <div class="load"></div>
                             </div>
                         </div>
                     </div>
@@ -189,6 +188,31 @@
     </div>
     
 <!--add footer here-->
+<script type="text/javascript"
+		src="<c:url value="/resources/js/results/autoload.js" />"></script>
+		<script type="text/javascript">
+		function loader(){         
+			// «теневой» запрос к серверу
+			$(".load").fadeIn(500, function () {
+							$.ajax({
+								url:"autoloader/allResults",
+								type:"GET",
+								data:{
+									//передаем параметры
+									limit: limit,
+									offset: offset*limit
+								},
+								success:function(data) {
+									for(var i=0; i<data.length; i++) {
+										print(data[i].idLot, data[i].name, data[i].description, data[i].budget);
+									}
+									offset++;
+									block = false;
+								}
+							});
+						});
+			}
+		</script>
 
 </body>
 </html>

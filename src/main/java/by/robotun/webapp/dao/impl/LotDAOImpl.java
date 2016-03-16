@@ -30,7 +30,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectAllLots(Date endDate) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", endDate).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", endDate).setMaxResults(3).getResultList();
 		return lots;
 	}
 	
@@ -79,5 +79,12 @@ public class LotDAOImpl implements ILotDAO {
 	public Date selectDateLotById(Integer idLot) throws DaoException {
 		Date endDate = (Date) entityManager.createNamedQuery("Lot.findDateLotById").setParameter("idLot", idLot).getSingleResult();
 		return endDate;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotsLimitOffset(int limit, int offset, Date date) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", date).setFirstResult(offset).setMaxResults(limit).getResultList();
+		return lots;
 	}
 }

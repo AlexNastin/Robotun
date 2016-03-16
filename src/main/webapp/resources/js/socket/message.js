@@ -25,6 +25,6 @@ function printText(json) {
 	} else {
 		var json = JSON.parse(json);
 	    var content = document.getElementById("output").innerHTML;
-	    document.getElementById("output").innerHTML = "<div>"+json.cost+"</div>" + content;
+	    document.getElementById("output").innerHTML = "<div id=\"ttt\">"+json.cost+"</div>" + content;
 	}
 }
