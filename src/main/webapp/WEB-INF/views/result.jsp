@@ -3,6 +3,24 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
+	
+	<security:authorize access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" var="userBool" />
+<security:authorize access="hasRole('ROLE_MODERATOR')"
+	var="moderatorBool" />
+<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
+
+<c:if test="${userBool}">
+	<c:set value="/user/profile" var="profileURL" />
+</c:if>
+<c:if test="${moderatorBool}">
+	<c:set value="/moderator/profile" var="profileURL" />
+</c:if>
+<c:if test="${adminBool}">
+	<c:set value="/admin/profile" var="profileURL" />
+</c:if>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -64,7 +82,25 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle dropdown-at" data-toggle="dropdown"><span class=" name-caret">Профиль<i class="caret"></i></span><img src="<c:url value="/resources/images/niro.jpg" />"></a>
                         <ul class="dropdown-menu " role="menu">
-                            <li><a href="profile.html"><i class="fa fa-user"></i>Мой профиль</a></li>
+                        <li><security:authorize access="hasRole('ROLE_GUEST')">
+								<a href="<c:url value="/login" />"'> Войти <i
+									class="fa fa-sign-in"></i>
+								</a>
+								<a href="<c:url value="/signup" />"'> Зарегистрироваться <i
+									class="fa fa-user-plus"></i>
+								</a>
+							</security:authorize> <security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<a href="<c:url value="${profileURL}" />"'>Мой профиль<i
+									class="fa fa-suitcase"></i>
+								</a>
+							</security:authorize></li>
+						<li><security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<a href="<c:url value="/logout" />"'> Выйти <i
+									class="fa fa-user-times"></i>
+								</a>
+							</security:authorize></li>
                         </ul>
                     </li>
 
