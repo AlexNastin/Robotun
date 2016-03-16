@@ -85,19 +85,12 @@ public class UserController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
-		return modelAndView;
-	}
-	
-	// Переместить функционал в метод profileUser
-	@RequestMapping(value = "/user/profile/physical", method = RequestMethod.GET)
-	public ModelAndView profileUserTest(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
+		ModelAndView modelAndView = new ModelAndView();
+		if (person.getIdRole()==ControllerParamConstant.ID_USER_LEGAL_NUMBER) {
+			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
+		} else if (person.getIdRole()==ControllerParamConstant.ID_USER_PHYSICAL_NUMBER) {
+			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_PHYSICAL);
 		}
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_PHYSICAL);
 		return modelAndView;
 	}
 

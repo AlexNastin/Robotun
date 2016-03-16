@@ -18,16 +18,12 @@ import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.service.IGuestService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	private IUserDAO userService;
-	
-	@Autowired
-	private IGuestService guestService;
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -49,7 +45,9 @@ public class LoginController {
 		User user = (User) auth.getPrincipal();
 		Person person = new Person();
 		try {
-			person.setId(userService.selectUser(user.getLogin()).getIdUser());
+			User us = userService.selectUser(user.getLogin());
+			person.setId(us.getIdUser());
+			person.setIdRole(us.getIdRole());
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

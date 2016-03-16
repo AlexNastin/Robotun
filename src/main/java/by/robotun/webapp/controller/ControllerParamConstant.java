@@ -29,6 +29,12 @@ public final class ControllerParamConstant {
 	public static final String ID_USER = "idUser";
 	
 	public static final String DATE_END_LOT = "dateEndLot";
+	
+	// ID ROLES
+	public static final int ID_ADMIN_NUMBER = 1;
+	public static final int ID_USER_LEGAL_NUMBER = 2;
+	public static final int ID_USER_PHYSICAL_NUMBER = 3;
+	public static final int ID_MODERATOR_NUMBER = 4;
 
 
 }
