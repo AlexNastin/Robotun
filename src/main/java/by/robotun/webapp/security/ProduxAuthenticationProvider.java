@@ -22,6 +22,11 @@ import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.security.validator.AuthenticationValidator;
 
+/**
+ * Класс авторизации. Определяет роль пользователя и предоставляет доступ к
+ * веб-приложению согласно роли.
+ * @author Nastin A. A.
+ */
 @Component(value = "authenticationProvider")
 public class ProduxAuthenticationProvider implements AuthenticationProvider {
 
@@ -33,44 +38,42 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private AuthenticationValidator authenticationValidator;
 
+	/** @see AuthenticationProvider#supports(Class<?>) */
+	@Override
+	public boolean supports(Class<?> aClass) {
+		return aClass.equals(UsernamePasswordAuthenticationToken.class);
+	}
+
+	/** @see AuthenticationProvider#authenticate(Authentication) */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//		if (!authenticationValidator.validation(authentication.getPrincipal().toString().toLowerCase())) {
-//			throw new BadCredentialsException("BadCredentialsException");
+//		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
+//			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
 //		}
 		User profile = null;
 		try {
-			
-			profile = userDAO.selectUser(authentication.getPrincipal().toString().toLowerCase());
+			profile = userDAO.selectUser(authentication.getPrincipal().toString());
 		} catch (DaoException e) {
-			LOGGER.error("Problems dao select user in authenticating");
+			LOGGER.error("Проблема с извлечением пользователя из DAO-слоя, при аутентификации.");
 		}
 		if (profile == null) {
-			throw new UsernameNotFoundException(
-					String.format("UsernameNotFoundException", authentication.getPrincipal()));
+			System.out.println("AAAAAAAAa");
+			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
 		}
 		String suppliedPasswordHash = DigestUtils.md5Hex(authentication.getCredentials().toString());
 		if (!profile.getPassword().equals(suppliedPasswordHash)) {
-			throw new BadCredentialsException("BadCredentialsException");
+			System.out.println("AAAAAAAAa22222");
+			throw new BadCredentialsException("Неверный логин и/или пароль.");
 		}
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(profile, null,
 				getAuthorities(profile.getIdRole()));
 		return token;
 	}
 
-	@Override
-	public boolean supports(Class<?> aClass) {
-		return aClass.equals(UsernamePasswordAuthenticationToken.class);
-	}
-
 	/**
-	 * Retrieves a collection of {@link GrantedAuthority} based on a numerical
-	 * role
-	 * 
-	 * @param role
-	 *            the numerical role
-	 * @return a collection of {@link GrantedAuthority
-	 * 
+	 * Возвращает коллекцию {@link GrantedAuthority} на основе нумерации роли.
+	 * @param role - номер роли
+	 * @return Коллекцию {@link GrantedAuthority}
 	 */
 	public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
 		List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
@@ -78,11 +81,9 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	}
 
 	/**
-	 * Converts a numerical role to an equivalent list of roles
-	 * 
-	 * @param role
-	 *            the numerical role
-	 * @return list of roles as as a list of {@link String}
+	 * Преобразует числовую роль эквивалентную списку ролей.
+	 * @param role - номер роли
+	 * @return Список ролей в виде списка {@link String}
 	 */
 	public List<String> getRoles(Integer role) {
 		List<String> roles = new ArrayList<String>();
@@ -99,11 +100,10 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	}
 
 	/**
-	 * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
-	 * 
-	 * @param roles
-	 *            {@link String} of roles
-	 * @return list of granted authorities
+	 * Обертывания {@link String} ролей в {@link SimpleGrantedAuthority}
+	 * объектов.
+	 * @param roles {@link String} ролей
+	 * @return Список GrantedAuthority
 	 */
 	public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
