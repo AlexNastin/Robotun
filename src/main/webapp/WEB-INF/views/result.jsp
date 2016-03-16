@@ -34,6 +34,7 @@
     
 	<!-- Spring Links -->
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
+	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
@@ -187,7 +188,7 @@
 </div>
     </div>
     
-<!--add footer here-->
+<%@include file="/WEB-INF/views/footer.jsp"%>
 <script type="text/javascript"
 		src="<c:url value="/resources/js/results/autoload.js" />"></script>
 		<script type="text/javascript">
