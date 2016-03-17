@@ -45,10 +45,8 @@ public class AdminController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		List<User> moderators = adminService.getAllModerators();
 		adminService.deleteModerator(idUser);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_ADMIN);
-		modelAndView.addObject(ControllerParamConstant.LIST_USERS, moderators);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
 		return modelAndView;
 	}
 

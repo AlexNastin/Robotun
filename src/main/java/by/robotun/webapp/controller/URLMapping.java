@@ -22,4 +22,5 @@ public final class URLMapping {
 	// REDIRECT
 	public static final String REDIRECT_MAIN = "redirect:/";
 	public static final String REDIRECT_ADD_LOT = "redirect:/user/addLot";
+	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
 }

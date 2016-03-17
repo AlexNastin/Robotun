@@ -33,8 +33,8 @@ public class Phone implements Essence {
 	@Column(name = "id_operator")
 	private int idOperator;
 
-	@Column(name = "title")
-	private String title;
+	@Column(name = "phone")
+	private String phone;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
@@ -65,11 +65,11 @@ public class Phone implements Essence {
 	}
 
 	public String getTitle() {
-		return title;
+		return phone;
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		this.phone = title;
 	}
 
 	public User getUser() {
@@ -87,7 +87,7 @@ public class Phone implements Essence {
 		result = prime * result + idOperator;
 		result = prime * result + idPhone;
 		result = prime * result + idUser;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
 
@@ -106,17 +106,17 @@ public class Phone implements Essence {
 			return false;
 		if (idUser != other.idUser)
 			return false;
-		if (title == null) {
-			if (other.title != null)
+		if (phone == null) {
+			if (other.phone != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!phone.equals(other.phone))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Phone [idPhone=" + idPhone + ", idUser=" + idUser + ", idOperator=" + idOperator + ", title=" + title
+		return "Phone [idPhone=" + idPhone + ", idUser=" + idUser + ", idOperator=" + idOperator + ", phone=" + phone
 				+ "]";
 	}
 
