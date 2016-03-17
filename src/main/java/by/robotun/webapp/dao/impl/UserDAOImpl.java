@@ -57,12 +57,14 @@ public class UserDAOImpl implements IUserDAO {
 		return users;
 	}
 
+	@Transactional
 	@Override
 	public void deleteUser(Integer id) throws DaoException {
 		User user = entityManager.find(User.class, id);
 		entityManager.remove(user);
 	}
 
+	@Transactional
 	@Override
 	public void updateUser(User user) throws DaoException {
 		entityManager.merge(user);

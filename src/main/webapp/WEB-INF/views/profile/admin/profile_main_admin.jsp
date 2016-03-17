@@ -12,7 +12,7 @@
 <a href='<c:url value="/admin/addModerator" />'>Добавить модератора</a> <br>
 
 <c:forEach items="${listUsers}" var="user">
-${user.login} <br>
+${user.login} <a href='<c:url value="/admin/deleteModerator?id=${user.idUser}" />'>Удалить</a> <br> <br>
 </c:forEach>
 
 </body>

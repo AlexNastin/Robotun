@@ -39,7 +39,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin/deleteModerator", method = RequestMethod.GET)
-	public ModelAndView deleteModerator(@RequestParam(value = "idUser", required = false) Integer idUser, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView deleteModerator(@RequestParam(value = "id", required = false) Integer idUser, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
