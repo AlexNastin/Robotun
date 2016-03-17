@@ -1,5 +1,7 @@
 package by.robotun.webapp.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -10,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.service.ServiceParamConstant;
 
 @Repository("jpaUserDAO")
 public class UserDAOImpl implements IUserDAO {
@@ -45,5 +48,12 @@ public class UserDAOImpl implements IUserDAO {
 	@Transactional
 	public void insertUser(User user) throws DaoException {
 		entityManager.persist(user);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> selectAllModerators() throws DaoException {
+		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).getResultList();
+		return users;
 	}
 }

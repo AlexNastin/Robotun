@@ -22,6 +22,7 @@ import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.LotFormAdd;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.ServiceParamConstant;
 
 
 @Controller
@@ -86,9 +87,9 @@ public class UserController {
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView();
-		if (person.getIdRole()==ControllerParamConstant.ID_USER_LEGAL_NUMBER) {
+		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
 			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
-		} else if (person.getIdRole()==ControllerParamConstant.ID_USER_PHYSICAL_NUMBER) {
+		} else if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
 			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_PHYSICAL);
 		}
 		return modelAndView;

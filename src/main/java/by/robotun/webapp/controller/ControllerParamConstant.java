@@ -8,6 +8,8 @@ public final class ControllerParamConstant {
 	public static final String ADD_USER_LEGAL_FORM = "addUserLegalForm";
 	
 	public static final String ADD_LOT_FORM = "addLotForm";
+	
+	public static final String ADD_MODERATOR_FORM = "addModeratorForm";
 
 	// LIST
 	public static final String LIST_CITIES = "listCities";
@@ -15,6 +17,8 @@ public final class ControllerParamConstant {
 	public static final String LIST_LOTS = "listLots";
 	
 	public static final String LIST_CATEGORIES = "listCategories";
+	
+	public static final String LIST_USERS = "listUsers";
 	
 	// ONE
 	public static final String LOT = "lot";
@@ -29,12 +33,6 @@ public final class ControllerParamConstant {
 	public static final String ID_USER = "idUser";
 	
 	public static final String DATE_END_LOT = "dateEndLot";
-	
-	// ID ROLES
-	public static final int ID_ADMIN_NUMBER = 1;
-	public static final int ID_USER_LEGAL_NUMBER = 2;
-	public static final int ID_USER_PHYSICAL_NUMBER = 3;
-	public static final int ID_MODERATOR_NUMBER = 4;
 
 
 }

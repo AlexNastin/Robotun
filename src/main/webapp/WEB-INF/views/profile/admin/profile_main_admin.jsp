@@ -9,6 +9,11 @@
 </head>
 <body>
 	Личный кабинет администратора
+<a href='<c:url value="/admin/addModerator" />'>Добавить модератора</a> <br>
+
+<c:forEach items="${listUsers}" var="user">
+${user.login} <br>
+</c:forEach>
 
 </body>
 </html>
