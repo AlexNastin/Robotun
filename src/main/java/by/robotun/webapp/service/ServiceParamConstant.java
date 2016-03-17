@@ -16,7 +16,9 @@ public final class ServiceParamConstant {
 	
 	public static final int ON_MODERATION_NUMBER = 2;
 	
-	public static final int ON_DISABLE_NUMBER = 3;
+	public static final int ON_UPDATE_NUMBER = 3;
+	
+	public static final int ON_DISABLE_NUMBER = 4;
 	
 	
 	

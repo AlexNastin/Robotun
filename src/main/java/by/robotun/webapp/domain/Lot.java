@@ -20,11 +20,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "lot")
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
-	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = 1 order by startDate desc"),
+	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets where l.idLot = :id"),
-	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = 1 order by startDate desc"),
-	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = 1 order by startDate desc"),
-	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),})
+	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
+	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
+	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
+	@NamedQuery(name = "Lot.findAllLotOnMederation", query = "select l from Lot l where l.isVisible = :isVisible order by startDate")})
 public class Lot implements Essence {
 	
 	/**

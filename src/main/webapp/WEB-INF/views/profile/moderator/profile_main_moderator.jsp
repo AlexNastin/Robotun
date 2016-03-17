@@ -8,7 +8,11 @@
 <title>Личный кабинет модератора</title>
 </head>
 <body>
-	Личный кабинет модератора
+Личный кабинет модератора <br>
+	<c:forEach items="${listLots}" var="lot">
+	Имя лота: 
+		${lot.name} <br>
+	</c:forEach>
 
 </body>
 </html>
