@@ -62,7 +62,7 @@ public class Lot implements Essence {
 	@Column(name = "budget")
 	private int budget;
 	
-	@Column(name = "is_vivible")
+	@Column(name = "is_visible")
 	private int isVisible;
 	
 	@JsonIgnore
