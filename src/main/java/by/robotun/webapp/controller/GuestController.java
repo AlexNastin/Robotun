@@ -35,8 +35,6 @@ public class GuestController {
 		Date endDate = new Date();
 		if(idCategory == null && idSubcategory == null) {
 			lots = guestService.getAllLots(endDate);
-		} else if(idSubcategory == null) {
-			lots = guestService.getAllLotsByCategory(idCategory, endDate);
 		} else {
 			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
 		}

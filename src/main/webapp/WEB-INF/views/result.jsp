@@ -204,6 +204,10 @@
 									offset: offset*limit
 								},
 								success:function(data) {
+									console.log(data)
+									if(data.length == 0) {
+										isEnd = true;
+									}
 									for(var i=0; i<data.length; i++) {
 										print(data[i].idLot, data[i].name, data[i].description, data[i].budget);
 									}

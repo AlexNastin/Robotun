@@ -12,14 +12,5 @@
 </head>
 <body>
 <a href="<c:url value="/test1"/>">Test1</a>
-<a href="<c:url value="/addUserPhysical"/>">Добавить пользователя физ</a>
-<a href="<c:url value="/addUserLegal"/>">Добавить пользователя юр</a>
-<a href="<c:url value="/login"/>">Login</a>
-<a href="<c:url value="/user/addLot"/>">Добавить работу</a>
-<a href="<c:url value="/result"/>">Результат</a>
-
-<a href="<c:url value="/user/profile"/>">Кабинет пользователя</a>
-<a href="<c:url value="/admin/profile"/>">Кабинет админа</a>
-<a href="<c:url value="/moderator/profile"/>">Кабинет модератора</a>
 </body>
 </html>

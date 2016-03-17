@@ -12,6 +12,12 @@ public final class ServiceParamConstant {
 	
 	public static final int ID_ROLE_MODERATOR = 4;
 	
+	public static final int ON_PUBLIC_NUMBER = 1;
+	
+	public static final int ON_MODERATION_NUMBER = 2;
+	
+	public static final int ON_DISABLE_NUMBER = 3;
+	
 	
 	
 	

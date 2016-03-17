@@ -42,8 +42,8 @@ public class UserService implements IUserService {
 			lot.setIdSubcategory(addLotForm.getIdSubcategory());
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
-			// изменить на false когда будет добавлена система модерации
-			lot.setVisible(true);
+			// изменить на ON_MODERATION_NUMBER когда будет добавлена система модерации
+			lot.setIsVisible(ServiceParamConstant.ON_PUBLIC_NUMBER);
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
@@ -71,7 +71,6 @@ public class UserService implements IUserService {
 		bet.setDate(date);
 		bet.setIdUser(idUser);
 		bet.setIdLot(idLot);
-		System.out.println(bet);
 		try {
 			betDAO.insertBet(bet);
 		} catch (DaoException e) {

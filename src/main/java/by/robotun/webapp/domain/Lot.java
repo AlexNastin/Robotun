@@ -20,10 +20,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "lot")
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
-	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate"),
+	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = 1 order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets where l.idLot = :id"),
-	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate"),
-	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate"),
+	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = 1 order by startDate desc"),
+	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = 1 order by startDate desc"),
 	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),})
 public class Lot implements Essence {
 	
@@ -61,8 +61,8 @@ public class Lot implements Essence {
 	@Column(name = "budget")
 	private int budget;
 	
-	@Column(name = "is_visible")
-	private boolean isVisible;
+	@Column(name = "is_vivible")
+	private int isVisible;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -140,11 +140,11 @@ public class Lot implements Essence {
 		this.budget = budget;
 	}
 
-	public boolean isVisible() {
+	public int getIsVisible() {
 		return isVisible;
 	}
 
-	public void setVisible(boolean isVisible) {
+	public void setIsVisible(int isVisible) {
 		this.isVisible = isVisible;
 	}
 
@@ -154,6 +154,10 @@ public class Lot implements Essence {
 
 	public void setBets(List<Bet> bets) {
 		this.bets = bets;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -167,7 +171,7 @@ public class Lot implements Essence {
 		result = prime * result + idLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + idUser;
-		result = prime * result + (isVisible ? 1231 : 1237);
+		result = prime * result + isVisible;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
@@ -221,10 +225,8 @@ public class Lot implements Essence {
 	public String toString() {
 		return "Lot [idLot=" + idLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
 				+ idSubcategory + ", startDate=" + startDate + ", endDate=" + endDate + ", description=" + description
-				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible="
-				+ isVisible + "]";
+				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + "]";
 	}
 
-	
 	
 }
