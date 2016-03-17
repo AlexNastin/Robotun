@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "category")
-@NamedQueries({ @NamedQuery(name = "Category.findAll", query = "select c from Category c"),
+@NamedQueries({ @NamedQuery(name = "Category.findAll", query = "select distinct c from Category c join fetch c.subcategories"),
 	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory") })
 public class Category implements Essence {
 
@@ -37,7 +37,7 @@ public class Category implements Essence {
 	private String title;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 
 	public int getIdCategory() {
