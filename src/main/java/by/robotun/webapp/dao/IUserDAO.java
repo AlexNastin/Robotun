@@ -13,6 +13,10 @@ public interface IUserDAO {
 	
 	public void insertUser(User user) throws DaoException;
 	
+	public void deleteUser(Integer id) throws DaoException;
+	
+	public void updateUser(User user) throws DaoException;
+	
 	public List<User> selectAllModerators() throws DaoException;
 
 }

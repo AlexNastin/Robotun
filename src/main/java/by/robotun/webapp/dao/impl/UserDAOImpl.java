@@ -56,4 +56,15 @@ public class UserDAOImpl implements IUserDAO {
 		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).getResultList();
 		return users;
 	}
+
+	@Override
+	public void deleteUser(Integer id) throws DaoException {
+		User user = entityManager.find(User.class, id);
+		entityManager.remove(user);
+	}
+
+	@Override
+	public void updateUser(User user) throws DaoException {
+		entityManager.merge(user);
+	}
 }

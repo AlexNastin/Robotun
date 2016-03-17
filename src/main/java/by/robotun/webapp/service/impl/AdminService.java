@@ -54,5 +54,14 @@ public class AdminService implements IAdminService {
 		return null;
 	}
 
+	@Override
+	public void deleteModerator(Integer id) throws ServiceException {
+		try {
+			userDAO.deleteUser(id);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}		
+	}
+
 	
 }

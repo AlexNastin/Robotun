@@ -13,5 +13,7 @@ public interface IAdminService {
 	List<User> getAllModerators() throws ServiceException;
 	
 	User getModeratorById(int idUser) throws ServiceException;
+	
+	void deleteModerator(Integer id) throws ServiceException;
 
 }
