@@ -10,6 +10,8 @@ public final class ControllerParamConstant {
 	public static final String ADD_LOT_FORM = "addLotForm";
 	
 	public static final String ADD_MODERATOR_FORM = "addModeratorForm";
+	
+	public static final String UPDATE_FORGOT_PASSWORD_FORM = "updateForgotPasswordForm";
 
 	// LIST
 	public static final String LIST_CITIES = "listCities";

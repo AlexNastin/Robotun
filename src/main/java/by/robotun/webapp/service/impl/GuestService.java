@@ -1,6 +1,7 @@
 package by.robotun.webapp.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -11,12 +12,14 @@ import org.springframework.stereotype.Service;
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;
 import by.robotun.webapp.dao.ILotDAO;
+import by.robotun.webapp.dao.IPasswordResetTokenDAO;
 import by.robotun.webapp.dao.ISubcategoryDAO;
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Legal;
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.PasswordResetToken;
 import by.robotun.webapp.domain.Physical;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.domain.User;
@@ -29,6 +32,9 @@ import by.robotun.webapp.service.ServiceParamConstant;
 
 @Service
 public class GuestService implements IGuestService {
+
+	@Autowired
+	private IPasswordResetTokenDAO resetTokenDAO;
 
 	@Autowired
 	private ICityDAO cityDAO;
@@ -169,7 +175,8 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws ServiceException {
+	public List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate)
+			throws ServiceException {
 		List<Lot> lots = new ArrayList<>();
 		try {
 			lots = lotDAO.selectLotByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
@@ -179,4 +186,79 @@ public class GuestService implements IGuestService {
 		return lots;
 	}
 
+	@Override
+	public User getUser(String login) throws ServiceException {
+		User user;
+		try {
+			user = userDAO.selectUser(login);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
+
+	@Override
+	public boolean createPasswordResetTokenForUser(User user, String token) throws ServiceException {
+		boolean isCreate = false;
+		Date date = new Date();
+		try {
+			PasswordResetToken passwordResetTokenOld = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			if (passwordResetTokenOld == null) {
+				PasswordResetToken passwordResetTokenNew = new PasswordResetToken();
+				passwordResetTokenNew.setExpiryDate(new Date(date.getTime() + 86400000l));
+				passwordResetTokenNew.setIdUser(user.getIdUser());
+				passwordResetTokenNew.setToken(token);
+				resetTokenDAO.insertPasswordResetToken(passwordResetTokenNew);
+				isCreate = true;
+			} else {
+				Calendar calendar = Calendar.getInstance();
+				if (passwordResetTokenOld.getExpiryDate().getTime() - calendar.getTime().getTime() <= 0) {
+					passwordResetTokenOld.setExpiryDate(new Date(date.getTime() + 86400000l));
+					passwordResetTokenOld.setToken(token);
+					resetTokenDAO.updatePasswordResetToken(passwordResetTokenOld);
+					isCreate = true;
+				}
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return isCreate;
+	}
+
+	@Override
+	public PasswordResetToken getPasswordResetToken(String token) throws ServiceException {
+		PasswordResetToken passwordResetToken = null;
+		try {
+			passwordResetToken = resetTokenDAO.selectTokenByToken(token);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
+		return passwordResetToken;
+	}
+
+	@Override
+	public void updateForgotPassword(User user, String password) throws ServiceException {
+		String md5Password = DigestUtils.md5Hex(password);
+		user.setPassword(md5Password);
+		try {
+			PasswordResetToken passwordResetToken = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			userDAO.updateUser(user);
+			resetTokenDAO.deletePasswordResetToken(passwordResetToken.getIdToken());
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
+	}
+
+	@Override
+	public User getUser(int idUser) throws ServiceException {
+		User user = new User();
+		try {
+			user = userDAO.selectUserById(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
 }
