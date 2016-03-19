@@ -7,12 +7,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.property.PropertyManager;
+import by.robotun.webapp.property.PropertyName;
 import by.robotun.webapp.service.ServiceParamConstant;
 
 @Repository("jpaLotDAO")
@@ -20,6 +23,9 @@ public class LotDAOImpl implements ILotDAO {
 
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Autowired
+	private PropertyManager propertyManager;
 	
 	@Override
 	@Transactional
@@ -31,7 +37,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectAllLots(Date endDate) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", endDate).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setMaxResults(3).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", endDate).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return lots;
 	}
 	
@@ -72,7 +78,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotByCategoryAndSubcategory").setParameter("idCategory", idCategory).setParameter("idSubcategory", idSubcategory).setParameter("endDate", endDate).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotByCategoryAndSubcategory").setParameter("idCategory", idCategory).setParameter("idSubcategory", idSubcategory).setParameter("endDate", endDate).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return lots;
 	}
 
@@ -84,8 +90,8 @@ public class LotDAOImpl implements ILotDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Lot> selectLotsLimitOffset(int limit, int offset, Date date) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", date).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setFirstResult(offset).setMaxResults(limit).getResultList();
+	public List<Lot> selectLotsLimitOffset(int offset, Date date) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", date).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setFirstResult(offset).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return lots;
 	}
 

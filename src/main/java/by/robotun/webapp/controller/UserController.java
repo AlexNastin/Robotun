@@ -19,7 +19,6 @@ import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.LotFormAdd;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
@@ -47,20 +46,6 @@ public class UserController {
 	public @ResponseBody List<Category> getAllCategory()
 			throws ServiceException {
 		return guestService.getAllCategories();
-	}
-	
-	@RequestMapping(value = "/user/addLotToDB", method = RequestMethod.POST)
-	public ModelAndView addLotDB(LotFormAdd addLotForm, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
-		userService.addLot(addLotForm, person.getId());
-		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_ADD_LOT);
-		modelAndView.addObject(ControllerParamConstant.FLAG_MESSAGE, true);
-		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/user/lot", method = RequestMethod.GET)

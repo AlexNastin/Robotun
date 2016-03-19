@@ -8,6 +8,6 @@ import by.robotun.webapp.exeption.ServiceException;
 
 public interface IAutoloaderService {
 
-	List<Lot> getLots(int limit, int offset, Date endDate) throws ServiceException;
+	List<Lot> getLots(int offset, Date endDate) throws ServiceException;
 
 }

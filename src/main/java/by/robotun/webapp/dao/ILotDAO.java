@@ -24,7 +24,7 @@ public interface ILotDAO {
 
 	public Date selectDateLotById(Integer idLot) throws DaoException;
 	
-	public List<Lot> selectLotsLimitOffset(int limit, int offset, Date date) throws DaoException;
+	public List<Lot> selectLotsLimitOffset(int offset, Date date) throws DaoException;
 	
 	public List<Lot> selectLotsOnModeration() throws DaoException;
 

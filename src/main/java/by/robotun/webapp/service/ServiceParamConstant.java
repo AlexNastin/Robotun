@@ -4,8 +4,6 @@ public final class ServiceParamConstant {
 
 	public static final String FORMAT_DATE = "yyyy-MM-dd";
 	
-	public static final String DEFAULT_PASSWORD = "123456Aa!";
-	
 	public static final int ID_CITY_MINSK = 1;
 	
 	public static final int ID_ROLE_ADMIN = 1;

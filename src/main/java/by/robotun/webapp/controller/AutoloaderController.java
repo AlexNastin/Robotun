@@ -20,11 +20,9 @@ public class AutoloaderController {
 	private IAutoloaderService autocompleteService;
 
 	@RequestMapping(value = "/autoloader/allResults", method = RequestMethod.GET)
-	public List<Lot> getAllLots(@RequestParam(value = "limit", required = false) Integer limit,
-			@RequestParam(value = "offset", required = false) Integer offset) throws ServiceException {
+	public List<Lot> getAllLots(@RequestParam(value = "offset", required = false) Integer offset) throws ServiceException {
 		Date date = new Date();
-		System.err.println(limit + "      " + offset);
-		List<Lot> lots = autocompleteService.getLots(limit, offset, date);
+		List<Lot> lots = autocompleteService.getLots(offset, date);
 		return lots;
 	}
 }

@@ -19,10 +19,10 @@ public class AutoloaderService implements IAutoloaderService {
 	private ILotDAO lotDAO;
 	
 	@Override
-	public List<Lot> getLots(int limit, int offset, Date date) throws ServiceException {
+	public List<Lot> getLots(int offset, Date date) throws ServiceException {
 		List<Lot> lots = new ArrayList<>();
 		try {
-			lots = lotDAO.selectLotsLimitOffset(limit, offset, date);
+			lots = lotDAO.selectLotsLimitOffset(offset, date);
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}

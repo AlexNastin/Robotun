@@ -9,5 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class PropertyName {
+	
+	public static final String MODERATOR_DEFAULT_PASSWORD = "moderator.default.password";
+	
+	public static final String AJAX_LOT_MAXSIZE = "ajax.lot.maxsize";
 
 }

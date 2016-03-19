@@ -200,7 +200,6 @@
 								type:"GET",
 								data:{
 									//передаем параметры
-									limit: limit,
 									offset: offset*limit
 								},
 								success:function(data) {

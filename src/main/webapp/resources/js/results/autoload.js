@@ -7,9 +7,6 @@ $(window).scroll(function () {
 		loader();
 	}
 });
-
-//количество подгружаемых записей из бд
-var limit = 3;
 //начиная с
 var offset = 1;
 
