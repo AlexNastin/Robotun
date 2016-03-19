@@ -27,7 +27,7 @@ public class ModeratorAddController {
 	private AddModeratorFormValidator addModeratorFormValidator;
 	
 	@Autowired
-	IAdminService adminService;
+	private IAdminService adminService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addModerator(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {

@@ -11,6 +11,8 @@ public final class ControllerParamConstant {
 	
 	public static final String ADD_MODERATOR_FORM = "addModeratorForm";
 	
+	public static final String REJECT_MESSAGE_FORM = "rejectMessageForm";
+	
 	public static final String UPDATE_FORGOT_PASSWORD_FORM = "updateForgotPasswordForm";
 
 	// LIST
@@ -26,7 +28,6 @@ public final class ControllerParamConstant {
 	public static final String LOT = "lot";
 	
 	// OTHER
-	public static final String FLAG_MESSAGE = "flagMessage";
 	
 	public static final String MESSAGE = "message";
 

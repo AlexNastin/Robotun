@@ -11,7 +11,7 @@
 Личный кабинет модератора <br>
 	<c:forEach items="${listLots}" var="lot">
 	Имя лота: 
-		${lot.name} <br>
+		${lot.name} <a href='<c:url value="/moderator/rejectLot?id=${lot.idLot}" />'>Модерировать</a><br>
 	</c:forEach>
 
 </body>

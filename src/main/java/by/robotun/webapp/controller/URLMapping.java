@@ -13,14 +13,14 @@ public final class URLMapping {
 	public static final String JSP_PROFILE_MAIN_PHYSICAL = "profile/physical/profile_main_physical";
 	public static final String JSP_PROFILE_MAIN_MODERATOR = "profile/moderator/profile_main_moderator";
 	public static final String JSP_PROFILE_ADMIN_ADD_MODERATOR = "profile/admin/admin_add_moderator";
+	public static final String JSP_PROFILE_MODERATOR_REJECT_LOT = "profile/moderator/moderator_reject_lot";
 	
 	// FORWARD
 	public static final String FORWARD_ADD_USER_PHYSICAL_TO_DB = "forward:/addUserPhysicalToDB";
 	public static final String FORWARD_ADD_USER_LEGAL_TO_DB = "forward:/addUserLegalToDB";
-	public static final String FORWARD_ADD_LOT_TO_DB = "forward:/user/addLotToDB";
 	
 	// REDIRECT
 	public static final String REDIRECT_MAIN = "redirect:/";
-	public static final String REDIRECT_ADD_LOT = "redirect:/user/addLot";
 	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
+	public static final String REDIRECT_PROFILE_MAIN_MODERATOR = "redirect:/moderator/profile";
 }

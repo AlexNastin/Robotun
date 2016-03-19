@@ -43,7 +43,7 @@ public class UserService implements IUserService {
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
 			// изменить на ON_MODERATION_NUMBER когда будет добавлена система модерации
-			lot.setIsVisible(ServiceParamConstant.ON_PUBLIC_NUMBER);
+			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {

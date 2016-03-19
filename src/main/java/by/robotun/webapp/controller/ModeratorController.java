@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Lot;
@@ -34,6 +35,19 @@ public class ModeratorController {
 		List<Lot> lots = moderatorService.getAllLotsOnModeration();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/moderator/confirmLot", method = RequestMethod.GET)
+	public ModelAndView confirmLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		moderatorService.confirmLot(idLot);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_MODERATOR);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
 		return modelAndView;
 	}
 

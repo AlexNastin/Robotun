@@ -68,6 +68,10 @@ public class Lot implements Essence {
 	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Bet> bets;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<RejectMessage> rejectMessages;
 
 	public int getIdLot() {
 		return idLot;
@@ -157,8 +161,12 @@ public class Lot implements Essence {
 		this.bets = bets;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public List<RejectMessage> getRejectMessages() {
+		return rejectMessages;
+	}
+
+	public void setRejectMessages(List<RejectMessage> rejectMessages) {
+		this.rejectMessages = rejectMessages;
 	}
 
 	@Override
