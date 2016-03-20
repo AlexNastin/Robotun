@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+.body-color {
+	background-color: white;
+}
+.container-style-addlot {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+.main-text-style {
+	text-align: left;
+	color:white;
+	margin-top: 0.5em;
+	margin-bottom:0.5em;
+	border-bottom:solid;
+}
+.background-color-add_lot {
+	background-color: rgba(0, 0, 0, 0.7);
+	background-size: 100%;
+    background-repeat:no-repeat;
+}
+.img-margin-bottom {
+	margin-bottom: 1em;
+}
+.background-image-add_lot{
+	background-image: url(../../images/body-add-lot.jpg);
+}
+.button-on-add-lot {
+	color: white;
+    background-color: inherit;
+    border-color: white;
+    border-radius: 40px;
+    border-width: 2px;
+    font-size: 14pt;
+}
+.button-on-add-lot:hover,.button-on-add-lot:active, .button-on-add-lot:focus {
+	color: inherit !important;
+    background-color:  white !important;
+    border-color:  white !important;
+}
+.margin-bottom-button {
+	padding-bottom: 2em;
+}

@@ -46,6 +46,12 @@
     border-color:  white !important;
     font-weight: bold !important;
 }
+.main-button-style:hover,.main-button-style:active, .main-button-style:focus {
+    color: inherit !important;
+    background-color:  white !important;
+    border-color:  white !important;
+    font-weight: bold !important;
+}
 .main-text-style {
     font-size: 30pt;
     font-weight: bold;
