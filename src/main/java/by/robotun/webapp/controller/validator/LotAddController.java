@@ -41,10 +41,6 @@ public class LotAddController {
 	public ModelAndView addLotValidation(@ModelAttribute(ControllerParamConstant.ADD_LOT_FORM) LotFormAdd addLotForm,
 		BindingResult result, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
 		addLotValidator.validate(addLotForm, result);
 		if (result.hasErrors()) {
 		}

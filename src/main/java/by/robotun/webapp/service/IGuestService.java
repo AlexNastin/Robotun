@@ -15,28 +15,28 @@ import by.robotun.webapp.form.SignupUserPhysicalForm;
 
 public interface IGuestService {
 
-	public List<City> getAllCities() throws ServiceException;
+	List<City> getAllCities() throws ServiceException;
 
-	public List<Subcategory> getAllSubcategories() throws ServiceException;
+	List<Subcategory> getAllSubcategories() throws ServiceException;
 
-	public List<Category> getAllCategories() throws ServiceException;
+	List<Category> getAllCategories() throws ServiceException;
 
-	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException;
+	List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException;
 
-	public void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException;
+	void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException;
 
-	public void addUserLegal(SignupUserLegalForm addUserLegalForm) throws ServiceException;
+	void addUserLegal(SignupUserLegalForm addUserLegalForm) throws ServiceException;
 
-	public List<Lot> getAllLots(Date endDate) throws ServiceException;
+	List<Lot> getAllLots(Date endDate) throws ServiceException;
 
-	public List<Lot> getAllLotsByCategory(int idCategory, Date endDate) throws ServiceException;
+	List<Lot> getAllLotsByCategory(int idCategory, Date endDate) throws ServiceException;
 
-	public List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate)
+	List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate)
 			throws ServiceException;
 
-	public User getUserById(int idUser) throws ServiceException;
+	User getUserById(int idUser) throws ServiceException;
 
-	public User getUser(String login) throws ServiceException;
+	User getUser(String login) throws ServiceException;
 
 	boolean createPasswordResetTokenForUser(User user, String token) throws ServiceException;
 
@@ -44,5 +44,9 @@ public interface IGuestService {
 
 	PasswordResetToken getPasswordResetToken(String token) throws ServiceException;
 
-	public User getUser(int idUser) throws ServiceException;
+	User getUser(int idUser) throws ServiceException;
+
+	void updatePassword(String password, int idUser) throws ServiceException;
+
+	
 }

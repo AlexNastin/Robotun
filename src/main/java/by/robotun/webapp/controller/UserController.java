@@ -52,10 +52,6 @@ public class UserController {
 	public ModelAndView result(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
 		Lot lot = userService.getLotById(idLot);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
@@ -67,10 +63,7 @@ public class UserController {
 	@RequestMapping(value = "/user/profile", method = RequestMethod.GET)
 	public ModelAndView profileUser(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
+
 		ModelAndView modelAndView = new ModelAndView();
 		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
 			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
@@ -79,5 +72,4 @@ public class UserController {
 		}
 		return modelAndView;
 	}
-
 }

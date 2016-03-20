@@ -28,10 +28,6 @@ public class ModeratorController {
 	@RequestMapping(value = "/moderator/profile", method = RequestMethod.GET)
 	public ModelAndView profileModerator(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
 		List<Lot> lots = moderatorService.getAllLotsOnModeration();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
@@ -41,10 +37,7 @@ public class ModeratorController {
 	@RequestMapping(value = "/moderator/confirmLot", method = RequestMethod.GET)
 	public ModelAndView confirmLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
+
 		moderatorService.confirmLot(idLot);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);

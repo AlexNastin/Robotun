@@ -8,7 +8,6 @@
 <title>Личный кабинет физического лица</title>
 </head>
 <body>
-	Личный кабинет физического лица
-
+	<a href='<c:url value="/user/secure/updatePassword" />'>Сменить пароль</a>
 </body>
 </html>

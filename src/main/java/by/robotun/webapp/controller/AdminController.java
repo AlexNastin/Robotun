@@ -28,10 +28,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
 	public ModelAndView profileAdmin(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
+	
 		List<User> moderators = adminService.getAllModerators();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_ADMIN);
 		modelAndView.addObject(ControllerParamConstant.LIST_USERS, moderators);
@@ -41,10 +38,6 @@ public class AdminController {
 	@RequestMapping(value = "/admin/deleteModerator", method = RequestMethod.GET)
 	public ModelAndView deleteModerator(@RequestParam(value = "id", required = false) Integer idUser, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
 		adminService.deleteModerator(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
 		return modelAndView;

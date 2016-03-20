@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;
@@ -27,6 +28,7 @@ import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
+import by.robotun.webapp.form.UserUpdatePasswordForm;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -260,5 +262,19 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return user;
+	}
+
+	@Override
+	@Transactional
+	public void updatePassword(String password, int idUser) throws ServiceException {
+		try {
+			User user = userDAO.selectUserById(idUser);
+			System.out.println(password);
+			String md5Password = DigestUtils.md5Hex(password);
+			user.setPassword(md5Password);
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 }
