@@ -24,7 +24,7 @@ public class UpdateForgotPasswordController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalSecurity(Locale locale, ModelMap model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("login/updatePassword");
+		ModelAndView modelAndView = new ModelAndView("login/update_forgot_password");
 		UpdateForgotPasswordForm updateForgotPasswordForm = new UpdateForgotPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_FORGOT_PASSWORD_FORM, updateForgotPasswordForm);
 		return modelAndView;
@@ -36,7 +36,7 @@ public class UpdateForgotPasswordController {
 			BindingResult result) throws Exception {
 		updateForgotPasswordValidator.validate(updateForgotPasswordForm, result);
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("login/updatePassword");
+			ModelAndView modelAndView = new ModelAndView("login/update_forgot_password");
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/secure/savePassword");

@@ -21,6 +21,7 @@ import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Legal;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.PasswordResetToken;
+import by.robotun.webapp.domain.Phone;
 import by.robotun.webapp.domain.Physical;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.domain.User;
@@ -111,10 +112,12 @@ public class GuestService implements IGuestService {
 	public void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException {
 		User user = new User();
 		Physical physical = new Physical();
+		List<Phone> phones = new ArrayList<Phone>();
 		user.setLogin(addUserPhysicalForm.getLogin());
 		user.setIdCity(addUserPhysicalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_PHYSICAL);
 		user.setRegistrationDate(new Date());
+
 		String md5Password = DigestUtils.md5Hex(addUserPhysicalForm.getPassword());
 		user.setPassword(md5Password);
 		physical.setName(addUserPhysicalForm.getName());
@@ -122,6 +125,16 @@ public class GuestService implements IGuestService {
 		physical.setMiddleName(addUserPhysicalForm.getMiddleName());
 		physical.setUser(user);
 		user.setPhysical(physical);
+	
+//		String[] phoneMass = addUserPhysicalForm.getPhones();
+//		for (int i = 0; i < phoneMass.length; i++) {
+//			Phone phone = new Phone();
+//			phone.setTitle(phoneMass[i]);
+//			phone.setUser(user);
+//			phones.add(phone);
+//		}
+//		user.setPhones(phones);
+		
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
