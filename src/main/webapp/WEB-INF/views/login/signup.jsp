@@ -128,13 +128,23 @@
 		<form:input class="form-control" path="zipCode" placeholder="zipCode" />
 		<form:errors path="zipCode" />
 		</div>
-		<div class="form-group">
-		<form:input class="form-control" path="phones" placeholder="phone1" />
+		<div class="form-group" style='margin-bottom:0px'>
+		<form:input class="form-control" path="phones" placeholder="phone1"  />
 		<form:errors path="phones" />
 		</div>
-		<div class="form-group">
+		<a id="open-close3" href="#">Ещё телефон</a>
+		<div id="block-links3">
+   		<div class="form-group" style='margin-bottom:0px'>
 		<form:input class="form-control" path="phones" placeholder="phone2" />
 		<form:errors path="phones" />
+		</div>
+   		<a id="open-close4" href="#"> добавить ещё телефон</a>
+    	<div id="block-links4">
+   		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone3" />
+		<form:errors path="phones" />
+		</div>
+    	</div>
 		</div>
 		<div class="form-group">
 		<form:password class="form-control" path="password" placeholder="password" />
@@ -187,6 +197,24 @@
         $('#open-close2').click(function(event) {
             event.preventDefault(); // телефон 3
             $('#block-links2').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close3').show();
+        $('#block-links3').hide();
+
+        $('#open-close3').click(function(event) {
+            event.preventDefault(); // телефон юрика
+            $('#block-links3').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close4').show();
+        $('#block-links4').hide();
+
+        $('#open-close4').click(function(event) {
+            event.preventDefault(); // телефон юрика 2
+            $('#block-links4').slideToggle();
         });
     });
 </script>
