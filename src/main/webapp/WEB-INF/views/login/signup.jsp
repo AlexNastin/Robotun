@@ -54,14 +54,25 @@
 		<form:input class="form-control" path="middleName" placeholder="middleName" />
 		<form:errors path="middleName" />
 		</div>
-		<div class="form-group">
-		<form:input class="form-control" path="phones" placeholder="phone1" />
+		<div class="form-group" style='margin-bottom:0px'>
+		<form:input class="form-control" path="phones" placeholder="phone1"  />
 		<form:errors path="phones" />
 		</div>
-		<div class="form-group">
+		<a id="open-close" href="#">Ещё телефон</a>
+		<div id="block-links">
+   		<div class="form-group" style='margin-bottom:0px'>
 		<form:input class="form-control" path="phones" placeholder="phone2" />
 		<form:errors path="phones" />
 		</div>
+   		<a id="open-close2" href="#"> добавить ещё телефон</a>
+    	<div id="block-links2">
+   		<div class="form-group">
+		<form:input class="form-control" path="phones" placeholder="phone3" />
+		<form:errors path="phones" />
+		</div>
+    	</div>
+		</div>
+		
 		<div class="form-group">
 		<form:password class="form-control" path="password" placeholder="password" />
 		<form:errors class="form-control" path="password" />
@@ -159,5 +170,25 @@
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script>
+    $(document).ready(function() {
+        $('#open-close').show();
+        $('#block-links').hide();
+
+        $('#open-close').click(function(event) {
+            event.preventDefault(); // телефон 2
+            $('#block-links').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close2').show();
+        $('#block-links2').hide();
+
+        $('#open-close2').click(function(event) {
+            event.preventDefault(); // телефон 3
+            $('#block-links2').slideToggle();
+        });
+    });
+</script>
 </body>
 </html>
