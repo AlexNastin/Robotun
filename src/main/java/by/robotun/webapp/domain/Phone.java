@@ -26,18 +26,15 @@ public class Phone implements Essence {
 	@Column(name = "id_phone")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPhone;
-	
-	@Column(name = "id_user")
-	private int idUser;
-	
+
 	@Column(name = "id_operator")
 	private int idOperator;
 
 	@Column(name = "phone")
 	private String phone;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_user", insertable = false, updatable = false)
+	@JoinColumn(name = "id_user")
 	private User user;
 
 	public int getIdPhone() {
@@ -46,14 +43,6 @@ public class Phone implements Essence {
 
 	public void setIdPhone(int idPhone) {
 		this.idPhone = idPhone;
-	}
-
-	public int getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
 	}
 
 	public int getIdOperator() {
@@ -72,6 +61,14 @@ public class Phone implements Essence {
 		this.phone = title;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -86,7 +83,6 @@ public class Phone implements Essence {
 		int result = 1;
 		result = prime * result + idOperator;
 		result = prime * result + idPhone;
-		result = prime * result + idUser;
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
 	}
@@ -104,8 +100,6 @@ public class Phone implements Essence {
 			return false;
 		if (idPhone != other.idPhone)
 			return false;
-		if (idUser != other.idUser)
-			return false;
 		if (phone == null) {
 			if (other.phone != null)
 				return false;
@@ -116,9 +110,7 @@ public class Phone implements Essence {
 
 	@Override
 	public String toString() {
-		return "Phone [idPhone=" + idPhone + ", idUser=" + idUser + ", idOperator=" + idOperator + ", phone=" + phone
-				+ "]";
+		return "Phone [idPhone=" + idPhone + ", idOperator=" + idOperator + ", phone=" + phone + ", user=" + user + "]";
 	}
 
-	
 }

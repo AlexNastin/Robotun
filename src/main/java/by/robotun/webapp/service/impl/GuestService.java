@@ -29,7 +29,6 @@ import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
-import by.robotun.webapp.form.UserUpdatePasswordForm;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -125,16 +124,17 @@ public class GuestService implements IGuestService {
 		physical.setMiddleName(addUserPhysicalForm.getMiddleName());
 		physical.setUser(user);
 		user.setPhysical(physical);
-	
-//		String[] phoneMass = addUserPhysicalForm.getPhones();
-//		for (int i = 0; i < phoneMass.length; i++) {
-//			Phone phone = new Phone();
-//			phone.setTitle(phoneMass[i]);
-//			phone.setUser(user);
-//			phones.add(phone);
-//		}
-//		user.setPhones(phones);
-		
+
+		String[] phoneMass = addUserPhysicalForm.getPhones();
+		for (int i = 0; i < phoneMass.length; i++) {
+			Phone phone = new Phone();
+			phone.setTitle(phoneMass[i]);
+			phone.setUser(user);
+			phone.setIdOperator(1);
+			phones.add(phone);
+		}
+		user.setPhones(phones);
+
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
