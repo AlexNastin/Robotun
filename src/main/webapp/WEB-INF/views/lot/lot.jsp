@@ -125,7 +125,7 @@
     	    <a href="#anchor" class="follow_btn hidden-xs scroll">Помочь!</a>
 		</div>
         <div class="col-md-8  col-xs-12">
-           <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail picture hidden-xs" />
+           
            <div class="header">
                 <h1>${lot.name}</h1>
                 <h4>Web Developer</h4>
