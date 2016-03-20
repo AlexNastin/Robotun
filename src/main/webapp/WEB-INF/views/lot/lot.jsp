@@ -28,9 +28,9 @@
 <!-- Spring Links -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
-    <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
+	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
+     <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
@@ -163,7 +163,7 @@
     				<div class="message-item" id="m16">
 						<div class="message-inner">
 							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img style="min-height: 40px; max-height: 40px;" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
 								<div class="user-detail">
 									<h5 class="handle">Oleg Kolesnichenko</h5>
 									<div class="post-meta">
@@ -188,7 +188,7 @@
 					<div class="message-item" id="m9">
 						<div class="message-inner">
 							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=amiya"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=amiya"><img style="min-height: 40px; max-height: 40px;" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
 								<div class="user-detail">
 									<h5 class="handle">amiya</h5>
 									<div class="post-meta">
