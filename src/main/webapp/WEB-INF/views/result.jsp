@@ -82,21 +82,21 @@
                         <a href="#" class="dropdown-toggle dropdown-at" data-toggle="dropdown"><span class=" name-caret">Профиль<i class="caret"></i></span><img src="<c:url value="/resources/images/niro.jpg" />"></a>
                         <ul class="dropdown-menu " role="menu">
                         <li><security:authorize access="hasRole('ROLE_GUEST')">
-								<a href="<c:url value="/login" />"'> Войти <i
+								<a href="<c:url value="/login" />"> Войти <i
 									class="fa fa-sign-in"></i>
 								</a>
-								<a href="<c:url value="/signup" />"'> Зарегистрироваться <i
+								<a href="<c:url value="/signup" />"> Зарегистрироваться <i
 									class="fa fa-user-plus"></i>
 								</a>
 							</security:authorize> <security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="${profileURL}" />"'>Мой профиль<i
+								<a href="<c:url value="${profileURL}" />">Мой профиль<i
 									class="fa fa-suitcase"></i>
 								</a>
 							</security:authorize></li>
 						<li><security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="/logout" />"'> Выйти <i
+								<a href="<c:url value="/logout" />"> Выйти <i
 									class="fa fa-user-times"></i>
 								</a>
 							</security:authorize></li>

@@ -1197,7 +1197,7 @@ i.fa.fa-twitter {
     box-shadow: none;
 }
 .btn {
-    border-radius: 0px;
+   
     outline: none;
 }
 .btn-default:active, .btn-default:focus, .btn-default:hover {
@@ -1847,9 +1847,9 @@ td span.mar{
 }
 .input-group-btn button.btn.btn-success{
 	line-height: 24px;
-    background-color: #FFA800;
+    
 	 border: 1px solid transparent;
-     border-color: #FFA800;
+     
     border-top-right-radius: 4px;
 	-webkit-border-top-right-radius: 4px;
 	-o-border-top-right-radius: 4px;
@@ -2824,4 +2824,10 @@ ul.dropdown-menu.dropdown-menu-right {
 .top-content label {
     font-size: 1.6em;
 }
+}
+
+.center{
+width: 300px;
+  margin: 40px auto;
+  
 }
