@@ -146,6 +146,7 @@ public class GuestService implements IGuestService {
 	public void addUserLegal(SignupUserLegalForm signupUserLegalForm) throws ServiceException {
 		User user = new User();
 		Legal legal = new Legal();
+		List<Phone> phones = new ArrayList<Phone>();
 		user.setLogin(signupUserLegalForm.getLogin());
 		user.setIdCity(signupUserLegalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_LEGAL);
@@ -153,13 +154,22 @@ public class GuestService implements IGuestService {
 
 		String md5Password = DigestUtils.md5Hex(signupUserLegalForm.getPassword());
 		user.setPassword(md5Password);
-
 		legal.setAddress(signupUserLegalForm.getAddress());
 		legal.setNameEnterprise(signupUserLegalForm.getNameEnterprise());
 		legal.setUnp(signupUserLegalForm.getUnp());
 		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
 		legal.setUser(user);
 		user.setLegal(legal);
+		
+		String[] phoneMass = signupUserLegalForm.getPhones();
+		for (int i = 0; i < phoneMass.length; i++) {
+			Phone phone = new Phone();
+			phone.setTitle(phoneMass[i]);
+			phone.setUser(user);
+			phone.setIdOperator(1);
+			phones.add(phone);
+		}
+		user.setPhones(phones);
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {

@@ -4,17 +4,25 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ILotDAO;
+import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Bet;
+import by.robotun.webapp.domain.Legal;
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.Phone;
+import by.robotun.webapp.domain.Physical;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.LotFormAdd;
+import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
+import by.robotun.webapp.form.UpdatePersonalUserPhysicalForm;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -26,6 +34,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IBetDAO betDAO;
+	
+	@Autowired
+	private IUserDAO userDAO;
 
 	@Override
 	public void addLot(LotFormAdd addLotForm, int idUser) throws ServiceException {
@@ -88,6 +99,74 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		return endDate;
+	}
+
+	@Override
+	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser)
+			throws ServiceException {
+		try {
+			User user = userDAO.selectUserById(idUser);
+			user.setIdCity(updatePersonalUserPhysicalForm.getIdCity());
+			List<Phone> phones = user.getPhones();
+			String[] phoneMass = updatePersonalUserPhysicalForm.getPhones();
+			for (int i = 0; i < phoneMass.length; i++) {
+				Phone phone = phones.get(i);
+				phone.setTitle(phoneMass[i]);
+				phone.setUser(user);
+				phone.setIdOperator(1);
+			}
+			user.setPhones(phones);
+			Physical physical = user.getPhysical();
+			physical.setName(updatePersonalUserPhysicalForm.getName());
+			physical.setSurname(updatePersonalUserPhysicalForm.getSurname());
+			physical.setMiddleName(updatePersonalUserPhysicalForm.getMiddleName());
+			physical.setUser(user);
+			user.setPhysical(physical);
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+		
+	}
+
+	@Override
+	public User getUserById(Integer idUser) throws ServiceException {
+		User user = new User();
+		try {
+			user = userDAO.selectUserById(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
+
+	@Override
+	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException {
+		try {
+			User user = userDAO.selectUserById(idUser);
+			user.setIdCity(updatePersonalUserLegalForm.getIdCity());
+			List<Phone> phones = user.getPhones();
+			String[] phoneMass = updatePersonalUserLegalForm.getPhones();
+			for (int i = 0; i < phoneMass.length; i++) {
+				Phone phone = phones.get(i);
+				phone.setTitle(phoneMass[i]);
+				phone.setUser(user);
+				phone.setIdOperator(1);
+			}
+			user.setPhones(phones);
+			Legal legal = user.getLegal();
+			legal.setNameEnterprise(updatePersonalUserLegalForm.getNameEnterprise());
+			legal.setUnp(updatePersonalUserLegalForm.getUnp());
+			legal.setAddress(updatePersonalUserLegalForm.getAddress());
+			legal.setZipCode(updatePersonalUserLegalForm.getZipCode());
+			legal.setUser(user);
+			user.setLegal(legal);
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
 	}
 
 }

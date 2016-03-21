@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Category;
-import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
@@ -46,18 +45,6 @@ public class UserController {
 	public @ResponseBody List<Category> getAllCategory()
 			throws ServiceException {
 		return guestService.getAllCategories();
-	}
-	
-	@RequestMapping(value = "/user/lot", method = RequestMethod.GET)
-	public ModelAndView result(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		Lot lot = userService.getLotById(idLot);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
-		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
-		modelAndView.addObject(ControllerParamConstant.LOT, lot);
-		modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/user/profile", method = RequestMethod.GET)

@@ -9,6 +9,6 @@
 </head>
 <body>
 	Личный кабинет юридического лица
-
+<a href='<c:url value="/user/secure/updatePersonalUserLegal" />'>Изменить личные данные</a>
 </body>
 </html>

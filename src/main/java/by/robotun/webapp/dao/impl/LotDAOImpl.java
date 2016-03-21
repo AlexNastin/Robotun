@@ -91,7 +91,8 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsLimitOffset(int offset, Date date) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", date).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setFirstResult(offset).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllActiveLot").setParameter("endDate", date).setParameter("isVisible", ServiceParamConstant.ON_PUBLIC_NUMBER).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return lots;
 	}
 

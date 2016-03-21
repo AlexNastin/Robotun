@@ -25,7 +25,7 @@
 	<div class="col-md-12">
 	<div class="main-text-style">Добавить работу</div>
 	</div>
-	<div class="col-md-6 img-margin-bottom"><img src="http://data2.whicdn.com/images/139218968/large.jpg" class="img-responsive" alt="Image"></div>
+	<div class="col-md-6 img-margin-bottom"><img src="<c:url value="/resources/images/large.jpg"/>" class="img-responsive" alt="Image"></div>
 	<div class="col-md-6">
 	<form:form modelAttribute="addLotForm" method="POST">
 		<div class="form-group">

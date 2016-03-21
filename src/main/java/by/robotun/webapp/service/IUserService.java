@@ -3,8 +3,11 @@ package by.robotun.webapp.service;
 import java.util.Date;
 
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.LotFormAdd;
+import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
+import by.robotun.webapp.form.UpdatePersonalUserPhysicalForm;
 
 public interface IUserService {
 
@@ -16,6 +19,11 @@ public interface IUserService {
 	
 	public Date getDateLotById(Integer idLot) throws ServiceException;
 
+	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser) throws ServiceException;
+
+	public User getUserById(Integer idUser) throws ServiceException;
+
+	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException;
 	
 	
 

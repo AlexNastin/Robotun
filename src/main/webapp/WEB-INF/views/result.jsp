@@ -76,7 +76,7 @@
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
                                 <div class="list-group" id="list-group">
                                 <c:forEach items="${listLots}" var="lot">
-                                    <a href='<c:url value="/user/lot?id=${lot.idLot}"/>' class="list-group-item">
+                                    <a href='<c:url value="/lot?id=${lot.idLot}"/>' class="list-group-item">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="<c:url value="/resources/images/logoJob.png"/>">
@@ -125,7 +125,7 @@
 								type:"GET",
 								data:{
 									//передаем параметры
-									offset: offset*limit
+									offset: offset
 								},
 								success:function(data) {
 									console.log(data)

@@ -18,10 +18,9 @@ import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
-import by.robotun.webapp.property.PropertyManager;
 
 public class WebAppAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-	private static Logger LOGGER = Logger.getLogger(PropertyManager.class);
+	private static Logger LOGGER = Logger.getLogger(WebAppAuthenticationSuccessHandler.class);
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 

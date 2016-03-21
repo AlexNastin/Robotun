@@ -16,6 +16,10 @@ public final class ControllerParamConstant {
 	public static final String UPDATE_FORGOT_PASSWORD_FORM = "updateForgotPasswordForm";
 	
 	public static final String UPDATE_PASSWORD_FORM = "userUpdatePasswordForm";
+	
+	public static final String UPDATE_PERSONAL_PHYSICAL_FORM = "updatePersonalPhysicalForm";
+	
+	public static final String UPDATE_PERSONAL_LEGAL_FORM = "updatePersonalLegalForm";
 
 	// LIST
 	public static final String LIST_CITIES = "listCities";
@@ -28,6 +32,8 @@ public final class ControllerParamConstant {
 
 	// ONE
 	public static final String LOT = "lot";
+	
+	public static final String USER = "user";
 
 	// OTHER
 

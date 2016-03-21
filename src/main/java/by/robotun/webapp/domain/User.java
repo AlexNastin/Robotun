@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "users")
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "select u from User u"),
-	@NamedQuery(name = "User.findUserById", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal where u.idUser = :idUser"),
+	@NamedQuery(name = "User.findUserById", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.phones where u.idUser = :idUser"),
 	@NamedQuery(name = "User.findUserByLogin", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal where u.login = :login"),
 	@NamedQuery(name = "User.findAllModerators", query = "select u from User u where idRole = :idRole")})
 public class User implements Essence {
