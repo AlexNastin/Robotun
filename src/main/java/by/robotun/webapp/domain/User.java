@@ -64,6 +64,10 @@ public class User implements Essence {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Bet> bets;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Lot> lots;
 
 	public int getIdUser() {
 		return idUser;
@@ -143,6 +147,14 @@ public class User implements Essence {
 
 	public void setBets(List<Bet> bets) {
 		this.bets = bets;
+	}
+
+	public List<Lot> getLots() {
+		return lots;
+	}
+
+	public void setLots(List<Lot> lots) {
+		this.lots = lots;
 	}
 
 	@Override

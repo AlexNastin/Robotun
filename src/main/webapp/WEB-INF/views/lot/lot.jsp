@@ -40,81 +40,7 @@
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
 	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>       
 <body>
-	<nav class="navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <h1> <a class="navbar-brand" href="index.html">Jobster</a></h1>
-        </div>
-        <div class=" border-bottom">
-            <div class="full-left">
-
-                <form class=" navbar-left-right">
-                    <input  type="text"  value="Ищу..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Ищу...';}">
-                    <input type="submit" value="" class="fa fa-search">
-                </form>
-                <div class="clearfix"> </div>
-            </div>
-
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="drop-men" >
-                <ul class=" nav_1">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle dropdown-at" data-toggle="dropdown"><span class=" name-caret">Профиль<i class="caret"></i></span><img src="<c:url value="/resources/images/niro.jpg" />"></a>
-                        <ul class="dropdown-menu " role="menu">
-                        <li><security:authorize access="hasRole('ROLE_GUEST')">
-								<a href="<c:url value="/login" />"> Войти <i
-									class="fa fa-sign-in"></i>
-								</a>
-								<a href="<c:url value="/signup" />"> Зарегистрироваться <i
-									class="fa fa-user-plus"></i>
-								</a>
-							</security:authorize> <security:authorize
-								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="${profileURL}" />">Мой профиль<i
-									class="fa fa-suitcase"></i>
-								</a>
-							</security:authorize></li>
-						<li><security:authorize
-								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="/logout" />"> Выйти <i
-									class="fa fa-user-times"></i>
-								</a>
-							</security:authorize></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div><!-- /.navbar-collapse -->
-            <div class="clearfix">
-
-            </div>
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-						                        <li>
-                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">mkbm</span><span class="fa arrow"></span> </a>
-                            <ul class="nav nav-second-level">
-                          
-                                	<li><a href='<c:url value="#"/>' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>mmb</a></li>
-								
-                            </ul>
-                        </li>
-				
-                        
-                    </ul>
-                </div>
-            </div>
-            </div>
-    </nav>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	 <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="content-main">
 
@@ -128,9 +54,8 @@
            
            <div class="header">
                 <h1>${lot.name}</h1>
-                <h4>Web Developer</h4>
-                <span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+                <h4>${lot.user.login}</h4>
+                <span>${lot.description}</span>
            </div>
         </div>
     </div>   
@@ -151,65 +76,41 @@
     
 	
 	<div id="output">
-	<c:forEach items="${lot.bets}" var="bet">
-			<div>${bet.cost}</div>
-			</c:forEach>
-	</div>
+
 <div class="container" style="margin-bottom:30px">
 	<div class="row">
 		<h2 style="text-align:center">Ставки</h2>
 	</div>
     <div class="qa-message-list" id="wallmessages">
+    <c:forEach items="${lot.bets}" var="bet">
     				<div class="message-item" id="m16">
 						<div class="message-inner">
 							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img style="min-height: 40px; max-height: 40px;" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+								<div class="avatar pull-left"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>"><img style="min-height: 40px; max-height: 40px;" src='<c:url value="/resources/images/avatar_2x.png" />'></a></div>
 								<div class="user-detail">
-									<h5 class="handle">Oleg Kolesnichenko</h5>
+									<h5 class="handle">${bet.user.login}</h5>
 									<div class="post-meta">
 										<div class="asker-meta">
 											<span class="qa-message-what"></span>
 											<span class="qa-message-when">
-												<span class="qa-message-when-data">Jan 21</span>
+												<span class="qa-message-when-data">${bet.date}</span>
 											</span>
 											<span class="qa-message-who">
 												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko">Oleg Kolesnichenko</a></span>
+												<span class="qa-message-who-data"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>">${bet.user.login}</a></span>
 											</span>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="qa-message-content">
-								55000руб
+								${bet.cost}
 							</div>
 					</div></div>
-					
-					<div class="message-item" id="m9">
-						<div class="message-inner">
-							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=amiya"><img style="min-height: 40px; max-height: 40px;" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
-								<div class="user-detail">
-									<h5 class="handle">amiya</h5>
-									<div class="post-meta">
-										<div class="asker-meta">
-											<span class="qa-message-what"></span>
-											<span class="qa-message-when">
-												<span class="qa-message-when-data">Nov 24, 2013</span>
-											</span>
-											<span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=amiya">amiya</a></span>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="qa-message-content">
-								50000 руб.
-							</div>
-					</div></div>
-					<div class="center">
+					</c:forEach>
+					<security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<div class="center">
     <div class="input-group">
           <span class="input-group-btn">
               <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
@@ -226,11 +127,17 @@
       </div>
       <a id="btn" href="#">Send</a>
 	</div>
+							</security:authorize>
+							<security:authorize access="hasRole('ROLE_GUEST')">
+								<a href='<c:url value="/login" />'>Зарегистрироваться</a>
+							</security:authorize>
+					
 </div>
 </div>
 </div>
 </div>
 <script type="text/javascript">
+var login = "${login}";
 var id = ${lot.idLot};
 var idUser = ${idUser}
 </script>
@@ -238,6 +145,8 @@ var idUser = ${idUser}
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
+		<script type="text/javascript"
+		src="<c:url value="/resources/js/date.format.js" />"></script>
 		<script>
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){

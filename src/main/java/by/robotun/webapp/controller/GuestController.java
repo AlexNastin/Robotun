@@ -51,14 +51,21 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
-	public ModelAndView result(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
+	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
+		List<Category> categories = guestService.getAllCategories();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
-		modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+		if(person != null) {
+			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+			modelAndView.addObject(ControllerParamConstant.LOGIN, person.getLogin());
+		} else {
+			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
+		}
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
 		return modelAndView;
 	}
 

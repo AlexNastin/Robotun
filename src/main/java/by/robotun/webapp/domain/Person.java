@@ -9,6 +9,7 @@ public class Person extends User{
 	
 	private int id;
 	private int idRole;
+	private String login;
 
 	public int getId() {
 		return id;
@@ -26,12 +27,21 @@ public class Person extends User{
 		this.idRole = idRole;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + id;
 		result = prime * result + idRole;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		return result;
 	}
 
@@ -48,14 +58,16 @@ public class Person extends User{
 			return false;
 		if (idRole != other.idRole)
 			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", idRole=" + idRole + "]";
+		return "Person [id=" + id + ", idRole=" + idRole + ", login=" + login + "]";
 	}
-
-	
-
 }

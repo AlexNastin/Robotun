@@ -61,7 +61,7 @@ public class LotDAOImpl implements ILotDAO {
 		try {
 			lot = (Lot) entityManager.createNamedQuery("Lot.findLotById").setParameter("id", idLot).getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(lot.toString());
+			throw new DaoException(e);
 			
 		}
 		
@@ -99,7 +99,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsOnModeration() throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnMederation").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).getResultList();
 		return lots;
 	}
 }

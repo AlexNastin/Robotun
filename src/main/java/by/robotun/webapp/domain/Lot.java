@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -21,11 +23,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "lot")
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
 	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets where l.idLot = :id"),
+	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.user where l.idLot = :id order by bet.date desc"),
 	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
-	@NamedQuery(name = "Lot.findAllLotOnMederation", query = "select l from Lot l where l.isVisible = :isVisible order by startDate")})
+	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l where l.isVisible = :isVisible order by startDate")})
 public class Lot implements Essence {
 	
 	/**
@@ -72,6 +74,11 @@ public class Lot implements Essence {
 	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<RejectMessage> rejectMessages;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_user", insertable = false, updatable = false)
+	private User user;
 
 	public int getIdLot() {
 		return idLot;
@@ -167,6 +174,14 @@ public class Lot implements Essence {
 
 	public void setRejectMessages(List<RejectMessage> rejectMessages) {
 		this.rejectMessages = rejectMessages;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

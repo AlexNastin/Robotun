@@ -37,6 +37,7 @@ public class WebAppAuthenticationSuccessHandler implements AuthenticationSuccess
 			User us = userDAO.selectUser(user.getLogin());
 			person.setId(us.getIdUser());
 			person.setIdRole(us.getIdRole());
+			person.setLogin(us.getLogin());
 		} catch (DaoException e) {
 			LOGGER.error("WebAppAuthenticationSuccessHandler", e);
 		}
