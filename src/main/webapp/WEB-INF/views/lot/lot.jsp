@@ -136,6 +136,7 @@
 </div>
 </div>
 </div>
+</div>
 <script type="text/javascript">
 var login = "${login}";
 var id = ${lot.idLot};
