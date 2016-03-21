@@ -142,9 +142,9 @@ var login = "${login}";
 var id = ${lot.idLot};
 var idUser = ${idUser}
 </script>
-	<script type="text/javascript"
+	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
-	<script type="text/javascript"
+	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
 		<script type="text/javascript"
 		src="<c:url value="/resources/js/date.format.js" />"></script>
