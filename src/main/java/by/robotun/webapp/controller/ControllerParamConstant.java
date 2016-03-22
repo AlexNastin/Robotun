@@ -46,6 +46,8 @@ public final class ControllerParamConstant {
 	public static final String NICKNAME = "nickname";
 
 	public static final String DATE_END_LOT = "dateEndLot";
+	
+	public static final String COUNT_BET = "countBet";
 
 	
 

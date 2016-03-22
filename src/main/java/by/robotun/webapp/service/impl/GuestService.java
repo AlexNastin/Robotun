@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;
 import by.robotun.webapp.dao.ILotDAO;
@@ -52,6 +53,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ILotDAO lotDAO;
+	
+	@Autowired
+	private IBetDAO betDAO;
 
 	public User getUserById(int idUser) throws ServiceException {
 		try {
@@ -304,5 +308,16 @@ public class GuestService implements IGuestService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public long getCountBetByLot(Integer idLot) throws ServiceException {
+		long count =0;
+		try {
+			count = betDAO.selectCountBetByLot(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
 	}
 }

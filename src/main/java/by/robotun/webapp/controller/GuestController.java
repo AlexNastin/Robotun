@@ -59,6 +59,7 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
+		modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
 		if(person != null) {
 			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 			modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());

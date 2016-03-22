@@ -45,4 +45,10 @@ public class BetDAOImpl implements IBetDAO {
 		entityManager.merge(bet);
 		
 	}
+
+	@Override
+	public long selectCountBetByLot(Integer idLot) throws DaoException {
+		long count = (long) entityManager.createNamedQuery("Bet.findCountBetByLot").setParameter("id", idLot).getSingleResult();
+		return count;
+	}
 }
