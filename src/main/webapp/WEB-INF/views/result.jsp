@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class="list-group" id="list-group">
+                                <div class=" resize list-group" id="list-group">
                                 <c:forEach items="${listLots}" var="lot">
                                     <a href='<c:url value="/lot?id=${lot.idLot}"/>' class="list-group-item">
                                         <div class="media col-md-3">

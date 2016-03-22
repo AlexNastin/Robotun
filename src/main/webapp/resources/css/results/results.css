@@ -2831,3 +2831,21 @@ width: 300px;
   margin: 40px auto;
   
 }
+
+ 
+ 
+ @media screen and (min-width: 1281px) and (max-width: 1366px)  {
+ .resize {
+ width: 1050px;
+ }
+ }
+ @media screen and (min-width: 1025px) and (max-width: 1280px)  {
+ .resize {
+ width: 970px;
+ }
+ }
+ @media screen and (max-width: 1024px) and (min-width: 992px)  {
+ .resize {
+ width: 720px;
+ }
+ }
