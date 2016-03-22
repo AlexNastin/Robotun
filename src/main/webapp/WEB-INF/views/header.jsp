@@ -24,7 +24,32 @@
                 <li><a href="<c:url value="/signup"/>" class="text-color">Sign Up</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" class="text-color">Link</a></li>
+                <li class="dropdown">
+                <label class="dropdown-toggle header-right-dropdown-style text-color" style="" data-toggle="dropdown" role="button">Аккаунт
+                <span class="caret"></span>
+                </label>
+                <ul class="dropdown-menu">
+                 <li><security:authorize access="hasRole('ROLE_GUEST')">
+								<a href="<c:url value="/login" />"> Войти <i
+									class="fa fa-sign-in"></i>
+								</a>
+								<a href="<c:url value="/signup" />"> Зарегистрироваться <i
+									class="fa fa-user-plus"></i>
+								</a>
+							</security:authorize> <security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<a href="<c:url value="${profileURL}" />">Мой профиль<i
+									class="fa fa-suitcase"></i>
+								</a>
+							</security:authorize></li>
+						<li><security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<a href="<c:url value="/logout" />"> Выйти <i
+									class="fa fa-user-times"></i>
+								</a>
+							</security:authorize></li>
+                </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
