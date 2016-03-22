@@ -61,7 +61,7 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		if(person != null) {
 			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-			modelAndView.addObject(ControllerParamConstant.LOGIN, person.getLogin());
+			modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		} else {
 			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 		}

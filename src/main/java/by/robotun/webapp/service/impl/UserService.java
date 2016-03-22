@@ -46,14 +46,12 @@ public class UserService implements IUserService {
 			Date endDate = dateFormat.parse(addLotForm.getEndDate());
 			Lot lot = new Lot();
 			lot.setName(addLotForm.getName());
-			// будет формироваться иначе когда будет система модерации
 			lot.setStartDate(startDate);
 			lot.setEndDate(endDate);
 			lot.setIdCategory(addLotForm.getIdCategory());
 			lot.setIdSubcategory(addLotForm.getIdSubcategory());
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
-			// изменить на ON_MODERATION_NUMBER когда будет добавлена система модерации
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
@@ -107,6 +105,10 @@ public class UserService implements IUserService {
 		try {
 			User user = userDAO.selectUserById(idUser);
 			user.setIdCity(updatePersonalUserPhysicalForm.getIdCity());
+			StringBuilder nicknameBuilder = new StringBuilder(updatePersonalUserPhysicalForm.getSurname());
+			nicknameBuilder.append(" ");
+			nicknameBuilder.append(updatePersonalUserPhysicalForm.getName());
+			user.setNickname(nicknameBuilder.toString());
 			List<Phone> phones = user.getPhones();
 			String[] phoneMass = updatePersonalUserPhysicalForm.getPhones();
 			for (int i = 0; i < phoneMass.length; i++) {
@@ -146,6 +148,7 @@ public class UserService implements IUserService {
 		try {
 			User user = userDAO.selectUserById(idUser);
 			user.setIdCity(updatePersonalUserLegalForm.getIdCity());
+			user.setNickname(updatePersonalUserLegalForm.getNameEnterprise());
 			List<Phone> phones = user.getPhones();
 			String[] phoneMass = updatePersonalUserLegalForm.getPhones();
 			for (int i = 0; i < phoneMass.length; i++) {

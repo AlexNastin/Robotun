@@ -54,7 +54,7 @@
            
            <div class="header">
                 <h1>${lot.name}</h1>
-                <h4>${lot.user.login}</h4>
+                <h4>${lot.user.nickname}</h4>
                 <span>${lot.description}</span>
            </div>
         </div>
@@ -88,7 +88,7 @@
 							<div class="message-head clearfix">
 								<div class="avatar pull-left"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>"><img style="min-height: 40px; max-height: 40px;" src='<c:url value="/resources/images/avatar_2x.png" />'></a></div>
 								<div class="user-detail">
-									<h5 class="handle">${bet.user.login}</h5>
+									<h5 class="handle">${bet.user.nickname}</h5>
 									<div class="post-meta">
 										<div class="asker-meta">
 											<span class="qa-message-what"></span>
@@ -97,7 +97,7 @@
 											</span>
 											<span class="qa-message-who">
 												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>">${bet.user.login}</a></span>
+												<span class="qa-message-who-data"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>">${bet.user.nickname}</a></span>
 											</span>
 										</div>
 									</div>
@@ -138,7 +138,7 @@
 </div>
 </div>
 <script type="text/javascript">
-var login = "${login}";
+var nickname = "${nickname}";
 var id = ${lot.idLot};
 var idUser = ${idUser}
 </script>

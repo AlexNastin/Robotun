@@ -1,5 +1,9 @@
 package by.robotun.webapp.domain;
 
+/**
+ * @author Stepanov
+ *
+ */
 public class Person extends User{
 
 	/**
@@ -9,7 +13,8 @@ public class Person extends User{
 	
 	private int id;
 	private int idRole;
-	private String login;
+	private String login;	
+	private String nickname;
 
 	public int getId() {
 		return id;
@@ -35,6 +40,14 @@ public class Person extends User{
 		this.login = login;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -42,6 +55,7 @@ public class Person extends User{
 		result = prime * result + id;
 		result = prime * result + idRole;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
 		return result;
 	}
 
@@ -63,11 +77,18 @@ public class Person extends User{
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
+		if (nickname == null) {
+			if (other.nickname != null)
+				return false;
+		} else if (!nickname.equals(other.nickname))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", idRole=" + idRole + ", login=" + login + "]";
+		return "Person [id=" + id + ", idRole=" + idRole + ", login=" + login + ", nickname=" + nickname + "]";
 	}
+
+	
 }

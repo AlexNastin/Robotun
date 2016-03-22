@@ -51,6 +51,9 @@ public class User implements Essence {
 	@Column(name = "password")
 	private String password;
 	
+	@Column(name = "nickname")
+	private String nickname;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Physical physical;
 	
@@ -117,6 +120,14 @@ public class User implements Essence {
 		this.password = password;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public Physical getPhysical() {
 		return physical;
 	}
@@ -165,6 +176,7 @@ public class User implements Essence {
 		result = prime * result + idRole;
 		result = prime * result + idUser;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		return result;
@@ -190,6 +202,11 @@ public class User implements Essence {
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
+		if (nickname == null) {
+			if (other.nickname != null)
+				return false;
+		} else if (!nickname.equals(other.nickname))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -206,7 +223,10 @@ public class User implements Essence {
 	@Override
 	public String toString() {
 		return "User [idUser=" + idUser + ", login=" + login + ", idRole=" + idRole + ", idCity=" + idCity
-				+ ", registrationDate=" + registrationDate + ", password=" + password + "]";
+				+ ", registrationDate=" + registrationDate + ", password=" + password + ", nickname=" + nickname + "]";
 	}
+	
+	
 
+	
 }

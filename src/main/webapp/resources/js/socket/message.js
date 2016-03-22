@@ -12,7 +12,7 @@ function defineText(evt) {
         "cost": cost,
         "idUser": idUser,
         "idLot": id,
-        "login": login
+        "nickname": nickname
         
     });
     printText(json);
@@ -28,6 +28,6 @@ function printText(json) {
 		var formated_date = date.format("yyyy-mm-dd HH:mm:ss.l");
 		var json = JSON.parse(json);
 	    var content = document.getElementById("wallmessages").innerHTML;
-	    document.getElementById("wallmessages").innerHTML = "<div class=\"message-item\" id=\"m16\"><div class=\"message-inner\"><div class=\"message-head clearfix\"><div class=\"avatar pull-left\"><a href=\"/webapp/viewUserProfile?id=" + json.idUser +"\"><img style=\"min-height: 40px; max-height: 40px;\" src=\"/webapp/resources/images/avatar_2x.png\"></a></div><div class=\"user-detail\"><h5 class=\"handle\">" + json.login + "</h5><div class=\"post-meta\"><div class=\"asker-meta\"><span class=\"qa-message-what\"></span><span class=\"qa-message-when\"><span class=\"qa-message-when-data\">" + formated_date + " </span></span><span class=\"qa-message-who\"><span class=\"qa-message-who-pad\">by </span><span class=\"qa-message-who-data\"><a href=\"/webapp/viewUserProfile?id=" + json.idUser + "\">" + json.login + "</a></span></span></div></div></div></div><div class=\"qa-message-content\">" + json.cost + "</div></div></div>" + content;
+	    document.getElementById("wallmessages").innerHTML = "<div class=\"message-item\" id=\"m16\"><div class=\"message-inner\"><div class=\"message-head clearfix\"><div class=\"avatar pull-left\"><a href=\"/webapp/viewUserProfile?id=" + json.idUser +"\"><img style=\"min-height: 40px; max-height: 40px;\" src=\"/webapp/resources/images/avatar_2x.png\"></a></div><div class=\"user-detail\"><h5 class=\"handle\">" + json.nickname + "</h5><div class=\"post-meta\"><div class=\"asker-meta\"><span class=\"qa-message-what\"></span><span class=\"qa-message-when\"><span class=\"qa-message-when-data\">" + formated_date + " </span></span><span class=\"qa-message-who\"><span class=\"qa-message-who-pad\">by </span><span class=\"qa-message-who-data\"><a href=\"/webapp/viewUserProfile?id=" + json.idUser + "\">" + json.nickname + "</a></span></span></div></div></div></div><div class=\"qa-message-content\">" + json.cost + "</div></div></div>" + content;
 	}
 }

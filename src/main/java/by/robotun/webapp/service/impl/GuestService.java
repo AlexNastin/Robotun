@@ -115,6 +115,10 @@ public class GuestService implements IGuestService {
 		user.setLogin(addUserPhysicalForm.getLogin());
 		user.setIdCity(addUserPhysicalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_PHYSICAL);
+		StringBuilder nicknameBuilder = new StringBuilder(addUserPhysicalForm.getSurname());
+		nicknameBuilder.append(" ");
+		nicknameBuilder.append(addUserPhysicalForm.getName());
+		user.setNickname(nicknameBuilder.toString());
 		user.setRegistrationDate(new Date());
 
 		String md5Password = DigestUtils.md5Hex(addUserPhysicalForm.getPassword());
@@ -150,6 +154,7 @@ public class GuestService implements IGuestService {
 		user.setLogin(signupUserLegalForm.getLogin());
 		user.setIdCity(signupUserLegalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_LEGAL);
+		user.setNickname(signupUserLegalForm.getNameEnterprise());
 		user.setRegistrationDate(new Date());
 
 		String md5Password = DigestUtils.md5Hex(signupUserLegalForm.getPassword());

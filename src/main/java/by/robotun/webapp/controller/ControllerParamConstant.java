@@ -43,7 +43,7 @@ public final class ControllerParamConstant {
 
 	public static final String ID_USER = "idUser";
 	
-	public static final String LOGIN = "login";
+	public static final String NICKNAME = "nickname";
 
 	public static final String DATE_END_LOT = "dateEndLot";
 

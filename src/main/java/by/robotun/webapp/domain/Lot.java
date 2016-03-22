@@ -67,6 +67,9 @@ public class Lot implements Essence {
 	@Column(name = "is_visible")
 	private int isVisible;
 	
+	@Column(name = "is_call")
+	private boolean isCall;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Bet> bets;
@@ -160,6 +163,14 @@ public class Lot implements Essence {
 		this.isVisible = isVisible;
 	}
 
+	public boolean isCall() {
+		return isCall;
+	}
+
+	public void setCall(boolean isCall) {
+		this.isCall = isCall;
+	}
+
 	public List<Bet> getBets() {
 		return bets;
 	}
@@ -195,6 +206,7 @@ public class Lot implements Essence {
 		result = prime * result + idLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + idUser;
+		result = prime * result + (isCall ? 1231 : 1237);
 		result = prime * result + isVisible;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
@@ -230,6 +242,8 @@ public class Lot implements Essence {
 			return false;
 		if (idUser != other.idUser)
 			return false;
+		if (isCall != other.isCall)
+			return false;
 		if (isVisible != other.isVisible)
 			return false;
 		if (name == null) {
@@ -249,7 +263,7 @@ public class Lot implements Essence {
 	public String toString() {
 		return "Lot [idLot=" + idLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
 				+ idSubcategory + ", startDate=" + startDate + ", endDate=" + endDate + ", description=" + description
-				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + "]";
+				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall + "]";
 	}
 
 	
