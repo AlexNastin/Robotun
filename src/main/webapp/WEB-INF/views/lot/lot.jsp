@@ -108,7 +108,10 @@
 							</div>
 					</div></div>
 					</c:forEach>
-					<security:authorize
+					
+					
+</div>
+<security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 								<div class="center">
     <div class="input-group">
@@ -131,8 +134,6 @@
 							<security:authorize access="hasRole('ROLE_GUEST')">
 								<a href='<c:url value="/login" />'>Зарегистрироваться</a>
 							</security:authorize>
-					
-</div>
 </div>
 </div>
 </div>
