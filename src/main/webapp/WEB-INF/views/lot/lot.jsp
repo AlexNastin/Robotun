@@ -136,13 +136,13 @@
 								<div class="center">
     <div class="input-group">
           <span class="input-group-btn">
-              <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
+              <button id="dismin" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
                 <span class="glyphicon glyphicon-minus" style="margin-bottom: 3px; margin-top:3px"></span>
               </button>
           </span>
-          <input type="text" id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <input type="text" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
           <span id="anchor" class="input-group-btn">
-              <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+              <button id="displus" disabled type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                   <span class="glyphicon glyphicon-plus" style="margin-bottom: 3px; margin-top:3px"></span>
               </button>
           </span>
@@ -294,6 +294,8 @@ $('.countdown').downCount({
 }, function () {
 	if(timing==0){
 	document.getElementById('#cost').disabled = true;
+	document.getElementById('#displus').disabled = true;
+	document.getElementById('#dismin').disabled = true;
 	}
 });
 </script>
