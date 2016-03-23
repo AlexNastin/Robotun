@@ -27,7 +27,7 @@
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
 </head>
 <body>
-<%@include file="/WEB-INF/views/header.jsp"%>
+<%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px;">
 <div class="min-height-admin-page">
 <div class="col-md-2 nopadiing-left">
