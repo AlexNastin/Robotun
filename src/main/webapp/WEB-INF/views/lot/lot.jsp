@@ -140,9 +140,9 @@
                 <span class="glyphicon glyphicon-minus" style="margin-bottom: 3px; margin-top:3px"></span>
               </button>
           </span>
-          <input type="text" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <input type="text"  id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
           <span id="anchor" class="input-group-btn">
-              <button id="displus" disabled type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+              <button id="displus"  type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                   <span class="glyphicon glyphicon-plus" style="margin-bottom: 3px; margin-top:3px"></span>
               </button>
           </span>
