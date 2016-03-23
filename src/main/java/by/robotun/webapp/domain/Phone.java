@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "phone")
 @NamedQueries({ @NamedQuery(name = "Phone.findAll", query = "select p from Phone p"),
-	@NamedQuery(name = "Phone.findByIdUser", query = "select p from Phone p where p.user = :user")})
+	@NamedQuery(name = "Phone.findByIdUser", query = "select p from Phone p where p.user = :user"),
+	@NamedQuery(name = "Phone.findPhonesStringByIdUser", query = "select p.phone from Phone p where p.user.idUser = :idUser")})
 public class Phone implements Essence {
 
 	/**

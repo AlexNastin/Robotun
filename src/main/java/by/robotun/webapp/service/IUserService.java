@@ -1,6 +1,7 @@
 package by.robotun.webapp.service;
 
 import java.util.Date;
+import java.util.List;
 
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
@@ -24,6 +25,8 @@ public interface IUserService {
 	public User getUserById(Integer idUser) throws ServiceException;
 
 	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException;
+
+	public List<String> getPhonesStringByIdUser(Integer idUser) throws ServiceException;
 	
 	
 

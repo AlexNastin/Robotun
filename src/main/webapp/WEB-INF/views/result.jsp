@@ -126,7 +126,6 @@
 									offset: offset
 								},
 								success:function(data) {
-									console.log(data)
 									if(data.length == 0) {
 										isEnd = true;
 									}

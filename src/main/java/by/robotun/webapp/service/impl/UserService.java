@@ -3,6 +3,7 @@ package by.robotun.webapp.service.impl;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ILotDAO;
+import by.robotun.webapp.dao.IPhoneDAO;
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Legal;
@@ -37,6 +39,9 @@ public class UserService implements IUserService {
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IPhoneDAO phoneDAO;
 
 	@Override
 	public void addLot(LotFormAdd addLotForm, int idUser) throws ServiceException {
@@ -171,6 +176,17 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		
+	}
+
+	@Override
+	public List<String> getPhonesStringByIdUser(Integer idUser) throws ServiceException {
+		List<String> phones = new ArrayList<>();
+		try {
+			phones = phoneDAO.selectPhonesStringByIdUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return phones;
 	}
 
 }

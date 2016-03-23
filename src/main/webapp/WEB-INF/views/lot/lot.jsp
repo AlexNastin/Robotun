@@ -80,6 +80,7 @@
 <div class="container" style="margin-bottom:30px">
 	<div class="row">
 		<h2 style="text-align:center">Ставки</h2>
+		<div id="callNumber"></div>
 	</div>
     <div class="qa-message-list" id="wallmessages">
     <c:forEach items="${lot.bets}" var="bet">
@@ -89,6 +90,8 @@
 								<div class="avatar pull-left"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>"><img style="min-height: 40px; max-height: 40px;" src='<c:url value="/resources/images/avatar_2x.png" />'></a></div>
 								<div class="user-detail">
 									<h5 class="handle">${bet.user.nickname}</h5>
+									<a href="#" onclick="showNumber(${bet.user.idUser})">Посмотреть номер</a>
+									
 									<div class="post-meta">
 										<div class="asker-meta">
 											<span class="qa-message-what"></span>
@@ -132,7 +135,7 @@
 	</div>
 							</security:authorize>
 							<security:authorize access="hasRole('ROLE_GUEST')">
-								<a href='<c:url value="/login" />'>Зарегистрироваться</a>
+								<a href='<c:url value="/login" />'>Войти</a>
 							</security:authorize>
 </div>
 </div>
@@ -241,6 +244,26 @@ $(document).ready(function() {
      return false;
    });
  });
+</script>
+<script type="text/javascript">
+function showNumber(idUser) {
+	$.ajax({
+		url:"lot/showNumberICall",
+		type:"GET",
+		data:{
+			//передаем параметры
+			id: idUser
+		},
+		success:function(number) {
+			var contentNumber = document.getElementById("callNumber").innerHTML;
+			for(var i=0; i<number.length; i++) {
+				console.log(contentNumber)
+				contentNumber = contentNumber + number[i];
+			}
+			document.getElementById("callNumber").innerHTML = contentNumber;
+		}
+	});
+}
 </script>
 		<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
