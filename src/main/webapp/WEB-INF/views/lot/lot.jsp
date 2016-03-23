@@ -292,7 +292,9 @@ $('.countdown').downCount({
     date: date,
     offset: +10
 }, function () {
-    alert('WOOT WOOT, done!' + date);
+	if(timing==0){
+	document.getElementById('#cost').disabled = true;
+	}
 });
 </script>
 
