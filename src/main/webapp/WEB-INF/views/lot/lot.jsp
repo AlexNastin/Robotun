@@ -63,9 +63,26 @@
 	<div class="row nav item">    
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> <div id="countBet">${countBet}</div></div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> ${countBet}</div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> ${lot.budget}</div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-calendar fa-lg"></i> ${dateEndLot}</div>
+            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
+<li> <span class="days">00</span>
+<p class="days_ref">дней</p>
+</li>
+<li class="seperator">.</li>
+<li> <span class="hours">00</span>
+<p class="hours_ref">часов</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="minutes">00</span>
+<p class="minutes_ref">минут</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="seconds">00</span>
+<p class="seconds_ref">секунд</p>
+</li>
+</ul>
+</div>
         </div>
     </div>
 </div>
@@ -265,6 +282,23 @@ function showNumber(idUser) {
 	});
 }
 </script>
+<!-- date -->
+<script>
+var timing = ${dateEndLot};
+var time = new Date(timing).getTime();
+var date = new Date(time);
+
+$('.countdown').downCount({
+    date: date,
+    offset: +10
+}, function () {
+    alert('WOOT WOOT, done!' + date);
+});
+</script>
+
+<script class="source" type="text/javascript">
+       
+    </script> 
 		<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
