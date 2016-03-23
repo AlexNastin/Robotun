@@ -53,6 +53,7 @@ public class UserService implements IUserService {
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
+			lot.setCall(addLotForm.getIsCall());
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {

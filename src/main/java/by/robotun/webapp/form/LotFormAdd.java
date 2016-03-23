@@ -15,6 +15,7 @@ public class LotFormAdd implements Essence {
 	private int budget;
 	private int idCategory;
 	private int idSubcategory;
+	private boolean isCall;
 	
 	public String getName() {
 		return name;
@@ -64,6 +65,14 @@ public class LotFormAdd implements Essence {
 		this.idSubcategory = idSubcategory;
 	}
 	
+	public boolean getIsCall() {
+		return isCall;
+	}
+
+	public void setIsCall(boolean isCall) {
+		this.isCall = isCall;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,10 +82,11 @@ public class LotFormAdd implements Essence {
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
 		result = prime * result + idSubcategory;
+		result = prime * result + (isCall ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,6 +112,8 @@ public class LotFormAdd implements Essence {
 			return false;
 		if (idSubcategory != other.idSubcategory)
 			return false;
+		if (isCall != other.isCall)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -109,13 +121,13 @@ public class LotFormAdd implements Essence {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "AddLotForm [name=" + name + ", endDate=" + endDate + ", description="
-				+ description + ", budget=" + budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory
+		return "LotFormAdd [name=" + name + ", endDate=" + endDate + ", description=" + description + ", budget="
+				+ budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory + ", isCall=" + isCall
 				+ "]";
 	}
-	
+
 	
 }

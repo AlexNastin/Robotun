@@ -58,10 +58,10 @@
 			<p style="text-align:center; color:white;">Кому звоним?</p>
     <div class="switch-field">
       
-      <input type="radio" id="switch_left" name="switch_2" value="yes" checked/>
-      <label for="switch_left">Мне</label>
-      <input type="radio" id="switch_right" name="switch_2" value="no" />
-      <label for="switch_right">Я сам!</label>
+      <form:radiobutton id="switch_right" name="switch_2" value="false" path="isCall"/>
+      <label for="switch_right">Мне</label>
+      <form:radiobutton id="switch_left" name="switch_2" value="true" path="isCall"/>
+      <label for="switch_left">Я сам!</label>
     </div>
    
     
