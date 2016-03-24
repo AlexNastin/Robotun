@@ -140,7 +140,17 @@ ul.list1 li a {
 }
 .header-right-dropdown-style:hover,.header-right-dropdown-style:active,.header-right-dropdown-style:focus{
 	background-color: #07B0DE !important;
+	color: white !important;
 	
+}
+.search-mini-style {
+	border-radius:20px;
+}
+.search-mini-button-style{
+	color:white;
+	background-color:black;
+	border-color:black;
+	border:0px;
 }
 @media (max-width: 768px){
     .button-align-left {
