@@ -56,6 +56,12 @@
                 <h1>${lot.name}</h1>
                 <h4>${lot.user.nickname}</h4>
                 <span>${lot.description}</span>
+                <div id="showPhoneOwner">
+                <c:if test="${isMeCall}">
+                <a href="#" onclick="showNumberICall(${idUser})" id="${idUser}a">Посмотреть номер</a>
+				<div id="${idUser}"></div>
+				</c:if>
+				</div>
            </div>
         </div>
     </div>   
@@ -108,7 +114,7 @@
 								<div class="user-detail">
 									<h5 class="handle">${bet.user.nickname}</h5>
 									<c:if test="${isICall}">
-									<a href="#" onclick="showNumber(${bet.user.idUser})" id="${bet.user.idUser}a">Посмотреть номер</a>
+									<a href="#" onclick="showNumberICall(${bet.user.idUser})" id="${bet.user.idUser}a">Посмотреть номер</a>
 									<div id="${bet.user.idUser}"></div>
 									</c:if>
 									<div class="post-meta">
@@ -164,7 +170,8 @@
 var nickname = "${nickname}";
 var id = ${lot.idLot};
 var idUser = ${idUser};
-var isICall = ${isICall}
+var isICall = ${isICall};
+var isMeCall = ${isMeCall}
 </script>
 	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
@@ -266,9 +273,9 @@ $(document).ready(function() {
  });
 </script>
 <script type="text/javascript">
-function showNumber(idUser) {
+function showNumberICall(idUser) {
 	$.ajax({
-		url:"lot/showNumberICall",
+		url:"lot/showNumber",
 		type:"GET",
 		data:{
 			//передаем параметры
@@ -301,6 +308,22 @@ $('.countdown').downCount({
 	document.getElementById('#dismin').disabled = true;
 	}
 });
+</script>
+<script type="text/javascript">
+function drawButtonPhoneOwner() {
+	console.log(isMeCall)
+	if(!isMeCall) {
+	    var content = document.getElementById("showPhoneOwner").innerHTML;
+	    var contentIsCall = "<a href=\"#\" onclick=\"showNumberICall(" + ${idUser} + ")\" id=\"" + ${idUser} + "a" + "\">Посмотреть номер</a><div id=\"" + ${idUser} + "\"></div>";
+	    var contentBeforeIsCall = "";
+	    var contentAfterIsCall = "";
+	    var contentSum = contentBeforeIsCall;
+	    contentSum = contentSum + contentIsCall;
+	    contentSum = contentSum + contentAfterIsCall;
+	    document.getElementById("showPhoneOwner").innerHTML = contentSum + content;
+	    isMeCall = true;
+	}
+}
 </script>
 
 <script class="source" type="text/javascript">

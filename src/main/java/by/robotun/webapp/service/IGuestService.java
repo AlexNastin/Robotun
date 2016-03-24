@@ -49,6 +49,8 @@ public interface IGuestService {
 	void updatePassword(String password, int idUser) throws ServiceException;
 	
 	long getCountBetByLot(Integer idLot) throws ServiceException;
+	
+	long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException;
 
 	
 }

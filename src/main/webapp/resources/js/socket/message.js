@@ -39,5 +39,8 @@ function printText(json, isICall) {
 	    document.getElementById("wallmessages").innerHTML = contentSum + content;
 	    var countBet = parseInt(document.getElementById("countBet").innerHTML);
 	    document.getElementById("countBet").innerHTML = countBet+=1;
+	    if(json.idUser == idUser) {
+	    	drawButtonPhoneOwner();
+	    }
 	}
 }

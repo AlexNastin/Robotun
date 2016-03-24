@@ -60,10 +60,9 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/lot/showNumberICall", method = RequestMethod.GET)
+	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)
 	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser) throws ServiceException {
 		List<String> phones = userService.getPhonesStringByIdUser(idUser);
-		System.err.println(phones);
 		return phones;
 	}
 }

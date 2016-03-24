@@ -16,5 +16,7 @@ public interface IBetDAO {
 	public void insertBet(Bet bet) throws DaoException;
 	
 	public long selectCountBetByLot(Integer idLot) throws DaoException;
+	
+	public long selectCountBetByLotByUser(Integer idLot, Integer idUser) throws DaoException;
 
 }

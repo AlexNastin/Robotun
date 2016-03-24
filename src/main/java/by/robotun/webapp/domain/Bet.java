@@ -20,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "bet")
 @NamedQueries({ @NamedQuery(name = "Bet.findAll", query = "select b from Bet b"),
 	@NamedQuery(name = "Bet.findBetById", query = "select b from Bet b where b.idBet = :id"),
-	@NamedQuery(name = "Bet.findCountBetByLot", query = "select count(b.idBet) from Bet b where b.idLot = :id")})
+	@NamedQuery(name = "Bet.findCountBetByLot", query = "select count(b.idBet) from Bet b where b.idLot = :id"),
+	@NamedQuery(name = "Bet.findCountBetByUserByLot", query = "select count(b.idBet) from Bet b where b.idLot = :idLot and b.idUser = :idUser")})
 public class Bet implements Essence {
 
 	/**

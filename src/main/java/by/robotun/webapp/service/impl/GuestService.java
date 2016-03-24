@@ -320,4 +320,15 @@ public class GuestService implements IGuestService {
 		}
 		return count;
 	}
+
+	@Override
+	public long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException {
+		long count =0;
+		try {
+			count = betDAO.selectCountBetByLotByUser(idLot, idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
+	}
 }

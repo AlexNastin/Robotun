@@ -51,4 +51,10 @@ public class BetDAOImpl implements IBetDAO {
 		long count = (long) entityManager.createNamedQuery("Bet.findCountBetByLot").setParameter("id", idLot).getSingleResult();
 		return count;
 	}
+
+	@Override
+	public long selectCountBetByLotByUser(Integer idLot, Integer idUser) throws DaoException {
+		long count = (long) entityManager.createNamedQuery("Bet.findCountBetByUserByLot").setParameter("idLot", idLot).setParameter("idUser", idUser).getSingleResult();
+		return count;
+	}
 }

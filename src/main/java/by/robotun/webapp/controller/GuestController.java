@@ -58,16 +58,20 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
+		modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
+		modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 		if (person != null) {
 			if (lot.isCall() && lot.getIdUser() == person.getId()) {
 				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
-			} else {
-				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
+			} else if(!lot.isCall()) {
+				if(guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId())>0) {
+					modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
+					modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS, userService.getPhonesStringByIdUser(person.getId()));
+				}
 			}
 			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 			modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		} else {
-			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);

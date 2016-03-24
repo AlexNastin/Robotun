@@ -29,6 +29,8 @@ public final class ControllerParamConstant {
 	public static final String LIST_CATEGORIES = "listCategories";
 
 	public static final String LIST_USERS = "listUsers";
+	
+	public static final String LIST_NUMBERS = "listNumbers";
 
 	// ONE
 	public static final String LOT = "lot";
@@ -50,6 +52,8 @@ public final class ControllerParamConstant {
 	public static final String COUNT_BET = "countBet";
 	
 	public static final String IS_I_CALL = "isICall";
+	
+	public static final String IS_ME_CALL = "isMeCall";
 
 	
 
