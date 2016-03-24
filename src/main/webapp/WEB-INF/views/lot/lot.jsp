@@ -141,6 +141,7 @@
 </div>
 <security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<c:if test="${!(idUser == lot.idUser)}">
 								<div class="center">
     <div class="input-group">
           <span class="input-group-btn">
@@ -158,6 +159,7 @@
       </div>
       <a id="btn" href="#">Send</a>
 	</div>
+	</c:if>
 							</security:authorize>
 							<security:authorize access="hasRole('ROLE_GUEST')">
 								<a href='<c:url value="/login" />'>Войти</a>
@@ -311,7 +313,6 @@ $('.countdown').downCount({
 </script>
 <script type="text/javascript">
 function drawButtonPhoneOwner() {
-	console.log(isMeCall)
 	if(!isMeCall) {
 	    var content = document.getElementById("showPhoneOwner").innerHTML;
 	    var contentIsCall = "<a href=\"#\" onclick=\"showNumberICall(" + ${idUser} + ")\" id=\"" + ${idUser} + "a" + "\">Посмотреть номер</a><div id=\"" + ${idUser} + "\"></div>";
