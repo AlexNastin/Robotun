@@ -14,5 +14,5 @@ function sendText(json) {
 }
                 
 function onMessage(evt) {
-    printText(evt.data);
+    printText(evt.data, isICall);
 }

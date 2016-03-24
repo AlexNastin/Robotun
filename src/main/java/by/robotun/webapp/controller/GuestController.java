@@ -21,24 +21,22 @@ import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 
-
 @Controller
 public class GuestController {
-	
+
 	@Autowired
 	private IGuestService guestService;
-	
+
 	@Autowired
 	private IUserService userService;
 
-	
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public ModelAndView result(@RequestParam(value = "idCategory", required = false) Integer idCategory,
-			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
+			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {
 		List<Lot> lots;
 		Date endDate = new Date();
-		if(idCategory == null && idSubcategory == null) {
+		if (idCategory == null && idSubcategory == null) {
 			lots = guestService.getAllLots(endDate);
 		} else {
 			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
@@ -49,10 +47,10 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
-	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot, Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
 		List<Category> categories = guestService.getAllCategories();
@@ -60,10 +58,16 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
-		if(person != null) {
+		if (person != null) {
+			if (lot.isCall() && lot.getIdUser() == person.getId()) {
+				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
+			} else {
+				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
+			}
 			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 			modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		} else {
+			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);

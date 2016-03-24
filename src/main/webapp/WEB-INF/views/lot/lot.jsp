@@ -63,7 +63,7 @@
 	<div class="row nav item">    
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> ${countBet}</div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> <div id="countBet">${countBet}</div></div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> ${lot.budget}</div>
             <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
 <li> <span class="days">00</span>
@@ -107,8 +107,10 @@
 								<div class="avatar pull-left"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>"><img style="min-height: 40px; max-height: 40px;" src='<c:url value="/resources/images/avatar_2x.png" />'></a></div>
 								<div class="user-detail">
 									<h5 class="handle">${bet.user.nickname}</h5>
-									<a href="#" onclick="showNumber(${bet.user.idUser})">Посмотреть номер</a>
-									
+									<c:if test="${isICall}">
+									<a href="#" onclick="showNumber(${bet.user.idUser})" id="${bet.user.idUser}a">Посмотреть номер</a>
+									<div id="${bet.user.idUser}"></div>
+									</c:if>
 									<div class="post-meta">
 										<div class="asker-meta">
 											<span class="qa-message-what"></span>
@@ -161,7 +163,8 @@
 <script type="text/javascript">
 var nickname = "${nickname}";
 var id = ${lot.idLot};
-var idUser = ${idUser}
+var idUser = ${idUser};
+var isICall = ${isICall}
 </script>
 	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
@@ -272,12 +275,12 @@ function showNumber(idUser) {
 			id: idUser
 		},
 		success:function(number) {
-			var contentNumber = document.getElementById("callNumber").innerHTML;
+			var contentNumber = document.getElementById(idUser).innerHTML;
 			for(var i=0; i<number.length; i++) {
-				console.log(contentNumber)
-				contentNumber = contentNumber + number[i];
+				contentNumber = contentNumber + number[i]+ "<br>";
 			}
-			document.getElementById("callNumber").innerHTML = contentNumber;
+			document.getElementById(idUser).innerHTML = contentNumber;
+			document.getElementById(idUser+"a").removeAttribute('onclick');
 		}
 	});
 }
