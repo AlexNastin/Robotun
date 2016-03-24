@@ -35,11 +35,23 @@
 <a href='<c:url value="/user/secure/updatePersonalUserLegal" />' class="list-group-item background-color-menu-profile active-menu">Личные данные</a>
 </div>
 <div class="col-md-10">
+<div class="col-md-2"></div>
+<div class="col-md-8 edit-users-legal-boards" style="padding-top: 1em;">
+<div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
 	<form:form modelAttribute="updatePersonalLegalForm" method="POST">
-		<form:input path="nameEnterprise" placeholder="nameEnterprise" value="${user.legal.nameEnterprise}"/>
-		<form:input path="unp" placeholder="unp" value="${user.legal.unp}"/>
-		<form:input path="address" placeholder="address" value="${user.legal.address}"/>
-		<form:input path="zipCode" placeholder="zipCode" value="${user.legal.zipCode}"/>
+		<div class="form-group">
+		<form:input path="nameEnterprise" class="form-control" placeholder="nameEnterprise" value="${user.legal.nameEnterprise}"/>
+		</div>
+		<div class="form-group">
+		<form:input path="unp" class="form-control" placeholder="unp" value="${user.legal.unp}"/>
+		</div>
+		<div class="form-group">
+		<form:input path="address" class="form-control" placeholder="address" value="${user.legal.address}"/>
+		</div>
+		<div class="form-group">
+		<form:input path="zipCode" class="form-control" placeholder="zipCode" value="${user.legal.zipCode}"/>
+		</div>
+		<div class="form-group">
 		<form:select class="form-control" path="idCity">
 			<c:set var="idSelectCity" value="${user.idCity}"/>
 			<c:forEach items="${listCities}" var="city">
@@ -50,11 +62,16 @@
 				<c:set var="selected" value=""/>
 			</c:forEach>
 		</form:select>
+		</div>
 		<c:forEach items="${user.phones}" var="phone">
 				<form:input path="phones" placeholder="phone" value="${phone.phone}"/>
 		</c:forEach>
-		<input type="submit" class="button-on-add-lot" value="Добавить" />
+		<div style="text-align:center;">
+		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />
+		</div>
 	</form:form>
+	</div>
+	<div class="col-md-2"></div>
 	</div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
