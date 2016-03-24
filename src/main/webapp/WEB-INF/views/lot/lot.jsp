@@ -69,7 +69,7 @@
 	<div class="row nav item">    
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> <div id="countBet">${countBet}</div></div>
+            <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">${countBet}</div></div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> ${lot.budget}</div>
             <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
 <li> <span class="days">00</span>
