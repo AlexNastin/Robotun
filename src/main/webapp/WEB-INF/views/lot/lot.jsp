@@ -95,8 +95,7 @@
 	 <br>
 	 <br>
 	
-			
-    
+
 	
 	<div id="output">
 
@@ -145,15 +144,14 @@
 								<div class="center">
     <div class="input-group">
           <span class="input-group-btn">
-              <button id="dismin" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                <span class="glyphicon glyphicon-minus" style="margin-bottom: 3px; margin-top:3px"></span>
-              </button>
+              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
+                
+             
           </span>
-          <input type="text"  id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <input type="text"  disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
           <span id="anchor" class="input-group-btn">
-              <button id="displus"  type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                  <span class="glyphicon glyphicon-plus" style="margin-bottom: 3px; margin-top:3px"></span>
-              </button>
+              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
+                          
           </span>
           
       </div>
@@ -299,18 +297,22 @@ function showNumberICall(idUser) {
 var timing = ${dateEndLot};
 var time = new Date(timing).getTime();
 var date = new Date(time);
+var now = new Date();
+
+if (now==date){
+	 document.getElementById("myBtn1").disabled = true;
+	 document.getElementById("displus").disabled = true;
+}
 
 $('.countdown').downCount({
     date: date,
     offset: +10
 }, function () {
-	if(timing==0){
-	document.getElementById('#cost').disabled = true;
-	document.getElementById('#displus').disabled = true;
-	document.getElementById('#dismin').disabled = true;
-	}
+	
+		
 });
 </script>
+
 <script type="text/javascript">
 function drawButtonPhoneOwner() {
 	if(!isMeCall) {
