@@ -31,49 +31,27 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
+<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile active-menu">Мои лоты</a>
+<a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
 <a href='<c:url value="/user/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
 <a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 </div>
 <div class="col-md-10">
 <div class="text-admin-page-main col-md-12">Мои лоты:</div>
+<c:forEach items="${listLots}" var="lot">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail users-legal-img" alt="Image">
 </div>
 <div class="col-md-9 moderator-descripton">
-<div class="col-md-12 text-moderator-description"><a href="#" style="font-size: 18pt;">Lorem ipsum</a></div>
-<div class="col-md-12 text-moderator-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et ipsum tempor, vehicula quam vel, hendrerit libero. In hac habitasse platea dictumst. Integer eleifend arcu quis venenatis euismod. Nullam quis nisi sit amet ligula sagittis hendrerit. Nunc ornare erat quis eleifend lobortis.</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: 4 000 500</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: 01 дней : 14 часов : 00 минут </div>
-<div class="col-md-12" style="text-align:right;"><button class="btn btn-primary button-legal-style-main">Подробнее</button></div>
+<div class="col-md-12 text-moderator-description"><a href='<c:url value="/lot?id=${lot.idLot}" />' style="font-size: 18pt;">${lot.name}</a></div>
+<div class="col-md-12 text-moderator-description">${lot.description}</div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: ${lot.endDate} </div>
+<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
 </div>
 </div>
-
-<div class="col-md-12 users-legal-boards">
-<div class="col-md-3">
-<img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail users-legal-img" alt="Image">
-</div>
-<div class="col-md-9 moderator-descripton">
-<div class="col-md-12 text-moderator-description"><a href="#" style="font-size: 18pt;">Lorem ipsum</a></div>
-<div class="col-md-12 text-moderator-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et ipsum tempor, vehicula quam vel, hendrerit libero. In hac habitasse platea dictumst. Integer eleifend arcu quis venenatis euismod. Nullam quis nisi sit amet ligula sagittis hendrerit. Nunc ornare erat quis eleifend lobortis.</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: 4 000 500</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: 01 дней : 14 часов : 00 минут </div>
-<div class="col-md-12" style="text-align:right;"><button class="btn btn-primary button-legal-style-main">Подробнее</button></div>
-</div>
-</div>
-
-<div class="col-md-12 users-legal-boards">
-<div class="col-md-3">
-<img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail users-legal-img" alt="Image">
-</div>
-<div class="col-md-9 moderator-descripton">
-<div class="col-md-12 text-moderator-description"><a href="#" style="font-size: 18pt;">Lorem ipsum</a></div>
-<div class="col-md-12 text-moderator-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et ipsum tempor, vehicula quam vel, hendrerit libero. In hac habitasse platea dictumst. Integer eleifend arcu quis venenatis euismod. Nullam quis nisi sit amet ligula sagittis hendrerit. Nunc ornare erat quis eleifend lobortis.</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: 4 000 500</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: 01 дней : 14 часов : 00 минут </div>
-<div class="col-md-12" style="text-align:right;"><button class="btn btn-primary button-legal-style-main">Подробнее</button></div>
-</div>
+</c:forEach>
 </div>
 </div>
 </div>

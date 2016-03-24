@@ -28,4 +28,8 @@ public interface ILotDAO {
 	
 	public List<Lot> selectLotsOnModeration() throws DaoException;
 
+	public List<Lot> selectLotsCreatedUser(int idUser) throws DaoException;
+	
+	public List<Lot> selectLotsRespondedUser(int idUser) throws DaoException;
+
 }

@@ -54,8 +54,24 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView();
 		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
 			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
+			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
 		} else if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
 			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_PHYSICAL);
+			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/user/myResponse", method = RequestMethod.GET)
+	public ModelAndView myResponse(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView();
+		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
+			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSE_LEGAL);
+			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		} else if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
+			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSE_PHYSICAL);
+			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
 		}
 		return modelAndView;
 	}

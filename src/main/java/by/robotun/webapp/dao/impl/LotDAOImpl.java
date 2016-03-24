@@ -102,4 +102,18 @@ public class LotDAOImpl implements ILotDAO {
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).getResultList();
 		return lots;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotsCreatedUser(int idUser) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsCreatedUser").setParameter("id", idUser).getResultList();
+		return lots;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotsRespondedUser(int idUser) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser).getResultList();
+		return lots;
+	}
 }

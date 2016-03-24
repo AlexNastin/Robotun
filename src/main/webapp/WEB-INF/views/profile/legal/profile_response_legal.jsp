@@ -31,12 +31,12 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
-<a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
+<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
+<a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile active-menu">Мои лоты</a>
 <a href='<c:url value="/user/secure/updatePersonalUserLegal" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 </div>
 <div class="col-md-10">
-<div class="text-admin-page-main col-md-12">Мои отклики:</div>
+<div class="text-admin-page-main col-md-12">Мои лоты:</div>
 <c:forEach items="${listLots}" var="lot">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">

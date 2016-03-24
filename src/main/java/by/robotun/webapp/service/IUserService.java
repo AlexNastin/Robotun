@@ -27,6 +27,10 @@ public interface IUserService {
 	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException;
 
 	public List<String> getPhonesStringByIdUser(Integer idUser) throws ServiceException;
+
+	public List<Lot> getLotsCreatedUser(int idUser) throws ServiceException;
+	
+	public List<Lot> getLotsRespondedUser(int idUser) throws ServiceException;
 	
 	
 

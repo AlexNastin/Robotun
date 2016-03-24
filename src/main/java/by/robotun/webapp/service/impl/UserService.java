@@ -189,4 +189,26 @@ public class UserService implements IUserService {
 		return phones;
 	}
 
+	@Override
+	public List<Lot> getLotsCreatedUser(int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotsCreatedUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;	
+	}
+
+	@Override
+	public List<Lot> getLotsRespondedUser(int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotsRespondedUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;		
+	}
+
 }

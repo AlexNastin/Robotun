@@ -27,7 +27,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
-	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l where l.isVisible = :isVisible order by startDate")})
+	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l where l.isVisible = :isVisible order by startDate"),
+	@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
+	@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc")})
 public class Lot implements Essence {
 	
 	/**

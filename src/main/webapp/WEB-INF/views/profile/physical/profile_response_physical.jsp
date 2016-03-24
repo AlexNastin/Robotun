@@ -20,7 +20,7 @@
 <c:if test="${adminBool}">
 	<c:set value="/admin/profile" var="profileURL" />
 </c:if>
-<title>Личный кабинет юридического лица</title>
+<title>Личный кабинет физического лица</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
@@ -31,9 +31,10 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
-<a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
-<a href='<c:url value="/user/secure/updatePersonalUserLegal" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
+<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
+<a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
+<a href='<c:url value="/user/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
+<a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 </div>
 <div class="col-md-10">
 <div class="text-admin-page-main col-md-12">Мои отклики:</div>
@@ -45,12 +46,13 @@
 <div class="col-md-9 moderator-descripton">
 <div class="col-md-12 text-moderator-description"><a href='<c:url value="/lot?id=${lot.idLot}" />' style="font-size: 18pt;">${lot.name}</a></div>
 <div class="col-md-12 text-moderator-description">${lot.description}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.endDate}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: 01 дней : 14 часов : 00 минут </div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: ${lot.endDate} </div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
 </div>
 </div>
 </c:forEach>
+</div>
 </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
