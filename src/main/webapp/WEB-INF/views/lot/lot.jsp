@@ -69,7 +69,7 @@
 	<div class="row nav item">    
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> <div id="countBet">${countBet}</div></div>
+            <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">${countBet}</div></div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> ${lot.budget}</div>
             <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
 <li> <span class="days">00</span>
@@ -95,8 +95,7 @@
 	 <br>
 	 <br>
 	
-			
-    
+
 	
 	<div id="output">
 
@@ -145,15 +144,14 @@
 								<div class="center">
     <div class="input-group">
           <span class="input-group-btn">
-              <button id="dismin" type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                <span class="glyphicon glyphicon-minus" style="margin-bottom: 3px; margin-top:3px"></span>
-              </button>
+              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
+                
+             
           </span>
-          <input type="text"  id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <input type="text"  disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
           <span id="anchor" class="input-group-btn">
-              <button id="displus"  type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                  <span class="glyphicon glyphicon-plus" style="margin-bottom: 3px; margin-top:3px"></span>
-              </button>
+              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
+                          
           </span>
           
       </div>
@@ -299,18 +297,22 @@ function showNumberICall(idUser) {
 var timing = ${dateEndLot};
 var time = new Date(timing).getTime();
 var date = new Date(time);
+var now = new Date();
+
+if (now==date){
+	 document.getElementById("myBtn1").disabled = true;
+	 document.getElementById("displus").disabled = true;
+}
 
 $('.countdown').downCount({
     date: date,
     offset: +10
 }, function () {
-	if(timing==0){
-	document.getElementById('#cost').disabled = true;
-	document.getElementById('#displus').disabled = true;
-	document.getElementById('#dismin').disabled = true;
-	}
+	
+		
 });
 </script>
+
 <script type="text/javascript">
 function drawButtonPhoneOwner() {
 	if(!isMeCall) {
