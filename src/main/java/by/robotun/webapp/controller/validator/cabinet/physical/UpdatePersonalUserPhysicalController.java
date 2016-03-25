@@ -1,4 +1,4 @@
-package by.robotun.webapp.controller.validator;
+package by.robotun.webapp.controller.validator.cabinet.physical;
 
 import java.util.Locale;
 

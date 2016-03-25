@@ -1,4 +1,4 @@
-package by.robotun.webapp.controller.validator;
+package by.robotun.webapp.controller.validator.cabinet.physical;
 
 import java.util.Locale;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
+import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.form.UserUpdatePasswordForm;
@@ -23,8 +24,8 @@ import by.robotun.webapp.form.validator.UserUpdatePasswordFormValidator;
 import by.robotun.webapp.service.IGuestService;
 
 @Controller
-@RequestMapping("/user/secure/updatePassword")
-public class UserUpdatePasswordController {
+@RequestMapping("/physical/secure/updatePassword")
+public class UpdatePasswordUserPhysicalController {
 
 	@Autowired
 	private UserUpdatePasswordFormValidator personalSecurityValidator;
@@ -37,7 +38,7 @@ public class UserUpdatePasswordController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalSecurity(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("profile/update_password");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 		UserUpdatePasswordForm userUpdatePasswordForm = new UserUpdatePasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		return modelAndView;
@@ -50,21 +51,21 @@ public class UserUpdatePasswordController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("profile/update_password");
+			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 			return modelAndView;
 		}
 		User user = guestService.getUser(person.getId());
 		String md5Password = DigestUtils.md5Hex(userUpdatePasswordForm.getOldPassword());
 		if (!user.getPassword().equals(md5Password)) {
-			ModelAndView modelAndView = new ModelAndView("profile/update_password");
+			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 			result.rejectValue("oldPassword", "valid.oldPassword.passwordDontMatch");
 			return modelAndView;
 		}
 		guestService.updatePassword(userUpdatePasswordForm.getPassword(), person.getId());
-		ModelAndView modelAndView = new ModelAndView("profile/update_password");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 		String message = messages.getMessage("email.message.resetpaswordsuccessful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
-		modelAndView.addObject("userUpdatePasswordForm", userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		return modelAndView;
 	}
 

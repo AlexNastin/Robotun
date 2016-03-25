@@ -1,4 +1,4 @@
-package by.robotun.webapp.controller.validator;
+package by.robotun.webapp.controller.validator.cabinet.admin;
 
 import java.util.Locale;
 
@@ -21,7 +21,7 @@ import by.robotun.webapp.service.IAdminService;
 
 @Controller
 @RequestMapping("/admin/addModerator")
-public class ModeratorAddController {
+public class AdminCreateModeratorController {
 
 	@Autowired
 	private AddModeratorFormValidator addModeratorFormValidator;
