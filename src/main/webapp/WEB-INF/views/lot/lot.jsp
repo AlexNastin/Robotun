@@ -171,7 +171,8 @@ var nickname = "${nickname}";
 var id = ${lot.idLot};
 var idUser = ${idUser};
 var isICall = ${isICall};
-var isMeCall = ${isMeCall}
+var isMeCall = ${isMeCall};
+var isElse = ${isElse}
 </script>
 	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
@@ -315,7 +316,7 @@ $('.countdown').downCount({
 
 <script type="text/javascript">
 function drawButtonPhoneOwner() {
-	if(!isMeCall) {
+	if(!isMeCall && !isElse) {
 	    var content = document.getElementById("showPhoneOwner").innerHTML;
 	    var contentIsCall = "<a href=\"#\" onclick=\"showNumberICall(" + ${idUser} + ")\" id=\"" + ${idUser} + "a" + "\">Посмотреть номер</a><div id=\"" + ${idUser} + "\"></div>";
 	    var contentBeforeIsCall = "";

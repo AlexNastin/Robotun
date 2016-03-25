@@ -54,6 +54,8 @@ public final class ControllerParamConstant {
 	public static final String IS_I_CALL = "isICall";
 	
 	public static final String IS_ME_CALL = "isMeCall";
+	
+	public static final String IS_ELSE = "isElse";
 
 	
 
