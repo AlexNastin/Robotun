@@ -99,3 +99,37 @@
 .switch-field label:last-of-type {
   border-radius: 0 4px 4px 0;
 }
+
+.text-style-add-lot {
+	font-size: 25pt;
+	text-align: center;
+	margin-top: 0.5em;
+	margin-bottom:0.5em;
+}
+.text-style-board-add-lot {
+	font-size: 14pt !important;
+}
+.text-align-justify{
+	text-align: justify !important;
+}
+
+}
+@media (min-width: 768px) {
+	
+}
+@media (min-width: 992px) {
+	.vertical-line {
+	border-right: 2px solid #E1E1E1;
+	min-height: 100%;
+	}
+}
+@media (min-width: 1200px) {
+	.vertical-line {
+	border-right: 2px solid #E1E1E1;
+	min-height: 100%;
+	}
+}
+.button-add-lot-style{
+	background-color: #334A61; 
+	border-color: #334A61;
+}

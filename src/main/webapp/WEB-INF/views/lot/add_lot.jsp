@@ -3,31 +3,51 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <html>
 <head>
+<security:authorize access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" var="userBool" />
+<security:authorize access="hasRole('ROLE_MODERATOR')"
+	var="moderatorBool" />
+<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
+<c:if test="${userBool}">
+	<c:set value="/user/profile" var="profileURL" />
+</c:if>
+<c:if test="${moderatorBool}">
+	<c:set value="/moderator/profile" var="profileURL" />
+</c:if>
+<c:if test="${adminBool}">
+	<c:set value="/admin/profile" var="profileURL" />
+</c:if>
 <title>Добавить работу</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/results/add_lot.css"  />" rel="stylesheet" />
-
+<link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
 
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
-<body class="body-color background-image-add_lot">
-<%@include file="/WEB-INF/views/header.jsp"%>
-	
-	<!-- Lorem Ipsum -->
+<body class="body-color">
+<%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
 	
 	<div class="container container-style-addlot">
 	<div class="col-md-1"></div>
-	<div class="col-md-10 background-color-add_lot margin-bottom-button">
+	<div class="col-md-10 background-color-add_lot margin-bottom-button edit-users-legal-boards" >
 	<div class="col-md-12">
-	<div class="main-text-style">Добавить работу</div>
+	<div class="text-style-add-lot ">Добавить работу</div>
 	</div>
-	<div class="col-md-6 img-margin-bottom"><img src="<c:url value="/resources/images/large.jpg"/>" class="img-responsive" alt="Image"></div>
+	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
+	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> 
+	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
+	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
+	</div>
 	<div class="col-md-6">
 	<form:form modelAttribute="addLotForm" method="POST">
+	
 		<div class="form-group">
 		<form:input path="name" placeholder="name" class="form-control"/>
 		</div>
@@ -55,7 +75,7 @@
 			<label class="error" generated="true" for="endDate"></label>
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
-			<p style="text-align:center; color:white;">Кому звоним?</p>
+			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
       
       <form:radiobutton id="switch_right" name="switch_2" value="false" path="isCall"/>
@@ -65,8 +85,8 @@
     </div>
    
     
-			<div class="form-group">
-		<input type="submit" class="button-on-add-lot" value="Добавить" />
+			<div class="form-group" style="text-align:right;">
+		<input type="submit" class="button-add-lot-style btn btn-primary" value="Добавить"/>
 		</div>
 	</form:form>
 	</div>

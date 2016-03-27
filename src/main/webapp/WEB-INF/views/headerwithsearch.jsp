@@ -17,7 +17,7 @@
         <div class=" border-bottom">
             <div class="full-left">
 
-                <form class="navbar-left-right" style="background-color:white; border-radius: 15px; width: 12em; padding-left: 0.7em; padding-right: 0.5em;">
+                <form class="navbar-left-right">
                     <input type="text"  value="Ищу..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Ищу...';}" >
                     <input  type="submit" value="" class="fa fa-search">
                 </form>
