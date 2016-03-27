@@ -61,6 +61,22 @@
                 <a href="#" onclick="showNumberICall(${idUser})" id="${idUser}a">Посмотреть номер</a>
 				<div id="${idUser}"></div>
 				</c:if>
+				<div class="col-md-12" style="padding-left:0px;">
+				 <div class="input-group " style="width:30%;">
+          <span class="input-group-btn">
+              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
+                
+             
+          </span>
+          <input type="text" style="text-align:center;" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <span id="anchor" class="input-group-btn">
+              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
+                          
+          </span>
+          
+      </div>
+      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" href="#">Send</a>
+				</div>
 				</div>
            </div>
         </div>
@@ -142,20 +158,7 @@
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 								<c:if test="${!(idUser == lot.idUser)}">
 								<div class="center">
-    <div class="input-group">
-          <span class="input-group-btn">
-              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
-                
-             
-          </span>
-          <input type="text"  disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
-          <span id="anchor" class="input-group-btn">
-              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
-                          
-          </span>
-          
-      </div>
-      <a id="btn" href="#">Send</a>
+   
 	</div>
 	</c:if>
 							</security:authorize>
