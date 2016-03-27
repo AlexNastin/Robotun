@@ -33,7 +33,7 @@
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
 <a href='<c:url value="/user/myResponse" />' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
-<a href='<c:url value="/user/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
+<a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
 <a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 </div>
 <div class="col-md-10">
@@ -52,7 +52,6 @@
 </div>
 </div>
 </c:forEach>
-</div>
 </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
