@@ -72,7 +72,7 @@
     </div>
    
     
-			<div class="form-group" style="text-align:right;">
+			<div class="form-group" style="text-align:center;">
 		<input type="submit" class="button-add-lot-style btn btn-primary" value="Добавить"/>
 		</div>
 	</form:form>
