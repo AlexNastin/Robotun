@@ -58,7 +58,7 @@ public class UserService implements IUserService {
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
-			lot.setCall(addLotForm.getIsCall());
+			lot.setIsCall(addLotForm.getIsCall());
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
@@ -209,6 +209,17 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		return lots;		
+	}
+
+	@Override
+	public Lot getLotByIdForModeration(Integer idLot) throws ServiceException {
+		Lot lot;
+		try {
+			lot = lotDAO.selectLotByIdForModeration(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lot;
 	}
 
 }

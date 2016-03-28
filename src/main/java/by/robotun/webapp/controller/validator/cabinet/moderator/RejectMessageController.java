@@ -1,4 +1,4 @@
-package by.robotun.webapp.controller.validator;
+package by.robotun.webapp.controller.validator.cabinet.moderator;
 
 import java.util.Locale;
 
@@ -38,7 +38,7 @@ public class RejectMessageController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView rejectMessage(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_REJECT_LOT);
-		modelAndView.addObject(ControllerParamConstant.LOT, userService.getLotById(idLot));
+		modelAndView.addObject(ControllerParamConstant.LOT, userService.getLotByIdForModeration(idLot));
 		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, new RejectMessageForm());
 		return modelAndView;
 	}

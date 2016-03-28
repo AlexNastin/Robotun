@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
 	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.user where l.idLot = :id order by bet.date desc"),
+	@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user where l.idLot = :id"),
 	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
@@ -84,6 +85,16 @@ public class Lot implements Essence {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
 	private User user;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_category", insertable=false, updatable=false)
+	private Category category;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_subcategory", insertable=false, updatable=false)
+	private Subcategory subcategory;
 
 	public int getIdLot() {
 		return idLot;
@@ -165,11 +176,11 @@ public class Lot implements Essence {
 		this.isVisible = isVisible;
 	}
 
-	public boolean isCall() {
+	public boolean getIsCall() {
 		return isCall;
 	}
 
-	public void setCall(boolean isCall) {
+	public void setIsCall(boolean isCall) {
 		this.isCall = isCall;
 	}
 
@@ -195,6 +206,22 @@ public class Lot implements Essence {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Subcategory getSubcategory() {
+		return subcategory;
+	}
+
+	public void setSubcategory(Subcategory subcategory) {
+		this.subcategory = subcategory;
 	}
 
 	@Override

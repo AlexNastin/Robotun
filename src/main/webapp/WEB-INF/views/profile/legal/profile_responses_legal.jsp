@@ -36,8 +36,8 @@
 <div class="col-md-9 moderator-descripton">
 <div class="col-md-12 text-moderator-description"><a href='<c:url value="/lot?id=${lot.idLot}" />' style="font-size: 18pt;">${lot.name}</a></div>
 <div class="col-md-12 text-moderator-description">${lot.description}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.endDate}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Осталось: 01 дней : 14 часов : 00 минут </div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: ${lot.endDate}</div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
 </div>
 </div>

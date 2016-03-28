@@ -32,6 +32,9 @@ public interface IUserService {
 	
 	public List<Lot> getLotsRespondedUser(int idUser) throws ServiceException;
 	
+	public Lot getLotByIdForModeration(Integer idLot) throws ServiceException;
+	
+	
 	
 
 }

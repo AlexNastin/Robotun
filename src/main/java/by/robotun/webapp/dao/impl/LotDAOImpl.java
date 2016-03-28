@@ -64,7 +64,6 @@ public class LotDAOImpl implements ILotDAO {
 			throw new DaoException(e);
 			
 		}
-		
 		return lot;
 	}
 
@@ -131,5 +130,17 @@ public class LotDAOImpl implements ILotDAO {
 		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return lots;
+	}
+
+	@Override
+	public Lot selectLotByIdForModeration(int idLot) throws DaoException {
+		Lot lot = null;
+		try {
+			lot = (Lot) entityManager.createNamedQuery("Lot.findLotByIdForModeration").setParameter("id", idLot).getSingleResult();
+		} catch (NoResultException e) {
+			throw new DaoException(e);
+			
+		}
+		return lot;
 	}
 }

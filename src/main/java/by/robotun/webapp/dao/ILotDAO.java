@@ -35,5 +35,7 @@ public interface ILotDAO {
 	public List<Lot> selectMyLotsLimitOffset(int offset, int idUser) throws DaoException;
 	
 	public List<Lot> selectMyResponsesLimitOffset(int offset, int idUser) throws DaoException;
+	
+	public Lot selectLotByIdForModeration(int idLot) throws DaoException;
 
 }

@@ -40,6 +40,10 @@ public class Category implements Essence {
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Lot> lots;
+	
 	public int getIdCategory() {
 		return idCategory;
 	}
@@ -62,6 +66,14 @@ public class Category implements Essence {
 
 	public void setSubcategories(List<Subcategory> subcategories) {
 		this.subcategories = subcategories;
+	}
+
+	public List<Lot> getLots() {
+		return lots;
+	}
+
+	public void setLots(List<Lot> lots) {
+		this.lots = lots;
 	}
 
 	@Override
