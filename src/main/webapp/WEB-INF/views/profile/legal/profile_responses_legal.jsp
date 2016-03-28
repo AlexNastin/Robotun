@@ -26,8 +26,8 @@
 <a href='<c:url value="/legal/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 <a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 </div>
-<div class="col-md-10">
-<div class="text-admin-page-main col-md-12" id="list-group">Мои отклики:</div>
+<div class="col-md-10" id="list-group">
+<div class="text-admin-page-main col-md-12">Мои отклики:</div>
 <c:forEach items="${listLots}" var="lot">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">
