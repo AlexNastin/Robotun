@@ -5,20 +5,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-	
-	<security:authorize access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" var="userBool" />
-<security:authorize access="hasRole('ROLE_MODERATOR')"
-	var="moderatorBool" />
-<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
-<c:if test="${userBool}">
-	<c:set value="/user/profile" var="profileURL" />
-</c:if>
-<c:if test="${moderatorBool}">
-	<c:set value="/moderator/profile" var="profileURL" />
-</c:if>
-<c:if test="${adminBool}">
-	<c:set value="/admin/profile" var="profileURL" />
-</c:if>
 
 <!DOCTYPE HTML>
 <html>

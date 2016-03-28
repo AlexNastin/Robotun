@@ -3,6 +3,24 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
+<security:authorize access="hasRole('ROLE_USER_LEGAL')" var="userLegalBool" />
+<security:authorize access="hasRole('ROLE_USER_PHYSICAL')" var="userPhysicalBool" />
+<security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool" />
+<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
+<c:if test="${userLegalBool}">
+	<c:set value="/legal/profile/myResponses" var="profileURL" />
+</c:if>
+<c:if test="${userPhysicalBool}">
+	<c:set value="/physical/profile/myLots" var="profileURL" />
+</c:if>
+<c:if test="${moderatorBool}">
+	<c:set value="/moderator/profile" var="profileURL" />
+</c:if>
+<c:if test="${adminBool}">
+	<c:set value="/admin/profile" var="profileURL" />
+</c:if>
 
 <nav class="navbar navbar-default header-background-color">
     <div class="container-fluid">

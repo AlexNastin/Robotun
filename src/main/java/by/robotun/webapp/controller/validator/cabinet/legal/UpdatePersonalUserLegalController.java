@@ -22,7 +22,7 @@ import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 
 @Controller
-@RequestMapping("/user/secure/updatePersonalUserLegal")
+@RequestMapping("/legal/profile/updatePersonalData")
 public class UpdatePersonalUserLegalController {
 
 	@Autowired

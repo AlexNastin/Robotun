@@ -20,64 +20,63 @@ import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
-import by.robotun.webapp.service.ServiceParamConstant;
-
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	IUserService userService;
-	
+
 	@Autowired
 	IGuestService guestService;
-	
+
 	@RequestMapping(value = "/get/subcategories", method = RequestMethod.GET)
 	public @ResponseBody List<Subcategory> getAllSubcategoryWithCategory(
-			@RequestParam(value = "idCategory", required = true) Integer idCategory)
-			throws ServiceException {
-		List<Subcategory> subcategories = guestService
-				.getAllSubcategoryWithCategory(idCategory);
+			@RequestParam(value = "idCategory", required = true) Integer idCategory) throws ServiceException {
+		List<Subcategory> subcategories = guestService.getAllSubcategoryWithCategory(idCategory);
 		return subcategories;
 	}
-	
+
 	@RequestMapping(value = "/get/categories", method = RequestMethod.GET)
-	public @ResponseBody List<Category> getAllCategory()
-			throws ServiceException {
+	public @ResponseBody List<Category> getAllCategory() throws ServiceException {
 		return guestService.getAllCategories();
 	}
-	
-	@RequestMapping(value = "/user/profile", method = RequestMethod.GET)
-	public ModelAndView profileUser(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 
-		ModelAndView modelAndView = new ModelAndView();
-		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
-			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_LEGAL);
-			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
-		} else if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
-			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_PHYSICAL);
-			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
-		}
-		return modelAndView;
-	}
-	
-	@RequestMapping(value = "/user/myResponse", method = RequestMethod.GET)
-	public ModelAndView myResponse(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	@RequestMapping(value = "/physical/profile/myResponses", method = RequestMethod.GET)
+	public ModelAndView myResponsePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		ModelAndView modelAndView = new ModelAndView();
-		if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_LEGAL) {
-			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSE_LEGAL);
-			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
-		} else if (person.getIdRole()==ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
-			modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSE_PHYSICAL);
-			modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
-		}
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/physical/profile/myLots", method = RequestMethod.GET)
+	public ModelAndView myLotsPhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/legal/profile/myLots", method = RequestMethod.GET)
+	public ModelAndView myLotsLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/legal/profile/myResponses", method = RequestMethod.GET)
+	public ModelAndView myResponsesLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
+		return modelAndView;
+	}
+
 	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)
-	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser) throws ServiceException {
+	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser)
+			throws ServiceException {
 		List<String> phones = userService.getPhonesStringByIdUser(idUser);
 		return phones;
 	}
