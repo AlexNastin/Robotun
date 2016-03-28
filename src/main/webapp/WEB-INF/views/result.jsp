@@ -73,14 +73,6 @@
                                         <div class="col-md-3 text-center">
                                             <h2> ${lot.budget} <small> бел. руб. </small></h2>
                                             <button type="button" class="btn btn-default btn-lg btn-block"> Помочь! </button>
-                                            <div class="stars">
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </div>
-                                            <p> рейтинг 4.5 <small> / </small> 5 </p>
                                         </div>
                                     </a>
                                     </c:forEach>

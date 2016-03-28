@@ -29,5 +29,26 @@ public class AutoloaderService implements IAutoloaderService {
 		return lots;
 	}
 
-	
+	@Override
+	public List<Lot> getMyLots(int offset, int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectMyLotsLimitOffset(offset, idUser);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
+	@Override
+	public List<Lot> getMyResponses(int offset, int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectMyResponsesLimitOffset(offset, idUser);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
 }

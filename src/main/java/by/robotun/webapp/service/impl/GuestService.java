@@ -197,6 +197,7 @@ public class GuestService implements IGuestService {
 		return lots;
 	}
 
+	@Deprecated
 	@Override
 	public List<Lot> getAllLotsByCategory(int idCategory, Date endDate) throws ServiceException {
 		List<Lot> lots = new ArrayList<>();

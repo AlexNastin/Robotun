@@ -2,6 +2,8 @@ var block = false;
 //если true, то лотов больше нет
 var isEnd = false;
 $(window).scroll(function () {
+	console.log($(window).height() + $(window).scrollTop());
+	console.log($(document).height());
 	if($(window).height() + $(window).scrollTop() >= $(document).height() && !block && !isEnd) {
 		block = true;
 		loader();

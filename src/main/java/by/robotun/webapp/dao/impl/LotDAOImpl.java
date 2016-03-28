@@ -106,14 +106,30 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsCreatedUser(int idUser) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsCreatedUser").setParameter("id", idUser).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsCreatedUser").setParameter("id", idUser).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return lots;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsRespondedUser(int idUser) throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
+		return lots;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectMyLotsLimitOffset(int offset, int idUser) throws DaoException {
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsCreatedUser").setParameter("id", idUser).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
+		return lots;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectMyResponsesLimitOffset(int offset, int idUser) throws DaoException {
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return lots;
 	}
 }
