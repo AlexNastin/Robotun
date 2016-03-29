@@ -14,4 +14,6 @@ public interface IAutoloaderService {
 	
 	List<Lot> getMyResponses(int offset, int idUser) throws ServiceException;
 
+	List<Lot> getOnModeration(int offset) throws ServiceException;
+
 }

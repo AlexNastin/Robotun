@@ -50,6 +50,7 @@
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript"
 		src="<c:url value="/resources/js/profile/legal/autoloadMyLots.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/date.format.js" />"></script>
 		<script type="text/javascript">
 		function loader(){         
 			// «теневой» запрос к серверу

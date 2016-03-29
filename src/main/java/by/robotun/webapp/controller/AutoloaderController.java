@@ -56,4 +56,10 @@ public class AutoloaderController {
 		List<Lot> lots = autocompleteService.getMyResponses(offset, person.getId());
 		return lots;
 	}
+	
+	@RequestMapping(value = "/autoloader/moderator/onModeration", method = RequestMethod.GET)
+	public List<Lot> getOnModeration(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+		List<Lot> lots = autocompleteService.getOnModeration(offset);
+		return lots;
+	}
 }

@@ -38,4 +38,6 @@ public interface ILotDAO {
 	
 	public Lot selectLotByIdForModeration(int idLot) throws DaoException;
 
+	public List<Lot> selectOnModerationLimitOffset(int offset) throws DaoException;
+
 }

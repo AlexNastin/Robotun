@@ -98,7 +98,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsOnModeration() throws DaoException {
-		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).getResultList();
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return lots;
 	}
 
@@ -142,5 +142,13 @@ public class LotDAOImpl implements ILotDAO {
 			
 		}
 		return lot;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectOnModerationLimitOffset(int offset) throws DaoException {
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
+		return lots;
 	}
 }

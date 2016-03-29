@@ -34,7 +34,7 @@ public class AdminService implements IAdminService {
 		user.setIdCity(ServiceParamConstant.ID_CITY_MINSK);
 		user.setIdRole(ServiceParamConstant.ID_ROLE_MODERATOR);
 		user.setRegistrationDate(new Date());
-		System.out.println(propertyManager.getValue(PropertyName.MODERATOR_DEFAULT_PASSWORD));
+		user.setNickname(addModeratorForm.getLogin());
 		String md5Password = DigestUtils.md5Hex(propertyManager.getValue(PropertyName.MODERATOR_DEFAULT_PASSWORD));
 		user.setPassword(md5Password);
 		try {

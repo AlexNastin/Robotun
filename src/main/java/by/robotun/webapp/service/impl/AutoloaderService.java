@@ -51,4 +51,15 @@ public class AutoloaderService implements IAutoloaderService {
 		return lots;
 	}
 
+	@Override
+	public List<Lot> getOnModeration(int offset) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectOnModerationLimitOffset(offset);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
 }
