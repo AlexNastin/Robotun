@@ -36,14 +36,17 @@ public final class ControllerParamConstant {
 	public static final String LOT = "lot";
 	
 	public static final String USER = "user";
+	
+	//ID
+	public static final String ID_USER = "idUser";
+	
+	public static final String ID_ROLE = "idRole";
 
 	// OTHER
 
 	public static final String MESSAGE = "message";
 
 	public static final String PERSON = "person";
-
-	public static final String ID_USER = "idUser";
 	
 	public static final String NICKNAME = "nickname";
 
@@ -56,6 +59,8 @@ public final class ControllerParamConstant {
 	public static final String IS_ME_CALL = "isMeCall";
 	
 	public static final String IS_ELSE = "isElse";
+
+
 
 	
 

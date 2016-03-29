@@ -8,10 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Test</title>
+	<title>Просмотр профиля</title>
 </head>
 <body>
-<a href="<c:url value="/test1"/>">Test1</a>
-<a href="<c:url value="/viewUserProfile?id=52"/>">Профиль</a>
+${user.nickname}
+<c:if test="${idRole == 3}">
+	${user.physical.name}
+</c:if>
+<c:if test="${idRole == 2}">
+	${user.legal.nameEnterprise}
+</c:if>
 </body>
 </html>

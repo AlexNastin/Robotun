@@ -47,6 +47,9 @@
                 <a href="#" onclick="showNumberICall(${idUser})" id="${idUser}a">Посмотреть номер</a>
 				<div id="${idUser}"></div>
 				</c:if>
+				<security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								<c:if test="${!(idUser == lot.idUser)}">
 				<div class="col-md-12" style="padding-left:0px;">
 				 <div class="input-group " style="width:30%;">
           <span class="input-group-btn">
@@ -63,6 +66,11 @@
       </div>
       <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" href="#">Send</a>
 				</div>
+				</c:if>
+							</security:authorize>
+							<security:authorize access="hasRole('ROLE_GUEST')">
+								<a href='<c:url value="/login" />'>Войти</a>
+							</security:authorize>
 				</div>
            </div>
         </div>
@@ -140,17 +148,6 @@
 					
 					
 </div>
-<security:authorize
-								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<c:if test="${!(idUser == lot.idUser)}">
-								<div class="center">
-   
-	</div>
-	</c:if>
-							</security:authorize>
-							<security:authorize access="hasRole('ROLE_GUEST')">
-								<a href='<c:url value="/login" />'>Войти</a>
-							</security:authorize>
 </div>
 </div>
 </div>

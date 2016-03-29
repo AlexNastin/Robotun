@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
@@ -78,6 +79,16 @@ public class GuestController {
 			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/viewUserProfile", method = RequestMethod.GET)
+	public ModelAndView profileUserView(@RequestParam(value = "id", required = true) Integer idUser, Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {
+		User user = userService.getUserById(idUser);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_VIEW);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		modelAndView.addObject(ControllerParamConstant.ID_ROLE, user.getIdRole());
 		return modelAndView;
 	}
 

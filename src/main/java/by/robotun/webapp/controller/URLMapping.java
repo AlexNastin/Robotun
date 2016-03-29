@@ -10,6 +10,7 @@ public final class URLMapping {
 	public static final String JSP_SIGNUP = "login/signup";
 	public static final String JSP_PROFILE_MAIN_ADMIN = "profile/admin/profile_main_admin";
 	public static final String JSP_PROFILE_ADMIN_ADD_MODERATOR = "profile/admin/admin_add_moderator";
+	public static final String JSP_PROFILE_VIEW = "profile/profile_view";
 
 	public static final String JSP_PROFILE_RESPONSES_LEGAL = "profile/legal/profile_responses_legal";
 	public static final String JSP_PROFILE_PERSONAL_LEGAL = "profile/legal/profile_personal_legal";
