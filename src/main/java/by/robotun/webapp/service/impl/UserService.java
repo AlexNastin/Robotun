@@ -244,4 +244,13 @@ public class UserService implements IUserService {
 		}
 	}
 
+	@Override
+	public void deleteLot(Integer idLot) throws ServiceException {
+		try {
+			lotDAO.deleteLot(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
+
 }

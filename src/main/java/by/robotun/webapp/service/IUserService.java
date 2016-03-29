@@ -36,6 +36,8 @@ public interface IUserService {
 	public Lot getLotByIdForModeration(Integer idLot) throws ServiceException;
 
 	public void updateLot(UpdateLotForm updateLotForm) throws ServiceException;
+
+	public void deleteLot(Integer idLot) throws ServiceException;
 	
 	
 	

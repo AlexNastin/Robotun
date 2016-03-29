@@ -34,6 +34,8 @@ public final class URLMapping {
 
 	// REDIRECT
 	public static final String REDIRECT_MAIN = "redirect:/";
+	public static final String REDIRECT_PROFILE_LOTS_PHYSICAL = "redirect:/physical/profile/myLots";
+	public static final String REDIRECT_PROFILE_RESPONSES_LEGAL = "redirect:/legal/profile/myResponses";
 	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
 	public static final String REDIRECT_PROFILE_MAIN_MODERATOR = "redirect:/moderator/profile";
 }

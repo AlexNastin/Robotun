@@ -20,6 +20,7 @@ import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.ServiceParamConstant;
 
 @Controller
 public class UserController {
@@ -79,5 +80,18 @@ public class UserController {
 			throws ServiceException {
 		List<String> phones = userService.getPhonesStringByIdUser(idUser);
 		return phones;
+	}
+			
+	@RequestMapping(value = "/user/deleteLot", method = RequestMethod.GET)
+	public ModelAndView deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = null;
+		if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
+			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
+		} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
+			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
+		}
+		userService.deleteLot(idLot);
+		return modelAndView;
 	}
 }
