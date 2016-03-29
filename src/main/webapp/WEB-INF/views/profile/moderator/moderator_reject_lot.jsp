@@ -19,15 +19,15 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-3"></div>
 <div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em;">	
-${lot.name} <br>
-${lot.category.title} <br>
-${lot.subcategory.title} <br>
-${lot.startDate} <br>
-${lot.endDate} <br>
-${lot.description} <br>
-${lot.user.nickname} <br>
-${lot.budget} <br>
-${lot.isCall} <br>
+Название лота: ${lot.name} <br>
+Категория: ${lot.category.title} <br>
+Подкатегория: ${lot.subcategory.title} <br>
+Дата начала: ${lot.startDate} <br>
+Дата окончания: ${lot.endDate} <br>
+Описание: ${lot.description} <br>
+Никнейм пользователя: ${lot.user.nickname} <a href='<c:url value="/viewUserProfile?id=${lot.user.idUser}" />'>Посмотреть профиль</a><br>
+Бюджет: ${lot.budget} <br>
+Я звоню/мне звонят: ${lot.isCall} <br>
 <div class="col-md-12 text-style-legal-user">Проверка лота:</div>
 <form:form modelAttribute="rejectMessageForm" method="POST">
 <div class="form-group">
