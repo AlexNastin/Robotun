@@ -22,7 +22,8 @@ import by.robotun.webapp.domain.Physical;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
-import by.robotun.webapp.form.LotFormAdd;
+import by.robotun.webapp.form.AddLotForm;
+import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
 import by.robotun.webapp.form.UpdatePersonalUserPhysicalForm;
 import by.robotun.webapp.service.IUserService;
@@ -44,7 +45,7 @@ public class UserService implements IUserService {
 	private IPhoneDAO phoneDAO;
 
 	@Override
-	public void addLot(LotFormAdd addLotForm, int idUser) throws ServiceException {
+	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException {
 		try {
 			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 			Date startDate = new Date();
@@ -220,6 +221,27 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		return lot;
+	}
+
+	@Override
+	public void updateLot(UpdateLotForm updateLotForm) throws ServiceException {
+		Lot lot;
+		try {
+			lot = lotDAO.selectLotById(updateLotForm.getIdLot());
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+			Date endDate = dateFormat.parse(updateLotForm.getEndDate());
+			lot.setName(updateLotForm.getName());
+			lot.setEndDate(endDate);
+			lot.setIdCategory(updateLotForm.getIdCategory());
+			lot.setIdSubcategory(updateLotForm.getIdSubcategory());
+			lot.setBudget(updateLotForm.getBudget());
+			lot.setDescription(updateLotForm.getDescription());
+			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
+			lot.setIsCall(updateLotForm.getIsCall());
+			lotDAO.updateLot(lot);
+		} catch (DaoException | ParseException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 }

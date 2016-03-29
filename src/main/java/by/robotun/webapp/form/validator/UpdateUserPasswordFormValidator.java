@@ -9,26 +9,26 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import by.robotun.webapp.form.UserUpdatePasswordForm;
+import by.robotun.webapp.form.UpdateUserPasswordForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
 
 
 @Component
-public class UserUpdatePasswordFormValidator implements Validator{
+public class UpdateUserPasswordFormValidator implements Validator{
 
 	@Autowired
 	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return UserUpdatePasswordFormValidator.class.isAssignableFrom(arg0);
+		return UpdateUserPasswordFormValidator.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		UserUpdatePasswordForm personalSecurityForm = (UserUpdatePasswordForm) target;
+		UpdateUserPasswordForm personalSecurityForm = (UpdateUserPasswordForm) target;
 		Matcher matcher = null;
 		Pattern pattern = null;
 

@@ -20,6 +20,8 @@ public final class ControllerParamConstant {
 	public static final String UPDATE_PERSONAL_PHYSICAL_FORM = "updatePersonalPhysicalForm";
 	
 	public static final String UPDATE_PERSONAL_LEGAL_FORM = "updatePersonalLegalForm";
+	
+	public static final String UPDATE_LOT_FORM = "updateLotForm";
 
 	// LIST
 	public static final String LIST_CITIES = "listCities";
@@ -59,9 +61,4 @@ public final class ControllerParamConstant {
 	public static final String IS_ME_CALL = "isMeCall";
 	
 	public static final String IS_ELSE = "isElse";
-
-
-
-	
-
 }

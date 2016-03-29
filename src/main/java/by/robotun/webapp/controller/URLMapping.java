@@ -5,6 +5,7 @@ public final class URLMapping {
 	// PAGE
 	public static final String JSP_MAIN = "main";
 	public static final String JSP_ADD_LOT = "lot/add_lot";
+	public static final String JSP_UPDATE_LOT = "lot/update_lot";
 	public static final String JSP_RESULT = "result";
 	public static final String JSP_LOT = "lot/lot";
 	public static final String JSP_SIGNUP = "login/signup";

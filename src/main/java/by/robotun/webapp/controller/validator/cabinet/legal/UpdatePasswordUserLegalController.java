@@ -18,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.form.UserUpdatePasswordForm;
-import by.robotun.webapp.form.validator.UserUpdatePasswordFormValidator;
+import by.robotun.webapp.form.UpdateUserPasswordForm;
+import by.robotun.webapp.form.validator.UpdateUserPasswordFormValidator;
 import by.robotun.webapp.service.IGuestService;
 
 @Controller
@@ -27,7 +27,7 @@ import by.robotun.webapp.service.IGuestService;
 public class UpdatePasswordUserLegalController {
 
 	@Autowired
-	private UserUpdatePasswordFormValidator personalSecurityValidator;
+	private UpdateUserPasswordFormValidator personalSecurityValidator;
 
 	@Autowired
 	private IGuestService guestService;
@@ -38,14 +38,14 @@ public class UpdatePasswordUserLegalController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalSecurity(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("profile/physical/profile_update_password");
-		UserUpdatePasswordForm userUpdatePasswordForm = new UserUpdatePasswordForm();
+		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView personalDataValid(
-			@ModelAttribute("userUpdatePasswordForm") UserUpdatePasswordForm userUpdatePasswordForm,
+			@ModelAttribute("userUpdatePasswordForm") UpdateUserPasswordForm userUpdatePasswordForm,
 			BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);

@@ -37,6 +37,8 @@
 <div class="col-md-12 text-moderator-description">${lot.description}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: ${lot.endDate} </div>
+<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/deleteLot?id=${lot.idLot}" />'>Удалить</a></div>
+<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/updateLot?id=${lot.idLot}" />'>Изменить</a></div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
 </div>
 </div>

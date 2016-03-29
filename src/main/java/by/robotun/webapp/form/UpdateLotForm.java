@@ -2,7 +2,7 @@ package by.robotun.webapp.form;
 
 import by.robotun.webapp.domain.Essence;
 
-public class LotFormAdd implements Essence {
+public class UpdateLotForm implements Essence {
 
 	/**
 	 * 
@@ -16,6 +16,8 @@ public class LotFormAdd implements Essence {
 	private int idCategory;
 	private int idSubcategory;
 	private boolean isCall;
+	
+	private int idLot;
 	
 	public String getName() {
 		return name;
@@ -73,6 +75,14 @@ public class LotFormAdd implements Essence {
 		this.isCall = isCall;
 	}
 
+	public int getIdLot() {
+		return idLot;
+	}
+
+	public void setIdLot(int idLot) {
+		this.idLot = idLot;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +91,7 @@ public class LotFormAdd implements Essence {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
+		result = prime * result + idLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + (isCall ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -95,7 +106,7 @@ public class LotFormAdd implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LotFormAdd other = (LotFormAdd) obj;
+		UpdateLotForm other = (UpdateLotForm) obj;
 		if (budget != other.budget)
 			return false;
 		if (description == null) {
@@ -109,6 +120,8 @@ public class LotFormAdd implements Essence {
 		} else if (!endDate.equals(other.endDate))
 			return false;
 		if (idCategory != other.idCategory)
+			return false;
+		if (idLot != other.idLot)
 			return false;
 		if (idSubcategory != other.idSubcategory)
 			return false;
@@ -124,10 +137,10 @@ public class LotFormAdd implements Essence {
 
 	@Override
 	public String toString() {
-		return "LotFormAdd [name=" + name + ", endDate=" + endDate + ", description=" + description + ", budget="
+		return "UpdateLotForm [name=" + name + ", endDate=" + endDate + ", description=" + description + ", budget="
 				+ budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory + ", isCall=" + isCall
-				+ "]";
+				+ ", idLot=" + idLot + "]";
 	}
-
+	
 	
 }

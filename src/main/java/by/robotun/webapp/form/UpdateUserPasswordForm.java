@@ -2,7 +2,7 @@ package by.robotun.webapp.form;
 
 import by.robotun.webapp.domain.Essence;
 
-public class UserUpdatePasswordForm implements Essence {
+public class UpdateUserPasswordForm implements Essence {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class UserUpdatePasswordForm implements Essence {
 	private String password;
 	private String confirmPassword;
 
-	public UserUpdatePasswordForm() {
+	public UpdateUserPasswordForm() {
 		super();
 	}
 
@@ -59,7 +59,7 @@ public class UserUpdatePasswordForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserUpdatePasswordForm other = (UserUpdatePasswordForm) obj;
+		UpdateUserPasswordForm other = (UpdateUserPasswordForm) obj;
 		if (confirmPassword == null) {
 			if (other.confirmPassword != null)
 				return false;
@@ -80,7 +80,7 @@ public class UserUpdatePasswordForm implements Essence {
 
 	@Override
 	public String toString() {
-		return "UserUpdatePasswordForm [oldPassword=" + oldPassword + ", password=" + password + ", confirmPassword="
+		return "UpdateUserPasswordForm [oldPassword=" + oldPassword + ", password=" + password + ", confirmPassword="
 				+ confirmPassword + "]";
 	}
 
