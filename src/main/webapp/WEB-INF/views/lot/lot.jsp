@@ -271,9 +271,9 @@ function showNumberICall(idUser) {
 		success:function(number) {
 			var contentNumber = document.getElementById(idUser).innerHTML;
 			for(var i=0; i<number.length; i++) {
-				contentNumber = contentNumber + number[i]+ "<br>";
+				contentNumber = contentNumber + number[i];
 			}
-			document.getElementById(idUser).innerHTML = contentNumber;
+			document.getElementById(idUser).innerHTML = 'Связаться можно по телефону '+ '<a href="tel:'+contentNumber+ '">'+ contentNumber + '</a>';			
 			document.getElementById(idUser+"a").removeAttribute('onclick');
 		}
 	});
