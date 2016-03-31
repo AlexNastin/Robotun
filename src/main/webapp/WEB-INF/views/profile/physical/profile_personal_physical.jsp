@@ -51,7 +51,7 @@
 		</div>
 		<div class="form-group">
 		<c:forEach items="${user.phones}" var="phone">
-				<form:input path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
+				<form:input  style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
 		</c:forEach>
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />
