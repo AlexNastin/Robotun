@@ -21,6 +21,7 @@ import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.ServiceParamConstant;
 
 @Controller
 public class GuestController {
@@ -54,37 +55,50 @@ public class GuestController {
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
-		List<Category> categories = guestService.getAllCategories();
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOT);
-		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
-		modelAndView.addObject(ControllerParamConstant.LOT, lot);
-		modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
-		modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
-		modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
-		modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
-		if (person != null) {
-			if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
-				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
-			} else if(!lot.getIsCall()) {
-				if(guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId())>0) {
-					modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
-					modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS, userService.getPhonesStringByIdUser(person.getId()));
-				}
-			} else {
-				modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
+		Date date = new Date();
+		ModelAndView modelAndView = new ModelAndView();
+		if (lot.getIsVisible() == ServiceParamConstant.ON_MODERATION_NUMBER
+				|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
+		} else if (lot.getEndDate().getTime() < date.getTime() || lot.getIsVisible() == ServiceParamConstant.ON_DISABLE_NUMBER) {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_EXPIRE_DATE);
+			if (lot.getIsVisible() != ServiceParamConstant.ON_DISABLE_NUMBER) {
+				guestService.setDisableLot(idLot);
 			}
-			modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-			modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		} else {
-			modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
+			List<Category> categories = guestService.getAllCategories();
+			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
+			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
+			modelAndView.addObject(ControllerParamConstant.LOT, lot);
+			modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
+			modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
+			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
+			modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
+			if (person != null) {
+				if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
+					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
+				} else if (!lot.getIsCall()) {
+					if (guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId()) > 0) {
+						modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
+						modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
+								userService.getPhonesStringByIdUser(person.getId()));
+					}
+				} else {
+					modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
+				}
+				modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+				modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+			} else {
+				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
+			}
+			modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/viewUserProfile", method = RequestMethod.GET)
-	public ModelAndView profileUserView(@RequestParam(value = "id", required = true) Integer idUser, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
+	public ModelAndView profileUserView(@RequestParam(value = "id", required = true) Integer idUser, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
 		User user = userService.getUserById(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_VIEW);
 		modelAndView.addObject(ControllerParamConstant.USER, user);

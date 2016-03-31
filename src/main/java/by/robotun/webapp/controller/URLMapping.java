@@ -38,4 +38,8 @@ public final class URLMapping {
 	public static final String REDIRECT_PROFILE_RESPONSES_LEGAL = "redirect:/legal/profile/myResponses";
 	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
 	public static final String REDIRECT_PROFILE_MAIN_MODERATOR = "redirect:/moderator/profile";
+	
+	//ERROR JSP
+	public static final String JSP_ERROR_ON_MODERATION = "error/error_on_moderation";
+	public static final String JSP_ERROR_EXPIRE_DATE = "error/error_expire_date";
 }

@@ -51,6 +51,8 @@ public interface IGuestService {
 	long getCountBetByLot(Integer idLot) throws ServiceException;
 	
 	long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException;
+	
+	void setDisableLot(Integer idLot) throws ServiceException;
 
 	
 }
