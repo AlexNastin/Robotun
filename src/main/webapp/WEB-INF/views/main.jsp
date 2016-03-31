@@ -12,6 +12,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
     <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
+    <link rel="icon" href="<c:url value="/resources/images/favicon.png" />"
+	type="image/x-icon">
     
 <title>main</title>
 </head>
