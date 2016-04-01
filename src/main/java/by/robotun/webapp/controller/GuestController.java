@@ -55,16 +55,10 @@ public class GuestController {
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
-		Date date = new Date();
 		ModelAndView modelAndView = new ModelAndView();
 		if (lot.getIsVisible() == ServiceParamConstant.ON_MODERATION_NUMBER
 				|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
-		} else if (lot.getEndDate().getTime() < date.getTime() || lot.getIsVisible() == ServiceParamConstant.ON_DISABLE_NUMBER) {
-			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_EXPIRE_DATE);
-			if (lot.getIsVisible() != ServiceParamConstant.ON_DISABLE_NUMBER) {
-				guestService.setDisableLot(idLot);
-			}
 		} else {
 			List<Category> categories = guestService.getAllCategories();
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);

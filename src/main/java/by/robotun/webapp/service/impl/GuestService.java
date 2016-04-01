@@ -332,15 +332,4 @@ public class GuestService implements IGuestService {
 		}
 		return count;
 	}
-
-	@Override
-	public void setDisableLot(Integer idLot) throws ServiceException {
-		try {
-			Lot lot = lotDAO.selectLotById(idLot);
-			lot.setIsVisible(ServiceParamConstant.ON_DISABLE_NUMBER);
-			lotDAO.updateLot(lot);
-		} catch (DaoException e) {
-			throw new ServiceException(e);
-		}		
-	}
 }
