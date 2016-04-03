@@ -20,6 +20,7 @@
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
 <a href='<c:url value="/physical/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
+<a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по лотам</a>
 <a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
 <a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 </div>
