@@ -33,4 +33,7 @@
 	<!-- Файл с настройками Mail -->
 	<import resource="spring-mail.xml" />
 
+	<!-- Файл с настройками Redis -->
+	<import resource="redis.xml" />
+	
 </beans>

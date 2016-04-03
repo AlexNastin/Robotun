@@ -16,5 +16,7 @@
 
 <a href="<c:url value="/"/>">Test</a>
 
+<a href="<c:url value="/redisTest"/>">Redis</a>
+
 </body>
 </html>
