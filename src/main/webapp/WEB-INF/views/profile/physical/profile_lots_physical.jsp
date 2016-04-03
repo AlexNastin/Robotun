@@ -38,11 +38,34 @@
 <div class="col-md-12 text-moderator-description">${lot.description}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: ${lot.endDate} </div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/deleteLot?id=${lot.idLot}" />'>Удалить</a></div>
+
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/updateLot?id=${lot.idLot}" />'>Изменить</a></div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
+<div class="col-md-12" style="text-align:right;"><button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main">Удалить</button></div>
 </div>
 </div>
+
+		
+		<div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Подтверждение удаления</h4>
+        </div>
+        <div class="modal-body">
+          <p>Это действие удалит лот навсегда и никто о нём не узнает :(</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+          <a  class="btn btn-danger" href='<c:url value="/user/deleteLot?id=${lot.idLot}" />' >Удалить</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </c:forEach>
 </div>
 <div class="load"></div>

@@ -50,7 +50,7 @@
 				<security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 								<c:if test="${!(idUser == lot.idUser)}">
-				<div class="col-md-12" style="padding-left:0px;">
+				<div id="inputs" class="col-md-12" style="padding-left:0px;">
 				 <div class="input-group " style="width:30%;">
           <span class="input-group-btn">
               <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
@@ -286,10 +286,9 @@ var time = new Date(timing).getTime();
 var date = new Date(time);
 var now = new Date();
 
-if (now==date){
-	 document.getElementById("myBtn1").disabled = true;
-	 document.getElementById("displus").disabled = true;
-}
+if (now>=date){
+	$('#inputs').remove();
+	}
 
 $('.countdown').downCount({
     date: date,
