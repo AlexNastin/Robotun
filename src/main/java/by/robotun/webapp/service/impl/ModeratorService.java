@@ -41,6 +41,7 @@ public class ModeratorService implements IModeratorService {
 	public void addRejectMessage(RejectMessageForm rejectMessageForm, int idUser) throws ServiceException {
 		RejectMessage rejectMessage = new RejectMessage();
 		rejectMessage.setIdUser(idUser);
+		System.err.println(rejectMessageForm.getIdLot());
 		rejectMessage.setIdLot(rejectMessageForm.getIdLot());
 		rejectMessage.setDate(new Date());
 		rejectMessage.setMessage(rejectMessageForm.getText());

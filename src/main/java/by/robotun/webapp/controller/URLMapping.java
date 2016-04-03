@@ -16,10 +16,12 @@ public final class URLMapping {
 	public static final String JSP_PROFILE_RESPONSES_LEGAL = "profile/legal/profile_responses_legal";
 	public static final String JSP_PROFILE_PERSONAL_LEGAL = "profile/legal/profile_personal_legal";
 	public static final String JSP_PROFILE_LOTS_LEGAL = "profile/legal/profile_lots_legal";
+	public static final String JSP_PROFILE_LOTS_ON_UPDATE_LEGAL = "profile/legal/profile_lots_on_update_legal";
 
 	public static final String JSP_PROFILE_LOTS_PHYSICAL = "profile/physical/profile_lots_physical";
 	public static final String JSP_PROFILE_PERSONAL_PHYSICAL = "profile/physical/profile_personal_physical";
 	public static final String JSP_PROFILE_RESPONSES_PHYSICAL = "profile/physical/profile_responses_physical";
+	public static final String JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL = "profile/physical/profile_lots_on_update_physical";
 
 	public static final String JSP_PROFILE_MAIN_MODERATOR = "profile/moderator/profile_main_moderator";
 	public static final String JSP_PROFILE_MODERATOR_REJECT_LOT = "profile/moderator/moderator_reject_lot";

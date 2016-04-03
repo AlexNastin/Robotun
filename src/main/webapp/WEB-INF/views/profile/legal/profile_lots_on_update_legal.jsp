@@ -8,7 +8,7 @@
 	<!DOCTYPE HTML>
 <html>
 <head>
-<title>Личный кабинет физического лица</title>
+<title>Личный кабинет юридического лица</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
@@ -20,14 +20,14 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile active-menu">Мои лоты</a>
-<a href='<c:url value="/physical/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
-<a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по лотам</a>
-<a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
-<a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
+<a href='<c:url value="/legal/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
+<a href='<c:url value="/legal/profile/myLots" />' class="list-group-item background-color-menu-profile active-menu">Мои лоты</a>
+<a href='<c:url value="/legal/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile active-menu">Замечания по лотам</a>
+<a href='<c:url value="/legal/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
+<a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 </div>
 <div class="col-md-10" id="list-group">
-<div class="text-admin-page-main col-md-12">Мои лоты:</div>
+<div class="text-admin-page-main col-md-12">Замечания по лотам:</div>
 <c:forEach items="${listLots}" var="lot">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">
@@ -38,9 +38,12 @@
 <div class="col-md-12 text-moderator-description">${lot.description}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: ${lot.endDate} </div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Причины отказа:</div>
+<c:forEach items="${lot.rejectMessages}" var="message">
+${message.message}  ${message.date}
+</c:forEach>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/deleteLot?id=${lot.idLot}" />'>Удалить</a></div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/updateLot?id=${lot.idLot}" />'>Изменить</a></div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
 </div>
 </div>
 </c:forEach>
@@ -51,14 +54,14 @@
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript"
-		src="<c:url value="/resources/js/profile/physical/autoloadMyLots.js" />"></script>
+		src="<c:url value="/resources/js/profile/legal/autoloadLotsOnUpdate.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/date.format.js" />"></script>
 		<script type="text/javascript">
 		function loader(){         
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
 							$.ajax({
-								url:"/webapp/autoloader/physical/myLots",
+								url:"/webapp/autoloader/legal/lotsOnUpdate",
 								type:"GET",
 								data:{
 									//передаем параметры

@@ -16,4 +16,6 @@ public interface IAutoloaderService {
 
 	List<Lot> getOnModeration(int offset) throws ServiceException;
 
+	List<Lot> getLotsOnUpdate(Integer offset, int idUser) throws ServiceException;
+
 }

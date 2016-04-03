@@ -151,4 +151,19 @@ public class LotDAOImpl implements ILotDAO {
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findAllLotOnModeration").setParameter("isVisible", ServiceParamConstant.ON_MODERATION_NUMBER).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return lots;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotsOnUpdateByUser(int idUser) throws DaoException {
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotOnUpdateByUser").setParameter("isVisible", ServiceParamConstant.ON_UPDATE_NUMBER).setParameter("id", idUser).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
+		return lots;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Lot> selectLotsOnUpdateByUserLimitOffset(int offset, int idUser) throws DaoException {
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotOnUpdateByUser").setParameter("isVisible", ServiceParamConstant.ON_UPDATE_NUMBER).setParameter("id", idUser).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
+		return lots;
+	}
 }

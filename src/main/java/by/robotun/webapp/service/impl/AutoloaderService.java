@@ -62,4 +62,15 @@ public class AutoloaderService implements IAutoloaderService {
 		return lots;
 	}
 
+	@Override
+	public List<Lot> getLotsOnUpdate(Integer offset, int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotsOnUpdateByUserLimitOffset(offset, idUser);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
 }

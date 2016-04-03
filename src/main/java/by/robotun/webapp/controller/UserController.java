@@ -59,6 +59,14 @@ public class UserController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/physical/profile/lotsOnUpdate", method = RequestMethod.GET)
+	public ModelAndView lotsOnUpdatePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsOnUpdateByUser(person.getId()));
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/legal/profile/myLots", method = RequestMethod.GET)
 	public ModelAndView myLotsLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
@@ -75,6 +83,13 @@ public class UserController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/legal/profile/lotsOnUpdate", method = RequestMethod.GET)
+	public ModelAndView lotsOnUpdateLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsOnUpdateByUser(person.getId()));
+		return modelAndView;
+	}
 	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)
 	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser)
 			throws ServiceException {

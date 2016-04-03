@@ -7,7 +7,7 @@
 	prefix="security"%>
 <html>
 <head>
-<title>Добавление модератора</title>
+<title>Проверка лота</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
@@ -35,7 +35,7 @@
 			<form:errors path="text" />
 	        </div>
 	        <div class="form-group">
-			<form:input class="form-control" path="idLot" value="${lot.idLot}" disabled="true"/>
+			<form:input class="form-control" path="idLot" value="${lot.idLot}"/>
 			</div>
 			<div style="text-align:center;">
 			<input class="button-on-add-lot btn btn-primary button-moderator-style" type="submit" value="Отправить причину" />

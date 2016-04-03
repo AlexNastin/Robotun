@@ -253,4 +253,15 @@ public class UserService implements IUserService {
 		}
 	}
 
+	@Override
+	public List<Lot> getLotsOnUpdateByUser(int idUser) throws ServiceException {
+		List<Lot> lots = new ArrayList<>();
+		try {
+			lots = lotDAO.selectLotsOnUpdateByUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
 }

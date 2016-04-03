@@ -46,6 +46,7 @@ public class RejectMessageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView rejectMessageValidation(@ModelAttribute(ControllerParamConstant.REJECT_MESSAGE_FORM) RejectMessageForm rejectMessageForm,
 		BindingResult result, HttpSession httpSession) throws Exception {
+		System.err.println(rejectMessageForm);
 		rejectMessageFormValidator.validate(rejectMessageForm, result);
 		if (result.hasErrors()) {
 		}
