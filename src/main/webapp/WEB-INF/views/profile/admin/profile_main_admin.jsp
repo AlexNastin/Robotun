@@ -50,9 +50,6 @@
 </div>
 </div>
 </div>
-<a type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</a>
-
-
   
 
 <%@include file="/WEB-INF/views/footer.jsp"%>

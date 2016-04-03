@@ -78,7 +78,29 @@
    
     
 			<div class="form-group" style="text-align:center;">
-		<input type="submit" class="button-add-lot-style btn btn-primary" value="Добавить"/>
+		<button type="button" data-toggle="modal" data-target="#edit" class="button-add-lot-style btn btn-primary">Изменить</button>
+		
+		<div class="modal fade" id="edit" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Подтверждение измены</h4>
+        </div>
+        <div class="modal-body">
+          <p>После нажатия подтверждения лот отправится на модерацию снова.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+          <button type="submit" class="btn btn-danger" >Изменить</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+		
 		</div>
 	</form:form>
 	</div>
