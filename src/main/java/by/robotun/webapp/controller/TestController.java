@@ -25,5 +25,10 @@ public class TestController {
 	public String test(Locale locale, Model model) {
 		return "test";
 	}
+	
+	@RequestMapping(value = "/angularTest", method = RequestMethod.GET)
+	public String angularTest(Locale locale, Model model) {
+		return "angularTest";
+	}
 
 }

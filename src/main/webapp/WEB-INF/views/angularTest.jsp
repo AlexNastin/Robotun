@@ -14,11 +14,7 @@
 </div>
 
 
-<a href="<c:url value="/"/>">Test</a>
-
-<a href="<c:url value="/redisTest"/>">Redis</a>
-
-<a href="<c:url value="/angularTest"/>">Angular</a>
+sfgrgh
 
 </body>
 </html>
