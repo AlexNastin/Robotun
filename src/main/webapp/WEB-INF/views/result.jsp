@@ -7,7 +7,7 @@
 	prefix="security"%>
 
 <!DOCTYPE HTML>
-<html>
+<html ng-app="app">
 <head>
 <title>Результаты поиска</title>
 
@@ -27,7 +27,8 @@
 	
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>       
+	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>  
+	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>     
    
     
 	</head>
@@ -58,24 +59,24 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class=" resize list-group" id="list-group">
-                                <c:forEach items="${listLots}" var="lot">
-                                    <a href='<c:url value="/lot?id=${lot.idLot}"/>' class="list-group-item">
+                                <div class=" resize list-group" id="list-group" ng-controller="LotsController">
+                                
+                                    <a href='#' class="list-group-item" ng-repeat="lot in lots">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
-                                                <img class="media-object img-rounded img-responsive"  src="<c:url value="/resources/images/logoJob.png"/>">
+                                                <img class="media-object img-rounded img-responsive"  src="/webapp/resources/images/logoJob.png">
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="list-group-item-heading"> ${lot.name} </h4>
-                                            <p class="list-group-item-text"> ${lot.description}</p>
+                                            <h4 class="list-group-item-heading">{{lot.name}}</h4>
+                                            <p class="list-group-item-text">{{lot.description}}</p>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <h2> ${lot.budget} <small> бел. руб. </small></h2>
+                                            <h2>{{lot.budget}}<small> бел. руб. </small></h2>
                                             <button type="button" class="btn btn-default btn-lg btn-block"> Помочь! </button>
                                         </div>
                                     </a>
-                                    </c:forEach>
+                                    
                                 </div>
                                 <div class="load"></div>
                             </div>
@@ -90,6 +91,23 @@
     </div>
     
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script type="text/javascript">
+var jsonData = '${listLotsJson}';
+var app = angular.module('app', []);
+
+app.controller('LotsController', ['$scope', '$http', mainLotsController]);
+
+function mainLotsController ($scope) {
+	var data = JSON.parse(jsonData);
+	console.log(data);
+	      $scope.lots = [];
+	      angular.forEach(data, function(lot) {
+	        $scope.lots.push(lot);
+	      });
+
+	
+}
+</script>
 <script type="text/javascript"
 		src="<c:url value="/resources/js/results/autoload.js" />"></script>
 		<script type="text/javascript">

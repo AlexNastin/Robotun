@@ -26,10 +26,12 @@
 
 var app = angular.module('app', []);
 
-app.controller('CompaniesController', ['$scope', '$http', mainController]);
+app.controller('CompaniesController', ['$scope', mainController]);
 
-function mainController ($scope, $http) {
-	$http.get('/webapp/resources/js/angular/companies.json').success(function(data) {
+function mainController ($scope) {
+	var f = '[{"title": "EPAM","technologies": ["PHP",".net","Java","Mobile","Objective-C","Python","Ruby"],"location": "Belarus","city": "Minsk"},{"title": "Parallels","technologies": ["PHP","Java","C++","iOS Development","C#","Ember.js"],"location": "Russia","city": "Moscow"}]';
+	var data = JSON.parse(f);
+	
 	      $scope.companies = [];
 	      $scope.technologies = [];
 	      angular.forEach(data, function(company) {
@@ -40,7 +42,7 @@ function mainController ($scope, $http) {
 	          }
 	        });
 	      });
-	    });
+
 	
 }
 </script>
