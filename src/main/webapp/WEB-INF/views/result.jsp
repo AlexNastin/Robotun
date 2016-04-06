@@ -59,9 +59,10 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class=" resize list-group" id="list-group" ng-controller="LotsController">
+                               
+                                <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
                                 
-                                    <a href='#' class="list-group-item" ng-repeat="lot in lots">
+                                    <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
@@ -91,50 +92,55 @@
     </div>
     
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <script type="text/javascript">
+
 var jsonData = '${listLotsJson}';
 var app = angular.module('app', []);
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 function mainLotsController ($scope) {
+	var vm = this;
+	vm.updateCustomRequest = function (scope) {
+		vm.lots = scope.lotsCtrl.lots;
+	};
 	var data = JSON.parse(jsonData);
-	console.log(data);
-	      $scope.lots = [];
-	      angular.forEach(data, function(lot) {
-	        $scope.lots.push(lot);
-	      });
-
-	
+	vm.lots = [];
+	angular.forEach(data, function(lot) {
+		vm.lots.push(lot);
+	});
+	console.log(vm.lots);
 }
-</script>
-<script type="text/javascript"
-		src="<c:url value="/resources/js/results/autoload.js" />"></script>
-		<script type="text/javascript">
-		function loader(){         
-			// «теневой» запрос к серверу
-			$(".load").fadeIn(500, function () {
-							$.ajax({
-								url:"autoloader/allResults",
-								type:"GET",
-								data:{
-									//передаем параметры
-									offset: offset
-								},
-								success:function(data) {
-									if(data.length == 0) {
-										isEnd = true;
-									}
-									for(var i=0; i<data.length; i++) {
-										print(data[i].idLot, data[i].name, data[i].description, data[i].budget);
-									}
-									offset++;
-									block = false;
-								}
+
+function loader(){
+	var scope = angular.element(document.getElementById("list-group")).scope();
+	// «теневой» запрос к серверу
+	$(".load").fadeIn(500, function () {
+					$.ajax({
+						url:"autoloader/allResults",
+						type:"GET",
+						data:{
+							//передаем параметры
+							offset: offset
+						},
+						success:function(data) {
+							if(data.length == 0) {
+								isEnd = true;
+							}
+							for(var i=0; i<data.length; i++) {
+								scope.lotsCtrl.lots.push(data[i]);
+							}
+							scope.$apply(function () {
+								scope.lotsCtrl.updateCustomRequest(scope);
 							});
-						});
-			}
-		</script>
+							offset++;
+							block = false;
+						}
+					});
+				});
+	}
+</script>
 
 </body>
 </html>
