@@ -63,7 +63,7 @@
                                 <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
                                 
                                     <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
-                                        <div class="media col-md-3">
+                                    <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
                                             </figure>
