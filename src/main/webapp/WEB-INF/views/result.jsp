@@ -59,20 +59,22 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class=" resize list-group" id="list-group" ng-controller="LotsController">
+                               
+                                <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
+                                {{lotsCtrl.lots.length}}
                                 
-                                    <a href='#' class="list-group-item" ng-repeat="lot in lots">
+                                    <a href='/jobster.by/lot?id={{lotsCtrl.lot.idLot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="list-group-item-heading">{{lot.name}}</h4>
-                                            <p class="list-group-item-text">{{lot.description}}</p>
+                                            <h4 class="list-group-item-heading">{{lotsCtrl.lot.name}}</h4>
+                                            <p class="list-group-item-text">{{lotsCtrl.lot.description}}</p>
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <h2>{{lot.budget}}<small> бел. руб. </small></h2>
+                                            <h2>{{lotsCtrl.lot.budget}}<small> бел. руб. </small></h2>
                                             <button type="button" class="btn btn-default btn-lg btn-block"> Помочь! </button>
                                         </div>
                                     </a>
@@ -91,50 +93,54 @@
     </div>
     
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <script type="text/javascript">
+
 var jsonData = '${listLotsJson}';
 var app = angular.module('app', []);
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 function mainLotsController ($scope) {
+	var vm = this;
+	vm.updateCustomRequest = function (scope) {
+		vm.lots = scope.lotsCtrl.lots;
+	};
 	var data = JSON.parse(jsonData);
-	console.log(data);
-	      $scope.lots = [];
-	      angular.forEach(data, function(lot) {
-	        $scope.lots.push(lot);
-	      });
-
-	
+	vm.lots = [];
+	angular.forEach(data, function(lot) {
+		vm.lots.push(lot);
+	});
 }
-</script>
-<script type="text/javascript"
-		src="<c:url value="/resources/js/results/autoload.js" />"></script>
-		<script type="text/javascript">
-		function loader(){         
-			// «теневой» запрос к серверу
-			$(".load").fadeIn(500, function () {
-							$.ajax({
-								url:"autoloader/allResults",
-								type:"GET",
-								data:{
-									//передаем параметры
-									offset: offset
-								},
-								success:function(data) {
-									if(data.length == 0) {
-										isEnd = true;
-									}
-									for(var i=0; i<data.length; i++) {
-										print(data[i].idLot, data[i].name, data[i].description, data[i].budget);
-									}
-									offset++;
-									block = false;
-								}
+
+function loader(){
+	var scope = angular.element(document.getElementById("list-group")).scope();
+	// «теневой» запрос к серверу
+	$(".load").fadeIn(500, function () {
+					$.ajax({
+						url:"autoloader/allResults",
+						type:"GET",
+						data:{
+							//передаем параметры
+							offset: offset
+						},
+						success:function(data) {
+							if(data.length == 0) {
+								isEnd = true;
+							}
+							for(var i=0; i<data.length; i++) {
+								scope.lotsCtrl.lots.push(data[i]);
+							}
+							scope.$apply(function () {
+								scope.lotsCtrl.updateCustomRequest(scope);
 							});
-						});
-			}
-		</script>
+							offset++;
+							block = false;
+						}
+					});
+				});
+	}
+</script>
 
 </body>
 </html>
