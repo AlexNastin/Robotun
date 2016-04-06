@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "lot")
@@ -44,6 +45,7 @@ public class Lot implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLot;
 
+	@JsonProperty("name")
 	@Column(name = "name")
 	private String name;
 	
@@ -53,24 +55,29 @@ public class Lot implements Essence {
 	@Column(name = "id_subcategory")
 	private int idSubcategory;
 	
+	@JsonProperty("start_date")
 	@Column(name = "start_date")
 	private Date startDate;
 	
+	@JsonProperty("endDate")
 	@Column(name = "end_date")
 	private Date endDate;
 	
+	@JsonProperty("description")
 	@Column(name = "description")
 	private String description;
 	
 	@Column(name = "id_user")
 	private int idUser;
 	
+	@JsonProperty("budget")
 	@Column(name = "budget")
 	private int budget;
 	
 	@Column(name = "is_visible")
 	private int isVisible;
 	
+	@JsonProperty("isCall")
 	@Column(name = "is_call")
 	private boolean isCall;
 	

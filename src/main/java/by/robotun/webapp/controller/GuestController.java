@@ -22,10 +22,14 @@ import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 public class GuestController {
 
+	@Autowired
+	private SerializationJSON serializationJSON;
+	
 	@Autowired
 	private IGuestService guestService;
 
@@ -46,6 +50,7 @@ public class GuestController {
 		List<Category> categories = guestService.getAllCategories();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJson(lots));
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		return modelAndView;
 	}

@@ -61,4 +61,7 @@ public final class ControllerParamConstant {
 	public static final String IS_ME_CALL = "isMeCall";
 	
 	public static final String IS_ELSE = "isElse";
+	
+	public static final String LIST_LOTS_JSON = "lotsJson";
+	
 }

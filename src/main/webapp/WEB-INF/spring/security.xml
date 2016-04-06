@@ -20,6 +20,8 @@
 
 		<!-- Role links -->
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/physical/**" access="hasRole('ROLE_USER_PHYSICAL')" />
+		<intercept-url pattern="/legal/**" access="hasRole('ROLE_USER_LEGAL')" />
 		<intercept-url pattern="/user/**"
 			access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" />
 		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
