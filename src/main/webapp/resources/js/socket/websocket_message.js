@@ -1,4 +1,4 @@
-var wsUri = "ws://" + document.location.host + "/webapp/messagesocket/"+id;
+var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
 var websocket = new WebSocket(wsUri);
 
 websocket.onerror = function(evt) { onError(evt) };

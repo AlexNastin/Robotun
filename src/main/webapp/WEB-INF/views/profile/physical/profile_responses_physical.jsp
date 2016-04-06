@@ -57,7 +57,7 @@
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
 							$.ajax({
-								url:"/webapp/autoloader/physical/myResponses",
+								url:"/jobster.by/autoloader/physical/myResponses",
 								type:"GET",
 								data:{
 									//передаем параметры

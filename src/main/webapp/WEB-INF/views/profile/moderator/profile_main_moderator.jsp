@@ -53,7 +53,7 @@
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
 							$.ajax({
-								url:"/webapp/autoloader/moderator/onModeration",
+								url:"/jobster.by/autoloader/moderator/onModeration",
 								type:"GET",
 								data:{
 									//передаем параметры

@@ -61,7 +61,7 @@ ${message.message}  ${message.date}
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
 							$.ajax({
-								url:"/webapp/autoloader/legal/lotsOnUpdate",
+								url:"/jobster.by/autoloader/legal/lotsOnUpdate",
 								type:"GET",
 								data:{
 									//передаем параметры

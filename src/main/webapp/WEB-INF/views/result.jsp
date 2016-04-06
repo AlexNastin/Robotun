@@ -64,7 +64,7 @@
                                     <a href='#' class="list-group-item" ng-repeat="lot in lots">
                                         <div class="media col-md-3">
                                             <figure class="pull-left">
-                                                <img class="media-object img-rounded img-responsive"  src="/webapp/resources/images/logoJob.png">
+                                                <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
