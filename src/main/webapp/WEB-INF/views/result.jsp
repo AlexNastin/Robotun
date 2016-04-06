@@ -96,9 +96,11 @@
 <script type="text/javascript">
 
 var jsonData = '${listLotsJson}';
+var jsonDataCategories = '${listCategoriesJson}';
 var app = angular.module('app', []);
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
+app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
 
 function mainLotsController ($scope) {
 	var vm = this;
@@ -110,7 +112,15 @@ function mainLotsController ($scope) {
 	angular.forEach(data, function(lot) {
 		vm.lots.push(lot);
 	});
-	console.log(vm.lots);
+}
+
+function categoriesController ($scope) {
+	var vm = this;
+	var dataCategories = JSON.parse(jsonDataCategories);
+	vm.categories = [];
+	angular.forEach(dataCategories, function(category) {
+		vm.categories.push(category);
+	});
 }
 
 function loader(){

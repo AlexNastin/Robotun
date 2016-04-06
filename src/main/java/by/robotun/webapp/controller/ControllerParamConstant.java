@@ -35,6 +35,8 @@ public final class ControllerParamConstant {
 	public static final String LIST_NUMBERS = "listNumbers";
 	
 	public static final String LIST_LOTS_JSON = "listLotsJson";
+	
+	public static final String LIST_CATEGORIES_JSON = "listCategoriesJson";
 
 	// ONE
 	public static final String LOT = "lot";

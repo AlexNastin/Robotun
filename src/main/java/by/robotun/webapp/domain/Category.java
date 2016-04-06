@@ -36,7 +36,6 @@ public class Category implements Essence {
 	@Column(name = "title")
 	private String title;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 
