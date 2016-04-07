@@ -4,7 +4,7 @@ package by.robotun.webapp.domain;
  * @author Stepanov
  *
  */
-public class Person extends User{
+public class Person{
 
 	/**
 	 * 

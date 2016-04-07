@@ -21,4 +21,9 @@ public class VotingService implements IVotingService {
 	public Integer getVotingLot(String idLot) {
 		return redisDAO.getVotingLot(idLot);
 	}
+
+	@Override
+	public Integer checkVotingLot(String idLot, int idUser) {
+		return redisDAO.checkVotingLot(idLot, idUser);
+	}
 }

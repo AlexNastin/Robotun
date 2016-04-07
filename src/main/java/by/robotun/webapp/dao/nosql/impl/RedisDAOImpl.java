@@ -1,12 +1,10 @@
 package by.robotun.webapp.dao.nosql.impl;
 
 import java.util.Collection;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.hibernate.metamodel.source.binder.SubclassEntitySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -35,11 +33,22 @@ public class RedisDAOImpl implements IRedisDAO {
 	@Override
 	public Integer getVotingLot(String idLot) {
 		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
-		Collection<Integer> valuesVotingLot =  votingLot.values();
+		Collection<Integer> valuesVotingLot = votingLot.values();
 		Integer summ = 0;
 		for (Integer integer : valuesVotingLot) {
 			summ += integer;
 		}
 		return summ;
+	}
+
+	@Override
+	public Integer checkVotingLot(String idLot, Integer idUser) {
+		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
+		Integer vote = votingLot.get(String.valueOf(idUser));
+		if (vote == null) {
+			vote = 0;
+		}
+		return vote;
+
 	}
 }
