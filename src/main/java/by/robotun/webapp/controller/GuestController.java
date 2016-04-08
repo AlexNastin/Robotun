@@ -73,7 +73,7 @@ public class GuestController {
 			List<Category> categories = guestService.getAllCategories();
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
-			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJson(lot));
+			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViews(lot));
 			modelAndView.addObject(ControllerParamConstant.LOT, lot);
 			modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
 			modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
