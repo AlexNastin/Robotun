@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "legal")
 @NamedQueries({ @NamedQuery(name = "Legal.findAll", query = "select l from Legal l") })
@@ -39,6 +41,7 @@ public class Legal implements Essence {
 	private int zipCode;
 
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name = "id_user")
 	private User user;
 

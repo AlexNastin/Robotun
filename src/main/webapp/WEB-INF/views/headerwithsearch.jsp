@@ -81,20 +81,41 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-						<c:forEach items="${listCategories}" var="category">
-                        <li>
-                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">${category.title}</span><span class="fa arrow"></span> </a>
+                    <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+						
+                        <li ng-repeat="category in categoriesCtrl.categories">
+                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level">
-                            	<c:forEach items="${category.subcategories}" var="subcategory">
-                                	<li><a href='<c:url value="/result?idCategory=${category.idCategory}&idSubcategory=${subcategory.idSubcategory}"/>' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>${subcategory.title}</a></li>
-								</c:forEach>
+
+                                	<li ng-repeat="subcategory in category.subcategories"><a ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+
                             </ul>
                         </li>
-						</c:forEach>
+						
                         
                     </ul>
                 </div>
             </div>
             </div>
     </nav>
+    <script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+    <script>
+    var jsonDataCategories = '${listCategoriesJson}';
+    
+    var app = angular.module('app', []);
+    
+    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+    
+    function categoriesController ($scope) {
+    	var vm = this;
+    	var dataCategories = JSON.parse(jsonDataCategories);
+    	vm.categories = [];
+    	vm.subcategories = [];
+    	angular.forEach(dataCategories, function(category) {
+    		vm.categories.push(category);
+    	});
+    	vm.selectSubcategories = function (index) {
+    		vm.subcategories = vm.categories[index].subcategories;
+    	};
+    }
+    </script>

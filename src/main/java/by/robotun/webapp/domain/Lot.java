@@ -19,6 +19,9 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "lot")
@@ -33,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 	@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
 	@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc"),
 	@NamedQuery(name = "Lot.findLotOnUpdateByUser", query = "select l from Lot l join fetch l.rejectMessages where l.isVisible = :isVisible and l.idUser = :id order by l.startDate")})
+
 public class Lot implements Essence {
 	
 	/**
@@ -43,46 +47,57 @@ public class Lot implements Essence {
 	@Id
 	@Column(name = "id_lot")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Public.class)
 	private int idLot;
 
 	@JsonProperty("name")
 	@Column(name = "name")
+	@JsonView(Views.Public.class)
 	private String name;
 	
 	@Column(name = "id_category")
+	@JsonView(Views.Public.class)
 	private int idCategory;
 	
 	@Column(name = "id_subcategory")
+	@JsonView(Views.Public.class)
 	private int idSubcategory;
 	
 	@JsonProperty("start_date")
 	@Column(name = "start_date")
+	@JsonView(Views.Public.class)
 	private Date startDate;
 	
 	@JsonProperty("endDate")
 	@Column(name = "end_date")
+	@JsonView(Views.Public.class)
 	private Date endDate;
 	
 	@JsonProperty("description")
 	@Column(name = "description")
+	@JsonView(Views.Public.class)
 	private String description;
 	
 	@Column(name = "id_user")
+	@JsonView(Views.Public.class)
 	private int idUser;
 	
 	@JsonProperty("budget")
 	@Column(name = "budget")
+	@JsonView(Views.Public.class)
 	private int budget;
 	
 	@Column(name = "is_visible")
+	@JsonView(Views.Public.class)
 	private int isVisible;
 	
 	@JsonProperty("isCall")
 	@Column(name = "is_call")
+	@JsonView(Views.Public.class)
 	private boolean isCall;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonView(Views.Internal.class)
 	private List<Bet> bets;
 	
 	@JsonIgnore

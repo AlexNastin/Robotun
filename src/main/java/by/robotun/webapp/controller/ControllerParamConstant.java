@@ -28,8 +28,6 @@ public final class ControllerParamConstant {
 
 	public static final String LIST_LOTS = "listLots";
 
-	public static final String LIST_CATEGORIES = "listCategories";
-
 	public static final String LIST_USERS = "listUsers";
 	
 	public static final String LIST_NUMBERS = "listNumbers";
@@ -40,6 +38,8 @@ public final class ControllerParamConstant {
 
 	// ONE
 	public static final String LOT = "lot";
+	
+	public static final String LOT_JSON = "lotJson";
 	
 	public static final String USER = "user";
 	

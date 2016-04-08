@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
+import by.robotun.webapp.domain.json.Views;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
@@ -36,6 +39,7 @@ public class GuestController {
 	@Autowired
 	private IUserService userService;
 
+	@JsonView(Views.Public.class)
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public ModelAndView result(@RequestParam(value = "idCategory", required = false) Integer idCategory,
 			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Locale locale, Model model,
@@ -51,10 +55,10 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJson(categories));
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJson(lots));
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
 		return modelAndView;
 	}
 
+	@JsonView(Views.Internal.class)
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
 	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot, Locale locale, Model model,
 			HttpSession httpSession) throws ServiceException {
@@ -68,6 +72,7 @@ public class GuestController {
 			List<Category> categories = guestService.getAllCategories();
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
+			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJson(lot));
 			modelAndView.addObject(ControllerParamConstant.LOT, lot);
 			modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
 			modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
@@ -90,7 +95,7 @@ public class GuestController {
 			} else {
 				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 			}
-			modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES, categories);
+			modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJson(categories));
 		}
 		return modelAndView;
 	}

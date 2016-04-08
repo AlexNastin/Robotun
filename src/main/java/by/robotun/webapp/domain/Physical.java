@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "physical")
 @NamedQueries({ @NamedQuery(name = "Physical.findAll", query = "select p from Physical p") })
@@ -36,6 +38,7 @@ public class Physical implements Essence {
 	private String middleName;
 
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name = "id_user")
 	private User user;
 

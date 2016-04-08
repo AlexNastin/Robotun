@@ -27,8 +27,7 @@
 	
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>  
-	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>     
+	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>     
    
     
 	</head>
@@ -96,11 +95,9 @@
 <script type="text/javascript">
 
 var jsonData = '${listLotsJson}';
-var jsonDataCategories = '${listCategoriesJson}';
-var app = angular.module('app', []);
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
-app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+
 
 function mainLotsController ($scope) {
 	var vm = this;
@@ -111,15 +108,6 @@ function mainLotsController ($scope) {
 	vm.lots = [];
 	angular.forEach(data, function(lot) {
 		vm.lots.push(lot);
-	});
-}
-
-function categoriesController ($scope) {
-	var vm = this;
-	var dataCategories = JSON.parse(jsonDataCategories);
-	vm.categories = [];
-	angular.forEach(dataCategories, function(category) {
-		vm.categories.push(category);
 	});
 }
 

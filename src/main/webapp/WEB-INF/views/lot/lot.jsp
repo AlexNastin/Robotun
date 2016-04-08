@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-<html>
+<html ng-app="app">
 <head>
 <title>Работа</title>
 </head>
@@ -38,8 +38,8 @@
 		</div>
         <div class="col-md-8  col-xs-12">
            
-           <div class="header">
-                <h1>${lot.name}</h1>
+           <div class="header" ng-controller="LotController as lotCtrl">
+                <h1>{{lot.name}}</h1>
                 <h4>${lot.user.nickname}</h4>
                 <span>${lot.description}</span>
                 <div id="showPhoneOwner">
@@ -167,6 +167,18 @@ var isElse = ${isElse}
 		<script type="text/javascript"
 		src="<c:url value="/resources/js/date.format.js" />"></script>
 		<script>
+		var jsonData = '${lotJson}';
+
+		app.controller('LotController', ['$scope', '$http', lotController]);
+
+
+		function lotController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			$scope.lot = data;
+			console.log(data);
+		}
+		
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){
 		        e.preventDefault();
@@ -244,8 +256,7 @@ var isElse = ${isElse}
 		            }
 		    });
 		});
-		</script>
-		<script type="text/javascript">
+
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -258,8 +269,7 @@ $(document).ready(function() {
      return false;
    });
  });
-</script>
-<script type="text/javascript">
+
 function showNumberICall(idUser) {
 	$.ajax({
 		url:"lot/showNumber",
@@ -278,9 +288,7 @@ function showNumberICall(idUser) {
 		}
 	});
 }
-</script>
-<!-- date -->
-<script>
+
 var timing = ${dateEndLot};
 var time = new Date(timing).getTime();
 var date = new Date(time);
@@ -297,9 +305,7 @@ $('.countdown').downCount({
 	
 		
 });
-</script>
 
-<script type="text/javascript">
 function drawButtonPhoneOwner() {
 	if(!isMeCall && !isElse) {
 	    var content = document.getElementById("showPhoneOwner").innerHTML;
