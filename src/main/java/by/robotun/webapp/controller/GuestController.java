@@ -54,8 +54,7 @@ public class GuestController {
 		List<Category> categories = guestService.getAllCategories();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJson(categories));
-//		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJson(lots));
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViews(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 
