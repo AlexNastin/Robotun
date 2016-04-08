@@ -36,6 +36,7 @@ public class User implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
 
+	@JsonIgnore
 	@Column(name = "login")
 	private String login;
 
@@ -48,8 +49,8 @@ public class User implements Essence {
 	@Column(name = "registration_date")
 	private Date registrationDate;
 
-	@Column(name = "password")
 	@JsonIgnore
+	@Column(name = "password")
 	private String password;
 	
 	@Column(name = "nickname")

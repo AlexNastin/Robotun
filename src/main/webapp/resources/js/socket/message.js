@@ -24,19 +24,20 @@ function printText(json, isICall) {
 		var content = document.getElementById("wallmessages").innerHTML;
 	    document.getElementById("wallmessages").innerHTML = "<div>"+"Время истекло!"+"</div>" + content;
 	} else {
-		var date = new Date();
-		var formated_date = date.format("yyyy-mm-dd HH:mm:ss.l");
+		var scope = angular.element(document.getElementById("wallmessages")).scope();
 		var json = JSON.parse(json);
-	    var content = document.getElementById("wallmessages").innerHTML;
-	    var contentIsCall = "<a href=\"#\" onclick=\"showNumber(" + json.idUser + ")\" id=\"" + json.idUser + "a" + "\">Посмотреть номер</a><div id=\"" + json.idUser + "\"></div>";
-	    var contentBeforeIsCall = "<div class=\"message-item\" id=\"m16\"><div class=\"message-inner\"><div class=\"message-head clearfix\"><div class=\"avatar pull-left\"><a href=\"/jobster.by/viewUserProfile?id=" + json.idUser +"\"><img style=\"min-height: 40px; max-height: 40px;\" src=\"/jobster.by/resources/images/avatar_2x.png\"></a></div><div class=\"user-detail\"><h5 class=\"handle\">" + json.nickname + "</h5>";
-	    var contentAfterIsCall = "<div class=\"post-meta\"><div class=\"asker-meta\"><span class=\"qa-message-what\"></span><span class=\"qa-message-when\"><span class=\"qa-message-when-data\">" + formated_date + " </span></span><span class=\"qa-message-who\"><span class=\"qa-message-who-pad\">by </span><span class=\"qa-message-who-data\"><a href=\"/jobster.by/viewUserProfile?id=" + json.idUser + "\">" + json.nickname + "</a></span></span></div></div></div></div><div class=\"qa-message-content\">" + json.cost + "</div></div></div>";
-	    var contentSum = contentBeforeIsCall;
-	    if(isICall) {
-	    	contentSum = contentSum + contentIsCall;
-	    }
-	    contentSum = contentSum + contentAfterIsCall;
-	    document.getElementById("wallmessages").innerHTML = contentSum + content;
+		var date = new Date().getTime();
+		var user = {nickname: json.nickname}
+		var bet = {
+				cost: json.cost,
+				idUser: json.idUser,
+				idLot: json.idLot,
+				user: user,
+				date: date
+		}
+		scope.$apply(function () {
+			scope.betCtrl.bets.push(bet);
+		});
 	    var countBet = parseInt(document.getElementById("countBet").innerHTML);
 	    document.getElementById("countBet").innerHTML = countBet+=1;
 	    if(json.idUser == idUser) {

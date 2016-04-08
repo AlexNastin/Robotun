@@ -15,6 +15,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "bet")
@@ -33,21 +36,26 @@ public class Bet implements Essence {
 	@Id
 	@Column(name = "id_bet")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Public.class)
 	private int idBet;
 	
 	@Column(name = "id_user")
+	@JsonView(Views.Public.class)
 	private int idUser;
 	
 	@Column(name = "id_lot")
+	@JsonView(Views.Public.class)
 	private int idLot;
 
 	@Column(name = "date")
+	@JsonView(Views.Public.class)
 	private Date date;
 	
 	@Column(name = "cost")
+	@JsonView(Views.Public.class)
 	private double cost;
 	
-	@JsonIgnore
+	@JsonView(Views.Internal.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable=false, updatable=false)
 	private User user;

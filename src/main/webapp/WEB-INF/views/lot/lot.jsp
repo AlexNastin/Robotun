@@ -31,14 +31,14 @@
         <div class="content-main">
 
 
-<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;" ng-controller="LotController as lotCtrl">
 	<div class="row panel item">
 		<div class="col-md-4 bg_blur ">
     	    <a href="#anchor" class="follow_btn hidden-xs scroll">Помочь!</a>
 		</div>
         <div class="col-md-8  col-xs-12">
            
-           <div class="header" ng-controller="LotController as lotCtrl">
+           <div class="header" >
                 <h1>{{lotCtrl.lot.name}}</h1>
                 <h4>{{lotCtrl.lot.user.nickname}}</h4>
                 <span>{{lotCtrl.lot.description}}</span>
@@ -80,7 +80,7 @@
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
             <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">${countBet}</div></div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> ${lot.budget}</div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
             <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
 <li> <span class="days">00</span>
 <p class="days_ref">дней</p>
@@ -111,40 +111,40 @@
 
 <div class="container" style="margin-bottom:30px">
 	<div class="row">
-		<h2 style="text-align:center">Ставки</h2>
+		<h2 style="text-align:center">Отклики</h2>
 		<div id="callNumber"></div>
 	</div>
-    <div class="qa-message-list" id="wallmessages">
-    <c:forEach items="${lot.bets}" var="bet">
-    				<div class="message-item" id="m16">
+    <div class="qa-message-list" id="wallmessages" ng-controller="BetController as betCtrl">
+
+    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets">
 						<div class="message-inner">
 							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>"><img style="min-height: 40px; max-height: 40px;" src='<c:url value="/resources/images/avatar_2x.png" />'></a></div>
+								<div class="avatar pull-left"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img style="min-height: 40px; max-height: 40px;" src='/jobster.by/resources/images/avatar_2x.png'/></a></div>
 								<div class="user-detail">
-									<h5 class="handle">${bet.user.nickname}</h5>
-									<c:if test="${isICall}">
-									<a href="#" onclick="showNumberICall(${bet.user.idUser})" id="${bet.user.idUser}a">Посмотреть номер</a>
-									<div id="${bet.user.idUser}"></div>
-									</c:if>
+									<h5 class="handle">{{bet.user.nickname}}</h5>
+									
+									<a ng-if="betCtrl.isICall" href="#" ng-click="betCtrl.showNumberICall(bet.idUser)" id="{{bet.idUser}}a">Посмотреть номер</a>
+									<div id="{{bet.idUser}}"></div>
+									
 									<div class="post-meta">
 										<div class="asker-meta">
 											<span class="qa-message-what"></span>
 											<span class="qa-message-when">
-												<span class="qa-message-when-data">${bet.date}</span>
+												<span class="qa-message-when-data">{{bet.date | date:'yyyy-mm-dd HH:mm:ss'}}</span>
 											</span>
 											<span class="qa-message-who">
 												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a href="<c:url value="/viewUserProfile?id=${bet.user.idUser}"/>">${bet.user.nickname}</a></span>
+												<span class="qa-message-who-data"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
 											</span>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="qa-message-content">
-								${bet.cost}
+								{{bet.cost}}
 							</div>
 					</div></div>
-					</c:forEach>
+					
 					
 					
 </div>
@@ -154,8 +154,8 @@
 </div>
 <script type="text/javascript">
 var nickname = "${nickname}";
-var id = ${lot.idLot};
 var idUser = ${idUser};
+var id;
 var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse}
@@ -170,16 +170,18 @@ var isElse = ${isElse}
 		var jsonData = '${lotJson}';
 
 		app.controller('LotController', ['$scope', '$http', lotController]);
+		
+		app.controller('BetController', ['$scope', '$http', betController]);
 
 
 		function lotController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
+			id = vm.lot.idLot;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
-			console.log(vm.isShowSendButton)
 			vm.showNumberICall = function(idUser) {
 				$.ajax({
 					url:"lot/showNumber",
@@ -191,7 +193,35 @@ var isElse = ${isElse}
 					success:function(number) {
 						var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
 						for(var i=0; i<number.length; i++) {
-							console.log(number[i]);
+							if(number[i] != "") {
+								contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+							}
+						}
+						document.getElementById(idUser).innerHTML = contentNumber;			
+						document.getElementById(idUser+"a").removeAttribute('onclick');
+					}
+				});
+			}
+			
+		}
+		
+		function betController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.bets = data.bets;
+			console.log(vm.bets);
+			vm.isICall = isICall;
+			vm.showNumberICall = function(idUser) {
+				$.ajax({
+					url:"lot/showNumber",
+					type:"GET",
+					data:{
+						//передаем параметры
+						id: idUser
+					},
+					success:function(number) {
+						var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+						for(var i=0; i<number.length; i++) {
 							if(number[i] != "") {
 								contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 							}
@@ -295,25 +325,6 @@ $(document).ready(function() {
    });
  });
 
-function showNumberICall(idUser) {
-	$.ajax({
-		url:"lot/showNumber",
-		type:"GET",
-		data:{
-			//передаем параметры
-			id: idUser
-		},
-		success:function(number) {
-			var contentNumber = document.getElementById(idUser).innerHTML;
-			for(var i=0; i<number.length; i++) {
-				contentNumber = contentNumber + number[i];
-			}
-			document.getElementById(idUser).innerHTML = 'Связаться можно по телефону '+ '<a href="tel:'+contentNumber+ '">'+ contentNumber + '</a>';			
-			document.getElementById(idUser+"a").removeAttribute('onclick');
-		}
-	});
-}
-
 var timing = ${dateEndLot};
 var time = new Date(timing).getTime();
 var date = new Date(time);
@@ -333,14 +344,10 @@ $('.countdown').downCount({
 
 function drawButtonPhoneOwner() {
 	if(!isMeCall && !isElse) {
-	    var content = document.getElementById("showPhoneOwner").innerHTML;
-	    var contentIsCall = "<a href=\"#\" onclick=\"showNumberICall(" + ${idUser} + ")\" id=\"" + ${idUser} + "a" + "\">Посмотреть номер</a><div id=\"" + ${idUser} + "\"></div>";
-	    var contentBeforeIsCall = "";
-	    var contentAfterIsCall = "";
-	    var contentSum = contentBeforeIsCall;
-	    contentSum = contentSum + contentIsCall;
-	    contentSum = contentSum + contentAfterIsCall;
-	    document.getElementById("showPhoneOwner").innerHTML = contentSum + content;
+		var scope = angular.element(document.getElementById("showPhoneOwner")).scope();
+		scope.$apply(function () {
+			scope.lotCtrl.isMeCall = true;
+		});
 	    isMeCall = true;
 	}
 }
