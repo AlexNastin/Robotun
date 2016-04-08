@@ -21,8 +21,8 @@ public class SerializationJSON {
 		}
 		return jsonObjects;
 	}
-	
-	public String toJsonViews(Object object) throws ServiceException {
+
+	public String toJsonViewsPublic(Object object) throws ServiceException {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
@@ -32,7 +32,16 @@ public class SerializationJSON {
 		}
 		return jsonObjects;
 	}
-	
-	
+
+	public String toJsonViewsInternal(Object object) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.Internal.class).writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
 
 }
