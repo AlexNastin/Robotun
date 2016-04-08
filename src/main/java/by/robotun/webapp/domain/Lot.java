@@ -104,7 +104,7 @@ public class Lot implements Essence {
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<RejectMessage> rejectMessages;
 	
-	@JsonIgnore
+	@JsonView(Views.Internal.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
 	private User user;

@@ -39,18 +39,18 @@
         <div class="col-md-8  col-xs-12">
            
            <div class="header" ng-controller="LotController as lotCtrl">
-                <h1>{{lot.name}}</h1>
-                <h4>${lot.user.nickname}</h4>
-                <span>${lot.description}</span>
+                <h1>{{lotCtrl.lot.name}}</h1>
+                <h4>{{lotCtrl.lot.user.nickname}}</h4>
+                <span>{{lotCtrl.lot.description}}</span>
                 <div id="showPhoneOwner">
-                <c:if test="${isMeCall}">
-                <a href="#" onclick="showNumberICall(${idUser})" id="${idUser}a">Посмотреть номер</a>
-				<div id="${idUser}"></div>
-				</c:if>
+                
+                <a ng-if="lotCtrl.isMeCall" href="#" ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)" id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
+				<div id="{{lotCtrl.idUser}}"></div>
+				
 				<security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<c:if test="${!(idUser == lot.idUser)}">
-				<div id="inputs" class="col-md-12" style="padding-left:0px;">
+								
+				<div id="inputs" class="col-md-12" style="padding-left:0px;" ng-if="lotCtrl.isShowSendButton">
 				 <div class="input-group " style="width:30%;">
           <span class="input-group-btn">
               <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
@@ -66,7 +66,7 @@
       </div>
       <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" href="#">Send</a>
 				</div>
-				</c:if>
+				
 							</security:authorize>
 							<security:authorize access="hasRole('ROLE_GUEST')">
 								<a href='<c:url value="/login" />'>Войти</a>
@@ -175,8 +175,33 @@ var isElse = ${isElse}
 		function lotController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
-			$scope.lot = data;
-			console.log(data);
+			vm.lot = data;
+			vm.isMeCall = isMeCall;
+			vm.idUser = idUser;
+			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
+			console.log(vm.isShowSendButton)
+			vm.showNumberICall = function(idUser) {
+				$.ajax({
+					url:"lot/showNumber",
+					type:"GET",
+					data:{
+						//передаем параметры
+						id: idUser
+					},
+					success:function(number) {
+						var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+						for(var i=0; i<number.length; i++) {
+							console.log(number[i]);
+							if(number[i] != "") {
+								contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+							}
+						}
+						document.getElementById(idUser).innerHTML = contentNumber;			
+						document.getElementById(idUser+"a").removeAttribute('onclick');
+					}
+				});
+			}
+			
 		}
 		
 		$( document ).ready(function() {

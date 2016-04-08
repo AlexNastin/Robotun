@@ -49,6 +49,7 @@ public class User implements Essence {
 	private Date registrationDate;
 
 	@Column(name = "password")
+	@JsonIgnore
 	private String password;
 	
 	@Column(name = "nickname")
