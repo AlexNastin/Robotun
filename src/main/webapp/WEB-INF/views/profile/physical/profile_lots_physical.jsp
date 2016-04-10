@@ -39,9 +39,11 @@
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: ${lot.budget}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: ${lot.endDate} </div>
 
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/updateLot?id=${lot.idLot}" />'>Изменить</a></div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a></div>
-<div class="col-md-12" style="text-align:right;"><button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main">Удалить</button></div>
+<div class="col-md-12" style="text-align:right;">
+<a class="btn btn-primary button-legal-style-main" href='<c:url value="/user/updateLot?id=${lot.idLot}" />'>Изменить</a>
+<a class="btn btn-primary button-legal-style-main" href='<c:url value="/lot?id=${lot.idLot}" />'>Подробнее</a>
+<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main">Удалить</button>
+</div>
 </div>
 </div>
 

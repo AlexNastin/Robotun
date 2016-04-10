@@ -21,7 +21,6 @@
 <a href="<c:url value="/voting?mark=10&idLot=2&idUser=3"/>">Voting Inseret</a>
 <a href="<c:url value="/getVoting?idLot=2"/>">Voting GET</a>
 <a href="<c:url value="/checkVoting?idLot=2"/>">Voting CHECK</a>
-<a href="<c:url value="/angularTest"/>">Angular</a>
 
 
 

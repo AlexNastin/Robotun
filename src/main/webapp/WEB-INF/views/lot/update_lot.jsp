@@ -34,7 +34,7 @@
 	</div>
 	<div class="col-md-6">
 	<form:form modelAttribute="updateLotForm" method="POST">
-	<form:input path="idLot" class="form-control"/>
+	<form:input path="idLot" class="form-control visibility-field"/>
 		<div class="form-group">
 		<form:input path="name" placeholder="name" class="form-control" value="${lot.name}"/>
 		</div>

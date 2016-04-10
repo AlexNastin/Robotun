@@ -83,9 +83,9 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
-                        <li ng-repeat="category in categoriesCtrl.categories">
+                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
                             <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
-                            <ul class="nav nav-second-level">
+                            <ul class="nav nav-second-level" ng-show="showMenu">
 
                                 	<li ng-repeat="subcategory in category.subcategories"><a ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
