@@ -43,6 +43,8 @@ public class GuestController {
 			HttpSession httpSession) throws ServiceException {
 		List<Lot> lots;
 		Date endDate = new Date();
+		
+		
 		if (idCategory == null && idSubcategory == null) {
 			lots = guestService.getAllLots(endDate);
 		} else {

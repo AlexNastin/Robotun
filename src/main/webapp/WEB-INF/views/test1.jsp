@@ -22,5 +22,7 @@
 <a href="<c:url value="/getVoting?idLot=2"/>">Voting GET</a>
 <a href="<c:url value="/checkVoting?idLot=2"/>">Voting CHECK</a>
 
+
+
 </body>
 </html>
