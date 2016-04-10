@@ -133,3 +133,7 @@
 	background-color: #334A61; 
 	border-color: #334A61;
 }
+.visibility-field {
+visibility: collapse;
+position: absolute;
+}
