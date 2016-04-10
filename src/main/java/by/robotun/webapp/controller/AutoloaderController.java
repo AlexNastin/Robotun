@@ -15,25 +15,30 @@ import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IAutoloaderService;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @RestController
 public class AutoloaderController {
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@Autowired
 	private IAutoloaderService autocompleteService;
 
 	@RequestMapping(value = "/autoloader/allResults", method = RequestMethod.GET)
-	public List<Lot> getAllLots(@RequestParam(value = "offset", required = false) Integer offset) throws ServiceException {
+	public String getAllLots(@RequestParam(value = "offset", required = false) Integer offset) throws ServiceException {
 		Date date = new Date();
 		List<Lot> lots = autocompleteService.getLots(offset, date);
-		return lots;
+		return serializationJSON.toJsonViewsPublic(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/physical/myLots", method = RequestMethod.GET)
-	public List<Lot> getPhysicalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getPhysicalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
-		return lots;
+		System.err.println(lots);
+		return serializationJSON.toJsonViewsPublic(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/physical/myResponses", method = RequestMethod.GET)

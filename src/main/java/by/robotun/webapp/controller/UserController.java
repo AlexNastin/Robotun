@@ -15,15 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Category;
+import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@Autowired
 	IUserService userService;
@@ -46,48 +51,60 @@ public class UserController {
 	@RequestMapping(value = "/physical/profile/myResponses", method = RequestMethod.GET)
 	public ModelAndView myResponsePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/physical/profile/myLots", method = RequestMethod.GET)
 	public ModelAndView myLotsPhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/physical/profile/lotsOnUpdate", method = RequestMethod.GET)
 	public ModelAndView lotsOnUpdatePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsOnUpdateByUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/legal/profile/myLots", method = RequestMethod.GET)
 	public ModelAndView myLotsLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsCreatedUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/legal/profile/myResponses", method = RequestMethod.GET)
 	public ModelAndView myResponsesLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsRespondedUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/legal/profile/lotsOnUpdate", method = RequestMethod.GET)
 	public ModelAndView lotsOnUpdateLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, userService.getLotsOnUpdateByUser(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)

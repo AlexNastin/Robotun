@@ -123,6 +123,7 @@ function loader(){
 							offset: offset
 						},
 						success:function(data) {
+							var data = JSON.parse(data);
 							if(data.length == 0) {
 								isEnd = true;
 							}

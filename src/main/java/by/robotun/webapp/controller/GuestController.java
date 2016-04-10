@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonView;
 
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.domain.json.Views;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;

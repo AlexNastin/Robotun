@@ -29,7 +29,7 @@
                     Будем благодарны, если сообщите как Вы этого добились
                 </div>
                 <div class="error-actions">
-                    <a href="#" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    <a href='<c:url value="/index" />' class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
                         На главную </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Сообщить </a>
                 </div>
             </div>
