@@ -74,7 +74,7 @@ public class UserController {
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
 	
@@ -102,9 +102,9 @@ public class UserController {
 	public ModelAndView lotsOnUpdateLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
 	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)

@@ -44,4 +44,14 @@ public class SerializationJSON {
 		return jsonObjects;
 	}
 
+	public String toJsonViewsInternalRejectMessages(Object object) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.InternalRejectMessages.class).writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
 }

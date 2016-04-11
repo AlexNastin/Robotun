@@ -42,24 +42,24 @@ public class AutoloaderController {
 	}
 	
 	@RequestMapping(value = "/autoloader/physical/myResponses", method = RequestMethod.GET)
-	public List<Lot> getPhysicalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getPhysicalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyResponses(offset, person.getId());
-		return lots;
+		return serializationJSON.toJsonViewsPublic(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/legal/myLots", method = RequestMethod.GET)
-	public List<Lot> getLegalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getLegalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
-		return lots;
+		return serializationJSON.toJsonViewsPublic(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/legal/myResponses", method = RequestMethod.GET)
-	public List<Lot> getLegalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getLegalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyResponses(offset, person.getId());
-		return lots;
+		return serializationJSON.toJsonViewsPublic(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/moderator/onModeration", method = RequestMethod.GET)

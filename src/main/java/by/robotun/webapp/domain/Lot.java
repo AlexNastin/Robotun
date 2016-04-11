@@ -100,8 +100,8 @@ public class Lot implements Essence {
 	@JsonView(Views.Internal.class)
 	private List<Bet> bets;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonView(Views.InternalRejectMessages.class)
 	private List<RejectMessage> rejectMessages;
 	
 	@JsonView(Views.Internal.class)
