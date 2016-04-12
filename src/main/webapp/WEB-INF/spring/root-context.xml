@@ -35,5 +35,8 @@
 
 	<!-- Файл с настройками Redis -->
 	<import resource="redis.xml" />
-	
+
+	<!-- Файл с настройками Solr -->
+	<import resource="solr.xml" />
+
 </beans>
