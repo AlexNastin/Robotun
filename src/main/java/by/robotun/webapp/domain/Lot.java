@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -28,11 +27,11 @@ import by.robotun.webapp.domain.json.Views;
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
 	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.user where l.idLot = :id order by bet.date desc"),
-	@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user where l.idLot = :id"),
+	@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user join fetch l.rejectMessages where l.idLot = :id"),
 	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
 	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
-	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l where l.isVisible = :isVisible order by startDate"),
+	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l left outer join fetch l.rejectMessages where l.isVisible = :isVisible order by l.startDate"),
 	@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
 	@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc"),
 	@NamedQuery(name = "Lot.findLotOnUpdateByUser", query = "select l from Lot l join fetch l.rejectMessages where l.isVisible = :isVisible and l.idUser = :id order by l.startDate")})
@@ -101,20 +100,20 @@ public class Lot implements Essence {
 	private List<Bet> bets;
 	
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonView(Views.InternalRejectMessages.class)
+	@JsonView({Views.InternalRejectMessages.class, Views.InternalConfirmLot.class})
 	private List<RejectMessage> rejectMessages;
 	
-	@JsonView(Views.Internal.class)
+	@JsonView({Views.Internal.class, Views.InternalConfirmLot.class})
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
 	private User user;
 	
-	@JsonIgnore
+	@JsonView(Views.InternalConfirmLot.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_category", insertable=false, updatable=false)
 	private Category category;
 	
-	@JsonIgnore
+	@JsonView(Views.InternalConfirmLot.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_subcategory", insertable=false, updatable=false)
 	private Subcategory subcategory;

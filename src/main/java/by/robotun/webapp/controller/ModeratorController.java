@@ -16,9 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IModeratorService;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 public class ModeratorController {
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@Autowired
 	private IModeratorService moderatorService;
@@ -27,7 +31,7 @@ public class ModeratorController {
 	public ModelAndView profileModerator(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		List<Lot> lots = moderatorService.getAllLotsOnModeration();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_MODERATOR);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
 

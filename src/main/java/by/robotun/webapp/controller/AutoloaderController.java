@@ -63,9 +63,9 @@ public class AutoloaderController {
 	}
 	
 	@RequestMapping(value = "/autoloader/moderator/onModeration", method = RequestMethod.GET)
-	public List<Lot> getOnModeration(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getOnModeration(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
 		List<Lot> lots = autocompleteService.getOnModeration(offset);
-		return lots;
+		return serializationJSON.toJsonViewsInternalRejectMessages(lots);
 	}
 	
 	@RequestMapping(value = "/autoloader/physical/lotsOnUpdate", method = RequestMethod.GET)

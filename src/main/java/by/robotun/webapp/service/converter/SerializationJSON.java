@@ -54,4 +54,26 @@ public class SerializationJSON {
 		}
 		return jsonObjects;
 	}
+	
+	public String toJsonViewsInternalConfirmLot(Object object) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.InternalConfirmLot.class).writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
+	
+	public String toJsonViewsPublicCategories(Object object) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.PublicCategories.class).writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
 }

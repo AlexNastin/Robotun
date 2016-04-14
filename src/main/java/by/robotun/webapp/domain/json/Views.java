@@ -9,4 +9,10 @@ public class Views {
 	
 	public static class InternalRejectMessages extends Public {
 	}
+	
+	public static class InternalConfirmLot extends Public {
+	}
+	
+	public static class PublicCategories {
+	}
 }

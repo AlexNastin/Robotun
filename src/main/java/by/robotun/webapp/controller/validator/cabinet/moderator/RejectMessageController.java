@@ -16,15 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
+import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.RejectMessageForm;
 import by.robotun.webapp.form.validator.RejectMessageFormValidator;
 import by.robotun.webapp.service.IModeratorService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 @RequestMapping("/moderator/rejectLot")
 public class RejectMessageController {
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@Autowired
 	private RejectMessageFormValidator rejectMessageFormValidator;
@@ -37,8 +42,9 @@ public class RejectMessageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView rejectMessage(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		Lot lot = userService.getLotByIdForModeration(idLot);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_REJECT_LOT);
-		modelAndView.addObject(ControllerParamConstant.LOT, userService.getLotByIdForModeration(idLot));
+		modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalConfirmLot(lot));
 		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, new RejectMessageForm());
 		return modelAndView;
 	}

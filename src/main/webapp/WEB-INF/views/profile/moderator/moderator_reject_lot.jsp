@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-<html>
+<html ng-app="app">
 <head>
 <title>Проверка лота</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
@@ -18,16 +18,16 @@
 <%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-3"></div>
-<div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em;">	
-Название лота: ${lot.name} <br>
-Категория: ${lot.category.title} <br>
-Подкатегория: ${lot.subcategory.title} <br>
-Дата начала: ${lot.startDate} <br>
-Дата окончания: ${lot.endDate} <br>
-Описание: ${lot.description} <br>
-Никнейм пользователя: ${lot.user.nickname} <a href='<c:url value="/viewUserProfile?id=${lot.user.idUser}" />'>Посмотреть профиль</a><br>
-Бюджет: ${lot.budget} <br>
-Я звоню/мне звонят: ${lot.isCall} <br>
+<div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em;" ng-controller="LotController as lotCtrl">	
+Название лота: {{lotCtrl.lot.name}} <br>
+Категория: {{lotCtrl.lot.category.title}} <br>
+Подкатегория: {{lotCtrl.lot.subcategory.title}} <br>
+Дата начала: {{lotCtrl.lot.startDate}} <br>
+Дата окончания: {{lotCtrl.lot.endDate}} <br>
+Описание: {{lotCtrl.lot.description}} <br>
+Никнейм пользователя: {{lotCtrl.lot.user.nickname}} <a ng-href='/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}'>Посмотреть профиль</a><br>
+Бюджет: {{lotCtrl.lot.budget}} <br>
+Я звоню/мне звонят: {{lotCtrl.lot.isCall}} <br>
 <div class="col-md-12 text-style-legal-user">Проверка лота:</div>
 <form:form modelAttribute="rejectMessageForm" method="POST">
 <div class="form-group">
@@ -35,11 +35,11 @@
 			<form:errors path="text" />
 	        </div>
 	        <div class="form-group">
-			<form:input class="form-control" path="idLot" value="${lot.idLot}"/>
+			<form:input class="form-control" path="idLot" value="{{lotCtrl.lot.idLot}}"/>
 			</div>
 			<div style="text-align:center;">
 			<input class="button-on-add-lot btn btn-primary button-moderator-style" type="submit" value="Отправить причину" />
-<a class="button-on-add-lot btn btn-primary button-moderator-style" href='<c:url value="/moderator/confirmLot?id=${lot.idLot}" />'>Утвердить лот</a>
+<a class="button-on-add-lot btn btn-primary button-moderator-style" ng-href='/jobster.by/moderator/confirmLot?id={{lotCtrl.lot.idLot}}'>Утвердить лот</a>
 </div>
 </form:form>
 
@@ -49,5 +49,16 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script>
+		var jsonData = '${lotJson}';
+
+		app.controller('LotController', ['$scope', '$http', lotController]);
+
+		function lotController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.lot = data;
+		}
+		</script>
 </body>
 </html>

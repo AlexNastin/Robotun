@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "category")
@@ -29,13 +32,16 @@ public class Category implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
+	@JsonView(Views.PublicCategories.class)
 	@Column(name = "id_category")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
 
+	@JsonView(Views.PublicCategories.class)
 	@Column(name = "title")
 	private String title;
 	
+	@JsonView(Views.PublicCategories.class)
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 

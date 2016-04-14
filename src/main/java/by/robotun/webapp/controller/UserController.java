@@ -53,7 +53,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
@@ -63,7 +62,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
@@ -73,7 +71,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
@@ -83,7 +80,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
@@ -93,7 +89,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
@@ -103,7 +98,6 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS, lots);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}

@@ -79,7 +79,7 @@
 	<div class="row nav item">    
 
         <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">${countBet}</div></div>
+            <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
             <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
 <li> <span class="days">00</span>
@@ -164,8 +164,6 @@ var isElse = ${isElse}
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
 	<script async type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
-		<script type="text/javascript"
-		src="<c:url value="/resources/js/date.format.js" />"></script>
 		<script>
 		var jsonData = '${lotJson}';
 
@@ -181,57 +179,60 @@ var isElse = ${isElse}
 			id = vm.lot.idLot;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
+			vm.numberIsVisible = true;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
 			vm.showNumberICall = function(idUser) {
-				$.ajax({
-					url:"lot/showNumber",
-					type:"GET",
-					data:{
-						//передаем параметры
-						id: idUser
-					},
-					success:function(number) {
-						var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
-						for(var i=0; i<number.length; i++) {
-							if(number[i] != "") {
-								contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
 							}
+							document.getElementById(idUser).innerHTML = contentNumber;
+							vm.numberIsVisible = false;
 						}
-						document.getElementById(idUser).innerHTML = contentNumber;			
-						document.getElementById(idUser+"a").removeAttribute('onclick');
-					}
-				});
+					});
+				}
 			}
-			
 		}
 		
 		function betController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.bets = data.bets;
-			console.log(vm.bets);
 			vm.isICall = isICall;
+			vm.numberIsVisible = true;
 			vm.showNumberICall = function(idUser) {
-				$.ajax({
-					url:"lot/showNumber",
-					type:"GET",
-					data:{
-						//передаем параметры
-						id: idUser
-					},
-					success:function(number) {
-						var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
-						for(var i=0; i<number.length; i++) {
-							if(number[i] != "") {
-								contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
 							}
+							document.getElementById(idUser).innerHTML = contentNumber;			
+							vm.numberIsVisible = false;
 						}
-						document.getElementById(idUser).innerHTML = contentNumber;			
-						document.getElementById(idUser+"a").removeAttribute('onclick');
-					}
-				});
+					});
+				}
 			}
-			
 		}
 		
 		$( document ).ready(function() {
