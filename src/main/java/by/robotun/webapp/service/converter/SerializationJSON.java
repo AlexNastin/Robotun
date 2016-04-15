@@ -76,4 +76,15 @@ public class SerializationJSON {
 		}
 		return jsonObjects;
 	}
+	
+	public String toJsonViewsInternalForListModerators(Object object) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.InternalForListModerators.class).writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
 }

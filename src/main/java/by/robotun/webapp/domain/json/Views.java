@@ -15,4 +15,7 @@ public class Views {
 	
 	public static class PublicCategories {
 	}
+	
+	public static class InternalForListModerators extends Public {
+	}
 }

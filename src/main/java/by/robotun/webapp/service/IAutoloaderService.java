@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 
 public interface IAutoloaderService {
@@ -17,5 +18,7 @@ public interface IAutoloaderService {
 	List<Lot> getOnModeration(int offset) throws ServiceException;
 
 	List<Lot> getLotsOnUpdate(Integer offset, int idUser) throws ServiceException;
+
+	List<User> getModerators(Integer offset) throws ServiceException;
 
 }

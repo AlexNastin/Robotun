@@ -6,16 +6,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.property.PropertyManager;
+import by.robotun.webapp.property.PropertyName;
 import by.robotun.webapp.service.ServiceParamConstant;
 
 @Repository("jpaUserDAO")
 public class UserDAOImpl implements IUserDAO {
+	
+	@Autowired
+	private PropertyManager propertyManager;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -53,7 +59,15 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> selectAllModerators() throws DaoException {
-		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).getResultList();
+		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
+		return users;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> selectAllModeratorsLimitOffset(int offset) throws DaoException {
+		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
+		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return users;
 	}
 

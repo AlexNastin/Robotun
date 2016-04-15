@@ -40,7 +40,7 @@
            
            <div class="header" >
                 <h1>{{lotCtrl.lot.name}}</h1>
-                <h4>{{lotCtrl.lot.user.nickname}}</h4>
+                <h4><a ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
                 <span>{{lotCtrl.lot.description}}</span>
                 <div id="showPhoneOwner">
                 

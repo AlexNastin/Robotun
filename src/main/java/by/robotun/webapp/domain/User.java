@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "users")
@@ -32,20 +35,24 @@ public class User implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
+	@JsonView(Views.Public.class)
 	@Column(name = "id_user")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
 
-	@JsonIgnore
+	@JsonView(Views.InternalForListModerators.class)
 	@Column(name = "login")
 	private String login;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "id_role")
 	private int idRole;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "id_city")
 	private int idCity;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "registration_date")
 	private Date registrationDate;
 
@@ -53,6 +60,7 @@ public class User implements Essence {
 	@Column(name = "password")
 	private String password;
 	
+	@JsonView(Views.Public.class)
 	@Column(name = "nickname")
 	private String nickname;
 	

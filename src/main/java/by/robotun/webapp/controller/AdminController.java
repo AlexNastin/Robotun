@@ -17,18 +17,22 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IAdminService;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 public class AdminController {
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@Autowired
-	IAdminService adminService;
+	private IAdminService adminService;
 
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
 	public ModelAndView profileAdmin(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		List<User> moderators = adminService.getAllModerators();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_ADMIN);
-		modelAndView.addObject(ControllerParamConstant.LIST_USERS, moderators);
+		modelAndView.addObject(ControllerParamConstant.LIST_USERS_JSON, serializationJSON.toJsonViewsInternalForListModerators(moderators));
 		return modelAndView;
 	}
 

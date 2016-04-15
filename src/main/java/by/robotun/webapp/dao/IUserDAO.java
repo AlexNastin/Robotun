@@ -19,4 +19,6 @@ public interface IUserDAO {
 	
 	public List<User> selectAllModerators() throws DaoException;
 
+	public List<User> selectAllModeratorsLimitOffset(int offset) throws DaoException;
+
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IAutoloaderService;
 import by.robotun.webapp.service.converter.SerializationJSON;
@@ -80,5 +81,11 @@ public class AutoloaderController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getLotsOnUpdate(offset, person.getId());
 		return lots;
+	}
+	
+	@RequestMapping(value = "/autoloader/admin/moderators", method = RequestMethod.GET)
+	public String getModerators(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+		List<User> users = autocompleteService.getModerators(offset);
+		return serializationJSON.toJsonViewsInternalForListModerators(users);
 	}
 }
