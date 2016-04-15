@@ -40,6 +40,8 @@ public interface IUserService {
 	public void deleteLot(Integer idLot) throws ServiceException;
 
 	public List<Lot> getLotsOnUpdateByUser(int idUser) throws ServiceException;
+
+	public User getUserByIdWithCity(int idUser) throws ServiceException;
 	
 	
 	

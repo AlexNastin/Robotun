@@ -12,6 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "legal")
@@ -24,19 +27,24 @@ public class Legal implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
+	@JsonView(Views.Public.class)
 	@Column(name = "id_legal")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLegal;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "name_enterprise")
 	private String nameEnterprise;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "unp")
 	private String unp;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "address")
 	private String address;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "zip_code")
 	private int zipCode;
 

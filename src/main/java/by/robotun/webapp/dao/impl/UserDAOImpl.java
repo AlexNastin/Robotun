@@ -83,4 +83,16 @@ public class UserDAOImpl implements IUserDAO {
 	public void updateUser(User user) throws DaoException {
 		entityManager.merge(user);
 	}
+
+	@Override
+	public User selectUserByIdWithCity(int idUser) throws DaoException {
+		User user = null;
+		try {
+			user = (User) entityManager.createNamedQuery("User.findUserByIdWithCity").setParameter("idUser", idUser)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return user;
+		}
+		return user;
+	}
 }

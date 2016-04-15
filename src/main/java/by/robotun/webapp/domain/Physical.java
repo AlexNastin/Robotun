@@ -12,6 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "physical")
@@ -24,16 +27,20 @@ public class Physical implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
+	@JsonView(Views.Public.class)
 	@Column(name = "id_physical")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPhysical;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "name")
 	private String name;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "surname")
 	private String surname;
 
+	@JsonView(Views.Public.class)
 	@Column(name = "middle_name")
 	private String middleName;
 

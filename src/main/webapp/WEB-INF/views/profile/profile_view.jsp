@@ -5,12 +5,16 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-<html>
+<html ng-app="app">
 <head>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+<script type="text/javascript">
+var app = angular.module('app', []);
+</script>
 	<title>Просмотр профиля</title>
 </head>
 <body>
@@ -23,7 +27,7 @@
     <div class="row">
         <div class=" col-lg-offset-3 col-lg-6">
             <div class="panel panel-default">
-                <div class="panel-body">
+                <div class="panel-body" ng-controller="UserController as userCtrl">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
@@ -38,27 +42,22 @@
                             <div class="row">
                                 <div class="centered-text col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                                     <div itemscope="" itemtype="http://schema.org/Person">
-                                        <h2> <span itemprop="name">${user.nickname}</span></h2>
+                                        <h2> <span itemprop="name">{{userCtrl.user.nickname}}</span></h2>
                                         <c:if test="${idRole == 3}">
-                                         <h2> <span itemprop="name">${user.physical.name}</span></h2>										
+                                         <h2> <span itemprop="name">{{userCtrl.user.physical.name}}</span></h2>										
 										</c:if>
 										<c:if test="${idRole == 2}">
-										<h2> <span itemprop="name">${user.legal.nameEnterprise}</span></h2>	
+										<h2> <span itemprop="name">{{userCtrl.user.legal.nameEnterprise}}</span></h2>	
 												
 										</c:if>
-                                        <p itemprop="jobTitle">Слесарь</p>
-                                        <p><span itemprop="affiliation">Белтелеком</span></p>
                                         <p>
-                                            <i class="fa fa-map-marker"></i> <span itemprop="addressRegion">Город</span>
+                                            <i class="fa fa-map-marker"></i> <span itemprop="addressRegion">{{userCtrl.user.city.title}}</span>
                                         </p>
-                                        <p itemprop="email"> <i class="fa fa-envelope"> </i> <a href="mailto:you@somedomain.com">@somedomain.com</a> </p>
-                                    </div>
+                                       </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 centered-text">
-                           Описание.
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -94,5 +93,19 @@
     </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script>
+		var jsonData = '${userJson}';
+		
+		var idRole = ${idRole};
+
+		app.controller('UserController', ['$scope', '$http', userController]);
+
+		function userController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.idRole = idRole;
+			vm.user = data;
+		}
+		</script>
 </body>
 </html>

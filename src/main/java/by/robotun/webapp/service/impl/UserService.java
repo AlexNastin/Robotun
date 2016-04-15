@@ -264,4 +264,15 @@ public class UserService implements IUserService {
 		return lots;
 	}
 
+	@Override
+	public User getUserByIdWithCity(int idUser) throws ServiceException {
+		User user = new User();
+		try {
+			user = userDAO.selectUserByIdWithCity(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
+
 }

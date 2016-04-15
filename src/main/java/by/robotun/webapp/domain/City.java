@@ -1,13 +1,20 @@
 package by.robotun.webapp.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "city")
@@ -26,6 +33,10 @@ public class City implements Essence {
 
 	@Column(name = "title")
 	private String title;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<User> users;
 
 	public int getIdCity() {
 		return idCity;
@@ -41,6 +52,14 @@ public class City implements Essence {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

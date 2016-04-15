@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,6 +27,7 @@ import by.robotun.webapp.domain.json.Views;
 @Table(name = "users")
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "select u from User u"),
 	@NamedQuery(name = "User.findUserById", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.phones where u.idUser = :idUser"),
+	@NamedQuery(name = "User.findUserByIdWithCity", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.city where u.idUser = :idUser"),
 	@NamedQuery(name = "User.findUserByLogin", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal where u.login = :login"),
 	@NamedQuery(name = "User.findAllModerators", query = "select u from User u where idRole = :idRole")})
 public class User implements Essence {
@@ -64,9 +67,11 @@ public class User implements Essence {
 	@Column(name = "nickname")
 	private String nickname;
 	
+	@JsonView(Views.InternalUserSubclass.class)
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Physical physical;
 	
+	@JsonView(Views.InternalUserSubclass.class)
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Legal legal;
 	
@@ -81,6 +86,11 @@ public class User implements Essence {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Lot> lots;
+	
+	@JsonView(Views.InternalUserSubclass.class)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_city", insertable=false, updatable=false)
+	private City city;
 
 	public int getIdUser() {
 		return idUser;
@@ -176,6 +186,14 @@ public class User implements Essence {
 
 	public void setLots(List<Lot> lots) {
 		this.lots = lots;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	@Override

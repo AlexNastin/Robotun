@@ -45,6 +45,8 @@ public final class ControllerParamConstant {
 	
 	public static final String USER = "user";
 	
+	public static final String USER_JSON = "userJson";
+	
 	//ID
 	public static final String ID_USER = "idUser";
 	
