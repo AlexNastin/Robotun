@@ -70,4 +70,8 @@ public final class ControllerParamConstant {
 	
 	public static final String IS_ELSE = "isElse";
 	
+	public static final String TYPE_SORT = "typeSort";
+	
+	public static final String TYPE_REVERSE = "typeReverse";
+	
 }
