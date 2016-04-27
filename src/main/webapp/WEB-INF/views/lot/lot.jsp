@@ -248,7 +248,17 @@ var isElse = ${isElse}
 		                var minValue = parseInt(input.attr('min')); 
 		                if(!minValue) minValue = 1;
 		                if(currentVal > minValue) {
-		                    input.val(currentVal - 1).change();
+		                	if(currentVal>0){
+			                    input.val(currentVal - 100).change();
+			                }	if(currentVal>1000){
+			                    input.val(currentVal - 1000).change();
+			                }	if(currentVal>100000){
+			                    input.val(currentVal - 10000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 100000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 500000).change();
+			                }	
 		                } 
 		                if(parseInt(input.val()) == minValue) {
 		                    $(this).attr('disabled', true);
@@ -258,7 +268,17 @@ var isElse = ${isElse}
 		                var maxValue = parseInt(input.attr('max'));
 		                if(!maxValue) maxValue = 9999999999999;
 		                if(currentVal < maxValue) {
-		                    input.val(currentVal + 1).change();
+		                	if(currentVal>0){
+		                    input.val(currentVal + 100).change();
+		                }	if(currentVal>1000){
+		                    input.val(currentVal + 1000).change();
+		                }	if(currentVal>100000){
+		                    input.val(currentVal + 10000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 100000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 500000).change();
+		                }	
 		                }
 		                if(parseInt(input.val()) == maxValue) {
 		                    $(this).attr('disabled', true);
