@@ -20,7 +20,7 @@ import by.robotun.webapp.service.converter.SerializationJSON;
 
 @RestController
 public class AutoloaderController {
-	
+
 	@Autowired
 	private SerializationJSON serializationJSON;
 
@@ -33,58 +33,77 @@ public class AutoloaderController {
 		List<Lot> lots = autocompleteService.getLots(offset, date);
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
-	
+
+	@RequestMapping(value = "/autoloader/filterResults", method = RequestMethod.GET)
+	public String filterResult(@RequestParam(value = "startDate", required = false) String startDate,
+			@RequestParam(value = "startDate", required = false) String endDate,
+			@RequestParam(value = "startDate", required = false) Integer budgetFrom,
+			@RequestParam(value = "startDate", required = false) Integer budgetTo,
+			@RequestParam(value = "startDate", required = false) String desc) throws ServiceException {
+		System.err.println("startDate: " + startDate + " endDate: " + endDate +" budgetFrom: " + budgetFrom + " budgetTo: " + budgetTo + " desc: " + desc);
+		List<Lot> lots = autocompleteService.getLotsFiltering(startDate, endDate, budgetFrom, budgetTo, desc);
+		return serializationJSON.toJsonViewsPublic(lots);
+	}
+
 	@RequestMapping(value = "/autoloader/physical/myLots", method = RequestMethod.GET)
-	public String getPhysicalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getPhysicalMyLots(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
 		System.err.println(lots);
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
-	
+
 	@RequestMapping(value = "/autoloader/physical/myResponses", method = RequestMethod.GET)
-	public String getPhysicalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getPhysicalMyResponses(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyResponses(offset, person.getId());
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
-	
+
 	@RequestMapping(value = "/autoloader/legal/myLots", method = RequestMethod.GET)
-	public String getLegalMyLots(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getLegalMyLots(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
-	
+
 	@RequestMapping(value = "/autoloader/legal/myResponses", method = RequestMethod.GET)
-	public String getLegalMyResponses(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getLegalMyResponses(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyResponses(offset, person.getId());
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
-	
+
 	@RequestMapping(value = "/autoloader/moderator/onModeration", method = RequestMethod.GET)
-	public String getOnModeration(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getOnModeration(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		List<Lot> lots = autocompleteService.getOnModeration(offset);
 		return serializationJSON.toJsonViewsInternalRejectMessages(lots);
 	}
-	
+
 	@RequestMapping(value = "/autoloader/physical/lotsOnUpdate", method = RequestMethod.GET)
-	public List<Lot> getPhysicalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public List<Lot> getPhysicalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getLotsOnUpdate(offset, person.getId());
 		return lots;
 	}
-	
+
 	@RequestMapping(value = "/autoloader/legal/lotsOnUpdate", method = RequestMethod.GET)
-	public List<Lot> getLegalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public List<Lot> getLegalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getLotsOnUpdate(offset, person.getId());
 		return lots;
 	}
-	
+
 	@RequestMapping(value = "/autoloader/admin/moderators", method = RequestMethod.GET)
-	public String getModerators(@RequestParam(value = "offset", required = false) Integer offset, HttpSession httpSession) throws ServiceException {
+	public String getModerators(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
 		List<User> users = autocompleteService.getModerators(offset);
 		return serializationJSON.toJsonViewsInternalForListModerators(users);
 	}

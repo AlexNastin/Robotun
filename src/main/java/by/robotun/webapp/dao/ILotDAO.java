@@ -44,4 +44,7 @@ public interface ILotDAO {
 	
 	public List<Lot> selectLotsOnUpdateByUserLimitOffset(int offset, int idUser) throws DaoException;
 
+	public List<Lot> selectLotsFiltering(String startDate, String endDate, Integer budgetFrom, Integer budgetTo,
+			String desc) throws DaoException;
+
 }

@@ -1,11 +1,16 @@
 package by.robotun.webapp.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -165,5 +170,24 @@ public class LotDAOImpl implements ILotDAO {
 		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotOnUpdateByUser").setParameter("isVisible", ServiceParamConstant.ON_UPDATE_NUMBER).setParameter("id", idUser).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return lots;
+	}
+
+	@Override
+	public List<Lot> selectLotsFiltering(String startDate, String endDate, Integer budgetFrom, Integer budgetTo,
+			String desc) throws DaoException {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Lot> criteriaQuery = criteriaBuilder.createQuery(Lot.class);
+		Root<Lot> criteria = criteriaQuery.from(Lot.class);
+		criteriaQuery = criteriaQuery.select(criteria);
+		List<Predicate> predicatesList = new ArrayList<Predicate>();
+		if (!"".equals(startDate)) {
+//			if (desc) {
+//				Predicate startDatePredicate = criteriaBuilder.equal(criteria.get("idFirstName"), idFirstName);
+//			} else {
+				
+//			}
+//			predicatesList.add(firstNamePredicate);
+		}
+		return null;
 	}
 }

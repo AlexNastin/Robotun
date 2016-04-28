@@ -27,7 +27,7 @@
 	
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>     
+	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
    
     
 	</head>
@@ -58,6 +58,20 @@
                         <div class="row">
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
+                                <div class="form-group">
+                                <input type="text" class="form-control" id="startDate" name="calendar" placeholder="startDate"/> 
+                                <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
+                                <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/> 
+                                <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
+                                Сначала: <select id="desc">
+  									<option value="new">Новые</option>
+  									<option value="old">Старые</option>
+  									<option value="expensive">Дорогие</option>
+  									<option value="cheap">Дешёвые</option>
+								</select>
+								<a href="#" onclick="sortLots()">Найти</a>
+                                </div>
+                                <a href="#" onClick="sortLots()"></a>
                                
                                 <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
                                 
@@ -92,6 +106,7 @@
     
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
 <script type="text/javascript">
 
 var jsonData = '${listLotsJson}';
@@ -110,6 +125,45 @@ function mainLotsController ($scope) {
 		vm.lots.push(lot);
 	});
 }
+
+function sortLots(startDate, endDate, budgetFrom, budgetTo, desc){
+	var startDate = document.getElementById('startDate').value;
+	var endDate = document.getElementById('endDate').value;
+	console.log(typeof startDate)
+	var budgetFrom = document.getElementById('budgetFrom').value;
+	var budgetTo = document.getElementById('budgetTo').value;
+	var desc = document.getElementById('desc').value;
+	console.log("startDate: " + startDate + " endDate: " + endDate +" budgetFrom: " + budgetFrom + " budgetTo: " + budgetTo + " desc: " + desc);
+ 	var scope = angular.element(document.getElementById("list-group")).scope();
+ 	// «теневой» запрос к серверу
+ 					$.ajax({
+ 						url:"autoloader/filterResults",
+ 						type:"GET",
+ 						data:{
+ 							//передаем параметры
+							startDate: startDate,
+							endDate: endDate,
+							budgetFrom: budgetFrom,
+							budgetTo: budgetTo,
+							desc: desc
+						},
+						success:function(data) {
+							console.log(data);
+// 							var data = JSON.parse(data);
+// 							if(data.length == 0) {
+// 								isEnd = true;
+// 							}
+// 							for(var i=0; i<data.length; i++) {
+// 								scope.lotsCtrl.lots.push(data[i]);
+// 							}
+// 							scope.$apply(function () {
+// 								scope.lotsCtrl.updateCustomRequest(scope);
+// 							});
+// 							offset++;
+// 							block = false;
+						}
+					});
+	}
 
 function loader(){
 	var scope = angular.element(document.getElementById("list-group")).scope();
@@ -139,6 +193,19 @@ function loader(){
 					});
 				});
 	}
+	
+$(function() {
+
+    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+365",changeMonth: true,
+		changeYear: true, minDate:"+0",
+		yearRange: "-0:+1"});
+    
+    $( "#startDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+0",changeMonth: true,
+		changeYear: true, minDate:"-3650",
+		yearRange: "-1:+0"});
+    
+
+  });
 </script>
 
 </body>

@@ -89,4 +89,16 @@ public class AutoloaderService implements IAutoloaderService {
 		return users;
 	}
 
+	@Override
+	public List<Lot> getLotsFiltering(String startDate, String endDate, Integer budgetFrom, Integer budgetTo,
+			String desc) throws ServiceException {
+		List<Lot> lots = new ArrayList<Lot>();
+		try {
+			lots = lotDAO.selectLotsFiltering(startDate, endDate, budgetFrom, budgetTo, desc);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return lots;
+	}
+
 }

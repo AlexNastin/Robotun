@@ -21,4 +21,6 @@ public interface IAutoloaderService {
 
 	List<User> getModerators(Integer offset) throws ServiceException;
 
+	List<Lot> getLotsFiltering(String startDate, String endDate, Integer budgetFrom, Integer budgetTo, String desc) throws ServiceException;
+
 }

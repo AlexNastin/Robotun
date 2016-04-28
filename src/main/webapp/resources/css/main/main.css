@@ -276,3 +276,7 @@ background-color:#0e76a8;
 .centered-text{
   text-align: center;
 }
+
+.no-display {
+	display: none;
+}
