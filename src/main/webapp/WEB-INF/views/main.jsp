@@ -22,10 +22,10 @@
 <!--Banner-image, search and buttons-->
 <div class="background-main-image search-margin-top blur">
     <div class="container">
-        <div class="main-text-style">Ищите услугу?</div>
+        <div class="main-text-style">Ищете услугу?</div>
         <div class="row row-margin">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
         <div class="input-group">
             <input type="text" class="form-control search-style" placeholder="Введите запрос">
       <span class="input-group-btn">
@@ -34,7 +34,7 @@
         </div><!-- /input-group -->
     </div>
     <!-- /.col-lg-6 -->
-    <div class="col-lg-4"></div>
+    <div class="col-lg-3"></div>
     <div class="container">
         <div class="col-md-5 button-align-left">
             <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href='<c:url value="/result"/>' role="button">Хочу работать</a>
