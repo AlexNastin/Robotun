@@ -51,6 +51,10 @@ public final class ControllerParamConstant {
 	public static final String ID_USER = "idUser";
 	
 	public static final String ID_ROLE = "idRole";
+	
+	public static final String ID_CATEGORY = "idCategory";
+	
+	public static final String ID_SUBCATEGORY = "idSubcategory";
 
 	// OTHER
 
@@ -73,5 +77,7 @@ public final class ControllerParamConstant {
 	public static final String TYPE_SORT = "typeSort";
 	
 	public static final String TYPE_REVERSE = "typeReverse";
+
+	
 	
 }

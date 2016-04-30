@@ -59,7 +59,6 @@
                             <div class="well">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
                                 <div class="form-group">
-                                <input type="text" class="form-control" id="startDate" name="calendar" placeholder="startDate"/> 
                                 <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
                                 <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/> 
                                 <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
@@ -70,8 +69,6 @@
   									<option value="cheap">Дешёвые</option>
 								</select>
 								<a href="#" onclick="sortLots()">Найти</a>
-                                </div>
-                                <a href="#" onClick="sortLots()"></a>
                                
                                 <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
                                 
@@ -126,14 +123,14 @@ function mainLotsController ($scope) {
 	});
 }
 
-function sortLots(startDate, endDate, budgetFrom, budgetTo, desc){
-	var startDate = document.getElementById('startDate').value;
+var idCategory = ${idCategory};
+var idSubcategory = ${idSubcategory};
+
+function sortLots(){
 	var endDate = document.getElementById('endDate').value;
-	console.log(typeof startDate)
 	var budgetFrom = document.getElementById('budgetFrom').value;
 	var budgetTo = document.getElementById('budgetTo').value;
 	var desc = document.getElementById('desc').value;
-	console.log("startDate: " + startDate + " endDate: " + endDate +" budgetFrom: " + budgetFrom + " budgetTo: " + budgetTo + " desc: " + desc);
  	var scope = angular.element(document.getElementById("list-group")).scope();
  	// «теневой» запрос к серверу
  					$.ajax({
@@ -141,31 +138,34 @@ function sortLots(startDate, endDate, budgetFrom, budgetTo, desc){
  						type:"GET",
  						data:{
  							//передаем параметры
-							startDate: startDate,
 							endDate: endDate,
 							budgetFrom: budgetFrom,
 							budgetTo: budgetTo,
 							desc: desc
 						},
 						success:function(data) {
-							console.log(data);
-// 							var data = JSON.parse(data);
-// 							if(data.length == 0) {
-// 								isEnd = true;
-// 							}
-// 							for(var i=0; i<data.length; i++) {
-// 								scope.lotsCtrl.lots.push(data[i]);
-// 							}
-// 							scope.$apply(function () {
-// 								scope.lotsCtrl.updateCustomRequest(scope);
-// 							});
-// 							offset++;
-// 							block = false;
+ 							var data = JSON.parse(data);
+ 							console.log(data);
+ 							scope.lotsCtrl.lots = [];
+ 							for(var i=0; i<data.length; i++) {
+ 								scope.lotsCtrl.lots.push(data[i]);
+ 							}
+ 							console.log(scope.lotsCtrl.lots);
+ 							scope.$apply(function () {
+ 								scope.lotsCtrl.updateCustomRequest(scope);
+ 							});
+ 							isEnd = false;
+ 							block = false;
+ 							offset = 1;
 						}
 					});
 	}
 
 function loader(){
+	var endDate = document.getElementById('endDate').value;
+	var budgetFrom = document.getElementById('budgetFrom').value;
+	var budgetTo = document.getElementById('budgetTo').value;
+	var desc = document.getElementById('desc').value;
 	var scope = angular.element(document.getElementById("list-group")).scope();
 	// «теневой» запрос к серверу
 	$(".load").fadeIn(500, function () {
@@ -174,7 +174,13 @@ function loader(){
 						type:"GET",
 						data:{
 							//передаем параметры
-							offset: offset
+							offset: offset,
+							endDate: endDate,
+							budgetFrom: budgetFrom,
+							budgetTo: budgetTo,
+							desc: desc,
+							idCategory: idCategory,
+							idSubcategory: idSubcategory
 						},
 						success:function(data) {
 							var data = JSON.parse(data);

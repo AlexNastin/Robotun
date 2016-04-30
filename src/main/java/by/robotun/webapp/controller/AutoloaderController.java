@@ -1,5 +1,6 @@
 package by.robotun.webapp.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import by.robotun.webapp.dao.DaoParamConstant;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
@@ -28,20 +30,32 @@ public class AutoloaderController {
 	private IAutoloaderService autocompleteService;
 
 	@RequestMapping(value = "/autoloader/allResults", method = RequestMethod.GET)
-	public String getAllLots(@RequestParam(value = "offset", required = false) Integer offset) throws ServiceException {
+	public String getAllLots(@RequestParam(value = "offset", required = false) Integer offset,
+			@RequestParam(value = "endDate", required = false) String endDate,
+			@RequestParam(value = "budgetFrom", required = false) Integer budgetFrom,
+			@RequestParam(value = "budgetTo", required = false) Integer budgetTo,
+			@RequestParam(value = "desc", required = false) String desc,
+			@RequestParam(value = "idCategory", required = false) Integer idCategory,
+			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory) throws ServiceException {
+		List<Lot> lots = new ArrayList<Lot>();
 		Date date = new Date();
-		List<Lot> lots = autocompleteService.getLots(offset, date);
+		if ("".equals(endDate) && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc) && (idCategory == 0 || idSubcategory == 0)) {
+			lots = autocompleteService.getLots(offset, date);
+		} else if("".equals(endDate) && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc)) {
+			lots = autocompleteService.getLotsByCategoryAndSubcategory(offset, date, idCategory, idSubcategory);
+		} else {
+			lots = autocompleteService.getLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, offset, date);
+		}
+		System.err.println(lots);
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
 
 	@RequestMapping(value = "/autoloader/filterResults", method = RequestMethod.GET)
-	public String filterResult(@RequestParam(value = "startDate", required = false) String startDate,
-			@RequestParam(value = "startDate", required = false) String endDate,
-			@RequestParam(value = "startDate", required = false) Integer budgetFrom,
-			@RequestParam(value = "startDate", required = false) Integer budgetTo,
-			@RequestParam(value = "startDate", required = false) String desc) throws ServiceException {
-		System.err.println("startDate: " + startDate + " endDate: " + endDate +" budgetFrom: " + budgetFrom + " budgetTo: " + budgetTo + " desc: " + desc);
-		List<Lot> lots = autocompleteService.getLotsFiltering(startDate, endDate, budgetFrom, budgetTo, desc);
+	public String filterResult(@RequestParam(value = "endDate", required = false) String endDate,
+			@RequestParam(value = "budgetFrom", required = false) Integer budgetFrom,
+			@RequestParam(value = "budgetTo", required = false) Integer budgetTo,
+			@RequestParam(value = "desc", required = false) String desc) throws ServiceException {
+		List<Lot> lots = autocompleteService.getLotsFiltering(endDate, budgetFrom, budgetTo, desc);
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
 

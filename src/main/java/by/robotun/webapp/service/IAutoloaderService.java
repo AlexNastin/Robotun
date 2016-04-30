@@ -11,6 +11,8 @@ public interface IAutoloaderService {
 
 	List<Lot> getLots(int offset, Date endDate) throws ServiceException;
 	
+	List<Lot> getLotsByCategoryAndSubcategory(Integer offset, Date endDate, Integer idCategory, Integer idSubcategory) throws ServiceException;
+	
 	List<Lot> getMyLots(int offset, int idUser) throws ServiceException;
 	
 	List<Lot> getMyResponses(int offset, int idUser) throws ServiceException;
@@ -21,6 +23,9 @@ public interface IAutoloaderService {
 
 	List<User> getModerators(Integer offset) throws ServiceException;
 
-	List<Lot> getLotsFiltering(String startDate, String endDate, Integer budgetFrom, Integer budgetTo, String desc) throws ServiceException;
+	List<Lot> getLotsFiltering(String endDate, Integer budgetFrom, Integer budgetTo, String desc) throws ServiceException;
+
+	List<Lot> getLotsFilteringOffset(String endDate, Integer budgetFrom, Integer budgetTo, String desc,
+			Integer offset, Date date) throws ServiceException;
 
 }

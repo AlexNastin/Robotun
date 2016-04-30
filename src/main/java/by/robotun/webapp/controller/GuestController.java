@@ -44,14 +44,17 @@ public class GuestController {
 		List<Lot> lots;
 		Date endDate = new Date();
 		
-		
-		if (idCategory == null && idSubcategory == null) {
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
+		if ((idCategory == null || idCategory == 0) && (idSubcategory == null || idSubcategory == 0)) {
+			idCategory = 0;
+			idSubcategory = 0;
 			lots = guestService.getAllLots(endDate);
 		} else {
 			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
 		}
 		List<Category> categories = guestService.getAllCategories();
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
+		modelAndView.addObject(ControllerParamConstant.ID_CATEGORY, idCategory);
+		modelAndView.addObject(ControllerParamConstant.ID_SUBCATEGORY, idSubcategory);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJsonViewsPublicCategories(categories));
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
