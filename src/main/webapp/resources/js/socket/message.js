@@ -2,9 +2,9 @@ var cost;
 function someFunc(){
 cost = document.getElementById("cost").value;
 }
-var btn = document.getElementById("btn");
-btn.onclick = someFunc;
-btn.addEventListener("click", defineText, false);
+//var btn = document.getElementById("btn");
+//btn.onclick = someFunc;
+//btn.addEventListener("click", defineText, false);
 
 function defineText(evt) {
     

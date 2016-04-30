@@ -64,7 +64,7 @@
           </span>
           
       </div>
-      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" href="#">Send</a>
+      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" onclick="someFunc(); defineText()" href="#">Send</a>
 				</div>
 				
 							</security:authorize>
@@ -155,7 +155,7 @@
 <script type="text/javascript">
 var nickname = "${nickname}";
 var idUser = ${idUser};
-var id;
+var id = 41;
 var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse}
@@ -176,7 +176,6 @@ var isElse = ${isElse}
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
-			id = vm.lot.idLot;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.numberIsVisible = true;
