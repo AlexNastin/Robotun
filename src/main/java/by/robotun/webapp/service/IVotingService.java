@@ -4,7 +4,7 @@ public interface IVotingService {
 
 	void votingLot(int mark, String idLot, int idUser);
 	
-	Integer getVotingLot(String idLot);
+	float getVotingLot(String idLot);
 	
 	Integer checkVotingLot(String idLot, int idUser);
 }

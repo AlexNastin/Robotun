@@ -1,5 +1,8 @@
 package by.robotun.webapp.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +21,8 @@ public class VotingService implements IVotingService {
 	}
 
 	@Override
-	public Integer getVotingLot(String idLot) {
-		return redisDAO.getVotingLot(idLot);
+	public float getVotingLot(String idLot) {
+		return new BigDecimal(redisDAO.getVotingLot(idLot)).setScale(2, RoundingMode.HALF_UP).floatValue();
 	}
 
 	@Override

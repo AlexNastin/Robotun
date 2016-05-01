@@ -57,12 +57,12 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 			LOGGER.error("Проблема с извлечением пользователя из DAO-слоя, при аутентификации.");
 		}
 		if (profile == null) {
-			System.out.println("AAAAAAAAa");
+			System.out.println("Неверный логин и/или пароль.11111");
 			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
 		}
 		String suppliedPasswordHash = DigestUtils.md5Hex(authentication.getCredentials().toString());
 		if (!profile.getPassword().equals(suppliedPasswordHash)) {
-			System.out.println("AAAAAAAAa22222");
+			System.out.println("Неверный логин и/или пароль.22222");
 			throw new BadCredentialsException("Неверный логин и/или пароль.");
 		}
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(profile, null,

@@ -30,13 +30,14 @@ public class RedisDAOImpl implements IRedisDAO {
 	}
 
 	@Override
-	public Integer getVotingLot(String idLot) {
+	public Double getVotingLot(String idLot) {
 		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
 		Collection<Integer> valuesVotingLot = votingLot.values();
-		Integer summ = 0;
+		Double summ = 0.0;
 		for (Integer integer : valuesVotingLot) {
 			summ += integer;
 		}
+		summ /= valuesVotingLot.size();
 		return summ;
 	}
 

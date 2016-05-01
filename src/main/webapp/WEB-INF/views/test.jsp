@@ -16,6 +16,7 @@
 </head>
 <body>
 <a href="<c:url value="/test1"/>">Test1</a>
+
 <a href="<c:url value="/viewUserProfile?id=52"/>">Профиль</a>
 <div class="container" style="min-height: 50em;">
     <div class="row">

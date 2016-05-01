@@ -27,7 +27,8 @@
 				<div class="style-main-text-on-login-jsp col-md-12"
 					style="border-bottom: solid">Вход</div>
 				<div class="col-md-12" style="margin-bottom: 0em">
-					<form id="contact-form" class="form-horizontal" method="post" action="${authUrl}">
+					<form id="contact-form" class="form-horizontal" method="post"
+						action="${authUrl}">
 						<div class="form-group">
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" /> <input type="text"
@@ -48,7 +49,7 @@
 							</div>
 
 
-						<!-- 	<c:if test="${login_error != null}">
+							<!-- 	<c:if test="${login_error != null}">
 								<div style="text-align: center;">
 									<span class="alert alert-danger" role="alert"
 										style="padding: 1.1%; text-align: center">Ошибка</span>
@@ -65,18 +66,17 @@
 								onClick='location.href="<c:url value="/signup"  />"'>
 								Зарегистрироваться</button>
 						</div>
-
+						<c:if test="${not empty param.error}">
+							<div class="alert alert-danger" role="">
+								<font color="red">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+								</font>
+							</div>
+						</c:if>
 
 						<a href="<c:url value="/forgotPassword.html" />">Забыли
 							пароль? </a>
 					</form>
-					<c:if test="${not empty param.error}">
-					AAAAAAAAAAAAAAAA
-						<div class="alert alert-danger" role="">
-							<font color="red">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-							</font>
-						</div>
-					</c:if>
+
 				</div>
 			</div>
 		</div>

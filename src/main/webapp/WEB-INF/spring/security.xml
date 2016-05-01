@@ -12,9 +12,12 @@
 		<anonymous username="GUEST" granted-authority="ROLE_GUEST" />
 		<remember-me />
 
-		<form-login login-page="/login" authentication-failure-url="/login?login_error=true"
+		<form-login login-page="/login" authentication-failure-url="/login?error=true"
 			login-processing-url="/static/j_spring_security_check"
 			authentication-success-handler-ref="webAppAuthenticationSuccessHandler" />
+
+
+
 
 		<logout logout-url="/logout" logout-success-url="/index" />
 

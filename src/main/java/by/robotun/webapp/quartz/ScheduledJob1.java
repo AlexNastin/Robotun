@@ -8,7 +8,6 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 
 public class ScheduledJob1 extends QuartzJobBean{
 
-    
     @Override
     protected void executeInternal(JobExecutionContext arg0)
             throws JobExecutionException {
