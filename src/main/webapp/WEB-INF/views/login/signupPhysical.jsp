@@ -151,9 +151,7 @@
     </div>
 </div><!--/.container-->
 
-<footer>
-    <p class="pull-right">©2016 Company</p>
-</footer>
+
 
 <!-- script references -->
 <c:if test="${message != null }">
