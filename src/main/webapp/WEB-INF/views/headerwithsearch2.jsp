@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<c:url value="/test"/>" class="text-color active-block">Test<span class="sr-only">(current)</span></a></li>
-                <li><a href="<c:url value="/signup"/>" class="text-color">Sign Up</a></li>
+                <li><a href="<c:url value="/signup/userPhysical"/>" class="text-color">Sign Up</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -57,7 +57,7 @@
 								<a href="<c:url value="/login" />"> Войти <i
 									class="fa fa-sign-in"></i>
 								</a>
-								<a href="<c:url value="/signup" />"> Зарегистрироваться <i
+								<a href="<c:url value="/signup/userPhysical"/>"> Зарегистрироваться <i
 									class="fa fa-user-plus"></i>
 								</a>
 							</security:authorize> <security:authorize

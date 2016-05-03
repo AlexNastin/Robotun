@@ -23,8 +23,8 @@
 		<div class="col-md-8 form-login-style">
 
 			<ul class="nav nav-tabs tab-style">
-				<li class="active"><a data-toggle="tab"  href="#home">Физическиое лицо</a></li>
-				<li><a data-toggle="tab" href="#menu1">Юридическое лицо</a></li>
+				<li class="active"><a href='<c:url value="/signup/userPhysical" />'>Физическиое лицо</a></li>
+				<li><a href='<c:url value="/signup/userLegal" />'>Юридическое лицо</a></li>
 			</ul>
 			<div class="form-main-text">Регистрация</div>
 		<div class="tab-content">

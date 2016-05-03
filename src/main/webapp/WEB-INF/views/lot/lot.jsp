@@ -116,7 +116,7 @@
 	</div>
     <div class="qa-message-list" id="wallmessages" ng-controller="BetController as betCtrl">
 
-    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets">
+    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
 						<div class="message-inner">
 							<div class="message-head clearfix">
 								<div class="avatar pull-left"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img style="min-height: 40px; max-height: 40px;" src='/jobster.by/resources/images/avatar_2x.png'/></a></div>
@@ -155,15 +155,12 @@
 <script type="text/javascript">
 var nickname = "${nickname}";
 var idUser = ${idUser};
-var id = 41;
+var id;
 var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse}
 </script>
-	<script async type="text/javascript"
-		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
-	<script async type="text/javascript"
-		src="<c:url value="/resources/js/socket/message.js" />"></script>
+
 		<script>
 		var jsonData = '${lotJson}';
 
@@ -176,6 +173,7 @@ var isElse = ${isElse}
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
+			id = vm.lot.idLot;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.numberIsVisible = true;
@@ -372,7 +370,10 @@ function drawButtonPhoneOwner() {
 	}
 }
 </script>
-
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
 <script class="source" type="text/javascript">
        
     </script> 

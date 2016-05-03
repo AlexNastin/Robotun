@@ -55,7 +55,7 @@
 								<a href="<c:url value="/login" />"> Войти <i
 									class="fa fa-sign-in"></i>
 								</a>
-								<a href="<c:url value="/signup" />"> Зарегистрироваться <i
+								<a href="<c:url value="/signup/userPhysical"/>"> Зарегистрироваться <i
 									class="fa fa-user-plus"></i>
 								</a>
 							</security:authorize> <security:authorize
