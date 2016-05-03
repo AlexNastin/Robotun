@@ -159,7 +159,44 @@
 <c:if test="${message != null }">
 	${message}
 	</c:if>
+<script>
+    $(document).ready(function() {
+        $('#open-close').show();
+        $('#block-links').hide();
 
+        $('#open-close').click(function(event) {
+            event.preventDefault(); // телефон 2
+            $('#block-links').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close2').show();
+        $('#block-links2').hide();
+
+        $('#open-close2').click(function(event) {
+            event.preventDefault(); // телефон 3
+            $('#block-links2').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close3').show();
+        $('#block-links3').hide();
+
+        $('#open-close3').click(function(event) {
+            event.preventDefault(); // телефон юрика
+            $('#block-links3').slideToggle();
+        });
+    });
+    $(document).ready(function() {
+        $('#open-close4').show();
+        $('#block-links4').hide();
+
+        $('#open-close4').click(function(event) {
+            event.preventDefault(); // телефон юрика 2
+            $('#block-links4').slideToggle();
+        });
+    });
+</script>
 <%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
