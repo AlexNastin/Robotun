@@ -1,105 +1,179 @@
-.form-login-style {
-	margin-top: 1em;
-	background-color: rgba( 0, 0, 0, 0.7);
-	padding-top: 0.5em; 
-	padding-bottom:0.8em;
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+body {
+  padding-top: 50px;
+  background-color: #f5f5f5;
 }
-.form-main-text {
-	text-align:center;
-	margin-bottom: 10px;
-	font-wight: bold; 
-	font-size: 20pt;
-	color: white
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #fff;
 }
-.form-login-text-color {
-	color: white;
-	font-size: 14pt;
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+    background-color: #3abeb1;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 33%;
+    margin-left: 10px;
+  }
 }
-.height-main-block {
-	min-height: 45em;
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+  background-color: #3abeb1;
+  margin-right: -15px;
+  margin-bottom: 20px;
+  margin-left: -15px;
+    padding-top: 150px;
 }
-.login-button-style {
-	margin-top:0.5em;
-	color: white;
-    background-color: inherit;
-    border-color: white;
-    font-weight: bold;
-    border-radius: 40px;
-    border-width: 1px;
-    font-size: 12pt;
-    outline-style: none !importaint;
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
 }
-.login-button-style:hover,.login-button-style:active, .login-button-style:focus {
-    margin-top:0.5em;
-    color: inherit !important;
-    background-color:  white !important;
-    border-color:  white !important;
-    font-weight: bold !important;
-    font-size: 12pt;
-    outline-style: none !important;
+.nav-sidebar > .active > a {
+  color: #fff;
+  background-color: #8fdad3;
+    border-radius: 10px;
 }
-a {
-	color: white;
-}
-a:active {
-	color:inherit;
-}
-a:hover {
-	color:inherit;
-}
-.padding-top-login-form {
-	padding-top: 5em;
-}
-.form-login-style-login {
-	background-color: rgba( 0, 0, 0, 0.7);
-}
-.style-main-text-on-login-jsp {
-	text-weight: bold;
-	font-size: 20pt;
-	color: white;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-.signin-text-color {
-	color:white;
-}
-.signin-button {
-	margin-top:0.5em;
-	color: white;
-    background-color: inherit;
-    border-color: white;
-    font-weight: bold;
-    border-radius: 40px;
-    border-width: 1px;
-    font-size: 12pt;
-    outline-style: none !importaint;
-}
-.signin-button:hover, .signin-button:active, .signin-button:focus{
-	margin-top:0.5em;
-    color: inherit !important;
-    background-color:  white !important;
-    border-color:  white !important;
-    font-weight: bold !important;
-    font-size: 12pt;
-    outline-style: none !important;
-}
-@media (max-width: 768px){
-	.padding-top-login-form {
-	padding-top: 0em;
-}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+  background-color: #fff;
+    background-image: url(https://assets.entrepreneur.com/content/16x9/822/20150529202129-tools-wall-tool.jpeg);
+
 }
 @media (min-width: 768px) {
-	.padding-top-login-form {
-	padding-top: 5em;
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
+.main .page-header {
+  margin-top: 0;
 }
-@media (min-width: 992px) {
-	.padding-top-login-form {
-	padding-top: 5em;
+a {
+    color:white;
+    font-size: 15px;
+    text-align:center;
+    font-weight: bold;
 }
+
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+
+#login .form-wrap {
+    width: 30%;
+    margin: 0 auto;
 }
-@media (min-width: 1200px) {
-	.padding-top-login-form {
-	padding-top: 5em;
+#login h1 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
+#login .form-group {
+    margin-bottom: 25px;
+}
+#login .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#login .checkbox.show:before {
+    content: '\e013';
+    color: #3abeb1;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+#login .checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+#login .checkbox .label {
+    color: #6d6d6d;
+    font-size: 13px;
+    font-weight: normal;
+}
+#login .btn.btn-custom {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+#login .forget {
+    font-size: 13px;
+    text-align: center;
+    display: block;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+    color: #212121;
+}
+.btn-custom {
+    color: #fff;
+    background-color: #3abeb1;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}
+
+/*    --------------------------------------------------
+    :: Footer
+	-------------------------------------------------- */
+#footer {
+    color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+#footer p {
+    margin-bottom: 0;
+}
+#footer a {
+    color: inherit;
 }
