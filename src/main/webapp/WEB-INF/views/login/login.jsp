@@ -63,7 +63,7 @@
 								class="btn btn-default btn-outline btn-circle signin-button">Войти</button>
 							<button type="button"
 								class="btn btn-default btn-outline btn-circle signin-button"
-								onClick='location.href="<c:url value="/signup"  />"'>
+								onClick='location.href="href="<c:url value="/signup/userPhysical"/>"'>
 								Зарегистрироваться</button>
 						</div>
 						<c:if test="${not empty param.error}">
