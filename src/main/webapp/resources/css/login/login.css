@@ -69,7 +69,8 @@ footer {
 .main {
   padding: 20px;
   background-color: #fff;
-    background-image: url(https://assets.entrepreneur.com/content/16x9/822/20150529202129-tools-wall-tool.jpeg);
+    background-image: url(signin.jpg);
+    background-size: cover
 
 }
 @media (min-width: 768px) {
