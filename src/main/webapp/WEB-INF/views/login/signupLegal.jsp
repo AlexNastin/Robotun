@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<%@include file="/WEB-INF/views/headerwithsearch3.jsp"%>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <div class="container-fluid">
 
