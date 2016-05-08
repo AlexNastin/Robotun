@@ -177,3 +177,103 @@ a {
 #footer a {
     color: inherit;
 }
+/*Отсюда*/
+
+.form-login-style {
+	margin-top: 1em;
+	background-color: rgba( 0, 0, 0, 0.7);
+	padding-top: 0.5em; 
+	padding-bottom:0.8em;
+}
+.form-main-text {
+	text-align:center;
+	margin-bottom: 10px;
+	font-wight: bold; 
+	font-size: 20pt;
+	color: white
+}
+.form-login-text-color {
+	color: white;
+	font-size: 14pt;
+}
+.height-main-block {
+	min-height: 45em;
+}
+.login-button-style {
+	margin-top:0.5em;
+	color: white;
+    background-color: inherit;
+    border-color: white;
+    font-weight: bold;
+    border-radius: 40px;
+    border-width: 1px;
+    font-size: 12pt;
+    outline-style: none !importaint;
+}
+.login-button-style:hover,.login-button-style:active, .login-button-style:focus {
+    margin-top:0.5em;
+    color: inherit !important;
+    background-color:  white !important;
+    border-color:  white !important;
+    font-weight: bold !important;
+    font-size: 12pt;
+    outline-style: none !important;
+}
+a {
+	color: white;
+}
+.padding-top-login-form {
+	padding-top: 5em;
+}
+.form-login-style-login {
+	background-color: rgba( 0, 0, 0, 0.7);
+}
+.style-main-text-on-login-jsp {
+	text-weight: bold;
+	font-size: 20pt;
+	color: white;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+.signin-text-color {
+	color:white;
+}
+.signin-button {
+	margin-top:0.5em;
+	color: white;
+    background-color: inherit;
+    border-color: white;
+    font-weight: bold;
+    border-radius: 40px;
+    border-width: 1px;
+    font-size: 12pt;
+    outline-style: none !importaint;
+}
+.signin-button:hover, .signin-button:active, .signin-button:focus{
+	margin-top:0.5em;
+    color: inherit !important;
+    background-color:  white !important;
+    border-color:  white !important;
+    font-weight: bold !important;
+    font-size: 12pt;
+    outline-style: none !important;
+}
+@media (max-width: 768px){
+	.padding-top-login-form {
+	padding-top: 0em;
+}
+}
+@media (min-width: 768px) {
+	.padding-top-login-form {
+	padding-top: 5em;
+}
+}
+@media (min-width: 992px) {
+	.padding-top-login-form {
+	padding-top: 5em;
+}
+}
+@media (min-width: 1200px) {
+	.padding-top-login-form {
+	padding-top: 5em;
+}
