@@ -37,7 +37,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                <li class="dropdown">
-                <a class="dropdown-toggle" style="" data-toggle="dropdown" role="button">Аккаунт
+                <a class="dropdown-toggle font-weight-text-header" style="" data-toggle="dropdown" role="button">Аккаунт
                 <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

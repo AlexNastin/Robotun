@@ -23,3 +23,9 @@
 	position:relative;
 	margin-bottom:0px;
 }
+.font-weight-text-header {
+	font-weight:bold;
+}
+.background-header {
+	background-color:black;
+}
