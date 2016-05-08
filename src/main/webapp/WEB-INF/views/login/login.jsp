@@ -18,7 +18,7 @@
 <title>Login</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/header.jsp"%>
+	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	<div class="background-main-image">
 		<div class="container padding-top-login-form">
 			<div class="col-md-4"></div>
