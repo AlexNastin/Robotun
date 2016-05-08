@@ -15,7 +15,7 @@
 <link href="<c:url value="/resources/css/profiles/moderator.css"  />" rel="stylesheet" />
 </head>
 <body>
-<%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-3"></div>
 <div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em;" ng-controller="LotController as lotCtrl">	

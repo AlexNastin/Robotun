@@ -20,7 +20,7 @@
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <body class="body-color">
-<%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	
 	<div class="container container-style-addlot">
 	<div class="col-md-1"></div>

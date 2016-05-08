@@ -17,7 +17,7 @@
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 </head>
 <body>
-<%@include file="/WEB-INF/views/headerwithsearch2.jsp"%>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
