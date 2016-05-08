@@ -4,7 +4,7 @@
 }
 
 .well {
-    margin-top:-20px;
+ 
     background-color:#007FBD;
     border:2px solid #0077B2;
     text-align:center;
@@ -15,7 +15,7 @@
 }
 
 .well:hover {
-    margin-top:-20px;
+    
     background-color:#0077B2;
     border:2px solid #0077B2;
     text-align:center;

@@ -31,12 +31,32 @@
         <div class="content-main">
 
 
-<div class="container" style="margin-top: 20px; margin-bottom: 20px;" ng-controller="LotController as lotCtrl">
+<div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
 	<div class="row panel item">
 		<div class="col-md-4 bg_blur ">
-    	    <a href="#anchor" class="follow_btn hidden-xs scroll">Помочь!</a>
+    	   
 		</div>
-        <div class="col-md-8  col-xs-12">
+        <div class="col-md-8" style="padding-left:0px; padding-right:0px">
+        <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
+            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
+<li> <span class="days">00</span>
+<p class="days_ref">дней</p>
+</li>
+<li class="seperator">.</li>
+<li> <span class="hours">00</span>
+<p class="hours_ref">часов</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="minutes">00</span>
+<p class="minutes_ref">минут</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="seconds">00</span>
+<p class="seconds_ref">секунд</p>
+</li>
+</ul>
+</div>
            
            <div class="header" >
                 <h1>{{lotCtrl.lot.name}}</h1>
@@ -76,31 +96,7 @@
         </div>
     </div>   
     
-	<div class="row nav item">    
-
-        <div class="col-md-12 col-xs-12" style="margin: 0px;padding: 0px; color:white">
-            <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
-            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
-<li> <span class="days">00</span>
-<p class="days_ref">дней</p>
-</li>
-<li class="seperator">.</li>
-<li> <span class="hours">00</span>
-<p class="hours_ref">часов</p>
-</li>
-<li class="seperator">:</li>
-<li> <span class="minutes">00</span>
-<p class="minutes_ref">минут</p>
-</li>
-<li class="seperator">:</li>
-<li> <span class="seconds">00</span>
-<p class="seconds_ref">секунд</p>
-</li>
-</ul>
-</div>
-        </div>
-    </div>
+	
 </div>
 	 <br>
 	 <br>
