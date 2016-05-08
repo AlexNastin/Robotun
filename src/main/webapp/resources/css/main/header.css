@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.mini-search-style-header {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+.mini-search-style-button {
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+	background-color: #222;
+	border-color: white;
+	color: white;
+}
+.mini-search-style-button:hover, .mini-search-style-button:active, .mini-search-style-button:focus{
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+	background-color: #4b4b4b !important;
+	border-color: white;
+	color: white;
+	outline:none !important;
+}
