@@ -38,7 +38,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    
 
     <!-- Bootstrap Core CSS -->
    
@@ -75,18 +75,19 @@
 
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+<div class='clearfix'></div>
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" style='float: left;'>
             <ul class="sidebar-nav">
               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
                         <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                            <a href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level" ng-show="showMenu">
 
-                                	<li ng-repeat="subcategory in category.subcategories"><a ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+                                	<li ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
                             </ul>
                         </li>
@@ -103,7 +104,7 @@
         <div class="content-main">
 
                
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Категории</a>
             
 
 <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
@@ -223,7 +224,7 @@
 </div>
 </div>
 </div>
-            
+       
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -485,7 +486,8 @@ function drawButtonPhoneOwner() {
     	};
     }
     </script>
-		<%@include file="/WEB-INF/views/footer.jsp"%>
+    <div class="clearfix"></div>
+		  <%@include file="/WEB-INF/views/footer.jsp"%>   
 </body>
 </html>
 
