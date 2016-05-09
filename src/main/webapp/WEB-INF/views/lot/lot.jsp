@@ -74,7 +74,7 @@
 </head>
 
 <body>
-
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
     <div id="wrapper">
 
         <!-- Sidebar -->
