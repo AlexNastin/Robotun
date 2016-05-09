@@ -21,57 +21,53 @@
 <c:if test="${adminBool}">
 	<c:set value="/admin/profile" var="profileURL" />
 </c:if>
-<nav class="navbar navbar-default header-background-color">
+<link href="<c:url value="/resources/css/main/header.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
+<nav class="navbar navbar-inverse navbar-fixed-top header-position" role="navigation">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed burger-button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar" style="background-color: white"></span>
-                <span class="icon-bar" style="background-color: white"></span>
-                <span class="icon-bar" style="background-color: white"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-color" href="<c:url value="/"/>">Brand</a>
+            <a class="navbar-brand" href="<c:url value="/"/>">Jobster.by</a>
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="<c:url value="/test"/>" class="text-color active-block">Test<span class="sr-only">(current)</span></a></li>
-                <li><a href="<c:url value="/signup/userPhysical"/>" class="text-color">Sign Up</a></li>
-            </ul>
+        <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                <label class="dropdown-toggle header-right-dropdown-style text-color" style="" data-toggle="dropdown" role="button">Аккаунт
+               <li class="dropdown">
+                <a class="dropdown-toggle font-weight-text-header" style="" data-toggle="dropdown" role="button">Аккаунт
                 <span class="caret"></span>
-                </label>
+                </a>
                 <ul class="dropdown-menu">
                  <li><security:authorize access="hasRole('ROLE_GUEST')">
-								<a href="<c:url value="/login" />"> Войти <i
+								<a style="text-align:left;" href="<c:url value="/login" />"> Войти <i
 									class="fa fa-sign-in"></i>
 								</a>
-								<a href="<c:url value="/signup/userPhysical"/>"> Зарегистрироваться <i
+								<a style="text-align:left;" href="<c:url value="/signup/userPhysical"/>">Регистрация <i
 									class="fa fa-user-plus"></i>
 								</a>
 							</security:authorize> <security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="${profileURL}" />">Мой профиль<i
+								<a style="text-align:left;" href="<c:url value="${profileURL}" />">Мой профиль<i
 									class="fa fa-suitcase"></i>
 								</a>
 							</security:authorize></li>
 						<li><security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a href="<c:url value="/logout" />"> Выйти <i
+								<a style="text-align:left;" href="<c:url value="/logout" />"> Выйти <i
 									class="fa fa-user-times"></i>
 								</a>
 							</security:authorize></li>
                 </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
-<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>  
+
+<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
 <script>
 var app = angular.module('app', []);
 </script>
