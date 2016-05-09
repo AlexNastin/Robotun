@@ -8,7 +8,7 @@
 <html ng-app="app">
 <head>
 <title>Работа</title>
-</head>
+
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <!-- Spring Links -->
