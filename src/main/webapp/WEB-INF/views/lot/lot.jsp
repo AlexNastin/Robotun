@@ -21,15 +21,90 @@
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
+	<script	src="<c:url value="/resources/js/script.js" />"></script>  
 	
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>       
+	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
+
+
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+   
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     <script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+    <script>
+    var jsonDataCategories = '${listCategoriesJson}';
+    
+    var app = angular.module('app', []);
+    
+    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+    
+    function categoriesController ($scope) {
+    	var vm = this;
+    	var dataCategories = JSON.parse(jsonDataCategories);
+    	vm.categories = [];
+    	vm.subcategories = [];
+    	angular.forEach(dataCategories, function(category) {
+    		vm.categories.push(category);
+    	});
+    	vm.selectSubcategories = function (index) {
+    		vm.subcategories = vm.categories[index].subcategories;
+    	};
+    }
+    </script>
+
+</head>
+
 <body>
-<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-	 <div id="page-wrapper" class="gray-bg dashbard-1">
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+						
+                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                            <ul class="nav nav-second-level" ng-show="showMenu">
+
+                                	<li ng-repeat="subcategory in category.subcategories"><a ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+
+                            </ul>
+                        </li>
+						
+                        
+                    </ul>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+        <div class="gray-bg dashbard-1">
         <div class="content-main">
 
+               
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+            
 
 <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
 	<div class="row panel item">
@@ -148,6 +223,20 @@
 </div>
 </div>
 </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 <script type="text/javascript">
 var nickname = "${nickname}";
 var idUser = ${idUser};
@@ -366,13 +455,37 @@ function drawButtonPhoneOwner() {
 	}
 }
 </script>
+<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
 <script class="source" type="text/javascript">
+
        
     </script> 
+    
+    <script>
+    var jsonDataCategories = '${listCategoriesJson}';
+    
+    var app = angular.module('app', []);
+    
+    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+    
+    function categoriesController ($scope) {
+    	var vm = this;
+    	var dataCategories = JSON.parse(jsonDataCategories);
+    	vm.categories = [];
+    	vm.subcategories = [];
+    	angular.forEach(dataCategories, function(category) {
+    		vm.categories.push(category);
+    	});
+    	vm.selectSubcategories = function (index) {
+    		vm.subcategories = vm.categories[index].subcategories;
+    	};
+    }
+    </script>
 		<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
+

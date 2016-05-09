@@ -5,124 +5,475 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-<!DOCTYPE HTML>
-<html>
+<html ng-app="app">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Test</title>
+<title>Работа</title>
+</head>
+<c:url value="/get/subcategories" var="getSubcategories" />
+<c:url value="/get/categories" var="getCategories" />
+<!-- Spring Links -->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">
-	<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script>       
-
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Login page</title>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
+    <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
+     <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
+	<script	src="<c:url value="/resources/js/script.js" />"></script>  
+	
+	<!-- Custom plugin -->
+	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
+	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
+
+
+<html lang="en">
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
+
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+						
+                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a href="#" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                            <ul class="nav nav-second-level" ng-show="showMenu">
+
+                                	<li ng-repeat="subcategory in category.subcategories"><a ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+
+                            </ul>
+                        </li>
+						
+                        
+                    </ul>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input size="40" type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+        <div class="gray-bg dashbard-1">
+        <div class="content-main">
+
+               
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+            
+
+<div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
+	<div class="row panel item">
+		<div class="col-md-4 bg_blur ">
+    	   
+		</div>
+        <div class="col-md-8" style="padding-left:0px; padding-right:0px">
+        <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
+            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
+<li> <span class="days">00</span>
+<p class="days_ref">дней</p>
+</li>
+<li class="seperator">.</li>
+<li> <span class="hours">00</span>
+<p class="hours_ref">часов</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="minutes">00</span>
+<p class="minutes_ref">минут</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="seconds">00</span>
+<p class="seconds_ref">секунд</p>
+</li>
+</ul>
+</div>
+           
+           <div class="header" >
+                <h1>{{lotCtrl.lot.name}}</h1>
+                <h4><a ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
+                <span>{{lotCtrl.lot.description}}</span>
+                <div id="showPhoneOwner">
+                
+                <a ng-if="lotCtrl.isMeCall" href="#" ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)" id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
+				<div id="{{lotCtrl.idUser}}"></div>
+				
+				<security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								
+				<div id="inputs" class="col-md-12" style="padding-left:0px;" ng-if="lotCtrl.isShowSendButton">
+				 <div class="input-group " style="width:30%;">
+          <span class="input-group-btn">
+              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
+                
+             
+          </span>
+          <input type="text" style="text-align:center;" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <span id="anchor" class="input-group-btn">
+              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
+                          
+          </span>
+          
+      </div>
+      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" onclick="someFunc(); defineText()" href="#">Send</a>
+				</div>
+				
+							</security:authorize>
+							<security:authorize access="hasRole('ROLE_GUEST')">
+								<a href='<c:url value="/login" />'>Войти</a>
+							</security:authorize>
+				</div>
+           </div>
+        </div>
+    </div>   
+    
+	
+</div>
+	 <br>
+	 <br>
+	
+
+	
+	<div id="output">
+
+<div class="container" style="margin-bottom:30px">
+	<div class="row">
+		<h2 style="text-align:center">Отклики</h2>
+		<div id="callNumber"></div>
+	</div>
+    <div class="qa-message-list" id="wallmessages" ng-controller="BetController as betCtrl">
+
+    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
+						<div class="message-inner">
+							<div class="message-head clearfix">
+								<div class="avatar pull-left"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img style="min-height: 40px; max-height: 40px;" src='/jobster.by/resources/images/avatar_2x.png'/></a></div>
+								<div class="user-detail">
+									<h5 class="handle">{{bet.user.nickname}}</h5>
+									
+									<a ng-if="betCtrl.isICall" href="#" ng-click="betCtrl.showNumberICall(bet.idUser)" id="{{bet.idUser}}a">Посмотреть номер</a>
+									<div id="{{bet.idUser}}"></div>
+									
+									<div class="post-meta">
+										<div class="asker-meta">
+											<span class="qa-message-what"></span>
+											<span class="qa-message-when">
+												<span class="qa-message-when-data">{{bet.date | date:'yyyy-mm-dd HH:mm:ss'}}</span>
+											</span>
+											<span class="qa-message-who">
+												<span class="qa-message-who-pad">by </span>
+												<span class="qa-message-who-data"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="qa-message-content">
+								{{bet.cost}}
+							</div>
+					</div></div>
+					
+					
+					
+</div>
+</div>
+</div>
+</div>
+</div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
-</nav>
+    <!-- /#wrapper -->
 
-<div class="container-fluid">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-    <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+<script type="text/javascript">
+var nickname = "${nickname}";
+var idUser = ${idUser};
+var id;
+var isICall = ${isICall};
+var isMeCall = ${isMeCall};
+var isElse = ${isElse}
+</script>
 
-            <ul class="nav nav-sidebar">
-                <li  class="active"><a href=""><i style='float: left' class="fa fa-check-square-o fa-3x"></i> <p style="padding-top: 4%;">Физическое лицо</p></a></li>
-                <li><a href=""><i  style='float: left' class="fa fa-check-square-o fa-3x"></i> <p style="padding-top: 4%;">Частное лицо</p></a></li>
-                <li><a style="float:left" href ='#' class="fa fa-vk "></a> <a style="float:left" href ='#' class="fa fa-google-plus"></a><a style="float:left" href ='#' class="fa fa-twitter"></a><a style="float:left" href ='#' class="fa fa-facebook"></a> </li>
-            </ul>
+		<script>
+		var jsonData = '${lotJson}';
 
-
-        </div><!--/span-->
-Ц
-        <div class="col-sm-9 col-md-10 main">
-            <p class="visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
-            </p>
-
-            <section id="login">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-wrap">
-                                <h1>Введите данные:</h1>
-                                <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
-                                    <div class="form-group">
-                                        <label for="email" class="sr-only">Email</label>
-                                        <input type="email" name="email" id="email" class="form-control" placeholder="Эл.почта">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="sr-only">Никнейм</label>
-                                        <input type="email" name="email" id="nickname" class="form-control" placeholder="Никнейм">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="sr-only">Email</label>
-                                        <input type="email" name="email" id="phone" class="form-control" placeholder="Телефон">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="key" class="sr-only">Password</label>
-                                        <input type="password" name="key" id="key" class="form-control" placeholder="Пароль">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="key" class="sr-only">Password</label>
-                                        <input type="password" name="key"  class="form-control" placeholder="Повторите пароль">
-                                    </div>
-
-                                    <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Зарегестрироваться">
-                                </form>
-
-                                <hr>
-                            </div>
-                        </div> <!-- /.col-xs-12 -->
-                    </div> <!-- /.row -->
-                </div> <!-- /.container -->
-            </section>
-
-        </div><!--/row-->
-    </div>
-</div><!--/.container-->
-
-<footer>
-    <p class="pull-right">©2016 Company</p>
-</footer>
-
-<!-- script references -->
+		app.controller('LotController', ['$scope', '$http', lotController]);
+		
+		app.controller('BetController', ['$scope', '$http', betController]);
 
 
-<%@include file="/WEB-INF/views/footer.jsp"%>
+		function lotController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.lot = data;
+			id = vm.lot.idLot;
+			vm.isMeCall = isMeCall;
+			vm.idUser = idUser;
+			vm.numberIsVisible = true;
+			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
+			vm.showNumberICall = function(idUser) {
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
+							}
+							document.getElementById(idUser).innerHTML = contentNumber;
+							vm.numberIsVisible = false;
+						}
+					});
+				}
+			}
+		}
+		
+		function betController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.bets = data.bets;
+			vm.isICall = isICall;
+			vm.numberIsVisible = true;
+			vm.showNumberICall = function(idUser) {
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
+							}
+							document.getElementById(idUser).innerHTML = contentNumber;			
+							vm.numberIsVisible = false;
+						}
+					});
+				}
+			}
+		}
+		
+		$( document ).ready(function() {
+		    $('.btn-number').click(function(e){
+		        e.preventDefault();
+		        
+		        var fieldName = $(this).attr('data-field');
+		        var type      = $(this).attr('data-type');
+		        var input = $("input[name='"+fieldName+"']");
+		        var currentVal = parseInt(input.val());
+		        if (!isNaN(currentVal)) {
+		            if(type == 'minus') {
+		                var minValue = parseInt(input.attr('min')); 
+		                if(!minValue) minValue = 1;
+		                if(currentVal > minValue) {
+		                	if(currentVal>0){
+			                    input.val(currentVal - 100).change();
+			                }	if(currentVal>1000){
+			                    input.val(currentVal - 1000).change();
+			                }	if(currentVal>100000){
+			                    input.val(currentVal - 10000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 100000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 500000).change();
+			                }	
+		                } 
+		                if(parseInt(input.val()) == minValue) {
+		                    $(this).attr('disabled', true);
+		                }
+		    
+		            } else if(type == 'plus') {
+		                var maxValue = parseInt(input.attr('max'));
+		                if(!maxValue) maxValue = 9999999999999;
+		                if(currentVal < maxValue) {
+		                	if(currentVal>0){
+		                    input.val(currentVal + 100).change();
+		                }	if(currentVal>1000){
+		                    input.val(currentVal + 1000).change();
+		                }	if(currentVal>100000){
+		                    input.val(currentVal + 10000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 100000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 500000).change();
+		                }	
+		                }
+		                if(parseInt(input.val()) == maxValue) {
+		                    $(this).attr('disabled', true);
+		                }
+		    
+		            }
+		        } else {
+		            input.val(0);
+		        }
+		    });
+		    $('.input-number').focusin(function(){
+		       $(this).data('oldValue', $(this).val());
+		    });
+		    $('.input-number').change(function() {
+		        
+		        var minValue =  parseInt($(this).attr('min'));
+		        var maxValue =  parseInt($(this).attr('max'));
+		        if(!minValue) minValue = 1;
+		        if(!maxValue) maxValue = 9999999999999;
+		        var valueCurrent = parseInt($(this).val());
+		        
+		        var name = $(this).attr('name');
+		        if(valueCurrent >= minValue) {
+		            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+		        } else {
+		            alert('Sorry, the minimum value was reached');
+		            $(this).val($(this).data('oldValue'));
+		        }
+		        if(valueCurrent <= maxValue) {
+		            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+		        } else {
+		            alert('Sorry, the maximum value was reached');
+		            $(this).val($(this).data('oldValue'));
+		        }
+		        
+		        
+		    });
+		    $(".input-number").keydown(function (e) {
+		            // Allow: backspace, delete, tab, escape, enter and .
+		            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+		                 // Allow: Ctrl+A
+		                (e.keyCode == 65 && e.ctrlKey === true) || 
+		                 // Allow: home, end, left, right
+		                (e.keyCode >= 35 && e.keyCode <= 39)) {
+		                     // let it happen, don't do anything
+		                     return;
+		            }
+		            // Ensure that it is a number and stop the keypress
+		            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+		                e.preventDefault();
+		            }
+		    });
+		});
+
+$(document).ready(function() {
+	$("a.scroll").click(function () { 
+     elementClick = $(this).attr("href");
+     destination = $(elementClick).offset().top;
+     if($.browser.safari){
+       $('body').animate( { scrollTop: destination }, 1100 );
+     }else{
+       $('html').animate( { scrollTop: destination }, 1100 );
+     }
+     return false;
+   });
+ });
+
+var timing = ${dateEndLot};
+var time = new Date(timing).getTime();
+var date = new Date(time);
+var now = new Date();
+
+if (now>=date){
+	$('#inputs').remove();
+	}
+
+$('.countdown').downCount({
+    date: date,
+    offset: +10
+}, function () {
+	
+		
+});
+
+function drawButtonPhoneOwner() {
+	if(!isMeCall && !isElse) {
+		var scope = angular.element(document.getElementById("showPhoneOwner")).scope();
+		scope.$apply(function () {
+			scope.lotCtrl.isMeCall = true;
+		});
+	    isMeCall = true;
+	}
+}
+</script>
+
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
+<script class="source" type="text/javascript">
+
+       
+    </script> 
+    <script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+    <script>
+    var jsonDataCategories = '${listCategoriesJson}';
+    
+    var app = angular.module('app', []);
+    
+    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+    
+    function categoriesController ($scope) {
+    	var vm = this;
+    	var dataCategories = JSON.parse(jsonDataCategories);
+    	vm.categories = [];
+    	vm.subcategories = [];
+    	angular.forEach(dataCategories, function(category) {
+    		vm.categories.push(category);
+    	});
+    	vm.selectSubcategories = function (index) {
+    		vm.subcategories = vm.categories[index].subcategories;
+    	};
+    }
+    </script>
+		<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
+
