@@ -61,10 +61,8 @@
 						<div class="row" style="margin-bottom: 0.5em">
 							<button type="submit"
 								class="btn btn-default btn-outline btn-circle signin-button">Войти</button>
-							<button type="button"
-								class="btn btn-default btn-outline btn-circle signin-button"
-								onClick='location.href="href="<c:url value="/signup/userPhysical"/>"'>
-								Зарегистрироваться</button>
+							<a 	class="btn btn-default btn-outline btn-circle signin-button"
+								href="<c:url value="/signup/userPhysical"/>">Зарегистрироваться</a>
 						</div>
 						<c:if test="${not empty param.error}">
 							<div class="alert alert-danger" role="">

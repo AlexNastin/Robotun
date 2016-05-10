@@ -53,7 +53,7 @@
 
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class='clearfix'></div>
+
     <div id="wrapper" style='background-color: #3abeb1;'>
 
         <!-- Sidebar -->
