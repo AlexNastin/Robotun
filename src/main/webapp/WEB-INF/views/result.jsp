@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
- <!DOCTYPE HTML PUBLIC>
+ <!DOCTYPE html>
 <html ng-app="app">
 <head>
 <title>Работа</title>
@@ -16,8 +16,9 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
+	 <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
-     <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
+    <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
@@ -27,10 +28,6 @@
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
 	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
-
-
-
-
 
 
     <meta charset="utf-8">
