@@ -49,27 +49,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-     <script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
-    <script>
-    var jsonDataCategories = '${listCategoriesJson}';
     
-    var app = angular.module('app', []);
-    
-    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
-    
-    function categoriesController ($scope) {
-    	var vm = this;
-    	var dataCategories = JSON.parse(jsonDataCategories);
-    	vm.categories = [];
-    	vm.subcategories = [];
-    	angular.forEach(dataCategories, function(category) {
-    		vm.categories.push(category);
-    	});
-    	vm.selectSubcategories = function (index) {
-    		vm.subcategories = vm.categories[index].subcategories;
-    	};
-    }
-    </script>
 
 </head>
 
@@ -246,8 +226,24 @@ var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse}
 </script>
+<script>
+    var jsonDataCategories = '${listCategoriesJson}';
+    
+    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
+    
+    function categoriesController ($scope) {
+    	var vm = this;
+    	var dataCategories = JSON.parse(jsonDataCategories);
+    	vm.categories = [];
+    	vm.subcategories = [];
+    	angular.forEach(dataCategories, function(category) {
+    		vm.categories.push(category);
+    	});
+    	vm.selectSubcategories = function (index) {
+    		vm.subcategories = vm.categories[index].subcategories;
+    	};
+    }
 
-		<script>
 		var jsonData = '${lotJson}';
 
 		app.controller('LotController', ['$scope', '$http', lotController]);
@@ -456,7 +452,6 @@ function drawButtonPhoneOwner() {
 	}
 }
 </script>
-<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
 	<script type="text/javascript"
@@ -465,27 +460,6 @@ function drawButtonPhoneOwner() {
 
        
     </script> 
-    
-    <script>
-    var jsonDataCategories = '${listCategoriesJson}';
-    
-    var app = angular.module('app', []);
-    
-    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
-    
-    function categoriesController ($scope) {
-    	var vm = this;
-    	var dataCategories = JSON.parse(jsonDataCategories);
-    	vm.categories = [];
-    	vm.subcategories = [];
-    	angular.forEach(dataCategories, function(category) {
-    		vm.categories.push(category);
-    	});
-    	vm.selectSubcategories = function (index) {
-    		vm.subcategories = vm.categories[index].subcategories;
-    	};
-    }
-    </script>
     <div class="clearfix"></div>
 		  <%@include file="/WEB-INF/views/footer.jsp"%>   
 </body>
