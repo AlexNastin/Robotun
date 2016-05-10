@@ -5,8 +5,8 @@
 
 .well {
  
-    background-color:#007FBD;
-    border:2px solid #0077B2;
+    background-color:#3abeb1;
+    border:2px solid #2c8f86;
     text-align:center;
     cursor:pointer;
     font-size: 25px;
@@ -16,8 +16,8 @@
 
 .well:hover {
     
-    background-color:#0077B2;
-    border:2px solid #0077B2;
+    background-color:#2c8f86;
+    
     text-align:center;
     cursor:pointer;
     font-size: 25px;
@@ -242,7 +242,7 @@ display: inline-block;
 
 
 ul.countdown li p {
-color: #a7abb1;
+color: #fff;
 font-size: 14px;
 }
 /*!
@@ -368,4 +368,18 @@ font-size: 14px;
         position: relative;
         margin-right: 0;
     }
+}
+.send-button{
+	
+	color: #fff;
+    background-color: #3abeb1;
+    border-color: #2c8f86;
+    width: 30%
+}
+.send-button:hover{
+	
+	color: #fff;
+    background-color: #2c8f86;
+    border-color: #2c8f86;
+    width: 30%
 }

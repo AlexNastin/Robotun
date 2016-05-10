@@ -138,7 +138,7 @@
           </span>
           
       </div>
-      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style" onclick="someFunc(); defineText()" href="#">Send</a>
+      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style send-button" onclick="someFunc(); defineText()" href="#">Send</a>
 				</div>
 				
 							</security:authorize>
