@@ -54,7 +54,7 @@
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class='clearfix'></div>
-    <div id="wrapper">
+    <div id="wrapper" style='background-color: #3abeb1;'>
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper" style='float: left;'>
@@ -77,7 +77,7 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" style='background-color: #fff;'>
         <div class="gray-bg dashbard-1">
         	<div class="content-main">
    <!--banner-->
