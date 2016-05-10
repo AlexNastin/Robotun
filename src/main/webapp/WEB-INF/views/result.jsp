@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
- <!DOCTYPE HTML>
+ <!DOCTYPE HTML PUBLIC>
 <html ng-app="app">
 <head>
 <title>Работа</title>
@@ -180,8 +180,6 @@
     }
 		
 		
-
-
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -194,18 +192,13 @@ $(document).ready(function() {
      return false;
    });
  });
-
 </script>
      
 		  <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
 <script type="text/javascript">
-
 var jsonData = '${listLotsJson}';
-
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
-
-
 function mainLotsController ($scope) {
 	var vm = this;
 	vm.updateCustomRequest = function (scope) {
@@ -217,10 +210,8 @@ function mainLotsController ($scope) {
 		vm.lots.push(lot);
 	});
 }
-
 var idCategory = ${idCategory};
 var idSubcategory = ${idSubcategory};
-
 function sortLots(){
 	var endDate = document.getElementById('endDate').value;
 	var budgetFrom = document.getElementById('budgetFrom').value;
@@ -255,7 +246,6 @@ function sortLots(){
 						}
 					});
 	}
-
 function loader(){
 	var endDate = document.getElementById('endDate').value;
 	var budgetFrom = document.getElementById('budgetFrom').value;
@@ -296,7 +286,6 @@ function loader(){
 	}
 	
 $(function() {
-
     $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+365",changeMonth: true,
 		changeYear: true, minDate:"+0",
 		yearRange: "-0:+1"});
@@ -305,11 +294,9 @@ $(function() {
 		changeYear: true, minDate:"-3650",
 		yearRange: "-1:+0"});
     
-
   });
 </script> 
 <div class="clearfix"></div>
 		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
-
