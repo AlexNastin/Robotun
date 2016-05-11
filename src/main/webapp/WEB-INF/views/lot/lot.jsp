@@ -160,7 +160,7 @@
 	
 	<div id="output">
 
-<div class="container" style="margin-bottom:30px">
+<div  style="margin-bottom:30px">
 	<div class="row">
 		<h2 style="text-align:center">Отклики</h2>
 		<div id="callNumber"></div>
