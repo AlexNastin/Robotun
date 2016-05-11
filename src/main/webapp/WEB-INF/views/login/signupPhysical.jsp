@@ -32,7 +32,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container-fluid">
+<div class="container-fluid" style='background-color:#3abeb1'>
 
     <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
 

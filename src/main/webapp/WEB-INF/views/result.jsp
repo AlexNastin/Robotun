@@ -15,9 +15,12 @@
 <!-- Spring Links -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
-	 <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
+	
+	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
+	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">  
+	 
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
+   
     <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
@@ -47,25 +50,25 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-
 </head>
-
 <body>
-<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class='clearfix'></div>
-    <div id="wrapper" style='background-color: #3abeb1;'>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper" style='float: left;'>
-            <ul class="sidebar-nav">
-              <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+
+<div class="container-fluid" style='background-color:#3abeb1'>
+
+    <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
+
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
+
+            <ul class="nav nav-sidebar sidebar-nav">
+               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
-                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a style="text-align:left;" href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level" ng-show="showMenu">
 
-                                	<li ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
                             </ul>
                         </li>
@@ -73,26 +76,22 @@
                         
                     </ul>
             </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper" style='background-color: #fff;'>
-        <div class="gray-bg dashbard-1">
-        	<div class="content-main">
-   <!--banner-->
-   
-            <div class="banner">
-              <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Категории</a>
-                <h2>
+
+        </div><!--/span-->
+
+        <div class="col-sm-9 col-md-10 main">
+            <p class="visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
+            </p>
+
+            <h2>
                     <a href="index.html">Главная</a>
                     <i class="fa fa-angle-right"></i>
                     <span>Результаты по запросу</span>
                 </h2>
-            </div>
-            <!--//banner-->
-            <!--grid-->
-            <div class="inbox-mail">
+                
+                <div class="inbox-mail">
 
                 <!-- tab content -->
                 <div class="col-md-12 tab-content tab-content-in">
@@ -140,17 +139,11 @@
 </div>
 <div class="clearfix"> </div>
 </div>
-               
-			</div>
-		</div>
-       
-        </div>
-        <!-- /#page-content-wrapper -->
-
+        </div><!--/row-->
     </div>
-    
+</div><!--/.container-->
 
-    <!-- Menu Toggle Script -->
+<!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -297,3 +290,6 @@ $(function() {
 		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
+
+<!-- script references -->
+

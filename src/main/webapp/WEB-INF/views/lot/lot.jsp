@@ -17,7 +17,7 @@
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
-     <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
+     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
@@ -93,7 +93,7 @@
         <div class="col-md-8" style="padding-left:0px; padding-right:0px">
         <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
             <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
-            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px;"><ul class="countdown">
+            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px; height: 69px;"><ul class="countdown">
 <li> <span class="days">00</span>
 <p class="days_ref">дней</p>
 </li>
@@ -202,7 +202,8 @@
 </div>
 </div>
 </div>
-       
+       <div class="clearfix"></div>
+		  <%@include file="/WEB-INF/views/footer.jsp"%>  
         </div>
         <!-- /#page-content-wrapper -->
 
@@ -458,8 +459,7 @@ function drawButtonPhoneOwner() {
 
        
     </script> 
-    <div class="clearfix"></div>
-		  <%@include file="/WEB-INF/views/footer.jsp"%>   
+     
 </body>
 </html>
 
