@@ -61,7 +61,7 @@
 
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
 
-            <ul class="nav nav-sidebar sidebar-nav">
+            <ul style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
                <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
                         <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">

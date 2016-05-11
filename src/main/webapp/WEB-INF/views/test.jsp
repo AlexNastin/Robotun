@@ -18,7 +18,6 @@
 	
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">  
-	 <link href="<c:url value="/resources/css/results/results.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -60,14 +59,14 @@
 
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
 
-            <ul class="nav nav-sidebar">
+            <ul class="nav nav-sidebar sidebar-nav">
                <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
-                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a style="text-align:left;" href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level" ng-show="showMenu">
 
-                                	<li ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
                             </ul>
                         </li>
@@ -84,72 +83,148 @@
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
             </p>
 
-            <h2>
-                    <a href="index.html">Главная</a>
-                    <i class="fa fa-angle-right"></i>
-                    <span>Результаты по запросу</span>
-                </h2>
+            <h1>{{lotCtrl.lot.name}}</h1>
                 
                 <div class="inbox-mail">
 
                 <!-- tab content -->
-                <div class="col-md-12 tab-content tab-content-in">
-                    <div class="container">
-                        <div class="row">
-                            <div>
-                                <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class="form-group">
-                                <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
-                                <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/> 
-                                <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
-                                Сначала: <select id="desc">
-  									<option value="new">Новые</option>
-  									<option value="old">Старые</option>
-  									<option value="expensive">Дорогие</option>
-  									<option value="cheap">Дешёвые</option>
-								</select>
-								<a href="#" onclick="sortLots()">Найти</a>
-                               
-                                <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
-                                
-                                    <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
-                                    <div class="media col-md-3">
-                                            <figure class="pull-left">
-                                                <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
-                                            </figure>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h4 class="list-group-item-heading">{{lot.name}}</h4>
-                                            <p class="list-group-item-text">{{lot.description}}</p>
-                                        </div>
-                                        <div class="col-md-3 text-center">
-                                            <h2>{{lot.budget}}<small> бел. руб. </small></h2>
-                                            <button type="button" class="btn btn-default btn-lg btn-block"> Помочь! </button>
-                                        </div>
-                                    </a>
-                                    
-                                </div>
-                                <div class="load"></div>
-                            </div>
-                        </div>
-                    </div>
+               <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
+	<div class="row panel item">
+		<div class="col-md-4 bg_blur ">
+    	   
+		</div>
+        <div class="col-md-8" style="padding-left:0px; padding-right:0px">
+        <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
+            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px; height: 69px;"><ul class="countdown">
+<li> <span class="days">00</span>
+<p class="days_ref">дней</p>
+</li>
+<li class="seperator">.</li>
+<li> <span class="hours">00</span>
+<p class="hours_ref">часов</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="minutes">00</span>
+<p class="minutes_ref">минут</p>
+</li>
+<li class="seperator">:</li>
+<li> <span class="seconds">00</span>
+<p class="seconds_ref">секунд</p>
+</li>
+</ul>
+</div>
+           
+           <div class="header" >
+                <h1>{{lotCtrl.lot.name}}</h1>
+                <h4><a ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
+                <span>{{lotCtrl.lot.description}}</span>
+                <div id="showPhoneOwner">
+                
+                <a ng-if="lotCtrl.isMeCall" href="#" ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)" id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
+				<div id="{{lotCtrl.idUser}}"></div>
+				
+				<security:authorize
+								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+								
+				<div id="inputs" class="col-md-12" style="padding-left:0px;" ng-if="lotCtrl.isShowSendButton">
+				 <div class="input-group " style="width:30%;">
+          <span class="input-group-btn">
+              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
+                
+             
+          </span>
+          <input type="text" style="text-align:center;" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
+          <span id="anchor" class="input-group-btn">
+              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
+                          
+          </span>
+          
+      </div>
+      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style send-button" onclick="someFunc(); defineText()" href="#">Send</a>
+				</div>
+				
+							</security:authorize>
+							<security:authorize access="hasRole('ROLE_GUEST')">
+								<a href='<c:url value="/login" />'>Войти</a>
+							</security:authorize>
+				</div>
+           </div>
+        </div>
+    </div>   
+    
+	<br>
+	 <br>
+	
 
-                 </div>
+	
+	<div id="output">
+
+<div class="container" style="margin-bottom:30px">
+	<div class="row">
+		<h2 style="text-align:center">Отклики</h2>
+		<div id="callNumber"></div>
+	</div>
+    <div class="qa-message-list" id="wallmessages" ng-controller="BetController as betCtrl">
+
+    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
+						<div class="message-inner">
+							<div class="message-head clearfix">
+								<div class="avatar pull-left"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img style="min-height: 40px; max-height: 40px;" src='/jobster.by/resources/images/avatar_2x.png'/></a></div>
+								<div class="user-detail">
+									<h5 class="handle">{{bet.user.nickname}}</h5>
+									
+									<a ng-if="betCtrl.isICall" href="#" ng-click="betCtrl.showNumberICall(bet.idUser)" id="{{bet.idUser}}a">Посмотреть номер</a>
+									<div id="{{bet.idUser}}"></div>
+									
+									<div class="post-meta">
+										<div class="asker-meta">
+											<span class="qa-message-what"></span>
+											<span class="qa-message-when">
+												<span class="qa-message-when-data">{{bet.date | date:'yyyy-mm-dd HH:mm:ss'}}</span>
+											</span>
+											<span class="qa-message-who">
+												<span class="qa-message-who-pad">by </span>
+												<span class="qa-message-who-data"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="qa-message-content">
+								{{bet.cost}}
+							</div>
+					</div></div>
+					
+					
+					
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="clearfix"> </div>
+  <%@include file="/WEB-INF/views/footer.jsp"%>  
 </div>
         </div><!--/row-->
     </div>
-</div><!--/.container-->
+<!--/.container-->
 
 <!-- Menu Toggle Script -->
-    <script>
+     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-
+<script type="text/javascript">
+var nickname = "${nickname}";
+var idUser = ${idUser};
+var id;
+var isICall = ${isICall};
+var isMeCall = ${isMeCall};
+var isElse = ${isElse}
+</script>
 <script>
     var jsonDataCategories = '${listCategoriesJson}';
     
@@ -167,8 +242,175 @@
     		vm.subcategories = vm.categories[index].subcategories;
     	};
     }
+
+		var jsonData = '${lotJson}';
+
+		app.controller('LotController', ['$scope', '$http', lotController]);
 		
+		app.controller('BetController', ['$scope', '$http', betController]);
+
+
+		function lotController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.lot = data;
+			id = vm.lot.idLot;
+			vm.isMeCall = isMeCall;
+			vm.idUser = idUser;
+			vm.numberIsVisible = true;
+			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
+			vm.showNumberICall = function(idUser) {
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
+							}
+							document.getElementById(idUser).innerHTML = contentNumber;
+							vm.numberIsVisible = false;
+						}
+					});
+				}
+			}
+		}
 		
+		function betController ($scope) {
+			var vm = this;
+			var data = JSON.parse(jsonData);
+			vm.bets = data.bets;
+			vm.isICall = isICall;
+			vm.numberIsVisible = true;
+			vm.showNumberICall = function(idUser) {
+				if(vm.numberIsVisible) {
+					$.ajax({
+						url:"lot/showNumber",
+						type:"GET",
+						data:{
+							//передаем параметры
+							id: idUser
+						},
+						success:function(number) {
+							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							for(var i=0; i<number.length; i++) {
+								if(number[i] != "") {
+									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+								}
+							}
+							document.getElementById(idUser).innerHTML = contentNumber;			
+							vm.numberIsVisible = false;
+						}
+					});
+				}
+			}
+		}
+		
+		$( document ).ready(function() {
+		    $('.btn-number').click(function(e){
+		        e.preventDefault();
+		        
+		        var fieldName = $(this).attr('data-field');
+		        var type      = $(this).attr('data-type');
+		        var input = $("input[name='"+fieldName+"']");
+		        var currentVal = parseInt(input.val());
+		        if (!isNaN(currentVal)) {
+		            if(type == 'minus') {
+		                var minValue = parseInt(input.attr('min')); 
+		                if(!minValue) minValue = 1;
+		                if(currentVal > minValue) {
+		                	if(currentVal>0){
+			                    input.val(currentVal - 100).change();
+			                }	if(currentVal>1000){
+			                    input.val(currentVal - 1000).change();
+			                }	if(currentVal>100000){
+			                    input.val(currentVal - 10000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 100000).change();
+			                }	if(currentVal>1000000){
+			                    input.val(currentVal - 500000).change();
+			                }	
+		                } 
+		                if(parseInt(input.val()) == minValue) {
+		                    $(this).attr('disabled', true);
+		                }
+		    
+		            } else if(type == 'plus') {
+		                var maxValue = parseInt(input.attr('max'));
+		                if(!maxValue) maxValue = 9999999999999;
+		                if(currentVal < maxValue) {
+		                	if(currentVal>0){
+		                    input.val(currentVal + 100).change();
+		                }	if(currentVal>1000){
+		                    input.val(currentVal + 1000).change();
+		                }	if(currentVal>100000){
+		                    input.val(currentVal + 10000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 100000).change();
+		                }	if(currentVal>1000000){
+		                    input.val(currentVal + 500000).change();
+		                }	
+		                }
+		                if(parseInt(input.val()) == maxValue) {
+		                    $(this).attr('disabled', true);
+		                }
+		    
+		            }
+		        } else {
+		            input.val(0);
+		        }
+		    });
+		    $('.input-number').focusin(function(){
+		       $(this).data('oldValue', $(this).val());
+		    });
+		    $('.input-number').change(function() {
+		        
+		        var minValue =  parseInt($(this).attr('min'));
+		        var maxValue =  parseInt($(this).attr('max'));
+		        if(!minValue) minValue = 1;
+		        if(!maxValue) maxValue = 9999999999999;
+		        var valueCurrent = parseInt($(this).val());
+		        
+		        var name = $(this).attr('name');
+		        if(valueCurrent >= minValue) {
+		            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+		        } else {
+		            alert('Sorry, the minimum value was reached');
+		            $(this).val($(this).data('oldValue'));
+		        }
+		        if(valueCurrent <= maxValue) {
+		            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+		        } else {
+		            alert('Sorry, the maximum value was reached');
+		            $(this).val($(this).data('oldValue'));
+		        }
+		        
+		        
+		    });
+		    $(".input-number").keydown(function (e) {
+		            // Allow: backspace, delete, tab, escape, enter and .
+		            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+		                 // Allow: Ctrl+A
+		                (e.keyCode == 65 && e.ctrlKey === true) || 
+		                 // Allow: home, end, left, right
+		                (e.keyCode >= 35 && e.keyCode <= 39)) {
+		                     // let it happen, don't do anything
+		                     return;
+		            }
+		            // Ensure that it is a number and stop the keypress
+		            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+		                e.preventDefault();
+		            }
+		    });
+		});
+
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -181,114 +423,43 @@ $(document).ready(function() {
      return false;
    });
  });
-</script>
-     
-		  <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-<script type="text/javascript">
-var jsonData = '${listLotsJson}';
-app.controller('LotsController', ['$scope', '$http', mainLotsController]);
-function mainLotsController ($scope) {
-	var vm = this;
-	vm.updateCustomRequest = function (scope) {
-		vm.lots = scope.lotsCtrl.lots;
-	};
-	var data = JSON.parse(jsonData);
-	vm.lots = [];
-	angular.forEach(data, function(lot) {
-		vm.lots.push(lot);
-	});
-}
-var idCategory = ${idCategory};
-var idSubcategory = ${idSubcategory};
-function sortLots(){
-	var endDate = document.getElementById('endDate').value;
-	var budgetFrom = document.getElementById('budgetFrom').value;
-	var budgetTo = document.getElementById('budgetTo').value;
-	var desc = document.getElementById('desc').value;
- 	var scope = angular.element(document.getElementById("list-group")).scope();
- 	// «теневой» запрос к серверу
- 					$.ajax({
- 						url:"autoloader/filterResults",
- 						type:"GET",
- 						data:{
- 							//передаем параметры
-							endDate: endDate,
-							budgetFrom: budgetFrom,
-							budgetTo: budgetTo,
-							desc: desc
-						},
-						success:function(data) {
- 							var data = JSON.parse(data);
- 							console.log(data);
- 							scope.lotsCtrl.lots = [];
- 							for(var i=0; i<data.length; i++) {
- 								scope.lotsCtrl.lots.push(data[i]);
- 							}
- 							console.log(scope.lotsCtrl.lots);
- 							scope.$apply(function () {
- 								scope.lotsCtrl.updateCustomRequest(scope);
- 							});
- 							isEnd = false;
- 							block = false;
- 							offset = 1;
-						}
-					});
+
+var timing = ${dateEndLot};
+var time = new Date(timing).getTime();
+var date = new Date(time);
+var now = new Date();
+
+if (now>=date){
+	$('#inputs').remove();
 	}
-function loader(){
-	var endDate = document.getElementById('endDate').value;
-	var budgetFrom = document.getElementById('budgetFrom').value;
-	var budgetTo = document.getElementById('budgetTo').value;
-	var desc = document.getElementById('desc').value;
-	var scope = angular.element(document.getElementById("list-group")).scope();
-	// «теневой» запрос к серверу
-	$(".load").fadeIn(500, function () {
-					$.ajax({
-						url:"autoloader/allResults",
-						type:"GET",
-						data:{
-							//передаем параметры
-							offset: offset,
-							endDate: endDate,
-							budgetFrom: budgetFrom,
-							budgetTo: budgetTo,
-							desc: desc,
-							idCategory: idCategory,
-							idSubcategory: idSubcategory
-						},
-						success:function(data) {
-							var data = JSON.parse(data);
-							if(data.length == 0) {
-								isEnd = true;
-							}
-							for(var i=0; i<data.length; i++) {
-								scope.lotsCtrl.lots.push(data[i]);
-							}
-							scope.$apply(function () {
-								scope.lotsCtrl.updateCustomRequest(scope);
-							});
-							offset++;
-							block = false;
-						}
-					});
-				});
-	}
+
+$('.countdown').downCount({
+    date: date,
+    offset: +10
+}, function () {
 	
-$(function() {
-    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+365",changeMonth: true,
-		changeYear: true, minDate:"+0",
-		yearRange: "-0:+1"});
-    
-    $( "#startDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+0",changeMonth: true,
-		changeYear: true, minDate:"-3650",
-		yearRange: "-1:+0"});
-    
-  });
-</script> 
-<div class="clearfix"></div>
-		  <%@include file="/WEB-INF/views/footer.jsp"%> 
+		
+});
+
+function drawButtonPhoneOwner() {
+	if(!isMeCall && !isElse) {
+		var scope = angular.element(document.getElementById("showPhoneOwner")).scope();
+		scope.$apply(function () {
+			scope.lotCtrl.isMeCall = true;
+		});
+	    isMeCall = true;
+	}
+}
+</script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
+<script class="source" type="text/javascript">
+
+       
+    </script> 
+     
 </body>
 </html>
-
-<!-- script references -->
 

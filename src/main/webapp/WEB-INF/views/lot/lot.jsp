@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-	
+ <!DOCTYPE html>
 <html ng-app="app">
 <head>
 <title>Работа</title>
@@ -15,9 +15,11 @@
 <!-- Spring Links -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />   
+	
+	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
+	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">  
     <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
-     
+    <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
@@ -27,7 +29,6 @@
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
 	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
-
 
 
     <meta charset="utf-8">
@@ -47,25 +48,25 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-
 </head>
-
 <body>
+
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
-    <div id="wrapper" style='background-color: #3abeb1;'>
+<div class="container-fluid" style='background-color:#3abeb1'>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper" style='float: left;'>
-            <ul class="sidebar-nav">
-              <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+    <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
+
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
+
+            <ul style="left: 0;width: 100%;"  class="nav nav-sidebar sidebar-nav">
+               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
-                        <li ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a style="text-align:left;" href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
                             <ul class="nav nav-second-level" ng-show="showMenu">
 
-                                	<li ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
                             </ul>
                         </li>
@@ -73,19 +74,21 @@
                         
                     </ul>
             </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper" style='background-color: #fff;'>
-        <div class="gray-bg dashbard-1">
-        <div class="content-main">
 
-               
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Категории</a>
-            
+        </div><!--/span-->
 
-<div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
+        <div class="col-sm-9 col-md-10 main">
+            <p class="visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
+            </p>
+
+            <h1>{{lotCtrl.lot.name}}</h1>
+                
+                <div class="inbox-mail">
+
+                <!-- tab content -->
+               <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
 	<div class="row panel item">
 		<div class="col-md-4 bg_blur ">
     	   
@@ -114,7 +117,7 @@
            
            <div class="header" >
                 <h1>{{lotCtrl.lot.name}}</h1>
-                <h4><a ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
+                <h4><a style="color:#3abeb1" ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
                 <span>{{lotCtrl.lot.description}}</span>
                 <div id="showPhoneOwner">
                 
@@ -143,16 +146,14 @@
 				
 							</security:authorize>
 							<security:authorize access="hasRole('ROLE_GUEST')">
-								<a href='<c:url value="/login" />'>Войти</a>
+								<a style="color:#3abeb1" href='<c:url value="/login" />'>Войти</a>
 							</security:authorize>
 				</div>
            </div>
         </div>
     </div>   
     
-	
-</div>
-	 <br>
+	<br>
 	 <br>
 	
 
@@ -202,16 +203,14 @@
 </div>
 </div>
 </div>
-       <div class="clearfix"></div>
-		  <%@include file="/WEB-INF/views/footer.jsp"%>  
-        </div>
-        <!-- /#page-content-wrapper -->
-
+ 
+</div>
+        </div><!--/row-->
     </div>
-    
+<!--/.container-->
 
-    <!-- Menu Toggle Script -->
-    <script>
+<!-- Menu Toggle Script -->
+     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -459,7 +458,8 @@ function drawButtonPhoneOwner() {
 
        
     </script> 
-     
+     <div class="clearfix"> </div>
+  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
 
