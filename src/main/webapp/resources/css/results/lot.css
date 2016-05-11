@@ -387,15 +387,87 @@ font-size: 14px;
  .resize {
  width: 1050px;
  }
+ .size-width-result {
+ width: 1050px;
+ }
+ .resize-result {
+ width: 994px;
+ }
  }
  @media screen and (min-width: 1025px) and (max-width: 1280px)  {
  .resize {
  width: 970px;
+ }
+  .size-width-result {
+ width: 970px;
+ }
+ .resize-result {
+ width: 914px;
  }
  }
  @media screen and (max-width: 1024px) and (min-width: 992px)  {
  .resize {
  width: 720px;
  }
+  .size-width-result {
+ width: 720px;
  }
- 
+ .resize-result {
+ width: 664px;
+ }
+ }
+ .text-style-size-result {
+ color: white;
+ font-size: 20pt;
+ font-weight: bold;
+ }
+.style-page-result {
+ background-color: RGBA(255,255,255,0.8); 
+ padding-top:0.1em; 
+ padding-right:2em;
+ padding-left: 2em;
+ padding-bottom:2em;
+}
+.sort-style {
+	margin-bottom:2em;
+	margin-top:1em; 
+	background-color: rgba(58, 190, 177,1);
+	padding-top: 0.1em;
+	padding-bottom: 4.5em;
+}
+.margin-top-sort-style {
+	margin-top:1em;
+}
+.text-sort-style {
+	margin-top:0.5em;
+	font-weight:bold;
+}
+.button-sort-style {
+	background-color: white;
+    color: rgb(34, 34, 34);
+    border-color: gray;
+    font-weight: bold;
+}
+.button-sort-style:hover, .button-sort-style:active, .button-sort-style:focus {
+	background-color: #efefef! important;
+    color: rgb(34, 34, 34) !important;
+    border-color: gray !important;
+    font-weight: bold !important;
+}
+@media (max-width: 768px)  {
+.margin-top-button-sort-style {	
+	margin-top:1em;
+}
+}
+.main-button-style {
+	background-color: rgb(58, 190, 177);
+	border-color: rgb(58, 190, 177);
+	border-radius: 10px !important;
+	color: white;
+}
+.main-button-style:hover, .main-button-style:focus, .main-button-style:active {
+	background-color: white !important;
+	border-color: rgb(58, 190, 177) !important;
+	border-radius: 10px !important;
+	color:rgb(58, 190, 177) !important;
+}

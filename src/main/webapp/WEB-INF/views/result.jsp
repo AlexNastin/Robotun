@@ -23,6 +23,7 @@
    
     <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
@@ -86,34 +87,53 @@
             </p>
 
             <h2>
-                    <a href="index.html">Главная</a>
-                    <i class="fa fa-angle-right"></i>
-                    <span>Результаты по запросу</span>
+                    <a href="index.html" class="text-style-size-result">Главная</a>
+                    <i class="fa fa-angle-right text-style-size-result"></i>
+                    <span class="text-style-size-result">Результаты по запросу</span>
                 </h2>
                 
                 <div class="inbox-mail">
 
                 <!-- tab content -->
                 <div class="col-md-12 tab-content tab-content-in">
-                    <div class="container">
+                    <div class="container resize">
                         <div class="row">
-                            <div>
-                                <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
-                                <div class="form-group">
+                        <div class="sort-style">
+                                <div class="col-md-2 margin-top-sort-style">
                                 <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
+                                </div>
+                                <div class="col-md-2 margin-top-sort-style">
                                 <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/> 
+                                </div>
+                                <div class="col-md-2 margin-top-sort-style">
                                 <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
-                                Сначала: <select id="desc">
+                                </div>
+                                 <div class="col-md-6 margin-top-sort-style" style="padding: 0px;">
+                                 <div class="col-md-2 text-sort-style">
+                                 Сначала: 
+                                 </div>
+                                 <div class="col-md-6">
+                                 <select id="desc" class="form-control">
   									<option value="new">Новые</option>
   									<option value="old">Старые</option>
   									<option value="expensive">Дорогие</option>
   									<option value="cheap">Дешёвые</option>
 								</select>
-								<a href="#" onclick="sortLots()">Найти</a>
-                               
-                                <div class=" resize list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
+								</div>
+								<div class="col-md-4">
+								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
+								</div>
+								</div>
+							
+                                </div>
+                            <div class="style-page-result size-width-result">
+                                <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
+                                <div class="form-group">
                                 
-                                    <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
+                               
+                                <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
+                                
+                                    <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots">
                                     <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
@@ -125,7 +145,7 @@
                                         </div>
                                         <div class="col-md-3 text-center">
                                             <h2>{{lot.budget}}<small> бел. руб. </small></h2>
-                                            <button type="button" class="btn btn-default btn-lg btn-block"> Помочь! </button>
+                                            <button type="button" class="btn btn-default btn-lg btn-block main-button-style"> Помочь! </button>
                                         </div>
                                     </a>
                                     
