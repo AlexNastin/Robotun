@@ -281,3 +281,7 @@ background-color:#0e76a8;
 .no-display {
 	display: none;
 }
+
+body {
+	overflow-x: hidden;
+	}
