@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="app">
 <head>
 <title>Работа</title>
@@ -13,210 +13,264 @@
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <!-- Spring Links -->
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	
-	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
-	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">  
-    <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
-    <link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script>  
-	
-	<!-- Custom plugin -->
-	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+
+<link href="<c:url value="/resources/css/main/main.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/login/login.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/results/lot.css"  />"
+	rel="stylesheet" />
+<link href="<c:url value="/resources/css/results/custom.css"  />"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
+<script src="<c:url value="/resources/js/script.js" />"></script>
+
+<!-- Custom plugin -->
+<link href="<c:url value="/resources/css/results/custom.css"  />"
+	rel="stylesheet" />
+<script src="<c:url value="/resources/js/results/custom.js" />"></script>
 
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    
 
-    <!-- Bootstrap Core CSS -->
-   
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<!-- Bootstrap Core CSS -->
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
 
-<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
-<div class="container-fluid" style='background-color:#3abeb1'>
+	<div class="container-fluid" style='background-color: #3abeb1'>
 
-    <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
+		<div class="row row-offcanvas row-offcanvas-left"
+			style="background-color: #3abeb1;">
 
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
+			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
+				role="navigation">
 
-            <ul style="left: 0;width: 100%;"  class="nav nav-sidebar sidebar-nav">
-               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
-						
-                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a style="text-align:left;" href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
-                            <ul class="nav nav-second-level" ng-show="showMenu">
+				<ul style="left: 0; width: 100%;"
+					class="nav nav-sidebar sidebar-nav">
+					<ul class="nav" id="side-menu"
+						ng-controller="CategoriesController as categoriesCtrl">
 
-                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
+						<li style="text-align: left;"
+							ng-repeat="category in categoriesCtrl.categories"
+							ng-click="showMenu = !showMenu"><a style="text-align: left;"
+							href="#" class=" hvr-bounce-to-right"><i style='color: white'
+								class="fa fa-dashboard nav_icon "></i><span style='color: white'
+								class="nav-label">{{category.title}}</span><span
+								class="fa arrow"></span> </a>
+							<ul class="nav nav-second-level" ng-show="showMenu">
 
-                            </ul>
-                        </li>
-						
-                        
-                    </ul>
-            </ul>
+								<li style="text-align: left;"
+									ng-repeat="subcategory in category.subcategories"><a
+									style='color: white'
+									ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}'
+									class=" hvr-bounce-to-right"> <i style='color: white'
+										class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}
+								</a></li>
+
+							</ul></li>
 
 
-        </div><!--/span-->
+					</ul>
+				</ul>
 
-        <div class="col-sm-9 col-md-10 main">
-            <p class="visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
-            </p>
 
-            <h1>{{lotCtrl.lot.name}}</h1>
-                
-                <div class="inbox-mail">
+			</div>
+			<!--/span-->
 
-                <!-- tab content -->
-               <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; color:white" ng-controller="LotController as lotCtrl">
-	<div class="row panel item">
-		<div class="col-md-4 bg_blur ">
-    	   
-		</div>
-        <div class="col-md-8" style="padding-left:0px; padding-right:0px">
-        <div class="col-md-4 col-xs-4 well" style="height: 69px;"><div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div></div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}</div>
-            <div class="col-md-4 col-xs-4 well" style="padding-bottom: 0px; padding-top: 6px; height: 69px;"><ul class="countdown">
-<li> <span class="days">00</span>
-<p class="days_ref">дней</p>
-</li>
-<li class="seperator">.</li>
-<li> <span class="hours">00</span>
-<p class="hours_ref">часов</p>
-</li>
-<li class="seperator">:</li>
-<li> <span class="minutes">00</span>
-<p class="minutes_ref">минут</p>
-</li>
-<li class="seperator">:</li>
-<li> <span class="seconds">00</span>
-<p class="seconds_ref">секунд</p>
-</li>
-</ul>
-</div>
-           
-           <div class="header" >
-                <h1>{{lotCtrl.lot.name}}</h1>
-                <h4><a style="color:#3abeb1" ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a></h4>
-                <span>{{lotCtrl.lot.description}}</span>
-                <div id="showPhoneOwner">
-                
-                <a ng-if="lotCtrl.isMeCall" href="#" ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)" id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
-				<div id="{{lotCtrl.idUser}}"></div>
-				
-				<security:authorize
-								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								
-				<div id="inputs" class="col-md-12" style="padding-left:0px;" ng-if="lotCtrl.isShowSendButton">
-				 <div class="input-group " style="width:30%;">
-          <span class="input-group-btn">
-              <input id="myBtn1" type="button" class="btn btn-danger btn-number" value="-" data-type="minus" data-field="quant[2]">
-                
-             
-          </span>
-          <input type="text" style="text-align:center;" disabled id="cost" name="quant[2]" class="form-control input-number" value="500000" min="1" max="1000000">
-          <span id="anchor" class="input-group-btn">
-              <input id="displus"  type="button" class="btn btn-success btn-number" value="+" data-type="plus" data-field="quant[2]">
-                          
-          </span>
-          
-      </div>
-      <a id="btn" class="button-on-add-lot btn btn-primary button-legal-style send-button" onclick="someFunc(); defineText()" href="#">Send</a>
-				</div>
-				
-							</security:authorize>
-							<security:authorize access="hasRole('ROLE_GUEST')">
-								<a style="color:#3abeb1" href='<c:url value="/login" />'>Войти</a>
-							</security:authorize>
-				</div>
-           </div>
-        </div>
-    </div>   
-    
-	<br>
-	 <br>
-	
+			<div class="col-sm-9 col-md-10 main">
+				<p class="visible-xs">
+					<button type="button" class="btn btn-primary btn-xs"
+						data-toggle="offcanvas">
+						<i class="fa fa-chevron-left"></i>
+					</button>
+				</p>
 
-	
-	<div id="output">
+				<h1>{{lotCtrl.lot.name}}</h1>
 
-<div  style="margin-bottom:30px">
-	<div class="row">
-		<h2 style="text-align:center">Отклики</h2>
-		<div id="callNumber"></div>
-	</div>
-    <div class="qa-message-list" id="wallmessages" ng-controller="BetController as betCtrl">
+				<div class="inbox-mail">
 
-    				<div class="message-item" id="m16" ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
-						<div class="message-inner">
-							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img style="min-height: 40px; max-height: 40px;" src='/jobster.by/resources/images/avatar_2x.png'/></a></div>
-								<div class="user-detail">
-									<h5 class="handle">{{bet.user.nickname}}</h5>
-									
-									<a ng-if="betCtrl.isICall" href="#" ng-click="betCtrl.showNumberICall(bet.idUser)" id="{{bet.idUser}}a">Посмотреть номер</a>
-									<div id="{{bet.idUser}}"></div>
-									
-									<div class="post-meta">
-										<div class="asker-meta">
-											<span class="qa-message-what"></span>
-											<span class="qa-message-when">
-												<span class="qa-message-when-data">{{bet.date | date:'yyyy-mm-dd HH:mm:ss'}}</span>
-											</span>
-											<span class="qa-message-who">
-												<span class="qa-message-who-pad">by </span>
-												<span class="qa-message-who-data"><a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
-											</span>
-										</div>
+					<!-- tab content -->
+					<div class="col-md-12"
+						style="margin-top: 20px; margin-bottom: 20px; color: white"
+						ng-controller="LotController as lotCtrl">
+						<div class="row panel item">
+							<div class="col-md-4 bg_blur "></div>
+							<div class="col-md-8"
+								style="padding-left: 0px; padding-right: 0px">
+								<div class="col-md-4 col-xs-4 well" style="height: 69px;">
+									<div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div>
+								</div>
+								<div class="col-md-4 col-xs-4 well">
+									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
+								</div>
+								<div class="col-md-4 col-xs-4 well"
+									style="padding-bottom: 0px; padding-top: 6px; height: 69px;">
+									<ul class="countdown">
+										<li><span class="days">00</span>
+											<p class="days_ref">дней</p></li>
+										<li class="seperator">.</li>
+										<li><span class="hours">00</span>
+											<p class="hours_ref">часов</p></li>
+										<li class="seperator">:</li>
+										<li><span class="minutes">00</span>
+											<p class="minutes_ref">минут</p></li>
+										<li class="seperator">:</li>
+										<li><span class="seconds">00</span>
+											<p class="seconds_ref">секунд</p></li>
+									</ul>
+								</div>
+
+								<div class="header">
+									<h1>{{lotCtrl.lot.name}}</h1>
+									<h4>
+										<a style="color: #3abeb1"
+											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>
+									</h4>
+									<span>{{lotCtrl.lot.description}}</span>
+									<div id="showPhoneOwner">
+
+										<a ng-if="lotCtrl.isMeCall" href="#"
+											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)"
+											id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
+										<div id="{{lotCtrl.idUser}}"></div>
+
+										<security:authorize
+											access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+
+											<div id="inputs" class="col-md-12" style="padding-left: 0px;"
+												ng-if="lotCtrl.isShowSendButton">
+												<div class="col-md-4" style="padding-left: 0px;">
+												<div class="input-group">												
+													<span class="input-group-btn"> <input id="myBtn1"
+														type="button" class="btn btn-danger btn-number" value="-"
+														data-type="minus" data-field="quant[2]">
+													</span> 
+													<input type="text" style="text-align: center;" disabled
+														id="cost" name="quant[2]"
+														class="form-control input-number" value="500000" min="1"
+														max="1000000"> 
+														<span style="" id="anchor"
+														class="input-group-btn"> 
+														<input id="displus"
+														type="button" class="btn btn-success btn-number" value="+"
+														data-type="plus" data-field="quant[2]">
+													</span> 
+												</div>
+												</div>
+												<div class="col-md-5" style="padding-left: 0px;">
+												<a id="btn"
+													class="button-on-add-lot btn btn-primary button-legal-style send-button"
+													onclick="someFunc(); defineText()" href="#">Send</a>
+		                                        </div>
+											</div>
+
+										</security:authorize>
+										<security:authorize access="hasRole('ROLE_GUEST')">
+											<a style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
+										</security:authorize>
 									</div>
 								</div>
 							</div>
-							<div class="qa-message-content">
-								{{bet.cost}}
-							</div>
-					</div></div>
-					
-					
-					
-</div>
-</div>
-</div>
-</div>
-</div>
- 
-</div>
-        </div><!--/row-->
-    </div>
-<!--/.container-->
+						</div>
 
-<!-- Menu Toggle Script -->
-     <script>
+						<br> <br>
+
+
+
+						<div id="output">
+
+							<div style="margin-bottom: 30px">
+								<div class="row">
+									<h2 style="text-align: center">Отклики</h2>
+									<div id="callNumber"></div>
+								</div>
+								<div class="qa-message-list" id="wallmessages"
+									ng-controller="BetController as betCtrl">
+
+									<div class="message-item" id="m16"
+										ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
+										<div class="message-inner">
+											<div class="message-head clearfix">
+												<div class="avatar pull-left">
+													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img
+														style="min-height: 40px; max-height: 40px;"
+														src='/jobster.by/resources/images/avatar_2x.png' /></a>
+												</div>
+												<div class="user-detail">
+													<h5 class="handle">{{bet.user.nickname}}</h5>
+
+													<a ng-if="betCtrl.isICall" href="#"
+														ng-click="betCtrl.showNumberICall(bet.idUser)"
+														id="{{bet.idUser}}a">Посмотреть номер</a>
+													<div id="{{bet.idUser}}"></div>
+
+													<div class="post-meta">
+														<div class="asker-meta">
+															<span class="qa-message-what"></span> <span
+																class="qa-message-when"> <span
+																class="qa-message-when-data">{{bet.date |
+																	date:'yyyy-mm-dd HH:mm:ss'}}</span>
+															</span> <span class="qa-message-who"> <span
+																class="qa-message-who-pad">by </span> <span
+																class="qa-message-who-data"><a
+																	ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="qa-message-content">{{bet.cost}}</div>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--/row-->
+	</div>
+	<!--/.container-->
+
+	<!-- Menu Toggle Script -->
+	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-<script type="text/javascript">
+	<script type="text/javascript">
 var nickname = "${nickname}";
 var idUser = ${idUser};
 var id;
@@ -224,7 +278,7 @@ var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse}
 </script>
-<script>
+	<script>
     var jsonDataCategories = '${listCategoriesJson}';
     
     app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
@@ -454,12 +508,12 @@ function drawButtonPhoneOwner() {
 		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
-<script class="source" type="text/javascript">
+	<script class="source" type="text/javascript">
 
        
-    </script> 
-     <div class="clearfix"> </div>
-  <%@include file="/WEB-INF/views/footer.jsp"%> 
+    </script>
+	<div class="clearfix"></div>
+	<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
 
