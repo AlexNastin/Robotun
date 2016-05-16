@@ -140,7 +140,9 @@
 										<a style="color: #3abeb1"
 											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>
 									</h4>
+									<div class="lot-description">
 									<span>{{lotCtrl.lot.description}}</span>
+									<div>
 									<div id="showPhoneOwner">
 
 										<a class="text-style-on-lot" ng-if="lotCtrl.isMeCall" href="#"

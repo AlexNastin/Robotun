@@ -518,3 +518,8 @@ h5 {
 .margin-bottom-block-lot {
 	margin-bottom: 0.5em;
 }
+.lot-description {
+	text-align: justify;
+	padding-right: 2em;
+	margin-bottom: 0.5em;
+}
