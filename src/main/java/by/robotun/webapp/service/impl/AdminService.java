@@ -69,5 +69,18 @@ public class AdminService implements IAdminService {
 		}		
 	}
 
+	@Override
+	public void resetModeratorPassword(Integer idUser) throws ServiceException {
+		try {
+			User user = userDAO.selectModeratorById(idUser);
+			System.err.println(user);
+			String md5Password = DigestUtils.md5Hex(propertyManager.getValue(PropertyName.MODERATOR_DEFAULT_PASSWORD));
+			user.setPassword(md5Password);
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
+
 	
 }

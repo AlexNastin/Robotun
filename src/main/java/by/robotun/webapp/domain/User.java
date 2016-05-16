@@ -29,7 +29,8 @@ import by.robotun.webapp.domain.json.Views;
 	@NamedQuery(name = "User.findUserById", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.phones where u.idUser = :idUser"),
 	@NamedQuery(name = "User.findUserByIdWithCity", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.city where u.idUser = :idUser"),
 	@NamedQuery(name = "User.findUserByLogin", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal where u.login = :login"),
-	@NamedQuery(name = "User.findAllModerators", query = "select u from User u where idRole = :idRole")})
+	@NamedQuery(name = "User.findAllModerators", query = "select u from User u where idRole = :idRole"),
+	@NamedQuery(name = "User.findModeratorById", query = "select u from User u where u.idUser = :idUser")})
 public class User implements Essence {
 
 	/**

@@ -8,6 +8,8 @@ import by.robotun.webapp.exeption.DaoException;
 public interface IUserDAO {
 
 	public User selectUserById(int idUser) throws DaoException;
+	
+	public User selectModeratorById(int idUser) throws DaoException;
 
 	public User selectUser(String login) throws DaoException;
 	

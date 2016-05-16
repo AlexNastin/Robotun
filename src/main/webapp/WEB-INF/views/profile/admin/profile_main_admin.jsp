@@ -26,7 +26,7 @@
 <div class="text-admin-page-main col-md-12">Модераторы: </div>
 
 <div ng-repeat="user in usersCtrl.users">
-<p> {{user.login}} <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить этого урода</a></p>
+<p> {{user.login}} <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить этого урода</a></p><a ng-href='/jobster.by/admin/resetModeratorPassword?id={{user.idUser}}'>Сбросить пароль по умолчанию</a>
 <div class="modal fade" id="myModal{{user.idUser}}" role="dialog">
     <div class="modal-dialog">
     

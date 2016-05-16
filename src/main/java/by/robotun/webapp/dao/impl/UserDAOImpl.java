@@ -37,6 +37,18 @@ public class UserDAOImpl implements IUserDAO {
 		}
 		return user;
 	}
+	
+	@Override
+	public User selectModeratorById(int idUser) throws DaoException {
+		User user = null;
+		try {
+			user = (User) entityManager.createNamedQuery("User.findModeratorById").setParameter("idUser", idUser)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return user;
+		}
+		return user;
+	}
 
 	@Override
 	public User selectUser(String login) throws DaoException {

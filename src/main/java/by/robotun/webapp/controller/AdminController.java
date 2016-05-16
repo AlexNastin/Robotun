@@ -43,5 +43,13 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/admin/resetModeratorPassword", method = RequestMethod.GET)
+	public ModelAndView resetModeratorPassword(@RequestParam(value = "id", required = false) Integer idUser, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
+		adminService.resetModeratorPassword(idUser);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
+		return modelAndView;
+	}
 
 }

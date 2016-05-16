@@ -16,4 +16,6 @@ public interface IAdminService {
 	
 	void deleteModerator(Integer id) throws ServiceException;
 
+	void resetModeratorPassword(Integer idUser) throws ServiceException;
+
 }
