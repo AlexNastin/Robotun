@@ -252,7 +252,14 @@
 		<!--/row-->
 	</div>
 	<!--/.container-->
-
+	
+<div id='popup' class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<p>К сожалению, время принятия ставок вышло</p>
+		
+		<a href="#0" class="cd-popup-close img-replace">Close</a>
+	</div> <!-- cd-popup-container -->
+</div>
 	<!-- Menu Toggle Script -->
 	<script>
     $("#menu-toggle").click(function(e) {
@@ -474,7 +481,31 @@ var now = new Date();
 if (now>=date){
 	$('#inputs').remove();
 	}
-
+if(now==date){
+	$('.cd-popup').addClass('is-visible');
+}	
+jQuery(document).ready(function($){
+	//open popup
+	$('.cd-popup-trigger').on('click', function(event){
+		event.preventDefault();
+		$('.cd-popup').addClass('is-visible');
+	});
+	
+	//close popup
+	$('.cd-popup').on('click', function(event){
+		if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+	});
+	//close popup when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('.cd-popup').removeClass('is-visible');
+	    }
+    });
+});
+if (now==date){}
 $('.countdown').downCount({
     date: date,
     offset: +10
