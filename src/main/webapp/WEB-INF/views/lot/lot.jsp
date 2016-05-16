@@ -155,7 +155,7 @@
 									<span>{{lotCtrl.lot.description}}</span>
 									<div id="showPhoneOwner">
 
-										<a ng-if="lotCtrl.isMeCall" href="#"
+										<a class="text-style-on-lot" ng-if="lotCtrl.isMeCall" href="#"
 											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)"
 											id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
 										<div id="{{lotCtrl.idUser}}"></div>
@@ -245,7 +245,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="qa-message-content">{{bet.cost}}</div>
+											<div class="qa-message-content" style="color: black">{{bet.cost}}</div>
 										</div>
 									</div>
 

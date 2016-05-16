@@ -472,3 +472,19 @@ font-size: 14px;
 	border-radius: 10px !important;
 	color:rgb(58, 190, 177) !important;
 }
+.text-style-on-lot {
+	color: #808080;
+	text-decoration: none;
+}
+.text-style-on-lot:hover, .text-style-on-lot:active, .text-style-on-lot:focus  {
+	color: #808080;
+}
+a {
+	color: #808080;
+}
+h5 {
+	color: black;
+}
+.margin-bottom-block-lot {
+	margin-bottom: 0.5em;
+}
