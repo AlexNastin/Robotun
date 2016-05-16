@@ -71,33 +71,21 @@
 			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
 				role="navigation">
 
-				<ul style="left: 0; width: 100%;"
-					class="nav nav-sidebar sidebar-nav">
-					<ul class="nav" id="side-menu"
-						ng-controller="CategoriesController as categoriesCtrl">
+				 <ul style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
+               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+						
+                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
+                            <a style="text-align:left; padding-left:0px" href="#" class=" hvr-bounce-to-right"><i style='color:white'class="fa fa-dashboard nav_icon "></i><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
+                            <ul class="nav nav-second-level" ng-show="showMenu">
 
-						<li style="text-align: left;"
-							ng-repeat="category in categoriesCtrl.categories"
-							ng-click="showMenu = !showMenu"><a style="text-align: left;"
-							href="#" class=" hvr-bounce-to-right"><i style='color: white'
-								class="fa fa-dashboard nav_icon "></i><span style='color: white'
-								class="nav-label">{{category.title}}</span><span
-								class="fa arrow"></span> </a>
-							<ul class="nav nav-second-level" ng-show="showMenu">
+                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white; text-align:left;    padding-left: 30px;' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
 
-								<li style="text-align: left;"
-									ng-repeat="subcategory in category.subcategories"><a
-									style='color: white'
-									ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}'
-									class=" hvr-bounce-to-right"> <i style='color: white'
-										class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}
-								</a></li>
-
-							</ul></li>
-
-
-					</ul>
-				</ul>
+                            </ul>
+                        </li>
+						
+                        
+                    </ul>
+            </ul>
 
 
 			</div>
