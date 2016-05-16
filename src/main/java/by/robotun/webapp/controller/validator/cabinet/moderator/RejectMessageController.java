@@ -57,10 +57,6 @@ public class RejectMessageController {
 		if (result.hasErrors()) {
 		}
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
 		moderatorService.addRejectMessage(rejectMessageForm, person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
