@@ -481,7 +481,7 @@ var now = new Date();
 if (now>=date){
 	$('#inputs').remove();
 	}
-if(now==date){
+if(now>=date){
 	$('.cd-popup').addClass('is-visible');
 }	
 jQuery(document).ready(function($){
