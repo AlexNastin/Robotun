@@ -22,7 +22,7 @@
 <a href='<c:url value="/legal/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
 <a href='<c:url value="/legal/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile">Замечания по лотам</a>
 <a href='<c:url value="/legal/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
-<a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile active-menu">Личные данные</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Личные данные</a>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>

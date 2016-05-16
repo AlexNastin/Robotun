@@ -19,7 +19,7 @@
 <div class="min-height-admin-page">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/admin/profile" />' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
 </div>
 <div class="col-md-10" id="list-group" ng-controller="UsersController as usersCtrl">

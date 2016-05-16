@@ -46,30 +46,26 @@ public class UpdatePasswordUserLegalController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView personalDataValid(
-			@ModelAttribute("userUpdatePasswordForm") UpdateUserPasswordForm userUpdatePasswordForm,
+			@ModelAttribute(ControllerParamConstant.UPDATE_PASSWORD_FORM) UpdateUserPasswordForm userUpdatePasswordForm,
 			BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("profile/physical/profile_update_password");
+			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
 			return modelAndView;
 		}
 		User user = guestService.getUser(person.getId());
 		String md5Password = DigestUtils.md5Hex(userUpdatePasswordForm.getOldPassword());
-		
-		System.out.println(person.getId());
-		System.out.println(user);
-		System.out.println(user.getPassword());
 		if (!user.getPassword().equals(md5Password)) {
-			ModelAndView modelAndView = new ModelAndView("profile/physical/profile_update_password");
+			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
 			result.rejectValue("oldPassword", "valid.oldPassword.passwordDontMatch");
 			return modelAndView;
 		}
 		guestService.updatePassword(userUpdatePasswordForm.getPassword(), person.getId());
-		ModelAndView modelAndView = new ModelAndView("profile/physical/profile_update_password");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
 		String message = messages.getMessage("email.message.resetpaswordsuccessful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
-		modelAndView.addObject("userUpdatePasswordForm", userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		return modelAndView;
 	}
 

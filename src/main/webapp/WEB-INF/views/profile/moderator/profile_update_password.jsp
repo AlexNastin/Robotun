@@ -19,7 +19,7 @@
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
-<a href='<c:url value="/moderator/secure/updatePassword" />' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
 <a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 </div>
 <div class="col-md-10">

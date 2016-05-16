@@ -46,7 +46,7 @@ public class UpdatePasswordUserPhysicalController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView personalDataValid(
-			@ModelAttribute("userUpdatePasswordForm") UpdateUserPasswordForm userUpdatePasswordForm,
+			@ModelAttribute(ControllerParamConstant.UPDATE_PASSWORD_FORM) UpdateUserPasswordForm userUpdatePasswordForm,
 			BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);
