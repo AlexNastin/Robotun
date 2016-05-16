@@ -123,15 +123,15 @@
 							<div class="col-md-4 bg_blur "></div>
 							<div class="col-md-8"
 								style="padding-left: 0px; padding-right: 0px">
-								<div class="col-md-4 col-xs-4 well" style="height: 69px;">
+								<div class="col-md-4 col-xs-4 well height-block-lot">
 									<div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div>
 								</div>
-								<div class="col-md-4 col-xs-4 well">
+								<div class="col-md-4 col-xs-4 well height-block-lot">
 									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
 								</div>
-								<div class="col-md-4 col-xs-4 well"
-									style="padding-bottom: 0px; padding-top: 6px; height: 69px;">
-									<ul class="countdown">
+								<div class="col-md-4 col-xs-4 well height-block-lot"
+									style="padding-bottom: 0px; padding-top: 6px;">
+									<ul class="countdown font-size-time">
 										<li><span class="days">00</span>
 											<p class="days_ref">дней</p></li>
 										<li class="seperator">.</li>

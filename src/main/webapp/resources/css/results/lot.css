@@ -385,6 +385,7 @@ font-size: 14px;
     width: 30%
 }
 @media screen and (min-width: 1281px) and (max-width: 1366px)  {
+ 
  .resize {
  width: 1050px;
  }
@@ -394,6 +395,12 @@ font-size: 14px;
  .resize-result {
  width: 994px;
  }
+ .font-size-time {
+	font-size: 13pt;
+} 
+.height-block-lot {
+	height: 69px;
+}
  }
  @media screen and (min-width: 1025px) and (max-width: 1280px)  {
  .resize {
@@ -405,6 +412,12 @@ font-size: 14px;
  .resize-result {
  width: 914px;
  }
+ .font-size-time {
+	font-size: 13pt;
+} 
+.height-block-lot {
+	height: 69px;
+}
  }
  @media screen and (max-width: 1024px) and (min-width: 992px)  {
  .resize {
@@ -416,6 +429,12 @@ font-size: 14px;
  .resize-result {
  width: 664px;
  }
+ .font-size-time {
+	font-size: 13pt;
+} 
+.height-block-lot {
+	height: 69px;
+}
  }
  .text-style-size-result {
  color: white;
@@ -459,6 +478,17 @@ font-size: 14px;
 .margin-top-button-sort-style {	
 	margin-top:1em;
 }
+.font-size-time {
+	font-size: 9pt;
+}
+.height-block-lot {
+	height: 90px;
+	padding-top: 1em;
+}
+.height-block-lot:hover {
+	height: 90px;
+	padding-top: 1em;
+}  
 }
 .main-button-style {
 	background-color: rgb(58, 190, 177);
