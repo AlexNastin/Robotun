@@ -163,7 +163,7 @@
 													</span> 
 													<input type="text" style="text-align: center;" disabled
 														id="cost" name="quant[2]"
-														class="form-control input-number" value="500000" min="1"
+														class="form-control input-number" value="{{lotCtrl.lot.budget}}" min="1"
 														max="1000000"> 
 														<span style="" id="anchor"
 														class="input-group-btn"> 
@@ -359,7 +359,6 @@ var isElse = ${isElse}
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){
 		        e.preventDefault();
-		        
 		        var fieldName = $(this).attr('data-field');
 		        var type      = $(this).attr('data-type');
 		        var input = $("input[name='"+fieldName+"']");
