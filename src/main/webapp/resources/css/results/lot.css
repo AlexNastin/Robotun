@@ -523,3 +523,6 @@ h5 {
 	padding-right: 2em;
 	margin-bottom: 0.5em;
 }
+.result-description {
+	text-align: justify;
+}

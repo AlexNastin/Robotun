@@ -140,8 +140,8 @@
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="list-group-item-heading">{{lot.name}}</h4>
-                                            <p class="list-group-item-text">{{lot.description}}</p>
+                                            <h4 class="list-group-item-heading ">{{lot.name}}</h4>
+                                            <p class="list-group-item-text result-description ">{{lot.description}}</p>
                                         </div>
                                         <div class="col-md-3 text-center">
                                             <h2>{{lot.budget}}<small> бел. руб. </small></h2>
