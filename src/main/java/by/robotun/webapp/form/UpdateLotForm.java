@@ -8,72 +8,16 @@ public class UpdateLotForm implements Essence {
 	 * 
 	 */
 	private static final long serialVersionUID = -5361840265819238195L;
-	
+
+	private int idLot;
 	private String name;
 	private String endDate;
 	private String description;
 	private int budget;
 	private int idCategory;
 	private int idSubcategory;
+	private int idCity;
 	private boolean isCall;
-	
-	private int idLot;
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getEndDate() {
-		return endDate;
-	}
-	
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public int getBudget() {
-		return budget;
-	}
-	
-	public void setBudget(int budget) {
-		this.budget = budget;
-	}
-	
-	public int getIdCategory() {
-		return idCategory;
-	}
-	
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
-	}
-	
-	public int getIdSubcategory() {
-		return idSubcategory;
-	}
-	
-	public void setIdSubcategory(int idSubcategory) {
-		this.idSubcategory = idSubcategory;
-	}
-	
-	public boolean getIsCall() {
-		return isCall;
-	}
-
-	public void setIsCall(boolean isCall) {
-		this.isCall = isCall;
-	}
 
 	public int getIdLot() {
 		return idLot;
@@ -81,6 +25,70 @@ public class UpdateLotForm implements Essence {
 
 	public void setIdLot(int idLot) {
 		this.idLot = idLot;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getBudget() {
+		return budget;
+	}
+
+	public void setBudget(int budget) {
+		this.budget = budget;
+	}
+
+	public int getIdCategory() {
+		return idCategory;
+	}
+
+	public void setIdCategory(int idCategory) {
+		this.idCategory = idCategory;
+	}
+
+	public int getIdSubcategory() {
+		return idSubcategory;
+	}
+
+	public void setIdSubcategory(int idSubcategory) {
+		this.idSubcategory = idSubcategory;
+	}
+
+	public int getIdCity() {
+		return idCity;
+	}
+
+	public void setIdCity(int idCity) {
+		this.idCity = idCity;
+	}
+
+	public boolean isCall() {
+		return isCall;
+	}
+
+	public void setCall(boolean isCall) {
+		this.isCall = isCall;
 	}
 
 	@Override
@@ -91,6 +99,7 @@ public class UpdateLotForm implements Essence {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
+		result = prime * result + idCity;
 		result = prime * result + idLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + (isCall ? 1231 : 1237);
@@ -121,6 +130,8 @@ public class UpdateLotForm implements Essence {
 			return false;
 		if (idCategory != other.idCategory)
 			return false;
+		if (idCity != other.idCity)
+			return false;
 		if (idLot != other.idLot)
 			return false;
 		if (idSubcategory != other.idSubcategory)
@@ -137,10 +148,9 @@ public class UpdateLotForm implements Essence {
 
 	@Override
 	public String toString() {
-		return "UpdateLotForm [name=" + name + ", endDate=" + endDate + ", description=" + description + ", budget="
-				+ budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory + ", isCall=" + isCall
-				+ ", idLot=" + idLot + "]";
+		return "UpdateLotForm [idLot=" + idLot + ", name=" + name + ", endDate=" + endDate + ", description="
+				+ description + ", budget=" + budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory
+				+ ", idCity=" + idCity + ", isCall=" + isCall + "]";
 	}
-	
-	
+
 }
