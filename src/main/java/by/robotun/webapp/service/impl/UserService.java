@@ -59,7 +59,7 @@ public class UserService implements IUserService {
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
-			lot.setIsCall(addLotForm.getIsCall());
+			lot.setCall(addLotForm.getIsCall());
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
@@ -237,7 +237,7 @@ public class UserService implements IUserService {
 			lot.setBudget(updateLotForm.getBudget());
 			lot.setDescription(updateLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
-			lot.setIsCall(updateLotForm.getIsCall());
+			lot.setCall(updateLotForm.getIsCall());
 			lotDAO.updateLot(lot);
 		} catch (DaoException | ParseException e) {
 			throw new ServiceException(e);

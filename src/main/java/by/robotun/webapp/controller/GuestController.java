@@ -79,9 +79,9 @@ public class GuestController {
 			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 			modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
 			if (person != null) {
-				if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
+				if (lot.isCall() && lot.getIdUser() == person.getId()) {
 					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
-				} else if (!lot.getIsCall()) {
+				} else if (!lot.isCall()) {
 					if (guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId()) > 0) {
 						modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
 						modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,

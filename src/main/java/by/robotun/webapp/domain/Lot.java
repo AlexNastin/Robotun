@@ -25,19 +25,19 @@ import by.robotun.webapp.domain.json.Views;
 @Entity
 @Table(name = "lot")
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
-	@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-	@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.user where l.idLot = :id order by bet.date desc"),
-	@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user left outer join fetch l.rejectMessages where l.idLot = :id"),
-	@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
-	@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-	@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
-	@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l left outer join fetch l.rejectMessages where l.isVisible = :isVisible order by l.startDate"),
-	@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
-	@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc"),
-	@NamedQuery(name = "Lot.findLotOnUpdateByUser", query = "select l from Lot l join fetch l.rejectMessages where l.isVisible = :isVisible and l.idUser = :id order by l.startDate")})
+		@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
+		@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.user where l.idLot = :id order by bet.date desc"),
+		@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user left outer join fetch l.rejectMessages where l.idLot = :id"),
+		@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
+		@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
+		@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
+		@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l left outer join fetch l.rejectMessages where l.isVisible = :isVisible order by l.startDate"),
+		@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
+		@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc"),
+		@NamedQuery(name = "Lot.findLotOnUpdateByUser", query = "select l from Lot l join fetch l.rejectMessages where l.isVisible = :isVisible and l.idUser = :id order by l.startDate") })
 
 public class Lot implements Essence {
-	
+
 	/**
 	 * 
 	 */
@@ -53,69 +53,73 @@ public class Lot implements Essence {
 	@Column(name = "name")
 	@JsonView(Views.Public.class)
 	private String name;
-	
+
 	@Column(name = "id_category")
 	@JsonView(Views.Public.class)
 	private int idCategory;
-	
+
 	@Column(name = "id_subcategory")
 	@JsonView(Views.Public.class)
 	private int idSubcategory;
-	
+
 	@JsonProperty("start_date")
 	@Column(name = "start_date")
 	@JsonView(Views.Public.class)
 	private Date startDate;
-	
+
 	@JsonProperty("endDate")
 	@Column(name = "end_date")
 	@JsonView(Views.Public.class)
 	private Date endDate;
-	
+
 	@JsonProperty("description")
 	@Column(name = "description")
 	@JsonView(Views.Public.class)
 	private String description;
-	
+
 	@Column(name = "id_user")
 	@JsonView(Views.Public.class)
 	private int idUser;
-	
+
 	@JsonProperty("budget")
 	@Column(name = "budget")
 	@JsonView(Views.Public.class)
 	private int budget;
-	
+
 	@Column(name = "is_visible")
 	@JsonView(Views.Public.class)
 	private int isVisible;
-	
+
 	@JsonProperty("isCall")
 	@Column(name = "is_call")
 	@JsonView(Views.Public.class)
 	private boolean isCall;
-	
+
+	@Column(name = "id_city")
+	@JsonView(Views.Public.class)
+	private int idCity;
+
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonView(Views.Internal.class)
 	private List<Bet> bets;
-	
+
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonView({Views.InternalRejectMessages.class, Views.InternalConfirmLot.class})
+	@JsonView({ Views.InternalRejectMessages.class, Views.InternalConfirmLot.class })
 	private List<RejectMessage> rejectMessages;
-	
-	@JsonView({Views.Internal.class, Views.InternalConfirmLot.class})
+
+	@JsonView({ Views.Internal.class, Views.InternalConfirmLot.class })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
 	private User user;
-	
+
 	@JsonView(Views.InternalConfirmLot.class)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_category", insertable=false, updatable=false)
+	@JoinColumn(name = "id_category", insertable = false, updatable = false)
 	private Category category;
-	
+
 	@JsonView(Views.InternalConfirmLot.class)
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_subcategory", insertable=false, updatable=false)
+	@JoinColumn(name = "id_subcategory", insertable = false, updatable = false)
 	private Subcategory subcategory;
 
 	public int getIdLot() {
@@ -198,12 +202,20 @@ public class Lot implements Essence {
 		this.isVisible = isVisible;
 	}
 
-	public boolean getIsCall() {
+	public boolean isCall() {
 		return isCall;
 	}
 
-	public void setIsCall(boolean isCall) {
+	public void setCall(boolean isCall) {
 		this.isCall = isCall;
+	}
+
+	public int getIdCity() {
+		return idCity;
+	}
+
+	public void setIdCity(int idCity) {
+		this.idCity = idCity;
 	}
 
 	public List<Bet> getBets() {
@@ -250,17 +262,23 @@ public class Lot implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((bets == null) ? 0 : bets.hashCode());
 		result = prime * result + budget;
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
+		result = prime * result + idCity;
 		result = prime * result + idLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + idUser;
 		result = prime * result + (isCall ? 1231 : 1237);
 		result = prime * result + isVisible;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((rejectMessages == null) ? 0 : rejectMessages.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((subcategory == null) ? 0 : subcategory.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -273,7 +291,17 @@ public class Lot implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Lot other = (Lot) obj;
+		if (bets == null) {
+			if (other.bets != null)
+				return false;
+		} else if (!bets.equals(other.bets))
+			return false;
 		if (budget != other.budget)
+			return false;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -286,6 +314,8 @@ public class Lot implements Essence {
 		} else if (!endDate.equals(other.endDate))
 			return false;
 		if (idCategory != other.idCategory)
+			return false;
+		if (idCity != other.idCity)
 			return false;
 		if (idLot != other.idLot)
 			return false;
@@ -302,10 +332,25 @@ public class Lot implements Essence {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (rejectMessages == null) {
+			if (other.rejectMessages != null)
+				return false;
+		} else if (!rejectMessages.equals(other.rejectMessages))
+			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
 		} else if (!startDate.equals(other.startDate))
+			return false;
+		if (subcategory == null) {
+			if (other.subcategory != null)
+				return false;
+		} else if (!subcategory.equals(other.subcategory))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -314,8 +359,8 @@ public class Lot implements Essence {
 	public String toString() {
 		return "Lot [idLot=" + idLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
 				+ idSubcategory + ", startDate=" + startDate + ", endDate=" + endDate + ", description=" + description
-				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall + "]";
+				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall
+				+ ", idCity=" + idCity + "]";
 	}
 
-	
 }
