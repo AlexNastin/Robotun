@@ -90,17 +90,25 @@
 		<form:input class="form-control" path="zipCode" placeholder="zipCode" />
 		<form:errors path="zipCode" />
 		</div>
-		<div class="form-group" style='margin-bottom:0px'>
+		<div class="form-group">
+		<div class="field-phone-style">
 		<form:input class="form-control" path="phones" placeholder="phone1"  />
+		</div>
+		<div class="field-phone-style-plus">
+		<a id="open-close3" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
+	    </div>
 		<form:errors path="phones" />
 		</div>
-		<a id="open-close3" href="#">Ещё телефон</a>
 		<div id="block-links3">
-   		<div class="form-group" style='margin-bottom:0px'>
+   		<div class="form-group">
+		<div class="field-phone-style">
 		<form:input class="form-control" path="phones" placeholder="phone2" />
+		</div>
+		<div class="field-phone-style-plus">
+		<a id="open-close4" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
+		</div>
 		<form:errors path="phones" />
 		</div>
-   		<a id="open-close4" href="#"> добавить ещё телефон</a>
     	<div id="block-links4">
    		<div class="form-group">
 		<form:input class="form-control" path="phones" placeholder="phone3" />

@@ -282,4 +282,17 @@ a {
 	.padding-top-login-form {
 	padding-top: 5em;
 }
-
+.field-phone-style {
+	width: 90%;
+	margin-bottom: 0.3em;
+	float: left;
+	margin-bottom: 25px;
+	margin-right: 0.3em;
+}
+.field-phone-style-plus {
+	float: left;
+	margin-top: 0.18em;
+}
+.hover-style-for-plus:hover,.hover-style-for-plus:active, .hover-style-for-plus:focus  {
+	color: white;
+}

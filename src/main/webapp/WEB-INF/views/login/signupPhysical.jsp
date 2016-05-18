@@ -85,16 +85,26 @@
 		<form:errors path="middleName" />
 		</div>
 		<div class="form-group" style='margin-bottom:0px'>
+		<div class="field-phone-style">
 		<form:input class="form-control" path="phones" placeholder="phone1"  />
+		</div>
+		<div class="field-phone-style-plus">
+		<a id="open-close" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
+		</div>
 		<form:errors path="phones" />
 		</div>
-		<a id="open-close" href="#">Ещё телефон</a>
+		
 		<div id="block-links">
    		<div class="form-group" style='margin-bottom:0px'>
+		<div class="field-phone-style">
 		<form:input class="form-control" path="phones" placeholder="phone2" />
+		</div>
+		<div class="field-phone-style-plus">
+		<a id="open-close2" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
+		</div>
 		<form:errors path="phones" />
 		</div>
-   		<a id="open-close2" href="#"> добавить ещё телефон</a>
+   		
     	<div id="block-links2">
    		<div class="form-group">
 		<form:input class="form-control" path="phones" placeholder="phone3" />
