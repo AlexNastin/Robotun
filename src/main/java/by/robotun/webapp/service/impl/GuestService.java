@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;

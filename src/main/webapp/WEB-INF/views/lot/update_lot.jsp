@@ -47,6 +47,16 @@
 		<div class="form-group">
 		<form:input path="budget" placeholder="budget" class="form-control" value="${lot.budget}"/>
 		</div>
+		 <form:select class="form-group" path="idCity">
+		 <c:set var="idSelectCity" value="${lot.city.idCity}"/>
+							<c:forEach items="${listCities}" var="city">
+							<c:if test="${city.idCity == idSelectCity}">
+								<c:set var="selected" value="true"/>
+							</c:if>
+								<form:option value="${city.idCity}" selected="${selected }">${city.title}</form:option>
+								<c:set var="selected" value=""/>
+							</c:forEach>
+						</form:select>
 		<div class="form-group">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>

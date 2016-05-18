@@ -83,11 +83,11 @@ public class UpdateLotForm implements Essence {
 		this.idCity = idCity;
 	}
 
-	public boolean isCall() {
+	public boolean getIsCall() {
 		return isCall;
 	}
 
-	public void setCall(boolean isCall) {
+	public void setIsCall(boolean isCall) {
 		this.isCall = isCall;
 	}
 

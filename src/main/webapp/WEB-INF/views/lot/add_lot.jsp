@@ -45,6 +45,11 @@
 		<div class="form-group">
 		<form:input path="budget" placeholder="budget" class="form-control"/>
 		</div>
+		 <form:select class="form-group" path="idCity">
+							<c:forEach items="${listCities}" var="city">
+								<form:option value="${city.idCity}">${city.title}</form:option>
+							</c:forEach>
+						</form:select>
 		<div class="form-group">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>

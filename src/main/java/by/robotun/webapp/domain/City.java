@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "city")
-@NamedQueries({ @NamedQuery(name = "City.findAll", query = "select c from City c") })
+@NamedQueries({ @NamedQuery(name = "City.findAll", query = "select c from City c order by c.title") })
 public class City implements Essence {
 
 	/**
@@ -37,6 +37,10 @@ public class City implements Essence {
 	@JsonIgnore
 	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Lot> lots;
 
 	public int getIdCity() {
 		return idCity;
@@ -60,6 +64,14 @@ public class City implements Essence {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Lot> getLots() {
+		return lots;
+	}
+
+	public void setLots(List<Lot> lots) {
+		this.lots = lots;
 	}
 
 	@Override
