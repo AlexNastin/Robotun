@@ -33,10 +33,10 @@ public class AutoloaderService implements IAutoloaderService {
 		}
 		return lots;
 	}
-	
+
 	@Override
-	public List<Lot> getLotsByCategoryAndSubcategory(Integer offset, Date endDate, Integer idCategory, Integer idSubcategory)
-			throws ServiceException {
+	public List<Lot> getLotsByCategoryAndSubcategory(Integer offset, Date endDate, Integer idCategory,
+			Integer idSubcategory) throws ServiceException {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsByCategoryAndSubcategoryLimitOffset(offset, endDate, idCategory, idSubcategory);
@@ -102,11 +102,11 @@ public class AutoloaderService implements IAutoloaderService {
 	}
 
 	@Override
-	public List<Lot> getLotsFiltering(String endDate, Integer budgetFrom, Integer budgetTo, String desc)
+	public List<Lot> getLotsFiltering(String endDate, Integer budgetFrom, Integer budgetTo, String desc, Integer idCity)
 			throws ServiceException {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
-			lots = lotDAO.selectLotsFiltering(endDate, budgetFrom, budgetTo, desc);
+			lots = lotDAO.selectLotsFiltering(endDate, budgetFrom, budgetTo, desc, idCity);
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}
@@ -115,10 +115,10 @@ public class AutoloaderService implements IAutoloaderService {
 
 	@Override
 	public List<Lot> getLotsFilteringOffset(String endDate, Integer budgetFrom, Integer budgetTo, String desc,
-			Integer offset, Date date) throws ServiceException {
+			Integer idCity, Integer offset, Date date) throws ServiceException {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
-			lots = lotDAO.selectLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, offset, date);
+			lots = lotDAO.selectLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, idCity, offset, date);
 		} catch (Exception e) {
 			throw new ServiceException(e);
 		}

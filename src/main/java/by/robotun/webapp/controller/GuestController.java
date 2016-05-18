@@ -53,6 +53,7 @@ public class GuestController {
 			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
 		}
 		List<Category> categories = guestService.getAllCategories();
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.ID_CATEGORY, idCategory);
 		modelAndView.addObject(ControllerParamConstant.ID_SUBCATEGORY, idSubcategory);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJsonViewsPublicCategories(categories));

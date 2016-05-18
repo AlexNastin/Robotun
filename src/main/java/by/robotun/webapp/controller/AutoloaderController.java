@@ -31,6 +31,7 @@ public class AutoloaderController {
 
 	@RequestMapping(value = "/autoloader/allResults", method = RequestMethod.GET)
 	public String getAllLots(@RequestParam(value = "offset", required = false) Integer offset,
+			@RequestParam(value = "idCity", required = false) Integer idCity,
 			@RequestParam(value = "endDate", required = false) String endDate,
 			@RequestParam(value = "budgetFrom", required = false) Integer budgetFrom,
 			@RequestParam(value = "budgetTo", required = false) Integer budgetTo,
@@ -39,12 +40,12 @@ public class AutoloaderController {
 			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory) throws ServiceException {
 		List<Lot> lots = new ArrayList<Lot>();
 		Date date = new Date();
-		if ("".equals(endDate) && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc) && (idCategory == 0 || idSubcategory == 0)) {
+		if ("".equals(endDate) && idCity == 0 && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc) && (idCategory == 0 || idSubcategory == 0)) {
 			lots = autocompleteService.getLots(offset, date);
-		} else if("".equals(endDate) && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc)) {
+		} else if("".equals(endDate) && idCity == 0 && budgetFrom == null && budgetTo == null && DaoParamConstant.SORT_TYPE_NEW.equals(desc)) {
 			lots = autocompleteService.getLotsByCategoryAndSubcategory(offset, date, idCategory, idSubcategory);
 		} else {
-			lots = autocompleteService.getLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, offset, date);
+			lots = autocompleteService.getLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, idCity, offset, date);
 		}
 		System.err.println(lots);
 		return serializationJSON.toJsonViewsPublic(lots);
@@ -52,10 +53,11 @@ public class AutoloaderController {
 
 	@RequestMapping(value = "/autoloader/filterResults", method = RequestMethod.GET)
 	public String filterResult(@RequestParam(value = "endDate", required = false) String endDate,
+			@RequestParam(value = "idCity", required = false) Integer idCity,
 			@RequestParam(value = "budgetFrom", required = false) Integer budgetFrom,
 			@RequestParam(value = "budgetTo", required = false) Integer budgetTo,
 			@RequestParam(value = "desc", required = false) String desc) throws ServiceException {
-		List<Lot> lots = autocompleteService.getLotsFiltering(endDate, budgetFrom, budgetTo, desc);
+		List<Lot> lots = autocompleteService.getLotsFiltering(endDate, budgetFrom, budgetTo, desc, idCity);
 		return serializationJSON.toJsonViewsPublic(lots);
 	}
 

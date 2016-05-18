@@ -221,8 +221,8 @@ public class LotDAOImpl implements ILotDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Lot> selectLotsFiltering(String endDateString, Integer budgetFrom, Integer budgetTo, String desc)
-			throws DaoException {
+	public List<Lot> selectLotsFiltering(String endDateString, Integer budgetFrom, Integer budgetTo, String desc,
+			Integer idCity) throws DaoException {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Lot> criteriaQuery = criteriaBuilder.createQuery(Lot.class);
 		Root<Lot> criteria = criteriaQuery.from(Lot.class);
@@ -252,6 +252,10 @@ public class LotDAOImpl implements ILotDAO {
 			Predicate budgetToPredicate = criteriaBuilder.le(criteria.get("budget"), budgetTo);
 			predicatesList.add(budgetToPredicate);
 		}
+		if (idCity != 0) {
+			Predicate cityPredicate = criteriaBuilder.equal(criteria.get("idCity"), idCity);
+			predicatesList.add(cityPredicate);
+		}
 		Predicate predicate = criteriaBuilder.and(predicatesList.toArray(new Predicate[0]));
 		criteriaQuery.where(predicate);
 		switch (desc.toLowerCase()) {
@@ -278,7 +282,7 @@ public class LotDAOImpl implements ILotDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lot> selectLotsFilteringOffset(String endDateString, Integer budgetFrom, Integer budgetTo, String desc,
-			Integer offset, Date date) throws DaoException {
+			Integer idCity, Integer offset, Date date) throws DaoException {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Lot> criteriaQuery = criteriaBuilder.createQuery(Lot.class);
 		Root<Lot> criteria = criteriaQuery.from(Lot.class);
@@ -306,6 +310,10 @@ public class LotDAOImpl implements ILotDAO {
 		if (budgetTo != null) {
 			Predicate budgetToPredicate = criteriaBuilder.le(criteria.get("budget"), budgetTo);
 			predicatesList.add(budgetToPredicate);
+		}
+		if (idCity != 0) {
+			Predicate cityPredicate = criteriaBuilder.equal(criteria.get("idCity"), idCity);
+			predicatesList.add(cityPredicate);
 		}
 		Predicate predicate = criteriaBuilder.and(predicatesList.toArray(new Predicate[0]));
 		criteriaQuery.where(predicate);

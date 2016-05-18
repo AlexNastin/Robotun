@@ -119,6 +119,13 @@
   									<option value="expensive">Дорогие</option>
   									<option value="cheap">Дешёвые</option>
 								</select>
+								Регион:
+								<select id="idCity" class="form-control">
+									<option value="0">Все регионы</option>
+									<c:forEach items="${listCities}" var="city">
+  										<option value="${city.idCity}">${city.title}</option>
+  									</c:forEach>
+								</select>
 								</div>
 								<div class="col-md-4">
 								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
@@ -223,6 +230,7 @@ function mainLotsController ($scope) {
 var idCategory = ${idCategory};
 var idSubcategory = ${idSubcategory};
 function sortLots(){
+	var idCity = document.getElementById('idCity').value;
 	var endDate = document.getElementById('endDate').value;
 	var budgetFrom = document.getElementById('budgetFrom').value;
 	var budgetTo = document.getElementById('budgetTo').value;
@@ -234,6 +242,7 @@ function sortLots(){
  						type:"GET",
  						data:{
  							//передаем параметры
+ 							idCity: idCity,
 							endDate: endDate,
 							budgetFrom: budgetFrom,
 							budgetTo: budgetTo,
@@ -257,6 +266,7 @@ function sortLots(){
 					});
 	}
 function loader(){
+	var idCity = document.getElementById('idCity').value;
 	var endDate = document.getElementById('endDate').value;
 	var budgetFrom = document.getElementById('budgetFrom').value;
 	var budgetTo = document.getElementById('budgetTo').value;
@@ -275,7 +285,8 @@ function loader(){
 							budgetTo: budgetTo,
 							desc: desc,
 							idCategory: idCategory,
-							idSubcategory: idSubcategory
+							idSubcategory: idSubcategory,
+							idCity: idCity
 						},
 						success:function(data) {
 							var data = JSON.parse(data);
