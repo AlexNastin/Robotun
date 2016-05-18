@@ -18,6 +18,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.validator.AddLotFormValidator;
+import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 
 @Controller
@@ -29,10 +30,14 @@ public class LotAddController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IGuestService guestService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addLot(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
 		return modelAndView;
 	}
@@ -48,6 +53,7 @@ public class LotAddController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		return modelAndView;
 	}
 

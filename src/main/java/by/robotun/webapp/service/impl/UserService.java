@@ -52,6 +52,7 @@ public class UserService implements IUserService {
 			Date endDate = dateFormat.parse(addLotForm.getEndDate());
 			Lot lot = new Lot();
 			lot.setName(addLotForm.getName());
+			lot.setIdCity(addLotForm.getIdCity());
 			lot.setStartDate(startDate);
 			lot.setEndDate(endDate);
 			lot.setIdCategory(addLotForm.getIdCategory());
@@ -59,7 +60,7 @@ public class UserService implements IUserService {
 			lot.setBudget(addLotForm.getBudget());
 			lot.setDescription(addLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
-			lot.setCall(addLotForm.isCall());
+			lot.setIsCall(addLotForm.getIsCall());
 			lot.setIdCity(addLotForm.getIdCity());
 			lot.setIdUser(idUser);
 			lotDAO.insertLot(lot);
@@ -232,6 +233,7 @@ public class UserService implements IUserService {
 			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 			Date endDate = dateFormat.parse(updateLotForm.getEndDate());
 			lot.setName(updateLotForm.getName());
+			lot.setIdCity(updateLotForm.getIdCity());
 			lot.setEndDate(endDate);
 			lot.setIdCategory(updateLotForm.getIdCategory());
 			lot.setIdSubcategory(updateLotForm.getIdSubcategory());
@@ -239,7 +241,7 @@ public class UserService implements IUserService {
 			lot.setDescription(updateLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIdCity(updateLotForm.getIdCity());
-			lot.setCall(updateLotForm.isCall());
+			lot.setIsCall(updateLotForm.getIsCall());
 			lotDAO.updateLot(lot);
 		} catch (DaoException | ParseException e) {
 			throw new ServiceException(e);

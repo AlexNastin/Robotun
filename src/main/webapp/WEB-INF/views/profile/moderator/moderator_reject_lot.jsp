@@ -22,8 +22,9 @@
 Название лота: {{lotCtrl.lot.name}} <br>
 Категория: {{lotCtrl.lot.category.title}} <br>
 Подкатегория: {{lotCtrl.lot.subcategory.title}} <br>
-Дата начала: {{lotCtrl.lot.startDate}} <br>
-Дата окончания: {{lotCtrl.lot.endDate}} <br>
+Город: {{lotCtrl.lot.city.title}} <br>
+Дата начала: {{lotCtrl.lot.startDate | date:'yyyy-MM-dd HH:mm:ss'}} <br>
+Дата окончания: {{lotCtrl.lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} <br>
 Описание: {{lotCtrl.lot.description}} <br>
 Никнейм пользователя: {{lotCtrl.lot.user.nickname}} <a ng-href='/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}'>Посмотреть профиль</a><br>
 Бюджет: {{lotCtrl.lot.budget}} <br>
