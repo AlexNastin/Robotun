@@ -99,7 +99,7 @@
                     <div class="container resize">
                         <div class="row">
                         <div class="sort-style">
-                                <div class="col-md-2 margin-top-sort-style">
+                                <div class="col-md-1 margin-top-sort-style">
                                 <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
                                 </div>
                                 <div class="col-md-2 margin-top-sort-style">
@@ -109,17 +109,23 @@
                                 <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
                                 </div>
                                  <div class="col-md-6 margin-top-sort-style" style="padding: 0px;">
-                                 <div class="col-md-2 text-sort-style">
+                                 <div class="col-md-1 text-sort-style" style="max-width: 12em;">
                                  Сначала: 
                                  </div>
-                                 <div class="col-md-6">
+                                 <div class="col-md-4 padding-field-sort">
                                  <select id="desc" class="form-control">
   									<option value="new">Новые</option>
   									<option value="old">Старые</option>
   									<option value="expensive">Дорогие</option>
   									<option value="cheap">Дешёвые</option>
 								</select>
+								
+								</div>
+								 <div class="col-md-2 text-sort-style">
 								Регион:
+								</div>
+								<div class="col-md-4">
+								
 								<select id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
 									<c:forEach items="${listCities}" var="city">
@@ -127,7 +133,7 @@
   									</c:forEach>
 								</select>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-1">
 								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
 								</div>
 								</div>
