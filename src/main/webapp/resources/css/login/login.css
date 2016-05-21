@@ -100,12 +100,12 @@ a {
 	-------------------------------------------------- */
 
 #login .form-wrap {
-    width: 30%;
+    width: 40%;
     margin: 0 auto;
 }
 @media (max-width: 915px) {
   #login .form-wrap {
-   width: 70%;
+   width: 90%;
   }
 }
 #login h1 {
@@ -290,7 +290,7 @@ a {
 	padding-top: 5em;
 }
 .field-phone-style {
-	width: 90%;
+	width: 92.8%;
 	margin-bottom: 0.3em;
 	float: left;
 	margin-bottom: 25px;
