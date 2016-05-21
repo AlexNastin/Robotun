@@ -91,6 +91,7 @@
 	<!-- scripts -->
     <script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
+    <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript">
 	$(document)
@@ -143,12 +144,15 @@
 			});
 	  $(function() {
 
-		    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+3650",changeMonth: true,
+		    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+180",changeMonth: true,
 				changeYear: true, minDate:"+0",
-				yearRange: "-0:+10"});
+				yearRange: "-0:+1"});
 		    
 
 		  });
+	  $(document).ready(function(){
+		    $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
+		});
 </script>
 
 </body>
