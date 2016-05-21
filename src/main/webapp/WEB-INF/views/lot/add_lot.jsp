@@ -93,6 +93,7 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="<c:url value="/resources/js/timepicker.js" />"> </script> 
     <script type="text/javascript">
 	$(document)
 			.ready(
