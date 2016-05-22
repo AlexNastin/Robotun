@@ -72,7 +72,7 @@
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
 			<div class="form-group">
-		<form:input path="budget" placeholder="budget" class="form-control"/>
+		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
 		</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
