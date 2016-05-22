@@ -34,17 +34,14 @@
 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
 	</div>
 	<div class="col-md-6">
-	<form:form modelAttribute="addLotForm" method="POST">
+	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+endTime.value" >
 	
 		<div class="form-group">
 		<form:input path="name" placeholder="name" class="form-control"/>
 		</div>
 		<div class="form-group">
 		<form:textarea path="description" placeholder="description" class="form-control" />
-		</div>
-		<div class="form-group">
-		<form:input path="budget" placeholder="budget" class="form-control"/>
-		</div>
+		</div>		
 		 <form:select class="form-group" path="idCity">
 							<c:forEach items="${listCities}" var="city">
 								<form:option value="${city.idCity}">${city.title}</form:option>
@@ -63,11 +60,20 @@
 				    <label class="error" generated="true" for="idSubcategory"></label>
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
-		<div class="form-group">
+					<div class="form-group">
+					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
+					</div>
+					<div class="form-group">
+					<input type="text" class="form-control timepicker" name="endTime" id="endTime" placeholder="Время конца">
+					</div>
+		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
 			<label class="error" generated="true" for="endDate"></label>
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
+			<div class="form-group">
+		<form:input path="budget" placeholder="budget" class="form-control"/>
+		</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
       
@@ -145,7 +151,7 @@
 			});
 	  $(function() {
 
-		    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+180",changeMonth: true,
+		    $( "#Date" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+180",changeMonth: true,
 				changeYear: true, minDate:"+0",
 				yearRange: "-0:+1"});
 		    
@@ -154,6 +160,17 @@
 	  $(document).ready(function(){
 		    $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
 		});
+	  $(document).ready(function(){
+		    $('input.timepicker').timepicker({
+		        timeFormat: 'HH:mm:ss',
+		        minTime: '00:00:00', 
+		        maxHour: 24,
+		        maxMinutes: 60,
+		        startTime: new Date(), 
+		        interval: 60 
+		    });
+		});
+	  
 </script>
 
 </body>
