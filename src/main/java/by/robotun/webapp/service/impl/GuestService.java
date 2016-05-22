@@ -332,4 +332,15 @@ public class GuestService implements IGuestService {
 		}
 		return count;
 	}
+
+	@Override
+	public int getIdOwnerLot(Integer idLot) throws ServiceException {
+		int idUser = 0;
+		try {
+			idUser = lotDAO.selectIdOwnerLot(idLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return idUser;
+	}
 }

@@ -1,5 +1,6 @@
 package by.robotun.webapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -26,7 +27,7 @@ import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private SerializationJSON serializationJSON;
 
@@ -49,14 +50,15 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/physical/profile/myResponses", method = RequestMethod.GET)
-	public ModelAndView myResponsePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView myResponsePhysical(Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/physical/profile/myLots", method = RequestMethod.GET)
 	public ModelAndView myLotsPhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
@@ -65,16 +67,18 @@ public class UserController {
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/physical/profile/lotsOnUpdate", method = RequestMethod.GET)
-	public ModelAndView lotsOnUpdatePhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView lotsOnUpdatePhysical(Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
+				serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/legal/profile/myLots", method = RequestMethod.GET)
 	public ModelAndView myLotsLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
@@ -83,7 +87,7 @@ public class UserController {
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/legal/profile/myResponses", method = RequestMethod.GET)
 	public ModelAndView myResponsesLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
@@ -98,26 +102,39 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsOnUpdateByUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
+				serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		return modelAndView;
 	}
+
 	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)
-	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser)
+	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser,
+			@RequestParam(value = "idLot", required = false) Integer idLot, HttpSession httpSession)
 			throws ServiceException {
-		List<String> phones = userService.getPhonesStringByIdUser(idUser);
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<String> phones = new ArrayList<String>();
+		if (guestService.getCountBetByLotByUser(idLot, person.getId()) > 0) {
+			phones = userService.getPhonesStringByIdUser(idUser);
+		}
 		return phones;
 	}
-			
+
 	@RequestMapping(value = "/user/deleteLot", method = RequestMethod.GET)
-	public ModelAndView deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		int idUser = guestService.getIdOwnerLot(idLot);
 		ModelAndView modelAndView = null;
-		if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
-			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
-		} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
-			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
+		if (idUser == person.getId()) {
+			if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
+				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
+			} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
+				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
+			}
+			userService.deleteLot(idLot);
+		} else {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}
-		userService.deleteLot(idLot);
 		return modelAndView;
 	}
 }

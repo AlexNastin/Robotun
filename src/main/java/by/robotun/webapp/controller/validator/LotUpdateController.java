@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.validator.UpdateLotFormValidator;
 import by.robotun.webapp.service.IGuestService;
@@ -37,14 +38,21 @@ public class LotUpdateController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updateLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
-		Lot lot = userService.getLotById(idLot);
-		UpdateLotForm updateLotForm = new UpdateLotForm();
-		updateLotForm.setIdLot(idLot);
-		updateLotForm.setDescription(lot.getDescription());
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
-		modelAndView.addObject(ControllerParamConstant.LOT, lot);
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		int idUser = guestService.getIdOwnerLot(idLot);
+		ModelAndView modelAndView = null;
+		if(idUser == person.getId()) {
+			modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
+			Lot lot = userService.getLotById(idLot);
+			UpdateLotForm updateLotForm = new UpdateLotForm();
+			updateLotForm.setIdLot(idLot);
+			updateLotForm.setDescription(lot.getDescription());
+			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+			modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
+			modelAndView.addObject(ControllerParamConstant.LOT, lot);
+		} else {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
+		}
 		return modelAndView;
 	}
 

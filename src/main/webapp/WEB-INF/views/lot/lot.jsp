@@ -316,7 +316,8 @@ var isElse = ${isElse}
 						type:"GET",
 						data:{
 							//передаем параметры
-							id: idUser
+							id: vm.lot.idUser,
+							idLot: vm.lot.idLot
 						},
 						success:function(number) {
 							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';

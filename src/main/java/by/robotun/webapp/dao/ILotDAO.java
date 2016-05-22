@@ -17,6 +17,8 @@ public interface ILotDAO {
 	public void insertLot(Lot lot) throws DaoException;
 
 	public Lot selectLotById(int idLot) throws DaoException;
+	
+	public int selectIdOwnerLot(int idLot) throws DaoException;
 
 	public List<Lot> selectLotByCategory(int idCategory, Date endDate) throws DaoException;
 
