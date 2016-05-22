@@ -44,4 +44,5 @@ public final class URLMapping {
 	
 	//ERROR JSP
 	public static final String JSP_ERROR_ON_MODERATION = "error/error_on_moderation";
+	public static final String JSP_ERROR_404 = "error/error404";
 }

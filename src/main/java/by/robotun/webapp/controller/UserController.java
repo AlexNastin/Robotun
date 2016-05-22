@@ -123,13 +123,18 @@ public class UserController {
 	public ModelAndView deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		int idUser = guestService.getIdOwnerLot(idLot);
 		ModelAndView modelAndView = null;
-		if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
-			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
-		} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
-			modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
+		if (idUser == person.getId()) {
+			if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
+				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
+			} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
+				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
+			}
+			userService.deleteLot(idLot);
+		} else {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}
-		userService.deleteLot(idLot);
 		return modelAndView;
 	}
 }

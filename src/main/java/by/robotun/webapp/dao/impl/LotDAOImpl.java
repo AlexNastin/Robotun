@@ -79,6 +79,18 @@ public class LotDAOImpl implements ILotDAO {
 		}
 		return lot;
 	}
+	
+	@Override
+	public int selectIdOwnerLot(int idLot) throws DaoException {
+		int idUser = 0;
+		try {
+			idUser = (int) entityManager.createNamedQuery("Lot.findIdOwnerLot").setParameter("id", idLot).getSingleResult();
+		} catch (NoResultException e) {
+			throw new DaoException(e);
+
+		}
+		return idUser;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
