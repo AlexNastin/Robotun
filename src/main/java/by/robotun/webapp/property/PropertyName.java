@@ -13,5 +13,8 @@ public final class PropertyName {
 	public static final String MODERATOR_DEFAULT_PASSWORD = "moderator.default.password";
 	
 	public static final String AJAX_LOT_MAXSIZE = "ajax.lot.maxsize";
+	
+	public static final String SOLR_HTTP_URL = "solr.http.url";
+
 
 }
