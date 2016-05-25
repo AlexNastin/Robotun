@@ -22,11 +22,31 @@
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
 </div>
-<div class="col-md-10" id="list-group" ng-controller="UsersController as usersCtrl">
-<div class="text-admin-page-main col-md-12">Модераторы: </div>
-
+<div class="col-md-10" ng-controller="UsersController as usersCtrl">
+<div class="table-responsive" id="list-group">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Логин</th>
+							<th>Никнейм</th>
+							<th>Дата регистрации</th>
+							<th>Удалить</th>
+							<th>Сброс пароля</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in usersCtrl.users">
+							<td>{{user.login}}</td>
+							<td>{{user.nickname}}</td>
+							<td>{{user.registrationDate | date:'yyyy-mm-dd HH:mm:ss'}}</td>
+							<td><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить этого урода</a></td>
+							<td><a ng-href='/jobster.by/admin/resetModeratorPassword?id={{user.idUser}}'>Сбросить пароль по умолчанию</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+								
 <div ng-repeat="user in usersCtrl.users">
-<p> {{user.login}} <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить этого урода</a></p><a ng-href='/jobster.by/admin/resetModeratorPassword?id={{user.idUser}}'>Сбросить пароль по умолчанию</a>
 <div class="modal fade" id="myModal{{user.idUser}}" role="dialog">
     <div class="modal-dialog">
     
@@ -49,7 +69,6 @@
   </div>
 </div>
 </div>
-<div class="load"></div>
 </div>
 </div>
   
@@ -57,7 +76,6 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <script type="text/javascript">
 
 var jsonData = '${listUsersJson}';
@@ -75,10 +93,9 @@ function mainUsersController ($scope) {
 	angular.forEach(data, function(user) {
 		vm.users.push(user);
 	});
-	console.log(vm.users);
 }
 
-		function loader(){       
+		/* function loader(){       
 			var scope = angular.element(document.getElementById("list-group")).scope();
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
@@ -105,7 +122,7 @@ function mainUsersController ($scope) {
 								}
 							});
 						});
-			}
+			} */
 		</script>
 </body>
 </html>

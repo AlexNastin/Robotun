@@ -31,11 +31,11 @@
 				class="img-responsive img-thumbnail" alt="Image"> <a href='#'
 				class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 		</div>
-        <div class="table-responsive">
+        <div class="table-responsive" ng-controller="LotsController as lotsCtrl" id="list-group">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Заголовок</th>
+							<th>Название</th>
 							<th>Описание</th>
 							<th>Бюджет</th>
 							<th>Активен до</th>
@@ -44,67 +44,35 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>Lorem</td>
+						<tr ng-repeat="lot in lotsCtrl.lots">
+							<td>{{lot.name}}</td>
+							<td>{{lot.description}}</td>
+							<td>{{lot.budget}}</td>
+							<td>{{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}}</td>
+							<td><div ng-repeat="message in lot.rejectMessages">{{message.message}} {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}</div></td>
+							<td><a class="btn btn-primary button-legal-style-main"
+								ng-href='/jobster.by/moderator/rejectLot?id={{lot.idLot}}'>Модерировать</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			
-		<div class="col-md-10" id="list-group"
-			ng-controller="LotsController as lotsCtrl">
-			<div class="text-admin-page-main col-md-12">Лоты:</div>
-			
-			<!-- Разделение -->
-			<div ng-repeat="lot in lotsCtrl.lots">
-				<div class="col-md-12 users-legal-boards">
-					<div class="col-md-3">
-						<img src="/jobster.by/resources/images/fabian-perez.jpg"
-							class="img-responsive img-thumbnail users-legal-img" alt="Image">
-					</div>
-					<div class="col-md-9 moderator-descripton">
-						<div class="col-md-12 text-moderator-description">
-							<a ng-href='/jobster.by/lot?id={{lot.idLot}}'
-								style="font-size: 18pt;">{{lot.name}}</a>
-						</div>
-						<div class="col-md-12 text-moderator-description">{{lot.description}}</div>
-						<div
-							class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет:
-							{{lot.budget}}</div>
-						<div
-							class="col-md-12 text-moderator-description legal-users-board-margin">Активен
-							до: {{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}}</div>
-						<div
-							class="col-md-12 text-moderator-description legal-users-board-margin">Причины
-							отказа:</div>
-						<div ng-repeat="message in lot.rejectMessages">
-							{{message.message}} {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}
-						</div>
-						<div class="col-md-12" style="text-align: right;">
-							<a class="btn btn-primary button-legal-style-main"
-								ng-href='/jobster.by/moderator/rejectLot?id={{lot.idLot}}'>Модерировать</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="load"></div>
+			<a class="btn btn-primary button-legal-style-main"
+								onclick='loader()'>Подгрузить еще</a>
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/autoload.js" />"></script>
 	<script type="text/javascript">
 		var jsonData = '${listLotsJson}';
 
 		app.controller('LotsController', [ '$scope', '$http',
 				mainLotsController ]);
+		
+		var block = false;
+		//если true, то лотов больше нет
+		var isEnd = false;
+		//начиная с
+		var offset = 1;
 
 		function mainLotsController($scope) {
 			var vm = this;
@@ -121,7 +89,8 @@
 			var scope = angular.element(document.getElementById("list-group"))
 					.scope();
 			// «теневой» запрос к серверу
-			$(".load").fadeIn(500, function() {
+			if(!block && !isEnd) {
+			block = true;
 				$.ajax({
 					url : "/jobster.by/autoloader/moderator/onModeration",
 					type : "GET",
@@ -144,7 +113,7 @@
 						block = false;
 					}
 				});
-			});
+			}
 		}
 	</script>
 </body>

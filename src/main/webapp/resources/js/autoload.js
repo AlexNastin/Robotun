@@ -5,7 +5,6 @@ $(window).scroll(function () {
 	if($(window).height() + $(window).scrollTop() >= $(document).height() && !block && !isEnd) {
 		block = true;
 		loader();
-		console.log("scroll")
 	}
 });
 //начиная с

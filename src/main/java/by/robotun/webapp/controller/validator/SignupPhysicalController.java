@@ -44,16 +44,13 @@ public class SignupPhysicalController {
 			@ModelAttribute(ControllerParamConstant.ADD_USER_PHYSICAL_FORM) SignupUserPhysicalForm signupUserPhysicalForm,
 			BindingResult result, HttpSession httpSession) throws Exception {
 		addUserPhysicalValidator.validate(signupUserPhysicalForm, result);
-		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_PHYSICAL);
-			return modelAndView;
-		}
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_PHYSICAL);
-		guestService.addUserPhysical(signupUserPhysicalForm);
-		String message = "ADDDDD";
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, message); 
+		if (!result.hasErrors()) {
+			guestService.addUserPhysical(signupUserPhysicalForm);
+			String message = "ADDDDD";
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, message); 
+		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, new SignupUserLegalForm());
 		modelAndView.addObject(ControllerParamConstant.ADD_USER_PHYSICAL_FORM,  new SignupUserPhysicalForm());
 		return modelAndView;
 	}

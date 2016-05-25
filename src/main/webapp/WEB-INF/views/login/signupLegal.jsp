@@ -124,6 +124,10 @@
 		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
 		<form:errors path="confirmPassword" />
 		</div>
+		<div class="form-group">
+		<form:checkbox class="form-control" path="confirm" />
+		<form:errors path="confirm" />
+		</div>
 		</div>
 		<input class="btn btn-custom btn-lg btn-block" type="submit" value="Зарегистрироваться" />
 	</form:form>

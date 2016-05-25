@@ -19,8 +19,11 @@ public class SignupUserLegalForm implements Essence {
 	private String zipCode;
 	private String password;
 	private String confirmPassword;
+	private boolean confirm;
 	
-	// Phones
+	/**
+	 * Array with user`s phones
+	 */
 	private String[] phones;
 
 	public String getLogin() {
@@ -95,11 +98,20 @@ public class SignupUserLegalForm implements Essence {
 		this.phones = phones;
 	}
 
+	public boolean isConfirm() {
+		return confirm;
+	}
+
+	public void setConfirm(boolean confirm) {
+		this.confirm = confirm;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + (confirm ? 1231 : 1237);
 		result = prime * result + ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
 		result = prime * result + idCity;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
@@ -124,6 +136,8 @@ public class SignupUserLegalForm implements Essence {
 			if (other.address != null)
 				return false;
 		} else if (!address.equals(other.address))
+			return false;
+		if (confirm != other.confirm)
 			return false;
 		if (confirmPassword == null) {
 			if (other.confirmPassword != null)
@@ -166,10 +180,9 @@ public class SignupUserLegalForm implements Essence {
 	public String toString() {
 		return "SignupUserLegalForm [login=" + login + ", idCity=" + idCity + ", nameEnterprise=" + nameEnterprise
 				+ ", unp=" + unp + ", address=" + address + ", zipCode=" + zipCode + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword + ", phones=" + Arrays.toString(phones) + "]";
+				+ ", confirmPassword=" + confirmPassword + ", confirm=" + confirm + ", phones="
+				+ Arrays.toString(phones) + "]";
 	}
-
-
 
 	
 }

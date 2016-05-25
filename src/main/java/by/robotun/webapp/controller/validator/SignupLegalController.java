@@ -44,16 +44,14 @@ public class SignupLegalController {
 			@ModelAttribute(ControllerParamConstant.ADD_USER_LEGAL_FORM)  SignupUserLegalForm signupUserLegalForm,
 			BindingResult result, HttpSession httpSession) throws Exception {
 		addUserLegalValidator.validate(signupUserLegalForm, result);
-		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
-			return modelAndView;
-		}
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
-		guestService.addUserLegal(signupUserLegalForm);
-		String message = "ADDDDD";
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+		System.err.println(signupUserLegalForm.isConfirm());
+		if (!result.hasErrors()) {
+			guestService.addUserLegal(signupUserLegalForm);
+			String message = "ADDDDD";
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ADD_USER_PHYSICAL_FORM,  new SignupUserPhysicalForm() );
 		modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, new SignupUserLegalForm());
 		return modelAndView;
 	}
