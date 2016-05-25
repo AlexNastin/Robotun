@@ -3,6 +3,7 @@ package by.robotun.webapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.solr.core.query.result.SolrResultPage;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,10 +21,10 @@ public class SearchController {
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String getLegalMyLots(@RequestParam(value = "text") String text) throws ServiceException {
-//		List<LotSolr> lotSolrs =  (List<LotSolr>) lotRepository.findAll();
-//		for (LotSolr lotSolr : lotSolrs) {
-//			System.out.println();
-//		}
+//		org.springframework.data.solr.core.query.result.SolrResultPage  lotSolrs =   (SolrResultPage) lotRepository.findAll();
+//	for (Object object : lotSolrs) {
+//		System.out.println(object);
+//	}
 		return null;
 	}
 

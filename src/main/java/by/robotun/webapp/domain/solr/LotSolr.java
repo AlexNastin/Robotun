@@ -2,9 +2,8 @@ package by.robotun.webapp.domain.solr;
 
 import java.util.Date;
 
-import javax.persistence.Id;
-
 import org.apache.solr.client.solrj.beans.Field;
+import org.springframework.data.annotation.Id;
 
 import by.robotun.webapp.domain.Essence;
 

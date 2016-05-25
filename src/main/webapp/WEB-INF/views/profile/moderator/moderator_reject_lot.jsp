@@ -57,6 +57,7 @@
 
 		function lotController ($scope) {
 			var vm = this;
+			console.log(jsonData);
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
 		}

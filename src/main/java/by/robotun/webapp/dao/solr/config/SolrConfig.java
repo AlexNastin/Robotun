@@ -10,21 +10,21 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;
-//
+
 //@Configuration
 //@EnableSolrRepositories(basePackages = "by.robotun.webapp.dao.solr")
 //public class SolrConfig {
-//
-//	@Autowired
-//	private PropertyManager propertyManager;
-//
+
+
 //	@Bean
 //	public SolrClient getSolrClient() {
-//		return new HttpSolrClient(propertyManager.getValue(PropertyName.SOLR_HTTP_URL));
+//		SolrClient solrClient =new HttpSolrClient("http://localhost:8983/solr");
+//		return solrClient;
 //	}
 //	
 //	@Bean
-//	public SolrTemplate solrTemplate(SolrClient server) {
-//		return new SolrTemplate(server);
+//	public SolrTemplate solrTemplate(SolrClient solrClient) {
+//		SolrTemplate solrTemplate  = new SolrTemplate(solrClient, "jcg");
+//		return solrTemplate;
 //	}
 //}
