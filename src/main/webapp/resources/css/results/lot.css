@@ -306,8 +306,8 @@ font-size: 14px;
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+    text-indent: 0px;
+    line-height: 30px;
 }
 
 .sidebar-nav li a {
