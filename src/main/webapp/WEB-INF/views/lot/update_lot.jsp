@@ -47,7 +47,8 @@
 		<div class="form-group">
 		<form:input path="budget" placeholder="budget" class="form-control" value="${lot.budget}"/>
 		</div>
-		 <form:select class="form-group" path="idCity">
+		<div class="form-group">
+		 <form:select class="form-control" path="idCity">
 		 <c:set var="idSelectCity" value="${lot.city.idCity}"/>
 							<c:forEach items="${listCities}" var="city">
 							<c:if test="${city.idCity == idSelectCity}">
@@ -57,6 +58,7 @@
 								<c:set var="selected" value=""/>
 							</c:forEach>
 						</form:select>
+						</div>
 		<div class="form-group">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
