@@ -25,6 +25,7 @@
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Замечания по лотам</a>
 <a href='<c:url value="/legal/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 <a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
+<a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 <div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl">
 <div class="text-admin-page-main col-md-12">Замечания по лотам:</div>
