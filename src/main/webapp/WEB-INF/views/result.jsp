@@ -109,7 +109,7 @@
                                 <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
                                 </div>
                                  <div class="col-md-6 margin-top-sort-style" style="padding: 0px;">
-                                 <div class="col-md-1 text-sort-style" style="max-width: 12em;">
+                                 <div class="col-md-1 text-sort-style" style="max-width: 12em; color:white;">
                                  Сначала: 
                                  </div>
                                  <div class="col-md-4 padding-field-sort">
@@ -121,7 +121,7 @@
 								</select>
 								
 								</div>
-								 <div class="col-md-2 text-sort-style">
+								 <div class="col-md-2 text-sort-style" style="color:white;">
 								Регион:
 								</div>
 								<div class="col-md-4">
