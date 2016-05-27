@@ -23,6 +23,7 @@
 <a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по лотам</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
 <a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
+<a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>	
