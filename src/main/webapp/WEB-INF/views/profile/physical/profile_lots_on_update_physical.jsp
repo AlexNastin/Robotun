@@ -39,11 +39,13 @@
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}} </div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Причины отказа:</div>
-<div ng-repeat="message in lot.rejectMessages">
+<div class="col-md-12 legal-users-board-margin" ng-repeat="message in lot.rejectMessages">
 {{message.message}}  {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}
 </div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/deleteLot?id={{lot.idLot}}'>Удалить</a></div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a></div>
+<div class="col-md-12" style="text-align:right;">
+<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/deleteLot?id={{lot.idLot}}'>Удалить</a>
+<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
+</div>
 </div>
 </div>
 </div>
