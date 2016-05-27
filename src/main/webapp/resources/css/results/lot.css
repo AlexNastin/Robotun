@@ -717,3 +717,11 @@ xpopup
 .height-block-lot {
 	height: 69.7167px;
 }
+.login-button-mini-style {
+	color: white !important;
+	background-color: #3abeb1;
+	border-color: #2c8f86;
+}
+.login-button-mini-style:hover, .login-button-mini-style:active, .login-button-mini-style:focus {
+	background-color: #2c8f86 !important;
+}

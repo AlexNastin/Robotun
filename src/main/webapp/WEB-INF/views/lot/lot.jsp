@@ -182,7 +182,7 @@
 
 										</security:authorize>
 										<security:authorize access="hasRole('ROLE_GUEST')">
-											<a style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
+											<a class="btn btn-default login-button-mini-style" style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
 										</security:authorize>
 									</div>
 								</div>
