@@ -124,8 +124,11 @@
 		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
 		<form:errors path="confirmPassword" />
 		</div>
-		<div class="form-group">
-		<form:checkbox class="form-control" path="confirm" />
+		<div class="checkbox col-md-12" style="padding-left:22px;">
+		<form:checkbox path="confirm" />
+		<label style="color:white; padding-left: 0px;">
+		Я согласен с правилами пользования сайтом
+		</label>
 		<form:errors path="confirm" />
 		</div>
 		</div>
