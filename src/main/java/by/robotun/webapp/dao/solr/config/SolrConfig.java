@@ -11,20 +11,25 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;
 
-//@Configuration
-//@EnableSolrRepositories(basePackages = "by.robotun.webapp.dao.solr")
-//public class SolrConfig {
+@Configuration
+@EnableSolrRepositories(basePackages = "by.robotun.webapp.dao.solr")
+public class SolrConfig {
 
+	@Autowired
+	private PropertyManager propertyManager;
+	
+	
+	@Bean
+	public SolrClient getSolrClient() {
+		//http://localhost:8983/solr/jcg/dataimport?command=full-import&clean=true&commit=true
+//		http://localhost:8983/solr/jcg/dataimport?command=delta-import&clean=false&commit=true
+		SolrClient solrClient = new HttpSolrClient(propertyManager.getValue(PropertyName.SOLR_HTTP_URL));
+		return solrClient;
+	}
 
-//	@Bean
-//	public SolrClient getSolrClient() {
-//		SolrClient solrClient =new HttpSolrClient("http://localhost:8983/solr");
-//		return solrClient;
-//	}
-//	
-//	@Bean
-//	public SolrTemplate solrTemplate(SolrClient solrClient) {
-//		SolrTemplate solrTemplate  = new SolrTemplate(solrClient, "jcg");
-//		return solrTemplate;
-//	}
-//}
+	@Bean
+	public SolrTemplate solrTemplate(SolrClient solrClient) {
+		SolrTemplate solrTemplate = new SolrTemplate(solrClient, "jcg");
+		return solrTemplate;
+	}
+}

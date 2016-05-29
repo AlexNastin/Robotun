@@ -87,7 +87,7 @@ public class AppMain1 {
         TriggerKey triggerKey = new TriggerKey("T1234");
         JobDetailImpl jobDetailImpl = new JobDetailImpl();
         jobDetailImpl.setKey(jobKey);
-       Class<?> csa =  Class.forName("by.robotun.webapp.quartz.ScheduledJob1");
+       Class<?> csa =  Class.forName("by.robotun.webapp.quartz.ScheduleFullIndexSolrJob");
         jobDetailImpl.setJobClass((Class<? extends Job>) csa);
         
         CronTriggerImpl cronTriggerImpl = new CronTriggerImpl();

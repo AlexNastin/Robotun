@@ -235,5 +235,4 @@ public class LotSolr implements Essence {
 				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall
 				+ ", idCity=" + idCity + ", timeUpdate=" + timeUpdate + "]";
 	}
-
 }
