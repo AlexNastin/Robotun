@@ -7,7 +7,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Forgot password | Global3DMod</title>
+<meta charset="utf-8">
+<title>Забыл пароль</title>
 <!-- Init search variable -->
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

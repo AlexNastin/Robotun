@@ -7,6 +7,7 @@
 	prefix="security"%>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Изменить работу</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
