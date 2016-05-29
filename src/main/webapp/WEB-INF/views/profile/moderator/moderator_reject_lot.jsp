@@ -7,6 +7,7 @@
 	prefix="security"%>
 <html ng-app="app">
 <head>
+<meta charset="utf-8">
 <title>Проверка лота</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />

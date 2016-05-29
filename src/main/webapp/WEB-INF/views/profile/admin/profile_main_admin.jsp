@@ -7,6 +7,7 @@
 	prefix="security"%>
 <html ng-app="app">
 <head>
+<meta charset="utf-8">
 <title>Личный кабинет администратора</title>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">

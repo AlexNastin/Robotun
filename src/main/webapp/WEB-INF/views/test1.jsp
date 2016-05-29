@@ -8,6 +8,7 @@
  <!DOCTYPE HTML>
 <html ng-app="app">
 <head>
+<meta charset="utf-8">
 <title>Работа</title>
 
 <c:url value="/get/subcategories" var="getSubcategories" />

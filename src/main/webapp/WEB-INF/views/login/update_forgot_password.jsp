@@ -7,6 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta charset="utf-8">
 <title>Reset password | Global3DMod</title>
 <!-- Init search variable -->
 

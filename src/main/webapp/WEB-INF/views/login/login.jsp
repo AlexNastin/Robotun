@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
 <spring:url var="authUrl" value="/static/j_spring_security_check" />
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
