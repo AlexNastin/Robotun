@@ -35,7 +35,7 @@
 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
 	</div>
 	<div class="col-md-6">
-	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+endTime.value" >
+	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
 	
 		<div class="form-group">
 		<form:input path="name" placeholder="name" class="form-control"/>
@@ -67,7 +67,9 @@
 					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
 					</div>
 					<div class="form-group">
-					<input type="text" class="form-control timepicker" name="endTime" id="endTime" placeholder="Время конца">
+					
+					   <input type="range" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
+    <output style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
 					</div>
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
