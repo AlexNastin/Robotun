@@ -77,7 +77,7 @@
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
 			<div class="form-group">
-		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
+		<form:input type="number" min="1" max="2147483647" path="budget" placeholder="Бюджет" class="form-control"/>
 		</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
