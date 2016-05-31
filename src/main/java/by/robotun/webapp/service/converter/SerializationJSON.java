@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.User;
 import by.robotun.webapp.domain.json.Views;
 import by.robotun.webapp.exeption.ServiceException;
 
@@ -33,11 +35,12 @@ public class SerializationJSON {
 		return jsonObjects;
 	}
 
-	public String toJsonViewsInternal(Object object) throws ServiceException {
+	public String toJsonViewsInternalLot(Lot lot) throws ServiceException {
+		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
-			jsonObjects = mapper.writerWithView(Views.Internal.class).writeValueAsString(object);
+			jsonObjects = mapper.writerWithView(Views.Internal.class).writeValueAsString(lot);
 		} catch (JsonProcessingException e) {
 			throw new ServiceException(e);
 		}
@@ -55,11 +58,12 @@ public class SerializationJSON {
 		return jsonObjects;
 	}
 	
-	public String toJsonViewsInternalConfirmLot(Object object) throws ServiceException {
+	public String toJsonViewsInternalConfirmLot(Lot lot) throws ServiceException {
+		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
-			jsonObjects = mapper.writerWithView(Views.InternalConfirmLot.class).writeValueAsString(object);
+			jsonObjects = mapper.writerWithView(Views.InternalConfirmLot.class).writeValueAsString(lot);
 		} catch (JsonProcessingException e) {
 			throw new ServiceException(e);
 		}
@@ -88,11 +92,15 @@ public class SerializationJSON {
 		return jsonObjects;
 	}
 	
-	public String toJsonViewsInternalUserSubclass(Object object) throws ServiceException {
+	public String toJsonViewsInternalUserSubclass(User user) throws ServiceException {
+		user.setNickname(user.getNickname().replace("\"", "\\\""));
+		if (user.getLegal() != null) {
+			user.getLegal().setNameEnterprise(user.getLegal().getNameEnterprise().replace("\"", "\\\""));
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
-			jsonObjects = mapper.writerWithView(Views.InternalUserSubclass.class).writeValueAsString(object);
+			jsonObjects = mapper.writerWithView(Views.InternalUserSubclass.class).writeValueAsString(user);
 		} catch (JsonProcessingException e) {
 			throw new ServiceException(e);
 		}
