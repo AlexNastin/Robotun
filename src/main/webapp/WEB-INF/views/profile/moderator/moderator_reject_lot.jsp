@@ -18,26 +18,58 @@
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
+<div class="col-md-12" style="text-align:center; font-weight: bold; font-size: 18pt; ">Проверка лота: </div>	
 <div class="col-md-3"></div>
-<div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em;" ng-controller="LotController as lotCtrl">	
-Название лота: {{lotCtrl.lot.name}} <br>
-Категория: {{lotCtrl.lot.category.title}} <br>
-Подкатегория: {{lotCtrl.lot.subcategory.title}} <br>
-Город: {{lotCtrl.lot.city.title}} <br>
-Дата начала: {{lotCtrl.lot.startDate | date:'yyyy-MM-dd HH:mm:ss'}} <br>
-Дата окончания: {{lotCtrl.lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} <br>
-Описание: {{lotCtrl.lot.description}} <br>
-Никнейм пользователя: {{lotCtrl.lot.user.nickname}} <a ng-href='/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}'>Посмотреть профиль</a><br>
-Бюджет: {{lotCtrl.lot.budget}} <br>
-Я звоню/мне звонят: {{lotCtrl.lot.isCall}} <br>
-<div class="col-md-12 text-style-legal-user">Проверка лота:</div>
+<div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em; margin-top: 1em;" ng-controller="LotController as lotCtrl">
+ <div style="margin-top: 1em;" class="table-responsive" id="list-group">
+<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>Категория:</td>
+							<td>{{lotCtrl.lot.category.title}}</td>
+						</tr>
+						<tr>
+							<td>Подкатегория:</td>
+							<td>{{lotCtrl.lot.subcategory.title}}</td>
+						</tr>
+						<tr>
+							<td>Город:</td>
+							<td>{{lotCtrl.lot.city.title}}</td>
+						</tr>
+						<tr>
+							<td>Дата начала:</td>
+							<td>{{lotCtrl.lot.startDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+						<tr>
+							<td>Дата окончания:</td>
+							<td>{{lotCtrl.lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						</tr>
+						<tr>
+							<td>Описание:</td>
+							<td>{{lotCtrl.lot.description}}</td>
+						</tr>		
+							<tr>
+							<td>Никнейм пользователя:</td>
+							<td><a ng-href='/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}'>{{lotCtrl.lot.user.nickname}}</a></td>
+						</tr>
+						<tr>
+							<td>Бюджет:</td>
+							<td>{{lotCtrl.lot.budget}}</td>
+						</tr>
+						<tr>
+							<td>Я звоню/мне звонят:</td>
+							<td>{{lotCtrl.lot.isCall}}</td>
+						</tr>								
+					</tbody>
+</table>
+</div>
 <form:form modelAttribute="rejectMessageForm" method="POST">
 <div class="form-group">
-<form:input class="form-control" path="text" placeholder="text"/>
+<form:textarea style="resize:none" class="form-control" path="text" placeholder="Причина"/>
 			<form:errors path="text" />
 	        </div>
 	        <div class="form-group">
-			<form:input class="form-control" path="idLot" value="{{lotCtrl.lot.idLot}}"/>
+			<form:input type="hidden" class="form-control" path="idLot" value="{{lotCtrl.lot.idLot}}"/>
 			</div>
 			<div style="text-align:center;">
 			<input class="button-on-add-lot btn btn-primary button-moderator-style" type="submit" value="Отправить причину" />
