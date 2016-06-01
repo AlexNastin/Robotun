@@ -36,3 +36,10 @@
 	background-color: #334A61; 
 	border-color: #334A61;
 }
+.font-style-message {
+	text-align: center;
+	background-color: rgb(97, 203, 193);
+	padding: 0.5em;
+	border-radius: 5px;
+	font-weight: bold;
+}
