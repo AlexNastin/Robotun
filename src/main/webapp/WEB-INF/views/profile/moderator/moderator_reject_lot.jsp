@@ -59,7 +59,11 @@
 						<tr>
 							<td>Я звоню/мне звонят:</td>
 							<td>{{lotCtrl.lot.isCall}}</td>
-						</tr>								
+						</tr>
+						<tr>
+							<td>История причин отказа:</td>
+							<td></td>
+						</tr>									
 					</tbody>
 </table>
 </div>
