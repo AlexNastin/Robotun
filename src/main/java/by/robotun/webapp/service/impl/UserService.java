@@ -57,7 +57,7 @@ public class UserService implements IUserService {
 			lot.setEndDate(endDate);
 			lot.setIdCategory(addLotForm.getIdCategory());
 			lot.setIdSubcategory(addLotForm.getIdSubcategory());
-			lot.setBudget(addLotForm.getBudget());
+			lot.setBudget(Integer.parseInt(addLotForm.getBudget()));
 			lot.setDescription(addLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIsCall(addLotForm.getIsCall());
@@ -237,7 +237,7 @@ public class UserService implements IUserService {
 			lot.setEndDate(endDate);
 			lot.setIdCategory(updateLotForm.getIdCategory());
 			lot.setIdSubcategory(updateLotForm.getIdSubcategory());
-			lot.setBudget(updateLotForm.getBudget());
+			lot.setBudget(Integer.parseInt(updateLotForm.getBudget()));
 			lot.setDescription(updateLotForm.getDescription());
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIdCity(updateLotForm.getIdCity());

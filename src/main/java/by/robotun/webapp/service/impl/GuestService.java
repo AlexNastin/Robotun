@@ -158,13 +158,14 @@ public class GuestService implements IGuestService {
 		user.setLogin(signupUserLegalForm.getLogin());
 		user.setIdCity(signupUserLegalForm.getIdCity());
 		user.setIdRole(ServiceParamConstant.ID_ROLE_USER_LEGAL);
-		user.setNickname(signupUserLegalForm.getNameEnterprise());
+		String nameEnterprise = signupUserLegalForm.getNameEnterprise().replace("\"", "\\\"");
+		user.setNickname(nameEnterprise);
 		user.setRegistrationDate(new Date());
 
 		String md5Password = DigestUtils.md5Hex(signupUserLegalForm.getPassword());
 		user.setPassword(md5Password);
 		legal.setAddress(signupUserLegalForm.getAddress());
-		legal.setNameEnterprise(signupUserLegalForm.getNameEnterprise());
+		legal.setNameEnterprise(nameEnterprise);
 		legal.setUnp(signupUserLegalForm.getUnp());
 		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
 		legal.setUser(user);

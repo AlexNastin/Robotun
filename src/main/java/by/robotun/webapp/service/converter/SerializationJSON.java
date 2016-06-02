@@ -36,7 +36,6 @@ public class SerializationJSON {
 	}
 
 	public String toJsonViewsInternalLot(Lot lot) throws ServiceException {
-		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
@@ -59,7 +58,6 @@ public class SerializationJSON {
 	}
 	
 	public String toJsonViewsInternalConfirmLot(Lot lot) throws ServiceException {
-		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
@@ -93,10 +91,6 @@ public class SerializationJSON {
 	}
 	
 	public String toJsonViewsInternalUserSubclass(User user) throws ServiceException {
-		user.setNickname(user.getNickname().replace("\"", "\\\""));
-		if (user.getLegal() != null) {
-			user.getLegal().setNameEnterprise(user.getLegal().getNameEnterprise().replace("\"", "\\\""));
-		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {

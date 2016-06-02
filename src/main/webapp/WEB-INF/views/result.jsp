@@ -218,7 +218,7 @@ $(document).ready(function() {
  });
 </script>
      
-		  <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
+		  
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
 <script type="text/javascript">
 var jsonData = '${listLotsJson}';
@@ -313,6 +313,7 @@ function loader(){
 				});
 	}
 	
+	
 $(function() {
     $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+365",changeMonth: true,
 		changeYear: true, minDate:"+0",
@@ -324,6 +325,7 @@ $(function() {
     
   });
 </script> 
+<script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <div class="clearfix"></div>
 		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>

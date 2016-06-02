@@ -12,7 +12,7 @@ public class AddLotForm implements Essence {
 	private String name;
 	private String endDate;
 	private String description;
-	private int budget;
+	private String budget;
 	private int idCategory;
 	private int idSubcategory;
 	private int idCity;
@@ -42,11 +42,11 @@ public class AddLotForm implements Essence {
 		this.description = description;
 	}
 
-	public int getBudget() {
+	public String getBudget() {
 		return budget;
 	}
 
-	public void setBudget(int budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
 
@@ -86,7 +86,7 @@ public class AddLotForm implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + budget;
+		result = prime * result + ((budget == null) ? 0 : budget.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
@@ -106,7 +106,10 @@ public class AddLotForm implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		AddLotForm other = (AddLotForm) obj;
-		if (budget != other.budget)
+		if (budget == null) {
+			if (other.budget != null)
+				return false;
+		} else if (!budget.equals(other.budget))
 			return false;
 		if (description == null) {
 			if (other.description != null)

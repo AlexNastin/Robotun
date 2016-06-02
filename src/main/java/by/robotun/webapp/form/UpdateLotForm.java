@@ -13,7 +13,7 @@ public class UpdateLotForm implements Essence {
 	private String name;
 	private String endDate;
 	private String description;
-	private int budget;
+	private String budget;
 	private int idCategory;
 	private int idSubcategory;
 	private int idCity;
@@ -51,11 +51,11 @@ public class UpdateLotForm implements Essence {
 		this.description = description;
 	}
 
-	public int getBudget() {
+	public String getBudget() {
 		return budget;
 	}
 
-	public void setBudget(int budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
 
@@ -91,11 +91,12 @@ public class UpdateLotForm implements Essence {
 		this.isCall = isCall;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + budget;
+		result = prime * result + ((budget == null) ? 0 : budget.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
@@ -116,7 +117,10 @@ public class UpdateLotForm implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		UpdateLotForm other = (UpdateLotForm) obj;
-		if (budget != other.budget)
+		if (budget == null) {
+			if (other.budget != null)
+				return false;
+		} else if (!budget.equals(other.budget))
 			return false;
 		if (description == null) {
 			if (other.description != null)

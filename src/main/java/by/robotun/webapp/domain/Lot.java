@@ -279,6 +279,7 @@ public class Lot implements Essence {
 		result = prime * result + ((bets == null) ? 0 : bets.hashCode());
 		result = prime * result + budget;
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
@@ -316,6 +317,11 @@ public class Lot implements Essence {
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -377,4 +383,5 @@ public class Lot implements Essence {
 				+ ", idCity=" + idCity + "]";
 	}
 
+	
 }

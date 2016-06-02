@@ -45,7 +45,6 @@ public class SignupLegalController {
 			BindingResult result, HttpSession httpSession) throws Exception {
 		addUserLegalValidator.validate(signupUserLegalForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
-		System.err.println(signupUserLegalForm.isConfirm());
 		if (!result.hasErrors()) {
 			guestService.addUserLegal(signupUserLegalForm);
 			String message = "ADDDDD";
