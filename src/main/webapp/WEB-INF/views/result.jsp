@@ -8,6 +8,8 @@
  <!DOCTYPE html>
 <html ng-app="app">
 <head>
+<c:url value="/get/subcategories" var="getSubcategories" />
+<c:url value="/get/categories" var="getCategories" />
 <meta charset="utf-8">
 <title>Работа</title>
 
@@ -62,7 +64,15 @@
     <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
 
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
-
+        <!-- Из-за этого все к чертям поплыло. Надо понять и простить -->
+        <select class="form-control" id="idCategory">
+				</select>
+					</div>
+					<div class="form-group">
+				<select class="form-control" id="idSubcategory">
+					<option value="0">Подкатегория</option>
+				</select>
+		<!-- END -->
             <ul style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
                <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
@@ -324,6 +334,54 @@ $(function() {
 		yearRange: "-1:+0"});
     
   });
+$(document)
+.ready(
+		function() {
+			$('#idCategory')
+					.change(
+							function() {
+								$
+										.getJSON(
+												'${getSubcategories}',
+												{
+													idCategory : $(
+															this)
+															.val(),
+													ajax : 'true'
+												},
+												function(data) {
+													var html = '<option value="0">Подкатегория</option>';
+													var len = data.length;
+													for (var i = 0; i < len; i++) {
+														html += '<option value="' + data[i].idSubcategory + '">'
+																+ data[i].title
+																+ '</option>';
+													}
+													html += '</option>';
+													$(
+															'#idSubcategory')
+															.html(
+																	html);
+												});
+							});
+		});
+</script>
+<script type="text/javascript">
+$(document).ready(
+function() {
+	$.getJSON('${getCategories}', {
+		ajax : 'true'
+	}, function(data) {
+		var html = '<option value="">Категория</option>';
+		var len = data.length;
+		for (var i = 0; i < len; i++) {
+			html += '<option value="' + data[i].idCategory + '">'
+					+ data[i].title + '</option>';
+		}
+		html += '</option>';
+		$('#idCategory').html(html);
+	});
+});
 </script> 
 <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <div class="clearfix"></div>
