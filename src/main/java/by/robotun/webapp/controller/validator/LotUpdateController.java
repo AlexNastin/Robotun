@@ -1,5 +1,7 @@
 package by.robotun.webapp.controller.validator;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +24,7 @@ import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.validator.UpdateLotFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.ServiceParamConstant;
 
 @Controller
 @RequestMapping("/user/updateLot")
@@ -43,10 +46,19 @@ public class LotUpdateController {
 		ModelAndView modelAndView = null;
 		if(idUser == person.getId()) {
 			modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITHOUT_TIME);
 			Lot lot = userService.getLotById(idLot);
 			UpdateLotForm updateLotForm = new UpdateLotForm();
+			updateLotForm.setBudget(String.valueOf(lot.getBudget()));
 			updateLotForm.setIdLot(idLot);
 			updateLotForm.setDescription(lot.getDescription());
+			//изменить после добавления скроллера времени на страницу updateLot
+			updateLotForm.setEndDate(dateFormat.format(lot.getEndDate()));
+			updateLotForm.setIdCategory(lot.getIdCategory());
+			updateLotForm.setIdCity(lot.getIdCity());
+			updateLotForm.setIdSubcategory(lot.getIdSubcategory());
+			updateLotForm.setIsCall(lot.getIsCall());
+			updateLotForm.setName(lot.getName());
 			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 			modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
 			modelAndView.addObject(ControllerParamConstant.LOT, lot);
@@ -60,12 +72,12 @@ public class LotUpdateController {
 	public ModelAndView updateLotValidation(@ModelAttribute(ControllerParamConstant.UPDATE_LOT_FORM) UpdateLotForm updateLotForm,
 		BindingResult result, HttpSession httpSession) throws Exception {
 		updateLotFormValidator.validate(updateLotForm, result);
-		if (result.hasErrors()) {
-		}
-		userService.updateLot(updateLotForm);
-		Lot lot = userService.getLotById(updateLotForm.getIdLot());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		if (!result.hasErrors()) {
+			userService.updateLot(updateLotForm);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		}
+		Lot lot = userService.getLotById(updateLotForm.getIdLot());
 		modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);

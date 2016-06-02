@@ -248,7 +248,7 @@ public class LotDAOImpl implements ILotDAO {
 		predicatesList.add(isVisiblePredicate);
 		if (!"".equals(endDateString) && endDateString != null) {
 			try {
-				DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+				DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITH_TIME);
 				Date endDate = dateFormat.parse(endDateString);
 				Predicate endDatePredicate = criteriaBuilder.lessThanOrEqualTo(criteria.<Date> get("endDate"), endDate);
 				predicatesList.add(endDatePredicate);
@@ -307,7 +307,7 @@ public class LotDAOImpl implements ILotDAO {
 		predicatesList.add(isVisiblePredicate);
 		if (!"".equals(endDateString)) {
 			try {
-				DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+				DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITH_TIME);
 				Date endDate = dateFormat.parse(endDateString);
 				Predicate endDatePredicate = criteriaBuilder.lessThanOrEqualTo(criteria.<Date> get("endDate"), endDate);
 				predicatesList.add(endDatePredicate);

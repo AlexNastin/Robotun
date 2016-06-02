@@ -58,7 +58,7 @@
 					</div>
 					<div class="form-group">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
-					<form:option value="0">Subcategory</form:option>
+					<form:option value="0">Подкатегория</form:option>
 				</form:select>
 				    <label class="error" generated="true" for="idSubcategory"></label>
 					<span class="error"><form:errors path="idSubcategory" /></span>
@@ -122,7 +122,7 @@
 																ajax : 'true'
 															},
 															function(data) {
-																var html = '<option value="0">Subcategory</option>';
+																var html = '<option value="0">Подкатегория</option>';
 																var len = data.length;
 																for (var i = 0; i < len; i++) {
 																	html += '<option value="' + data[i].idSubcategory + '">'
@@ -144,7 +144,7 @@
 				$.getJSON('${getCategories}', {
 					ajax : 'true'
 				}, function(data) {
-					var html = '<option value="">Category</option>';
+					var html = '<option value="">Категория</option>';
 					var len = data.length;
 					for (var i = 0; i < len; i++) {
 						html += '<option value="' + data[i].idCategory + '">'

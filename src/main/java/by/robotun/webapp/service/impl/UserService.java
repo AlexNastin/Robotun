@@ -47,7 +47,7 @@ public class UserService implements IUserService {
 	@Override
 	public void addLot(AddLotForm addLotForm, int idUser) throws ServiceException {
 		try {
-			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITH_TIME);
 			Date startDate = new Date();
 			Date endDate = dateFormat.parse(addLotForm.getEndDate());
 			Lot lot = new Lot();
@@ -230,7 +230,7 @@ public class UserService implements IUserService {
 		Lot lot;
 		try {
 			lot = lotDAO.selectLotById(updateLotForm.getIdLot());
-			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITH_TIME);
 			Date endDate = dateFormat.parse(updateLotForm.getEndDate());
 			lot.setName(updateLotForm.getName());
 			lot.setIdCity(updateLotForm.getIdCity());

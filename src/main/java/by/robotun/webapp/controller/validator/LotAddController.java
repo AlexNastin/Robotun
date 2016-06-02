@@ -47,12 +47,13 @@ public class LotAddController {
 		BindingResult result, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		addLotValidator.validate(addLotForm, result);
-		if (result.hasErrors()) {
-		}
-		userService.addLot(addLotForm, person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
+		if (!result.hasErrors()) {
+			userService.addLot(addLotForm, person.getId());
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
+		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		return modelAndView;
 	}

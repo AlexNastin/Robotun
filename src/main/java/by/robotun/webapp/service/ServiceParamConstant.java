@@ -2,7 +2,9 @@ package by.robotun.webapp.service;
 
 public final class ServiceParamConstant {
 
-	public static final String FORMAT_DATE = "yyyy-MM-dd HH:mm:ss";
+	public static final String FORMAT_DATE_WITH_TIME = "yyyy-MM-dd HH:mm:ss";
+	
+	public static final String FORMAT_DATE_WITHOUT_TIME = "yyyy-MM-dd";
 	
 	public static final int ID_CITY_MINSK = 1;
 	

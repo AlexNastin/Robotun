@@ -37,27 +37,22 @@
 	<form:form modelAttribute="updateLotForm" method="POST">
 	<form:input path="idLot" class="form-control visibility-field"/>
 		<div class="form-group">
-		<form:input path="name" placeholder="name" class="form-control" value="${lot.name}"/>
+		<form:input path="name" placeholder="name" class="form-control"/>
 		</div>
 		<div class="form-group">
-		<form:textarea path="description" placeholder="description" class="form-control" value="${lot.description}"/>
+		<form:textarea path="description" placeholder="description" class="form-control"/>
 		<label class="error valid" generated="true" for="description"
 											style="font-size: 9pt; line-height: 1.2;"></label> <span
 											class="error"><form:errors path="description" /></span>
 		</div>
 		<div class="form-group">
-		<form:input path="budget" placeholder="budget" class="form-control" value="${lot.budget}"/>
+		<form:input path="budget" placeholder="budget" class="form-control"/>
 		</div>
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity">
-		 <c:set var="idSelectCity" value="${lot.city.idCity}"/>
-							<c:forEach items="${listCities}" var="city">
-							<c:if test="${city.idCity == idSelectCity}">
-								<c:set var="selected" value="true"/>
-							</c:if>
-								<form:option value="${city.idCity}" selected="${selected }">${city.title}</form:option>
-								<c:set var="selected" value=""/>
-							</c:forEach>
+		 <c:forEach items="${listCities}" var="city">
+							<form:option value="${city.idCity}">${city.title}</form:option>
+								</c:forEach>
 						</form:select>
 						</div>
 		<div class="form-group">
@@ -68,7 +63,7 @@
 					</div>
 					<div class="form-group">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
-					<form:option value="0">Subcategory</form:option>
+					<form:option value="0">Подкатегория</form:option>
 				</form:select>
 				    <label class="error" generated="true" for="idSubcategory"></label>
 					<span class="error"><form:errors path="idSubcategory" /></span>
@@ -80,12 +75,10 @@
 			</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
-      <c:if test="${lot.isCall}">
-      	<c:set var="checked" value="checked"/>
-      </c:if>
+      
       <form:radiobutton id="switch_right" name="switch_2" value="false" path="isCall" />
       <label for="switch_right">Мне</label>
-      <form:radiobutton id="switch_left" name="switch_2" value="true" path="isCall" checked="${checked}"/>
+      <form:radiobutton id="switch_left" name="switch_2" value="true" path="isCall"/>
       <label for="switch_left">Я сам!</label>
     </div>
    
@@ -143,7 +136,7 @@
 																ajax : 'true'
 															},
 															function(data) {
-																var html = '<option value="0">Subcategory</option>';
+																var html = '<option value="0">Подкатегория</option>';
 																var len = data.length;
 																for (var i = 0; i < len; i++) {
 																	html += '<option value="' + data[i].idSubcategory + '">'
@@ -165,7 +158,7 @@
 				$.getJSON('${getCategories}', {
 					ajax : 'true'
 				}, function(data) {
-					var html = '<option value="">Category</option>';
+					var html = '<option value="">Категория</option>';
 					var len = data.length;
 					var idCategory = ${lot.idCategory};
 					var fff;
@@ -186,7 +179,7 @@
 						ajax : 'true'
 							},
 							function(data) {
-							var html = '<option value="0">Subcategory</option>';
+							var html = '<option value="0">Подкатегория</option>';
 							var len = data.length;
 							var idSubcategory = ${lot.idSubcategory};
 							for (var i = 0; i < len; i++) {
