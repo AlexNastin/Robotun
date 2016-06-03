@@ -41,8 +41,23 @@
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}} </div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Причины отказа:</div>
-<div class="col-md-12 legal-users-board-margin" ng-repeat="message in lot.rejectMessages">
-{{message.message}}  {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}
+<div class="col-md-12 legal-users-board-margin">
+<div class="table-responsive" id="list-group">
+<table class="table table-bordered">
+<thead>
+      <tr>
+		<th>Причина:</th>
+		<th>Дата:</th>
+	 </tr>
+</thead>
+<tbody>
+	<tr ng-repeat="message in lot.rejectMessages">
+	<td>{{message.message}}</td>
+	<td>{{message.date | date:'yyyy-mm-dd HH:mm:ss'}}</td>
+	</tr>					
+</tbody>
+</table>
+</div>
 </div>
 <div class="col-md-12" style="text-align:right;">
 <button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
