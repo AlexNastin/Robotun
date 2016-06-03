@@ -53,7 +53,7 @@
 		</div>
 		<div class="font-style-message">
 		<c:if test="${message != null}">
-			${message}
+		${message}
 			   </c:if>
 	    </div>
 		<br>
