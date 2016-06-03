@@ -65,29 +65,22 @@
 
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
         <!-- Из-за этого все к чертям поплыло. Надо понять и простить -->
-        <select class="form-control" id="idCategory">
-				</select>
-					</div>
-					<div class="form-group">
-				<select class="form-control" id="idSubcategory">
-					<option value="0">Подкатегория</option>
-				</select>
+        
 		<!-- END -->
-            <ul style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
-               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+            <div style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
+               <div class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
 						
-                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a style="text-align:left; padding-left:17%" href="#" class=" hvr-bounce-to-right"><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
-                            <ul class="nav nav-second-level" ng-show="showMenu">
-
-                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white; text-align:left;    padding-left: 30px;' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
-
-                            </ul>
-                        </li>
+                     <select class="form-control" id="idCategory">
+ 				</select>
+ 				</div>
+ 				<div class="form-group">
+ 			<select class="form-control" id="idSubcategory">
+ 				<option value="0">Подкатегория</option>
+ 			</select>   
 						
                         
-                    </ul>
-            </ul>
+                    </div>
+            </div>
 
 
         </div><!--/span-->
