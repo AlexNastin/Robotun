@@ -37,7 +37,7 @@ public interface IUserService {
 
 	public void updateLot(UpdateLotForm updateLotForm) throws ServiceException;
 
-	public void deleteLot(Integer idLot) throws ServiceException;
+	public int deleteLot(Integer idLot) throws ServiceException;
 
 	public List<Lot> getLotsOnUpdateByUser(int idUser) throws ServiceException;
 

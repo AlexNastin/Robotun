@@ -15,19 +15,19 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
-		ModelAndView modelAndView = new ModelAndView("login/login");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView start(Locale locale, Model model) throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView("redirect:/index");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_INDEX);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) {
-		ModelAndView modelAndView = new ModelAndView("main");
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_MAIN);
 		return modelAndView;
 	}
 

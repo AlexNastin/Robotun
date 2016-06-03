@@ -265,7 +265,6 @@ function sortLots(){
  							for(var i=0; i<data.length; i++) {
  								scope.lotsCtrl.lots.push(data[i]);
  							}
- 							console.log(scope.lotsCtrl.lots);
  							scope.$apply(function () {
  								scope.lotsCtrl.updateCustomRequest(scope);
  							});

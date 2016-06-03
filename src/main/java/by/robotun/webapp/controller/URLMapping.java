@@ -2,8 +2,11 @@ package by.robotun.webapp.controller;
 
 public final class URLMapping {
 
-	// PAGE
+	/**
+	 * Pages
+	 */
 	public static final String JSP_MAIN = "main";
+	public static final String JSP_LOGIN = "login/login";
 	public static final String JSP_ADD_LOT = "lot/add_lot";
 	public static final String JSP_UPDATE_LOT = "lot/update_lot";
 	public static final String JSP_RESULT = "result";
@@ -31,18 +34,20 @@ public final class URLMapping {
 	public static final String JSP_PROFILE_LEGAL_UPDATE_PASSWORD = "profile/legal/profile_update_password";
 	public static final String JSP_PROFILE_MODERATOR_UPDATE_PASSWORD = "profile/moderator/profile_update_password";
 	public static final String JSP_PROFILE_ADMIN_UPDATE_PASSWORD = "profile/admin/profile_update_password";
-	// FORWARD
-	public static final String FORWARD_ADD_USER_PHYSICAL_TO_DB = "forward:/addUserPhysicalToDB";
-	public static final String FORWARD_ADD_USER_LEGAL_TO_DB = "forward:/addUserLegalToDB";
-
-	// REDIRECT
+	
+	/**
+	 * Redirects
+	 */
 	public static final String REDIRECT_MAIN = "redirect:/";
+	public static final String REDIRECT_INDEX = "redirect:/index";
 	public static final String REDIRECT_PROFILE_LOTS_PHYSICAL = "redirect:/physical/profile/myLots";
-	public static final String REDIRECT_PROFILE_RESPONSES_LEGAL = "redirect:/legal/profile/myResponses";
+	public static final String REDIRECT_PROFILE_LOTS_LEGAL = "redirect:/legal/profile/myLots";
 	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
 	public static final String REDIRECT_PROFILE_MAIN_MODERATOR = "redirect:/moderator/profile";
 	
-	//ERROR JSP
+	/**
+	 * Error pages
+	 */
 	public static final String JSP_ERROR_ON_MODERATION = "error/error_on_moderation";
 	public static final String JSP_ERROR_404 = "error/error404";
 }

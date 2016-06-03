@@ -22,7 +22,6 @@ import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
-import by.robotun.webapp.service.ServiceParamConstant;
 import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
@@ -120,21 +119,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/deleteLot", method = RequestMethod.GET)
-	public ModelAndView deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale,
+	public @ResponseBody Integer deleteLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		int idUser = guestService.getIdOwnerLot(idLot);
-		ModelAndView modelAndView = null;
+		Integer confirm = 0;
 		if (idUser == person.getId()) {
-			if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_PHYSICAL) {
-				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_LOTS_PHYSICAL);
-			} else if (person.getIdRole() == ServiceParamConstant.ID_ROLE_USER_LEGAL) {
-				modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_RESPONSES_LEGAL);
-			}
-			userService.deleteLot(idLot);
-		} else {
-			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
+			confirm = userService.deleteLot(idLot);
 		}
-		return modelAndView;
+		return confirm;
 	}
 }

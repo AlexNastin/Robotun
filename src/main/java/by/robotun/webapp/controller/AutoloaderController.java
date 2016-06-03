@@ -102,19 +102,19 @@ public class AutoloaderController {
 	}
 
 	@RequestMapping(value = "/autoloader/physical/lotsOnUpdate", method = RequestMethod.GET)
-	public List<Lot> getPhysicalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
+	public String getPhysicalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getLotsOnUpdate(offset, person.getId());
-		return lots;
+		return serializationJSON.toJsonViewsInternalRejectMessages(lots);
 	}
 
 	@RequestMapping(value = "/autoloader/legal/lotsOnUpdate", method = RequestMethod.GET)
-	public List<Lot> getLegalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
+	public String getLegalLotsOnUpdate(@RequestParam(value = "offset", required = false) Integer offset,
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getLotsOnUpdate(offset, person.getId());
-		return lots;
+		return serializationJSON.toJsonViewsInternalRejectMessages(lots);
 	}
 
 	@RequestMapping(value = "/autoloader/admin/moderators", method = RequestMethod.GET)

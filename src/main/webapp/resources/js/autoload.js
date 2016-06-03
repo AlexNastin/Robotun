@@ -8,4 +8,4 @@ $(window).scroll(function () {
 	}
 });
 //начиная с
-var offset = 1;
+var offset = 3;

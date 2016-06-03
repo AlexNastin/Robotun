@@ -45,11 +45,31 @@
 {{message.message}}  {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}
 </div>
 <div class="col-md-12" style="text-align:right;">
-<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/deleteLot?id={{lot.idLot}}'>Удалить</a>
+<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
 <a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
 </div>
 </div>
 </div>
+<div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Подтверждение удаления</h4>
+        </div>
+        <div class="modal-body">
+          <p>Это действие удалит лот навсегда и никто о нём не узнает :(</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+          <a  class="btn btn-danger" ng-click="lotsCtrl.remove(lot)" data-dismiss="modal">Удалить</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 </div>
 <div class="load"></div>
@@ -58,6 +78,7 @@
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
 <script type="text/javascript">
 
 var jsonData = '${listLotsJson}';
@@ -75,6 +96,29 @@ function mainLotsController ($scope) {
 	angular.forEach(data, function(lot) {
 		vm.lots.push(lot);
 	});
+	vm.preRemoveLot;
+	vm.remove = function(lot) {
+		var scope = angular.element(document.getElementById("list-group")).scope();
+		var index = scope.lotsCtrl.lots.indexOf(vm.preRemoveLot);
+		$.ajax({
+			url:"/jobster.by/user/deleteLot",
+			type:"GET",
+			data:{
+				//передаем параметры
+				id: vm.lots[index].idLot
+			},
+			success:function(data) {
+				if(data=='0'){
+					console.log(index);
+					scope.lotsCtrl.lots.splice(index, 1);
+					offset--;
+					scope.$apply(function () {
+							scope.lotsCtrl.updateCustomRequest(scope);
+					});
+				}
+			}
+		});
+	}
 }
 
 		function loader(){  
@@ -89,7 +133,6 @@ function mainLotsController ($scope) {
 									offset: offset
 								},
 								success:function(data) {
-									console.log(data);
 									var data = JSON.parse(data);
 									if(data.length == 0) {
 										isEnd = true;
@@ -100,7 +143,7 @@ function mainLotsController ($scope) {
 									scope.$apply(function () {
 										scope.lotsCtrl.updateCustomRequest(scope);
 									});
-									offset++;
+									offset+=ajaxLotMaxSize;
 									block = false;
 								}
 							});
