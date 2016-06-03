@@ -725,3 +725,13 @@ xpopup
 .login-button-mini-style:hover, .login-button-mini-style:active, .login-button-mini-style:focus {
 	background-color: #2c8f86 !important;
 }
+.sidebar-text-main-style {
+	text-align: center; 
+	color:white; 
+	font-weight:bold; 
+	font-size: 16pt; 
+	margin-top: 1em;
+}
+.margin-for-sidebar-text {
+	margin-top: 0.7em;
+}

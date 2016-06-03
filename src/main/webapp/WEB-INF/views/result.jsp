@@ -62,30 +62,57 @@
 <div class="container-fluid" style='background-color:#3abeb1'>
 
     <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
-
+        
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
+        <div class="sidebar-text-main-style">Поиск работ</div>
         <!-- Из-за этого все к чертям поплыло. Надо понять и простить -->
         
 		<!-- END -->
-            <div style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
-               <div class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
-						
-                     <select class="form-control" id="idCategory">
- 				</select>
+            <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
+               <div class="col-md-12" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+                     <select class="form-control" id="idCategory"></select>
  				</div>
- 				<div class="form-group">
+ 				<div class="col-md-12" style="margin-top: 0.7em;">
  			<select class="form-control" id="idSubcategory">
  				<option value="0">Подкатегория</option>
- 			</select>   
-						
-                        
+ 			</select>                           
                     </div>
+            <div class="col-md-12 margin-for-sidebar-text">
+            <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/>
+            </div>
+            <div class="col-md-12 margin-for-sidebar-text">
+            <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/>
+            </div>
+            <div class="col-md-12 margin-for-sidebar-text">
+            <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/>
+            </div>
+            <div class="col-md-12 margin-for-sidebar-text">
+            <div style="color: white; font-weight: bold;">Сначала:</div>
+            <select id="desc" class="form-control">
+  									<option value="new">Новые</option>
+  									<option value="old">Старые</option>
+  									<option value="expensive">Дорогие</option>
+  									<option value="cheap">Дешёвые</option>
+			</select>
+            </div>
+            <div class="col-md-12 margin-for-sidebar-text">
+            <div style="color: white; font-weight: bold;">Регион:</div>
+            <select id="idCity" class="form-control">
+									<option value="0">Все регионы</option>
+									<c:forEach items="${listCities}" var="city">
+  										<option value="${city.idCity}">${city.title}</option>
+  									</c:forEach>
+								</select>
+            </div>
+            <div class="col-md-12 margin-for-sidebar-text" style="text-align: center;">
+								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
+            </div>
             </div>
 
 
         </div><!--/span-->
 
-        <div class="col-sm-9 col-md-10 main">
+        <div class="col-sm-9 col-md-10 main" style="min-height: 33em;">
             <p class="visible-xs">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
             </p>
@@ -102,48 +129,7 @@
                 <div class="col-md-12 tab-content tab-content-in">
                     <div class="container resize">
                         <div class="row">
-                        <div class="sort-style">
-                                <div class="col-md-1 margin-top-sort-style">
-                                <input type="text" class="form-control" id="endDate" name="calendar" placeholder="endDate"/> 
-                                </div>
-                                <div class="col-md-2 margin-top-sort-style">
-                                <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="budgetFrom"/> 
-                                </div>
-                                <div class="col-md-2 margin-top-sort-style">
-                                <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="budgetTo"/> 
-                                </div>
-                                 <div class="col-md-6 margin-top-sort-style" style="padding: 0px;">
-                                 <div class="col-md-1 text-sort-style" style="max-width: 12em; color:white;">
-                                 Сначала: 
-                                 </div>
-                                 <div class="col-md-4 padding-field-sort">
-                                 <select id="desc" class="form-control">
-  									<option value="new">Новые</option>
-  									<option value="old">Старые</option>
-  									<option value="expensive">Дорогие</option>
-  									<option value="cheap">Дешёвые</option>
-								</select>
-								
-								</div>
-								 <div class="col-md-2 text-sort-style" style="color:white;">
-								Регион:
-								</div>
-								<div class="col-md-4">
-								
-								<select id="idCity" class="form-control">
-									<option value="0">Все регионы</option>
-									<c:forEach items="${listCities}" var="city">
-  										<option value="${city.idCity}">${city.title}</option>
-  									</c:forEach>
-								</select>
-								</div>
-								<div class="col-md-1">
-								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
-								</div>
-								</div>
-							
-                                </div>
-                            <div class="style-page-result size-width-result">
+                           <div class="style-page-result size-width-result">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
                                 <div class="form-group">
                                 
