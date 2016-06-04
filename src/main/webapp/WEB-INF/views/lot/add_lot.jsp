@@ -38,10 +38,10 @@
 	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
 	
 		<div class="form-group">
-		<form:input path="name" placeholder="name" class="form-control"/>
+		<form:input path="name" placeholder="Название" class="form-control"/>
 		</div>
 		<div class="form-group">
-		<form:textarea path="description" placeholder="description" class="form-control" />
+		<form:textarea path="description" placeholder="Описание" class="form-control" />
 		</div>		
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity">
@@ -157,7 +157,7 @@
 	  $(function() {
 
 		    $( "#Date" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+180",changeMonth: true,
-				changeYear: true, minDate:"+0",
+				changeYear: true, minDate:"+1",
 				yearRange: "-0:+1"});
 		    
 
