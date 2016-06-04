@@ -15,7 +15,7 @@
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
-
+<link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
@@ -34,19 +34,19 @@
 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
 	</div>
 	<div class="col-md-6">
-	<form:form modelAttribute="updateLotForm" method="POST">
+	<form:form modelAttribute="updateLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'">
 	<form:input path="idLot" class="form-control visibility-field"/>
 		<div class="form-group">
-		<form:input path="name" placeholder="name" class="form-control"/>
+		<form:input path="name" placeholder="Название" class="form-control"/>
 		</div>
 		<div class="form-group">
-		<form:textarea path="description" placeholder="description" class="form-control"/>
+		<form:textarea path="description" placeholder="Описание" class="form-control"/>
 		<label class="error valid" generated="true" for="description"
 											style="font-size: 9pt; line-height: 1.2;"></label> <span
 											class="error"><form:errors path="description" /></span>
 		</div>
 		<div class="form-group">
-		<form:input path="budget" placeholder="budget" class="form-control"/>
+		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
 		</div>
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity">
@@ -69,7 +69,16 @@
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
 		<div class="form-group">
-		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate" value="${lot.endDate}"/> 
+					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца" value="${lot.endDate}">
+					</div>
+					
+			<div class="form-group">
+					
+					   <input type="range" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
+    <output style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					</div>
+					<div hidden class="form-group">
+		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
 			<label class="error" generated="true" for="endDate"></label>
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
@@ -119,6 +128,7 @@
     <script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
     <script type="text/javascript">
 	$(document)
 			.ready(
@@ -198,10 +208,12 @@
 			});
 	  $(function() {
 
-		    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+3650",changeMonth: true,
-				changeYear: true, minDate:"+0",
+		    $( "#Date" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+180",changeMonth: true,
+				changeYear: true, minDate:"+1",
 				yearRange: "-0:+10"});
-		    
+		    $(document).ready(function(){
+			    $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
+			});
 
 		  });
 </script>
