@@ -65,11 +65,8 @@
         
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
         <div class="sidebar-text-main-style">Поиск работ</div>
-        <!-- Из-за этого все к чертям поплыло. Надо понять и простить -->
-        
-		<!-- END -->
             <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
-               <div class="col-md-12" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
+               <div class="col-md-12" id="side-menu">
                      <select class="form-control" id="idCategory"></select>
  				</div>
  				<div class="col-md-12" style="margin-top: 0.7em;">
@@ -134,7 +131,7 @@
                                 <div class="form-group">
                                 
                                
-                                <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl">
+                                <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" >
                                 
                                     <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots">
                                     <div class="media col-md-3">
@@ -167,6 +164,9 @@
 </div><!--/.container-->
 
 <!-- Menu Toggle Script -->
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
+  <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -175,24 +175,13 @@
     </script>
 
 <script>
-    var jsonDataCategories = '${listCategoriesJson}';
-    
-    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
-    
-    function categoriesController ($scope) {
-    	var vm = this;
-    	var dataCategories = JSON.parse(jsonDataCategories);
-    	vm.categories = [];
-    	vm.subcategories = [];
-    	angular.forEach(dataCategories, function(category) {
-    		vm.categories.push(category);
-    	});
-    	vm.selectSubcategories = function (index) {
-    		vm.subcategories = vm.categories[index].subcategories;
-    	};
-    }
-		
-		
+var jsonData;
+var idCity = document.getElementById('idCity').value;
+var endDate = document.getElementById('endDate').value;
+var budgetFrom = document.getElementById('budgetFrom').value;
+var budgetTo = document.getElementById('budgetTo').value;
+var desc = document.getElementById('desc').value;
+var q = document.getElementById('q').value;
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -204,20 +193,47 @@ $(document).ready(function() {
      }
      return false;
    });
+	idCity = 9;
+// 	$.getJSON( solrUrl + '?q=*:*&fq=id_city:' + idCity + '&callback=?&sort=start_date desc, budget desc&start=' + offsetStart + '&rows=' + ajaxLotMaxSize + '&wt=json&indent=true', function(data) {
+// 		  console.log(data)
+// 	});
+	
  });
-</script>
-     
-		  
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-<script type="text/javascript">
-var jsonData = '${listLotsJson}';
+
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 function mainLotsController ($scope) {
 	var vm = this;
+	vm.jsonData;
+	vm.init = function(){
+		console.log('init')
+		$.ajax({	
+			url:"http://localhost:8983/solr/jcg/select",
+			type:"GET",
+			traditional: true,
+	        cache: true,
+	        async: true,
+	        dataType: 'jsonp',
+			data:{
+				//передаем параметры
+				q: '*:*',
+				fq: 'id_city: ' + idCity,
+				sort: 'start_date desc, budget desc',
+				start: offsetStart,
+				rows: ajaxLotMaxSize,
+				wt: 'json',
+				indent: 'true'
+		},
+		success:function(data) {
+			vm.jsonData = data;
+		},
+		jsonp: 'json.wrf'
+		});
+	};
 	vm.updateCustomRequest = function (scope) {
 		vm.lots = scope.lotsCtrl.lots;
 	};
-	var data = JSON.parse(jsonData);
+	console.log(vm.jsonData);
+	var data = JSON.parse(vm.jsonData);
 	vm.lots = [];
 	angular.forEach(data, function(lot) {
 		vm.lots.push(lot);
@@ -226,11 +242,6 @@ function mainLotsController ($scope) {
 var idCategory = ${idCategory};
 var idSubcategory = ${idSubcategory};
 function sortLots(){
-	var idCity = document.getElementById('idCity').value;
-	var endDate = document.getElementById('endDate').value;
-	var budgetFrom = document.getElementById('budgetFrom').value;
-	var budgetTo = document.getElementById('budgetTo').value;
-	var desc = document.getElementById('desc').value;
  	var scope = angular.element(document.getElementById("list-group")).scope();
  	// «теневой» запрос к серверу
  					$.ajax({
@@ -256,7 +267,7 @@ function sortLots(){
  							});
  							isEnd = false;
  							block = false;
- 							offset = 1;
+ 							offset = 0;
 						}
 					});
 	}
@@ -294,7 +305,7 @@ function loader(){
 							scope.$apply(function () {
 								scope.lotsCtrl.updateCustomRequest(scope);
 							});
-							offset++;
+							offset+=ajaxLotMaxSize;
 							block = false;
 						}
 					});
@@ -361,7 +372,6 @@ function() {
 	});
 });
 </script> 
-<script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
 <div class="clearfix"></div>
 		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>

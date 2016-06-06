@@ -65,7 +65,7 @@
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="input-group">
-      <input size="50" type="text" class="form-control mini-search-style-header" placeholder="Введите запрос...">
+      <input size="50" type="text" class="form-control mini-search-style-header" placeholder="Введите запрос..." id="q">
       <span class="input-group-btn">
         <button class="btn btn-default mini-search-style-button" type="button">Поиск</button>
       </span>

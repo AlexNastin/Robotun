@@ -9,3 +9,4 @@ $(window).scroll(function () {
 });
 //начиная с
 var offset = 3;
+var offsetStart = 0;
