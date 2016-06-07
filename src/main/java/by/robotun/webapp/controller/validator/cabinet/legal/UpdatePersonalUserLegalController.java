@@ -51,7 +51,7 @@ public class UpdatePersonalUserLegalController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (result.hasErrors()) {
 		}
-		userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId());
+		userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserLegalForm());

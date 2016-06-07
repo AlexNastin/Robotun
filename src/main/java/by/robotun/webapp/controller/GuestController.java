@@ -1,6 +1,5 @@
 package by.robotun.webapp.controller;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,26 +37,24 @@ public class GuestController {
 	private IUserService userService;
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView result(@RequestParam(value = "idCategory", required = false) Integer idCategory,
-			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
-		List<Lot> lots;
-		Date endDate = new Date();
-		
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
-		if ((idCategory == null || idCategory == 0) && (idSubcategory == null || idSubcategory == 0)) {
-			idCategory = 0;
-			idSubcategory = 0;
-			lots = guestService.getAllLots(endDate);
-		} else {
-			lots = guestService.getAllLotsByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
+	public ModelAndView result(@RequestParam(value = "q", required = false) String query, Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {		
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		int idCity = 0;
+		if (person != null) {
+			idCity = person.getIdCity();
 		}
+		if(query==null) {
+			query= "*:*";
+		} else {
+			query= "description:*" + query + "* OR name:*" + query + "*";
+		}
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		List<Category> categories = guestService.getAllCategories();
+		modelAndView.addObject(ControllerParamConstant.QUERY, query);
+		modelAndView.addObject(ControllerParamConstant.ID_CITY, idCity);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ID_CATEGORY, idCategory);
-		modelAndView.addObject(ControllerParamConstant.ID_SUBCATEGORY, idSubcategory);
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJsonViewsPublicCategories(categories));
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		return modelAndView;
 	}
 

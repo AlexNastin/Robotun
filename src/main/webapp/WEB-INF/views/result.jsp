@@ -131,9 +131,9 @@
                                 <div class="form-group">
                                 
                                
-                                <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" >
+                                <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
                                 
-                                    <a ng-href='/jobster.by/lot?id={{lot.idLot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots">
+                                    <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots">
                                     <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
@@ -164,7 +164,7 @@
 </div><!--/.container-->
 
 <!-- Menu Toggle Script -->
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
     <script>
@@ -175,13 +175,16 @@
     </script>
 
 <script>
-var jsonData;
-var idCity = document.getElementById('idCity').value;
+var idCity = ${idCity};
 var endDate = document.getElementById('endDate').value;
 var budgetFrom = document.getElementById('budgetFrom').value;
 var budgetTo = document.getElementById('budgetTo').value;
 var desc = document.getElementById('desc').value;
-var q = document.getElementById('q').value;
+var q = '${query}';
+var fq = ['end_date:[NOW TO NOW+31DAY]'];
+if(idCity !=0) {
+	fq.push('id_city:' + idCity)
+}
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -193,67 +196,64 @@ $(document).ready(function() {
      }
      return false;
    });
-	idCity = 9;
-// 	$.getJSON( solrUrl + '?q=*:*&fq=id_city:' + idCity + '&callback=?&sort=start_date desc, budget desc&start=' + offsetStart + '&rows=' + ajaxLotMaxSize + '&wt=json&indent=true', function(data) {
-// 		  console.log(data)
-// 	});
-	
  });
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
-function mainLotsController ($scope) {
+function mainLotsController ($scope, $http) {
 	var vm = this;
-	vm.jsonData;
-	vm.init = function(){
-		console.log('init')
-		$.ajax({	
-			url:"http://localhost:8983/solr/jcg/select",
-			type:"GET",
-			traditional: true,
-	        cache: true,
-	        async: true,
-	        dataType: 'jsonp',
-			data:{
-				//передаем параметры
-				q: '*:*',
-				fq: 'id_city: ' + idCity,
-				sort: 'start_date desc, budget desc',
-				start: offsetStart,
-				rows: ajaxLotMaxSize,
-				wt: 'json',
-				indent: 'true'
+	$.ajax({	
+		url: solrUrl,
+		type:"GET",
+		traditional: true,
+	    cache: true,
+	    async: true,
+	    dataType: 'jsonp',
+		data:{
+			//передаем параметры
+			q: q,
+			fq: fq,
+			sort: 'start_date desc, budget desc',
+			start: offsetStart,
+			rows: ajaxLotMaxSize,
+			wt: 'json',
+			indent: 'true'
 		},
 		success:function(data) {
-			vm.jsonData = data;
+			vm.createByData(data);
 		},
 		jsonp: 'json.wrf'
-		});
-	};
+	});
 	vm.updateCustomRequest = function (scope) {
 		vm.lots = scope.lotsCtrl.lots;
 	};
-	console.log(vm.jsonData);
-	var data = JSON.parse(vm.jsonData);
 	vm.lots = [];
-	angular.forEach(data, function(lot) {
-		vm.lots.push(lot);
-	});
+	vm.createByData = function(data) {
+		console.log(data);
+		var scope = angular.element(document.getElementById("list-group")).scope();
+		angular.forEach(data.response.docs, function(lot) {
+			scope.lotsCtrl.lots.push(lot);
+		});
+		scope.$apply(function () {
+			scope.lotsCtrl.updateCustomRequest(scope);
+		});
+	}
 }
-var idCategory = ${idCategory};
-var idSubcategory = ${idSubcategory};
+
 function sortLots(){
  	var scope = angular.element(document.getElementById("list-group")).scope();
  	// «теневой» запрос к серверу
  					$.ajax({
- 						url:"autoloader/filterResults",
+ 						url: solrUrl,
  						type:"GET",
  						data:{
  							//передаем параметры
- 							idCity: idCity,
-							endDate: endDate,
-							budgetFrom: budgetFrom,
-							budgetTo: budgetTo,
-							desc: desc
+ 							q: '*:*',
+ 							fq: fq,
+ 							sort: 'start_date desc, budget desc',
+ 							start: offsetStart,
+ 							rows: ajaxLotMaxSize,
+ 							wt: 'json',
+ 							indent: 'true'
 						},
 						success:function(data) {
  							var data = JSON.parse(data);

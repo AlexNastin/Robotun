@@ -29,6 +29,7 @@ public class WebAppAuthenticationSuccessHandler implements AuthenticationSuccess
 		person.setIdRole(user.getIdRole());
 		person.setLogin(user.getLogin());
 		person.setNickname(user.getNickname());
+		person.setIdCity(user.getIdCity());
 		request.getSession(true).setAttribute(ControllerParamConstant.PERSON, person);
 		redirectStrategy.sendRedirect(request, response, URL);
 	}

@@ -13,6 +13,7 @@ public class Person{
 	
 	private int id;
 	private int idRole;
+	private int idCity;
 	private String login;	
 	private String nickname;
 
@@ -30,6 +31,14 @@ public class Person{
 
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
+	}
+
+	public int getIdCity() {
+		return idCity;
+	}
+
+	public void setIdCity(int idCity) {
+		this.idCity = idCity;
 	}
 
 	public String getLogin() {
@@ -51,8 +60,9 @@ public class Person{
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
+		int result = 1;
 		result = prime * result + id;
+		result = prime * result + idCity;
 		result = prime * result + idRole;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
@@ -63,12 +73,14 @@ public class Person{
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
 		if (id != other.id)
+			return false;
+		if (idCity != other.idCity)
 			return false;
 		if (idRole != other.idRole)
 			return false;
@@ -87,7 +99,8 @@ public class Person{
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", idRole=" + idRole + ", login=" + login + ", nickname=" + nickname + "]";
+		return "Person [id=" + id + ", idRole=" + idRole + ", idCity=" + idCity + ", login=" + login + ", nickname="
+				+ nickname + "]";
 	}
 
 	

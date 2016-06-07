@@ -63,11 +63,11 @@
                 </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" action="<c:url value="/result" />" method="get">
                 <div class="input-group">
-      <input size="50" type="text" class="form-control mini-search-style-header" placeholder="Введите запрос..." id="q">
+      <input size="50" type="text" class="form-control mini-search-style-header" placeholder="Введите запрос..." id="q" name="q">
       <span class="input-group-btn">
-        <button class="btn btn-default mini-search-style-button" type="button">Поиск</button>
+        <button class="btn btn-default mini-search-style-button" type="submit">Поиск</button>
       </span>
     </div><!-- /input-group -->
             </form>

@@ -3,6 +3,8 @@ package by.robotun.webapp.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
@@ -21,11 +23,11 @@ public interface IUserService {
 	
 	public Date getDateLotById(Integer idLot) throws ServiceException;
 
-	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser) throws ServiceException;
+	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser, HttpSession httpSession) throws ServiceException;
 
 	public User getUserById(Integer idUser) throws ServiceException;
 
-	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException;
+	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser, HttpSession httpSession) throws ServiceException;
 
 	public List<String> getPhonesStringByIdUser(Integer idUser) throws ServiceException;
 

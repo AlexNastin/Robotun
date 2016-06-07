@@ -2,7 +2,9 @@ package by.robotun.webapp.controller;
 
 public final class ControllerParamConstant {
 
-	// FORM
+	/**
+	 * Form
+	 */
 	public static final String ADD_USER_PHYSICAL_FORM = "addUserPhysicalForm";
 
 	public static final String ADD_USER_LEGAL_FORM = "addUserLegalForm";
@@ -23,7 +25,9 @@ public final class ControllerParamConstant {
 	
 	public static final String UPDATE_LOT_FORM = "updateLotForm";
 
-	// LIST
+	/**
+	 * List
+	 */
 	public static final String LIST_CITIES = "listCities";
 
 	public static final String LIST_LOTS = "listLots";
@@ -38,7 +42,9 @@ public final class ControllerParamConstant {
 	
 	public static final String LIST_USERS_JSON = "listUsersJson";
 
-	// ONE
+	/**
+	 * One
+	 */
 	public static final String LOT = "lot";
 	
 	public static final String LOT_JSON = "lotJson";
@@ -47,7 +53,9 @@ public final class ControllerParamConstant {
 	
 	public static final String USER_JSON = "userJson";
 	
-	//ID
+	/**
+	 * ID
+	 */
 	public static final String ID_USER = "idUser";
 	
 	public static final String ID_ROLE = "idRole";
@@ -55,9 +63,12 @@ public final class ControllerParamConstant {
 	public static final String ID_CATEGORY = "idCategory";
 	
 	public static final String ID_SUBCATEGORY = "idSubcategory";
+	
+	public static final String ID_CITY = "idCity";
 
-	// OTHER
-
+	/**
+	 * Other
+	 */
 	public static final String MESSAGE = "message";
 
 	public static final String PERSON = "person";
@@ -77,6 +88,8 @@ public final class ControllerParamConstant {
 	public static final String TYPE_SORT = "typeSort";
 	
 	public static final String TYPE_REVERSE = "typeReverse";
+
+	public static final String QUERY = "query";
 
 	
 	

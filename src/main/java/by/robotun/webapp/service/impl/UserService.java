@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.dao.IPhoneDAO;
@@ -17,6 +20,7 @@ import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Legal;
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.Phone;
 import by.robotun.webapp.domain.Physical;
 import by.robotun.webapp.domain.User;
@@ -109,7 +113,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser)
+	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser, HttpSession httpSession)
 			throws ServiceException {
 		try {
 			User user = userDAO.selectUserById(idUser);
@@ -134,6 +138,10 @@ public class UserService implements IUserService {
 			physical.setUser(user);
 			user.setPhysical(physical);
 			userDAO.updateUser(user);
+			Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+			person.setIdCity(user.getIdCity());
+			person.setLogin(user.getLogin());
+			person.setNickname(user.getNickname());
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -153,7 +161,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser) throws ServiceException {
+	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser, HttpSession httpSession) throws ServiceException {
 		try {
 			User user = userDAO.selectUserById(idUser);
 			user.setIdCity(updatePersonalUserLegalForm.getIdCity());
@@ -175,6 +183,10 @@ public class UserService implements IUserService {
 			legal.setUser(user);
 			user.setLegal(legal);
 			userDAO.updateUser(user);
+			Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+			person.setIdCity(user.getIdCity());
+			person.setLogin(user.getLogin());
+			person.setNickname(user.getNickname());
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
