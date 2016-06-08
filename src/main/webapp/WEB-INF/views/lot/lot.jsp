@@ -205,7 +205,7 @@
 													<a ng-if="betCtrl.isICall" href="#"
 														ng-click="betCtrl.showNumberICall(bet.idUser)"
 														id="{{bet.idUser}}a">Посмотреть номер</a>
-													<div id="{{bet.idUser}}"></div>
+													<div style="color: black;" id="{{bet.idUser}}"></div>
 
 													<div class="post-meta">
 														<div class="asker-meta">
