@@ -96,8 +96,13 @@
             <div style="color: white; font-weight: bold;">Регион:</div>
             <select id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
+									<c:set var="idSelectedCity" value="${idCity}"/>
 									<c:forEach items="${listCities}" var="city">
-  										<option value="${city.idCity}">${city.title}</option>
+									<c:if test="${city.idCity == idSelectedCity}">
+																	<c:set var="selected" value="selected"/>
+																</c:if>
+  										<option ${selected} value="${city.idCity}">${city.title}</option>
+  										<c:set var="selected" value=""/>
   									</c:forEach>
 								</select>
             </div>
@@ -175,9 +180,24 @@
     </script>
 
 <script>
+$(document).ready(function() {
+	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+	console.log(selectedCityName);
+	$("a.scroll").click(function () { 
+     elementClick = $(this).attr("href");
+     destination = $(elementClick).offset().top;
+     if($.browser.safari){
+       $('body').animate( { scrollTop: destination }, 1100 );
+     }else{
+       $('html').animate( { scrollTop: destination }, 1100 );
+     }
+     return false;
+   });
+ });
+ 
 var idCity = ${idCity};
 var q = '${query}';
-var fq = ['end_date:[NOW TO NOW+31DAY]'];
+var fq = ['end_date:[NOW TO NOW+181DAY]'];
 if(idCity != 0) {
 	fq.push('id_city:' + idCity)
 }
@@ -195,6 +215,8 @@ function resetParam() {
 	if(idCity != 0) {
 		fq.push('id_city:' + idCity)
 	}
+	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+	console.log(selectedCityName);
 	if(idCategory != 0) {
 		fq.push('id_category:' + idCategory)
 	}
@@ -229,20 +251,9 @@ function resetParam() {
 	sortLots();
 	
 }
-$(document).ready(function() {
-	$("a.scroll").click(function () { 
-     elementClick = $(this).attr("href");
-     destination = $(elementClick).offset().top;
-     if($.browser.safari){
-       $('body').animate( { scrollTop: destination }, 1100 );
-     }else{
-       $('html').animate( { scrollTop: destination }, 1100 );
-     }
-     return false;
-   });
- });
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
+
 function mainLotsController ($scope, $http) {
 	var vm = this;
 	$.ajax({	
@@ -319,42 +330,41 @@ function sortLots(){
 					});
 	}
 function loader(){
-	var idCity = document.getElementById('idCity').value;
-	var endDate = document.getElementById('endDate').value;
-	var budgetFrom = document.getElementById('budgetFrom').value;
-	var budgetTo = document.getElementById('budgetTo').value;
-	var desc = document.getElementById('desc').value;
 	var scope = angular.element(document.getElementById("list-group")).scope();
 	// «теневой» запрос к серверу
 	$(".load").fadeIn(500, function () {
 					$.ajax({
-						url:"autoloader/allResults",
+						url: solrUrl,
 						type:"GET",
+						traditional: true,
+ 					    cache: true,
+ 					    async: true,
+ 					    dataType: 'jsonp',
 						data:{
 							//передаем параметры
-							offset: offset,
-							endDate: endDate,
-							budgetFrom: budgetFrom,
-							budgetTo: budgetTo,
-							desc: desc,
-							idCategory: idCategory,
-							idSubcategory: idSubcategory,
-							idCity: idCity
+							q: q,
+ 							fq: fq,
+ 							sort: sort,
+ 							start: offset,
+ 							rows: ajaxLotMaxSize,
+ 							wt: 'json',
+ 							indent: 'true'
 						},
 						success:function(data) {
-							var data = JSON.parse(data);
-							if(data.length == 0) {
+							console.log(data.response.docs)
+							if(data.response.docs.length == 0) {
 								isEnd = true;
 							}
-							for(var i=0; i<data.length; i++) {
-								scope.lotsCtrl.lots.push(data[i]);
+							for(var i=0; i<data.response.docs.length; i++) {
+								scope.lotsCtrl.lots.push(data.response.docs[i]);
 							}
 							scope.$apply(function () {
 								scope.lotsCtrl.updateCustomRequest(scope);
 							});
 							offset+=ajaxLotMaxSize;
 							block = false;
-						}
+						},
+						jsonp: 'json.wrf'
 					});
 				});
 	}
