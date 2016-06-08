@@ -96,8 +96,13 @@
             <div style="color: white; font-weight: bold;">Регион:</div>
             <select id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
+									<c:set var="idSelectedCity" value="${idCity}"/>
 									<c:forEach items="${listCities}" var="city">
-  										<option value="${city.idCity}">${city.title}</option>
+									<c:if test="${city.idCity == idSelectedCity}">
+																	<c:set var="selected" value="selected"/>
+																</c:if>
+  										<option ${selected} value="${city.idCity}">${city.title}</option>
+  										<c:set var="selected" value=""/>
   									</c:forEach>
 								</select>
             </div>
@@ -175,9 +180,24 @@
     </script>
 
 <script>
+$(document).ready(function() {
+	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+	console.log(selectedCityName);
+	$("a.scroll").click(function () { 
+     elementClick = $(this).attr("href");
+     destination = $(elementClick).offset().top;
+     if($.browser.safari){
+       $('body').animate( { scrollTop: destination }, 1100 );
+     }else{
+       $('html').animate( { scrollTop: destination }, 1100 );
+     }
+     return false;
+   });
+ });
+ 
 var idCity = ${idCity};
 var q = '${query}';
-var fq = ['end_date:[NOW TO NOW+31DAY]'];
+var fq = ['end_date:[NOW TO NOW+181DAY]'];
 if(idCity != 0) {
 	fq.push('id_city:' + idCity)
 }
@@ -185,14 +205,18 @@ var sort = 'start_date desc, budget desc';
 
 function resetParam() {
 	// FQ params
-	var idCity = document.getElementById('idCity').value;
+	var idCityTemp = document.getElementById('idCity').value;
 	var idCategory = document.getElementById('idCategory').value;
 	var idSubcategory = document.getElementById('idSubcategory').value;
 	var endDate = document.getElementById('endDate').value;
 	var budgetFrom = document.getElementById('budgetFrom').value;
 	var budgetTo = document.getElementById('budgetTo').value;
 	fq = [];
-	if(idCity != 0) {
+	if(idCityTemp != 0) {
+		fq.push('id_city:' + idCityTemp)
+		var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+		console.log(selectedCityName);
+	} else if(idCity != 0) {
 		fq.push('id_city:' + idCity)
 	}
 	if(idCategory != 0) {
@@ -229,18 +253,6 @@ function resetParam() {
 	sortLots();
 	
 }
-$(document).ready(function() {
-	$("a.scroll").click(function () { 
-     elementClick = $(this).attr("href");
-     destination = $(elementClick).offset().top;
-     if($.browser.safari){
-       $('body').animate( { scrollTop: destination }, 1100 );
-     }else{
-       $('html').animate( { scrollTop: destination }, 1100 );
-     }
-     return false;
-   });
- });
 
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 function mainLotsController ($scope, $http) {
