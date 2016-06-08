@@ -51,9 +51,9 @@
 	 </tr>
 </thead>
 <tbody>
-	<tr ng-repeat="message in lot.rejectMessages">
+	<tr ng-repeat="message in lot.rejectMessages | orderBy: 'date':true">
 	<td>{{message.message}}</td>
-	<td>{{message.date | date:'yyyy-mm-dd HH:mm:ss'}}</td>
+	<td>{{message.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
 	</tr>					
 </tbody>
 </table>

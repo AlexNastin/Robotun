@@ -184,7 +184,7 @@ public class LotDAOImpl implements ILotDAO {
 	public List<Lot> selectMyResponsesLimitOffset(int offset, int idUser) throws DaoException {
 		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
 		List<Lot> lots = entityManager.createNamedQuery("Lot.findLotsRespondedUser").setParameter("id", idUser)
-				.setFirstResult(offset * limit).setMaxResults(limit).getResultList();
+				.setFirstResult(offset).setMaxResults(limit).getResultList();
 		return lots;
 	}
 
