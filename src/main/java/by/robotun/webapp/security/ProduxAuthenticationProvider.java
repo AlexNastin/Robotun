@@ -47,9 +47,9 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	/** @see AuthenticationProvider#authenticate(Authentication) */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
-//			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
-//		}
+		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
+			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
+		}
 		User profile = null;
 		try {
 			profile = userDAO.selectUser(authentication.getPrincipal().toString());
@@ -57,16 +57,13 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 			LOGGER.error("Проблема с извлечением пользователя из DAO-слоя, при аутентификации.");
 		}
 		if (profile == null) {
-			System.out.println("Неверный логин и/или пароль.11111");
 			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
 		}
 		String suppliedPasswordHash = DigestUtils.md5Hex(authentication.getCredentials().toString());
 		if (!profile.getPassword().equals(suppliedPasswordHash)) {
-			System.out.println("Неверный логин и/или пароль.22222");
 			throw new BadCredentialsException("Неверный логин и/или пароль.");
 		}
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(profile, null,
-				getAuthorities(profile.getIdRole()));
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(profile, null, getAuthorities(profile.getIdRole()));
 		return token;
 	}
 

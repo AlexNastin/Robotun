@@ -1,7 +1,5 @@
 package by.robotun.webapp.security;
 
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,10 +19,7 @@ import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.DaoException;
 
 /**
- * Not use. Authentication. Old version. Replaced in the new class.
- * 
  * @author Nastin
- *
  */
 @Service("customUserDetailsService")
 @Transactional(readOnly = true)
@@ -55,11 +50,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 
 	/**
-	 * Retrieves a collection of {@link GrantedAuthority} based on a numerical
-	 * role
-	 * 
-	 * @param role
-	 *            the numerical role
+	 * Retrieves a collection of {@link GrantedAuthority} based on a numerical role
+	 * @param role the numerical role
 	 * @return a collection of {@link GrantedAuthority
 	 * 
 	 */
@@ -70,9 +62,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	/**
 	 * Converts a numerical role to an equivalent list of roles
-	 * 
-	 * @param role
-	 *            the numerical role
+	 * @param role the numerical role
 	 * @return list of roles as as a list of {@link String}
 	 */
 	public List<String> getRoles(Integer role) {
@@ -91,9 +81,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	/**
 	 * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
-	 * 
-	 * @param roles
-	 *            {@link String} of roles
+	 * @param roles {@link String} of roles
 	 * @return list of granted authorities
 	 */
 	public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
