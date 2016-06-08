@@ -40,7 +40,7 @@
 <div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/lot?id={{lot.idLot}}' style="font-size: 18pt;">{{lot.name}}</a></div>
 <div class="col-md-12 text-moderator-description">{{lot.description}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}} </div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
 <div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/lot?id={{lot.idLot}}'>Подробнее</a></div>
 </div>
 </div>

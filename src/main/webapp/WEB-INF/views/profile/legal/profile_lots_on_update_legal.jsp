@@ -39,7 +39,7 @@
 <div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/lot?id={{lot.idLot}}' style="font-size: 18pt;">{{lot.name}}</a></div>
 <div class="col-md-12 text-moderator-description">{{lot.description}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}} </div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Причины отказа:</div>
 <div class="col-md-12 legal-users-board-margin">
 <div class="table-responsive" id="list-group">
