@@ -28,10 +28,12 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
         <div class="input-group">
-            <input type="text" class="form-control search-style" placeholder="Введите запрос">
+        <form action="<c:url value="/result" />" method="get">
+            <input type="text" class="form-control search-style" placeholder="Введите запрос..." name="q">
       <span class="input-group-btn">
-        <button class="btn btn-default search-button-style" type="button">Поиск</button>
+        <button class="btn btn-default search-button-style" type="submit">Поиск</button>
       </span>
+      </form>
         </div><!-- /input-group -->
     </div>
     <!-- /.col-lg-6 -->

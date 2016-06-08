@@ -102,7 +102,7 @@
 								</select>
             </div>
             <div class="col-md-12 margin-for-sidebar-text" style="text-align: center;">
-								<a href="#" onclick="sortLots()" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
+								<a href="#" onclick="resetParam();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
             </div>
             </div>
 
@@ -176,14 +176,58 @@
 
 <script>
 var idCity = ${idCity};
-var endDate = document.getElementById('endDate').value;
-var budgetFrom = document.getElementById('budgetFrom').value;
-var budgetTo = document.getElementById('budgetTo').value;
-var desc = document.getElementById('desc').value;
 var q = '${query}';
 var fq = ['end_date:[NOW TO NOW+31DAY]'];
-if(idCity !=0) {
+if(idCity != 0) {
 	fq.push('id_city:' + idCity)
+}
+var sort = 'start_date desc, budget desc';
+
+function resetParam() {
+	// FQ params
+	var idCity = document.getElementById('idCity').value;
+	var idCategory = document.getElementById('idCategory').value;
+	var idSubcategory = document.getElementById('idSubcategory').value;
+	var endDate = document.getElementById('endDate').value;
+	var budgetFrom = document.getElementById('budgetFrom').value;
+	var budgetTo = document.getElementById('budgetTo').value;
+	fq = [];
+	if(idCity != 0) {
+		fq.push('id_city:' + idCity)
+	}
+	if(idCategory != 0) {
+		fq.push('id_category:' + idCategory)
+	}
+	if(idSubcategory != 0) {
+		fq.push('id_subcategory:' + idSubcategory)
+	}
+	if(endDate != '') {
+		fq.push('end_date:[NOW TO ' + endDate + 'T24:00:00Z]')
+	}
+	if(budgetFrom != '' || budgetTo != '') {
+		if(budgetFrom == '') {
+			budgetFrom = '0';
+		} else if (budgetTo == '') {
+			budgetTo = '*';
+		}
+		fq.push('budget:[' + budgetFrom + ' TO ' + budgetTo + ']')
+	}
+	
+	//SORT param
+	var desc = document.getElementById('desc').value;
+	if(desc == 'new') {
+		sort = 'start_date desc, budget desc';
+	} else if(desc == 'old') {
+		sort = 'start_date asc, budget desc';
+	} else if(desc == 'expensive') {
+		sort = 'budget desc, start_date desc';
+	} else if(desc == 'cheap') {
+		sort = 'budget asc, start_date desc';
+	}
+	
+	// call sorting function
+	sortLots();
+	
 }
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
@@ -212,7 +256,7 @@ function mainLotsController ($scope, $http) {
 			//передаем параметры
 			q: q,
 			fq: fq,
-			sort: 'start_date desc, budget desc',
+			sort: sort,
 			start: offsetStart,
 			rows: ajaxLotMaxSize,
 			wt: 'json',
@@ -228,7 +272,6 @@ function mainLotsController ($scope, $http) {
 	};
 	vm.lots = [];
 	vm.createByData = function(data) {
-		console.log(data);
 		var scope = angular.element(document.getElementById("list-group")).scope();
 		angular.forEach(data.response.docs, function(lot) {
 			scope.lotsCtrl.lots.push(lot);
@@ -245,30 +288,34 @@ function sortLots(){
  					$.ajax({
  						url: solrUrl,
  						type:"GET",
+ 						traditional: true,
+ 					    cache: true,
+ 					    async: true,
+ 					    dataType: 'jsonp',
  						data:{
  							//передаем параметры
- 							q: '*:*',
+ 							q: q,
  							fq: fq,
- 							sort: 'start_date desc, budget desc',
+ 							sort: sort,
  							start: offsetStart,
  							rows: ajaxLotMaxSize,
  							wt: 'json',
  							indent: 'true'
 						},
 						success:function(data) {
- 							var data = JSON.parse(data);
  							console.log(data);
  							scope.lotsCtrl.lots = [];
- 							for(var i=0; i<data.length; i++) {
- 								scope.lotsCtrl.lots.push(data[i]);
+ 							for(var i=0; i<data.response.docs.length; i++) {
+ 								scope.lotsCtrl.lots.push(data.response.docs[i]);
  							}
  							scope.$apply(function () {
  								scope.lotsCtrl.updateCustomRequest(scope);
  							});
  							isEnd = false;
  							block = false;
- 							offset = 0;
-						}
+ 							offset = ajaxLotMaxSize;
+						},
+						jsonp: 'json.wrf'
 					});
 	}
 function loader(){
@@ -361,7 +408,7 @@ function() {
 	$.getJSON('${getCategories}', {
 		ajax : 'true'
 	}, function(data) {
-		var html = '<option value="">Категория</option>';
+		var html = '<option value="0">Категория</option>';
 		var len = data.length;
 		for (var i = 0; i < len; i++) {
 			html += '<option value="' + data[i].idCategory + '">'

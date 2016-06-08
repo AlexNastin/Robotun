@@ -7,6 +7,3 @@ $(window).scroll(function () {
 		loader();
 	}
 });
-//начиная с
-var offset = 3;
-var offsetStart = 0;
