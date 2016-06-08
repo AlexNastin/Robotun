@@ -350,13 +350,15 @@ var websocket;
 				}
 			});
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
-			if(vm.currentDate - vm.betsByUser[0].date > 10000) {
+			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 10000) {
 				console.log('Прошло 10 минут')
 			}
+			
 			vm.isICall = isICall;
 			vm.numberIsVisible = true;
 			vm.showNumberICall = function(idUser) {
 				if(vm.numberIsVisible) {
+					console.log('show')
 					$.ajax({
 						url:"lot/showNumber",
 						type:"GET",
