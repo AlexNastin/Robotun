@@ -261,8 +261,12 @@ var idUser = ${idUser};
 var id;
 var isICall = ${isICall};
 var isMeCall = ${isMeCall};
-var isElse = ${isElse}
+var isElse = ${isElse};
+var currentDate = ${currentDate};
 var websocket;
+// var a = '2016-06-23 12:23:32';
+// var d = new Date(a);
+// console.log(d.getTime());
 
 		var jsonData = '${lotJson}';
 
@@ -337,7 +341,18 @@ var websocket;
 		function betController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
+			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
+			vm.betsByUser = [];
+			angular.forEach(vm.bets, function(bet) {
+				if(bet.idUser == idUser) {
+					vm.betsByUser.push(bet);
+				}
+			});
+			vm.betsByUser.sort(function(a, b){return b.date-a.date});
+			if(vm.currentDate - vm.betsByUser[0].date > 10000) {
+				console.log('Прошло 10 минут')
+			}
 			vm.isICall = isICall;
 			vm.numberIsVisible = true;
 			vm.showNumberICall = function(idUser) {

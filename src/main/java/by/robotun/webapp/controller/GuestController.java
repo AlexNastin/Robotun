@@ -1,5 +1,6 @@
 package by.robotun.webapp.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -95,6 +96,7 @@ public class GuestController {
 			}
 			modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJson(categories));
 		}
+		modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
 		return modelAndView;
 	}
 

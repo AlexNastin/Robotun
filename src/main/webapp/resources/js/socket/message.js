@@ -14,6 +14,7 @@ function defineText(evt) {
     });
     printText(json, isICall);
         sendText(json);
+        
 }
 
 function printText(json, isICall) {
