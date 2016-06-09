@@ -162,7 +162,7 @@
 												<div class="col-md-5" style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
-													onclick="someFunc(); defineText()" href="#">Send</a>
+													onclick="someFunc(); defineText()">Send</a>
 		                                        </div>
 											</div>
 
@@ -343,6 +343,8 @@ var websocket;
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 10000) {
 				console.log('Прошло 10 минут')
+			} else {
+				console.log('10 минут еще не прошло')
 			}
 			
 			vm.isICall = isICall;
