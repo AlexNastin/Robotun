@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -16,48 +17,45 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
-import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
-import by.robotun.webapp.form.validator.UpdatePersonalUserLegalFormValidator;
+import by.robotun.webapp.form.UpdateUserPasswordForm;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
+import by.robotun.webapp.form.validator.UpdateUserPasswordFormValidator;
 import by.robotun.webapp.service.IGuestService;
-import by.robotun.webapp.service.IUserService;
 
 @Controller
 @RequestMapping("/legal/profile/updatePersonalData")
 public class UpdatePersonalUserLegalController {
 
 	@Autowired
-	private UpdatePersonalUserLegalFormValidator updatePersonalUserLegalFormValidator;
-	
-	@Autowired
-	private IUserService userService;
+	private UpdateUserPasswordFormValidator personalSecurityValidator;
 	
 	@Autowired
 	private IGuestService guestService;
 
+	@Autowired
+	private MessageSource messages;
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView updatePersonalUserLegal(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM, new UpdatePersonalUserLegalForm());
-		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
+		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView updatePersonalUserLegalValidation(@ModelAttribute(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM) UpdatePersonalUserLegalForm updatePersonalUserLegalForm,
-		BindingResult result, HttpSession httpSession) throws Exception {
-		updatePersonalUserLegalFormValidator.validate(updatePersonalUserLegalForm, result);
+	public ModelAndView updatePasswordValid(@ModelAttribute(ControllerParamConstant.UPDATE_PASSWORD_FORM) UpdateUserPasswordForm userUpdatePasswordForm, BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (result.hasErrors()) {
+		userUpdatePasswordForm.setIdUser(person.getId());
+		personalSecurityValidator.validate(userUpdatePasswordForm, result);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+		if (!result.hasErrors()) {
+			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
+			userUpdatePasswordForm.setIdUser(person.getId());
+			guestService.updatePassword(userUpdatePasswordForm);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		}
-		userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserLegalForm());
-		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		return modelAndView;
 	}
-
 }

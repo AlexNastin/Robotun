@@ -116,7 +116,7 @@ public class UserService implements IUserService {
 	public void updatePersonalUserPhysical(UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm, Integer idUser, HttpSession httpSession)
 			throws ServiceException {
 		try {
-			User user = userDAO.selectUserById(idUser);
+			User user = userDAO.selectUser(idUser);
 			user.setIdCity(updatePersonalUserPhysicalForm.getIdCity());
 			StringBuilder nicknameBuilder = new StringBuilder(updatePersonalUserPhysicalForm.getSurname());
 			nicknameBuilder.append(" ");
@@ -153,7 +153,7 @@ public class UserService implements IUserService {
 	public User getUserById(Integer idUser) throws ServiceException {
 		User user = new User();
 		try {
-			user = userDAO.selectUserById(idUser);
+			user = userDAO.selectUser(idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -163,7 +163,7 @@ public class UserService implements IUserService {
 	@Override
 	public void updatePersonalUserLegal(UpdatePersonalUserLegalForm updatePersonalUserLegalForm, Integer idUser, HttpSession httpSession) throws ServiceException {
 		try {
-			User user = userDAO.selectUserById(idUser);
+			User user = userDAO.selectUser(idUser);
 			user.setIdCity(updatePersonalUserLegalForm.getIdCity());
 			user.setNickname(updatePersonalUserLegalForm.getNameEnterprise());
 			List<Phone> phones = user.getPhones();

@@ -12,6 +12,7 @@ import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
+import by.robotun.webapp.form.UpdateUserPasswordForm;
 
 public interface IGuestService {
 
@@ -34,7 +35,7 @@ public interface IGuestService {
 	List<Lot> getAllLotsByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate)
 			throws ServiceException;
 
-	User getUserById(int idUser) throws ServiceException;
+	User getSaffUser(int idUser) throws ServiceException;
 
 	User getUser(String login) throws ServiceException;
 
@@ -46,7 +47,7 @@ public interface IGuestService {
 
 	User getUser(int idUser) throws ServiceException;
 
-	void updatePassword(String password, int idUser) throws ServiceException;
+	void updatePassword(UpdateUserPasswordForm userUpdatePasswordForm) throws ServiceException;
 	
 	long getCountBetByLot(Integer idLot) throws ServiceException;
 	

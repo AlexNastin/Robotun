@@ -27,11 +27,10 @@ public class UserDAOImpl implements IUserDAO {
 	private EntityManager entityManager;
 
 	@Override
-	public User selectUserById(int idUser) throws DaoException {
+	public User selectUser(int idUser) throws DaoException {
 		User user = null;
 		try {
-			user = (User) entityManager.createNamedQuery("User.findUserById").setParameter("idUser", idUser)
-					.getSingleResult();
+			user = (User) entityManager.createNamedQuery("User.findUserById").setParameter("idUser", idUser).getSingleResult();
 		} catch (NoResultException e) {
 			return user;
 		}
@@ -39,10 +38,10 @@ public class UserDAOImpl implements IUserDAO {
 	}
 	
 	@Override
-	public User selectModeratorById(int idUser) throws DaoException {
+	public User selectStaffUser(int idUser) throws DaoException {
 		User user = null;
 		try {
-			user = (User) entityManager.createNamedQuery("User.findModeratorById").setParameter("idUser", idUser)
+			user = (User) entityManager.createNamedQuery("User.findStaffById").setParameter("idUser", idUser)
 					.getSingleResult();
 		} catch (NoResultException e) {
 			return user;
@@ -70,8 +69,8 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> selectAllModerators() throws DaoException {
-		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
+	public List<User> selectAllStaffs() throws DaoException {
+		List<User> users = entityManager.createNamedQuery("User.findAllStaffs").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setMaxResults(Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE))).getResultList();
 		return users;
 	}
 	
@@ -79,7 +78,7 @@ public class UserDAOImpl implements IUserDAO {
 	@Override
 	public List<User> selectAllModeratorsLimitOffset(int offset) throws DaoException {
 		Integer limit = Integer.parseInt(propertyManager.getValue(PropertyName.AJAX_LOT_MAXSIZE));
-		List<User> users = entityManager.createNamedQuery("User.findAllModerators").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
+		List<User> users = entityManager.createNamedQuery("User.findAllStaffs").setParameter("idRole", ServiceParamConstant.ID_ROLE_MODERATOR).setFirstResult(offset*limit).setMaxResults(limit).getResultList();
 		return users;
 	}
 

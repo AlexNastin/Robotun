@@ -30,7 +30,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
 	public ModelAndView profileAdmin(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
-		List<User> moderators = adminService.getAllModerators();
+		List<User> moderators = adminService.getAllStaffs();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_ADMIN);
 		modelAndView.addObject(ControllerParamConstant.LIST_USERS_JSON, serializationJSON.toJsonViewsInternalForListModerators(moderators));
 		return modelAndView;

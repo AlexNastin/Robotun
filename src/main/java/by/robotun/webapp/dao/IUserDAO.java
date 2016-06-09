@@ -7,9 +7,9 @@ import by.robotun.webapp.exeption.DaoException;
 
 public interface IUserDAO {
 
-	public User selectUserById(int idUser) throws DaoException;
+	public User selectUser(int idUser) throws DaoException;
 	
-	public User selectModeratorById(int idUser) throws DaoException;
+	public User selectStaffUser(int idUser) throws DaoException;
 
 	public User selectUser(String login) throws DaoException;
 	
@@ -19,7 +19,7 @@ public interface IUserDAO {
 	
 	public void updateUser(User user) throws DaoException;
 	
-	public List<User> selectAllModerators() throws DaoException;
+	public List<User> selectAllStaffs() throws DaoException;
 
 	public List<User> selectAllModeratorsLimitOffset(int offset) throws DaoException;
 

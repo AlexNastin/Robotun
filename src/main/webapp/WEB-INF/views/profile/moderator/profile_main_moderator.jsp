@@ -31,6 +31,7 @@
 			<img src="<c:url value="/resources/images/fabian-perez.jpg"/>"
 				class="img-responsive img-thumbnail" alt="Image"> <a href='#'
 				class="list-group-item background-color-menu-profile active-menu">Профиль</a>
+				<a href='<c:url value="/moderator/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 		</div>
         <div class="table-responsive" ng-controller="LotsController as lotsCtrl" id="list-group">
 				<table class="table table-striped">

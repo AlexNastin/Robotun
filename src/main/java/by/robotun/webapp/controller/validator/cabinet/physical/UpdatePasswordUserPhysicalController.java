@@ -61,7 +61,7 @@ public class UpdatePasswordUserPhysicalController {
 			result.rejectValue("oldPassword", "valid.oldPassword.passwordDontMatch");
 			return modelAndView;
 		}
-		guestService.updatePassword(userUpdatePasswordForm.getPassword(), person.getId());
+//		guestService.updatePassword(userUpdatePasswordForm.getPassword(), person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 		String message = messages.getMessage("email.message.resetpaswordsuccessful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);

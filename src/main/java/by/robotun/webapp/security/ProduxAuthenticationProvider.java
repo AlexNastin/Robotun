@@ -47,9 +47,9 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	/** @see AuthenticationProvider#authenticate(Authentication) */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
-			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
-		}
+//		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
+//			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
+//		}
 		User profile = null;
 		try {
 			profile = userDAO.selectUser(authentication.getPrincipal().toString());

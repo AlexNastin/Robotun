@@ -30,6 +30,7 @@ import by.robotun.webapp.exeption.DaoException;
 import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
+import by.robotun.webapp.form.UpdateUserPasswordForm;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -53,13 +54,14 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ILotDAO lotDAO;
-	
+
 	@Autowired
 	private IBetDAO betDAO;
 
-	public User getUserById(int idUser) throws ServiceException {
+	@Override
+	public User getSaffUser(int idUser) throws ServiceException {
 		try {
-			return userDAO.selectUserById(idUser);
+			return userDAO.selectStaffUser(idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -170,7 +172,7 @@ public class GuestService implements IGuestService {
 		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
 		legal.setUser(user);
 		user.setLegal(legal);
-		
+
 		String[] phoneMass = signupUserLegalForm.getPhones();
 		for (int i = 0; i < phoneMass.length; i++) {
 			Phone phone = new Phone();
@@ -291,7 +293,7 @@ public class GuestService implements IGuestService {
 	public User getUser(int idUser) throws ServiceException {
 		User user = new User();
 		try {
-			user = userDAO.selectUserById(idUser);
+			user = userDAO.selectUser(idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -300,13 +302,15 @@ public class GuestService implements IGuestService {
 
 	@Override
 	@Transactional
-	public void updatePassword(String password, int idUser) throws ServiceException {
+	public void updatePassword(UpdateUserPasswordForm userUpdatePasswordForm) throws ServiceException {
 		try {
-			User user = userDAO.selectUserById(idUser);
-			System.out.println(password);
-			String md5Password = DigestUtils.md5Hex(password);
-			user.setPassword(md5Password);
-			userDAO.updateUser(user);
+			User user = userDAO.selectStaffUser(userUpdatePasswordForm.getIdUser());
+			String password = userUpdatePasswordForm.getPassword();
+			if (password != null) {
+				String md5Password = DigestUtils.md5Hex(password);
+				user.setPassword(md5Password);
+				userDAO.updateUser(user);
+			}
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -314,7 +318,7 @@ public class GuestService implements IGuestService {
 
 	@Override
 	public long getCountBetByLot(Integer idLot) throws ServiceException {
-		long count =0;
+		long count = 0;
 		try {
 			count = betDAO.selectCountBetByLot(idLot);
 		} catch (DaoException e) {
@@ -325,7 +329,7 @@ public class GuestService implements IGuestService {
 
 	@Override
 	public long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException {
-		long count =0;
+		long count = 0;
 		try {
 			count = betDAO.selectCountBetByLotByUser(idLot, idUser);
 		} catch (DaoException e) {

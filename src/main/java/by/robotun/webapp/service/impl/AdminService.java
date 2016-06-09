@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
@@ -45,10 +46,10 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public List<User> getAllModerators() throws ServiceException {
+	public List<User> getAllStaffs() throws ServiceException {
 		List<User> users = new ArrayList<>();
 		try {
-			users = userDAO.selectAllModerators();
+			users = userDAO.selectAllStaffs();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -56,8 +57,14 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public User getModeratorById(int idUser) throws ServiceException {
-		return null;
+	public User getStaffById(int idUser) throws ServiceException {
+		User user;
+		try {
+			user = userDAO.selectStaffUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
 	}
 
 	@Override
@@ -72,8 +79,7 @@ public class AdminService implements IAdminService {
 	@Override
 	public void resetModeratorPassword(Integer idUser) throws ServiceException {
 		try {
-			User user = userDAO.selectModeratorById(idUser);
-			System.err.println(user);
+			User user = userDAO.selectStaffUser(idUser);
 			String md5Password = DigestUtils.md5Hex(propertyManager.getValue(PropertyName.MODERATOR_DEFAULT_PASSWORD));
 			user.setPassword(md5Password);
 			userDAO.updateUser(user);
@@ -81,6 +87,14 @@ public class AdminService implements IAdminService {
 			throw new ServiceException(e);
 		}
 	}
-
 	
+	@Override
+	@Transactional
+	public void updatePasswordStaff(User userStaff) throws ServiceException {
+		try {
+			userDAO.updateUser(userStaff);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
 }

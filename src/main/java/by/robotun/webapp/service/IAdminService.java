@@ -10,12 +10,14 @@ public interface IAdminService {
 
 	void addModerator(AddModeratorForm addModeratorForm) throws ServiceException;
 	
-	List<User> getAllModerators() throws ServiceException;
+	List<User> getAllStaffs() throws ServiceException;
 	
-	User getModeratorById(int idUser) throws ServiceException;
+	User getStaffById(int idUser) throws ServiceException;
 	
 	void deleteModerator(Integer id) throws ServiceException;
 
 	void resetModeratorPassword(Integer idUser) throws ServiceException;
+	
+	void updatePasswordStaff(User userStaff) throws ServiceException;
 
 }

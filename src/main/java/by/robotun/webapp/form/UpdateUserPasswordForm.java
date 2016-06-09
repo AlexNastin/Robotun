@@ -4,17 +4,31 @@ import by.robotun.webapp.domain.Essence;
 
 public class UpdateUserPasswordForm implements Essence {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3978062434915732620L;
 
+	private int idUser;
 	private String oldPassword;
 	private String password;
 	private String confirmPassword;
 
 	public UpdateUserPasswordForm() {
 		super();
+	}
+
+	public int getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
 	}
 
 	public String getPassword() {
@@ -33,19 +47,12 @@ public class UpdateUserPasswordForm implements Essence {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public String getOldPassword() {
-		return oldPassword;
-	}
-
-	public void setOldPassword(String oldPassword) {
-		this.oldPassword = oldPassword;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
+		result = prime * result + idUser;
 		result = prime * result + ((oldPassword == null) ? 0 : oldPassword.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
@@ -65,6 +72,8 @@ public class UpdateUserPasswordForm implements Essence {
 				return false;
 		} else if (!confirmPassword.equals(other.confirmPassword))
 			return false;
+		if (idUser != other.idUser)
+			return false;
 		if (oldPassword == null) {
 			if (other.oldPassword != null)
 				return false;
@@ -80,8 +89,7 @@ public class UpdateUserPasswordForm implements Essence {
 
 	@Override
 	public String toString() {
-		return "UpdateUserPasswordForm [oldPassword=" + oldPassword + ", password=" + password + ", confirmPassword="
-				+ confirmPassword + "]";
+		return "UpdateUserPasswordForm [idUser=" + idUser + ", oldPassword=" + oldPassword + ", password=" + password
+				+ ", confirmPassword=" + confirmPassword + "]";
 	}
-
 }
