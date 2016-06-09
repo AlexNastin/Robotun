@@ -72,21 +72,7 @@
 			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
 				role="navigation">
 
-				 <ul style="left: 0;width: 100%;" class="nav nav-sidebar sidebar-nav">
-               <ul class="nav" id="side-menu" ng-controller="CategoriesController as categoriesCtrl">
-						
-                        <li style="text-align:left;" ng-repeat="category in categoriesCtrl.categories" ng-click="showMenu = !showMenu">
-                            <a style="text-align:left; padding-left:17%" href="#" class=" hvr-bounce-to-right"><span style='color:white' class="nav-label">{{category.title}}</span><span class="fa arrow"></span> </a>
-                            <ul class="nav nav-second-level" ng-show="showMenu">
-
-                                	<li style="text-align:left;" ng-repeat="subcategory in category.subcategories"><a style='color:white; text-align:left;    padding-left: 30px;' ng-href='/jobster.by/result?idCategory={{category.idCategory}}&idSubcategory={{subcategory.idSubcategory}}' class=" hvr-bounce-to-right"> <i style='color:white' class="fa fa-area-chart nav_icon"></i>{{subcategory.title}}</a></li>
-
-                            </ul>
-                        </li>
-						
-                        
-                    </ul>
-            </ul>
+				 
 
 
 			</div>
@@ -219,7 +205,7 @@
 													<a ng-if="betCtrl.isICall" href="#"
 														ng-click="betCtrl.showNumberICall(bet.idUser)"
 														id="{{bet.idUser}}a">Посмотреть номер</a>
-													<div id="{{bet.idUser}}"></div>
+													<div style="color: black;" id="{{bet.idUser}}"></div>
 
 													<div class="post-meta">
 														<div class="asker-meta">
@@ -262,37 +248,25 @@
 	</div> <!-- cd-popup-container -->
 </div>
 	<!-- Menu Toggle Script -->
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    </script>
-	<script type="text/javascript">
+
 var nickname = "${nickname}";
 var idUser = ${idUser};
 var id;
 var isICall = ${isICall};
 var isMeCall = ${isMeCall};
-var isElse = ${isElse}
-</script>
-	<script>
-    var jsonDataCategories = '${listCategoriesJson}';
-    
-    app.controller('CategoriesController', ['$scope', '$http', categoriesController]);
-    
-    function categoriesController ($scope) {
-    	var vm = this;
-    	var dataCategories = JSON.parse(jsonDataCategories);
-    	vm.categories = [];
-    	vm.subcategories = [];
-    	angular.forEach(dataCategories, function(category) {
-    		vm.categories.push(category);
-    	});
-    	vm.selectSubcategories = function (index) {
-    		vm.subcategories = vm.categories[index].subcategories;
-    	};
-    }
+var isElse = ${isElse};
+var currentDate = ${currentDate};
+var websocket;
+// var a = '2016-06-23 12:23:32';
+// var d = new Date(a);
+// console.log(d.getTime());
 
 		var jsonData = '${lotJson}';
 
@@ -305,7 +279,21 @@ var isElse = ${isElse}
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
+			
+			// start WebSockets
 			id = vm.lot.idLot;
+			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
+			websocket = new WebSocket(wsUri);
+			websocket.onerror = function(evt) {
+				console.log("onerror");
+				onError(evt) 
+			};
+			websocket.onopen = function() {
+				console.log("onopen");
+			};
+			websocket.onmessage = function(evt) { onMessage(evt) };
+			// end WebSockets
+			
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.numberIsVisible = true;
@@ -335,14 +323,42 @@ var isElse = ${isElse}
 			}
 		}
 		
+		// Start WebSockets
+		function onError(evt) {
+			console.log("error");
+    		writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+		}
+		function sendText(json) {
+			console.log("send");
+    		websocket.send(json);
+		}      
+		function onMessage(evt) {
+			console.log("message");
+    		printText(evt.data, isICall);
+		}
+		// End WebSockets
+		
 		function betController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
+			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
+			vm.betsByUser = [];
+			angular.forEach(vm.bets, function(bet) {
+				if(bet.idUser == idUser) {
+					vm.betsByUser.push(bet);
+				}
+			});
+			vm.betsByUser.sort(function(a, b){return b.date-a.date});
+			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 10000) {
+				console.log('Прошло 10 минут')
+			}
+			
 			vm.isICall = isICall;
 			vm.numberIsVisible = true;
 			vm.showNumberICall = function(idUser) {
 				if(vm.numberIsVisible) {
+					console.log('show')
 					$.ajax({
 						url:"lot/showNumber",
 						type:"GET",
@@ -526,14 +542,6 @@ function drawButtonPhoneOwner() {
 	}
 }
 </script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/socket/websocket_message.js" />"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/socket/message.js" />"></script>
-	<script class="source" type="text/javascript">
-
-       
-    </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>

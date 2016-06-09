@@ -77,6 +77,8 @@ public final class ControllerParamConstant {
 
 	public static final String DATE_END_LOT = "dateEndLot";
 	
+	public static final String CURRENT_DATE = "currentDate";
+	
 	public static final String COUNT_BET = "countBet";
 	
 	public static final String IS_I_CALL = "isICall";

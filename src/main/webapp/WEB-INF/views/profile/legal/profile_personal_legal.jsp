@@ -55,9 +55,13 @@
 			</c:forEach>
 		</form:select>
 		</div>
+		
 		<c:forEach items="${user.phones}" var="phone">
-				<form:input path="phones" placeholder="phone" value="${phone.phone}"/>
-		</c:forEach>
+		<div class="form-group">
+				<form:input path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
+		</div>
+		</c:forEach> 
+		
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />
 		</div>
