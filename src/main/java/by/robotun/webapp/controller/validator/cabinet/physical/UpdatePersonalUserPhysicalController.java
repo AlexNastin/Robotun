@@ -5,7 +5,6 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,46 +16,57 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
-import by.robotun.webapp.form.UpdateUserPasswordForm;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
-import by.robotun.webapp.form.validator.UpdateUserPasswordFormValidator;
+import by.robotun.webapp.domain.User;
+import by.robotun.webapp.form.UpdatePersonalUserPhysicalForm;
+import by.robotun.webapp.form.validator.UpdatePersonalUserPhysicalFormValidator;
 import by.robotun.webapp.service.IGuestService;
+import by.robotun.webapp.service.IUserService;
 
 @Controller
 @RequestMapping("/physical/profile/updatePersonalData")
 public class UpdatePersonalUserPhysicalController {
 
 	@Autowired
-	private UpdateUserPasswordFormValidator personalSecurityValidator;
+	private UpdatePersonalUserPhysicalFormValidator updatePersonalUserPhysicalFormValidator;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@Autowired
 	private IGuestService guestService;
 
-	@Autowired
-	private MessageSource messages;
-
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
-		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+	public ModelAndView updatePersonalUserPhysical(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		User user = userService.getUserById(person.getId());
+		UpdatePersonalUserPhysicalForm personalUserPhysicalForm = new UpdatePersonalUserPhysicalForm();
+		personalUserPhysicalForm.setIdCity(user.getIdCity());
+		personalUserPhysicalForm.setMiddleName(user.getPhysical().getMiddleName());
+		personalUserPhysicalForm.setName(user.getPhysical().getName());
+		personalUserPhysicalForm.setSurname(user.getPhysical().getSurname());
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, personalUserPhysicalForm);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView updatePasswordValid(@ModelAttribute(ControllerParamConstant.UPDATE_PASSWORD_FORM) UpdateUserPasswordForm userUpdatePasswordForm, BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
+	public ModelAndView updatePersonalUserPhysicalValidation(@ModelAttribute(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM) UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm,
+		BindingResult result, HttpSession httpSession) throws Exception {
+		updatePersonalUserPhysicalFormValidator.validate(updatePersonalUserPhysicalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		System.err.println(person.getId() + "serghsrghsrhrsethrthserthrwthtrhnj");
-		userUpdatePasswordForm.setIdUser(person.getId());
-		personalSecurityValidator.validate(userUpdatePasswordForm, result);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
-		if (!result.hasErrors()) {
-			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
-			userUpdatePasswordForm.setIdUser(person.getId());
-			guestService.updatePassword(userUpdatePasswordForm);
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+		if (result.hasErrors()) {
 		}
+		userService.updatePersonalUserPhysical(updatePersonalUserPhysicalForm, person.getId(), httpSession);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserPhysicalForm());
+		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
+
 }

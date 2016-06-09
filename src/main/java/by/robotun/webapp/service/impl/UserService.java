@@ -176,7 +176,8 @@ public class UserService implements IUserService {
 			}
 			user.setPhones(phones);
 			Legal legal = user.getLegal();
-			legal.setNameEnterprise(updatePersonalUserLegalForm.getNameEnterprise());
+			String nameEnterprise = updatePersonalUserLegalForm.getNameEnterprise().replace("\"", "\\\"");
+			user.setNickname(nameEnterprise);
 			legal.setUnp(updatePersonalUserLegalForm.getUnp());
 			legal.setAddress(updatePersonalUserLegalForm.getAddress());
 			legal.setZipCode(updatePersonalUserLegalForm.getZipCode());
