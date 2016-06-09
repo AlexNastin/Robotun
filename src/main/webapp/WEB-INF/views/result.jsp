@@ -138,7 +138,7 @@
                                
                                 <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
                                 
-                                    <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots">
+                                    <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
                                     <div class="media col-md-3">
                                             <figure class="pull-left">
                                                 <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
@@ -314,7 +314,6 @@ function sortLots(){
  							indent: 'true'
 						},
 						success:function(data) {
- 							console.log(data);
  							scope.lotsCtrl.lots = [];
  							for(var i=0; i<data.response.docs.length; i++) {
  								scope.lotsCtrl.lots.push(data.response.docs[i]);
