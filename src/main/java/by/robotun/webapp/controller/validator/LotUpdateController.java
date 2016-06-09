@@ -2,6 +2,8 @@ package by.robotun.webapp.controller.validator;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -52,8 +54,6 @@ public class LotUpdateController {
 			updateLotForm.setBudget(String.valueOf(lot.getBudget()));
 			updateLotForm.setIdLot(idLot);
 			updateLotForm.setDescription(lot.getDescription());
-			//изменить после добавления скроллера времени на страницу updateLot
-			updateLotForm.setEndDate(dateFormat.format(lot.getEndDate()));
 			updateLotForm.setIdCategory(lot.getIdCategory());
 			updateLotForm.setIdCity(lot.getIdCity());
 			updateLotForm.setIdSubcategory(lot.getIdSubcategory());
@@ -62,6 +62,10 @@ public class LotUpdateController {
 			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 			modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
 			modelAndView.addObject(ControllerParamConstant.LOT, lot);
+			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, dateFormat.format(lot.getEndDate()));
+			Calendar calendar = GregorianCalendar.getInstance();
+			calendar.setTime(lot.getEndDate());
+			modelAndView.addObject(ControllerParamConstant.HOUR_END_LOT, calendar.get(Calendar.HOUR_OF_DAY));
 		} else {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}
@@ -81,6 +85,11 @@ public class LotUpdateController {
 		modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
+		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITHOUT_TIME);
+		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, dateFormat.format(lot.getEndDate()));
+		Calendar calendar = GregorianCalendar.getInstance();
+		calendar.setTime(lot.getEndDate());
+		modelAndView.addObject(ControllerParamConstant.HOUR_END_LOT, calendar.get(Calendar.HOUR_OF_DAY));
 		return modelAndView;
 	}
 
