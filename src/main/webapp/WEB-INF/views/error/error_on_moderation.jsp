@@ -30,7 +30,7 @@
                     Данный лот находится на модерации, но ты можешь посмотреть множество других
                 </div>
                 <div class="error-actions">
-                    <a href="#" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    <a href='<c:url value="/index" />' class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
                         На главную </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Позвать на помощь </a>
                 </div>
             </div>

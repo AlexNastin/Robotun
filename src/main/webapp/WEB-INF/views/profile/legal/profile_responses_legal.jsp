@@ -30,7 +30,7 @@ ${nickname}
 <a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
-<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl">
+<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Мои отклики:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">

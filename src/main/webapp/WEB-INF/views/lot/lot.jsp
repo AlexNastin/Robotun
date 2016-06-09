@@ -93,7 +93,7 @@
 					<!-- tab content -->
 					<div class="col-md-12"
 						style="margin-top: 20px; margin-bottom: 20px; color: white"
-						ng-controller="LotController as lotCtrl">
+						ng-controller="LotController as lotCtrl" ng-cloak>
 						<div class="row panel item">
 							<div class="col-md-4 bg_blur "></div>
 							<div class="col-md-8"
@@ -187,7 +187,7 @@
 									<div id="callNumber"></div>
 								</div>
 								<div class="qa-message-list" id="wallmessages"
-									ng-controller="BetController as betCtrl">
+									ng-controller="BetController as betCtrl" ng-cloak>
 
 									<div class="message-item" id="m16"
 										ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
