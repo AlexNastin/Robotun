@@ -24,6 +24,7 @@
 	<context:component-scan base-package="by.robotun.webapp.form" />
 	<context:component-scan base-package="by.robotun.webapp.socket" />
 	<context:component-scan base-package="by.robotun.webapp.dao.solr.config" />
+	<context:component-scan base-package="by.robotun.webapp.quartz" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
@@ -36,5 +37,7 @@
 
 	<!-- Файл с настройками Redis -->
 	<import resource="redis.xml" />
-
+	
+	<!-- Файл с настройками Quartz -->
+	<import resource="quartz-context.xml" />
 </beans>

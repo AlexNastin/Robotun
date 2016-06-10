@@ -5,66 +5,48 @@
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
-	<bean
-		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-
-	<!-- Define Hibernate JPA Vendor Adapter -->
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
 	</bean>
 
-	<!-- Entity Manager Factory -->
 	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="persistenceJpa" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
 	</bean>
 
-	<!-- Transaction Manager -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<!-- Detect @Transactional -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<!--<bean id="stdScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
-		<property name="autoStartup" value="true" /> <property name="configLocation" 
-		value="classpath:quartz.properties" /> </bean> -->
-
-
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost:5432/db_jobster" />
-		<property name="username" value="postgres" />
-		<property name="password" value="root" />
+	
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
 	</bean>
-
-	<bean id="stdScheduler"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="autoStartup" value="true" />
-		<property name="dataSource" ref="dataSource" />
-		<property name="quartzProperties">
+	
+	<!-- HikariCP configuration -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="JobsterCP" />
+		<property name="dataSourceClassName" value="org.postgresql.ds.PGPoolingDataSource" />
+		<property name="maximumPoolSize" value="50" />
+		<property name="maxLifetime" value="1800000" />
+		<property name="idleTimeout" value="600000" />
+		<property name="dataSourceProperties">
 			<props>
-				<prop key="org.quartz.scheduler.instanceName">SgsClusteredScheduler</prop>
-				<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
-				<prop key="org.quartz.scheduler.classLoadHelper.class">org.quartz.simpl.CascadingClassLoadHelper</prop>
-				<prop key="org.quartz.scheduler.rmi.export">false</prop>
-				<prop key="org.quartz.scheduler.rmi.proxy">false</prop>
-				<prop key="org.quartz.scheduler.xaTransacted">false</prop>
-
-				<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
-
-				<prop key="org.quartz.jobStore.driverDelegateClass">org.quartz.impl.jdbcjobstore.PostgreSQLDelegate</prop>
-				<prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>
-				<prop key="org.quartz.jobStore.tablePrefix">qrtz_</prop>
-				<prop key="org.quartz.jobStore.useProperties">false</prop>
+				<prop key="url">jdbc:postgresql://localhost:5432/db_jobster
+				</prop>
+				<prop key="user">postgres</prop>
+				<prop key="password">root</prop>
 			</props>
 		</property>
 	</bean>
-
-
 </beans>

@@ -4,28 +4,44 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-
-	<!-- For times when you need more complex processing, passing data to the 
-		scheduled job -->
+	<!--Solr FullIndex Lots -->
 	<bean name="scheduleFullIndexSolrJob"
 		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
 		<property name="jobClass" value="by.robotun.webapp.quartz.job.ScheduleFullIndexSolrJob" />
 		<property name="jobDataMap">
 			<map>
-				<entry key="synchronzationCSAHttpClient" value-ref="synchronzationCSAHttpClient" />
-				<entry key="deserializationJSON" value-ref="deserializationJSON" />
-				<entry key="serviceQuartz" value-ref="serviceQuartz" />
+				<entry key="httpClientSolrJ" value-ref="httpClientSolrJ" />
+				<entry key="propertyManager" value-ref="propertyManager" />
 			</map>
 		</property>
 		<property name="durability" value="true" />
 	</bean>
 
-
-	<!-- Run the job every 5 seconds only on Weekends 0 0/30 7-21 ? * MON-SAT -->
-	<bean id="cronTriggerSynchCSA"
+	<!--SolrFullIndexCronTrigger-->
+	<bean id="cronTriggerFullIndexSolr"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="jobDetailSynchCSA" />
+		<property name="jobDetail" ref="scheduleFullIndexSolrJob" />
 		<property name="cronExpression" value="0/360 * * 1/1 * ? *" />
+	</bean>
+	
+	<!--SolrDeltaIndexLots -->
+	<bean name="scheduleDeltaIndexSolrJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="by.robotun.webapp.quartz.job.ScheduleDeltaIndexSolrJob" />
+		<property name="jobDataMap">
+			<map>
+				<entry key="httpClientSolrJ" value-ref="httpClientSolrJ" />
+				<entry key="propertyManager" value-ref="propertyManager" />
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+
+	<!--SolrFullIndexCronTrigger 0 0/10 * 1/1 * ? *-->
+	<bean id="cronTriggerDeltaIndexSolr"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="scheduleDeltaIndexSolrJob" />
+		<property name="cronExpression" value="0/60 * * 1/1 * ? *" />
 	</bean>
 
 
@@ -35,14 +51,15 @@
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="jobDetails">
 			<list>
-				<ref bean="jobDetailSynchCSA" />
+				<ref bean="scheduleFullIndexSolrJob" />
+				<ref bean="scheduleDeltaIndexSolrJob" />
 			</list>
 		</property>
 		<property name="triggers">
 			<list>
-				<ref bean="cronTriggerSynchCSA" />
+				<ref bean="cronTriggerFullIndexSolr" />
+				<ref bean="cronTriggerDeltaIndexSolr" />
 			</list>
 		</property>
 	</bean>
-
 </beans>

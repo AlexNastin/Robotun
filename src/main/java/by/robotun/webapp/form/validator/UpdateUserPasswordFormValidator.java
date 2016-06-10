@@ -37,9 +37,10 @@ public class UpdateUserPasswordFormValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		UpdateUserPasswordForm personalSecurityForm = (UpdateUserPasswordForm) target;
+		System.err.println(personalSecurityForm.getIdUser() +"!!!!!!!!!!!!!!!!!!!!!2");
 		User user = null;
 		try {
-			System.err.println(personalSecurityForm.getIdUser());
+			System.err.println(personalSecurityForm.getIdUser() +"!!!!!!!!!!!!!!!!!!!!!1");
 			user = userService.getSaffUser(personalSecurityForm.getIdUser());
 			System.err.println(user);
 		} catch (ServiceException e) {

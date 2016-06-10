@@ -10,7 +10,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("propertyManager")
 public class PropertyManager {
 
 	private static Logger LOGGER = Logger.getLogger(PropertyManager.class);

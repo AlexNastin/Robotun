@@ -18,11 +18,8 @@ public class SolrConfig {
 	@Autowired
 	private PropertyManager propertyManager;
 	
-	
 	@Bean
 	public SolrClient getSolrClient() {
-		//http://localhost:8983/solr/jcg/dataimport?command=full-import&clean=true&commit=true
-//		http://localhost:8983/solr/jcg/dataimport?command=delta-import&clean=false&commit=true
 		SolrClient solrClient = new HttpSolrClient(propertyManager.getValue(PropertyName.SOLR_HTTP_URL));
 		return solrClient;
 	}
