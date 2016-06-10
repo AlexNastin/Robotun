@@ -19,6 +19,7 @@ var app = angular.module('app', []);
 	<title>Просмотр профиля</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <!--This stylesheet should be moved to the head of the document -->
 
@@ -108,5 +109,7 @@ var app = angular.module('app', []);
 			vm.user = data;
 		}
 		</script>
+		<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
 </body>
 </html>
