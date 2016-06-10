@@ -25,7 +25,7 @@ import by.robotun.webapp.service.IGuestService;
 @Controller
 @RequestMapping("/legal/secure/updatePassword")
 public class UpdatePasswordUserLegalController {
-
+	
 	@Autowired
 	private UpdateUserPasswordFormValidator personalSecurityValidator;
 	
@@ -36,12 +36,10 @@ public class UpdatePasswordUserLegalController {
 	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView personalSecurity(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
 		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
-		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
 
