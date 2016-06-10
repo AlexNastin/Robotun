@@ -5,7 +5,6 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -17,45 +16,58 @@ import org.springframework.web.servlet.ModelAndView;
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
-import by.robotun.webapp.form.UpdateUserPasswordForm;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
-import by.robotun.webapp.form.validator.UpdateUserPasswordFormValidator;
+import by.robotun.webapp.domain.User;
+import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
+import by.robotun.webapp.form.validator.UpdatePersonalUserLegalFormValidator;
 import by.robotun.webapp.service.IGuestService;
+import by.robotun.webapp.service.IUserService;
 
 @Controller
 @RequestMapping("/legal/profile/updatePersonalData")
 public class UpdatePersonalUserLegalController {
 
 	@Autowired
-	private UpdateUserPasswordFormValidator personalSecurityValidator;
+	private UpdatePersonalUserLegalFormValidator updatePersonalUserLegalFormValidator;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@Autowired
 	private IGuestService guestService;
 
-	@Autowired
-	private MessageSource messages;
-
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
-		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+	public ModelAndView updatePersonalUserLegal(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		User user = userService.getUserById(person.getId());
+		UpdatePersonalUserLegalForm updatePersonalUserLegalForm = new UpdatePersonalUserLegalForm();
+		updatePersonalUserLegalForm.setAddress(user.getLegal().getAddress());
+		updatePersonalUserLegalForm.setIdCity(user.getIdCity());
+		updatePersonalUserLegalForm.setNameEnterprise(user.getLegal().getNameEnterprise().replace("\\\"","\""));
+		updatePersonalUserLegalForm.setUnp(user.getLegal().getUnp());
+		updatePersonalUserLegalForm.setZipCode(user.getLegal().getZipCode());
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM, updatePersonalUserLegalForm);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView updatePasswordValid(@ModelAttribute(ControllerParamConstant.UPDATE_PASSWORD_FORM) UpdateUserPasswordForm userUpdatePasswordForm, BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
+	public ModelAndView updatePersonalUserLegalValidation(@ModelAttribute(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM) UpdatePersonalUserLegalForm updatePersonalUserLegalForm,
+		BindingResult result, HttpSession httpSession) throws Exception {
+		updatePersonalUserLegalFormValidator.validate(updatePersonalUserLegalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		userUpdatePasswordForm.setIdUser(person.getId());
-		personalSecurityValidator.validate(userUpdatePasswordForm, result);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
-		if (!result.hasErrors()) {
-			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
-			userUpdatePasswordForm.setIdUser(person.getId());
-			guestService.updatePassword(userUpdatePasswordForm);
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+		if (result.hasErrors()) {
 		}
+		userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserLegalForm());
+		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
+
 }

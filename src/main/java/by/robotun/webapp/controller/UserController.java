@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
@@ -55,6 +56,7 @@ public class UserController {
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
 
@@ -64,6 +66,7 @@ public class UserController {
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
 
@@ -75,6 +78,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
 				serializationJSON.toJsonViewsInternalRejectMessages(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
 
@@ -84,6 +88,7 @@ public class UserController {
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
 
@@ -93,6 +98,7 @@ public class UserController {
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
 
@@ -103,17 +109,41 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_ON_UPDATE_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
 				serializationJSON.toJsonViewsInternalRejectMessages(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/lot/showNumber", method = RequestMethod.GET)
-	public @ResponseBody List<String> getNumbers(@RequestParam(value = "id", required = false) Integer idUser,
-			@RequestParam(value = "idLot", required = false) Integer idLot, HttpSession httpSession)
+	@RequestMapping(value = "/lot/showNumber/owner", method = RequestMethod.GET)
+	public @ResponseBody List<String> getNumbersOwner(@RequestParam(value = "idLot", required = false) Integer idLot, HttpSession httpSession)
 			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<String> phones = new ArrayList<String>();
-		if (guestService.getCountBetByLotByUser(idLot, person.getId()) > 0) {
-			phones = userService.getPhonesStringByIdUser(idUser);
+		Lot lot = userService.getLotById(idLot);
+		if(!lot.getIsCall()) {
+			for (Bet bet : lot.getBets()) {
+				if(bet.getIdUser() == person.getId()) {
+					phones = userService.getPhonesStringByIdUser(lot.getIdUser());
+					break;
+				}
+			}
+		}
+		return phones;
+	}
+	
+	@RequestMapping(value = "/lot/showNumber/client", method = RequestMethod.GET)
+	public @ResponseBody List<String> getNumbersClient(@RequestParam(value = "idLot", required = false) Integer idLot,
+			@RequestParam(value = "id", required = false) Integer idUser, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<String> phones = new ArrayList<String>();
+		Lot lot = userService.getLotById(idLot);
+		if(lot.getIsCall() && lot.getIdUser() == person.getId()) {
+			for (Bet bet : lot.getBets()) {
+				if(bet.getIdUser() == idUser) {
+					phones = userService.getPhonesStringByIdUser(idUser);
+					break;
+				}
+			}
 		}
 		return phones;
 	}

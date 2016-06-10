@@ -93,7 +93,7 @@
 					<!-- tab content -->
 					<div class="col-md-12"
 						style="margin-top: 20px; margin-bottom: 20px; color: white"
-						ng-controller="LotController as lotCtrl">
+						ng-controller="LotController as lotCtrl" ng-cloak>
 						<div class="row panel item">
 							<div class="col-md-4 bg_blur "></div>
 							<div class="col-md-8"
@@ -132,10 +132,9 @@
 								</div>
 									<div id="showPhoneOwner">
 
-										<a class="text-style-on-lot" ng-if="lotCtrl.isMeCall" href="#"
-											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)"
-											id="{{lotCtrl.idUser}}a">Посмотреть номер</a>
-										<div id="{{lotCtrl.idUser}}"></div>
+										<a class="text-style-on-lot" ng-if="lotCtrl.isMeCall" id="ownerNumbera"
+											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)">Посмотреть номер</a>
+										<div id="ownerNumber"></div>
 
 										<security:authorize
 											access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
@@ -163,7 +162,7 @@
 												<div class="col-md-5" style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
-													onclick="someFunc(); defineText()" href="#">Send</a>
+													onclick="someFunc(); defineText()">Send</a>
 		                                        </div>
 											</div>
 
@@ -188,7 +187,7 @@
 									<div id="callNumber"></div>
 								</div>
 								<div class="qa-message-list" id="wallmessages"
-									ng-controller="BetController as betCtrl">
+									ng-controller="BetController as betCtrl" ng-cloak>
 
 									<div class="message-item" id="m16"
 										ng-repeat="bet in betCtrl.bets | orderBy:'-date'">
@@ -201,18 +200,17 @@
 												</div>
 												<div class="user-detail">
 													<h5 class="handle">{{bet.user.nickname}}</h5>
-
-													<a ng-if="betCtrl.isICall" href="#"
-														ng-click="betCtrl.showNumberICall(bet.idUser)"
-														id="{{bet.idUser}}a">Посмотреть номер</a>
-													<div style="color: black;" id="{{bet.idUser}}"></div>
+													
+													<a ng-if="betCtrl.isICall" id="{{$index}}a"
+														ng-click="betCtrl.showNumberICall(bet.idUser, $index)">Посмотреть номер</a>
+													<div style="color: black;" id="{{$index}}"></div>
 
 													<div class="post-meta">
 														<div class="asker-meta">
 															<span class="qa-message-what"></span> <span
 																class="qa-message-when"> <span
 																class="qa-message-when-data">{{bet.date |
-																	date:'yyyy-mm-dd HH:mm:ss'}}</span>
+																	date:'yyyy-MM-dd HH:mm:ss'}}</span>
 															</span> <span class="qa-message-who"> <span
 																class="qa-message-who-pad">by </span> <span
 																class="qa-message-who-data"><a
@@ -242,7 +240,7 @@
 	
 <div id='popup' class="cd-popup" role="alert">
 	<div class="cd-popup-container">
-		<p>К сожалению, время принятия ставок вышло</p>
+		<p>К сожалению, время принятия предложений вышло</p>
 		
 		<a href="#0" class="cd-popup-close img-replace">Close</a>
 	</div> <!-- cd-popup-container -->
@@ -264,9 +262,6 @@ var isMeCall = ${isMeCall};
 var isElse = ${isElse};
 var currentDate = ${currentDate};
 var websocket;
-// var a = '2016-06-23 12:23:32';
-// var d = new Date(a);
-// console.log(d.getTime());
 
 		var jsonData = '${lotJson}';
 
@@ -280,7 +275,7 @@ var websocket;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
 			
-			// start WebSockets
+			// Start WebSockets
 			id = vm.lot.idLot;
 			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
 			websocket = new WebSocket(wsUri);
@@ -292,34 +287,30 @@ var websocket;
 				console.log("onopen");
 			};
 			websocket.onmessage = function(evt) { onMessage(evt) };
-			// end WebSockets
+			// End WebSockets
 			
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
-			vm.numberIsVisible = true;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
 			vm.showNumberICall = function(idUser) {
-				if(vm.numberIsVisible) {
 					$.ajax({
-						url:"lot/showNumber",
+						url:"lot/showNumber/owner",
 						type:"GET",
 						data:{
 							//передаем параметры
-							id: vm.lot.idUser,
 							idLot: vm.lot.idLot
 						},
 						success:function(number) {
-							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
 									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 								}
 							}
-							document.getElementById(idUser).innerHTML = contentNumber;
-							vm.numberIsVisible = false;
+							document.getElementById('ownerNumber').innerHTML = contentNumber;
+							document.getElementById('ownerNumbera').remove();
 						}
 					});
-				}
 			}
 		}
 		
@@ -352,32 +343,32 @@ var websocket;
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 10000) {
 				console.log('Прошло 10 минут')
+			} else {
+				console.log('10 минут еще не прошло')
 			}
 			
 			vm.isICall = isICall;
-			vm.numberIsVisible = true;
-			vm.showNumberICall = function(idUser) {
-				if(vm.numberIsVisible) {
-					console.log('show')
+			vm.showNumberICall = function(idUser, index) {
 					$.ajax({
-						url:"lot/showNumber",
+						url:"lot/showNumber/client",
 						type:"GET",
 						data:{
 							//передаем параметры
-							id: idUser
+							id: idUser,
+							idLot: id
 						},
 						success:function(number) {
-							var contentNumber = document.getElementById(idUser).innerHTML + 'Связаться можно по телефонам:<br>';
+							var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
+							console.log(number)
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
 									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 								}
 							}
-							document.getElementById(idUser).innerHTML = contentNumber;			
-							vm.numberIsVisible = false;
+							document.getElementById(index).innerHTML = contentNumber;  
+							document.getElementById(index+'a').remove();
 						}
 					});
-				}
 			}
 		}
 		

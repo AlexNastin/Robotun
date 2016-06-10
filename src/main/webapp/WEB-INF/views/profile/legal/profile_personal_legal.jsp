@@ -9,6 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>Изменение личных данных</title>
+${nickname}
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
@@ -32,26 +33,21 @@
 <div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
 	<form:form modelAttribute="updatePersonalLegalForm" method="POST">
 		<div class="form-group">
-		<form:input path="nameEnterprise" class="form-control" placeholder="nameEnterprise" value="${user.legal.nameEnterprise}"/>
+		<form:input path="nameEnterprise" class="form-control" placeholder="nameEnterprise"/>
 		</div>
 		<div class="form-group">
-		<form:input path="unp" class="form-control" placeholder="unp" value="${user.legal.unp}"/>
+		<form:input path="unp" class="form-control" placeholder="unp"/>
 		</div>
 		<div class="form-group">
-		<form:input path="address" class="form-control" placeholder="address" value="${user.legal.address}"/>
+		<form:input path="address" class="form-control" placeholder="address"/>
 		</div>
 		<div class="form-group">
-		<form:input path="zipCode" class="form-control" placeholder="zipCode" value="${user.legal.zipCode}"/>
+		<form:input path="zipCode" class="form-control" placeholder="zipCode"/>
 		</div>
 		<div class="form-group">
 		<form:select class="form-control" path="idCity">
-			<c:set var="idSelectCity" value="${user.idCity}"/>
 			<c:forEach items="${listCities}" var="city">
-				<c:if test="${city.idCity == idSelectCity}">
-					<c:set var="selected" value="true"/>
-				</c:if>
-				<form:option value="${city.idCity}" selected="${selected}">${city.title}</form:option>
-				<c:set var="selected" value=""/>
+				<form:option value="${city.idCity}">${city.title}</form:option>
 			</c:forEach>
 		</form:select>
 		</div>

@@ -28,7 +28,7 @@ var app = angular.module('app', []);
     <div class="row">
         <div class=" col-lg-offset-3 col-lg-6">
             <div class="panel panel-default">
-                <div class="panel-body" ng-controller="UserController as userCtrl">
+                <div class="panel-body" ng-controller="UserController as userCtrl" ng-cloak>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">

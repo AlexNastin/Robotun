@@ -34,7 +34,7 @@
 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
 	</div>
 	<div class="col-md-6">
-	<form:form modelAttribute="updateLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'">
+	<form:form modelAttribute="updateLotForm" method="POST" onsubmit="endDate.value = Date.value+' '+timeInputId.value+':00:00'">
 	<form:input path="idLot" class="form-control visibility-field"/>
 		<div class="form-group">
 		<form:input path="name" placeholder="Название" class="form-control"/>
@@ -69,13 +69,13 @@
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
 		<div class="form-group">
-					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца" value="${lot.endDate}">
+					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца" value="${dateEndLot}">
 					</div>
 					
 			<div class="form-group">
 					
-					   <input type="range" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
-    <output style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					   <input type="range" name="timeInputName" id="timeInputId" value="${hourEndLot}" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
+    <output style="text-align:center" name="timeOutputName" id="timeOutputId">${hourEndLot}</output>
 					</div>
 					<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
@@ -102,14 +102,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Подтверждение измены</h4>
+          <h4 class="modal-title">Подтверждение изменения</h4>
         </div>
         <div class="modal-body">
           <p>После нажатия подтверждения лот отправится на модерацию снова.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-          <button type="submit" class="btn btn-success" >Обновить</button>
+          <button type="submit" class="btn btn-success" >Изменить</button>
         </div>
       </div>
       

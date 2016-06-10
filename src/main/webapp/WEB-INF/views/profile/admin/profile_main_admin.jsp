@@ -25,7 +25,7 @@
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 		
 </div>
-<div class="col-md-10" ng-controller="UsersController as usersCtrl">
+<div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
 <div class="table-responsive" id="list-group">
 				<table class="table table-striped">
 					<thead>

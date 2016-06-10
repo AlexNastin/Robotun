@@ -10,6 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>Личный кабинет физического лица</title>
+${nickname}
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
@@ -28,7 +29,7 @@
 <a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
-<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl">
+<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Замечания по лотам:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">

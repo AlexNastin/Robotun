@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Личный кабинет физического лица Обновления пароля</title>
+<title>Личный кабинет физического лица</title>
+${nickname}
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />

@@ -33,7 +33,7 @@
 				class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 				<a href='<c:url value="/moderator/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 		</div>
-        <div class="table-responsive" ng-controller="LotsController as lotsCtrl" id="list-group">
+        <div class="table-responsive" ng-controller="LotsController as lotsCtrl" id="list-group" ng-cloak>
 				<table class="table table-striped">
 					<thead>
 						<tr>
