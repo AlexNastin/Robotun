@@ -538,7 +538,7 @@ if ( $(window).width() < 700) {
 	
 	$( "#1" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	$( "#2" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
-	$( "#1" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#3" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	} 
 </script>
 	<div class="clearfix"></div>

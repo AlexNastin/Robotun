@@ -6,7 +6,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
  <!DOCTYPE html>
-<html ng-app="app" scrolling="no">
+<html ng-app="app">
 <head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
