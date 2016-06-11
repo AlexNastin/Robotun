@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>Личный кабинет физического лица</title>
-${nickname}
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
@@ -23,6 +23,7 @@ ${nickname}
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+<div class="style-nickname">${nickname}</div>
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
 <a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по лотам</a>
