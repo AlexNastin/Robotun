@@ -6,7 +6,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
  <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" scrolling="no">
 <head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
@@ -55,7 +55,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body >
 
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
@@ -129,7 +129,7 @@
 
                 <!-- tab content -->
                 <div class="col-md-12 tab-content tab-content-in">
-                    <div class="container resize">
+                    <div class="resize">
                         <div class="row">
                            <div class="style-page-result size-width-result">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
@@ -172,12 +172,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+    
 
 <script>
 $(document).ready(function() {
