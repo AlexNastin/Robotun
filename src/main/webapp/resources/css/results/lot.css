@@ -402,6 +402,14 @@ font-size: 14px;
 	height: 69px;
 }
  }
+ 
+ @media screen and (min-width: 992px) and (max-width: 1280px)  {
+ 
+ ul.countdown li p {
+    color: #fff;
+    font-size: 8px;
+}
+ }
  @media screen and (min-width: 1025px) and (max-width: 1280px)  {
  .resize {
  width: 970px;
