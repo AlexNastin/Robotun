@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>Личный кабинет физического лица</title>
-${nickname}
+
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
@@ -20,6 +20,7 @@ ${nickname}
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+<div class="style-nickname">${nickname}</div>
 <a href='<c:url value="/legal/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
 <a href='<c:url value="/legal/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои лоты</a>
 <a href='<c:url value="/legal/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile">Замечания по лотам</a>
