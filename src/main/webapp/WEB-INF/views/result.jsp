@@ -129,7 +129,7 @@
 
                 <!-- tab content -->
                 <div class="col-md-12 tab-content tab-content-in">
-                    <div class="resize">
+                    <div class="container resize">
                         <div class="row">
                            <div class="style-page-result size-width-result">
                                 <h1 class="text-center">Эти люди ждут твоей помощи:</h1>
