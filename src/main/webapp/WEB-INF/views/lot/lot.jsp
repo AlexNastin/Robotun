@@ -98,13 +98,13 @@
 							<div class="col-md-4 bg_blur "></div>
 							<div class="col-md-8"
 								style="padding-left: 0px; padding-right: 0px">
-								<div class="col-md-4 col-xs-4 well height-block-lot">
+								<div id="1" class="col-md-4 col-xs-4 well height-block-lot">
 									<div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div>
 								</div>
-								<div class="col-md-4 col-xs-4 well height-block-lot">
+								<div id="2" class="col-md-4 col-xs-4 well height-block-lot">
 									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
 								</div>
-								<div class="col-md-4 col-xs-4 well height-block-lot"
+								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
 									<ul class="countdown font-size-time">
 										<li><span class="days">00</span>
@@ -532,6 +532,14 @@ function drawButtonPhoneOwner() {
 	    isMeCall = true;
 	}
 }
+</script>
+<script>
+if ( $(window).width() < 700) {  
+	
+	$( "#1" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#2" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#3" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	} 
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
