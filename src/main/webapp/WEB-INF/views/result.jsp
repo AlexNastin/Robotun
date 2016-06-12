@@ -8,6 +8,7 @@
  <!DOCTYPE html>
 <html ng-app="app">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <meta charset="utf-8">

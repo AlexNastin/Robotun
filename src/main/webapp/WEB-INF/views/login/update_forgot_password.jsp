@@ -7,8 +7,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
-<title>Reset password | Global3DMod</title>
+<title>Восстановление пароля</title>
 <!-- Init search variable -->
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

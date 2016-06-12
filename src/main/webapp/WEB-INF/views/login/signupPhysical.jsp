@@ -8,6 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
 <meta charset="utf-8">
 <spring:url var="addUserPhysical" value="/signup/userPhysical" />
 <spring:url var="addUserLegal" value="/signup/userLegal" />
