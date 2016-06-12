@@ -26,18 +26,18 @@ footer {
 
   .row-offcanvas-left
   .sidebar-offcanvas {
-    left: -33%;
+    left: -60%;
     background-color: #3abeb1;
   }
 
   .row-offcanvas-left.active {
-    left: 33%;
+    left: 60%;
   }
 
   .sidebar-offcanvas {
     position: absolute;
     top: 0;
-    width: 33%;
+    width: 60%;
     margin-left: 10px;
   }
 }

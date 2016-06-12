@@ -66,6 +66,20 @@
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
         <div class="sidebar-text-main-style">Поиск работ</div>
             <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
+            <div class="col-md-12 margin-for-sidebar-text form-group">
+            <div style="color: white; font-weight: bold;">Регион:</div>
+            <select id="idCity" class="form-control">
+									<option value="0">Все регионы</option>
+									<c:set var="idSelectedCity" value="${idCity}"/>
+									<c:forEach items="${listCities}" var="city">
+									<c:if test="${city.idCity == idSelectedCity}">
+																	<c:set var="selected" value="selected"/>
+																</c:if>
+  										<option ${selected} value="${city.idCity}">${city.title}</option>
+  										<c:set var="selected" value=""/>
+  									</c:forEach>
+								</select>
+            </div>
                <div class="col-md-12" id="side-menu">
                      <select class="form-control" id="idCategory"></select>
  				</div>
@@ -92,20 +106,7 @@
   									<option value="cheap">Дешёвые</option>
 			</select>
             </div>
-            <div class="col-md-12 margin-for-sidebar-text">
-            <div style="color: white; font-weight: bold;">Регион:</div>
-            <select id="idCity" class="form-control">
-									<option value="0">Все регионы</option>
-									<c:set var="idSelectedCity" value="${idCity}"/>
-									<c:forEach items="${listCities}" var="city">
-									<c:if test="${city.idCity == idSelectedCity}">
-																	<c:set var="selected" value="selected"/>
-																</c:if>
-  										<option ${selected} value="${city.idCity}">${city.title}</option>
-  										<c:set var="selected" value=""/>
-  									</c:forEach>
-								</select>
-            </div>
+            
             <div class="col-md-12 margin-for-sidebar-text" style="text-align: center;">
 								<a href="#" onclick="resetParam();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
             </div>
@@ -166,7 +167,10 @@
 </div>
         </div><!--/row-->
     </div>
-</div><!--/.container-->
+</div>
+
+
+<!--/.container-->
 
 <!-- Menu Toggle Script -->
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.js" />"></script>
