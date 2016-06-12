@@ -132,7 +132,7 @@
 								</div>
 									<div id="showPhoneOwner">
 
-										<a class="text-style-on-lot" ng-if="lotCtrl.isMeCall" id="ownerNumbera"
+										<a href class="text-style-on-lot" ng-if="lotCtrl.isMeCall" id="ownerNumbera"
 											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)">Посмотреть номер</a>
 										<div id="ownerNumber"></div>
 
@@ -162,7 +162,7 @@
 												<div class="col-md-5" style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
-													onclick="someFunc(); defineText()">Send</a>
+													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
 		                                        </div>
 											</div>
 
@@ -201,7 +201,7 @@
 												<div class="user-detail">
 													<h5 class="handle">{{bet.user.nickname}}</h5>
 													
-													<a ng-if="betCtrl.isICall" id="{{$index}}a"
+													<a href ng-if="betCtrl.isICall" id="{{$index}}a"
 														ng-click="betCtrl.showNumberICall(bet.idUser, $index)">Посмотреть номер</a>
 													<div style="color: black;" id="{{$index}}"></div>
 
@@ -341,10 +341,11 @@ var websocket;
 				}
 			});
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
-			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 10000) {
-				console.log('Прошло 10 минут')
+			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 600000) {
+				console.log('Прошло 10 минут');				
 			} else {
-				console.log('10 минут еще не прошло')
+				console.log('10 минут еще не прошло');
+				document.documentElement.className = "js"
 			}
 			
 			vm.isICall = isICall;
@@ -540,6 +541,12 @@ if ( $(window).width() < 700) {
 	$( "#2" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	$( "#3" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	} 
+</script>
+<script>
+$('#btn').click(function() {
+    $(this).hide(3000);
+});
+
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
