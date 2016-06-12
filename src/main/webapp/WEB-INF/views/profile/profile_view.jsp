@@ -23,10 +23,7 @@ var app = angular.module('app', []);
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <!--This stylesheet should be moved to the head of the document -->
-
-
-
-<div class="container">
+ <div class="container">
     <div class="row">
         <div class=" col-lg-offset-3 col-lg-6">
             <div class="panel panel-default">

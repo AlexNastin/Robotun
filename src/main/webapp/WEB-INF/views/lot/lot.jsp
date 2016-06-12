@@ -341,11 +341,12 @@ var websocket;
 				}
 			});
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
-			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date > 600000) {
+			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date >= 600000) {
 				console.log('Прошло 10 минут');				
 			} else {
 				console.log('10 минут еще не прошло');
-				document.documentElement.className = "js"
+				document.documentElement.className = "js";
+
 			}
 			
 			vm.isICall = isICall;
@@ -441,13 +442,13 @@ var websocket;
 		        if(valueCurrent >= minValue) {
 		            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
 		        } else {
-		            alert('Sorry, the minimum value was reached');
+		            
 		            $(this).val($(this).data('oldValue'));
 		        }
 		        if(valueCurrent <= maxValue) {
 		            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
 		        } else {
-		            alert('Sorry, the maximum value was reached');
+		            
 		            $(this).val($(this).data('oldValue'));
 		        }
 		        

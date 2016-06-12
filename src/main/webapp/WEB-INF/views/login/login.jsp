@@ -21,7 +21,7 @@
 <body>
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	<div class="background-main-image">
-		<div class="container padding-top-login-form row">
+		<div class="container padding-top-login-form">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 form-login-style-login"
 				style="padding-bottom: 0.5em">
