@@ -71,13 +71,14 @@
             <div style="color: white; font-weight: bold;">Регион:</div>
             <select id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
-									<c:set var="idSelectedCity" value="${idCity}"/>
+<%-- 									<c:set var="idSelectedCity" value="${idCity}"/> --%>
 									<c:forEach items="${listCities}" var="city">
-									<c:if test="${city.idCity == idSelectedCity}">
-																	<c:set var="selected" value="selected"/>
-																</c:if>
-  										<option ${selected} value="${city.idCity}">${city.title}</option>
-  										<c:set var="selected" value=""/>
+<%-- 									<c:if test="${city.idCity == idSelectedCity}"> --%>
+<%-- 																	<c:set var="selected" value="selected"/> --%>
+<%-- 																</c:if> --%>
+<%--   										<option ${selected} value="${city.idCity}">${city.title}</option> --%>
+  										<option value="${city.idCity}">${city.title}</option>
+<%--   										<c:set var="selected" value=""/> --%>
   									</c:forEach>
 								</select>
             </div>
@@ -195,7 +196,8 @@ $(document).ready(function() {
    });
  });
  
-var idCity = ${idCity};
+// var idCity = ${idCity};
+var idCity = 0;
 var q = '${query}';
 var fq = ['end_date:[NOW TO NOW+181DAY]'];
 if(idCity != 0) {
