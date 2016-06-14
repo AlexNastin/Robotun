@@ -341,7 +341,9 @@ var websocket;
 				}
 			});
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
-			if(vm.betsByUser != '' && vm.currentDate - vm.betsByUser[0].date >= 600000) {
+			if(vm.betsByUser == '') {
+				console.log('Ставок еще нет');
+			} else if(vm.currentDate - vm.betsByUser[0].date >= 600000) {
 				console.log('Прошло 10 минут');				
 			} else {
 				console.log('10 минут еще не прошло');
