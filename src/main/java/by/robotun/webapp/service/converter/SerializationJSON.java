@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.domain.json.Views;
@@ -40,6 +41,17 @@ public class SerializationJSON {
 		String jsonObjects = null;
 		try {
 			jsonObjects = mapper.writerWithView(Views.Internal.class).writeValueAsString(lot);
+		} catch (JsonProcessingException e) {
+			throw new ServiceException(e);
+		}
+		return jsonObjects;
+	}
+	
+	public String toJsonViewsInternalLot(ArchiveLot archiveLot) throws ServiceException {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonObjects = null;
+		try {
+			jsonObjects = mapper.writerWithView(Views.Internal.class).writeValueAsString(archiveLot);
 		} catch (JsonProcessingException e) {
 			throw new ServiceException(e);
 		}

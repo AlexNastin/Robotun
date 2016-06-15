@@ -23,21 +23,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 import by.robotun.webapp.domain.json.Views;
 
 @Entity
-@Table(name = "lot")
-@NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
-		@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-		@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.city join fetch l.user where l.idLot = :id order by bet.date desc"),
-		@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user join fetch l.city left outer join fetch l.rejectMessages where l.idLot = :id"),
-		@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
-		@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-		@NamedQuery(name = "Lot.findDateLotById", query = "select l.endDate from Lot l where l.idLot = :idLot"),
-		@NamedQuery(name = "Lot.findAllLotOnModeration", query = "select l from Lot l left outer join fetch l.rejectMessages where l.isVisible = :isVisible order by l.startDate"),
-		@NamedQuery(name = "Lot.findLotsCreatedUser", query = "select l from Lot l where l.idUser = :id order by l.startDate desc"),
-		@NamedQuery(name = "Lot.findLotsRespondedUser", query = "select distinct l from Lot l join fetch l.bets as bet where bet.idUser = :id order by l.startDate desc"),
-		@NamedQuery(name = "Lot.findLotOnUpdateByUser", query = "select l from Lot l join fetch l.rejectMessages where l.isVisible = :isVisible and l.idUser = :id order by l.startDate"),
-		@NamedQuery(name = "Lot.findIdOwnerLot", query = "select l.idUser from Lot l where l.idLot = :id")})
+@Table(name = "archive_lot")
+@NamedQueries({ @NamedQuery(name = "ArchiveLot.findAll", query = "select l from ArchiveLot l"),
+		@NamedQuery(name = "ArchiveLot.findLotById", query = "select l from ArchiveLot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.city join fetch l.user where l.idArchiveLot = :id order by bet.date desc"),
+		@NamedQuery(name = "ArchiveLot.findLotsCreatedUser", query = "select l from ArchiveLot l where l.idUser = :id order by l.startDate desc")})
 
-public class Lot implements Essence {
+public class ArchiveLot implements Essence {
 
 	/**
 	 * 
@@ -45,10 +36,10 @@ public class Lot implements Essence {
 	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
-	@Column(name = "id_lot")
+	@Column(name = "id_archive_lot")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.Public.class)
-	private int idLot;
+	private int idArchiveLot;
 
 	@JsonProperty("name")
 	@Column(name = "name")
@@ -87,10 +78,6 @@ public class Lot implements Essence {
 	@JsonView(Views.Public.class)
 	private int budget;
 
-	@Column(name = "is_visible")
-	@JsonView(Views.Public.class)
-	private int isVisible;
-
 	@JsonProperty("isCall")
 	@Column(name = "is_call")
 	@JsonView(Views.Public.class)
@@ -100,9 +87,9 @@ public class Lot implements Essence {
 	@JsonView(Views.Public.class)
 	private int idCity;
 
-	@OneToMany(mappedBy = "lot", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonView(Views.Internal.class)
-	private List<Bet> bets;
+	private List<ArchiveBet> bets;
 
 	@OneToMany(mappedBy = "lot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonView({ Views.InternalRejectMessages.class, Views.InternalConfirmLot.class })
@@ -128,12 +115,12 @@ public class Lot implements Essence {
 	@JoinColumn(name = "id_subcategory", insertable = false, updatable = false)
 	private Subcategory subcategory;
 
-	public int getIdLot() {
-		return idLot;
+	public int getIdArchiveLot() {
+		return idArchiveLot;
 	}
 
-	public void setIdLot(int idLot) {
-		this.idLot = idLot;
+	public void setIdArchiveLot(int idArchiveLot) {
+		this.idArchiveLot = idArchiveLot;
 	}
 
 	public String getName() {
@@ -200,14 +187,6 @@ public class Lot implements Essence {
 		this.budget = budget;
 	}
 
-	public int getIsVisible() {
-		return isVisible;
-	}
-
-	public void setIsVisible(int isVisible) {
-		this.isVisible = isVisible;
-	}
-
 	public boolean getIsCall() {
 		return isCall;
 	}
@@ -224,11 +203,11 @@ public class Lot implements Essence {
 		this.idCity = idCity;
 	}
 
-	public List<Bet> getBets() {
+	public List<ArchiveBet> getBets() {
 		return bets;
 	}
 
-	public void setBets(List<Bet> bets) {
+	public void setBets(List<ArchiveBet> bets) {
 		this.bets = bets;
 	}
 
@@ -284,11 +263,10 @@ public class Lot implements Essence {
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
 		result = prime * result + idCity;
-		result = prime * result + idLot;
+		result = prime * result + idArchiveLot;
 		result = prime * result + idSubcategory;
 		result = prime * result + idUser;
 		result = prime * result + (isCall ? 1231 : 1237);
-		result = prime * result + isVisible;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((rejectMessages == null) ? 0 : rejectMessages.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
@@ -305,7 +283,7 @@ public class Lot implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Lot other = (Lot) obj;
+		ArchiveLot other = (ArchiveLot) obj;
 		if (bets == null) {
 			if (other.bets != null)
 				return false;
@@ -337,15 +315,13 @@ public class Lot implements Essence {
 			return false;
 		if (idCity != other.idCity)
 			return false;
-		if (idLot != other.idLot)
+		if (idArchiveLot != other.idArchiveLot)
 			return false;
 		if (idSubcategory != other.idSubcategory)
 			return false;
 		if (idUser != other.idUser)
 			return false;
 		if (isCall != other.isCall)
-			return false;
-		if (isVisible != other.isVisible)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -377,9 +353,9 @@ public class Lot implements Essence {
 
 	@Override
 	public String toString() {
-		return "Lot [idLot=" + idLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
+		return "ArchiveLot [idArchiveLot=" + idArchiveLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
 				+ idSubcategory + ", startDate=" + startDate + ", endDate=" + endDate + ", description=" + description
-				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall
+				+ ", idUser=" + idUser + ", budget=" + budget + ", isCall=" + isCall
 				+ ", idCity=" + idCity + "]";
 	}
 

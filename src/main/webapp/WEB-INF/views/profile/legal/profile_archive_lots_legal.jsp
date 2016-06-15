@@ -8,7 +8,6 @@
 		<!DOCTYPE HTML>
 <html ng-app="app">
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
 <title>Личный кабинет юридического лица</title>
@@ -26,27 +25,30 @@
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <div class="style-nickname">${nickname}</div>
-<a href='#' class="list-group-item background-color-menu-profile active-menu">Мои отклики</a>
+<a href='<c:url value="/legal/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
 <a href='<c:url value="/legal/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
-<a href='<c:url value="/legal/profile/archiveLots" />' class="list-group-item background-color-menu-profile">Архив работ</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Архив работ</a>
 <a href='<c:url value="/legal/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile">Замечания по работам</a>
 <a href='<c:url value="/legal/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 <a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 <div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
-<div class="text-admin-page-main col-md-12">Мои отклики:</div>
+<div class="text-admin-page-main col-md-12">Мои работы:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">
 <img src="/jobster.by/resources/images/fabian-perez.jpg" class="img-responsive img-thumbnail users-legal-img" alt="Image">
 </div>
 <div class="col-md-9 moderator-descripton">
-<div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/lot?id={{lot.idLot}}' style="font-size: 18pt;">{{lot.name}}</a></div>
+<div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/archiveLot?id={{lot.idArchiveLot}}' style="font-size: 18pt;">{{lot.name}}</a></div>
 <div class="col-md-12 text-moderator-description">{{lot.description}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
-<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
-<div class="col-md-12" style="text-align:right;"><a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/lot?id={{lot.idLot}}'>Подробнее</a></div>
+<div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
+<div class="col-md-12" style="text-align:right;">
+<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/archiveLot?id={{lot.idArchiveLot}}'>Подробнее</a>
+</div>
+
 </div>
 </div>
 </div>
@@ -77,12 +79,12 @@ function mainLotsController ($scope) {
 	});
 }
 
-		function loader(){       
+		function loader(){      
 			var scope = angular.element(document.getElementById("list-group")).scope();
 			// «теневой» запрос к серверу
 			$(".load").fadeIn(500, function () {
 							$.ajax({
-								url:"/jobster.by/autoloader/legal/myResponses",
+								url:"/jobster.by/autoloader/legal/archiveLots",
 								type:"GET",
 								data:{
 									//передаем параметры

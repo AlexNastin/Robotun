@@ -3,6 +3,7 @@ package by.robotun.webapp.service;
 import java.util.Date;
 import java.util.List;
 
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
@@ -14,6 +15,8 @@ public interface IAutoloaderService {
 	List<Lot> getLotsByCategoryAndSubcategory(Integer offset, Date endDate, Integer idCategory, Integer idSubcategory) throws ServiceException;
 	
 	List<Lot> getMyLots(int offset, int idUser) throws ServiceException;
+	
+	List<ArchiveLot> getArchiveLots(int offset, int idUser) throws ServiceException;
 	
 	List<Lot> getMyResponses(int offset, int idUser) throws ServiceException;
 

@@ -23,15 +23,16 @@
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/fabian-perez.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <div class="style-nickname">${nickname}</div>
-<a href='#' class="list-group-item background-color-menu-profile active-menu">Мои лоты</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Мои работы</a>
+<a href='<c:url value="/physical/profile/archiveLots" />' class="list-group-item background-color-menu-profile">Архив работ</a>
 <a href='<c:url value="/physical/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
-<a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по лотам</a>
+<a href='<c:url value="/physical/profile/lotsOnUpdate" />' class="list-group-item background-color-menu-profile ">Замечания по работам</a>
 <a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
 <a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 <div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
-<div class="text-admin-page-main col-md-12">Мои лоты:</div>
+<div class="text-admin-page-main col-md-12">Мои работы:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">

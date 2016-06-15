@@ -53,6 +53,10 @@ public interface IGuestService {
 	
 	long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException;
 	
+	long getCountArchiveBetByLot(Integer idArchiveLot) throws ServiceException;
+	
+	long getCountArchiveBetByLotByUser(Integer idArchiveLot, Integer idUser) throws ServiceException;
+	
 	int getIdOwnerLot(Integer idLot) throws ServiceException;
 
 	

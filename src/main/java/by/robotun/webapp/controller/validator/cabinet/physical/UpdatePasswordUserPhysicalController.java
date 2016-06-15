@@ -37,9 +37,11 @@ public class UpdatePasswordUserPhysicalController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
 
@@ -50,6 +52,7 @@ public class UpdatePasswordUserPhysicalController {
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PHYSICAL_UPDATE_PASSWORD);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		if (!result.hasErrors()) {
 			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
 			userUpdatePasswordForm.setIdUser(person.getId());

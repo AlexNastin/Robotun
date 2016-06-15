@@ -7,8 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import by.robotun.webapp.dao.IArchiveLotDAO;
 import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.dao.IUserDAO;
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exeption.ServiceException;
@@ -19,6 +21,9 @@ public class AutoloaderService implements IAutoloaderService {
 
 	@Autowired
 	private ILotDAO lotDAO;
+	
+	@Autowired
+	private IArchiveLotDAO archiveLotDAO;
 
 	@Autowired
 	private IUserDAO userDAO;
@@ -55,6 +60,17 @@ public class AutoloaderService implements IAutoloaderService {
 			throw new ServiceException(e);
 		}
 		return lots;
+	}
+	
+	@Override
+	public List<ArchiveLot> getArchiveLots(int offset, int idUser) throws ServiceException {
+		List<ArchiveLot> archiveLots = new ArrayList<ArchiveLot>();
+		try {
+			archiveLots = archiveLotDAO.selectArchiveLotsLimitOffset(offset, idUser);
+		} catch (Exception e) {
+			throw new ServiceException(e);
+		}
+		return archiveLots;
 	}
 
 	@Override

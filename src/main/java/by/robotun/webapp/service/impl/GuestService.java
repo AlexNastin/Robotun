@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.robotun.webapp.dao.IArchiveBetDAO;
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.dao.ICityDAO;
@@ -57,6 +58,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IBetDAO betDAO;
+	
+	@Autowired
+	private IArchiveBetDAO archiveBetDAO;
 
 	@Override
 	public User getSaffUser(int idUser) throws ServiceException {
@@ -326,12 +330,34 @@ public class GuestService implements IGuestService {
 		}
 		return count;
 	}
+	
+	@Override
+	public long getCountArchiveBetByLot(Integer idArchiveLot) throws ServiceException {
+		long count = 0;
+		try {
+			count = archiveBetDAO.selectCountArchiveBetByLot(idArchiveLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
+	}
 
 	@Override
 	public long getCountBetByLotByUser(Integer idLot, Integer idUser) throws ServiceException {
 		long count = 0;
 		try {
 			count = betDAO.selectCountBetByLotByUser(idLot, idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
+	}
+	
+	@Override
+	public long getCountArchiveBetByLotByUser(Integer idArchiveLot, Integer idUser) throws ServiceException {
+		long count = 0;
+		try {
+			count = archiveBetDAO.selectCountArchiveBetByLotByUser(idArchiveLot, idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

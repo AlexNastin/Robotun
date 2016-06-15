@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import by.robotun.webapp.domain.ArchiveBet;
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
@@ -69,6 +71,16 @@ public class UserController {
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/physical/profile/archiveLots", method = RequestMethod.GET)
+	public ModelAndView archiveLotsPhysical(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<ArchiveLot> archiveLots = userService.getArchiveLotsCreatedUser(person.getId());
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_PHYSICAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/physical/profile/lotsOnUpdate", method = RequestMethod.GET)
 	public ModelAndView lotsOnUpdatePhysical(Locale locale, Model model, HttpSession httpSession)
@@ -88,6 +100,16 @@ public class UserController {
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/legal/profile/archiveLots", method = RequestMethod.GET)
+	public ModelAndView archiveLotsLegal(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<ArchiveLot> archiveLots = userService.getArchiveLotsCreatedUser(person.getId());
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_LEGAL);
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		return modelAndView;
 	}
@@ -140,6 +162,41 @@ public class UserController {
 		if(lot.getIsCall() && lot.getIdUser() == person.getId()) {
 			for (Bet bet : lot.getBets()) {
 				if(bet.getIdUser() == idUser) {
+					phones = userService.getPhonesStringByIdUser(idUser);
+					break;
+				}
+			}
+		}
+		return phones;
+	}
+	
+	@RequestMapping(value = "/lot/showNumber/archive/owner", method = RequestMethod.GET)
+	public @ResponseBody List<String> getNumbersArchiveOwner(@RequestParam(value = "idLot", required = false) Integer idArchiveLot, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<String> phones = new ArrayList<String>();
+		ArchiveLot archiveLot = userService.getArchiveLotById(idArchiveLot);
+		if(!archiveLot.getIsCall()) {
+			for (ArchiveBet archiveBet : archiveLot.getBets()) {
+				if(archiveBet.getIdUser() == person.getId()) {
+					phones = userService.getPhonesStringByIdUser(archiveLot.getIdUser());
+					break;
+				}
+			}
+		}
+		return phones;
+	}
+	
+	@RequestMapping(value = "/lot/showNumber/archive/client", method = RequestMethod.GET)
+	public @ResponseBody List<String> getNumbersArchiveClient(@RequestParam(value = "idLot", required = false) Integer idArchiveLot,
+			@RequestParam(value = "id", required = false) Integer idUser, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<String> phones = new ArrayList<String>();
+		ArchiveLot archiveLot = userService.getArchiveLotById(idArchiveLot);
+		if(archiveLot.getIsCall() && archiveLot.getIdUser() == person.getId()) {
+			for (ArchiveBet archiveBet : archiveLot.getBets()) {
+				if(archiveBet.getIdUser() == idUser) {
 					phones = userService.getPhonesStringByIdUser(idUser);
 					break;
 				}

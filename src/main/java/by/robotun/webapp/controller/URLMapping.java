@@ -11,6 +11,7 @@ public final class URLMapping {
 	public static final String JSP_UPDATE_LOT = "lot/update_lot";
 	public static final String JSP_RESULT = "result";
 	public static final String JSP_LOT = "lot/lot";
+	public static final String JSP_ARCHIVE_LOT = "lot/archive_lot";
 	public static final String JSP_SIGNUP_PHYSICAL = "login/signupPhysical";
 	public static final String JSP_SIGNUP_LEGAL = "login/signupLegal";
 	public static final String JSP_PROFILE_MAIN_ADMIN = "profile/admin/profile_main_admin";
@@ -21,11 +22,13 @@ public final class URLMapping {
 	public static final String JSP_PROFILE_PERSONAL_LEGAL = "profile/legal/profile_personal_legal";
 	public static final String JSP_PROFILE_LOTS_LEGAL = "profile/legal/profile_lots_legal";
 	public static final String JSP_PROFILE_LOTS_ON_UPDATE_LEGAL = "profile/legal/profile_lots_on_update_legal";
+	public static final String JSP_PROFILE_ARCHIVE_LOTS_LEGAL = "profile/legal/profile_archive_lots_legal";
 
 	public static final String JSP_PROFILE_LOTS_PHYSICAL = "profile/physical/profile_lots_physical";
 	public static final String JSP_PROFILE_PERSONAL_PHYSICAL = "profile/physical/profile_personal_physical";
 	public static final String JSP_PROFILE_RESPONSES_PHYSICAL = "profile/physical/profile_responses_physical";
 	public static final String JSP_PROFILE_LOTS_ON_UPDATE_PHYSICAL = "profile/physical/profile_lots_on_update_physical";
+	public static final String JSP_PROFILE_ARCHIVE_LOTS_PHYSICAL = "profile/physical/profile_archive_lots_physical";
 
 	public static final String JSP_PROFILE_MAIN_MODERATOR = "profile/moderator/profile_main_moderator";
 	public static final String JSP_PROFILE_MODERATOR_REJECT_LOT = "profile/moderator/moderator_reject_lot";

@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
+import by.robotun.webapp.dao.IArchiveLotDAO;
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.dao.IPhoneDAO;
 import by.robotun.webapp.dao.IUserDAO;
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Bet;
 import by.robotun.webapp.domain.Legal;
 import by.robotun.webapp.domain.Lot;
@@ -38,6 +40,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private ILotDAO lotDAO;
+	
+	@Autowired
+	private IArchiveLotDAO archiveLotDAO;
 
 	@Autowired
 	private IBetDAO betDAO;
@@ -83,6 +88,17 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 		return lot;
+	}
+	
+	@Override
+	public ArchiveLot getArchiveLotById(Integer idArchiveLot) throws ServiceException {
+		ArchiveLot archiveLot;
+		try {
+			archiveLot = archiveLotDAO.selectArchiveLotById(idArchiveLot);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return archiveLot;
 	}
 
 	@Override
@@ -196,7 +212,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public List<String> getPhonesStringByIdUser(Integer idUser) throws ServiceException {
-		List<String> phones = new ArrayList<>();
+		List<String> phones = new ArrayList<String>();
 		try {
 			phones = phoneDAO.selectPhonesStringByIdUser(idUser);
 		} catch (DaoException e) {
@@ -207,7 +223,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public List<Lot> getLotsCreatedUser(int idUser) throws ServiceException {
-		List<Lot> lots = new ArrayList<>();
+		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsCreatedUser(idUser);
 		} catch (DaoException e) {
@@ -215,10 +231,21 @@ public class UserService implements IUserService {
 		}
 		return lots;	
 	}
+	
+	@Override
+	public List<ArchiveLot> getArchiveLotsCreatedUser(int idUser) throws ServiceException {
+		List<ArchiveLot> archiveLots = new ArrayList<ArchiveLot>();
+		try {
+			archiveLots = archiveLotDAO.selectArchiveLotsCreatedUser(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return archiveLots;	
+	}
 
 	@Override
 	public List<Lot> getLotsRespondedUser(int idUser) throws ServiceException {
-		List<Lot> lots = new ArrayList<>();
+		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsRespondedUser(idUser);
 		} catch (DaoException e) {

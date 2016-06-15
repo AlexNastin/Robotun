@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import by.robotun.webapp.dao.DaoParamConstant;
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
@@ -66,8 +67,15 @@ public class AutoloaderController {
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
-		System.err.println(lots);
 		return serializationJSON.toJsonViewsPublic(lots);
+	}
+	
+	@RequestMapping(value = "/autoloader/physical/archiveLots", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	public String getPhysicalArchiveLots(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<ArchiveLot> archiveLots = autocompleteService.getArchiveLots(offset, person.getId());
+		return serializationJSON.toJsonViewsPublic(archiveLots);
 	}
 
 	@RequestMapping(value = "/autoloader/physical/myResponses", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
@@ -84,6 +92,14 @@ public class AutoloaderController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = autocompleteService.getMyLots(offset, person.getId());
 		return serializationJSON.toJsonViewsPublic(lots);
+	}
+	
+	@RequestMapping(value = "/autoloader/legal/archiveLots", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	public String getLegalArchiveLots(@RequestParam(value = "offset", required = false) Integer offset,
+			HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		List<ArchiveLot> archiveLots = autocompleteService.getArchiveLots(offset, person.getId());
+		return serializationJSON.toJsonViewsPublic(archiveLots);
 	}
 
 	@RequestMapping(value = "/autoloader/legal/myResponses", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")

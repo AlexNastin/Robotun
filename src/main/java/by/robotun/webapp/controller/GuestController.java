@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
@@ -69,7 +69,6 @@ public class GuestController {
 				|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
 		} else {
-			List<Category> categories = guestService.getAllCategories();
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(lot));
@@ -94,9 +93,48 @@ public class GuestController {
 			} else {
 				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 			}
-			modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJson(categories));
 		}
 		modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/archiveLot", method = RequestMethod.GET)
+	public ModelAndView archiveLot(@RequestParam(value = "id", required = true) Integer idArchiveLot, Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView();
+		if(person != null) {
+			ArchiveLot archiveLot = userService.getArchiveLotById(idArchiveLot);
+			if(person != null && person.getId() == archiveLot.getIdUser()) {
+				modelAndView = new ModelAndView(URLMapping.JSP_ARCHIVE_LOT);
+				modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, archiveLot.getEndDate().getTime());
+				modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(archiveLot));
+				modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountArchiveBetByLot(idArchiveLot));
+				modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
+				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
+				modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
+				if (person != null) {
+					if (archiveLot.getIsCall() && archiveLot.getIdUser() == person.getId()) {
+						modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
+					} else if (!archiveLot.getIsCall()) {
+						if (guestService.getCountArchiveBetByLotByUser(archiveLot.getIdArchiveLot(), person.getId()) > 0) {
+							modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
+							modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
+									userService.getPhonesStringByIdUser(person.getId()));
+						}
+						} else {
+							modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
+						}
+						modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+						modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+					}
+				modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+			} else {
+				modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
+			}
+		} else {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
+		}
 		return modelAndView;
 	}
 

@@ -128,47 +128,6 @@
 								    	<div class="lot-description">
 									<span>{{lotCtrl.lot.description}}</span>
 								</div>
-									<div id="showPhoneOwner">
-
-										<a href class="text-style-on-lot" ng-if="lotCtrl.isMeCall" id="ownerNumbera"
-											ng-click="lotCtrl.showNumberICall(lotCtrl.idUser)">Посмотреть номер</a>
-										<div id="ownerNumber"></div>
-
-										<security:authorize
-											access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-
-											<div id="inputs" class="col-md-12" style="padding-left: 0px;"
-												ng-if="lotCtrl.isShowSendButton">
-												<div class="col-md-4" style="padding-left: 0px;">
-												<div class="input-group">												
-													<span class="input-group-btn"> <input id="myBtn1"
-														type="button" class="btn btn-danger btn-number" value="-"
-														data-type="minus" data-field="quant[2]">
-													</span> 
-													<input type="text" style="text-align: center;" disabled
-														id="cost" name="quant[2]"
-														class="form-control input-number" value="{{lotCtrl.lot.budget}}" min="1"
-														max="1000000"> 
-														<span style="" id="anchor"
-														class="input-group-btn"> 
-														<input id="displus"
-														type="button" class="btn btn-success btn-number" value="+"
-														data-type="plus" data-field="quant[2]">
-													</span> 
-												</div>
-												</div>
-												<div class="col-md-5" style="padding-left: 0px;">
-												<a id="btn"
-													class="button-on-add-lot btn btn-primary button-legal-style send-button"
-													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
-		                                        </div>
-											</div>
-
-										</security:authorize>
-										<security:authorize access="hasRole('ROLE_GUEST')">
-											<a class="btn btn-default login-button-mini-style" style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
-										</security:authorize>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -244,8 +203,6 @@
 	</div> <!-- cd-popup-container -->
 </div>
 	<!-- Menu Toggle Script -->
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/socket/message.js" />"></script>
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -259,7 +216,6 @@ var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse};
 var currentDate = ${currentDate};
-var websocket;
 
 		var jsonData = '${lotJson}';
 
@@ -272,31 +228,18 @@ var websocket;
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
-			
-			// Start WebSockets
-			id = vm.lot.idLot;
-			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
-			websocket = new WebSocket(wsUri);
-			websocket.onerror = function(evt) {
-				console.log("onerror");
-				onError(evt) 
-			};
-			websocket.onopen = function() {
-				console.log("onopen");
-			};
-			websocket.onmessage = function(evt) { onMessage(evt) };
-			// End WebSockets
+			id = vm.lot.idArchiveLot;
 			
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
 			vm.showNumberICall = function(idUser) {
 					$.ajax({
-						url:"lot/showNumber/owner",
+						url:"lot/showNumber/archive/owner",
 						type:"GET",
 						data:{
 							//передаем параметры
-							idLot: vm.lot.idLot
+							idLot: vm.lot.idArchiveLot
 						},
 						success:function(number) {
 							var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
@@ -312,48 +255,17 @@ var websocket;
 			}
 		}
 		
-		// Start WebSockets
-		function onError(evt) {
-			console.log("error");
-    		writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
-		}
-		function sendText(json) {
-			console.log("send");
-    		websocket.send(json);
-		}      
-		function onMessage(evt) {
-			console.log("message");
-    		printText(evt.data, isICall);
-		}
-		// End WebSockets
-		
 		function betController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
 			vm.betsByUser = [];
-			var showcounter = '';
-			angular.forEach(vm.bets, function(bet) {
-				if(bet.idUser == idUser) {
-					vm.betsByUser.push(bet);
-				}
-			});
-			vm.betsByUser.sort(function(a, b){return b.date-a.date});
-			if(vm.betsByUser == '') {
-				console.log('Ставок еще нет');
-			} else if(vm.currentDate - vm.betsByUser[0].date >= 600000) {
-				showcounter = vm.currentDate - vm.betsByUser[0].date; 
-				console.log('Прошло 10 минут');				
-			} else {
-				console.log('10 минут еще не прошло');
-				document.documentElement.className = "js";
-			}
-					
+			
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
 					$.ajax({
-						url:"lot/showNumber/client",
+						url:"lot/showNumber/archive/client",
 						type:"GET",
 						data:{
 							//передаем параметры
@@ -525,16 +437,6 @@ $('.countdown').downCount({
 	
 		
 });
-
-function drawButtonPhoneOwner() {
-	if(!isMeCall && !isElse) {
-		var scope = angular.element(document.getElementById("showPhoneOwner")).scope();
-		scope.$apply(function () {
-			scope.lotCtrl.isMeCall = true;
-		});
-	    isMeCall = true;
-	}
-}
 </script>
 <script>
 if ( $(window).width() < 700) {  
@@ -594,7 +496,7 @@ $('#btn').click(function() {
         };
         t && e.extend(r, t);
         i();
-        interval = setInterval(i, 1e3)    }
+        interval = setInterval(i, 1e3);    }
 })(jQuery);
 
 
