@@ -16,7 +16,8 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/login/login.css"  />"
 	rel="stylesheet" />
-<title>Login</title>
+<title>Вход</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

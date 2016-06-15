@@ -17,7 +17,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />"
 	type="image/x-icon">
     
-<title>main</title>
+<title>Jobster.by | Лучшая разовая работа</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header.jsp"%>

@@ -106,19 +106,19 @@
 								</div>
 								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
-									<ul class="countdown font-size-time">
-										<li><span class="days">00</span>
-											<p class="days_ref">дней</p></li>
-										<li class="seperator">.</li>
-										<li><span class="hours">00</span>
-											<p class="hours_ref">часов</p></li>
-										<li class="seperator">:</li>
-										<li><span class="minutes">00</span>
-											<p class="minutes_ref">минут</p></li>
-										<li class="seperator">:</li>
-										<li><span class="seconds">00</span>
-											<p class="seconds_ref">секунд</p></li>
-									</ul>
+									<div id="countdown">
+													    <p><i class="days">00</i>
+													    <i class="timeRefDays">Дней</i>
+													    <i class="hours">00</i>
+													    <i class="timeRefHours">Часов</i>
+													    </p>
+													    <p>
+													    <i class="minutes">00</i>
+													    <i class="timeRefMinutes">Минут</i>
+													    <i class="seconds">00</i>
+													    <i class="timeRefSeconds"></i>
+													    </p>
+                                     </div>
 								</div>
 
 								<div class="header">
@@ -335,6 +335,7 @@ var websocket;
 			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
 			vm.betsByUser = [];
+			var showcounter = '';
 			angular.forEach(vm.bets, function(bet) {
 				if(bet.idUser == idUser) {
 					vm.betsByUser.push(bet);
@@ -344,13 +345,13 @@ var websocket;
 			if(vm.betsByUser == '') {
 				console.log('Ставок еще нет');
 			} else if(vm.currentDate - vm.betsByUser[0].date >= 600000) {
+				showcounter = vm.currentDate - vm.betsByUser[0].date; 
 				console.log('Прошло 10 минут');				
 			} else {
 				console.log('10 минут еще не прошло');
 				document.documentElement.className = "js";
-
 			}
-			
+					
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
 					$.ajax({
@@ -550,6 +551,72 @@ $('#btn').click(function() {
     $(this).hide(3000);
 });
 
+</script>
+<script>
+(function (e) {
+    e.fn.countdown = function (t, n) {
+        function i() {
+            eventDate = Date.parse(r.date) / 1e3;
+            currentDate = Math.floor(e.now() / 1e3);
+            if (eventDate <= currentDate) {
+                n.call(this);
+                clearInterval(interval)
+            }
+            seconds = eventDate - currentDate-1;
+            days = Math.floor(seconds / 86400);
+            seconds -= days * 60 * 60 * 24;
+            hours = Math.floor(seconds / 3600);
+            seconds -= hours * 60 * 60;
+            minutes = Math.floor(seconds / 60);
+            seconds -= minutes * 60;
+            days == 1 ? thisEl.find(".timeRefDays").text("День") : thisEl.find(".timeRefDays").text("Дней");
+            hours == 1 ? thisEl.find(".timeRefHours").text("Час") : thisEl.find(".timeRefHours").text("Часа");
+            minutes == 1 ? thisEl.find(".timeRefMinutes").text("Минута") : thisEl.find(".timeRefMinutes").text("Минут");
+            seconds == 1 ? thisEl.find(".timeRefSeconds").text("Секунда") : thisEl.find(".timeRefSeconds").text("Секунд");
+            if (r["format"] == "on") {
+                days = String(days).length >= 2 ? days : "0" + days;
+                hours = String(hours).length >= 2 ? hours : "0" + hours;
+                minutes = String(minutes).length >= 2 ? minutes : "0" + minutes;
+                seconds = String(seconds).length >= 2 ? seconds : "0" + seconds
+            }
+            if (!isNaN(eventDate)) {
+                thisEl.find(".days").text(days);
+                thisEl.find(".hours").text(hours);
+                thisEl.find(".minutes").text(minutes);
+                thisEl.find(".seconds").text(seconds)
+            } else {
+                alert("Invalid date. Example: 30 Tuesday 2013 15:50:00");
+                clearInterval(interval)
+            }
+        }
+        var thisEl = e(this);
+        var r = {
+            date: null,
+            format: null
+        };
+        t && e.extend(r, t);
+        i();
+        interval = setInterval(i, 1e3)    }
+})(jQuery);
+
+
+$(document).ready(function () {
+    function e() {
+        var e = new Date;
+        e.setDate(e.getDate() + 60);
+        dd = e.getDate();
+        mm = e.getMonth() + 1;
+        y = e.getFullYear();
+        futureFormattedDate = mm + "/" + dd + "/" + y;
+        return futureFormattedDate
+    }
+    datetime=${dateEndLot};
+    solved = new Date(datetime);
+    $("#countdown").countdown({
+        date: solved, // Change this to your desired date to countdown to
+        format: "off"
+    });
+});
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
