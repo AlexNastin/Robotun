@@ -125,7 +125,7 @@
             <h2>
                     <a href="index.html" class="text-style-size-result">Главная</a>
                     <i class="fa fa-angle-right text-style-size-result"></i>
-                    <span class="text-style-size-result">Результаты по запросу</span>
+                    <span class="text-style-size-result ">Результаты для <span class="text-style-size-result result-city"> </span></span>
                 </h2>
                 
                 <div class="inbox-mail">
@@ -184,6 +184,7 @@
 $(document).ready(function() {
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
 	console.log(selectedCityName);
+	$(".result-city").text(selectedCityName);
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
      destination = $(elementClick).offset().top;
@@ -219,6 +220,7 @@ function resetParam() {
 	}
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
 	console.log(selectedCityName);
+	
 	if(idCategory != 0) {
 		fq.push('id_category:' + idCategory)
 	}
