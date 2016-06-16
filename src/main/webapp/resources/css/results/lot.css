@@ -375,7 +375,7 @@ font-size: 14px;
 	color: #fff;
     background-color: #3abeb1;
     border-color: #2c8f86;
-    width: 30%;
+    width: 60%;
     display: block;
 }
 .send-button:hover{
@@ -383,7 +383,7 @@ font-size: 14px;
 	color: #fff;
     background-color: #2c8f86;
     border-color: #2c8f86;
-    width: 30%;
+    width: 60%;
     display: block;
 }
 @media screen and (min-width: 1281px) and (max-width: 1366px)  {
@@ -748,4 +748,13 @@ xpopup
 }
 .js a#btn{
 	display:none;
+}
+@media screen and (min-width: 0px) and (max-width: 991px)  {
+	.button-on-add-lot{
+	width:100%;
+	}
+	.btn-mobile{
+	padding-bottom: 15px;
+    padding-top: 15px;
+	}
 }

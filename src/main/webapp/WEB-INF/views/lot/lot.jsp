@@ -161,7 +161,7 @@
 													</span> 
 												</div>
 												</div>
-												<div class="col-md-5" style="padding-left: 0px;">
+												<div class="col-md-5 btn-mobile"  style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
 													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
