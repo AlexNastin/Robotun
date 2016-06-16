@@ -58,9 +58,12 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			<div style="text-align:center;">
 			<a class="btn btn-primary button-legal-style-main"
 								onclick='loader()'>Подгрузить еще</a>
+            </div>
+			</div>
+			
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
