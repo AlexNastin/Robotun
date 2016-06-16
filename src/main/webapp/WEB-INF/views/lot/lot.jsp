@@ -105,17 +105,20 @@
 								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
 									<div id="countdown">
-													    <p><i class="days">00</i>
-													    <i class="timeRefDays">Дней</i>
-													    <i class="hours">00</i>
-													    <i class="timeRefHours">Часов</i>
-													    </p>
-													    <p>
-													    <i class="minutes">00</i>
-													    <i class="timeRefMinutes">Минут</i>
-													    <i class="seconds">00</i>
-													    <i class="timeRefSeconds"></i>
-													    </p>
+													   													    
+													    <ul class="countdown font-size-time">													    
+														<li><span class="days">00</span>
+														<p class="days_ref timeRefDays">дней</p></li>
+														<li class="seperator">.</li>
+														<li><span class="hours">00</span>
+														<p class="hours_ref timeRefHours">часов</p></li>
+														<li class="seperator">:</li>
+														<li><span class="minutes">00</span>
+														<p class="minutes_ref timeRefMinutes">минут</p></li>
+														<li class="seperator">:</li>
+														<li><span class="seconds">00</span>
+														<p class="seconds_ref timeRefSeconds">секунд</p></li>
+														</ul>
                                      </div>
 								</div>
 

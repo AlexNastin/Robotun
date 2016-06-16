@@ -75,8 +75,8 @@ footer {
 .main {
   padding: 20px;
   background-color: #fff;
-    background-image: url(signin.jpg);
-    background-size: contain
+    background-image: url(background.jpg);
+   
 
 }
 @media (min-width: 768px) {
