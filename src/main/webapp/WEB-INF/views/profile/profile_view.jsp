@@ -18,6 +18,8 @@
 var app = angular.module('app', []);
 </script>
 	<title>Просмотр профиля</title>
+	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+	
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

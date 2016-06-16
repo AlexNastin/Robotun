@@ -18,6 +18,8 @@
 	rel="stylesheet" />
 <title>Вход</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+
 </head>
 <body>
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

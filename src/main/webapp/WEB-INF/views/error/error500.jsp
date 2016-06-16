@@ -14,6 +14,8 @@
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/error.css" />"	rel="stylesheet">
+		<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+	
 	<title>500 ошибка</title>
 </head>
 <body>

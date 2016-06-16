@@ -14,7 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
     <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
-    <link rel="icon" href="<c:url value="/resources/images/favicon.png" />"
+    <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
     
 <title>Jobster.by | Лучшая разовая работа</title>

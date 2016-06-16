@@ -21,7 +21,8 @@
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/404.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
-     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
+     	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+
      
 <spring:message code="403page.error.oops" var="oops" />
 <spring:message code="404.error.look" var="look" />

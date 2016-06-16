@@ -10,6 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>Работа</title>
+	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />

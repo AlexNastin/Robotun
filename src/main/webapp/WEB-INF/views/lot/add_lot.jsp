@@ -17,6 +17,8 @@
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
+	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+
 
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />

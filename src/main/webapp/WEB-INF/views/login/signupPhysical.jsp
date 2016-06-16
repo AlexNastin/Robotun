@@ -30,6 +30,8 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+    
 
 </head>
 <body>

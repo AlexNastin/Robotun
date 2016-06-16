@@ -24,6 +24,8 @@
 <link href="<c:url value="/resources/css/profiles/legal.css"  />"
 	rel="stylesheet" />
 </head>
+<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+
 <body>
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	<div class="container"
