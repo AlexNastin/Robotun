@@ -32,7 +32,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-           <a  href="<c:url value="/"/>"><img  style="margin-left: 15px;" class="navbar-brand" src="<c:url value="/resources/images/logo4.png"  />" alt="logo"></a>
+           <a  href="<c:url value="/"/>"><img  style="margin-left: 15px;" class="navbar-brand" src="<c:url value="/resources/images/logo5.png"  />" alt="logo"></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
