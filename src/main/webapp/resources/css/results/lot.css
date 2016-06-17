@@ -751,3 +751,15 @@ xpopup
     padding-top: 15px;
 	}
 }
+@media screen and (min-width: 0px) and (max-width: 767px)  {
+	.style-page-result {
+	padding-right: 0em; 
+    padding-left: 0em; 
+    padding-bottom: 0em;
+    
+}
+.main{
+	padding-right: 10px;
+    padding-left: 10px;
+}
+}
