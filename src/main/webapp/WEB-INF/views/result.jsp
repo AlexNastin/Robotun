@@ -176,7 +176,7 @@
 <!--/.container-->
 
 <!-- Menu Toggle Script -->
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
     
