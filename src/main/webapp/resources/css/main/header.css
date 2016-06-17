@@ -29,3 +29,8 @@
 .background-header {
 	background-color:black;
 }
+@media screen and (max-width: 769px) and (min-width: 767px)  {
+.navbar-form{
+	width:430px !important
+}
+	}
