@@ -500,16 +500,9 @@ font-size: 14px;
 	margin-top:1em;
 }
 .font-size-time {
-	font-size: 9pt;
+	font-size: 19pt;
 }
-.height-block-lot {
-	height: 90px;
-	padding-top: 1em;
-}
-.height-block-lot:hover {
-	height: 90px;
-	padding-top: 1em;
-}  
+
 }
 .main-button-style {
 	background-color: rgb(58, 190, 177);
