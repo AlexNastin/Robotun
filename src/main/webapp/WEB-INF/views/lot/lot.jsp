@@ -83,7 +83,7 @@
 						style="margin-top: 20px; margin-bottom: 20px; color: white"
 						ng-controller="LotController as lotCtrl" ng-cloak>
 						<div class="row panel item">
-							<div class="col-md-4 bg_blur "></div>
+							<div class="col-md-4 bg_blur " style="background-image: url(./resources/css/results/large.jpg);"></div>
 							<div class="col-md-8"
 								style="padding-left: 0px; padding-right: 0px">
 								<div id="1" class="col-md-4 col-xs-4 well height-block-lot">
