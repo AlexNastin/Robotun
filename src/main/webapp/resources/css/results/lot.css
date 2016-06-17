@@ -762,4 +762,8 @@ xpopup
 	padding-right: 10px;
     padding-left: 10px;
 }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 }
