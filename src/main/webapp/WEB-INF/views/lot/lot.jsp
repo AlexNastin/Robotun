@@ -70,22 +70,11 @@
 		<div class="row row-offcanvas row-offcanvas-left"
 			style="background-color: #3abeb1;">
 
-			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
-				role="navigation">
-
-				 
-
-
-			</div>
+			
 			<!--/span-->
 
-			<div class="col-sm-9 col-md-10 main">
-				<p class="visible-xs">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="offcanvas">
-						<i class="fa fa-chevron-left"></i>
-					</button>
-				</p>
+			<div class="col-sm-12 col-md-12 main">
+				
 
 				<div class="inbox-mail">
 
