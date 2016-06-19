@@ -239,6 +239,7 @@
 	<!-- Menu Toggle Script -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
+		
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -341,6 +342,7 @@ var websocket;
 			} else {
 				console.log('10 минут еще не прошло');
 				document.documentElement.className = "js";
+							 		
 			}
 					
 			vm.isICall = isICall;
@@ -608,6 +610,11 @@ $(document).ready(function () {
         format: "off"
     });
 });
+function addButton(){
+$('html').removeClass("js");
+}
+setTimeout(addButton, 10000);
+
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
