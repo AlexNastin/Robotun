@@ -239,6 +239,8 @@
 	<!-- Menu Toggle Script -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
+		<script type="text/javascript"
+		src="<c:url value="/resources/js/constant.js" />"></script>
 		
 	<script>
     $("#menu-toggle").click(function(e) {
@@ -254,6 +256,7 @@ var isMeCall = ${isMeCall};
 var isElse = ${isElse};
 var currentDate = ${currentDate};
 var websocket;
+var showcounter = '';
 
 		var jsonData = '${lotJson}';
 
@@ -327,7 +330,6 @@ var websocket;
 			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
 			vm.betsByUser = [];
-			var showcounter = '';
 			angular.forEach(vm.bets, function(bet) {
 				if(bet.idUser == idUser) {
 					vm.betsByUser.push(bet);
@@ -336,10 +338,11 @@ var websocket;
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser == '') {
 				console.log('Ставок еще нет');
-			} else if(vm.currentDate - vm.betsByUser[0].date >= 600000) {
+			} else if(vm.currentDate - vm.betsByUser[0].date >= timeBlockSendButton) {
 				showcounter = vm.currentDate - vm.betsByUser[0].date; 
 				console.log('Прошло 10 минут');				
 			} else {
+				showcounter = vm.currentDate - vm.betsByUser[0].date;
 				console.log('10 минут еще не прошло');
 				document.documentElement.className = "js";
 							 		
@@ -613,7 +616,7 @@ $(document).ready(function () {
 function addButton(){
 $('html').removeClass("js");
 }
-setTimeout(addButton, 10000);
+setTimeout(addButton, timeBlockSendButton - showcounter);
 
 </script>
 	<div class="clearfix"></div>

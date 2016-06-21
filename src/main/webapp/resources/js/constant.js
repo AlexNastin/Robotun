@@ -6,3 +6,5 @@ var solrUrl = 'http://localhost:8983/solr/jcg/select';
 // offsetStart is start number lot, which is loaded at the first page load
 var offset = ajaxLotMaxSize;
 var offsetStart = 0;
+
+var timeBlockSendButton = 10000;
