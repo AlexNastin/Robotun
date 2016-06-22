@@ -7,7 +7,7 @@ var solrUrl = 'http://localhost:8983/solr/jcg/select';
 var offset = ajaxLotMaxSize;
 var offsetStart = 0;
 
-var timeBlockSendButton = 10000;
+var timeBlockSendButton = 600000;
 
 //URL images for lot`s logo
 var globalPath = '/jobster.by/resources/images/avatar_lot/';
