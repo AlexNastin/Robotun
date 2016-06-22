@@ -190,7 +190,8 @@
 														src='/jobster.by/resources/images/avatar_2x.png' /></a>
 												</div>
 												<div class="user-detail">
-													<h5 class="handle">{{bet.user.nickname}}</h5>
+													<h5 class="handle">
+													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></h5>
 													
 													<a href ng-if="betCtrl.isICall" id="{{$index}}a"
 														ng-click="betCtrl.showNumberICall(bet.idUser, $index)">Посмотреть номер</a>
@@ -202,10 +203,6 @@
 																class="qa-message-when"> <span
 																class="qa-message-when-data">{{bet.date |
 																	date:'yyyy-MM-dd HH:mm:ss'}}</span>
-															</span> <span class="qa-message-who"> <span
-																class="qa-message-who-pad">by </span> <span
-																class="qa-message-who-data"><a
-																	ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
 															</span>
 														</div>
 													</div>

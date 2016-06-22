@@ -48,7 +48,8 @@ public class GuestController {
 		if(query==null) {
 			query= "*:*";
 		} else {
-			query= "description:*" + query + "* OR name:*" + query + "*";
+			query.replace(" ", "* or *");
+			query= "description:(*" + query + "*) OR name:(*" + query + "*)";
 		}
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		List<Category> categories = guestService.getAllCategories();

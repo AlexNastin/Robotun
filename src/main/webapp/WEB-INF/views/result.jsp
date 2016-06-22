@@ -201,7 +201,7 @@ $(document).ready(function() {
 // var idCity = ${idCity};
 var idCity = 0;
 var q = '${query}';
-var fq = ['end_date:[NOW TO NOW+181DAY]'];
+var fq = ['end_date:[* TO NOW+181DAY]'];
 if(idCity != 0) {
 	fq.push('id_city:' + idCity)
 }
@@ -229,7 +229,7 @@ function resetParam() {
 		fq.push('id_subcategory:' + idSubcategory)
 	}
 	if(endDate != '') {
-		fq.push('end_date:[NOW TO ' + endDate + 'T24:00:00Z]')
+		fq.push('end_date:[* TO ' + endDate + 'T24:00:00Z]')
 	}
 	if(budgetFrom != '' || budgetTo != '') {
 		if(budgetFrom == '') {
@@ -384,36 +384,24 @@ $(function() {
 		yearRange: "-1:+0"});
     
   });
-$(document)
-.ready(
+$(document).ready(
 		function() {
-			$('#idCategory')
-					.change(
-							function() {
-								$
-										.getJSON(
-												'${getSubcategories}',
-												{
-													idCategory : $(
-															this)
-															.val(),
-													ajax : 'true'
-												},
-												function(data) {
-													var html = '<option value="0">Подкатегория</option>';
-													var len = data.length;
-													for (var i = 0; i < len; i++) {
-														html += '<option value="' + data[i].idSubcategory + '">'
-																+ data[i].title
-																+ '</option>';
-													}
-													html += '</option>';
-													$(
-															'#idSubcategory')
-															.html(
-																	html);
-												});
-							});
+			$('#idCategory').change(function() {
+				$.getJSON('${getSubcategories}',{idCategory : $(this).val(),ajax : 'true'},
+					function(data) {
+					console.log('3452345345235');
+					console.log(data);
+						var html = '<option value="0">Подкатегория</option>';
+						var len = data.length;
+						for (var i = 0; i < len; i++) {
+							html += '<option value="' + data[i].idSubcategory + '">'
+								+ data[i].title
+								+ '</option>';
+						}
+						html += '</option>';
+						$('#idSubcategory').html(html);
+					});
+			});
 		});
 </script>
 <script type="text/javascript">

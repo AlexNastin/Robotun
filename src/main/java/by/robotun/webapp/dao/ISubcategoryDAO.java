@@ -8,5 +8,7 @@ import by.robotun.webapp.exeption.DaoException;
 public interface ISubcategoryDAO {
 
 	public List<Subcategory> selectAllSubcategories() throws DaoException;
+	
+	public List<Subcategory> selectAllSubcategoriesByCategory(int idCategory) throws DaoException;
 
 }

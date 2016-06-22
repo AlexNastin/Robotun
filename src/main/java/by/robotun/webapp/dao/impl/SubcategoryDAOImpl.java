@@ -24,4 +24,11 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 		return subcategories;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Subcategory> selectAllSubcategoriesByCategory(int idCategory) throws DaoException {
+		List<Subcategory> subcategories = entityManager.createNamedQuery("Subcategory.findAllByIdCategory").setParameter("idCategory", idCategory).getResultList();
+		return subcategories;
+	}
+
 }

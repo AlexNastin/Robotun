@@ -96,13 +96,21 @@ public class GuestService implements IGuestService {
 	@Override
 	public List<Subcategory> getAllSubcategoryWithCategory(int idCategory) throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
-		Category category;
+		if(idCategory == 0) {
+			return subcategories;
+		}
 		try {
-			category = categoryDAO.selectCategoryById(idCategory);
-			subcategories = category.getSubcategories();
+			subcategories = subcategoryDAO.selectAllSubcategoriesByCategory(idCategory);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+//		Category category;
+//		try {
+//			category = categoryDAO.selectCategoryById(idCategory);
+//			subcategories = category.getSubcategories();
+//		} catch (DaoException e) {
+//			throw new ServiceException(e);
+//		}
 		return subcategories;
 	}
 

@@ -44,9 +44,6 @@
 		<form:input path="surname" class="form-control" placeholder="surname" value="${user.physical.surname}"/>
 		</div>
 		<div class="form-group">
-		<form:input path="middleName" class="form-control" placeholder="middleName" value="${user.physical.middleName}"/>
-		</div>
-		<div class="form-group">
 		<form:select class="form-control" path="idCity">
 			<c:set var="idSelectCity" value="${user.idCity}"/>
 			<c:forEach items="${listCities}" var="city">

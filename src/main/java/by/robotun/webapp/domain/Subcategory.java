@@ -20,7 +20,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "subcategory")
-@NamedQueries({ @NamedQuery(name = "Subcategory.findAll", query = "select s from Subcategory s") })
+@NamedQueries({ @NamedQuery(name = "Subcategory.findAll", query = "select s from Subcategory s"),
+	 @NamedQuery(name = "Subcategory.findAllByIdCategory", query = "select s from Subcategory s where s.idCategory = :idCategory")})
 public class Subcategory implements Essence {
 
 	/**

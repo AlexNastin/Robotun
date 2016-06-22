@@ -84,10 +84,6 @@
 		<form:input class="form-control" path="surname" placeholder="surname" />
 		<form:errors path="surname" />
 		</div>
-		<div class="form-group">
-		<form:input class="form-control" path="middleName" placeholder="middleName" />
-		<form:errors path="middleName" />
-		</div>
 		<div class="form-group" style='margin-bottom:0px'>
 		<div class="field-phone-style">
 		<form:input class="form-control" path="phones" placeholder="phone1"  />
