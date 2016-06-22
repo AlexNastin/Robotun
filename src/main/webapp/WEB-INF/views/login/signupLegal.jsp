@@ -70,7 +70,7 @@
 		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
 		<div class="col-md-12">
 		<div class="form-group">
-		<form:input class="form-control" path="login" placeholder="login" />
+		<form:input class="form-control" path="login" placeholder="Email" />
 		<form:errors path="login" />
 		</div>
 		<div class="form-group">
@@ -81,24 +81,24 @@
 		</form:select>
 		</div>
 		<div class="form-group">
-		<form:input class="form-control" path="nameEnterprise" placeholder="nameEnterprise" />
+		<form:input class="form-control" path="nameEnterprise" placeholder="Название компании" />
 		<form:errors  path="nameEnterprise" />
 		</div>
 		<div class="form-group">
-		<form:input class="form-control" path="unp" placeholder="unp" />
+		<form:input class="form-control" path="unp" placeholder="УНП" />
 		<form:errors path="unp" />
 		</div>
 		<div class="form-group">
-		<form:input class="form-control" path="address" placeholder="address" />
+		<form:input class="form-control" path="address" placeholder="Адрес" />
 		<form:errors path="address" />
 		</div>
 		<div class="form-group">
-		<form:input class="form-control" path="zipCode" placeholder="zipCode" />
+		<form:input class="form-control" path="zipCode" placeholder="Индекс" />
 		<form:errors path="zipCode" />
 		</div>
 		<div class="form-group">
 		<div class="field-phone-style">
-		<form:input class="form-control" path="phones" placeholder="phone1"  />
+		<form:input class="form-control" path="phones" placeholder="Телефон"  />
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close3" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -108,7 +108,7 @@
 		<div id="block-links3">
    		<div class="form-group">
 		<div class="field-phone-style">
-		<form:input class="form-control" path="phones" placeholder="phone2" />
+		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close4" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -117,17 +117,17 @@
 		</div>
     	<div id="block-links4">
    		<div class="form-group">
-		<form:input class="form-control" path="phones" placeholder="phone3" />
+		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
 		<form:errors path="phones" />
 		</div>
     	</div>
 		</div>
 		<div class="form-group">
-		<form:password class="form-control" path="password" placeholder="password" />
+		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<form:errors path="password" />
 		</div>
 		<div class="form-group">
-		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
+		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<form:errors path="confirmPassword" />
 		</div>
 		<div class="checkbox col-md-12" style="padding-left:22px;">

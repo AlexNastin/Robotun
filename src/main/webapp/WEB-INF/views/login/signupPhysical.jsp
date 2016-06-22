@@ -68,7 +68,7 @@
 		<form:form modelAttribute="addUserPhysicalForm" action="${addUserPhysical}" method="POST">
 		<div class="col-md-12">
 		<div class="form-group">
-		<form:input class="form-control" path="login" placeholder="login" />
+		<form:input class="form-control" path="login" placeholder="Email" />
 			<form:errors path="login" />
 		</div>
 		<div class="form-group">
@@ -79,16 +79,16 @@
 		</form:select>
 	    </div>
 		<div class="form-group">
-		<form:input class="form-control" path="name" placeholder="name" />
+		<form:input class="form-control" path="name" placeholder="Имя" />
 		<form:errors path="name" />
 		</div>
 		<div class="form-group">
-		<form:input class="form-control" path="surname" placeholder="surname" />
+		<form:input class="form-control" path="surname" placeholder="Фамилия" />
 		<form:errors path="surname" />
 		</div>
 		<div class="form-group" style='margin-bottom:0px'>
 		<div class="field-phone-style">
-		<form:input class="form-control" path="phones" placeholder="phone1"  />
+		<form:input class="form-control" path="phones" placeholder="Телефон"  />
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -99,7 +99,7 @@
 		<div id="block-links">
    		<div class="form-group" style='margin-bottom:0px'>
 		<div class="field-phone-style">
-		<form:input class="form-control" path="phones" placeholder="phone2" />
+		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close2" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -109,18 +109,18 @@
    		
     	<div id="block-links2">
    		<div class="form-group">
-		<form:input class="form-control" path="phones" placeholder="phone3" />
+		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
 		<form:errors path="phones" />
 		</div>
     	</div>
 		</div>
 		
 		<div class="form-group">
-		<form:password class="form-control" path="password" placeholder="password" />
+		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<form:errors class="form-control" path="password" />
 		</div>
 		<div class="form-group">
-		<form:password class="form-control" path="confirmPassword" placeholder="confirmPassword" />
+		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<form:errors path="confirmPassword" />
 		</div>
 		<div class="checkbox col-md-12" style="padding-left:22px;">
