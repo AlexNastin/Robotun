@@ -31,7 +31,7 @@ $(document).ready(function(){
 		            return true;
 		    },
 		    "Please select a value");
-		$('#addUserPhysicalForm, #addUserLegalForm').validate({
+		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form').validate({
 			
 	    rules: {
 	    	login: {
@@ -70,6 +70,13 @@ $(document).ready(function(){
 			zipCode: {
 				required: true,
 				regexp: /^[0-9]{6}$/
+			},
+			j_username: {
+				 required: true,
+			     email: true
+			},
+			j_password: {
+				required: true,
 			}
 		   
 },
@@ -111,6 +118,13 @@ messages:  {
 		zipCode: {
 			required: 'Поле не может быть пустым',
 			regexp: 'Некорректный ввод'
+		},
+		j_username: {
+			 required: 'Поле не можеты быть пустым',
+		     email: 'Некорректный e-mail'
+		},
+		j_password: {
+			required: 'Поле не можеты быть пустым'
 		}
 	 
 	 },	
