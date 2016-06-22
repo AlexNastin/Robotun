@@ -41,7 +41,6 @@ public class UpdatePersonalUserPhysicalController {
 		User user = userService.getUserById(person.getId());
 		UpdatePersonalUserPhysicalForm personalUserPhysicalForm = new UpdatePersonalUserPhysicalForm();
 		personalUserPhysicalForm.setIdCity(user.getIdCity());
-		personalUserPhysicalForm.setMiddleName(user.getPhysical().getMiddleName());
 		personalUserPhysicalForm.setName(user.getPhysical().getName());
 		personalUserPhysicalForm.setSurname(user.getPhysical().getSurname());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_PHYSICAL);

@@ -40,10 +40,6 @@ public class Physical implements Essence {
 	@Column(name = "surname")
 	private String surname;
 
-	@JsonView(Views.Public.class)
-	@Column(name = "middle_name")
-	private String middleName;
-
 	@OneToOne
 	@JsonIgnore
 	@JoinColumn(name = "id_user")
@@ -77,14 +73,6 @@ public class Physical implements Essence {
 		this.surname = surname;
 	}
 
-	public String getMiddleName() {
-		return middleName;
-	}
-
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -98,7 +86,6 @@ public class Physical implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idPhysical;
-		result = prime * result + ((middleName == null) ? 0 : middleName.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -115,11 +102,6 @@ public class Physical implements Essence {
 			return false;
 		Physical other = (Physical) obj;
 		if (idPhysical != other.idPhysical)
-			return false;
-		if (middleName == null) {
-			if (other.middleName != null)
-				return false;
-		} else if (!middleName.equals(other.middleName))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -141,8 +123,7 @@ public class Physical implements Essence {
 
 	@Override
 	public String toString() {
-		return "Physical [idPhysical=" + idPhysical + ", name=" + name + ", surname=" + surname + ", middleName="
-				+ middleName + ", user=" + user + "]";
+		return "Physical [idPhysical=" + idPhysical + ", name=" + name + ", surname=" + surname + ", user=" + user + "]";
 	}
 
 }

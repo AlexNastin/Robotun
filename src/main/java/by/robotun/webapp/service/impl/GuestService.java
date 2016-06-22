@@ -135,7 +135,6 @@ public class GuestService implements IGuestService {
 		user.setPassword(md5Password);
 		physical.setName(addUserPhysicalForm.getName());
 		physical.setSurname(addUserPhysicalForm.getSurname());
-		physical.setMiddleName(addUserPhysicalForm.getMiddleName());
 		physical.setUser(user);
 		user.setPhysical(physical);
 

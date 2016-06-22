@@ -150,7 +150,6 @@ public class UserService implements IUserService {
 			Physical physical = user.getPhysical();
 			physical.setName(updatePersonalUserPhysicalForm.getName());
 			physical.setSurname(updatePersonalUserPhysicalForm.getSurname());
-			physical.setMiddleName(updatePersonalUserPhysicalForm.getMiddleName());
 			physical.setUser(user);
 			user.setPhysical(physical);
 			userDAO.updateUser(user);
