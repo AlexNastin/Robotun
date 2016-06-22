@@ -145,7 +145,7 @@
                                     <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
                                     <div class="media col-md-3">
                                             <figure class="pull-left">
-                                                <img class="media-object img-rounded img-responsive"  src="/jobster.by/resources/images/logoJob.png">
+                                                <img class="media-object img-rounded img-responsive"  ng-src="{{lot.logoImage}}">
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
@@ -261,6 +261,7 @@ app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 function mainLotsController ($scope, $http) {
 	var vm = this;
+	vm.lotsImages = lotsImages;
 	$.ajax({	
 		url: solrUrl,
 		type:"GET",
@@ -290,6 +291,7 @@ function mainLotsController ($scope, $http) {
 	vm.createByData = function(data) {
 		var scope = angular.element(document.getElementById("list-group")).scope();
 		angular.forEach(data.response.docs, function(lot) {
+			lot.logoImage = vm.lotsImages[getRandomInt(0,vm.lotsImages.length-1)];
 			scope.lotsCtrl.lots.push(lot);
 		});
 		scope.$apply(function () {
@@ -321,6 +323,7 @@ function sortLots(){
 						success:function(data) {
  							scope.lotsCtrl.lots = [];
  							for(var i=0; i<data.response.docs.length; i++) {
+ 								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
  								scope.lotsCtrl.lots.push(data.response.docs[i]);
  							}
  							scope.$apply(function () {
@@ -360,6 +363,9 @@ function loader(){
 								isEnd = true;
 							}
 							for(var i=0; i<data.response.docs.length; i++) {
+								console.log("dghdtgnnertnh");
+								console.log(scope.lotsCtrl.lotsImages);
+								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
 								scope.lotsCtrl.lots.push(data.response.docs[i]);
 							}
 							scope.$apply(function () {

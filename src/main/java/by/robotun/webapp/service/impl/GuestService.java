@@ -104,13 +104,6 @@ public class GuestService implements IGuestService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-//		Category category;
-//		try {
-//			category = categoryDAO.selectCategoryById(idCategory);
-//			subcategories = category.getSubcategories();
-//		} catch (DaoException e) {
-//			throw new ServiceException(e);
-//		}
 		return subcategories;
 	}
 
