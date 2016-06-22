@@ -19,7 +19,9 @@
 	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">
 	<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script>       
+	<script	src="<c:url value="/resources/js/script.js" />"></script> 
+	<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>       
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -127,6 +129,7 @@
 		Я согласен с правилами пользования сайтом
 		</label>
 		<form:errors path="confirm" />
+		<label style="padding-left: 0px;" class="error" generated="true" for="confirm"></label>
 		</div>
 		</div>
 		<input class="btn btn-custom btn-lg btn-block" type="submit" value="Зарегистрироваться" />
