@@ -5,9 +5,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
+
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta charset="utf-8">
 <title>Добавить работу</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
@@ -19,6 +20,16 @@
 <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+    var myMap;
+    ymaps.ready(function () {
+        myMap = new ymaps.Map("YMapsID", {
+            center: [55.76, 37.64],
+            zoom: 10
+        });
+    });
+</script>
 
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
@@ -33,9 +44,10 @@
 	<div class="text-style-add-lot ">Добавить работу</div>
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> 
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
+	 <div id="YMapsID" style="width: 400px; height: 350px;"></div>
+<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>  -->
+<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> -->
+<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> -->
 	</div>
 	<div class="col-md-6">
 	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
@@ -103,6 +115,7 @@
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<!-- scripts -->
+	
     <script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
