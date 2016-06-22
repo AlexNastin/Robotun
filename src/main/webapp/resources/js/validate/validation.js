@@ -31,7 +31,7 @@ $(document).ready(function(){
 		            return true;
 		    },
 		    "Please select a value");
-		$('#addUserPhysicalForm').validate({
+		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form').validate({
 			
 	    rules: {
 	    	login: {
@@ -50,9 +50,33 @@ $(document).ready(function(){
 			    required: true 	  
 			},
 			password: {
-				rangelength: [8, 32],
 			    regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+			    rangelength: [8, 32],
 			    required: true
+			},
+			nameEnterprise: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/
+			},
+			unp: {
+				required: true,
+				regexp: /^[0-9]{9}$/
+			},
+			address: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 150]
+			},
+			zipCode: {
+				required: true,
+				regexp: /^[0-9]{6}$/
+			},
+			j_username: {
+				 required: true,
+			     email: true
+			},
+			j_password: {
+				required: true,
 			}
 		   
 },
@@ -77,7 +101,32 @@ messages:  {
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.',
 		    regexp: 'Пароль должен содержать прописные и строчные символы латинского алфавита.',
 		    required: 'Поле не можеты быть пустым'
-	 }
+	 },
+	 nameEnterprise: {
+			required: 'Поле не может быть пустым',
+			regexp: 'Проверьте корректность ввода'
+		},
+	unp: {
+			required: 'Поле не может быть пустым',
+			regexp: 'Некорректный УНП'
+	   },
+	   address: {
+			required: 'Поле не может быть пустым',
+			regexp: 'Проверьте корректность ввода',
+			rangelength: 'Не более 150 символов'
+		},
+		zipCode: {
+			required: 'Поле не может быть пустым',
+			regexp: 'Некорректный ввод'
+		},
+		j_username: {
+			 required: 'Поле не можеты быть пустым',
+		     email: 'Некорректный e-mail'
+		},
+		j_password: {
+			required: 'Поле не можеты быть пустым'
+		}
+	 
 	 },	
 
 			highlight: function(element) {
