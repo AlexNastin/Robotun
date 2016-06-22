@@ -4,38 +4,34 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="footer position-sign sign-footer-margin">
-	<div class="container">
-		<div class="footer_grids">
-			<div class="footer-grid">
-				<h4>О нас</h4>
-				<ul class="list1">
-					<li><a href="#">Контакты</a></li>
-					<li><a href="#">О проекте</a></li>
-					<li><a href="#">Команда(на первом этапе скрыто)</a></li>
-				</ul>
+<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-vk"></i></a>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+
 			</div>
-			<div class="footer-grid">
-				<h4>Юридические лица</h4>
-				<ul class="list1">
-					<li><a href="#">Правила пользования</a></li>
-				</ul>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a href="#">Контакты</a>
+					·
+					<a href="#">О проекте</a>
+					·
+					<a href="#">Правила использования</a>
+					·
+					<a href="#">Политика конфендециальности </a>
+					·
+					<a href="#">FAQ</a>
+					·
+					<a href="#">Поддержка</a>
+				</p>
+
+				<p>Jobster &copy; 2016</p>
 			</div>
-			<div class="footer-grid">
-				<h4>Физические лица</h4>
-				<ul class="list1">
-					<li><a href="#">Правила пользования</a></li>
-				</ul>
-			</div>
-			<div class="footer-grid">
-				<h4>Вопросы</h4>
-				<ul class="list1">
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">24/7 Поддержка</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	© Jobster 2016
-</div>
+
+		</footer>
