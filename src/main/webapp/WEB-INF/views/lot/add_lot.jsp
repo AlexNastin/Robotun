@@ -197,7 +197,7 @@
 				$.getJSON('${getCategories}', {
 					ajax : 'true'
 				}, function(data) {
-					var html = '<option value="">Категория</option>';
+					var html = '<option value="0">Категория</option>';
 					var len = data.length;
 					for (var i = 0; i < len; i++) {
 						html += '<option value="' + data[i].idCategory + '">'
