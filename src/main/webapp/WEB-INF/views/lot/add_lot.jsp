@@ -57,7 +57,7 @@
 		<form:textarea path="description" placeholder="Описание" class="form-control" />
 		</div>		
 		<div class="form-group">
-		 <form:select class="form-control" path="idCity" id="cities" onchange="cityOnMap(this.selectedIndex)">
+		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
 							<c:forEach items="${listCities}" var="city">
 								<form:option value="${city.idCity}">${city.title}</form:option>
 							</c:forEach>

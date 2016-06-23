@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
+import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.UpdateLotForm;
@@ -27,6 +29,7 @@ import by.robotun.webapp.form.validator.UpdateLotFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.ServiceParamConstant;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 @RequestMapping("/user/updateLot")
@@ -40,6 +43,9 @@ public class LotUpdateController {
 	
 	@Autowired
 	private IGuestService guestService;
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updateLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -59,7 +65,9 @@ public class LotUpdateController {
 			updateLotForm.setIdSubcategory(lot.getIdSubcategory());
 			updateLotForm.setIsCall(lot.getIsCall());
 			updateLotForm.setName(lot.getName());
-			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+			List<City> cities = guestService.getAllCities();
+			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
+			modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
 			modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
 			modelAndView.addObject(ControllerParamConstant.LOT, lot);
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, dateFormat.format(lot.getEndDate()));
@@ -83,7 +91,9 @@ public class LotUpdateController {
 		}
 		Lot lot = userService.getLotById(updateLotForm.getIdLot());
 		modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		List<City> cities = guestService.getAllCities();
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
 		modelAndView.addObject(ControllerParamConstant.LOT, lot);
 		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITHOUT_TIME);
 		modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, dateFormat.format(lot.getEndDate()));

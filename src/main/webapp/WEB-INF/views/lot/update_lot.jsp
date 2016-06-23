@@ -32,13 +32,22 @@
 	<div class="text-style-add-lot ">Изменить работу</div>
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> 
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
-	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>
+	<div id="YMapsID" style="width: 400px; height: 350px;"></div>
 	</div>
 	<div class="col-md-6">
 	<form:form modelAttribute="updateLotForm" method="POST" onsubmit="endDate.value = Date.value+' '+timeInputId.value+':00:00'">
 	<form:input path="idLot" class="form-control visibility-field"/>
+		
+		<div hidden class="form-group">
+		<form:input type="text" class="form-control" id="latitude" name="latitude" path="latitude"/> 
+			<label class="error" generated="true" for="latitude"></label>
+			<span class="error"><form:errors path="latitude" /></span>
+		</div>
+		<div hidden class="form-group">
+		<form:input type="text" class="form-control" id="longitude" name="longitude" path="longitude"/> 
+			<label class="error" generated="true" for="longitude"></label>
+			<span class="error"><form:errors path="longitude" /></span>
+		</div>
 		<div class="form-group">
 		<form:input path="name" placeholder="Название" class="form-control"/>
 		</div>
@@ -52,7 +61,7 @@
 		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
 		</div>
 		<div class="form-group">
-		 <form:select class="form-control" path="idCity">
+		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
 		 <c:forEach items="${listCities}" var="city">
 							<form:option value="${city.idCity}">${city.title}</form:option>
 								</c:forEach>
@@ -96,7 +105,7 @@
    
     
 			<div class="form-group" style="text-align:center;">
-		<button type="button" data-toggle="modal" data-target="#edit" class="button-add-lot-style btn btn-primary">Изменить</button>
+		<button type="button" data-toggle="modal" data-target="#edit" class="button-add-lot-style btn btn-primary" onclick="setCoordinates()">Изменить</button>
 		
 		<div class="modal fade" id="edit" role="dialog">
     <div class="modal-dialog">
@@ -132,6 +141,43 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+	var cities = '${listCitiesJson}';
+		cities = JSON.parse(cities);
+	var latitude = ${lot.latitude};
+	var longitude = ${lot.longitude};
+	var zoom = cities[0].scale;
+	ymaps.ready(init);
+	var myMap;
+	var myPlacemark;
+	
+    function cityOnMap(index) {
+    	var latitude = cities[index].latitude;
+    	var longitude = cities[index].longitude;
+		zoom = cities[index].scale;
+		myMap.setCenter([latitude, longitude], zoom, {
+		    checkZoomRange: true
+		});
+		myPlacemark.geometry.setCoordinates([latitude, longitude]);
+		
+    }
+    function init() {
+        myMap = new ymaps.Map("YMapsID", {
+            center: [latitude, longitude],
+            zoom: 13
+        });
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'}, {draggable: true});
+        myMap.geoObjects.add(myPlacemark);
+    }
+    
+    function setCoordinates() {
+    	var coordinates = myPlacemark.geometry.getCoordinates();
+    	document.getElementById("latitude").value = coordinates[0];
+    	document.getElementById("longitude").value = coordinates[1];
+    }
+     
+</script>
     <script type="text/javascript">
 	$(document)
 			.ready(

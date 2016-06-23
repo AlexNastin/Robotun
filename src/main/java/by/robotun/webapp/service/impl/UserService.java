@@ -283,6 +283,8 @@ public class UserService implements IUserService {
 			lot.setIsVisible(ServiceParamConstant.ON_MODERATION_NUMBER);
 			lot.setIdCity(updateLotForm.getIdCity());
 			lot.setIsCall(updateLotForm.getIsCall());
+			lot.setLatitude(updateLotForm.getLatitude());
+			lot.setLongitude(updateLotForm.getLongitude());
 			lotDAO.updateLot(lot);
 		} catch (DaoException | ParseException e) {
 			throw new ServiceException(e);
