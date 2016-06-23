@@ -300,10 +300,7 @@ public class Lot implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bets == null) ? 0 : bets.hashCode());
 		result = prime * result + budget;
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + idCategory;
@@ -313,11 +310,13 @@ public class Lot implements Essence {
 		result = prime * result + idUser;
 		result = prime * result + (isCall ? 1231 : 1237);
 		result = prime * result + isVisible;
+		long temp;
+		temp = Double.doubleToLongBits(latitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(longitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((rejectMessages == null) ? 0 : rejectMessages.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
-		result = prime * result + ((subcategory == null) ? 0 : subcategory.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -330,22 +329,7 @@ public class Lot implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Lot other = (Lot) obj;
-		if (bets == null) {
-			if (other.bets != null)
-				return false;
-		} else if (!bets.equals(other.bets))
-			return false;
 		if (budget != other.budget)
-			return false;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -369,36 +353,21 @@ public class Lot implements Essence {
 			return false;
 		if (isCall != other.isCall)
 			return false;
+		if (isVisible != other.isVisible)
+			return false;
 		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
 			return false;
 		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
-			return false;
-		if (isVisible != other.isVisible)
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (rejectMessages == null) {
-			if (other.rejectMessages != null)
-				return false;
-		} else if (!rejectMessages.equals(other.rejectMessages))
-			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
 		} else if (!startDate.equals(other.startDate))
-			return false;
-		if (subcategory == null) {
-			if (other.subcategory != null)
-				return false;
-		} else if (!subcategory.equals(other.subcategory))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -410,5 +379,7 @@ public class Lot implements Essence {
 				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall
 				+ ", idCity=" + idCity + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
+
+	
 
 }

@@ -114,25 +114,21 @@ public class GuestController {
 				modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
-				if (person != null) {
-					if (archiveLot.getIsCall() && archiveLot.getIdUser() == person.getId()) {
-						modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
-					} else if (!archiveLot.getIsCall()) {
-						if (guestService.getCountArchiveBetByLotByUser(archiveLot.getIdArchiveLot(), person.getId()) > 0) {
-							modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
-							modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
-									userService.getPhonesStringByIdUser(person.getId()));
-						}
-						} else {
-							modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
-						}
-						modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-						modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+				if (archiveLot.getIsCall() && archiveLot.getIdUser() == person.getId()) {
+					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
+				} else if (!archiveLot.getIsCall()) {
+					if (guestService.getCountArchiveBetByLotByUser(archiveLot.getIdArchiveLot(), person.getId()) > 0) {
+						modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
+						modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
+								userService.getPhonesStringByIdUser(person.getId()));
 					}
-				modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
-			} else {
-				modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
-			}
+					} else {
+						modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
+					}
+					modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+					modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+				}
+			modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
 		} else {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}

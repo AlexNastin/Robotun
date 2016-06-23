@@ -130,6 +130,7 @@
 									<span>{{lotCtrl.lot.description}}</span>
 								</div>
 								</div>
+								<div id="YMapsID" style="width: 400px; height: 350px;"></div>
 							</div>
 						</div>
 
@@ -203,6 +204,9 @@
 		<a href="#0" class="cd-popup-close img-replace">Close</a>
 	</div> <!-- cd-popup-container -->
 </div>
+<script type="text/javascript"
+		src="<c:url value="/resources/js/constant.js" />"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 	<!-- Menu Toggle Script -->
 	<script>
     $("#menu-toggle").click(function(e) {
@@ -217,6 +221,8 @@ var isICall = ${isICall};
 var isMeCall = ${isMeCall};
 var isElse = ${isElse};
 var currentDate = ${currentDate};
+var latitude;
+var longitude;
 
 		var jsonData = '${lotJson}';
 
@@ -230,7 +236,8 @@ var currentDate = ${currentDate};
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
 			id = vm.lot.idArchiveLot;
-			
+			latitude = vm.lot.latitude;
+			longitude = vm.lot.longitude;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
@@ -287,6 +294,23 @@ var currentDate = ${currentDate};
 					});
 			}
 		}
+		
+// map
+		
+		var myMap;
+		var myPlacemark;
+		
+		ymaps.ready(init);
+	    function init() {
+	        myMap = new ymaps.Map("YMapsID", {
+	            center: [latitude, longitude],
+	            zoom: 13
+	        });
+	        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'});
+	        myMap.geoObjects.add(myPlacemark);
+	    }
+	     
+		// end map
 		
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){

@@ -163,6 +163,7 @@
 										</security:authorize>
 									</div>
 								</div>
+								<div id="YMapsID" style="width: 400px; height: 350px;"></div>
 							</div>
 						</div>
 
@@ -238,7 +239,7 @@
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
 		<script type="text/javascript"
 		src="<c:url value="/resources/js/constant.js" />"></script>
-		
+		<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -254,6 +255,8 @@ var isElse = ${isElse};
 var currentDate = ${currentDate};
 var websocket;
 var showcounter = '';
+var latitude;
+var longitude;
 
 		var jsonData = '${lotJson}';
 
@@ -269,6 +272,8 @@ var showcounter = '';
 			
 			// Start WebSockets
 			id = vm.lot.idLot;
+			latitude = vm.lot.latitude;
+			longitude = vm.lot.longitude;
 			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
 			websocket = new WebSocket(wsUri);
 			websocket.onerror = function(evt) {
@@ -369,6 +374,23 @@ var showcounter = '';
 					});
 			}
 		}
+		
+		// map
+		
+		var myMap;
+		var myPlacemark;
+		
+		ymaps.ready(init);
+	    function init() {
+	        myMap = new ymaps.Map("YMapsID", {
+	            center: [latitude, longitude],
+	            zoom: 13
+	        });
+	        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'});
+	        myMap.geoObjects.add(myPlacemark);
+	    }
+	     
+		// end map
 		
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){
