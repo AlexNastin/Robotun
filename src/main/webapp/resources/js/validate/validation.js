@@ -32,6 +32,12 @@ $(document).ready(function(){
 		    },
 		    "Please select a value");
 	
+	//Валидация поиска и фильтра
+	$('').validate({
+		
+	})
+	//Валидация поиска и фильтра конец
+	
 	//Валидация на добавление и обновление работы
 	$('#addLotForm, #updateLotForm').validate({
 		ignore: ".ignore",
@@ -103,12 +109,10 @@ $(document).ready(function(){
 			.closest('.control-group').removeClass('error').addClass('success');
 		}
 	});
-	
+		
 	//Валидация на добавление и обновление работы конец
 	
-	
-	
-		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form, #addModeratorForm').validate({
+		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form, #addModeratorForm, #updatePersonalPhysicalForm, #updatePersonalLegalForm').validate({
 			
 	    rules: {
 	    	login: {
@@ -159,25 +163,33 @@ $(document).ready(function(){
 				required: true,
 				regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 				rangelength: [8, 32],
+			},
+			name: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/
+			},
+			surname: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/
 			}
 		   
 },
 messages:  {
 	//messages
 	login: {
-		required: 'Поле не можеты быть пустым.',
+		required: 'Поле не может быть пустым.',
 		email: 'Неверный e-mail.'
 		},
 	phones: {
 		regexp: 'Некорретный номер телефона.',
-		required: 'Поле не можеты быть пустым.',
+		required: 'Поле не может быть пустым.',
 		},
 	confirm: {
 		required: 'Для регистрации необходимо согласиться с правилами пользования сайтом.'
 		},
 	confirmPassword: {
 		     equalTo: "Пароли не совпадают.",
-		     required: 'Поле не можеты быть пустым.',	  
+		     required: 'Поле не может быть пустым.',	  
 	    },
 	 password: {
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.',
@@ -202,16 +214,24 @@ messages:  {
 			regexp: 'Некорректный ввод.'
 		},
 		j_username: {
-			 required: 'Поле не можеты быть пустым.',
+			 required: 'Поле не может быть пустым.',
 		     email: 'Некорректный e-mail.'
 		},
 		j_password: {
-			required: 'Поле не можеты быть пустым.'
+			required: 'Поле не может быть пустым.'
 		},
 		oldPassword: {
 			required: 'Поле не может быть пустым.',
 			regexp: 'Пароль должен содержать прописные и строчные символы латинского алфавита.',
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.'
+		},
+		name: {
+			required: 'Поле не может быть пустым.',
+			regexp: 'Некорректный ввод'
+		},
+		surname: {
+			required: 'Поле не может быть пустым.',
+			regexp: 'Некорректный ввод'
 		}
 	 
 	 },	
