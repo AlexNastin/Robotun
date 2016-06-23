@@ -99,6 +99,14 @@ public class Lot implements Essence {
 	@Column(name = "id_city")
 	@JsonView(Views.Public.class)
 	private int idCity;
+	
+	@Column(name = "latitude")
+	@JsonView(Views.Public.class)
+	private double latitude;
+	
+	@Column(name = "longitude")
+	@JsonView(Views.Public.class)
+	private double longitude;
 
 	@OneToMany(mappedBy = "lot", fetch = FetchType.LAZY)
 	@JsonView(Views.Internal.class)
@@ -224,6 +232,22 @@ public class Lot implements Essence {
 		this.idCity = idCity;
 	}
 
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	public List<Bet> getBets() {
 		return bets;
 	}
@@ -345,6 +369,10 @@ public class Lot implements Essence {
 			return false;
 		if (isCall != other.isCall)
 			return false;
+		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
+			return false;
+		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
+			return false;
 		if (isVisible != other.isVisible)
 			return false;
 		if (name == null) {
@@ -380,7 +408,7 @@ public class Lot implements Essence {
 		return "Lot [idLot=" + idLot + ", name=" + name + ", idCategory=" + idCategory + ", idSubcategory="
 				+ idSubcategory + ", startDate=" + startDate + ", endDate=" + endDate + ", description=" + description
 				+ ", idUser=" + idUser + ", budget=" + budget + ", isVisible=" + isVisible + ", isCall=" + isCall
-				+ ", idCity=" + idCity + "]";
+				+ ", idCity=" + idCity + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
 	

@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import by.robotun.webapp.domain.json.Views;
 
 @Entity
 @Table(name = "city")
@@ -29,11 +32,25 @@ public class City implements Essence {
 	@Id
 	@Column(name = "id_city")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Public.class)
 	private int idCity;
 
 	@Column(name = "title")
+	@JsonView(Views.Public.class)
 	private String title;
 	
+	@Column(name = "scale")
+	@JsonView(Views.Public.class)
+	private int scale;
+	
+	@Column(name = "latitude")
+	@JsonView(Views.Public.class)
+	private double latitude;
+	
+	@Column(name = "longitude")
+	@JsonView(Views.Public.class)
+	private double longitude;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;
@@ -58,6 +75,30 @@ public class City implements Essence {
 		this.title = title;
 	}
 
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public int getScale() {
+		return scale;
+	}
+
+	public void setScale(int scale) {
+		this.scale = scale;
+	}
+
 	public List<User> getUsers() {
 		return users;
 	}
@@ -79,6 +120,12 @@ public class City implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCity;
+		long temp;
+		temp = Double.doubleToLongBits(latitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(longitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + scale;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -94,6 +141,12 @@ public class City implements Essence {
 		City other = (City) obj;
 		if (idCity != other.idCity)
 			return false;
+		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
+			return false;
+		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
+			return false;
+		if (scale != other.scale)
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -104,7 +157,8 @@ public class City implements Essence {
 
 	@Override
 	public String toString() {
-		return "City [idCity=" + idCity + ", title=" + title + "]";
+		return "City [idCity=" + idCity + ", title=" + title + ", scale=" + scale + ", latitude=" + latitude
+				+ ", longitude=" + longitude + "]";
 	}
 
 	

@@ -41,6 +41,8 @@ public final class ControllerParamConstant {
 	public static final String LIST_CATEGORIES_JSON = "listCategoriesJson";
 	
 	public static final String LIST_USERS_JSON = "listUsersJson";
+	
+	public static final String LIST_CITIES_JSON = "listCitiesJson";
 
 	/**
 	 * One
@@ -94,5 +96,7 @@ public final class ControllerParamConstant {
 	public static final String TYPE_REVERSE = "typeReverse";
 
 	public static final String QUERY = "query";
+
+
 
 }

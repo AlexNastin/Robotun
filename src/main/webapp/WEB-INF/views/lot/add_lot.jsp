@@ -20,16 +20,7 @@
 <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script type="text/javascript">
-    var myMap;
-    ymaps.ready(function () {
-        myMap = new ymaps.Map("YMapsID", {
-            center: [55.76, 37.64],
-            zoom: 10
-        });
-    });
-</script>
+
 
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
@@ -45,13 +36,20 @@
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
 	 <div id="YMapsID" style="width: 400px; height: 350px;"></div>
-<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span>  -->
-<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> -->
-<!-- 	<p><i class="fa fa-angle-right fa-2x"></i> <span class="text-style-board-add-lot">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quis libero et pretium. Donec eu risus scelerisque, venenatis mi at, imperdiet sapien. Fusce felis nibh, vulputate id purus nec, cursus aliquam nisl.</span> -->
-	</div>
+	 </div>
 	<div class="col-md-6">
 	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
 	
+		<div hidden class="form-group">
+		<form:input type="text" class="form-control" id="latitude" name="latitude" path="latitude"/> 
+			<label class="error" generated="true" for="latitude"></label>
+			<span class="error"><form:errors path="latitude" /></span>
+		</div>
+		<div hidden class="form-group">
+		<form:input type="text" class="form-control" id="longitude" name="longitude" path="longitude"/> 
+			<label class="error" generated="true" for="longitude"></label>
+			<span class="error"><form:errors path="longitude" /></span>
+		</div>
 		<div class="form-group">
 		<form:input path="name" placeholder="Название" class="form-control"/>
 		</div>
@@ -59,7 +57,7 @@
 		<form:textarea path="description" placeholder="Описание" class="form-control" />
 		</div>		
 		<div class="form-group">
-		 <form:select class="form-control" path="idCity">
+		 <form:select class="form-control" path="idCity" id="cities" onchange="cityOnMap(this.selectedIndex)">
 							<c:forEach items="${listCities}" var="city">
 								<form:option value="${city.idCity}">${city.title}</form:option>
 							</c:forEach>
@@ -105,7 +103,7 @@
    
     
 			<div class="form-group" style="text-align:center;">
-		<input type="submit" class="button-add-lot-style btn btn-primary" value="Добавить"/>
+		<input type="submit" class="button-add-lot-style btn btn-primary" value="Добавить" onclick="setCoordinates()"/>
 		</div>
 	</form:form>
 	</div>
@@ -120,7 +118,43 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+	var cities = '${listCitiesJson}';
+		cities = JSON.parse(cities);
+	var latitude = cities[0].latitude;
+	var longitude = cities[0].longitude;
+	var zoom = cities[0].scale;
+	ymaps.ready(init);
+	var myMap;
+	var myPlacemark;
+	
+    function cityOnMap(index) {
+    	var latitude = cities[index].latitude;
+    	var longitude = cities[index].longitude;
+		zoom = cities[index].scale;
+		myMap.setCenter([latitude, longitude], zoom, {
+		    checkZoomRange: true
+		});
+		myPlacemark.geometry.setCoordinates([latitude, longitude]);
+		
+    }
+    function init() {
+        myMap = new ymaps.Map("YMapsID", {
+            center: [latitude, longitude],
+            zoom: zoom
+        });
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'}, {draggable: true});
+        myMap.geoObjects.add(myPlacemark);
+    }
     
+    function setCoordinates() {
+    	var coordinates = myPlacemark.geometry.getCoordinates();
+    	document.getElementById("latitude").value = coordinates[0];
+    	document.getElementById("longitude").value = coordinates[1];
+    }
+     
+</script>
     <script type="text/javascript">
 	$(document)
 			.ready(

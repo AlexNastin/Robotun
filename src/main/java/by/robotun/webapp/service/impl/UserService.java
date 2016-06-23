@@ -72,6 +72,8 @@ public class UserService implements IUserService {
 			lot.setIsCall(addLotForm.getIsCall());
 			lot.setIdCity(addLotForm.getIdCity());
 			lot.setIdUser(idUser);
+			lot.setLatitude(addLotForm.getLatitude());
+			lot.setLongitude(addLotForm.getLongitude());
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
 			throw new ServiceException(e);

@@ -1,5 +1,6 @@
 package by.robotun.webapp.controller.validator;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -15,11 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
+import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.validator.AddLotFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
+import by.robotun.webapp.service.converter.SerializationJSON;
 
 @Controller
 @RequestMapping("/user/addLot")
@@ -33,11 +36,16 @@ public class LotAddController {
 	
 	@Autowired
 	private IGuestService guestService;
+	
+	@Autowired
+	private SerializationJSON serializationJSON;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addLot(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		List<City> cities = guestService.getAllCities();
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
 		return modelAndView;
 	}
@@ -54,7 +62,9 @@ public class LotAddController {
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
 			modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+		List<City> cities = guestService.getAllCities();
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
+		modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
 		return modelAndView;
 	}
 

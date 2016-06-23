@@ -17,6 +17,8 @@ public class AddLotForm implements Essence {
 	private int idSubcategory;
 	private int idCity;
 	private boolean isCall;
+	private double latitude;
+	private double longitude;
 
 	public String getName() {
 		return name;
@@ -82,6 +84,22 @@ public class AddLotForm implements Essence {
 		this.isCall = isCall;
 	}
 
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,6 +111,11 @@ public class AddLotForm implements Essence {
 		result = prime * result + idCity;
 		result = prime * result + idSubcategory;
 		result = prime * result + (isCall ? 1231 : 1237);
+		long temp;
+		temp = Double.doubleToLongBits(latitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(longitude);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -129,6 +152,10 @@ public class AddLotForm implements Essence {
 			return false;
 		if (isCall != other.isCall)
 			return false;
+		if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude))
+			return false;
+		if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -141,7 +168,8 @@ public class AddLotForm implements Essence {
 	public String toString() {
 		return "AddLotForm [name=" + name + ", endDate=" + endDate + ", description=" + description + ", budget="
 				+ budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory + ", idCity=" + idCity
-				+ ", isCall=" + isCall + "]";
+				+ ", isCall=" + isCall + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
+	
 }
