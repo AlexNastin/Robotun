@@ -70,7 +70,7 @@
             <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
             <div class="col-md-12 margin-for-sidebar-text form-group">
             <div style="color: white; font-weight: bold;">Регион:</div>
-            <select id="idCity" class="form-control">
+            <select onchange="updcity()" id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
 <%-- 									<c:set var="idSelectedCity" value="${idCity}"/> --%>
 									<c:forEach items="${listCities}" var="city">
@@ -182,22 +182,19 @@
     
 
 <script>
+function updcity(){
+	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+	$(".result-city").text(selectedCityName);
+}
 $(document).ready(function() {
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
+	
 	console.log(selectedCityName);
 	$(".result-city").text(selectedCityName);
-	$("a.scroll").click(function () { 
-     elementClick = $(this).attr("href");
-     destination = $(elementClick).offset().top;
-     if($.browser.safari){
-       $('body').animate( { scrollTop: destination }, 1100 );
-     }else{
-       $('html').animate( { scrollTop: destination }, 1100 );
-     }
-     return false;
-   });
+	
+	
  });
- 
+
 // var idCity = ${idCity};
 var idCity = 0;
 var q = '${query}';
@@ -221,6 +218,7 @@ function resetParam() {
 	}
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
 	console.log(selectedCityName);
+	{$(".result-city").text(selectedCityName);}
 	
 	if(idCategory != 0) {
 		fq.push('id_category:' + idCategory)
