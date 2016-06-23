@@ -124,9 +124,9 @@
             </p>
 
             <h2>
-                    <a href="index.html" class="text-style-size-result">Главная</a>
-                    <i class="fa fa-angle-right text-style-size-result"></i>
-                    <span class="text-style-size-result ">Результаты для <span class="text-style-size-result result-city"> </span></span>
+                    <a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
+                    <i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
+                    <span style="font-size: 25px; color:white;"class="text-style-size-result ">Результаты для <span  style="font-size: 25px; color:#3abeb1" class="text-style-size-result result-city"> </span></span>
                 </h2>
                 
                 <div class="inbox-mail">
