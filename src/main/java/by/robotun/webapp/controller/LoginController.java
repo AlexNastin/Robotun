@@ -12,7 +12,7 @@ import by.robotun.webapp.exeption.ServiceException;
 
 @Controller
 public class LoginController {
-
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
@@ -30,5 +30,4 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_MAIN);
 		return modelAndView;
 	}
-
 }
