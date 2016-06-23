@@ -58,6 +58,9 @@ $(document).ready(function(){
 			},
 			budget: {
 				required: true,
+			},
+			timeInputName: {
+				range: [0,24]
 			}
 			
 		},
@@ -84,6 +87,9 @@ $(document).ready(function(){
 			},
 			budget: {
 				required: 'Поле не может быть пустым.',
+			},
+			timeInputName: {
+				range: 'Некорректный ввод'
 			}
 			
 		},

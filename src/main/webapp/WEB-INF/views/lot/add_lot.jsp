@@ -82,10 +82,10 @@
 					<div class="form-group">
 					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
 					</div>
-					<div class="form-group">
+					<div class="form-group ignore">
 					
-					   <input type="range" class="ignore" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
-    <output style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					   <input type="range" class="" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
+    <output class="ignore" style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
 					</div>
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
