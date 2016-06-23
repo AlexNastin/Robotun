@@ -37,18 +37,16 @@ public class UpdateUserPasswordFormValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		UpdateUserPasswordForm personalSecurityForm = (UpdateUserPasswordForm) target;
-		System.err.println(personalSecurityForm.getIdUser() +"!!!!!!!!!!!!!!!!!!!!!2");
 		User user = null;
 		try {
-			System.err.println(personalSecurityForm.getIdUser() +"!!!!!!!!!!!!!!!!!!!!!1");
 			user = userService.getSaffUser(personalSecurityForm.getIdUser());
 			System.err.println(user);
 		} catch (ServiceException e) {
 			LOGGER.error("Проблема с извлечением пользователя из DAO-слоя, при аутентификации.");
 		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_OLD_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_EMPTY);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_NEW_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_EMPTY);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_CONFIRM_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_EMPTY);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_OLD_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_NEW_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_CONFIRM_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		String md5Password = DigestUtils.md5Hex(personalSecurityForm.getOldPassword());
 		if (!(md5Password.equals(user.getPassword()))) {
 			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_UPDATE_PASSWORD_OLD_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_OLD_PASSWORD_DONT_MATCH);

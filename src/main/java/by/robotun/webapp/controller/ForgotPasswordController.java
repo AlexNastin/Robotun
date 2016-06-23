@@ -56,7 +56,7 @@ public class ForgotPasswordController {
 	public ModelAndView resetPassword(HttpServletRequest request, @RequestParam("email") String userEmail, Locale locale)
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("login/forgot_password");
-		Pattern pattern = collectionRegEx.getRegExPattern(RegExName.REGEX_EMAIL);
+		Pattern pattern = collectionRegEx.getRegExPattern(RegExName.REGEX_LOGIN);
 		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
 		if (matcher.matches()) {
 			User user = guestService.getUser(userEmail);

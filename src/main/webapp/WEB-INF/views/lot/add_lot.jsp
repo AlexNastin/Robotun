@@ -52,9 +52,11 @@
 		</div>
 		<div class="form-group">
 		<form:input path="name" placeholder="Название" class="form-control"/>
+		<form:errors path="name" />
 		</div>
 		<div class="form-group">
 		<form:textarea path="description" placeholder="Описание" class="form-control" />
+		<form:errors path="description" />
 		</div>		
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
@@ -63,6 +65,7 @@
 							</c:forEach>
 						</form:select>
 						</div>
+		<form:errors path="idCity" />
 		<div class="form-group">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>

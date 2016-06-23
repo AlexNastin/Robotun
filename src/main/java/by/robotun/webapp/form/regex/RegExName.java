@@ -4,31 +4,27 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class RegExName {
-
-	public static final String REGEX_NICKNAME_USER = "nickname";
-
-	public static final String REGEX_PASSWORD = "password";
-
+	public static final String REGEX_NUMBER = "number";
+	public static final String REGEX_LOGIN = "login";
 	public static final String REGEX_UUID = "uuid";
-
-	public static final String REGEX_EMAIL = "email";
-
-	public static final String REGEX_FULL_NAME_USER = "fullName";
-
-	public static final String REGEX_TITLE_POST = "title";
-
-	public static final String REGEX_DESCRIPTION_POST = "description";
-
-	public static final String REGEX_INSTRUCTION_POST = "instruction";
-
-	public static final String REGEX_PHOTO_POST = "photo";
-
-	public static final String REGEX_MODEL_POST = "model";
-
-	public static final String REGEX_MESSAGE_POST = "message";
-
-	public static final String REGEX_FILE_EXT = "fileExt";
-
+	public static final String REGEX_PASSWORD = "password";
+	public static final String REGEX_DESCRIPTION = "description";
+	public static final String REGEX_NAME_LOT = "nameLot";
 	public static final String REGEX_DATE = "date";
-
+	public static final String REGEX_NUMBERS = "numbers";
+	
+	public static final String REGEX_FULL_NAME_USER = "fullName";
+	public static final String REGEX_PHONE = "phone";
+	public static final String REGEX_ROLE = "role";
+	public static final String REGEX_RUS_NAME = "name";
+	public static final String REGEX_PERSONAL_NUMBER = "personalNumber";
+	public static final String REGEX_ENG_LETTERS_AND_NUMBERS = "engLettersAndNumbers";
+	public static final String REGEX_RUS_LETTERS = "rusLetters";
+	public static final String REGEX_PERSONAL_ACCOUNT = "personalAccount";
+	public static final String REGEX_FLAT_LETTER = "flatLetter";
+	public static final String REGEX_OKPO = "okpo";
+	public static final String REGEX_NO_LATIN_LETTERS = "noLatinLetters";
+	public static final String REGEX_MFO = "mfo";
+	public static final String REGEX_SUB_BANK_CODE= "subBankCode";
+	public static final String REGEX_CORRESPONDING_ACCOUNTE= "correspondingAccounte";
 }

@@ -4,9 +4,6 @@ import by.robotun.webapp.domain.Essence;
 
 public class AddLotForm implements Essence {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5361840265819238195L;
 
 	private String name;
@@ -170,6 +167,4 @@ public class AddLotForm implements Essence {
 				+ budget + ", idCategory=" + idCategory + ", idSubcategory=" + idSubcategory + ", idCity=" + idCity
 				+ ", isCall=" + isCall + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
-
-	
 }
