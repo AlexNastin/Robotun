@@ -31,6 +31,77 @@ $(document).ready(function(){
 		            return true;
 		    },
 		    "Please select a value");
+	
+	//Для добавления работы
+	$('#addLotForm').validate({
+		ignore: ".ignore",
+		rules: {
+			name: {
+				required: true,
+				regexp: /^[а-яА-ЯёЁ0-9\.\,\ ]+$/,
+				rangelength: [1, 100]		    
+			},
+			description: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 500]	
+			},
+			idCategory: {
+				aFunction: true,
+			},
+			idSubcategory: {
+				aFunction: true
+			},
+			Date: {
+				required: true,
+				date: true
+			},
+			budget: {
+				required: true,
+			}
+			
+		},
+		messages: {
+			name: {
+				required: 'Поле не может быть пустым.',
+				regexp: 'Некорректный ввод.',
+				rangelength: 'Не более 100 символов.'
+			},
+			description: {
+				required: 'Поле не может быть пустым.',
+				regexp: 'Некорректный ввод.',
+				rangelength: 'Не более 500 символов.'	
+			},
+			idCategory: {
+				aFunction: 'Пожалуйста, выберите категорию.',
+			},
+			idSubcategory: {
+				aFunction: 'Пожалуйста, выберите подкатегорию.'
+			},
+			Date: {
+				required: 'Пожалуйста, укажите дату.',
+				date: 'Пожалуйста, укажите дату в формате ГГГГ-ММ-ДД.'
+			},
+			budget: {
+				required: 'Поле не может быть пустым.',
+			}
+			
+		},
+		
+		highlight: function(element) {
+			$(element).closest('.control-group').removeClass('success').addClass('error');
+		},
+		success: function(element) {
+			element
+			.text('Успешно').addClass('valid')
+			.closest('.control-group').removeClass('error').addClass('success');
+		}
+	});
+	
+	//Конец скрипта для добавления работ
+	
+	
+	
 		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form').validate({
 			
 	    rules: {
@@ -83,48 +154,48 @@ $(document).ready(function(){
 messages:  {
 	//messages
 	login: {
-		required: 'Поле не можеты быть пустым',
-		email: 'Неверный e-mail'
+		required: 'Поле не можеты быть пустым.',
+		email: 'Неверный e-mail.'
 		},
 	phones: {
-		regexp: 'Некорретный номер телефона',
-		required: 'Поле не можеты быть пустым',
+		regexp: 'Некорретный номер телефона.',
+		required: 'Поле не можеты быть пустым.',
 		},
 	confirm: {
-		required: 'Для регистрации необходимо согласиться с правилами пользования сайтом'
+		required: 'Для регистрации необходимо согласиться с правилами пользования сайтом.'
 		},
 	confirmPassword: {
-		     equalTo: "Пароли не совпадают",
-		     required: 'Поле не можеты быть пустым',	  
+		     equalTo: "Пароли не совпадают.",
+		     required: 'Поле не можеты быть пустым.',	  
 	    },
 	 password: {
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.',
 		    regexp: 'Пароль должен содержать прописные и строчные символы латинского алфавита.',
-		    required: 'Поле не можеты быть пустым'
+		    required: 'Поле не можеты быть пустым.'
 	 },
 	 nameEnterprise: {
-			required: 'Поле не может быть пустым',
-			regexp: 'Проверьте корректность ввода'
+			required: 'Поле не может быть пустым.',
+			regexp: 'Проверьте корректность ввода.'
 		},
 	unp: {
-			required: 'Поле не может быть пустым',
-			regexp: 'Некорректный УНП'
+			required: 'Поле не может быть пустым.',
+			regexp: 'Некорректный УНП.'
 	   },
 	   address: {
-			required: 'Поле не может быть пустым',
-			regexp: 'Проверьте корректность ввода',
-			rangelength: 'Не более 150 символов'
+			required: 'Поле не может быть пустым.',
+			regexp: 'Проверьте корректность ввода.',
+			rangelength: 'Не более 150 символов.'
 		},
 		zipCode: {
-			required: 'Поле не может быть пустым',
-			regexp: 'Некорректный ввод'
+			required: 'Поле не может быть пустым.',
+			regexp: 'Некорректный ввод.'
 		},
 		j_username: {
-			 required: 'Поле не можеты быть пустым',
-		     email: 'Некорректный e-mail'
+			 required: 'Поле не можеты быть пустым.',
+		     email: 'Некорректный e-mail.'
 		},
 		j_password: {
-			required: 'Поле не можеты быть пустым'
+			required: 'Поле не можеты быть пустым.'
 		}
 	 
 	 },	
