@@ -120,7 +120,7 @@ public class Lot implements Essence {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user", insertable = false, updatable = false)
 	private User user;
-	
+
 	@JsonView({ Views.Internal.class, Views.InternalConfirmLot.class })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_city", insertable = false, updatable = false)
@@ -411,5 +411,4 @@ public class Lot implements Essence {
 				+ ", idCity=" + idCity + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
 
-	
 }

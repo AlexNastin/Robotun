@@ -8,52 +8,52 @@ import by.robotun.webapp.exeption.DaoException;
 
 public interface ILotDAO {
 
-	public List<Lot> selectAllLots(Date endDate) throws DaoException;
+	List<Lot> selectAllLots(Date endDate) throws DaoException;
 
-	public void updateLot(Lot lot) throws DaoException;
+	void updateLot(Lot lot) throws DaoException;
 
-	public void deleteLot(Integer id) throws DaoException;
+	void deleteLot(Integer id) throws DaoException;
 
-	public void insertLot(Lot lot) throws DaoException;
+	void insertLot(Lot lot) throws DaoException;
 
-	public Lot selectLotById(int idLot) throws DaoException;
-	
-	public int selectIdOwnerLot(int idLot) throws DaoException;
+	Lot selectLotById(int idLot) throws DaoException;
 
-	public List<Lot> selectLotByCategory(int idCategory, Date endDate) throws DaoException;
+	int selectIdOwnerLot(int idLot) throws DaoException;
 
-	public List<Lot> selectLotByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate)
+	List<Lot> selectLotByCategory(int idCategory, Date endDate) throws DaoException;
+
+	List<Lot> selectLotByCategoryAndSubcategory(int idCategory, int idSubcategory, Date endDate) throws DaoException;
+
+	Date selectDateLotById(Integer idLot) throws DaoException;
+
+	List<Lot> selectLotsLimitOffset(int offset, Date date) throws DaoException;
+
+	List<Lot> selectLotsOnModeration() throws DaoException;
+
+	List<Lot> selectLotsCreatedUser(int idUser) throws DaoException;
+
+	List<Lot> selectLotsRespondedUser(int idUser) throws DaoException;
+
+	List<Lot> selectMyLotsLimitOffset(int offset, int idUser) throws DaoException;
+
+	List<Lot> selectMyResponsesLimitOffset(int offset, int idUser) throws DaoException;
+
+	Lot selectLotByIdForModeration(int idLot) throws DaoException;
+
+	List<Lot> selectOnModerationLimitOffset(int offset) throws DaoException;
+
+	List<Lot> selectLotsOnUpdateByUser(int idUser) throws DaoException;
+
+	List<Lot> selectLotsOnUpdateByUserLimitOffset(int offset, int idUser) throws DaoException;
+
+	List<Lot> selectLotsFiltering(String endDate, Integer budgetFrom, Integer budgetTo, String desc, Integer idCity)
 			throws DaoException;
 
-	public Date selectDateLotById(Integer idLot) throws DaoException;
-
-	public List<Lot> selectLotsLimitOffset(int offset, Date date) throws DaoException;
-
-	public List<Lot> selectLotsOnModeration() throws DaoException;
-
-	public List<Lot> selectLotsCreatedUser(int idUser) throws DaoException;
-
-	public List<Lot> selectLotsRespondedUser(int idUser) throws DaoException;
-
-	public List<Lot> selectMyLotsLimitOffset(int offset, int idUser) throws DaoException;
-
-	public List<Lot> selectMyResponsesLimitOffset(int offset, int idUser) throws DaoException;
-
-	public Lot selectLotByIdForModeration(int idLot) throws DaoException;
-
-	public List<Lot> selectOnModerationLimitOffset(int offset) throws DaoException;
-
-	public List<Lot> selectLotsOnUpdateByUser(int idUser) throws DaoException;
-
-	public List<Lot> selectLotsOnUpdateByUserLimitOffset(int offset, int idUser) throws DaoException;
-
-	public List<Lot> selectLotsFiltering(String endDate, Integer budgetFrom, Integer budgetTo, String desc,
-			Integer idCity) throws DaoException;
-
-	public List<Lot> selectLotsFilteringOffset(String endDate, Integer budgetFrom, Integer budgetTo, String desc,
+	List<Lot> selectLotsFilteringOffset(String endDate, Integer budgetFrom, Integer budgetTo, String desc,
 			Integer idCity, Integer offset, Date date) throws DaoException;
 
-	public List<Lot> selectLotsByCategoryAndSubcategoryLimitOffset(int offset, Date endDate, int idCategory,
-			int idSubcategory) throws DaoException;
+	List<Lot> selectLotsByCategoryAndSubcategoryLimitOffset(int offset, Date endDate, int idCategory, int idSubcategory)
+			throws DaoException;
 
+	void callFunctionDeleteLotForTime() throws DaoException;
 }

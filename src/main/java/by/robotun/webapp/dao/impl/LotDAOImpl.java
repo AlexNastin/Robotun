@@ -349,4 +349,9 @@ public class LotDAOImpl implements ILotDAO {
 		Query query = entityManager.createQuery(criteriaQuery).setFirstResult(offset * limit).setMaxResults(limit);
 		return query.getResultList();
 	}
+	
+	@Override
+	public void callFunctionDeleteLotForTime() throws DaoException {
+		entityManager.createNativeQuery("SELECT count(*) FROM delete_lot_for_time()").getSingleResult();
+	}
 }
