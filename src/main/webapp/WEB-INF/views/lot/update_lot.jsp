@@ -142,6 +142,8 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="<c:url value="/resources/js/jquery.ui.datepicker-ru.js" />"> </script> 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>     
 <script type="text/javascript">
 	var cities = '${listCitiesJson}';
 		cities = JSON.parse(cities);

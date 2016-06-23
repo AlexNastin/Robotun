@@ -33,7 +33,7 @@ $(document).ready(function(){
 		    "Please select a value");
 	
 	//Для добавления работы
-	$('#addLotForm').validate({
+	$('#addLotForm, #updateLotForm').validate({
 		ignore: ".ignore",
 		rules: {
 			name: {
