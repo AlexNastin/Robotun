@@ -32,7 +32,7 @@ $(document).ready(function(){
 		    },
 		    "Please select a value");
 	
-	//Для добавления работы
+	//Валидация на добавление и обновление работы
 	$('#addLotForm, #updateLotForm').validate({
 		ignore: ".ignore",
 		rules: {
@@ -104,11 +104,11 @@ $(document).ready(function(){
 		}
 	});
 	
-	//Конец скрипта для добавления работ
+	//Валидация на добавление и обновление работы конец
 	
 	
 	
-		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form').validate({
+		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form, #addModeratorForm').validate({
 			
 	    rules: {
 	    	login: {

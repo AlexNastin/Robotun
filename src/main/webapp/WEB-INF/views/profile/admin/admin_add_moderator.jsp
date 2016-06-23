@@ -31,7 +31,7 @@
 <form:form modelAttribute="addModeratorForm" method="POST">
 <form:input class="form-control" path="login" placeholder="login" />
 			<form:errors path="login" />
-			<input class="btn btn-default login-button-style" style="margin-top: 1em;" type="submit" value="Создать модератора" />
+<div class="col-md-12" style="padding-left: 0px; margin-bottom: 1em;"><input class="btn btn-default login-button-style" style="margin-top: 1em;" type="submit" value="Создать модератора" /></div>
 </form:form>
 </div>
 </div>
@@ -41,5 +41,7 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/validate/validation.js" />"> </script>   
 </body>
 </html>
