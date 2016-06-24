@@ -98,14 +98,16 @@
 													   													    
 													    <ul class="countdown font-size-time">													    
 														<li><span class="days">00</span>
+														<a  style="color:white" class="seperator">:</a>
 														<p class="days_ref timeRefDays">дней</p></li>
-														<li class="seperator">.</li>
+														
 														<li><span class="hours">00</span>
+														<a style="color:white" class="seperator">:</a>
 														<p class="hours_ref timeRefHours">часов</p></li>
-														<li class="seperator">:</li>
+														
 														<li><span class="minutes">00</span>
-														<p class="minutes_ref timeRefMinutes">минут</p></li>
-														<li class="seperator">:</li>
+														<a style="color:white" class="seperator">:</a>
+														<p class="minutes_ref timeRefMinutes">минут</p></li>														
 														<li><span class="seconds">00</span>
 														<p class="seconds_ref timeRefSeconds">секунд</p></li>
 														</ul>
