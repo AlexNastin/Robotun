@@ -1,10 +1,10 @@
 @CHARSET "UTF-8";
 .background-color-menu-profile {
-	background-color: #334A61;
+	background-color: #3abeb1;
 	color: white !important; 
 }
 .background-color-menu-profile:hover, .background-color-menu-profile:active, .background-color-menu-profile:focus{
-	background-color: #2f4459!important;
+	background-color: black!important;
 }
 .nopadiing-left {
 	padding-left:0px;
@@ -15,10 +15,10 @@
 	height:5em;
 }
 .active-menu {
-	background-color: #07B0DE;
+	background-color: #8fdad3;
 }
 .active-menu:hover,.active-menu:active, .active-menu:focus {
-	background-color: #058eb6!important;
+	background-color: #8fdad3!important;
 }
 .text-admin-page-main {
 	text-align: left;

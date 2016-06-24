@@ -28,13 +28,22 @@
 	margin-bottom: 0.5em;
 }
 .button-legal-style{
-	background-color: #334A61; 
-	border-color: #334A61;
+	background-color: #3abeb1; 
+	border-color: #3abeb1;
+	width: 40%;
+}
+.button-legal-style-main:hover {
+	background-color: #336f69; 
+	border-color: #336f69;
+}
+.button-legal-style:hover{
+	background-color: #336f69; 
+	border-color: #336f69;
 	width: 40%;
 }
 .button-legal-style-main {
-	background-color: #334A61; 
-	border-color: #334A61;
+	background-color: #3abeb1; 
+	border-color: #3abeb1;
 }
 .font-style-message {
 	text-align: center;
