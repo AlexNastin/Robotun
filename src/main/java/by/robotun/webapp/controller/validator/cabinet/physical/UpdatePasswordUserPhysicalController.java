@@ -54,7 +54,7 @@ public class UpdatePasswordUserPhysicalController {
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		if (!result.hasErrors()) {
-			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
+			String message = messages.getMessage(LocalizationParamNameProperties.MESSAGE_CHANGE_PASSWORD_SUCCESSFUL, null, locale);
 			userUpdatePasswordForm.setIdUser(person.getId());
 			guestService.updatePassword(userUpdatePasswordForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);

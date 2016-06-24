@@ -10,8 +10,8 @@ public class LocalizationParamNameProperties {
 	public static final String VALIDATION_PASSWORD_OLD_PASSWORD_DONT_MATCH = "valid.oldPassword.passwordDontMatch";
 	public static final String VALIDATION_PASSWORD_PATTERN = "valid.password.pattern";
 	public static final String VALIDATION_PASSWORD_PASSWORD_DONT_MATCH = "valid.confirmPassword.passwordDontMatch";
-	public static final String CHANGE_PASSWORD_SUCCESSFUL = "message.resetpaswordsuccessful";
-
 	
-	
+	public static final String MESSAGE_CHANGE_PASSWORD_SUCCESSFUL = "message.reset.password.successful";
+	public static final String MESSAGE_LOT_INSERT_SUCCESSFUL = "message.lot.insert.successful";
+	public static final String MESSAGE_LOT_UPDATE_SUCCESSFUL = "message.lot.update.successful";	
 }

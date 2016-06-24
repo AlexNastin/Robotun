@@ -32,6 +32,11 @@
 	<div class="col-md-1"></div>
 	<div class="col-md-10 background-color-add_lot margin-bottom-button edit-users-legal-boards" >
 	<div class="col-md-12">
+		<div class="font-style-message">
+		<c:if test="${message != null}">
+			${message}
+			   </c:if>
+		</div>
 	<div class="text-style-add-lot ">Добавить работу</div>
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
@@ -94,6 +99,7 @@
 			</div>
 			<div class="form-group">
 		<form:input type="number" min="1" max="2147483647" path="budget" placeholder="Бюджет" class="form-control"/>
+		<span class="error"><form:errors path="budget" /></span>
 		</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">

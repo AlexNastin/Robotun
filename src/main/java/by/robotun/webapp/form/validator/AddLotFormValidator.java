@@ -27,7 +27,7 @@ public class AddLotFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		AddLotForm addLotForm = (AddLotForm) target;
-
+		System.out.println(addLotForm);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_ADD_LOT_NAME, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternName = regExCollection.getRegExPattern(RegExName.REGEX_NAME_LOT);
 		Matcher matcherFirmName = patternName.matcher(addLotForm.getName());

@@ -6,6 +6,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.validator.AddLotFormValidator;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.converter.SerializationJSON;
@@ -39,6 +41,10 @@ public class LotAddController {
 	
 	@Autowired
 	private SerializationJSON serializationJSON;
+	
+	/** @see org.springframework.context.MessageSource */
+	@Autowired
+	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addLot(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -51,21 +57,21 @@ public class LotAddController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addLotValidation(@ModelAttribute(ControllerParamConstant.ADD_LOT_FORM) AddLotForm addLotForm,
-		BindingResult result, HttpSession httpSession) throws Exception {
+	public ModelAndView addLotValidation(@ModelAttribute(ControllerParamConstant.ADD_LOT_FORM) AddLotForm addLotForm, BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		addLotValidator.validate(addLotForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_ADD_LOT);
-		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
-		if (!result.hasErrors()) {
-			userService.addLot(addLotForm, person.getId());
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
-			modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, new AddLotForm());
-		}
+		addLotValidator.validate(addLotForm, result);
 		List<City> cities = guestService.getAllCities();
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
+		if (result.hasErrors()) {	
+			modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
+			return modelAndView;
+		}
+		System.out.println("!!!!!!!!!!!!!!!!!!!!");
+		userService.addLot(addLotForm, person.getId());
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_LOT_INSERT_SUCCESSFUL, null, locale));
+		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
 		return modelAndView;
 	}
-
 }

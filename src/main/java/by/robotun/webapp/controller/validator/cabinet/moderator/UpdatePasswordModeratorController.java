@@ -51,7 +51,7 @@ public class UpdatePasswordModeratorController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_UPDATE_PASSWORD);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		if (!result.hasErrors()) {
-			String message = messages.getMessage(LocalizationParamNameProperties.CHANGE_PASSWORD_SUCCESSFUL, null, locale);
+			String message = messages.getMessage(LocalizationParamNameProperties.MESSAGE_CHANGE_PASSWORD_SUCCESSFUL, null, locale);
 			userUpdatePasswordForm.setIdUser(person.getId());
 			guestService.updatePassword(userUpdatePasswordForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);

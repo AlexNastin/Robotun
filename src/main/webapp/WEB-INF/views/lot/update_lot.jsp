@@ -35,6 +35,11 @@
 	<div id="YMapsID" style="width: 400px; height: 350px;"></div>
 	</div>
 	<div class="col-md-6">
+			<div class="font-style-message">
+		<c:if test="${message != null}">
+			${message}
+			   </c:if>
+		</div>
 	<form:form modelAttribute="updateLotForm" method="POST" onsubmit="endDate.value = Date.value+' '+timeInputId.value+':00:00'">
 	<form:input path="idLot" class="form-control visibility-field"/>
 		
@@ -50,6 +55,7 @@
 		</div>
 		<div class="form-group">
 		<form:input path="name" placeholder="Название" class="form-control"/>
+		<span class="error"><form:errors path="name" /></span>
 		</div>
 		<div class="form-group">
 		<form:textarea path="description" placeholder="Описание" class="form-control"/>
@@ -59,6 +65,7 @@
 		</div>
 		<div class="form-group">
 		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
+		<span class="error"><form:errors path="budget" /></span>
 		</div>
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
@@ -67,9 +74,11 @@
 								</c:forEach>
 						</form:select>
 						</div>
+							<span class="error"><form:errors path="idCity" /></span>
 		<div class="form-group">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
+				
 					<label class="error" generated="true" for="idCategory""></label>
 					<span class="error"><form:errors path="idCategory" /></span>
 					</div>

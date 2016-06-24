@@ -10,6 +10,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.UpdateLotForm;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdateLotFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
@@ -46,6 +48,10 @@ public class LotUpdateController {
 	
 	@Autowired
 	private SerializationJSON serializationJSON;
+	
+	/** @see org.springframework.context.MessageSource */
+	@Autowired
+	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updateLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -81,13 +87,13 @@ public class LotUpdateController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView updateLotValidation(@ModelAttribute(ControllerParamConstant.UPDATE_LOT_FORM) UpdateLotForm updateLotForm,
-		BindingResult result, HttpSession httpSession) throws Exception {
+	public ModelAndView updateLotValidation(@ModelAttribute(ControllerParamConstant.UPDATE_LOT_FORM) UpdateLotForm updateLotForm, BindingResult result, Locale locale) throws Exception {
 		updateLotFormValidator.validate(updateLotForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
+		System.out.println(updateLotForm);
 		if (!result.hasErrors()) {
 			userService.updateLot(updateLotForm);
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_LOT_UPDATE_SUCCESSFUL, null, locale));
 		}
 		Lot lot = userService.getLotById(updateLotForm.getIdLot());
 		modelAndView.addObject(ControllerParamConstant.UPDATE_LOT_FORM, updateLotForm);
