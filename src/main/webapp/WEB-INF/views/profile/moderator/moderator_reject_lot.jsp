@@ -90,6 +90,8 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/validate/validation.js" />"> </script>   
 <script>
 		var jsonData = '${lotJson}';
 

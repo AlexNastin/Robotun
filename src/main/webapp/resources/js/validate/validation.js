@@ -32,11 +32,6 @@ $(document).ready(function(){
 		    },
 		    "Please select a value");
 	
-	//Валидация поиска и фильтра
-	$('').validate({
-		
-	})
-	//Валидация поиска и фильтра конец
 	
 	//Валидация на добавление и обновление работы
 	$('#addLotForm, #updateLotForm').validate({
@@ -112,7 +107,7 @@ $(document).ready(function(){
 		
 	//Валидация на добавление и обновление работы конец
 	
-		$('#addUserPhysicalForm, #addUserLegalForm, #contact-form, #addModeratorForm, #updatePersonalPhysicalForm, #updatePersonalLegalForm').validate({
+		$('#addUserPhysicalForm,#rejectMessageForm, #addUserLegalForm, #contact-form, #addModeratorForm, #updatePersonalPhysicalForm, #updatePersonalLegalForm').validate({
 			
 	    rules: {
 	    	login: {
@@ -171,6 +166,11 @@ $(document).ready(function(){
 			surname: {
 				required: true,
 				regexp: /^[^\{\}\<\>\']*$/
+			},
+			text: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 500],
 			}
 		   
 },
@@ -227,11 +227,16 @@ messages:  {
 		},
 		name: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Некорректный ввод'
+			regexp: 'Некорректный ввод.'
 		},
 		surname: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Некорректный ввод'
+			regexp: 'Некорректный ввод.'
+		},
+		text: {
+			required: 'Поле не может быть пустым.',
+			regexp: 'Некорректный ввод.',
+			rangelength: 'Не более 500 символов.',
 		}
 	 
 	 },	
