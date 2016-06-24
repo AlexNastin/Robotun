@@ -12,11 +12,19 @@ public final class RegExName {
 	public static final String REGEX_NAME_LOT = "nameLot";
 	public static final String REGEX_DATE = "date";
 	public static final String REGEX_NUMBERS = "numbers";
+	public static final String REGEX_NAME_ENTERPRISE = "nameEnterprise";
+	public static final String REGEX_UNP = "unp";
+	public static final String REGEX_ADDRESS = "address";
+	public static final String REGEX_ZIPCODE = "zipcode";
+	
+	
+	
+	
+	
 	
 	public static final String REGEX_FULL_NAME_USER = "fullName";
 	public static final String REGEX_PHONE = "phone";
 	public static final String REGEX_ROLE = "role";
-	public static final String REGEX_RUS_NAME = "name";
 	public static final String REGEX_PERSONAL_NUMBER = "personalNumber";
 	public static final String REGEX_ENG_LETTERS_AND_NUMBERS = "engLettersAndNumbers";
 	public static final String REGEX_RUS_LETTERS = "rusLetters";
@@ -24,7 +32,8 @@ public final class RegExName {
 	public static final String REGEX_FLAT_LETTER = "flatLetter";
 	public static final String REGEX_OKPO = "okpo";
 	public static final String REGEX_NO_LATIN_LETTERS = "noLatinLetters";
-	public static final String REGEX_MFO = "mfo";
 	public static final String REGEX_SUB_BANK_CODE= "subBankCode";
 	public static final String REGEX_CORRESPONDING_ACCOUNTE= "correspondingAccounte";
+	
+	
 }

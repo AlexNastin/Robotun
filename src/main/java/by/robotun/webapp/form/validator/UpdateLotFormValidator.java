@@ -31,7 +31,7 @@ public class UpdateLotFormValidator implements Validator {
 		Pattern patternName = regExCollection.getRegExPattern(RegExName.REGEX_NAME_LOT);
 		Matcher matcherFirmName = patternName.matcher(updateLotForm.getName());
 		if (!matcherFirmName.matches()) {
-			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_ADD_LOT_NAME, LocalizationParamNameProperties.VALIDATION_LOT_NAME_PATERN);
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_ADD_LOT_NAME, LocalizationParamNameProperties.VALIDATION_LOT_NAME_PATTERN);
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_ADD_LOT_DESCRIPTION, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternDescription = regExCollection.getRegExPattern(RegExName.REGEX_DESCRIPTION);
@@ -55,7 +55,7 @@ public class UpdateLotFormValidator implements Validator {
 		Pattern patternBudget = regExCollection.getRegExPattern(RegExName.REGEX_NUMBERS);
 		Matcher matcherBudget = patternBudget.matcher(updateLotForm.getBudget());
 		if (!matcherBudget.matches()) {
-			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_ADD_LOT_BUDGET, LocalizationParamNameProperties.VALIDATION_LOT_BUDGET_PATERN);
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_ADD_LOT_BUDGET, LocalizationParamNameProperties.VALIDATION_LOT_BUDGET_PATTERN);
 		}
 	}
 }

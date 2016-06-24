@@ -13,4 +13,14 @@ public class ValidatorParamConstant {
 	public static final String FIELD_FORM_ADD_LOT_ID_SUBCATEGORY = "idSubcategory";
 	public static final String FIELD_FORM_ADD_LOT_ID_CITY = "idCity";
 	public static final String FIELD_FORM_ADD_LOT_IS_CALL = "isCall";
+	
+	public static final String FIELD_FORM_REGISTRATION_JUR_LOGIN = "login";
+	public static final String FIELD_FORM_REGISTRATION_JUR_NAME = "nameEnterprise";	
+	public static final String FIELD_FORM_REGISTRATION_JUR_ID_CITY = "idCity";
+	public static final String FIELD_FORM_REGISTRATION_JUR_UNP = "unp";
+	public static final String FIELD_FORM_REGISTRATION_JUR_ADDRESS = "address";
+	public static final String FIELD_FORM_REGISTRATION_JUR_ZIPCODE = "zipCode";
+	public static final String FIELD_FORM_REGISTRATION_JUR_PASSWORD = "password";
+	public static final String FIELD_FORM_REGISTRATION_JUR_CONFIRM_PASSWORD = "confirmPassword";
+	public static final String FIELD_FORM_REGISTRATION_JUR_CONFIRM = "confirm";	
 }
