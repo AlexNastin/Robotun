@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+.heightStyleValidation {
+	height: 2.7em;
+}
+.textStyleValidation {
+	font-size: 9pt;
+	margin-bottom: 0px;
+}
+.textStyleValidationColorWhite {
+	color: white;
+}

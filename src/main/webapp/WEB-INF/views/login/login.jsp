@@ -16,6 +16,8 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/login/login.css"  />"
 	rel="stylesheet" />
+	<link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 <title>Вход</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
@@ -33,16 +35,18 @@
 				<div class="col-md-12" style="margin-bottom: 0em">
 					<form id="contact-form" class="form-horizontal" method="post"
 						action="${authUrl}">
-						<div class="form-group">
+						<div class="form-group heightStyleValidation">
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" /> <input type="text"
 								class="form-control" id="inputEmail3" name="j_username"
 								placeholder="E-mail" style="font-family: Arial, FontAwesome">
+								<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="inputEmail3"></label>
 						</div>
-						<div class="form-group">
+						<div class="form-group heightStyleValidation">
 							<input type="password" class="form-control" id="inputPassword3"
 								name="j_password" placeholder="Пароль"
 								style="font-family: Arial, FontAwesome">
+								<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="inputPassword3"></label>
 						</div>
 
 						<div class="form-group">
