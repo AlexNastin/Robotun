@@ -53,7 +53,7 @@
 							<td>{{lot.name}}</td>
 							<td>{{lot.description}}</td>
 							<td>{{lot.budget}}</td>
-							<td>{{lot.endDate | date:'yyyy-mm-dd HH:mm:ss'}}</td>
+							<td>{{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
 							<td><div ng-repeat="message in lot.rejectMessages">{{message.message}} {{message.date | date:'yyyy-mm-dd HH:mm:ss'}}</div></td>
 							<td><a class="btn btn-primary button-legal-style-main"
 								ng-href='/jobster.by/moderator/rejectLot?id={{lot.idLot}}'>Модерировать</a></td>
