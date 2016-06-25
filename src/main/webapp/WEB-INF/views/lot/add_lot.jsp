@@ -19,7 +19,8 @@
 <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
-
+ <link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 
 
 </head>
@@ -55,13 +56,15 @@
 			<label class="error" generated="true" for="longitude"></label>
 			<span class="error"><form:errors path="longitude" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input path="name" placeholder="Название" class="form-control"/>
 		<form:errors path="name" />
+		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 5.5em;">
 		<form:textarea path="description" placeholder="Описание" class="form-control" />
 		<form:errors path="description" />
+		<label class="error textStyleValidation" generated="true" for="description"></label>
 		</div>		
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
@@ -71,35 +74,38 @@
 						</form:select>
 						</div>
 		<form:errors path="idCity" />
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
-					<label class="error" generated="true" for="idCategory""></label>
+					<label class="error textStyleValidation" generated="true" for="idCategory"></label>
 					<span class="error"><form:errors path="idCategory" /></span>
 					</div>
-					<div class="form-group">
+					<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
 					<form:option value="0">Подкатегория</form:option>
 				</form:select>
-				    <label class="error" generated="true" for="idSubcategory"></label>
+				    <label class="error textStyleValidation" generated="true" for="idSubcategory"></label>
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
-					<div class="form-group">
+					<div class="form-group heightStyleValidation">
 					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
+					<label class="error textStyleValidation" generated="true" for="Date"></label>
 					</div>
-					<div class="form-group ignore">
+					<div class="form-group ignore" style="height: 4em;">
 					
 					   <input type="range" class="" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
-    <output class="ignore" style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					     <output class="ignore" style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					<label class="error textStyleValidation" generated="true" for="timeInputId"></label>
 					</div>
-		<div hidden class="form-group">
+		<div hidden class="form-group heightStyleValidation">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
 			<label class="error" generated="true" for="endDate"></label>
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
-			<div class="form-group">
+			<div class="form-group heightStyleValidation">
 		<form:input type="number" min="1" max="2147483647" path="budget" placeholder="Бюджет" class="form-control"/>
 		<span class="error"><form:errors path="budget" /></span>
+		<label class="error textStyleValidation" generated="true" for="budget"></label>
 		</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
