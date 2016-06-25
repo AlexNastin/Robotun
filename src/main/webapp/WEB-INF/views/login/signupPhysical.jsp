@@ -33,6 +33,8 @@
     <![endif]-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+    	<link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
     
 
 </head>
@@ -67,8 +69,9 @@
                                 <div id="home" >
 		<form:form modelAttribute="addUserPhysicalForm" action="${addUserPhysical}" method="POST">
 		<div class="col-md-12">
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input class="form-control" path="login" placeholder="Email" />
+			<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
 			<form:errors path="login" />
 		</div>
 		<div class="form-group">
@@ -78,17 +81,20 @@
 			</c:forEach>
 		</form:select>
 	    </div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input class="form-control" path="name" placeholder="Имя" />
 		<form:errors path="name" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="name"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input class="form-control" path="surname" placeholder="Фамилия" />
 		<form:errors path="surname" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="surname"></label>
 		</div>
 		<div class="form-group" style='margin-bottom:0px'>
-		<div class="field-phone-style">
+		<div class="field-phone-style  heightStyleValidation">
 		<form:input class="form-control" path="phones" placeholder="Телефон"  />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -98,38 +104,47 @@
 		
 		<div id="block-links">
    		<div class="form-group" style='margin-bottom:0px'>
-		<div class="field-phone-style">
+		<div class="field-phone-style heightStyleValidation">
 		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close2" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
 		</div>
 		<form:errors path="phones" />
+		
 		</div>
    		
     	<div id="block-links2">
-   		<div class="form-group">
+   		<div class="form-group" style="height: 11.5em;">
 		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		<form:errors path="phones" />
 		</div>
     	</div>
 		</div>
 		
-		<div class="form-group">
+		<div class="form-group" style="height: 7.5em;">
 		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<form:errors class="form-control" path="password" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<form:errors path="confirmPassword" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
 		</div>
-		<div class="checkbox col-md-12" style="padding-left:22px;">
+		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px;">
+		<div>
 		<form:checkbox path="confirm" />
+		</div>
+		<div>
 		<label style="color:white; padding-left: 0px;">
 		Я согласен с правилами пользования сайтом
 		</label>
+		</div>
 		<form:errors path="confirm" />
-		<label style="padding-left: 0px;" class="error" generated="true" for="confirm"></label>
+		<label style="padding-left: 0px;" class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirm"></label>
 		</div>
 		</div>
 		<input class="btn btn-custom btn-lg btn-block" type="submit" value="Зарегистрироваться" />
