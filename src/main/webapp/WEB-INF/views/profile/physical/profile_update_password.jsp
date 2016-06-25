@@ -16,6 +16,8 @@
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+ <link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 
 </head>
 <body>
@@ -39,23 +41,26 @@
 
 	<form:form id="contact-form" name="contact-form"
 		modelAttribute="userUpdatePasswordForm" method="POST">
-		<div class="form-group">
+		<div class="form-group" style="height: 6em;">
 		<form:password id="oldPassword" name="oldPassword"
 			class="form-control input-md" path="oldPassword"
 			placeholder="Старый пароль"></form:password>		
 		<form:errors path="oldPassword" />
+		<label class="error textStyleValidation" generated="true" for="oldPassword"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 2.8em;">
 		<form:password id="password" name="password"
 			class="form-control input-md" path="password"
 			placeholder="Новый пароль"></form:password>
 		<form:errors path="password" />
+		<label class="error textStyleValidation" generated="true" for="password"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 2.8em;">
 		<form:password id="confirmPassword" name="confirmPassword"
 			class="form-control input-md" path="confirmPassword"
 			placeholder="Подтверждение нового пароля"></form:password>
 		<form:errors path="confirmPassword" />
+		<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
 		<div class="font-style-message">
 		<c:if test="${message != null}">
