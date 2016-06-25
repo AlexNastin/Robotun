@@ -70,7 +70,7 @@
             <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
             <div class="col-md-12 margin-for-sidebar-text form-group">
             <div style="color: white; font-weight: bold;">Регион:</div>
-            <select onchange="updcity()" id="idCity" class="form-control">
+            <select  id="idCity" class="form-control">
 									<option value="0">Все регионы</option>
 <%-- 									<c:set var="idSelectedCity" value="${idCity}"/> --%>
 									<c:forEach items="${listCities}" var="city">
@@ -111,7 +111,7 @@
             </div>
             
             <div class="col-md-12 margin-for-sidebar-text" style="text-align: center;">
-								<a href="#" onclick="resetParam();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
+								<a href="#" onclick="resetParam(); updcity();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
             </div>
             </div>
 
