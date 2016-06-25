@@ -18,6 +18,8 @@
 <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+	 <link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
@@ -53,19 +55,20 @@
 			<label class="error" generated="true" for="longitude"></label>
 			<span class="error"><form:errors path="longitude" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input path="name" placeholder="Название" class="form-control"/>
 		<span class="error"><form:errors path="name" /></span>
+		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 5.5em;">
 		<form:textarea path="description" placeholder="Описание" class="form-control"/>
-		<label class="error valid" generated="true" for="description"
-											style="font-size: 9pt; line-height: 1.2;"></label> <span
-											class="error"><form:errors path="description" /></span>
+		<label class="error textStyleValidation" generated="true" for="description"></label>
+		<span class="error"><form:errors path="description" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
 		<span class="error"><form:errors path="budget" /></span>
+		<label class="error textStyleValidation" generated="true" for="budget"></label>
 		</div>
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
@@ -75,32 +78,34 @@
 						</form:select>
 						</div>
 							<span class="error"><form:errors path="idCity" /></span>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
 				
-					<label class="error" generated="true" for="idCategory""></label>
+					<label class="error textStyleValidation" generated="true" for="idCategory"></label>
 					<span class="error"><form:errors path="idCategory" /></span>
 					</div>
-					<div class="form-group">
+					<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
 					<form:option value="0">Подкатегория</form:option>
 				</form:select>
-				    <label class="error" generated="true" for="idSubcategory"></label>
+				    <label class="error textStyleValidation" generated="true" for="idSubcategory"></label>
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
-		<div class="form-group">
+		<div class="form-group heightStyleValidation">
 					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца" value="${dateEndLot}">
+					<label class="error textStyleValidation" generated="true" for="Date"></label>
 					</div>
 					
-			<div class="form-group">
+			<div class="form-group" style="height: 4em;">
 					
 					   <input type="range" name="timeInputName" id="timeInputId" value="${hourEndLot}" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
     <output style="text-align:center" name="timeOutputName" id="timeOutputId">${hourEndLot}</output>
+					<label class="error textStyleValidation" generated="true" for="timeInputId"></label>
 					</div>
-					<div hidden class="form-group">
+					<div hidden class="form-group heightStyleValidation">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
-			<label class="error" generated="true" for="endDate"></label>
+			<label class="error textStyleValidation" generated="true" for="endDate"></label>
 			<span class="error"><form:errors path="endDate" /></span>
 			</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
