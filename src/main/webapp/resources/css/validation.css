@@ -10,3 +10,23 @@
 .textStyleValidationColorWhite {
 	color: white;
 }
+@media (max-width: 768px){
+	.heightStyleValidation2 {
+	height: 2.8em;
+}
+}
+@media (min-width: 768px) {
+	.heightStyleValidation2 {
+	height: 2.8em;
+}
+}
+@media (min-width: 992px) {
+	.heightStyleValidation2 {
+	height: 6em;
+}
+}
+@media (min-width: 1200px) {
+	.heightStyleValidation2 {
+	height: 6em;
+}
+}

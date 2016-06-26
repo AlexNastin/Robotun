@@ -16,6 +16,8 @@
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+ <link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 
 </head>
 <body>
@@ -37,13 +39,13 @@
 <div class="col-md-8 edit-users-legal-boards" style="padding-top: 1em;">
 <div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
 	<form:form modelAttribute="updatePersonalPhysicalForm" method="POST">
-		<div class="form-group">
+		<div class="form-group heightStyleValidation2">
 		<form:input path="name" class="form-control" placeholder="name" value="${user.physical.name}"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 2.8em">
 		<form:input path="surname" class="form-control" placeholder="surname" value="${user.physical.surname}"/>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 2.8em">
 		<form:select class="form-control" path="idCity">
 			<c:set var="idSelectCity" value="${user.idCity}"/>
 			<c:forEach items="${listCities}" var="city">
@@ -55,7 +57,7 @@
 			</c:forEach>
 		</form:select>
 		</div>
-		<div class="form-group">
+		<div class="form-group" style="height: 14em">
 		<c:forEach items="${user.phones}" var="phone">
 				<form:input  style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
 		</c:forEach>
