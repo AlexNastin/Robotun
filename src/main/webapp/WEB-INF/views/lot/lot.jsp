@@ -149,7 +149,8 @@
 														<input id="displus"
 														type="button" class="btn btn-success btn-number" value="+"
 														data-type="plus" data-field="quant[2]">
-													</span> 
+													</span>
+													
 												</div>
 												</div>
 												<div class="col-md-5 btn-mobile"  style="padding-left: 0px;">
@@ -158,6 +159,7 @@
 													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
 		                                        </div>
 											</div>
+											
 
 										</security:authorize>
 										<security:authorize access="hasRole('ROLE_GUEST')">
@@ -404,9 +406,9 @@ var longitude;
 		        if (!isNaN(currentVal)) {
 		            if(type == 'minus') {
 		                var minValue = parseInt(input.attr('min')); 
-		                if(!minValue) minValue = 1;
-		                if(currentVal > minValue) {
-		                	if(currentVal>0){
+		                if(!minValue) minValue = 0;
+		                if(currentVal >= minValue) {
+		                	if(currentVal>=0){
 			                    input.val(currentVal - 100).change();
 			                }	if(currentVal>1000){
 			                    input.val(currentVal - 1000).change();
@@ -425,8 +427,8 @@ var longitude;
 		            } else if(type == 'plus') {
 		                var maxValue = parseInt(input.attr('max'));
 		                if(!maxValue) maxValue = 9999999999999;
-		                if(currentVal < maxValue) {
-		                	if(currentVal>0){
+		                if(currentVal <= maxValue) {
+		                	if(currentVal>=0){
 		                    input.val(currentVal + 100).change();
 		                }	if(currentVal>1000){
 		                    input.val(currentVal + 1000).change();
