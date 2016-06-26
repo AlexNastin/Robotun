@@ -784,3 +784,6 @@ html, body {
     overflow-x: hidden;
 }
 }
+.centered-and-cropped { 
+	object-fit: cover;
+	-o-object-fit: cover; }
