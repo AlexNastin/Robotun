@@ -16,6 +16,8 @@
 <link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/moderator.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
+ <link href="<c:url value="/resources/css/validation.css"  />"
+	rel="stylesheet" />
 
 </head>
 <body>
@@ -71,9 +73,10 @@
 </table>
 </div>
 <form:form modelAttribute="rejectMessageForm" method="POST">
-<div class="form-group">
+<div class="form-group" style="height: 6em;">
 <form:textarea style="resize:none" class="form-control" path="text" placeholder="Причина"/>
 			<form:errors path="text" />
+			<label class="error textStyleValidation" generated="true" for="text"></label>
 	        </div>
 	        <div class="form-group">
 			<form:input type="hidden" class="form-control" path="idLot" value="{{lotCtrl.lot.idLot}}"/>
