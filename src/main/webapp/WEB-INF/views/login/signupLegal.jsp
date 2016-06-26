@@ -62,7 +62,7 @@
             </p>
 
             <section id="login">
-                <div class="container">
+                
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-wrap">
@@ -102,47 +102,46 @@
 		<form:errors path="zipCode" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="zipCode"></label>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
 		<div class="field-phone-style heightStyleValidation">
 		<form:input class="form-control" path="phones" placeholder="Телефон"  />
-		 <label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close3" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
 	    </div>
-	   
 		<form:errors path="phones" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
 		<div id="block-links3">
-   		<div class="form-group">
+   		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px;  height: 2.8em;">
 		<div class="field-phone-style heightStyleValidation">
 		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
-		 <label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close4" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
 		</div>
 		<form:errors path="phones" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
     	<div id="block-links4">
-   		<div class="form-group" style="height: 11em;">
+   		<div class="form-group fieldPhoneHeight">
 		<form:input class="form-control" path="phones" placeholder="Доп.телефон" />
 		<form:errors path="phones" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phones"></label>
 		</div>
     	</div>
 		</div>
-		<div class="form-group" style="height: 7.2em;">
+		<div class="form-group" style="margin-bottom: 5px;">
 		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<form:errors path="password" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
-		<div class="form-group heightStyleValidation">
+		<div class="form-group" style="margin-bottom: 0px;">
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<form:errors path="confirmPassword" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
 		</div>
-		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px;">
+		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px; height: 5.3em;">
 		<div>
 		<form:checkbox path="confirm" />
 		</div>
@@ -163,7 +162,7 @@
                             </div>
                         </div> <!-- /.col-xs-12 -->
                     </div> <!-- /.row -->
-                </div> <!-- /.container -->
+                
             </section>
 
         </div><!--/row-->
