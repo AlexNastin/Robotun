@@ -41,7 +41,7 @@
 
 	<form:form id="contact-form" name="contact-form"
 		modelAttribute="userUpdatePasswordForm" method="POST">
-		<div class="form-group" style="height: 6em;">
+		<div class="form-group heightStyleValidation2">
 		<form:password id="oldPassword" name="oldPassword"
 			class="form-control input-md" path="oldPassword"
 			placeholder="Старый пароль"></form:password>		
