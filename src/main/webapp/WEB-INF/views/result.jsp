@@ -94,11 +94,13 @@
             <div class="col-md-12 margin-for-sidebar-text">
             <input type="text" class="form-control" id="endDate" name="calendar" placeholder="Дата конца"/>
             </div>
-            <div class="col-md-12 margin-for-sidebar-text">
-            <input type="text" class="form-control" id="budgetFrom" name="budgetFrom" placeholder="Мин.бюджет"/>
+            <div class="row" style="padding-left:15px; padding-right:15px;">
+            <div class="col-md-6 margin-for-sidebar-text">
+            <input type="text" class="form-control"  id="budgetFrom" name="budgetFrom" placeholder="От"/>
             </div>
-            <div class="col-md-12 margin-for-sidebar-text">
-            <input type="text" class="form-control" id="budgetTo" name="budgetTo" placeholder="Макс.бюджет"/>
+            <div class="col-md-6 margin-for-sidebar-text">
+            <input type="text" class="form-control"  id="budgetTo" name="budgetTo" placeholder="До"/>
+            </div>
             </div>
             <div class="col-md-12 margin-for-sidebar-text">
             <div style="color: white; font-weight: bold;">Сначала:</div>
