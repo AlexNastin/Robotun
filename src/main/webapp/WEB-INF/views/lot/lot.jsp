@@ -396,6 +396,7 @@ var longitude;
 	     
 		// end map
 		
+		
 		$( document ).ready(function() {
 		    $('.btn-number').click(function(e){
 		        e.preventDefault();
@@ -405,6 +406,7 @@ var longitude;
 		        var currentVal = parseInt(input.val());
 		        if (!isNaN(currentVal)) {
 		            if(type == 'minus') {
+		            	
 		                var minValue = parseInt(input.attr('min')); 
 		                if(!minValue) minValue = 0;
 		                if(currentVal >= minValue) {
@@ -492,7 +494,7 @@ var longitude;
 		            }
 		    });
 		});
-
+		
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
      elementClick = $(this).attr("href");
@@ -546,6 +548,7 @@ $('.countdown').downCount({
 	
 		
 });
+		
 
 function drawButtonPhoneOwner() {
 	if(!isMeCall && !isElse) {

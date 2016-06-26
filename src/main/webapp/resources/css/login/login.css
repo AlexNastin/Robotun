@@ -333,3 +333,25 @@ a {
 .hover-style-for-plus:hover,.hover-style-for-plus:active, .hover-style-for-plus:focus  {
 	color: white;
 }
+.form-group-required div {
+    position:relative;
+    margin-right:15px;
+}
+.form-group-required div:after {
+    position:absolute;
+    content:'*';
+    color:red;
+    right:-10px;
+    top:0;
+}
+.form-group-required-password div {
+    position:relative;
+    margin-right:15px;
+}
+.form-group-required-password div:after {
+    position:absolute;
+    content:'*';
+    color:red;
+    right:-10px;
+    top:50px;
+}

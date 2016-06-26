@@ -70,9 +70,11 @@
                                 <div id="home" >
 		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
 		<div class="col-md-12">
-		<div class="form-group heightStyleValidation">
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="login" placeholder="Email" />
 		<form:errors path="login" />
+		</div>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
 		</div>
 		<div class="form-group">
@@ -82,29 +84,40 @@
 			</c:forEach>
 		</form:select>
 		</div>
-		<div class="form-group heightStyleValidation">
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="nameEnterprise" placeholder="Название компании" />
 		<form:errors  path="nameEnterprise" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="nameEnterprise"></label>
 		</div>
-		<div class="form-group heightStyleValidation">
+		</div>
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="unp" placeholder="УНП" />
 		<form:errors path="unp" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="unp"></label>
 		</div>
-		<div class="form-group heightStyleValidation">
+		</div>
+		
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="address" placeholder="Адрес" />
 		<form:errors path="address" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="address"></label>
 		</div>
-		<div class="form-group heightStyleValidation">
+		</div>
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="zipCode" placeholder="Индекс" />
 		<form:errors path="zipCode" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="zipCode"></label>
 		</div>
+		</div>
 		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
-		<div class="field-phone-style heightStyleValidation">
+		<div class="field-phone-style  form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="phones" placeholder="Телефон"  />
+		</div>
 		</div>
 		<div class="field-phone-style-plus">
 		<a id="open-close3" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -131,15 +144,19 @@
 		</div>
     	</div>
 		</div>
-		<div class="form-group" style="margin-bottom: 5px;">
+		<div class="form-group form-group-required-password" style="margin-bottom: 5px;">
+		<div>
 		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<form:errors path="password" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
-		<div class="form-group" style="margin-bottom: 0px;">
+		</div>
+		<div class="form-group form-group-required" style="margin-bottom: 0px;">
+		<div>
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<form:errors path="confirmPassword" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
+		</div>
 		</div>
 		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px; height: 5.3em;">
 		<div>
