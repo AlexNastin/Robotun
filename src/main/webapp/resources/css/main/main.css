@@ -176,7 +176,7 @@ ul.list1 li a {
         background-image: url(../../images/main-banner.jpg);
         min-height: 23em;
         background-size: 200%;
-        background-repeat:no-repeat;
+        background-repeat:initial;
         background-position: bottom 40px;
 
     }
@@ -293,6 +293,25 @@ body {
   height: 100%;
   padding: 15px;
   width: auto;
+  
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+.wrapper {
+  height: 100%;
+  background-color:#222;
+}
+.content {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding-bottom: 90px;
+}
+.footer-distributed {
+  height: 15%;
   
 }
 	

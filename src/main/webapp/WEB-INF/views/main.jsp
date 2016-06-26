@@ -22,7 +22,8 @@
 <body>
 <%@include file="/WEB-INF/views/header.jsp"%>
 <!--Banner-image, search and buttons-->
-<div class="background-main-image search-margin-top blur">
+<div class="wrapper">
+<div class="content background-main-image search-margin-top blur">
     <div class="container">
         <div class="main-text-style">Ищете услугу?</div>
         <div class="row row-margin">
@@ -53,6 +54,8 @@
     </div>
     </div>
     </div>
+    
+   </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
