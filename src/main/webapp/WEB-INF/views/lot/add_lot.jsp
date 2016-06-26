@@ -41,7 +41,7 @@
 	<div class="text-style-add-lot ">Добавить работу</div>
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
-	 <div id="YMapsID" style="width: 400px; height: 350px;"></div>
+	 <div id="YMapsID" style="width: 100%; height: 350px;"></div>
 	 </div>
 	<div class="col-md-6">
 	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
