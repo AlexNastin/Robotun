@@ -165,7 +165,7 @@
 										</security:authorize>
 									</div>
 								</div>
-								<div id="YMapsID" style="width: 400px; height: 350px;"></div>
+								<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
 							</div>
 						</div>
 
