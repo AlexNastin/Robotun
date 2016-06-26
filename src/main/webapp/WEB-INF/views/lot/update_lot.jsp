@@ -34,7 +34,7 @@
 	<div class="text-style-add-lot ">Изменить работу</div>
 	</div>
 	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
-	<div id="YMapsID" style="width: 400px; height: 350px;"></div>
+	<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
 	</div>
 	<div class="col-md-6">
 			<div class="font-style-message">
