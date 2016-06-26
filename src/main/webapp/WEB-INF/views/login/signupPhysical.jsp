@@ -140,7 +140,7 @@
 		</div>
 		<div>
 		<label style="color:white; padding-left: 0px;">
-		Я согласен с правилами пользования сайтом
+		Я согласен с <a style="color:#3abeb1" href="<c:url value="/signup/userPhysical"/>">правилами пользования</a> сайтом
 		</label>
 		</div>
 		<form:errors path="confirm" />
