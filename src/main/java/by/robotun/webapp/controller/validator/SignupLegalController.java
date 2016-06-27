@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
+import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.SignupUserLegalFormValidator;
 import by.robotun.webapp.service.IGuestService;
 
@@ -30,6 +33,10 @@ public class SignupLegalController {
 	@Autowired
 	private IGuestService guestService;
 
+	/** @see org.springframework.context.MessageSource */
+	@Autowired
+	private MessageSource messages;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addUserPhysical(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
@@ -40,18 +47,16 @@ public class SignupLegalController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addUserLegalValidation(
-			@ModelAttribute(ControllerParamConstant.ADD_USER_LEGAL_FORM)  SignupUserLegalForm signupUserLegalForm,
-			BindingResult result, HttpSession httpSession) throws Exception {
-		addUserLegalValidator.validate(signupUserLegalForm, result);
+	public ModelAndView addUserLegalValidation(@ModelAttribute(ControllerParamConstant.ADD_USER_LEGAL_FORM) SignupUserLegalForm signupUserLegalForm, BindingResult result, Locale locale) throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
+		addUserLegalValidator.validate(signupUserLegalForm, result);
 		if (!result.hasErrors()) {
 			guestService.addUserLegal(signupUserLegalForm);
-			String message = "ADDDDD";
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_SIGNUP_SUCCESSFUL, null, locale));
+			signupUserLegalForm = new SignupUserLegalForm();
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, new SignupUserLegalForm());
+		modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, signupUserLegalForm);
 		return modelAndView;
 	}
 }

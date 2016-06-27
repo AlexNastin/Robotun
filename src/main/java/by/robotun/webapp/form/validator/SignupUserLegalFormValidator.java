@@ -27,7 +27,6 @@ public class SignupUserLegalFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		SignupUserLegalForm addUserLegalForm = (SignupUserLegalForm) target;
-		System.out.println(addUserLegalForm);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_JUR_NAME, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternNameEnterprise = regExCollection.getRegExPattern(RegExName.REGEX_NAME_ENTERPRISE);
 		Matcher matcherNameEnterprise = patternNameEnterprise.matcher(addUserLegalForm.getNameEnterprise());

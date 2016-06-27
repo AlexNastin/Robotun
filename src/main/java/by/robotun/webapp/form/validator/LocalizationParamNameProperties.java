@@ -22,9 +22,4 @@ public class LocalizationParamNameProperties {
 	public static final String MESSAGE_LOT_INSERT_SUCCESSFUL = "message.lot.insert.successful";
 	public static final String MESSAGE_LOT_UPDATE_SUCCESSFUL = "message.lot.update.successful";
 	public static final String MESSAGE_SIGNUP_SUCCESSFUL = "message.signup.successful";
-
-	
-
-	
-	
 }
