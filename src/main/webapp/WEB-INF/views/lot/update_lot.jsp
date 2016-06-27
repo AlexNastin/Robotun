@@ -233,9 +233,9 @@
 				$.getJSON('${getCategories}', {
 					ajax : 'true'
 				}, function(data) {
-					var html = '<option value="">Категория</option>';
+					var html = '<option value="0">Категория</option>';
 					var len = data.length;
-					var idCategory = ${lot.idCategory};
+					var idCategory = ${updateLotForm.idCategory};
 					var fff;
 					for (var i = 0; i < len; i++) {
 						html += '<option ';
@@ -256,7 +256,7 @@
 							function(data) {
 							var html = '<option value="0">Подкатегория</option>';
 							var len = data.length;
-							var idSubcategory = ${lot.idSubcategory};
+							var idSubcategory = ${updateLotForm.idSubcategory};
 							for (var i = 0; i < len; i++) {
 							html += '<option ';
 							if(data[i].idSubcategory == idSubcategory) {

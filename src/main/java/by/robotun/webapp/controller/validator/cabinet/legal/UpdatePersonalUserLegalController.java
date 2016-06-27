@@ -58,12 +58,13 @@ public class UpdatePersonalUserLegalController {
 		BindingResult result, HttpSession httpSession) throws Exception {
 		updatePersonalUserLegalFormValidator.validate(updatePersonalUserLegalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (result.hasErrors()) {
-		}
-		userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserLegalForm());
+		if (!result.hasErrors()) {
+			userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			updatePersonalUserLegalForm = new UpdatePersonalUserLegalForm();
+		}
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, updatePersonalUserLegalForm);
 		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));

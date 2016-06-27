@@ -83,11 +83,13 @@ public class UserService implements IUserService {
 
 	@Override
 	public Lot getLotById(Integer idLot) throws ServiceException {
-		Lot lot;
-		try {
-			lot = lotDAO.selectLotById(idLot);
-		} catch (DaoException e) {
-			throw new ServiceException(e);
+		Lot lot = null;
+		if(idLot != null) {
+			try {
+				lot = lotDAO.selectLotById(idLot);
+			} catch (DaoException e) {
+				throw new ServiceException(e);
+			}
 		}
 		return lot;
 	}

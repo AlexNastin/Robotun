@@ -213,12 +213,40 @@
 				}, function(data) {
 					var html = '<option value="0">Категория</option>';
 					var len = data.length;
+					var idCategory = ${addLotForm.idCategory};
+					var fff;
 					for (var i = 0; i < len; i++) {
-						html += '<option value="' + data[i].idCategory + '">'
+						html += '<option ';
+						if(data[i].idCategory == idCategory) {
+							html += 'selected="true" ';
+							fff = data[i].idCategory;
+						}
+						html += 'value="' + data[i].idCategory + '">'
 								+ data[i].title + '</option>';
 					}
 					html += '</option>';
 					$('#idCategory').html(html);
+					$.getJSON('${getSubcategories}',
+							{
+						idCategory : fff,
+						ajax : 'true'
+							},
+							function(data) {
+							var html = '<option value="0">Подкатегория</option>';
+							var len = data.length;
+							var idSubcategory = ${addLotForm.idSubcategory};
+							for (var i = 0; i < len; i++) {
+							html += '<option ';
+							if(data[i].idSubcategory == idSubcategory) {
+								html += 'selected="true" ';
+							}
+							html += 'value="' + data[i].idSubcategory + '">'
+							+ data[i].title
+							+ '</option>';
+							}
+						html += '</option>';
+						$('#idSubcategory').html(html);
+						});
 				});
 			});
 	  $(function() {

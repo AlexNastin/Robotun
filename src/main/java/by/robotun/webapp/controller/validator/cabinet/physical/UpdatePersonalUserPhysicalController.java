@@ -56,12 +56,13 @@ public class UpdatePersonalUserPhysicalController {
 		BindingResult result, HttpSession httpSession) throws Exception {
 		updatePersonalUserPhysicalFormValidator.validate(updatePersonalUserPhysicalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (result.hasErrors()) {
-		}
-		userService.updatePersonalUserPhysical(updatePersonalUserPhysicalForm, person.getId(), httpSession);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
-		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, new UpdatePersonalUserPhysicalForm());
+		if (!result.hasErrors()) {
+			userService.updatePersonalUserPhysical(updatePersonalUserPhysicalForm, person.getId(), httpSession);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			updatePersonalUserPhysicalForm = new UpdatePersonalUserPhysicalForm();
+		}
+		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, updatePersonalUserPhysicalForm);
 		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
