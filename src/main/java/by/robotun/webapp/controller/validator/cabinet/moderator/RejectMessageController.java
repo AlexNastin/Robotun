@@ -52,14 +52,17 @@ public class RejectMessageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView rejectMessageValidation(@ModelAttribute(ControllerParamConstant.REJECT_MESSAGE_FORM) RejectMessageForm rejectMessageForm,
 		BindingResult result, HttpSession httpSession) throws Exception {
-		System.err.println(rejectMessageForm);
 		rejectMessageFormValidator.validate(rejectMessageForm, result);
-		if (result.hasErrors()) {
-		}
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		moderatorService.addRejectMessage(rejectMessageForm, person.getId());
-		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_MODERATOR);
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		if (!result.hasErrors()) {
+			moderatorService.addRejectMessage(rejectMessageForm, person.getId());
+			ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_MODERATOR);
+			return modelAndView;
+		}
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_REJECT_LOT);
+		Lot lot = userService.getLotByIdForModeration(rejectMessageForm.getIdLot());
+		modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalConfirmLot(lot));
+		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
 		return modelAndView;
 	}
 

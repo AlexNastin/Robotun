@@ -35,11 +35,11 @@ public class UpdateForgotPasswordController {
 			@ModelAttribute("updateForgotPasswordForm") UpdateForgotPasswordForm updateForgotPasswordForm,
 			BindingResult result) throws Exception {
 		updateForgotPasswordValidator.validate(updateForgotPasswordForm, result);
-		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("login/update_forgot_password");
-			return modelAndView;
+		ModelAndView modelAndView = new ModelAndView("login/update_forgot_password");
+		if (!result.hasErrors()) {
+			modelAndView = new ModelAndView("forward:/secure/savePassword");
 		}
-		ModelAndView modelAndView = new ModelAndView("forward:/secure/savePassword");
+		;
 		modelAndView.addObject("password", updateForgotPasswordForm.getPassword());
 		return modelAndView;
 	}

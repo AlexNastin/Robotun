@@ -64,13 +64,11 @@ public class LotAddController {
 		List<City> cities = guestService.getAllCities();
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, cities);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES_JSON, serializationJSON.toJsonViewsPublic(cities));
-		if (result.hasErrors()) {	
-			modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
-			return modelAndView;
+		if (!result.hasErrors()) {
+			userService.addLot(addLotForm, person.getId());
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_LOT_INSERT_SUCCESSFUL, null, locale));
+			addLotForm = new AddLotForm();
 		}
-		System.out.println("!!!!!!!!!!!!!!!!!!!!");
-		userService.addLot(addLotForm, person.getId());
-		modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_LOT_INSERT_SUCCESSFUL, null, locale));
 		modelAndView.addObject(ControllerParamConstant.ADD_LOT_FORM, addLotForm);
 		return modelAndView;
 	}

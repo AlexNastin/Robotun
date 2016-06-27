@@ -90,7 +90,6 @@ public class LotUpdateController {
 	public ModelAndView updateLotValidation(@ModelAttribute(ControllerParamConstant.UPDATE_LOT_FORM) UpdateLotForm updateLotForm, BindingResult result, Locale locale) throws Exception {
 		updateLotFormValidator.validate(updateLotForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
-		System.out.println(updateLotForm);
 		if (!result.hasErrors()) {
 			userService.updateLot(updateLotForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_LOT_UPDATE_SUCCESSFUL, null, locale));

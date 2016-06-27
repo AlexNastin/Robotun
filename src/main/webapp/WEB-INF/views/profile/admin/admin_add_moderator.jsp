@@ -30,6 +30,11 @@
 <div class="col-md-8 add-moderator-boards">
 <div class="text-admin-page-main col-md-12">Добавление модератора:</div>
 <div class="col-md-12">
+<div class="font-style-message">
+		<c:if test="${message != null}">
+			${message}
+			   </c:if>
+		</div>
 <form:form modelAttribute="addModeratorForm" method="POST">
 <div style="height: 2.8em;">
 <form:input class="form-control" path="login" placeholder="login" />
