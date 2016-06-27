@@ -20,30 +20,21 @@ public class UpdateForgotPasswordValidator implements Validator {
 	private RegExCollection regExCollection;
 
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return UpdateForgotPasswordForm.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return UpdateForgotPasswordForm.class.isAssignableFrom(cls);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-
 		UpdateForgotPasswordForm updateForgotPasswordForm = (UpdateForgotPasswordForm) target;
-		Matcher matcher = null;
-		Pattern pattern = null;
-
-		// Валидация Password и ConfirmPassword и их совпадение.
-		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
-		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
-		matcher = pattern.matcher(updateForgotPasswordForm.getPassword());
-		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8
-		// символов до 32
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);
+		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
+		Matcher matcher = pattern.matcher(updateForgotPasswordForm.getPassword());
 		if (!matcher.matches()) {
-			errors.rejectValue("password", "valid.password.pattern");
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_PATTERN);
 		}
 		if (!(updateForgotPasswordForm.getPassword()).equals(updateForgotPasswordForm.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword", "valid.confirmPassword.passwordDontMatch");
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_CONFIRM_PASSWORD, LocalizationParamNameProperties.VALIDATION_PASSWORD_PASSWORD_DONT_MATCH);
 		}
-
 	}
 }

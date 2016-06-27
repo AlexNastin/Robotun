@@ -44,7 +44,7 @@ public class UpdatePersonalUserLegalController {
 		updatePersonalUserLegalForm.setIdCity(user.getIdCity());
 		updatePersonalUserLegalForm.setNameEnterprise(user.getLegal().getNameEnterprise().replace("\\\"","\""));
 		updatePersonalUserLegalForm.setUnp(user.getLegal().getUnp());
-		updatePersonalUserLegalForm.setZipCode(user.getLegal().getZipCode());
+		updatePersonalUserLegalForm.setZipCode(String.valueOf(user.getLegal().getZipCode()));
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM, updatePersonalUserLegalForm);
 		modelAndView.addObject(ControllerParamConstant.USER, user);

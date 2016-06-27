@@ -30,8 +30,8 @@ public class UpdateUserPasswordFormValidator implements Validator{
 	private IGuestService userService; 
 
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return UpdateUserPasswordFormValidator.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return UpdateUserPasswordFormValidator.class.isAssignableFrom(cls);
 	}
 
 	@Override

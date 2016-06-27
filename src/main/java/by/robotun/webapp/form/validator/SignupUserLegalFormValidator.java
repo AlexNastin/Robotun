@@ -20,8 +20,8 @@ public class SignupUserLegalFormValidator implements Validator {
 	private RegExCollection regExCollection;
 
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return SignupUserLegalForm.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return SignupUserLegalForm.class.isAssignableFrom(cls);
 	}
 
 	@Override
@@ -72,6 +72,19 @@ public class SignupUserLegalFormValidator implements Validator {
 		}
 		if (!addUserLegalForm.isConfirm()) {
 			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_CONFIRM, LocalizationParamNameProperties.VALIDATION_EMPTY);
+		}
+		String[] phones = addUserLegalForm.getPhones();
+		Pattern patternPhone = regExCollection.getRegExPattern(RegExName.REGEX_PHONE);
+		Matcher matcherPhone = patternPhone.matcher(phones[0]);
+		if (!matcherPhone.matches()) {
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE);
+		}
+		for (int i = 1; i < phones.length; i++) {
+			if (!"".equals(phones[i])) {
+				if (!matcherPhone.matches()) {
+					errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE);
+				}
+			}
 		}
 	}
 }

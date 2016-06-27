@@ -20,14 +20,13 @@ public class AddLotFormValidator implements Validator {
 	private RegExCollection regExCollection;
 
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return AddLotForm.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return AddLotForm.class.isAssignableFrom(cls);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 		AddLotForm addLotForm = (AddLotForm) target;
-		System.out.println(addLotForm);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_ADD_LOT_NAME, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternName = regExCollection.getRegExPattern(RegExName.REGEX_NAME_LOT);
 		Matcher matcherFirmName = patternName.matcher(addLotForm.getName());

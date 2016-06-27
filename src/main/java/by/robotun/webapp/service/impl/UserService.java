@@ -199,7 +199,7 @@ public class UserService implements IUserService {
 			user.setNickname(nameEnterprise);
 			legal.setUnp(updatePersonalUserLegalForm.getUnp());
 			legal.setAddress(updatePersonalUserLegalForm.getAddress());
-			legal.setZipCode(updatePersonalUserLegalForm.getZipCode());
+			legal.setZipCode(Integer.valueOf(updatePersonalUserLegalForm.getZipCode()));
 			legal.setUser(user);
 			user.setLegal(legal);
 			userDAO.updateUser(user);

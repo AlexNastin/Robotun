@@ -26,4 +26,5 @@ public class ValidatorParamConstant {
 	public static final String FIELD_FORM_REGISTRATION_PASSWORD = "password";
 	public static final String FIELD_FORM_REGISTRATION_CONFIRM_PASSWORD = "confirmPassword";
 	public static final String FIELD_FORM_REGISTRATION_CONFIRM = "confirm";	
+	public static final String FIELD_TEXT = "text";
 }

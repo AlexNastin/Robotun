@@ -20,8 +20,8 @@ public class UpdateLotFormValidator implements Validator {
 	private RegExCollection regExCollection;
 	
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return UpdateLotForm.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return UpdateLotForm.class.isAssignableFrom(cls);
 	}
 
 	@Override

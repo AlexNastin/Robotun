@@ -20,8 +20,8 @@ public class SignupUserPhysicalFormValidator implements Validator {
 	private RegExCollection regExCollection;
 	
 	@Override
-	public boolean supports(Class<?> arg0) {
-		return SignupUserPhysicalForm.class.isAssignableFrom(arg0);
+	public boolean supports(Class<?> cls) {
+		return SignupUserPhysicalForm.class.isAssignableFrom(cls);
 	}
 
 	@Override

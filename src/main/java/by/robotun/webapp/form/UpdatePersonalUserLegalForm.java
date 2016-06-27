@@ -6,18 +6,13 @@ import by.robotun.webapp.domain.Essence;
 
 public class UpdatePersonalUserLegalForm implements Essence {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5361840265819238195L;
-	
+
 	private int idCity;
 	private String nameEnterprise;
 	private String unp;
 	private String address;
-	private int zipCode;
-	
-	// Phones
+	private String zipCode;
 	private String[] phones;
 
 	public int getIdCity() {
@@ -52,11 +47,11 @@ public class UpdatePersonalUserLegalForm implements Essence {
 		this.address = address;
 	}
 
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
@@ -77,7 +72,7 @@ public class UpdatePersonalUserLegalForm implements Essence {
 		result = prime * result + ((nameEnterprise == null) ? 0 : nameEnterprise.hashCode());
 		result = prime * result + Arrays.hashCode(phones);
 		result = prime * result + ((unp == null) ? 0 : unp.hashCode());
-		result = prime * result + zipCode;
+		result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
 		return result;
 	}
 
@@ -109,7 +104,10 @@ public class UpdatePersonalUserLegalForm implements Essence {
 				return false;
 		} else if (!unp.equals(other.unp))
 			return false;
-		if (zipCode != other.zipCode)
+		if (zipCode == null) {
+			if (other.zipCode != null)
+				return false;
+		} else if (!zipCode.equals(other.zipCode))
 			return false;
 		return true;
 	}
@@ -119,6 +117,4 @@ public class UpdatePersonalUserLegalForm implements Essence {
 		return "UpdatePersonalUserLegalForm [idCity=" + idCity + ", nameEnterprise=" + nameEnterprise + ", unp=" + unp
 				+ ", address=" + address + ", zipCode=" + zipCode + ", phones=" + Arrays.toString(phones) + "]";
 	}
-
-	
 }

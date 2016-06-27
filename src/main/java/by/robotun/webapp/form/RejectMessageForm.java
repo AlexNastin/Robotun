@@ -3,10 +3,7 @@ package by.robotun.webapp.form;
 import by.robotun.webapp.domain.Essence;
 
 public class RejectMessageForm implements Essence {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 5181462478030150576L;
 
 	private String text;

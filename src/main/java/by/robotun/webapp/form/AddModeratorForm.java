@@ -4,13 +4,11 @@ import by.robotun.webapp.domain.Essence;
 
 public class AddModeratorForm implements Essence {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5361840265819238195L;
 	
 	private String login;
 	private int idCity;
+	
 	public String getLogin() {
 		return login;
 	}
@@ -53,6 +51,4 @@ public class AddModeratorForm implements Essence {
 	public String toString() {
 		return "AddModeratorForm [login=" + login + ", idCity=" + idCity + "]";
 	}
-
-	
 }
