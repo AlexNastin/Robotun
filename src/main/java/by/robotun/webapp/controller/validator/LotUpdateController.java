@@ -25,6 +25,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
+import by.robotun.webapp.exeption.ServiceException;
 import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdateLotFormValidator;
@@ -54,14 +55,13 @@ public class LotUpdateController {
 	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView updateLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+	public ModelAndView updateLot(@RequestParam(value = "id", required = false) Integer idLot, Locale locale, ModelMap model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		int idUser = guestService.getIdOwnerLot(idLot);
 		ModelAndView modelAndView = null;
-		if(idUser == person.getId()) {
+		Lot lot = userService.getLotById(idLot);
+		if(lot != null && lot.getIdUser() == person.getId()) {
 			modelAndView = new ModelAndView(URLMapping.JSP_UPDATE_LOT);
 			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE_WITHOUT_TIME);
-			Lot lot = userService.getLotById(idLot);
 			UpdateLotForm updateLotForm = new UpdateLotForm();
 			updateLotForm.setBudget(String.valueOf(lot.getBudget()));
 			updateLotForm.setIdLot(idLot);
