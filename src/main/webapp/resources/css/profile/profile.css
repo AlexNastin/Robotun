@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+.main{
+	background-image: url(19.jpg);
+	width:100%;
+	
+}
+.img-responsive{
+	margin:auto;
+}
+body{
+	background-color:#222;
+}
+.title{
+	text-align:center;
+	color:white;
+}
+a.list-group-item {
+    height:auto;
+    min-height:220px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.stars {
+    margin:20px auto 1px;    
+}

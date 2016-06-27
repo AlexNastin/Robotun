@@ -11,7 +11,8 @@
 <meta charset="utf-8">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="<c:url value="/resources/css/profile/profile.css" />"	rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
 <script type="text/javascript">
@@ -25,16 +26,18 @@ var app = angular.module('app', []);
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <!--This stylesheet should be moved to the head of the document -->
- <div class="container">
+ <div class="container main">
     <div class="row">
         <div class=" col-lg-offset-3 col-lg-6">
+        <h2 class="title">Name of company</h2>
             <div class="panel panel-default">
+            
                 <div class="panel-body" ng-controller="UserController as userCtrl" ng-cloak>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-                                    <img class="img-circle img-responsive" src="http://api.adorable.io/avatars/300/abott@adorable.png">
+                                    <img class="img-responsive" src="http://api.adorable.io/avatars/300/abott@adorable.png">
                                 </div>
                             </div>
                         </div>
@@ -63,6 +66,33 @@ var app = angular.module('app', []);
                     </div>
                 </div>
                 <div class="panel-footer">
+                <div>
+    <div class="row">
+		<div class="well">
+        <h1 class="text-center">Работы от этого чувака</h1>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+                <div class="media col-md-3">
+                    <figure class="pull-left">
+                        <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="placehold.it/350x250" >
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="list-group-item-heading"> Заголовок халтурки </h4>
+                    
+                </div>
+                <div class="col-md-3 text-center">
+                    <h2> 14240 <small> рублей </small></h2>
+                    <button type="button" class="btn btn-success btn-lg btn-block"> Помочь! </button>
+                    
+                </div>
+          </a>
+          
+          
+        </div>
+        </div>
+	</div>
+</div>
                     <div class="row">
                         <div id="social-links" class=" col-lg-12">
                             <div class="row">

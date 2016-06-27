@@ -19,7 +19,7 @@
     
 <title>Jobster.by | Лучшая разовая работа</title>
 </head>
-<body>
+<body style="background-color: #222;">
 <%@include file="/WEB-INF/views/header.jsp"%>
 <!--Banner-image, search and buttons-->
 <div class="wrapper">
