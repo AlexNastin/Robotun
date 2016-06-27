@@ -303,7 +303,7 @@ html,
 body,
 .wrapper {
   height: 100%;
-  background-color:#222;
+  
 }
 .content {
   box-sizing: border-box;
@@ -313,5 +313,8 @@ body,
 .footer-distributed {
   height: 15%;
   
+}
+.wrapper{
+	background-color:#222;
 }
 	
