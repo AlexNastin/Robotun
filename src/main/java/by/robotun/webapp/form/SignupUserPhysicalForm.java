@@ -6,9 +6,6 @@ import by.robotun.webapp.domain.Essence;
 
 public class SignupUserPhysicalForm implements Essence {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5361840265819238195L;
 	
 	private String login;
@@ -167,6 +164,4 @@ public class SignupUserPhysicalForm implements Essence {
 				+ surname + ", middleName=" + middleName + ", password=" + password + ", confirmPassword="
 				+ confirmPassword + ", confirm=" + confirm + ", phones=" + Arrays.toString(phones) + "]";
 	}
-
-	
 }

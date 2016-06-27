@@ -11,12 +11,14 @@ public class LocalizationParamNameProperties {
 	public static final String VALIDATION_PASSWORD_PATTERN = "valid.password.pattern";
 	public static final String VALIDATION_PASSWORD_PASSWORD_DONT_MATCH = "valid.confirmPassword.passwordDontMatch";
 	
-	public static final String VALIDATION_SIGNUP_JUR_NAME = "valid.signup.jur.name";
-	public static final String VALIDATION_SIGNUP_JUR_LOGIN = "valid.signup.jur.login";
-	public static final String VALIDATION_SIGNUP_JUR_UNP = "valid.signup.jur.unp";	
-	public static final String VALIDATION_SIGNUP_JUR_ADDRESS = "valid.signup.jur.address";	
-	public static final String VALIDATION_SIGNUP_JUR_ZIPCODE = "valid.signup.jur.zipcode";	
-	
+	public static final String VALIDATION_SIGNUP_NAME_ENTERPRISE = "valid.signup.enterprise";
+	public static final String VALIDATION_SIGNUP_LOGIN = "valid.signup.login";
+	public static final String VALIDATION_SIGNUP_UNP = "valid.signup.unp";	
+	public static final String VALIDATION_SIGNUP_ADDRESS = "valid.signup.address";	
+	public static final String VALIDATION_SIGNUP_ZIPCODE = "valid.signup.zipcode";	
+	public static final String VALIDATION_SIGNUP_NAME = "valid.signup.name";	
+	public static final String VALIDATION_SIGNUP_SURNAME = "valid.signup.surname";
+	public static final String VALIDATION_SIGNUP_PHONE = "valid.signup.phone";
 	
 	public static final String MESSAGE_CHANGE_PASSWORD_SUCCESSFUL = "message.reset.password.successful";
 	public static final String MESSAGE_LOT_INSERT_SUCCESSFUL = "message.lot.insert.successful";

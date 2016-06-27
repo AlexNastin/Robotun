@@ -16,13 +16,13 @@ public final class RegExName {
 	public static final String REGEX_UNP = "unp";
 	public static final String REGEX_ADDRESS = "address";
 	public static final String REGEX_ZIPCODE = "zipcode";
+	public static final String REGEX_FIO = "fio";
 	
 	
 	
 	
 	
 	
-	public static final String REGEX_FULL_NAME_USER = "fullName";
 	public static final String REGEX_PHONE = "phone";
 	public static final String REGEX_ROLE = "role";
 	public static final String REGEX_PERSONAL_NUMBER = "personalNumber";

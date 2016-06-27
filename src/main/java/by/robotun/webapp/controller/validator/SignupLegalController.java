@@ -38,7 +38,7 @@ public class SignupLegalController {
 	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView addUserPhysical(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+	public ModelAndView addUserPhysical(Locale locale, ModelMap model, HttpSession httpSession) throws ServiceException  {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.ADD_USER_PHYSICAL_FORM, new SignupUserPhysicalForm());
