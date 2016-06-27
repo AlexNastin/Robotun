@@ -71,19 +71,19 @@ var app = angular.module('app', []);
 		<div class="well">
         <h1 class="text-center">Работы от этого чувака</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item active">
+          <a href="#" class="list-group-item">
                 <div class="media col-md-3">
                     <figure class="pull-left">
                         <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="placehold.it/350x250" >
                     </figure>
                 </div>
                 <div class="col-md-6">
-                    <h4 class="list-group-item-heading"> Заголовок халтурки </h4>
+                    <h2 class="list-group-item-heading"> Заголовок халтурки </h2>
                     
                 </div>
                 <div class="col-md-3 text-center">
                     <h2> 14240 <small> рублей </small></h2>
-                    <button type="button" class="btn btn-success btn-lg btn-block"> Помочь! </button>
+                    <button type="button" class="btn btn-success btn-lg btn-block main-button-style"> Помочь! </button>
                     
                 </div>
           </a>
