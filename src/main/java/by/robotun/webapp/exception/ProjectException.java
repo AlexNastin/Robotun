@@ -1,8 +1,7 @@
-package by.robotun.webapp.exeption;
+package by.robotun.webapp.exception;
 
 /**
  * This exception appears from All project.
- * 
  * @author Alex Nastin
  */
 public class ProjectException extends Exception {
@@ -21,5 +20,4 @@ public class ProjectException extends Exception {
 	public ProjectException(Throwable e) {
 		super(e);
 	}
-
 }

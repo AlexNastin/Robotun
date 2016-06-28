@@ -9,7 +9,7 @@ import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.PasswordResetToken;
 import by.robotun.webapp.domain.Subcategory;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.form.UpdateUserPasswordForm;

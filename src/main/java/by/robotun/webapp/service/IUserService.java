@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.UpdatePersonalUserLegalForm;

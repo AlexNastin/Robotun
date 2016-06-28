@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import by.robotun.webapp.dao.ICategoryDAO;
 import by.robotun.webapp.domain.Category;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaCategoryDAO")
 public class CategoryDAOImpl implements ICategoryDAO {

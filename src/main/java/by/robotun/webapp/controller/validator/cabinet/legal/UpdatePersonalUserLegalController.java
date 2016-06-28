@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdatePersonalUserLegalFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
@@ -34,6 +36,10 @@ public class UpdatePersonalUserLegalController {
 	
 	@Autowired
 	private IGuestService guestService;
+	
+	/** @see org.springframework.context.MessageSource */
+	@Autowired
+	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updatePersonalUserLegal(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -55,13 +61,13 @@ public class UpdatePersonalUserLegalController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView updatePersonalUserLegalValidation(@ModelAttribute(ControllerParamConstant.UPDATE_PERSONAL_LEGAL_FORM) UpdatePersonalUserLegalForm updatePersonalUserLegalForm,
-		BindingResult result, HttpSession httpSession) throws Exception {
+		BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		updatePersonalUserLegalFormValidator.validate(updatePersonalUserLegalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_LEGAL);
 		if (!result.hasErrors()) {
 			userService.updatePersonalUserLegal(updatePersonalUserLegalForm, person.getId(), httpSession);
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_PERSONAL_DATA_UPDATE_SUCCESSFUL, null, locale));
 			updatePersonalUserLegalForm = new UpdatePersonalUserLegalForm();
 		}
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, updatePersonalUserLegalForm);

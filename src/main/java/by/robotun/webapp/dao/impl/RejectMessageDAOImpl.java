@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IRejectMessageDAO;
 import by.robotun.webapp.domain.RejectMessage;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaRejectMessageDAO")
 public class RejectMessageDAOImpl implements IRejectMessageDAO {

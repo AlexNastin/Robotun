@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.form.UpdatePersonalUserPhysicalForm;
+import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdatePersonalUserPhysicalFormValidator;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
@@ -34,6 +36,10 @@ public class UpdatePersonalUserPhysicalController {
 	
 	@Autowired
 	private IGuestService guestService;
+	
+	/** @see org.springframework.context.MessageSource */
+	@Autowired
+	private MessageSource messages;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updatePersonalUserPhysical(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -53,13 +59,13 @@ public class UpdatePersonalUserPhysicalController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView updatePersonalUserPhysicalValidation(@ModelAttribute(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM) UpdatePersonalUserPhysicalForm updatePersonalUserPhysicalForm,
-		BindingResult result, HttpSession httpSession) throws Exception {
+		BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		updatePersonalUserPhysicalFormValidator.validate(updatePersonalUserPhysicalForm, result);
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_PERSONAL_PHYSICAL);
 		if (!result.hasErrors()) {
 			userService.updatePersonalUserPhysical(updatePersonalUserPhysicalForm, person.getId(), httpSession);
-			modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_PERSONAL_DATA_UPDATE_SUCCESSFUL, null, locale));
 			updatePersonalUserPhysicalForm = new UpdatePersonalUserPhysicalForm();
 		}
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PERSONAL_PHYSICAL_FORM, updatePersonalUserPhysicalForm);

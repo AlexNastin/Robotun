@@ -2,7 +2,7 @@ package by.robotun.webapp.dao;
 
 import java.util.List;
 
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 public interface IPhoneDAO {
 

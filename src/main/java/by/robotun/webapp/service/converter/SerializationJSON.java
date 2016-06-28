@@ -9,7 +9,7 @@ import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.domain.json.Views;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 
 @Component("serializationJSON")
 public class SerializationJSON {

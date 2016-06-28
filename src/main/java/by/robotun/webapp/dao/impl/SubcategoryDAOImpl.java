@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import by.robotun.webapp.dao.ISubcategoryDAO;
 import by.robotun.webapp.domain.Subcategory;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaSubcategoryDAO")
 public class SubcategoryDAOImpl implements ISubcategoryDAO {

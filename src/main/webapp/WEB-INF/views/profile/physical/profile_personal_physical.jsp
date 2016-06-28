@@ -38,6 +38,11 @@
 <div class="col-md-2"></div>
 <div class="col-md-8 edit-users-legal-boards" style="padding-top: 1em;">
 <div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
+		<div class="font-style-message">
+		<c:if test="${message != null}">
+			${message}
+			   </c:if>
+		</div>
 	<form:form modelAttribute="updatePersonalPhysicalForm" method="POST">
 		<div class="form-group heightStyleValidation2">
 		<form:input path="name" class="form-control" placeholder="name" value="${user.physical.name}"/>

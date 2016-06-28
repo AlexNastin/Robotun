@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import by.robotun.webapp.dao.IArchiveLotDAO;
 import by.robotun.webapp.domain.ArchiveLot;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;
 

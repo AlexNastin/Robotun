@@ -1,6 +1,6 @@
 package by.robotun.webapp.dao;
 
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 public interface IArchiveBetDAO {
 

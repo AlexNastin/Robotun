@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import by.robotun.webapp.dao.IPhoneDAO;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaPhoneDAO")
 public class PhoneDAOImpl implements IPhoneDAO {

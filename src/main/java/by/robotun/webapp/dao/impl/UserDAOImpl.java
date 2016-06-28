@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;
 import by.robotun.webapp.service.ServiceParamConstant;

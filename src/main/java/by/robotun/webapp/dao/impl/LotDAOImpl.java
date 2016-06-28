@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import by.robotun.webapp.dao.DaoParamConstant;
 import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.domain.Lot;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;
 import by.robotun.webapp.service.ServiceParamConstant;
