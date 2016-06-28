@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.PasswordResetToken;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
 import by.robotun.webapp.service.IGuestService;
@@ -61,8 +61,7 @@ public class ForgotPasswordController {
 		if (matcher.matches()) {
 			User user = guestService.getUser(userEmail);
 			if (user == null) {
-				String message = messages.getMessage(
-						"email.message.resetPasswordNotUser", null, locale);
+				String message = messages.getMessage("email.message.resetPasswordNotUser", null, locale);
 				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
@@ -76,8 +75,7 @@ public class ForgotPasswordController {
 				appUrl.append(":");
 				appUrl.append(request.getServerPort());
 				appUrl.append(request.getContextPath());
-				SimpleMailMessage email = constructResetTokenEmail(
-						appUrl.toString(), request.getLocale(), token, user);
+				SimpleMailMessage email = constructResetTokenEmail(appUrl.toString(), request.getLocale(), token, user);
 				mailSender.send(email);
 				String message = messages.getMessage(
 						"email.message.resetPasswordEmailSend", null, locale);

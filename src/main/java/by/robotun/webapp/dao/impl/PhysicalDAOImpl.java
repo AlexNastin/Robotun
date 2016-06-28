@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IPhysicalDAO;
 import by.robotun.webapp.domain.Physical;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaPhysicalDAO")
 public class PhysicalDAOImpl implements IPhysicalDAO {

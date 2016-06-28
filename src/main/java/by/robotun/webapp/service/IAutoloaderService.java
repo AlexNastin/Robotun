@@ -6,7 +6,7 @@ import java.util.List;
 import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 
 public interface IAutoloaderService {
 

@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.DaoException;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.DaoException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.AddModeratorForm;
 import by.robotun.webapp.property.PropertyManager;
 import by.robotun.webapp.property.PropertyName;

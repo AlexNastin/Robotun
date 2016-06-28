@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IBetDAO;
 import by.robotun.webapp.domain.Bet;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaBetDAO")
 public class BetDAOImpl implements IBetDAO {

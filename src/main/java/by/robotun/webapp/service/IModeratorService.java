@@ -3,7 +3,7 @@ package by.robotun.webapp.service;
 import java.util.List;
 
 import by.robotun.webapp.domain.Lot;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.RejectMessageForm;
 
 public interface IModeratorService {

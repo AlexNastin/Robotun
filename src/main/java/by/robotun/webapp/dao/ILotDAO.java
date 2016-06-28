@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import by.robotun.webapp.domain.Lot;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 public interface ILotDAO {
 

@@ -17,7 +17,7 @@ import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IAutoloaderService;
 import by.robotun.webapp.service.converter.SerializationJSON;
 

@@ -12,7 +12,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.UpdateUserPasswordForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;

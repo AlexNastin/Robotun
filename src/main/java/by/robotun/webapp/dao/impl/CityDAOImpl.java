@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.ICityDAO;
 import by.robotun.webapp.domain.City;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaCityDAO")
 public class CityDAOImpl implements ICityDAO {

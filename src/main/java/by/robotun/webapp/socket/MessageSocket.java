@@ -17,7 +17,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 import by.robotun.webapp.domain.json.Message;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.socket.decoder.MessageDecoder;
 import by.robotun.webapp.socket.encoder.MessageEncoder;

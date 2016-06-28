@@ -25,7 +25,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.Person;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.UpdateLotForm;
 import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdateLotFormValidator;

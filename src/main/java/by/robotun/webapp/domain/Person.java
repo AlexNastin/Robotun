@@ -1,14 +1,7 @@
 package by.robotun.webapp.domain;
 
-/**
- * @author Stepanov
- *
- */
-public class Person{
+public class Person implements Essence{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
@@ -102,6 +95,4 @@ public class Person{
 		return "Person [id=" + id + ", idRole=" + idRole + ", idCity=" + idCity + ", login=" + login + ", nickname="
 				+ nickname + "]";
 	}
-
-	
 }

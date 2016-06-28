@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IPasswordResetTokenDAO;
 import by.robotun.webapp.domain.PasswordResetToken;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 
 @Repository("jpaPasswordResetTokenDAO")
 public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {

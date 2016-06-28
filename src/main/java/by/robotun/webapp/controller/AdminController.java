@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.ServiceException;
+import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IAdminService;
 import by.robotun.webapp.service.converter.SerializationJSON;
 

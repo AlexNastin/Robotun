@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
-import by.robotun.webapp.exeption.DaoException;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.security.validator.AuthenticationValidator;
 
 /**

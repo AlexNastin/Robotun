@@ -1,8 +1,7 @@
-package by.robotun.webapp.exeption;
+package by.robotun.webapp.exception;
 
 /**
  * This exception appears from DAO.
- * 
  * @author Alex Nastin
  */
 public class DaoException extends ProjectException {
