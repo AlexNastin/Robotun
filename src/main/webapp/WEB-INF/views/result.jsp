@@ -358,13 +358,10 @@ function loader(){
  							indent: 'true'
 						},
 						success:function(data) {
-							console.log(data.response.docs)
 							if(data.response.docs.length == 0) {
 								isEnd = true;
 							}
 							for(var i=0; i<data.response.docs.length; i++) {
-								console.log("dghdtgnnertnh");
-								console.log(scope.lotsCtrl.lotsImages);
 								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
 								scope.lotsCtrl.lots.push(data.response.docs[i]);
 							}

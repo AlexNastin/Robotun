@@ -14,10 +14,6 @@
 	<link href="<c:url value="/resources/css/profile/profile.css" />"	rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
-<script type="text/javascript">
-var app = angular.module('app', []);
-</script>
 	<title>Просмотр профиля</title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 	
@@ -29,7 +25,6 @@ var app = angular.module('app', []);
  <div class="container main">
     <div class="row">
         <div class=" col-lg-offset-3 col-lg-6">
-        <h2 class="title">Name of company</h2>
             <div class="panel panel-default">
             
                 <div class="panel-body" ng-controller="UserController as userCtrl" ng-cloak>
@@ -48,13 +43,7 @@ var app = angular.module('app', []);
                                 <div class="centered-text col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                                     <div itemscope="" itemtype="http://schema.org/Person">
                                         <h2> <span itemprop="name">{{userCtrl.user.nickname}}</span></h2>
-                                        <c:if test="${idRole == 3}">
-                                         <h2> <span itemprop="name">{{userCtrl.user.physical.name}}</span></h2>										
-										</c:if>
-										<c:if test="${idRole == 2}">
-										<h2> <span itemprop="name">{{userCtrl.user.legal.nameEnterprise}}</span></h2>	
-												
-										</c:if>
+                                       
                                         <p>
                                             <i class="fa fa-map-marker"></i> <span itemprop="addressRegion">{{userCtrl.user.city.title}}</span>
                                         </p>
@@ -69,77 +58,140 @@ var app = angular.module('app', []);
                 <div>
     <div class="row">
 		<div class="well">
-        <h1 class="text-center">Работы от этого чувака</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">
+        <h1 class="text-center">Работы этого пользователя</h1>
+        <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
+          <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
                 <div class="media col-md-3">
                     <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="placehold.it/350x250" >
+                        <img class="media-object img-rounded img-responsive"  ng-src="{{lot.logoImage}}" >
                     </figure>
                 </div>
                 <div class="col-md-6">
-                    <h2 class="list-group-item-heading"> Заголовок халтурки </h2>
-                    
+                    <h4 class="list-group-item-heading ">{{lot.name}}</h4>
+                    <p class="list-group-item-text result-description ">{{lot.description}}</p>
                 </div>
                 <div class="col-md-3 text-center">
-                    <h2> 14240 <small> рублей </small></h2>
-                    <button type="button" class="btn btn-success btn-lg btn-block main-button-style"> Помочь! </button>
+                     <h2>{{lot.budget}}<small> бел. руб. </small></h2>
+                     <button type="button" class="btn btn-default btn-lg btn-block main-button-style"> Помочь! </button>
                     
                 </div>
           </a>
           
           
         </div>
+        <div class="load"></div>
         </div>
 	</div>
 </div>
-                    <div class="row">
-                        <div id="social-links" class=" col-lg-12">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                    <a title="google" class="btn btn-social btn-block btn-google" target="_BLANK" href="http://plus.google.com/+You/">
-                                        <i class="fa fa-google"></i> +You
-                                    </a>
-                                </div>
-                                <div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                    <a title="twitter" class="btn btn-social btn-block btn-twitter" target="_BLANK" href="http://twitter.com/yourid">
-                                        <i class="fa fa-twitter"></i> /yourid
-                                    </a>
-                                </div>
-                                <div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                    <a title="github" class="btn btn-social btn-block btn-github" target="_BLANK" href="http://github.com/yourid">
-                                        <i class="fa fa-github"></i> /yourid
-                                    </a>
-                                </div>
-                                <div class="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                    <a title="stackoverflow" class="btn btn-social btn-block btn-stackoverflow" target="_BLANK" href="http://stackoverflow.com/users/youruserid/yourid">
-                                        <i class="fa fa-stack-overflow"></i> /yourid
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
+		<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
+  <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
+  <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
 <script>
+var q = '*:*';
+var fq = ['end_date:[* TO NOW+181DAY]',
+          "id_user:${idUser}"];
+var sort = 'start_date desc, budget desc';
 		var jsonData = '${userJson}';
-		
-		var idRole = ${idRole};
 
 		app.controller('UserController', ['$scope', '$http', userController]);
+		
+		app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 		function userController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
-			vm.idRole = idRole;
 			vm.user = data;
 		}
+
+		function mainLotsController ($scope, $http) {
+			var vm = this;
+			vm.lotsImages = lotsImages;
+			$.ajax({	
+				url: solrUrl,
+				type:"GET",
+				traditional: true,
+			    cache: true,
+			    async: true,
+			    dataType: 'jsonp',
+				data:{
+					//передаем параметры
+					q: q,
+					fq: fq,
+					sort: sort,
+					start: offsetStart,
+					rows: ajaxLotMaxSize,
+					wt: 'json',
+					indent: 'true'
+				},
+				success:function(data) {
+					vm.createByData(data);
+				},
+				jsonp: 'json.wrf'
+			});
+			vm.updateCustomRequest = function (scope) {
+				vm.lots = scope.lotsCtrl.lots;
+			};
+			vm.lots = [];
+			vm.createByData = function(data) {
+				var scope = angular.element(document.getElementById("list-group")).scope();
+				angular.forEach(data.response.docs, function(lot) {
+					lot.logoImage = vm.lotsImages[getRandomInt(0,vm.lotsImages.length-1)];
+					scope.lotsCtrl.lots.push(lot);
+				});
+				scope.$apply(function () {
+					scope.lotsCtrl.updateCustomRequest(scope);
+				});
+			}
+		}
+		
+		function loader(){
+			var scope = angular.element(document.getElementById("list-group")).scope();
+			// «теневой» запрос к серверу
+			$(".load").fadeIn(500, function () {
+							$.ajax({
+								url: solrUrl,
+								type:"GET",
+								traditional: true,
+		 					    cache: true,
+		 					    async: true,
+		 					    dataType: 'jsonp',
+								data:{
+									//передаем параметры
+									q: q,
+		 							fq: fq,
+		 							sort: sort,
+		 							start: offset,
+		 							rows: ajaxLotMaxSize,
+		 							wt: 'json',
+		 							indent: 'true'
+								},
+								success:function(data) {
+									if(data.response.docs.length == 0) {
+										isEnd = true;
+									}
+									for(var i=0; i<data.response.docs.length; i++) {
+										data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
+										scope.lotsCtrl.lots.push(data.response.docs[i]);
+									}
+									scope.$apply(function () {
+										scope.lotsCtrl.updateCustomRequest(scope);
+									});
+									offset+=ajaxLotMaxSize;
+									block = false;
+								},
+								jsonp: 'json.wrf'
+							});
+						});
+			}
 		</script>
-		<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"> </script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
 </body>
 </html>

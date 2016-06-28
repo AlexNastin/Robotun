@@ -140,9 +140,8 @@ public class GuestController {
 			Model model, HttpSession httpSession) throws ServiceException {
 		User user = userService.getUserByIdWithCity(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_VIEW);
-		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.USER_JSON, serializationJSON.toJsonViewsInternalUserSubclass(user));
-		modelAndView.addObject(ControllerParamConstant.ID_ROLE, user.getIdRole());
+		modelAndView.addObject(ControllerParamConstant.ID_USER, idUser);
 		return modelAndView;
 	}
 

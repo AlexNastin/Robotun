@@ -28,6 +28,7 @@ public class AutoloaderService implements IAutoloaderService {
 	@Autowired
 	private IUserDAO userDAO;
 
+	@Deprecated
 	@Override
 	public List<Lot> getLots(int offset, Date date) throws ServiceException {
 		List<Lot> lots = new ArrayList<Lot>();
@@ -39,6 +40,7 @@ public class AutoloaderService implements IAutoloaderService {
 		return lots;
 	}
 
+	@Deprecated
 	@Override
 	public List<Lot> getLotsByCategoryAndSubcategory(Integer offset, Date endDate, Integer idCategory,
 			Integer idSubcategory) throws ServiceException {
