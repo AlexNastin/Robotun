@@ -38,8 +38,7 @@ public class GuestController {
 	private IUserService userService;
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView result(@RequestParam(value = "q", required = false) String query, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {		
+	public ModelAndView result(@RequestParam(value = "q", required = false) String query, HttpSession httpSession) throws ServiceException {		
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		int idCity = 0;
 		if (person != null) {
@@ -62,8 +61,7 @@ public class GuestController {
 
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
 	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot,
-			@RequestParam(value = "idPic", required = false) Integer idPicture, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
+			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
 		ModelAndView modelAndView = new ModelAndView();
@@ -106,13 +104,16 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value = "/archiveLot", method = RequestMethod.GET)
-	public ModelAndView archiveLot(@RequestParam(value = "id", required = true) Integer idArchiveLot, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
+	public ModelAndView archiveLot(@RequestParam(value = "id", required = true) Integer idArchiveLot,
+			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView();
 		if(person != null) {
 			ArchiveLot archiveLot = userService.getArchiveLotById(idArchiveLot);
 			if(person != null && person.getId() == archiveLot.getIdUser()) {
+				if (idPicture == null) {
+					idPicture = 1;
+				}
 				modelAndView = new ModelAndView(URLMapping.JSP_ARCHIVE_LOT);
 				modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, archiveLot.getEndDate().getTime());
 				modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(archiveLot));
@@ -120,6 +121,8 @@ public class GuestController {
 				modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
+				modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+				modelAndView.addObject(ControllerParamConstant.ID_PICTURE, idPicture);
 				if (archiveLot.getIsCall() && archiveLot.getIdUser() == person.getId()) {
 					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
 				} else if (!archiveLot.getIsCall()) {
@@ -134,7 +137,6 @@ public class GuestController {
 					modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
 					modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 				}
-			modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
 		} else {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}
