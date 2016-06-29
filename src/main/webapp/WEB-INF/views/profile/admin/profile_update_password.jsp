@@ -55,8 +55,11 @@
 		<form:errors path="confirmPassword" />
 		<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
+	
 		<c:if test="${message != null}">
+			<div class="messagesValidStyle">
 			${message}
+				</div>
 			   </c:if>
 		<br>
 		<div style="text-align:center;">
