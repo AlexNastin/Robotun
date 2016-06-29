@@ -26,21 +26,24 @@
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
-<body class="body-color">
+<body class="body-color backgroundImageStyle">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	
 	<div class="container container-style-addlot">
 	<div class="col-md-1"></div>
-	<div class="col-md-10 background-color-add_lot margin-bottom-button edit-users-legal-boards" >
+	<div class="col-md-10 background-color-add_lot margin-bottom-button edit-users-legal-boards" style="padding-top: 1em;" >
 	<div class="col-md-12">
 		<div class="font-style-message">
 		<c:if test="${message != null}">
 			${message}
 			   </c:if>
 		</div>
-	<div class="text-style-add-lot ">Добавить работу</div>
+	<div class="col-md-6" style="padding-left: 0px; padding-top: 1em;">
+	<i class="fa fa-angle-left" style="font-size: 25px;" aria-hidden="true"></i> <a href='<c:url value="/result"/>' style="font-size:18px; color: black;">Посмотреть все предложения</a>
 	</div>
-	<div class="col-md-6 vertical-line text-align-justify horizontal-line">
+	<div class="text-style-add-lot col-md-6">Добавить работу</div>
+	</div>
+	<div class="col-md-6">
 	 <div id="YMapsID" style="width: 100%; height: 350px;"></div>
 	 </div>
 	<div class="col-md-6">

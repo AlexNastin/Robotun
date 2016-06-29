@@ -65,7 +65,7 @@
 .switch-field label {
   display: inline-block;
   width: 90px;
-  background-color: #e4e4e4;
+  background-color: #3abeb1;
   color: rgba(0, 0, 0, 0.6);
   font-size: 14px;
   font-weight: normal;
@@ -87,7 +87,7 @@
 }
 
 .switch-field input:checked + label {
-  background-color: #A5DC86;
+  background-color: #85d7cf;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -103,7 +103,7 @@
 .text-style-add-lot {
 	font-size: 25pt;
 	text-align: center;
-	margin-top: 0.5em;
+	margin-top: 0em;
 	margin-bottom:0.5em;
 }
 .text-style-board-add-lot {
@@ -130,9 +130,16 @@
 	}
 }
 .button-add-lot-style{
-	background-color: #334A61; 
-	border-color: #334A61;
+	width: 100%;
+	background-color: #3abeb1;
+	border-color: #3abeb1;
 }
+.button-add-lot-style:hover, .button-add-lot-style:active, .button-add-lot-style:focus {
+	width: 100%;
+	background-color: #85d7cf  !important;
+	border-color: #85d7cf !important;
+}
+
 .visibility-field {
 visibility: collapse;
 position: absolute;
@@ -222,3 +229,7 @@ position: absolute;
     border: none;
 }
 
+ .backgroundImageStyle {
+ background-image: url(../login/19.jpg);
+ }
+ 
