@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +14,15 @@ import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.ArchiveLot;
 import by.robotun.webapp.domain.Lot;
 import by.robotun.webapp.domain.User;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IAutoloaderService;
 
 @Component
 public class AutoloaderService implements IAutoloaderService {
 
+	static final Logger LOGGER = Logger.getLogger(AutoloaderService.class);
+	
 	@Autowired
 	private ILotDAO lotDAO;
 	
@@ -34,7 +38,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsLimitOffset(offset, date);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -47,7 +52,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsByCategoryAndSubcategoryLimitOffset(offset, endDate, idCategory, idSubcategory);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -58,7 +64,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectMyLotsLimitOffset(offset, idUser);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -69,7 +76,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<ArchiveLot> archiveLots = new ArrayList<ArchiveLot>();
 		try {
 			archiveLots = archiveLotDAO.selectArchiveLotsLimitOffset(offset, idUser);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return archiveLots;
@@ -80,7 +88,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectMyResponsesLimitOffset(offset, idUser);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -91,7 +100,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectOnModerationLimitOffset(offset);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -102,7 +112,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsOnUpdateByUserLimitOffset(offset, idUser);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -113,7 +124,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<User> users = new ArrayList<User>();
 		try {
 			users = userDAO.selectAllModeratorsLimitOffset(offset);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return users;
@@ -125,7 +137,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsFiltering(endDate, budgetFrom, budgetTo, desc, idCity);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -137,7 +150,8 @@ public class AutoloaderService implements IAutoloaderService {
 		List<Lot> lots = new ArrayList<Lot>();
 		try {
 			lots = lotDAO.selectLotsFilteringOffset(endDate, budgetFrom, budgetTo, desc, idCity, offset, date);
-		} catch (Exception e) {
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;

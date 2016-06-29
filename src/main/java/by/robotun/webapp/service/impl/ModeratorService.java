@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,8 @@ import by.robotun.webapp.service.ServiceParamConstant;
 @Component
 public class ModeratorService implements IModeratorService {
 
+	static final Logger LOGGER = Logger.getLogger(ModeratorService.class);
+	
 	@Autowired
 	private ILotDAO lotDAO;
 	
@@ -32,6 +35,7 @@ public class ModeratorService implements IModeratorService {
 		try {
 			lots = lotDAO.selectLotsOnModeration();
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -51,6 +55,7 @@ public class ModeratorService implements IModeratorService {
 			lot.setIsVisible(ServiceParamConstant.ON_UPDATE_NUMBER);
 			lotDAO.updateLot(lot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		
@@ -63,9 +68,8 @@ public class ModeratorService implements IModeratorService {
 			lot.setIsVisible(ServiceParamConstant.ON_PUBLIC_NUMBER);
 			lotDAO.updateLot(lot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
-		
 	}
-	
 }

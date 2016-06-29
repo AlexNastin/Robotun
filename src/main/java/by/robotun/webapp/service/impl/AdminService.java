@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,8 @@ import by.robotun.webapp.service.ServiceParamConstant;
 @Component
 public class AdminService implements IAdminService {
 
+	static final Logger LOGGER = Logger.getLogger(AdminService.class);
+	
 	@Autowired
 	private IUserDAO userDAO;
 	
@@ -41,6 +44,7 @@ public class AdminService implements IAdminService {
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -51,6 +55,7 @@ public class AdminService implements IAdminService {
 		try {
 			users = userDAO.selectAllStaffs();
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return users;
@@ -62,6 +67,7 @@ public class AdminService implements IAdminService {
 		try {
 			user = userDAO.selectStaffUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return user;
@@ -72,6 +78,7 @@ public class AdminService implements IAdminService {
 		try {
 			userDAO.deleteUser(id);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}		
 	}
@@ -84,6 +91,7 @@ public class AdminService implements IAdminService {
 			user.setPassword(md5Password);
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -94,6 +102,7 @@ public class AdminService implements IAdminService {
 		try {
 			userDAO.updateUser(userStaff);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}

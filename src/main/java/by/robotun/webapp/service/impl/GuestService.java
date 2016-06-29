@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +39,8 @@ import by.robotun.webapp.service.ServiceParamConstant;
 @Service
 public class GuestService implements IGuestService {
 
+	static final Logger LOGGER = Logger.getLogger(GuestService.class);
+	
 	@Autowired
 	private IPasswordResetTokenDAO resetTokenDAO;
 
@@ -67,6 +70,7 @@ public class GuestService implements IGuestService {
 		try {
 			return userDAO.selectStaffUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -77,6 +81,7 @@ public class GuestService implements IGuestService {
 		try {
 			cities = cityDAO.selectAllCities();
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return cities;
@@ -88,6 +93,7 @@ public class GuestService implements IGuestService {
 		try {
 			subcategories = subcategoryDAO.selectAllSubcategories();
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return subcategories;
@@ -102,6 +108,7 @@ public class GuestService implements IGuestService {
 		try {
 			subcategories = subcategoryDAO.selectAllSubcategoriesByCategory(idCategory);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return subcategories;
@@ -113,6 +120,7 @@ public class GuestService implements IGuestService {
 		try {
 			categories = categoryDAO.selectAllCategories();
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return categories;
@@ -152,6 +160,7 @@ public class GuestService implements IGuestService {
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -189,6 +198,7 @@ public class GuestService implements IGuestService {
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -199,6 +209,7 @@ public class GuestService implements IGuestService {
 		try {
 			lots = lotDAO.selectAllLots(endDate);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -211,6 +222,7 @@ public class GuestService implements IGuestService {
 		try {
 			lots = lotDAO.selectLotByCategory(idCategory, endDate);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -223,6 +235,7 @@ public class GuestService implements IGuestService {
 		try {
 			lots = lotDAO.selectLotByCategoryAndSubcategory(idCategory, idSubcategory, endDate);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -234,6 +247,7 @@ public class GuestService implements IGuestService {
 		try {
 			user = userDAO.selectUser(login);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return user;
@@ -262,6 +276,7 @@ public class GuestService implements IGuestService {
 				}
 			}
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return isCreate;
@@ -273,6 +288,7 @@ public class GuestService implements IGuestService {
 		try {
 			passwordResetToken = resetTokenDAO.selectTokenByToken(token);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 
@@ -288,6 +304,7 @@ public class GuestService implements IGuestService {
 			userDAO.updateUser(user);
 			resetTokenDAO.deletePasswordResetToken(passwordResetToken.getIdToken());
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 
@@ -299,6 +316,7 @@ public class GuestService implements IGuestService {
 		try {
 			user = userDAO.selectUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return user;
@@ -316,6 +334,7 @@ public class GuestService implements IGuestService {
 				userDAO.updateUser(user);
 			}
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -326,6 +345,7 @@ public class GuestService implements IGuestService {
 		try {
 			count = betDAO.selectCountBetByLot(idLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return count;
@@ -337,6 +357,7 @@ public class GuestService implements IGuestService {
 		try {
 			count = archiveBetDAO.selectCountArchiveBetByLot(idArchiveLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return count;
@@ -348,6 +369,7 @@ public class GuestService implements IGuestService {
 		try {
 			count = betDAO.selectCountBetByLotByUser(idLot, idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return count;
@@ -359,6 +381,7 @@ public class GuestService implements IGuestService {
 		try {
 			count = archiveBetDAO.selectCountArchiveBetByLotByUser(idArchiveLot, idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return count;
@@ -370,6 +393,7 @@ public class GuestService implements IGuestService {
 		try {
 			idUser = lotDAO.selectIdOwnerLot(idLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return idUser;

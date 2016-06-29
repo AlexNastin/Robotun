@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,8 @@ import by.robotun.webapp.service.ServiceParamConstant;
 @Service
 public class UserService implements IUserService {
 
+	static final Logger LOGGER = Logger.getLogger(UserService.class);
+	
 	@Autowired
 	private ILotDAO lotDAO;
 	
@@ -76,6 +79,7 @@ public class UserService implements IUserService {
 			lot.setLongitude(addLotForm.getLongitude());
 			lotDAO.insertLot(lot);
 		} catch (ParseException | DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 
@@ -88,6 +92,7 @@ public class UserService implements IUserService {
 			try {
 				lot = lotDAO.selectLotById(idLot);
 			} catch (DaoException e) {
+				LOGGER.error(e.getMessage(), e);
 				throw new ServiceException(e);
 			}
 		}
@@ -100,6 +105,7 @@ public class UserService implements IUserService {
 		try {
 			archiveLot = archiveLotDAO.selectArchiveLotById(idArchiveLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return archiveLot;
@@ -116,6 +122,7 @@ public class UserService implements IUserService {
 		try {
 			betDAO.insertBet(bet);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 
@@ -127,6 +134,7 @@ public class UserService implements IUserService {
 		try {
 			endDate = lotDAO.selectDateLotById(idLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return endDate;
@@ -162,6 +170,7 @@ public class UserService implements IUserService {
 			person.setLogin(user.getLogin());
 			person.setNickname(user.getNickname());
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		
@@ -174,6 +183,7 @@ public class UserService implements IUserService {
 		try {
 			user = userDAO.selectUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return user;
@@ -209,6 +219,7 @@ public class UserService implements IUserService {
 			person.setLogin(user.getLogin());
 			person.setNickname(user.getNickname());
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		
@@ -220,6 +231,7 @@ public class UserService implements IUserService {
 		try {
 			phones = phoneDAO.selectPhonesStringByIdUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return phones;
@@ -231,6 +243,7 @@ public class UserService implements IUserService {
 		try {
 			lots = lotDAO.selectLotsCreatedUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;	
@@ -242,6 +255,7 @@ public class UserService implements IUserService {
 		try {
 			archiveLots = archiveLotDAO.selectArchiveLotsCreatedUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return archiveLots;	
@@ -253,6 +267,7 @@ public class UserService implements IUserService {
 		try {
 			lots = lotDAO.selectLotsRespondedUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;		
@@ -264,6 +279,7 @@ public class UserService implements IUserService {
 		try {
 			lot = lotDAO.selectLotByIdForModeration(idLot);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lot;
@@ -290,6 +306,7 @@ public class UserService implements IUserService {
 			lot.setLongitude(updateLotForm.getLongitude());
 			lotDAO.updateLot(lot);
 		} catch (DaoException | ParseException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 	}
@@ -301,6 +318,7 @@ public class UserService implements IUserService {
 			lotDAO.deleteLot(idLot);
 		} catch (DaoException e) {
 			confirm = 1;
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return confirm;
@@ -312,6 +330,7 @@ public class UserService implements IUserService {
 		try {
 			lots = lotDAO.selectLotsOnUpdateByUser(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return lots;
@@ -323,9 +342,9 @@ public class UserService implements IUserService {
 		try {
 			user = userDAO.selectUserByIdWithCity(idUser);
 		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
 		return user;
 	}
-
 }
