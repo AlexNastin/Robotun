@@ -38,10 +38,10 @@
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">
 <div class="col-md-3">
-<img src="/jobster.by/resources/images/fabian-perez.jpg" class="img-responsive img-thumbnail users-legal-img" alt="Image">
+<img ng-src="{{lot.logoImage}}" class="img-responsive img-thumbnail users-legal-img" alt="Image">
 </div>
 <div class="col-md-9 moderator-descripton">
-<div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/lot?id={{lot.idLot}}' style="font-size: 18pt;">{{lot.name}}</a></div>
+<div class="col-md-12 text-moderator-description"><a ng-href='/jobster.by/lot?id={{lot.idLot}}&idPic={{lot.indexImage}}' style="font-size: 18pt;">{{lot.name}}</a></div>
 <div class="col-md-12 text-moderator-description">{{lot.description}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Бюджет: {{lot.budget}}</div>
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
@@ -108,12 +108,16 @@ app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 function mainLotsController ($scope) {
 	var vm = this;
+	vm.lotsImages = lotsImages;
 	vm.updateCustomRequest = function (scope) {
 		vm.lots = scope.lotsCtrl.lots;
 	};
 	var data = JSON.parse(jsonData);
 	vm.lots = [];
 	angular.forEach(data, function(lot) {
+		var randomInt = getRandomInt(0,vm.lotsImages.length-1);
+		lot.logoImage = vm.lotsImages[randomInt];
+		lot.indexImage = randomInt;
 		vm.lots.push(lot);
 	});
 	vm.preRemoveLot;
@@ -158,6 +162,9 @@ function mainLotsController ($scope) {
 										isEnd = true;
 									}
 									for(var i=0; i<data.length; i++) {
+										var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
+										data[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
+										data[i].indexImage = randomInt;
 										scope.lotsCtrl.lots.push(data[i]);
 									}
 									scope.$apply(function () {
