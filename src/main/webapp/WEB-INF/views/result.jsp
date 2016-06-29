@@ -32,7 +32,9 @@
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script>  
+	<script	src="<c:url value="/resources/js/script.js" />"></script> 
+	
+	
 	
 	<!-- Custom plugin -->
 	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
@@ -181,7 +183,15 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
-    
+  <script	src="<c:url value="/resources/js/results/jquery.ui.datepicker-ru.js" />"></script>
+ <script>
+$.datepicker.setDefaults(
+  $.extend(
+    {'dateFormat':'dd-mm-yy'},
+    $.datepicker.regional['ru']
+  )
+);
+</script>   
 
 <script>
 function updcity(){
