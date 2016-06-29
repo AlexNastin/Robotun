@@ -61,7 +61,8 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
-	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot, Locale locale, Model model,
+	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot,
+			@RequestParam(value = "idPic", required = false) Integer idPicture, Locale locale, Model model,
 			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
@@ -70,6 +71,9 @@ public class GuestController {
 				|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
 		} else {
+			if (idPicture == null) {
+				idPicture = 1;
+			}
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(lot));
@@ -77,6 +81,8 @@ public class GuestController {
 			modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
 			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 			modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
+			modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+			modelAndView.addObject(ControllerParamConstant.ID_PICTURE, idPicture);
 			if (person != null) {
 				if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
 					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
@@ -95,7 +101,7 @@ public class GuestController {
 				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 			}
 		}
-		modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+		
 		return modelAndView;
 	}
 	

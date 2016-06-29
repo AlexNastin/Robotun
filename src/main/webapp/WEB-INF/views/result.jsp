@@ -146,7 +146,7 @@
                                
                                 <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
                                 
-                                    <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
+                                    <a ng-href='/jobster.by/lot?id={{lot.id_lot}}&idPic={{lot.indexImage}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
                                     <div class="media col-md-3" >
                                             <figure  class="pull-left ">
                                                 <img class="media-object img-rounded img-responsive centered-and-cropped" style=" width: 230px; height: 150px;"  ng-src="{{lot.logoImage}}">
@@ -200,8 +200,6 @@ function updcity(){
 }
 $(document).ready(function() {
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
-	
-	console.log(selectedCityName);
 	$(".result-city").text(selectedCityName);
 	
 	
@@ -229,7 +227,6 @@ function resetParam() {
 		fq.push('id_city:' + idCity)
 	}
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
-	console.log(selectedCityName);
 	{$(".result-city").text(selectedCityName);}
 	
 	if(idCategory != 0) {
@@ -301,7 +298,9 @@ function mainLotsController ($scope, $http) {
 	vm.createByData = function(data) {
 		var scope = angular.element(document.getElementById("list-group")).scope();
 		angular.forEach(data.response.docs, function(lot) {
-			lot.logoImage = vm.lotsImages[getRandomInt(0,vm.lotsImages.length-1)];
+			var randomInt = getRandomInt(0,vm.lotsImages.length-1);
+			lot.logoImage = vm.lotsImages[randomInt];
+			lot.indexImage = randomInt;
 			scope.lotsCtrl.lots.push(lot);
 		});
 		scope.$apply(function () {
@@ -333,7 +332,9 @@ function sortLots(){
 						success:function(data) {
  							scope.lotsCtrl.lots = [];
  							for(var i=0; i<data.response.docs.length; i++) {
- 								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
+ 								var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
+ 								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
+ 								data.response.docs[i].indexImage = randomInt;
  								scope.lotsCtrl.lots.push(data.response.docs[i]);
  							}
  							scope.$apply(function () {
@@ -372,7 +373,9 @@ function loader(){
 								isEnd = true;
 							}
 							for(var i=0; i<data.response.docs.length; i++) {
-								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[getRandomInt(0,scope.lotsCtrl.lotsImages.length-1)];
+								var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
+								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
+ 								data.response.docs[i].indexImage = randomInt;
 								scope.lotsCtrl.lots.push(data.response.docs[i]);
 							}
 							scope.$apply(function () {
@@ -402,8 +405,6 @@ $(document).ready(
 			$('#idCategory').change(function() {
 				$.getJSON('${getSubcategories}',{idCategory : $(this).val(),ajax : 'true'},
 					function(data) {
-					console.log('3452345345235');
-					console.log(data);
 						var html = '<option value="0">Подкатегория</option>';
 						var len = data.length;
 						for (var i = 0; i < len; i++) {

@@ -12,15 +12,15 @@ var timeBlockSendButton = 600000;
 //URL images for lot`s logo
 var globalPath = '/jobster.by/resources/images/avatar_lot/';
 var lotsImages = [];
-lotsImages[0] = globalPath + '1.jpg';
-lotsImages[1] = globalPath + '2.jpg';
-lotsImages[2] = globalPath + '3.jpg';
-lotsImages[3] = globalPath + '4.jpg';
-lotsImages[4] = globalPath + '5.jpg';
-lotsImages[5] = globalPath + '6.jpg';
-lotsImages[6] = globalPath + '7.jpg';
-lotsImages[7] = globalPath + '8.jpg';
-lotsImages[8] = globalPath + '9.jpg';
+lotsImages[0] = globalPath + '0.jpg';
+lotsImages[1] = globalPath + '1.jpg';
+lotsImages[2] = globalPath + '2.jpg';
+lotsImages[3] = globalPath + '3.jpg';
+lotsImages[4] = globalPath + '4.jpg';
+lotsImages[5] = globalPath + '5.jpg';
+lotsImages[6] = globalPath + '6.jpg';
+lotsImages[7] = globalPath + '7.jpg';
+lotsImages[8] = globalPath + '8.jpg';
 
 //return random integer value from min to max
 function getRandomInt(min, max) {
