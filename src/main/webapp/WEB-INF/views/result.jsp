@@ -201,13 +201,13 @@ function updcity(){
 $(document).ready(function() {
 	var selectedCityName = document.getElementById("idCity").options[document.getElementById("idCity").selectedIndex].text;
 	$(".result-city").text(selectedCityName);
-	
-	
+	var queryText = '${query}';
+	$("#q").val(queryText);
  });
 
 // var idCity = ${idCity};
 var idCity = 0;
-var q = '${query}';
+var q = '${querySolr}';
 var fq = ['end_date:[* TO NOW+181DAY]'];
 if(idCity != 0) {
 	fq.push('id_city:' + idCity)
