@@ -23,7 +23,7 @@
 </c:if>
 <link href="<c:url value="/resources/css/main/header.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
-<nav class="navbar navbar-inverse navbar-fixed-top header-position" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top header-position" style="background-color: #222;" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
