@@ -64,7 +64,7 @@
 		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 5.5em;">
-		<form:textarea path="description" placeholder="Описание" class="form-control"/>
+		<form:textarea style="resize: none;" path="description" placeholder="Описание" class="form-control"/>
 		<label class="error textStyleValidation" generated="true" for="description"></label>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
