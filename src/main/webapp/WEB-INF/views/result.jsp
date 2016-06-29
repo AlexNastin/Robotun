@@ -68,7 +68,7 @@
     <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
         
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
-        <div class="sidebar-text-main-style">Поиск работ</div>
+        <div class="sidebar-text-main-style">Фильтр</div>
             <div style="left: 0;width: 100%; padding-bottom: 1em;" class="nav nav-sidebar sidebar-nav">
             <div class="col-md-12 margin-for-sidebar-text form-group">
             <div style="color: white; font-weight: bold;">Регион:</div>
@@ -115,7 +115,7 @@
             </div>
             
             <div class="col-md-12 margin-for-sidebar-text" style="text-align: center;">
-								<a href="#" onclick="resetParam(); updcity();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Найти</a>
+								<a href="#" onclick="resetParam(); updcity();" class="btn btn-primary button-sort-style margin-top-button-sort-style">Уточнить</a>
             </div>
             </div>
 
@@ -153,7 +153,7 @@
                                             </figure>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="list-group-item-heading ">{{lot.name}}</h4>
+                                            <h4 class="list-group-item-heading " style="font-size: 25px;">{{lot.name}}</h4>
                                             <p class="list-group-item-text result-description ">{{lot.description}}</p>
                                         </div>
                                         <div class="col-md-3 text-center">
