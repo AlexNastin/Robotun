@@ -56,9 +56,11 @@
 		<form:errors path="confirmPassword" />
 			<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
+		<div class="messagesValidStyle">
 		<c:if test="${message != null}">
 			${message}
 			   </c:if>
+		</div>
 		<br>
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />

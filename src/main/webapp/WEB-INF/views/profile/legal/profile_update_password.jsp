@@ -61,7 +61,7 @@
 		<form:errors path="confirmPassword" />
 		<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
-		<div class="font-style-message">
+		<div class="messagesValidStyle">
 		<c:if test="${message != null}">
 		${message}
 			   </c:if>
