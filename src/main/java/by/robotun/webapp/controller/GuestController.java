@@ -44,14 +44,17 @@ public class GuestController {
 		if (person != null) {
 			idCity = person.getIdCity();
 		}
-		if(query==null) {
-			query= "*:*";
+		String querySolr = query;
+		if(querySolr==null) {
+			querySolr = "*:*";
+			query = "";
 		} else {
-			query.replace(" ", "* or *");
-			query= "description:(*" + query + "*) OR name:(*" + query + "*)";
+			querySolr.replace(" ", "* or *");
+			querySolr= "description:(*" + querySolr + "*) OR name:(*" + querySolr + "*)";
 		}
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		List<Category> categories = guestService.getAllCategories();
+		modelAndView.addObject(ControllerParamConstant.QUERY_SOLR, querySolr);
 		modelAndView.addObject(ControllerParamConstant.QUERY, query);
 		modelAndView.addObject(ControllerParamConstant.ID_CITY, idCity);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());

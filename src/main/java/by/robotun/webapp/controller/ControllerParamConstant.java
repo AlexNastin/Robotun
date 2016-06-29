@@ -1,7 +1,5 @@
 package by.robotun.webapp.controller;
 
-import java.util.Map;
-
 public final class ControllerParamConstant {
 
 	/**
@@ -63,5 +61,6 @@ public final class ControllerParamConstant {
 	public static final String TYPE_SORT = "typeSort";
 	public static final String TYPE_REVERSE = "typeReverse";
 	public static final String QUERY = "query";
+	public static final String QUERY_SOLR = "querySolr";
 	public static final String ID_PICTURE = "idPicture";
 }
