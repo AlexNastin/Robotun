@@ -355,3 +355,10 @@ a {
     right:-10px;
     top:50px;
 }
+.messagesValidStyle {
+	background-color: #3abeb1;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+	margin-bottom: 1em;
+}

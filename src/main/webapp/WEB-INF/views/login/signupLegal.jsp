@@ -70,6 +70,11 @@
                                 <div id="home" >
 		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
 		<div class="col-md-12">
+		<div class="messagesValidStyle">
+		<c:if test="${message != null }">
+	${message}
+	</c:if>
+	</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="login" placeholder="Email" />
@@ -188,9 +193,7 @@
 
 
 <!-- script references -->
-<c:if test="${message != null }">
-	${message}
-	</c:if>
+
 <script>
     $(document).ready(function() {
         $('#open-close').show();

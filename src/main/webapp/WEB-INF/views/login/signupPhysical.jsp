@@ -69,6 +69,13 @@
                                 <div id="home" >
 		<form:form modelAttribute="addUserPhysicalForm" action="${addUserPhysical}" method="POST">
 		<div class="col-md-12">
+		
+		<c:if test="${message != null }">
+	<div class="messagesValidStyle">
+	${message}
+	</div>
+	</c:if>
+	   
 		<div class="form-group heightStyleValidation">
 		<form:input class="form-control" path="login" placeholder="Email" />
 			<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
@@ -165,9 +172,7 @@
 
 
 <!-- script references -->
-<c:if test="${message != null }">
-	${message}
-	</c:if>
+
 <script>
     $(document).ready(function() {
         $('#open-close').show();
