@@ -64,7 +64,12 @@
 								</div>
 							</c:if> -->
 						</div>
-
+<c:if test="${not empty param.error}">
+							<div class="messagesValidStyle row" role="">
+								<font color="white">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+								</font>
+							</div>
+						</c:if>
 
 						<div class="row" style="margin-bottom: 0.5em">
 							<button type="submit"
@@ -72,15 +77,11 @@
 							<a 	class="btn btn-default btn-outline btn-circle signin-button"
 								href="<c:url value="/signup/userPhysical"/>">Зарегистрироваться</a>
 						</div>
-						<c:if test="${not empty param.error}">
-							<div class="alert alert-danger" role="">
-								<font color="red">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-								</font>
-							</div>
-						</c:if>
+						
 
 						<a href="<c:url value="/forgotPassword.html" />">Забыли
 							пароль? </a>
+							
 					</form>
 
 				</div>
