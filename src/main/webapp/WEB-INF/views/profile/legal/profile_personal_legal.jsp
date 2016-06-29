@@ -38,12 +38,12 @@
 <div class="col-md-10">
 <div class="col-md-2"></div>
 <div class="col-md-8 edit-users-legal-boards" style="padding-top: 1em;">
-<div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
-		<div class="font-style-message">
+<div class="messagesValidStyle">
 		<c:if test="${message != null}">
 			${message}
 			   </c:if>
 		</div>
+<div class="col-md-12 text-style-legal-user">Изменение личных данных</div>
 	<form:form modelAttribute="updatePersonalLegalForm" method="POST">
 		<div class="form-group heightStyleValidation2">
 		<form:input path="nameEnterprise" class="form-control" placeholder="nameEnterprise"/>

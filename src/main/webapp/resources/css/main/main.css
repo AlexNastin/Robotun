@@ -33,22 +33,16 @@
     padding-top: 4em;
 }
 .main-button-style {
-    color: white;
-    background-color: inherit;
+    color: inherit;
+    background-color: white;
     border-color: white;
     font-weight: bold;
     border-radius: 40px;
     border-width: 4px;
 }
 .main-button-style:hover,.main-button-style:active, .main-button-style:focus {
-    color: inherit !important;
-    background-color:  white !important;
-    border-color:  white !important;
-    font-weight: bold !important;
-}
-.main-button-style:hover,.main-button-style:active, .main-button-style:focus {
-    color: inherit !important;
-    background-color:  white !important;
+    color: white !important;
+    background-color:  rgb(58, 190, 177) !important;
     border-color:  white !important;
     font-weight: bold !important;
 }
