@@ -94,7 +94,7 @@
 						style="margin-top: 20px; margin-bottom: 20px; color: white"
 						ng-controller="LotController as lotCtrl" ng-cloak>
 						<div class="row panel item">
-							<div class="col-md-4 bg_blur "></div>
+							<div class="col-md-4 bg_blur " style="background-image: url(./resources/images/avatar_lot/{{lotCtrl.lot.indexImage}}.jpg)"></div>
 							<div class="col-md-8"
 								style="padding-left: 0px; padding-right: 0px">
 								<div id="1" class="col-md-4 col-xs-4 well height-block-lot">
@@ -223,8 +223,9 @@ var isElse = ${isElse};
 var currentDate = ${currentDate};
 var latitude;
 var longitude;
+var idPicture = ${idPicture};
 
-		var jsonData = '${lotJson}';
+var jsonData = '${lotJson}';
 
 		app.controller('LotController', ['$scope', '$http', lotController]);
 		
@@ -235,6 +236,7 @@ var longitude;
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.lot = data;
+			vm.lot.indexImage = idPicture;
 			id = vm.lot.idArchiveLot;
 			latitude = vm.lot.latitude;
 			longitude = vm.lot.longitude;

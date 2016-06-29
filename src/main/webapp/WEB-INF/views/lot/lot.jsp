@@ -283,11 +283,9 @@ var jsonData = '${lotJson}';
 			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
 			websocket = new WebSocket(wsUri);
 			websocket.onerror = function(evt) {
-				console.log("onerror");
 				onError(evt) 
 			};
 			websocket.onopen = function() {
-				console.log("onopen");
 			};
 			websocket.onmessage = function(evt) { onMessage(evt) };
 			// End WebSockets
@@ -319,15 +317,12 @@ var jsonData = '${lotJson}';
 		
 		// Start WebSockets
 		function onError(evt) {
-			console.log("error");
     		writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
 		}
 		function sendText(json) {
-			console.log("send");
     		websocket.send(json);
 		}      
 		function onMessage(evt) {
-			console.log("message");
     		printText(evt.data, isICall);
 		}
 		// End WebSockets
@@ -345,13 +340,10 @@ var jsonData = '${lotJson}';
 			});
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser == '') {
-				console.log('Ставок еще нет');
 			} else if(vm.currentDate - vm.betsByUser[0].date >= timeBlockSendButton) {
-				showcounter = vm.currentDate - vm.betsByUser[0].date; 
-				console.log('Прошло 10 минут');				
+				showcounter = vm.currentDate - vm.betsByUser[0].date; 			
 			} else {
 				showcounter = vm.currentDate - vm.betsByUser[0].date;
-				console.log('10 минут еще не прошло');
 				document.documentElement.className = "js";
 							 		
 			}
