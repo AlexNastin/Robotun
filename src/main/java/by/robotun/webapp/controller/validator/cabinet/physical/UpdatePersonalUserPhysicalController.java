@@ -54,6 +54,7 @@ public class UpdatePersonalUserPhysicalController {
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -72,6 +73,7 @@ public class UpdatePersonalUserPhysicalController {
 		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 

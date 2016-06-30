@@ -9,6 +9,7 @@ public class Person implements Essence{
 	private int idCity;
 	private String login;	
 	private String nickname;
+	private String path;
 
 	public int getId() {
 		return id;
@@ -50,6 +51,14 @@ public class Person implements Essence{
 		this.nickname = nickname;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +68,7 @@ public class Person implements Essence{
 		result = prime * result + idRole;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nickname == null) ? 0 : nickname.hashCode());
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
 		return result;
 	}
 
@@ -87,12 +97,13 @@ public class Person implements Essence{
 				return false;
 		} else if (!nickname.equals(other.nickname))
 			return false;
+		if (path == null) {
+			if (other.path != null)
+				return false;
+		} else if (!path.equals(other.path))
+			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Person [id=" + id + ", idRole=" + idRole + ", idCity=" + idCity + ", login=" + login + ", nickname="
-				+ nickname + "]";
-	}
+	
 }

@@ -42,6 +42,7 @@ public class UpdatePasswordUserLegalController {
 		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -53,6 +54,7 @@ public class UpdatePasswordUserLegalController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LEGAL_UPDATE_PASSWORD);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		if (!result.hasErrors()) {
 			String message = messages.getMessage(LocalizationParamNameProperties.MESSAGE_CHANGE_PASSWORD_SUCCESSFUL, null, locale);
 			userUpdatePasswordForm.setIdUser(person.getId());

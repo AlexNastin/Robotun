@@ -14,5 +14,6 @@ public final class PropertyName {
 	public static final String SOLR_URL_DELTA_IMPORT = "solr.url.delta-import";
 	public static final String SOLR_URL_IMPORT = "solr.url.import";
 	public static final String SOLR_HTTP_URL = "solr.http.url";
+	public static final String AVATAR_INDEX_SIZE = "avatar.index.size";
 	
 }

@@ -56,6 +56,7 @@ public class UpdatePersonalUserLegalController {
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -74,6 +75,7 @@ public class UpdatePersonalUserLegalController {
 		modelAndView.addObject(ControllerParamConstant.USER, userService.getUserById(person.getId()));
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 

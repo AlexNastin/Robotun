@@ -51,6 +51,7 @@ public final class ControllerParamConstant {
 	public static final String MESSAGE = "message";
 	public static final String PERSON = "person";
 	public static final String NICKNAME = "nickname";
+	public static final String AVATAR_PATH = "avatarPath";
 	public static final String DATE_END_LOT = "dateEndLot";
 	public static final String HOUR_END_LOT = "hourEndLot";
 	public static final String CURRENT_DATE = "currentDate";

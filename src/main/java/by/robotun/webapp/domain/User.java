@@ -27,8 +27,8 @@ import by.robotun.webapp.domain.json.Views;
 @Table(name = "users")
 @NamedQueries({ @NamedQuery(name = "User.findAll", query = "select u from User u"),
 	@NamedQuery(name = "User.findUserById", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.phones where u.idUser = :idUser"),
-	@NamedQuery(name = "User.findUserByIdWithCity", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.city where u.idUser = :idUser"),
-	@NamedQuery(name = "User.findUserByLogin", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal where u.login = :login"),
+	@NamedQuery(name = "User.findUserByIdWithCity", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.city join fetch u.avatar where u.idUser = :idUser"),
+	@NamedQuery(name = "User.findUserByLogin", query = "select u from User u left outer join fetch u.physical left outer join fetch u.legal join fetch u.avatar where u.login = :login"),
 	@NamedQuery(name = "User.findAllStaffs", query = "select u from User u where idRole = :idRole"),
 	@NamedQuery(name = "User.findStaffById", query = "select u from User u where u.idUser = :idUser")})
 public class User implements Essence {
@@ -75,6 +75,10 @@ public class User implements Essence {
 	@JsonView(Views.InternalUserSubclass.class)
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Legal legal;
+	
+	@JsonView(Views.InternalUserSubclass.class)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Avatar avatar;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -163,6 +167,14 @@ public class User implements Essence {
 
 	public void setLegal(Legal legal) {
 		this.legal = legal;
+	}
+
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
 	}
 
 	public List<Phone> getPhones() {

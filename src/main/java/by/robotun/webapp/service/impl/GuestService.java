@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -19,6 +20,7 @@ import by.robotun.webapp.dao.ILotDAO;
 import by.robotun.webapp.dao.IPasswordResetTokenDAO;
 import by.robotun.webapp.dao.ISubcategoryDAO;
 import by.robotun.webapp.dao.IUserDAO;
+import by.robotun.webapp.domain.Avatar;
 import by.robotun.webapp.domain.Category;
 import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Legal;
@@ -33,6 +35,8 @@ import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.form.UpdateUserPasswordForm;
+import by.robotun.webapp.property.PropertyManager;
+import by.robotun.webapp.property.PropertyName;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.ServiceParamConstant;
 
@@ -64,6 +68,9 @@ public class GuestService implements IGuestService {
 	
 	@Autowired
 	private IArchiveBetDAO archiveBetDAO;
+	
+	@Autowired
+	private PropertyManager propertyManager;
 
 	@Override
 	public User getSaffUser(int idUser) throws ServiceException {
@@ -130,6 +137,7 @@ public class GuestService implements IGuestService {
 	public void addUserPhysical(SignupUserPhysicalForm addUserPhysicalForm) throws ServiceException {
 		User user = new User();
 		Physical physical = new Physical();
+		Avatar avatar = new Avatar();
 		List<Phone> phones = new ArrayList<Phone>();
 		user.setLogin(addUserPhysicalForm.getLogin());
 		user.setIdCity(addUserPhysicalForm.getIdCity());
@@ -146,6 +154,10 @@ public class GuestService implements IGuestService {
 		physical.setSurname(addUserPhysicalForm.getSurname());
 		physical.setUser(user);
 		user.setPhysical(physical);
+		
+		avatar.setPath(String.valueOf((new Random().nextInt(Integer.parseInt(propertyManager.getValue(PropertyName.AVATAR_INDEX_SIZE))+1))));
+		avatar.setUser(user);
+		user.setAvatar(avatar);
 
 		String[] phoneMass = addUserPhysicalForm.getPhones();
 		for (int i = 0; i < phoneMass.length; i++) {
@@ -169,6 +181,7 @@ public class GuestService implements IGuestService {
 	public void addUserLegal(SignupUserLegalForm signupUserLegalForm) throws ServiceException {
 		User user = new User();
 		Legal legal = new Legal();
+		Avatar avatar = new Avatar();
 		List<Phone> phones = new ArrayList<Phone>();
 		user.setLogin(signupUserLegalForm.getLogin());
 		user.setIdCity(signupUserLegalForm.getIdCity());
@@ -185,6 +198,10 @@ public class GuestService implements IGuestService {
 		legal.setZipCode(Integer.valueOf(signupUserLegalForm.getZipCode()));
 		legal.setUser(user);
 		user.setLegal(legal);
+		
+		avatar.setPath(String.valueOf((new Random().nextInt(Integer.parseInt(propertyManager.getValue(PropertyName.AVATAR_INDEX_SIZE))+1))));
+		avatar.setUser(user);
+		user.setAvatar(avatar);
 
 		String[] phoneMass = signupUserLegalForm.getPhones();
 		for (int i = 0; i < phoneMass.length; i++) {

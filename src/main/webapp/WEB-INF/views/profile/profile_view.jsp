@@ -32,7 +32,7 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
-                                    <img class="img-responsive" src="http://api.adorable.io/avatars/300/abott@adorable.png">
+                                    <img class="img-responsive" ng-src="/jobster.by/resources/images/avatar_user/avatar_big/{{userCtrl.user.avatar.path}}.jpg">
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,8 @@ var q = '*:*';
 var fq = ['end_date:[* TO NOW+181DAY]',
           "id_user:${idUser}"];
 var sort = 'start_date desc, budget desc';
-		var jsonData = '${userJson}';
+
+var jsonData = '${userJson}';
 
 		app.controller('UserController', ['$scope', '$http', userController]);
 		

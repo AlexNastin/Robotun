@@ -59,6 +59,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -69,6 +70,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 	
@@ -79,6 +81,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_PHYSICAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -91,6 +94,7 @@ public class UserController {
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
 				serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -101,6 +105,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 	
@@ -111,6 +116,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -121,6 +127,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -132,6 +139,7 @@ public class UserController {
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON,
 				serializationJSON.toJsonViewsInternalRejectMessages(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
