@@ -9,8 +9,8 @@ function defineText(evt) {
         "cost": cost,
         "idUser": idUser,
         "idLot": id,
-        "nickname": nickname
-        
+        "nickname": nickname,
+        "avatarPath": avatarPath 
     });
     printText(json, isICall);
         sendText(json);
@@ -25,7 +25,12 @@ function printText(json, isICall) {
 		var scope = angular.element(document.getElementById("wallmessages")).scope();
 		var json = JSON.parse(json);
 		var date = new Date().getTime();
-		var user = {nickname: json.nickname}
+		var user = {
+				nickname: json.nickname,
+				avatar: {
+					path: json.avatarPath
+				}
+		}
 		var bet = {
 				cost: json.cost,
 				idUser: json.idUser,

@@ -192,7 +192,7 @@
 												<div class="avatar pull-left">
 													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img
 														style="min-height: 40px; max-height: 40px;"
-														src='/jobster.by/resources/images/avatar_2x.png' /></a>
+														ng-src='/jobster.by/resources/images/avatar_user/avatar_small/{{bet.user.avatar.path}}.jpg' /></a>
 												</div>
 												<div class="user-detail">
 													<h5 class="handle">
@@ -262,6 +262,7 @@ var showcounter = '';
 var latitude;
 var longitude;
 var idPicture = ${idPicture};
+var avatarPath = ${avatarPath};
 
 var jsonData = '${lotJson}';
 

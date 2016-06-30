@@ -26,7 +26,7 @@ import by.robotun.webapp.domain.json.Views;
 @Table(name = "lot")
 @NamedQueries({ @NamedQuery(name = "Lot.findAll", query = "select l from Lot l"),
 		@NamedQuery(name = "Lot.findAllActiveLot", query = "select l from Lot l where l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),
-		@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user join fetch l.city join fetch l.user where l.idLot = :id order by bet.date desc"),
+		@NamedQuery(name = "Lot.findLotById", query = "select l from Lot l left outer join fetch l.bets as bet left outer join fetch bet.user as user left outer join fetch user.avatar join fetch l.city join fetch l.user where l.idLot = :id order by bet.date desc"),
 		@NamedQuery(name = "Lot.findLotByIdForModeration", query = "select l from Lot l join fetch l.category join fetch l.subcategory join fetch l.user join fetch l.city left outer join fetch l.rejectMessages where l.idLot = :id"),
 		@NamedQuery(name = "Lot.findLotByCategory", query = "select l from Lot l where l.idCategory = :idCategory and l.endDate >= :endDate  and l.isVisible = :isVisible order by startDate desc"),
 		@NamedQuery(name = "Lot.findLotByCategoryAndSubcategory", query = "select l from Lot l where l.idCategory = :idCategory and l.idSubcategory = :idSubcategory and l.endDate >= :endDate and l.isVisible = :isVisible order by startDate desc"),

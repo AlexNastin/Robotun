@@ -76,7 +76,7 @@ public class User implements Essence {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Legal legal;
 	
-	@JsonView(Views.InternalUserSubclass.class)
+	@JsonView({ Views.Internal.class, Views.InternalUserSubclass.class })
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Avatar avatar;
 	

@@ -66,7 +66,6 @@ public class MessageSocket {
 			for (Session peer : peers) {
 				if (peer.isOpen() && !peer.equals(session) && id.equals(peer.getUserProperties().get("id"))) {
 					peer.getBasicRemote().sendObject(message);
-					System.err.println(message.toString());
 				}
 			}
 		}

@@ -76,6 +76,7 @@ public class GuestController {
 				idPicture = 1;
 			}
 			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
+			String path = "null";
 			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
 			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(lot));
 			modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
@@ -85,6 +86,7 @@ public class GuestController {
 			modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
 			modelAndView.addObject(ControllerParamConstant.ID_PICTURE, idPicture);
 			if (person != null) {
+				path = person.getPath();
 				if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
 					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
 				} else if (!lot.getIsCall()) {
@@ -101,6 +103,7 @@ public class GuestController {
 			} else {
 				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
 			}
+			modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, path);
 		}
 		
 		return modelAndView;
