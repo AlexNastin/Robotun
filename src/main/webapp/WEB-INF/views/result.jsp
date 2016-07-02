@@ -145,7 +145,7 @@
                                 
                                 <div class="list-group" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
                                 
-                                <div ng-if="lotsCtrl.lots.length == 0">Ой! По вашему запросу ничего не найдено. Попробуйте изменить параметры запроса.</div>
+                                <div class="btn-danger" style="text-align: center;" ng-if="lotsCtrl.lots.length == 0">Ой! По вашему запросу ничего не найдено. Попробуйте изменить параметры запроса.</div>
                                 
                                     <a ng-href='/jobster.by/lot?id={{lot.id_lot}}&idPic={{lot.indexImage}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
                                     <div class="media col-md-3" >
