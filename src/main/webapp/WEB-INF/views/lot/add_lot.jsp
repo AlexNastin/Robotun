@@ -110,7 +110,12 @@
 		<span class="error"><form:errors path="budget" /></span>
 		<label class="error textStyleValidation" generated="true" for="budget"></label>
 		</div>
-			<p style="text-align:center; color:black;">Кому звоним?</p>
+		<div style="padding-bottom: 10px; text-align: center;">
+			<div  class="tooltip1">Кому звоним?
+  <span class="tooltiptext1">Если мне, то вам позвонят, если сам, то никто не увидит телефон</span>
+</div>
+			</div>
+			
     <div class="switch-field">
       
       <form:radiobutton id="switch_right" name="switch_2" value="false" path="isCall"/>
@@ -263,16 +268,7 @@
 	  $(document).ready(function(){
 		    $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
 		});
-	  $(document).ready(function(){
-		    $('input.timepicker').timepicker({
-		        timeFormat: 'HH:mm:ss',
-		        minTime: '00:00:00', 
-		        maxHour: 24,
-		        maxMinutes: 60,
-		        startTime: new Date(), 
-		        interval: 60 
-		    });
-		});
+	 
 	  
 </script>
 
