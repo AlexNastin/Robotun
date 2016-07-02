@@ -36,9 +36,7 @@
 	</div>
 	<div class="text-style-add-lot col-md-6">Изменить работу</div>
 	</div>
-	<div class="col-md-6">
-	<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
-	</div>
+	
 	<div class="col-md-6">
 			<div class="font-style-message">
 		<c:if test="${message != null}">
@@ -148,7 +146,9 @@
 		</div>
 	</form:form>
 	</div>
-	
+	<div class="col-md-6">
+	<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
+	</div>
 	</div>
     <div class="col-md-1"></div>
 	</div>
