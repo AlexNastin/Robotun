@@ -89,7 +89,7 @@
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
 					<div class="form-group heightStyleValidation">
-					<input type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
+					<input onkeydown="return false" type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
 					<label class="error textStyleValidation" generated="true" for="Date"></label>
 					</div>
 					<div class="form-group ignore" style="height: 4em;">
