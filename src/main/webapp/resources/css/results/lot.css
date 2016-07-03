@@ -78,7 +78,7 @@ background-color: #F1F1F1;
 .header{
     color : #808080;
     margin-left:10%;
-    margin-top:70px;
+    margin-bottom:70px;
 }
 
 .picture{
@@ -375,7 +375,8 @@ font-size: 14px;
 	color: #fff;
     background-color: #3abeb1;
     border-color: #2c8f86;
-    width: 60%;
+    margin-top:15px;
+    margin-bottom:15px;
     display: block;
 }
 .send-button:hover{
@@ -383,7 +384,8 @@ font-size: 14px;
 	color: #fff;
     background-color: #2c8f86;
     border-color: #2c8f86;
-    width: 60%;
+    margin-top:15px;
+    margin-bottom:15px;
     display: block;
 }
 @media screen and (min-width: 1281px) and (max-width: 1366px)  {

@@ -113,7 +113,7 @@
 														</ul>
                                      </div>
 								</div>
-
+<div class="col-md-4">
 								<div class="header">
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
@@ -134,7 +134,7 @@
 
 											<div id="inputs" class="col-md-12" style="padding-left: 0px;"
 												ng-if="lotCtrl.isShowSendButton">
-												<div class="col-md-4" style="padding-left: 0px;">
+												<div class="col-md-12" style="padding-left: 0px;">
 												<div class="input-group">												
 													<span class="input-group-btn"> <input id="myBtn1"
 														type="button" class="btn btn-danger btn-number" value="-"
@@ -153,7 +153,7 @@
 													
 												</div>
 												</div>
-												<div class="col-md-5 btn-mobile"  style="padding-left: 0px;">
+												<div class="col-md-12 btn-mobile"  style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
 													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
@@ -167,7 +167,10 @@
 										</security:authorize>
 									</div>
 								</div>
-								<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
+								</div>
+								<div class="col-md-8">
+								<div id="YMapsID" style="width: 100%; height: 350px;"></div>
+								</div>
 							</div>
 						</div>
 
