@@ -104,20 +104,21 @@ $(document).ready(function(){
 			.closest('.control-group').removeClass('error').addClass('success');
 		}
 	});
-		
 	//Валидация на добавление и обновление работы конец
 	
+	
+	
+	
 		$('#addUserPhysicalForm,#rejectMessageForm, #addUserLegalForm, #contact-form, #addModeratorForm, #updatePersonalPhysicalForm, #updatePersonalLegalForm').validate({
-			
 	    rules: {
 	    	login: {
 		        required: true,
 		        email: true
 		    },
-		    phones: {
-			    required: true,
-			    regexp: /^(\+375)?[0-9]{9}$/
-			},
+		    //phones: {
+			//    required: true,
+			//  regexp: /^(\+375)?[0-9]{9}$/
+			//},
 			confirm: {
 				required: true
 			},
@@ -161,11 +162,13 @@ $(document).ready(function(){
 			},
 			name: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 40]
 			},
 			surname: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 40]
 			},
 			text: {
 				required: true,
@@ -181,9 +184,9 @@ messages:  {
 		email: 'Неверный e-mail.'
 		},
 	phones: {
-		regexp: 'Некорретный номер телефона.',
-		required: 'Поле не может быть пустым.',
-		},
+	regexp: 'Введите номер в формате +375XXXXXXXXX',
+	required: 'Поле не может быть пустым.',
+	},
 	confirm: {
 		required: 'Для регистрации необходимо согласиться с правилами пользования сайтом.'
 		},
@@ -227,11 +230,13 @@ messages:  {
 		},
 		name: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Некорректный ввод.'
+			regexp: 'Некорректный ввод.',
+			rangelength: 'Не более 40 символов'
 		},
 		surname: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Некорректный ввод.'
+			regexp: 'Некорректный ввод.',
+			rangelength: 'Не более 40 символов'
 		},
 		text: {
 			required: 'Поле не может быть пустым.',
@@ -240,6 +245,7 @@ messages:  {
 		}
 	 
 	 },	
+	 
 
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');
@@ -251,5 +257,22 @@ messages:  {
 			}
 	  });
 		
+		//Валидация телефона (валидация по id)	
+		$("#addUserPhysicalForm").validate();
 
+		$("#phone1").rules("add", 
+			{
+			required:true,
+			regexp: /^(\+375)?[0-9]{9}$/
+			});
+		$("#phone2").rules("add", 
+				{
+				regexp: /^(\+375)?[0-9]{9}$/
+				});
+		$("#phone3").rules("add", 
+				{
+				regexp: /^(\+375)?[0-9]{9}$/
+				});
+				
+		//Конец валидации телефона
 }); // end document.ready
