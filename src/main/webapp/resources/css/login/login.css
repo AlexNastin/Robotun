@@ -335,7 +335,6 @@ a {
 }
 .form-group-required div {
     position:relative;
-    margin-right:15px;
 }
 .form-group-required div:after {
     position:absolute;

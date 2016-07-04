@@ -25,7 +25,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Регистрация</title>
+    <title>Login page</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--[if lt IE 9]>
@@ -118,25 +118,19 @@
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="zipCode"></label>
 		</div>
 		</div>
-		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
-		<div class="field-phone-style  form-group-required heightStyleValidation">
-		<div>
+		<div class="form-group col-md-12 form-group-required" style="margin-bottom:1.5em; padding: 0px; height: 2.8em;">
+		<div class="input-group">
 		<form:input id="phone1" class="form-control phone1" path="phones" placeholder="Телефон"  />
+		<a id="open-close3" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
-		</div>
-		<div class="field-phone-style-plus">
-		<a id="open-close3" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
-	    </div>
 		<span class="error"><form:errors path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone1"></label>
 		</div>
 		<div id="block-links3">
-   		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px;  height: 2.8em;">
-		<div class="field-phone-style heightStyleValidation">
+   		<div class="form-group col-md-12" style="margin-bottom:1.5em; padding: 0px;  height: 2.8em;">
+		<div class="input-group">
 		<form:input id="phone2" class="form-control phone2" path="phones" placeholder="Доп.телефон" />
-		</div>
-		<div class="field-phone-style-plus">
-		<a id="open-close4" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
+		<a id="open-close4" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<span class="error"><form:errors path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone2"></label>
@@ -149,12 +143,12 @@
 		</div>
     	</div>
 		</div>
-		<div class="form-group form-group-required-password" style="margin-bottom: 5px;">
-		<div>
+		<div class="form-group" style="margin-bottom: 5px;">
+		
 		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<span class="error"><form:errors path="password" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
-		</div>
+		
 		</div>
 		<div class="form-group form-group-required" style="margin-bottom: 0px;">
 		<div>
