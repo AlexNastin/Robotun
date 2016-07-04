@@ -14,6 +14,9 @@ public final class URLMapping {
 	public static final String JSP_ARCHIVE_LOT = "lot/archive_lot";
 	public static final String JSP_SIGNUP_PHYSICAL = "login/signupPhysical";
 	public static final String JSP_SIGNUP_LEGAL = "login/signupLegal";
+	
+	public static final String JSP_FOOTER_RULES = "footer/rules";
+	
 	public static final String JSP_PROFILE_MAIN_ADMIN = "profile/admin/profile_main_admin";
 	public static final String JSP_PROFILE_ADMIN_ADD_MODERATOR = "profile/admin/admin_add_moderator";
 	public static final String JSP_PROFILE_VIEW = "profile/profile_view";
