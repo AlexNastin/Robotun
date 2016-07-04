@@ -118,6 +118,21 @@
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="zipCode"></label>
 		</div>
 		</div>
+			
+		<div class="form-group form-group-required " style="margin-bottom: 5px;">
+		<div>
+		<form:password class="form-control" path="password" placeholder="Пароль" />
+		<span class="error"><form:errors path="password" /></span>
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
+		</div>
+		</div>
+		<div class="form-group form-group-required" style="margin-bottom: 0px;">
+		<div>
+		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
+		<span class="error"><form:errors path="confirmPassword" /></span>
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
+		</div>
+		</div>
 		<div class="form-group col-md-12 form-group-required" style="margin-bottom:1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
 		<form:input id="phone1" class="form-control phone1" path="phones" placeholder="Телефон"  />
@@ -142,20 +157,6 @@
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		</div>
     	</div>
-		</div>
-		<div class="form-group" style="margin-bottom: 5px;">
-		
-		<form:password class="form-control" path="password" placeholder="Пароль" />
-		<span class="error"><form:errors path="password" /></span>
-		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
-		
-		</div>
-		<div class="form-group form-group-required" style="margin-bottom: 0px;">
-		<div>
-		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
-		<span class="error"><form:errors path="confirmPassword" /></span>
-		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
-		</div>
 		</div>
 		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px; height: 5.3em;">
 		<div>

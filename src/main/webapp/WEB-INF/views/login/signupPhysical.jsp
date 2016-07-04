@@ -76,10 +76,12 @@
 	</div>
 	</c:if>
 	   
-		<div class="form-group heightStyleValidation">
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="login" placeholder="Email" />
 			<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
 			<form:errors path="login" />
+		</div>	
 		</div>
 		<div class="form-group">
 		<form:select class="form-control" path="idCity">
@@ -88,17 +90,37 @@
 			</c:forEach>
 		</form:select>
 	    </div>
-		<div class="form-group heightStyleValidation">
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="name" placeholder="Имя" />
 		<form:errors path="name" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="name"></label>
 		</div>
-		<div class="form-group heightStyleValidation">
+		</div>
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
 		<form:input class="form-control" path="surname" placeholder="Фамилия" />
 		<form:errors path="surname" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="surname"></label>
 		</div>
-		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
+		</div>
+		
+		
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
+		<form:password class="form-control" path="password" placeholder="Пароль" />
+		<form:errors class="form-control" path="password" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
+		</div>
+		</div>
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
+		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
+		<form:errors path="confirmPassword" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
+		</div>
+		</div>
+		<div class="form-group col-md-12 form-group-required" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
 		<form:input id="phone1" class="form-control phone1" path="phones" placeholder="Телефон"  />
 		<a id="open-close" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
@@ -123,17 +145,6 @@
 		<form:errors path="phones" />
 		</div>
     	</div>
-		</div>
-		
-		<div class="form-group" style="margin-bottom: 5px;" >
-		<form:password class="form-control" path="password" placeholder="Пароль" />
-		<form:errors class="form-control" path="password" />
-		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
-		</div>
-		<div class="form-group" style="margin-bottom: 0px;">
-		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
-		<form:errors path="confirmPassword" />
-		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
 		</div>
 		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px; height: 5.3em;">
 		<div>
