@@ -9,6 +9,7 @@ $(document).ready(function(){
 	// http://bassistance.de/jquery-plugins/jquery-plugin-validation/
 	// http://docs.jquery.com/Plugins/Validation/
 	// http://docs.jquery.com/Plugins/Validation/validate#toptions
+		
 	$.validator.addMethod(
 	        "regexp",
 	        function(value, element, regexp) {
@@ -105,10 +106,7 @@ $(document).ready(function(){
 		}
 	});
 	//Валидация на добавление и обновление работы конец
-	
-	
-	
-	
+		
 		$('#addUserPhysicalForm,#rejectMessageForm, #addUserLegalForm, #contact-form, #addModeratorForm, #updatePersonalPhysicalForm, #updatePersonalLegalForm').validate({
 	    rules: {
 	    	login: {
@@ -174,7 +172,8 @@ $(document).ready(function(){
 				required: true,
 				regexp: /^[^\{\}\<\>\']*$/,
 				rangelength: [1, 500],
-			}
+			},
+			
 		   
 },
 messages:  {
@@ -245,8 +244,8 @@ messages:  {
 		}
 	 
 	 },	
+	        
 	 
-
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');
 			},
@@ -257,22 +256,31 @@ messages:  {
 			}
 	  });
 		
-		//Валидация телефона (валидация по id)	
-		$("#addUserPhysicalForm").validate();
-
-		$("#phone1").rules("add", 
-			{
-			required:true,
-			regexp: /^(\+375)?[0-9]{9}$/
-			});
-		$("#phone2").rules("add", 
+		//Валидация телефона	
+		/*$("#phone1").rules("add", 
 				{
+				required:true,
 				regexp: /^(\+375)?[0-9]{9}$/
 				});
-		$("#phone3").rules("add", 
-				{
-				regexp: /^(\+375)?[0-9]{9}$/
-				});
-				
+			$("#phone2").rules("add", 
+					{
+					regexp: /^(\+375)?[0-9]{9}$/
+					});
+			$("#phone3").rules("add", 
+					{
+					regexp: /^(\+375)?[0-9]{9}$/
+					});	       */
+		 $.validator.addClassRules({
+		        phone1:{
+		            required: true,
+		            regexp: /^(\+375)?[0-9]{9}$/
+		    },
+		        phone2:{
+			        regexp: /^(\+375)?[0-9]{9}$/
+		        },
+		        phone3:{
+			        regexp: /^(\+375)?[0-9]{9}$/
+		        }
+		    });
 		//Конец валидации телефона
 }); // end document.ready

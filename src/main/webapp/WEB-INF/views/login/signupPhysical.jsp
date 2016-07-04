@@ -100,7 +100,7 @@
 		</div>
 		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
 		<div class="field-phone-style">
-		<form:input id="phone1" class="form-control" path="phones" placeholder="Телефон"  />
+		<form:input id="phone1" class="form-control phone1" path="phones" placeholder="Телефон"  />
 		</div>
 		<div class="field-phone-style-plus" style="margin-bottom:0px;">
 		<a id="open-close" class="hover-style-for-plus" href="#"><i class="fa fa-plus-square fa-2x" aria-hidden="true"></i></a>
@@ -112,7 +112,7 @@
 		<div id="block-links">
    		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px;  height: 2.8em;">
 		<div class="field-phone-style">
-		<form:input id="phone2" class="form-control" path="phones" placeholder="Доп.телефон" />
+		<form:input id="phone2" class="form-control phone2" path="phones" placeholder="Доп.телефон" />
 
 		</div>
 		<div class="field-phone-style-plus">
@@ -124,7 +124,7 @@
    		
     	<div id="block-links2">
    		<div class="form-group fieldPhoneHeight">
-		<form:input id="phone3" class="form-control" path="phones" placeholder="Доп.телефон" />
+		<form:input id="phone3" class="form-control phone3" path="phones" placeholder="Доп.телефон" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		<form:errors path="phones" />
 		</div>
