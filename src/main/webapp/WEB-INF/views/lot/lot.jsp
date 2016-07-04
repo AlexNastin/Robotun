@@ -216,7 +216,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="qa-message-content" style="color: black">{{bet.cost}}</div>
+											<div class="qa-message-content" style="color: black">{{bet.cost}} BYN</div>
 										</div>
 									</div>
 

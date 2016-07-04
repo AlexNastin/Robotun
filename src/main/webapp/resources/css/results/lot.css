@@ -790,4 +790,7 @@ html, body {
 	object-fit: cover;
 	-o-object-fit: cover; }
 	
-	
+.qa-message-content{
+	font-weight:600;
+	font-size:15px;
+}
