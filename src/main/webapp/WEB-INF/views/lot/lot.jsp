@@ -309,7 +309,7 @@ var jsonData = '${lotJson}';
 							var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
-									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 								}
 							}
 							document.getElementById('ownerNumber').innerHTML = contentNumber;
@@ -367,7 +367,7 @@ var jsonData = '${lotJson}';
 							console.log(number)
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
-									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 								}
 							}
 							document.getElementById(index).innerHTML = contentNumber;  
