@@ -24,7 +24,7 @@
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
-<body class="body-color backgroundImageStyle">
+<body class="body-color backgroundImageStyle nonpersonal">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	
 	<div class="container container-style-addlot">

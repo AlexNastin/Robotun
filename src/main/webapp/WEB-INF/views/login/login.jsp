@@ -25,7 +25,8 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-	<div class="background-main-image">
+	<div class="wrapper">
+	<div class="background-main-image content">
 		<div class="container padding-top-login-form">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 form-login-style-login"
@@ -88,6 +89,7 @@
 			</div>
 		</div>
 		<div class="col-md-4"></div>
+	</div>
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>

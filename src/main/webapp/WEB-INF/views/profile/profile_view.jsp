@@ -24,7 +24,7 @@
 <!--This stylesheet should be moved to the head of the document -->
  <div class="container main">
     <div class="row">
-        <div class=" col-lg-offset-3 col-lg-6">
+        <div class=" col-lg-offset-2 col-lg-8">
             <div class="panel panel-default">
             
                 <div class="panel-body" ng-controller="UserController as userCtrl" ng-cloak>
@@ -63,11 +63,11 @@
           <a ng-href='/jobster.by/lot?id={{lot.id_lot}}' class="list-group-item" ng-repeat="lot in lotsCtrl.lots">
                 <div class="media col-md-3">
                     <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  ng-src="{{lot.logoImage}}" >
+                        <img class="media-object img-rounded img-responsive centered-and-cropped "  ng-src="{{lot.logoImage}}" >
                     </figure>
                 </div>
-                <div class="col-md-6">
-                    <h4 class="list-group-item-heading ">{{lot.name}}</h4>
+                <div class="col-md-6" style="text-align: center;">
+                    <h1 class="list-group-item-heading ">{{lot.name}}</h1>
                     <p class="list-group-item-text result-description ">{{lot.description}}</p>
                 </div>
                 <div class="col-md-3 text-center">

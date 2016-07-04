@@ -59,7 +59,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
+<body class="nonpersonal">
 
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
@@ -123,7 +123,7 @@
 
         </div><!--/span-->
 
-        <div class="col-sm-9 col-md-10 main" style="min-height: 33em;">
+        <div class="col-sm-9 col-md-10 main" style="min-height: 60em;">
             <p class="visible-xs">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
             </p>

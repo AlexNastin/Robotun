@@ -25,7 +25,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Login page</title>
+    <title>Регистрация</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--[if lt IE 9]>

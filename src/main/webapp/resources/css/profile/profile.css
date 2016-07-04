@@ -2,6 +2,7 @@
 .main{
 	background-image: url(19.jpg);
 	width:100%;
+	padding-top: 4em;
 	
 }
 .img-responsive{
@@ -57,3 +58,11 @@ h2, small{
 .list-group-item-heading{
 	color:rgb(85, 85, 85) !important;
 }
+.centered-and-cropped { 
+	object-fit: cover;
+	-o-object-fit: cover; 
+	}
+img {
+	width: 230px;
+    height: 150px;
+}	

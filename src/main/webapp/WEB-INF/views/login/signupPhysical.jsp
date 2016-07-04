@@ -38,7 +38,7 @@
     
 
 </head>
-<body>
+<body class="nonpersonal">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container-fluid" style='background-color:#3abeb1'>
 
