@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.main {
+    background-color: #3abeb1 !important;
+}
+.imageBackground {
+	background-image: url(login/19.jpg);
+}
+.headlineTextStyle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 24pt;
+}
+.boardBackgroundColor {
+	background-color: #e5e3e1;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
