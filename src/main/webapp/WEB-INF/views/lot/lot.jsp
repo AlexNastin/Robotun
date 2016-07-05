@@ -50,6 +50,17 @@
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 
+<!-- counter -->
+
+
+<link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css"  />"	rel="stylesheet" />
+<link href="<c:url value="/resources/css/jquery.bootstrap-touchspin.min.css"  />"	rel="stylesheet" />
+<script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.bootstrap-touchspin.min.js" />"></script>
+
+
+        
+
 
 <!-- Bootstrap Core CSS -->
 
@@ -162,6 +173,13 @@
 											
 
 										</security:authorize>
+										<div class="col-md-12">
+        								<form class="form-horizontal" role="form">
+            								<div class="form-group">
+               									<input id="demo2" type="text" value="{{lotCtrl.lot.budget}}" name="demo2" class="col-md-7 form-control">
+            								</div>
+       									 </form>
+    </div>
 										<security:authorize access="hasRole('ROLE_GUEST')">
 											<a class="btn btn-default login-button-mini-style" style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
 										</security:authorize>
@@ -645,6 +663,19 @@ setTimeout(addButton, timeBlockSendButton - showcounter);
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
+	<script>
+            $("input[name='demo2']").TouchSpin({
+                min: 1,
+                max: 1000000000,
+                stepinterval: 50,
+                maxboostedstep: 10000000,
+                prefix: 'BYN'
+            });
+        </script>
+	<script>
+    prettyPrint();
+</script>
+	
 </body>
 </html>
 
