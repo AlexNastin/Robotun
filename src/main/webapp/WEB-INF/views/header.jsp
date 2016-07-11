@@ -37,8 +37,8 @@
         </div>
         <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-        <li ><a href="user/addLot">Добавить работу </a></li>
-        <li><a href="result">Хочу работать</a></li>
+        <li ><a href="<c:url value="/user/addLot" />">Добавить работу </a></li>
+        <li><a href="<c:url value="/result" />">Хочу работать</a></li>
         
       </ul>
             <ul class="nav navbar-nav navbar-right">
