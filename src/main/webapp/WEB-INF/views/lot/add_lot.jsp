@@ -202,7 +202,7 @@
             object: "Центр современного искусства"
         }, {
             hintLayout: HintLayout,
-        
+            draggable: true,
             // Опции.
             // Необходимо указать данный тип макета.
             iconLayout: 'default#image',
