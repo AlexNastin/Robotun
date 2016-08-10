@@ -173,9 +173,7 @@
      // Создание макета содержимого хинта.
         // Макет создается через фабрику макетов с помощью текстового шаблона.
             HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +
-                "<b>{{ properties.object }}</b><br />" +
-                "{{ properties.address }}" +
-                "</div>", {
+                "<b>{{ properties.message }}</b><br /></div>", {
                     // Определяем метод getShape, который
                     // будет возвращать размеры макета хинта.
                     // Это необходимо для того, чтобы хинт автоматически
@@ -198,8 +196,7 @@
             );
 
         myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            address: "Москва, ул. Зоологическая, 13, стр. 2",
-            object: "Центр современного искусства"
+            message: "Здесь нужна помощь!"
         }, {
             hintLayout: HintLayout,
             draggable: true,

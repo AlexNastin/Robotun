@@ -184,10 +184,46 @@
     function init() {
         myMap = new ymaps.Map("YMapsID", {
             center: [latitude, longitude],
-            zoom: 13
+            zoom: zoom
         });
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'}, {draggable: true});
-        myMap.geoObjects.add(myPlacemark);
+     // Создание макета содержимого хинта.
+        // Макет создается через фабрику макетов с помощью текстового шаблона.
+            HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +
+                "<b>{{ properties.message }}</b><br /></div>", {
+                    // Определяем метод getShape, который
+                    // будет возвращать размеры макета хинта.
+                    // Это необходимо для того, чтобы хинт автоматически
+                    // сдвигал позицию при выходе за пределы карты.
+                    getShape: function () {
+                        var el = this.getElement(),
+                            result = null;
+                        if (el) {
+                            var firstChild = el.firstChild;
+                            result = new ymaps.shape.Rectangle(
+                                new ymaps.geometry.pixel.Rectangle([
+                                    [0, 0],
+                                    [firstChild.offsetWidth, firstChild.offsetHeight]
+                                ])
+                            );
+                        }
+                        return result;
+                    }
+                }
+            );
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            message: "Здесь нужна помощь!"
+        }, {
+            hintLayout: HintLayout,
+            draggable: true,
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: '/jobster.by/resources/images/location_marker.png'
+        });
+
+    	myMap.geoObjects.add(myPlacemark);
     }
     
     function setCoordinates() {
