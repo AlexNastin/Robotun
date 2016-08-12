@@ -9,7 +9,7 @@
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
-<title>Работа</title>
+<title>Архивная работа</title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />
@@ -42,6 +42,14 @@
 	rel="stylesheet" />
 <script src="<c:url value="/resources/js/results/custom.js" />"></script>
 
+<!-- counter -->
+
+
+<link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css"  />"	rel="stylesheet" />
+<link href="<c:url value="/resources/css/jquery.bootstrap-touchspin.min.css"  />"	rel="stylesheet" />
+<script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.bootstrap-touchspin.min.js" />"></script>
+
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,7 +69,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body class="nonpersonal">
 
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
@@ -80,13 +88,7 @@
 			<!--/span-->
 
 			<div class="col-sm-9 col-md-10 main">
-				<p class="visible-xs">
-					<button type="button" class="btn btn-primary btn-xs"
-						data-toggle="offcanvas">
-						<i class="fa fa-chevron-left"></i>
-					</button>
-				</p>
-
+				
 				<div class="inbox-mail">
 
 					<!-- tab content -->
@@ -106,21 +108,26 @@
 								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
 									<div id="countdown">
-													    <p><i class="days">00</i>
-													    <i class="timeRefDays">Дней</i>
-													    <i class="hours">00</i>
-													    <i class="timeRefHours">Часов</i>
-													    </p>
-													    <p>
-													    <i class="minutes">00</i>
-													    <i class="timeRefMinutes">Минут</i>
-													    <i class="seconds">00</i>
-													    <i class="timeRefSeconds"></i>
-													    </p>
+													   													    
+													    <ul class="countdown font-size-time">													    
+														<li><span class="days">00</span>
+														<a  style="color:white" class="seperator">:</a>
+														<p class="days_ref timeRefDays">дней</p></li>
+														
+														<li><span class="hours">00</span>
+														<a style="color:white" class="seperator">:</a>
+														<p class="hours_ref timeRefHours">часов</p></li>
+														
+														<li><span class="minutes">00</span>
+														<a style="color:white" class="seperator">:</a>
+														<p class="minutes_ref timeRefMinutes">минут</p></li>														
+														<li><span class="seconds">00</span>
+														<p class="seconds_ref timeRefSeconds">секунд</p></li>
+														</ul>
                                      </div>
 								</div>
-
-								<div class="header">
+<div class="col-md-4">
+							<div class="header">
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
 										<a style="color: #3abeb1"
@@ -130,7 +137,9 @@
 									<span>{{lotCtrl.lot.description}}</span>
 								</div>
 								</div>
-								<div id="YMapsID" style="width: 400px; height: 350px;"></div>
+								<div class="col-md-8">
+								<div id="YMapsID" style="width: 100%; height: 350px;"></div>
+								</div>
 							</div>
 						</div>
 
@@ -155,10 +164,11 @@
 												<div class="avatar pull-left">
 													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}"><img
 														style="min-height: 40px; max-height: 40px;"
-														src='/jobster.by/resources/images/avatar_2x.png' /></a>
+														ng-src='/jobster.by/resources/images/avatar_user/avatar_small/{{bet.user.avatar.path}}.jpg' /></a>
 												</div>
 												<div class="user-detail">
-													<h5 class="handle">{{bet.user.nickname}}</h5>
+													<h5 class="handle">
+													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></h5>
 													
 													<a href ng-if="betCtrl.isICall" id="{{$index}}a"
 														ng-click="betCtrl.showNumberICall(bet.idUser, $index)">Посмотреть номер</a>
@@ -170,16 +180,12 @@
 																class="qa-message-when"> <span
 																class="qa-message-when-data">{{bet.date |
 																	date:'yyyy-MM-dd HH:mm:ss'}}</span>
-															</span> <span class="qa-message-who"> <span
-																class="qa-message-who-pad">by </span> <span
-																class="qa-message-who-data"><a
-																	ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}</a></span>
 															</span>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="qa-message-content" style="color: black">{{bet.cost}}</div>
+											<div class="qa-message-content" style="color: black">{{bet.cost}} BYN</div>
 										</div>
 									</div>
 
@@ -204,10 +210,13 @@
 		<a href="#0" class="cd-popup-close img-replace">Close</a>
 	</div> <!-- cd-popup-container -->
 </div>
+<!-- Menu Toggle Script -->
 <script type="text/javascript"
+		src="<c:url value="/resources/js/socket/message.js" />"></script>
+		<script type="text/javascript"
 		src="<c:url value="/resources/js/constant.js" />"></script>
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-	<!-- Menu Toggle Script -->
+		<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -224,6 +233,9 @@ var currentDate = ${currentDate};
 var latitude;
 var longitude;
 var idPicture = ${idPicture};
+var avatarPath = ${avatarPath};
+
+var zoom;
 
 var jsonData = '${lotJson}';
 
@@ -235,6 +247,7 @@ var jsonData = '${lotJson}';
 		function lotController ($scope) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
+			zoom = data.city.scale;
 			vm.lot = data;
 			vm.lot.indexImage = idPicture;
 			id = vm.lot.idArchiveLot;
@@ -242,7 +255,6 @@ var jsonData = '${lotJson}';
 			longitude = vm.lot.longitude;
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
-			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
 			vm.showNumberICall = function(idUser) {
 					$.ajax({
 						url:"lot/showNumber/archive/owner",
@@ -271,7 +283,12 @@ var jsonData = '${lotJson}';
 			vm.currentDate = ${currentDate};
 			vm.bets = data.bets;
 			vm.betsByUser = [];
-			
+			angular.forEach(vm.bets, function(bet) {
+				if(bet.idUser == idUser) {
+					vm.betsByUser.push(bet);
+				}
+			});
+			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
 					$.ajax({
@@ -287,7 +304,7 @@ var jsonData = '${lotJson}';
 							console.log(number)
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
-									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
+									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
 								}
 							}
 							document.getElementById(index).innerHTML = contentNumber;  
@@ -303,13 +320,48 @@ var jsonData = '${lotJson}';
 		var myPlacemark;
 		
 		ymaps.ready(init);
-	    function init() {
+		function init() {
 	        myMap = new ymaps.Map("YMapsID", {
 	            center: [latitude, longitude],
-	            zoom: 13
+	            zoom: zoom
 	        });
-	        myPlacemark = new ymaps.Placemark(myMap.getCenter(), { hintContent: 'Работа!', balloonContent: 'Работа здесь!'});
-	        myMap.geoObjects.add(myPlacemark);
+	        // Создание макета содержимого хинта.
+	        // Макет создается через фабрику макетов с помощью текстового шаблона.
+	            HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +
+	                "<b>{{ properties.message }}</b><br /></div>", {
+	                    // Определяем метод getShape, который
+	                    // будет возвращать размеры макета хинта.
+	                    // Это необходимо для того, чтобы хинт автоматически
+	                    // сдвигал позицию при выходе за пределы карты.
+	                    getShape: function () {
+	                        var el = this.getElement(),
+	                            result = null;
+	                        if (el) {
+	                            var firstChild = el.firstChild;
+	                            result = new ymaps.shape.Rectangle(
+	                                new ymaps.geometry.pixel.Rectangle([
+	                                    [0, 0],
+	                                    [firstChild.offsetWidth, firstChild.offsetHeight]
+	                                ])
+	                            );
+	                        }
+	                        return result;
+	                    }
+	                }
+	            );
+
+	        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+	            message: "Здесь нужна помощь!"
+	        }, {
+	            hintLayout: HintLayout,
+	            // Опции.
+	            // Необходимо указать данный тип макета.
+	            iconLayout: 'default#image',
+	            // Своё изображение иконки метки.
+	            iconImageHref: '/jobster.by/resources/images/location_marker.png'
+	        });
+
+	    	myMap.geoObjects.add(myPlacemark);
 	    }
 	     
 		// end map

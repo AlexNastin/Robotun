@@ -30,7 +30,7 @@ public class GuestController {
 
 	@Autowired
 	private SerializationJSON serializationJSON;
-	
+
 	@Autowired
 	private IGuestService guestService;
 
@@ -38,19 +38,20 @@ public class GuestController {
 	private IUserService userService;
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView result(@RequestParam(value = "q", required = false) String query, HttpSession httpSession) throws ServiceException {		
+	public ModelAndView result(@RequestParam(value = "q", required = false) String query, HttpSession httpSession)
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		int idCity = 0;
 		if (person != null) {
 			idCity = person.getIdCity();
 		}
 		String querySolr = query;
-		if(querySolr==null) {
+		if (querySolr == null) {
 			querySolr = "*:*";
 			query = "";
 		} else {
 			querySolr.replace(" ", "* or *");
-			querySolr= "description:(*" + querySolr + "*) OR name:(*" + querySolr + "*)";
+			querySolr = "description:(*" + querySolr + "*) OR name:(*" + querySolr + "*)";
 		}
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_RESULT);
 		List<Category> categories = guestService.getAllCategories();
@@ -58,72 +59,82 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.QUERY, query);
 		modelAndView.addObject(ControllerParamConstant.ID_CITY, idCity);
 		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON, serializationJSON.toJsonViewsPublicCategories(categories));
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORIES_JSON,
+				serializationJSON.toJsonViewsPublicCategories(categories));
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/lot", method = RequestMethod.GET)
 	public ModelAndView lot(@RequestParam(value = "id", required = true) Integer idLot,
-			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession) throws ServiceException {
+			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession)
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Lot lot = userService.getLotById(idLot);
 		ModelAndView modelAndView = new ModelAndView();
-		if (lot.getIsVisible() == ServiceParamConstant.ON_MODERATION_NUMBER
-				|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
-			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
+		if (lot == null) {
+			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		} else {
-			if (idPicture == null) {
-				idPicture = 1;
-			}
-			modelAndView = new ModelAndView(URLMapping.JSP_LOT);
-			String path = "null";
-			modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
-			modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(lot));
-			modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
-			modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
-			modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
-			modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
-			modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
-			modelAndView.addObject(ControllerParamConstant.ID_PICTURE, idPicture);
-			if (person != null) {
-				path = person.getPath();
-				if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
-					modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
-				} else if (!lot.getIsCall()) {
-					if (guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId()) > 0) {
-						modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
-						modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
-								userService.getPhonesStringByIdUser(person.getId()));
-					}
-				} else {
-					modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
-				}
-				modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-				modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+			if (lot.getIsVisible() == ServiceParamConstant.ON_MODERATION_NUMBER
+					|| lot.getIsVisible() == ServiceParamConstant.ON_UPDATE_NUMBER) {
+				modelAndView = new ModelAndView(URLMapping.JSP_ERROR_ON_MODERATION);
 			} else {
-				modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
+				if (idPicture == null) {
+					idPicture = 1;
+				}
+				modelAndView = new ModelAndView(URLMapping.JSP_LOT);
+				String path = "null";
+				modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, lot.getEndDate().getTime());
+				modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(lot));
+				modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountBetByLot(idLot));
+				modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
+				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
+				modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
+				modelAndView.addObject(ControllerParamConstant.CURRENT_DATE, new Date().getTime());
+				modelAndView.addObject(ControllerParamConstant.ID_PICTURE, idPicture);
+				if (person != null) {
+					path = person.getPath();
+					if (lot.getIsCall() && lot.getIdUser() == person.getId()) {
+						modelAndView.addObject(ControllerParamConstant.IS_I_CALL, true);
+					} else if (!lot.getIsCall()) {
+						if (guestService.getCountBetByLotByUser(lot.getIdLot(), person.getId()) > 0) {
+							modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, true);
+							modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
+									userService.getPhonesStringByIdUser(person.getId()));
+						}
+					} else {
+						modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
+					}
+					modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+					modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+				} else {
+					modelAndView.addObject(ControllerParamConstant.ID_USER, 0);
+				}
+				modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, path);
 			}
-			modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, path);
 		}
-		
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/archiveLot", method = RequestMethod.GET)
 	public ModelAndView archiveLot(@RequestParam(value = "id", required = true) Integer idArchiveLot,
-			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession) throws ServiceException {
+			@RequestParam(value = "idPic", required = false) Integer idPicture, HttpSession httpSession)
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView();
-		if(person != null) {
+		if (person != null) {
 			ArchiveLot archiveLot = userService.getArchiveLotById(idArchiveLot);
-			if(person != null && person.getId() == archiveLot.getIdUser()) {
+			if (archiveLot != null && person.getId() == archiveLot.getIdUser()) {
+				String path = person.getPath();
 				if (idPicture == null) {
 					idPicture = 1;
 				}
 				modelAndView = new ModelAndView(URLMapping.JSP_ARCHIVE_LOT);
 				modelAndView.addObject(ControllerParamConstant.DATE_END_LOT, archiveLot.getEndDate().getTime());
-				modelAndView.addObject(ControllerParamConstant.LOT_JSON, serializationJSON.toJsonViewsInternalLot(archiveLot));
-				modelAndView.addObject(ControllerParamConstant.COUNT_BET, guestService.getCountArchiveBetByLot(idArchiveLot));
+				modelAndView.addObject(ControllerParamConstant.LOT_JSON,
+						serializationJSON.toJsonViewsInternalLot(archiveLot));
+				modelAndView.addObject(ControllerParamConstant.COUNT_BET,
+						guestService.getCountArchiveBetByLot(idArchiveLot));
 				modelAndView.addObject(ControllerParamConstant.IS_ME_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_I_CALL, false);
 				modelAndView.addObject(ControllerParamConstant.IS_ELSE, false);
@@ -137,12 +148,13 @@ public class GuestController {
 						modelAndView.addObject(ControllerParamConstant.LIST_NUMBERS,
 								userService.getPhonesStringByIdUser(person.getId()));
 					}
-					} else {
-						modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
-					}
-					modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
-					modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+				} else {
+					modelAndView.addObject(ControllerParamConstant.IS_ELSE, true);
 				}
+				modelAndView.addObject(ControllerParamConstant.ID_USER, person.getId());
+				modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
+				modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, path);
+			}
 		} else {
 			modelAndView = new ModelAndView(URLMapping.JSP_ERROR_404);
 		}
@@ -154,11 +166,12 @@ public class GuestController {
 			Model model, HttpSession httpSession) throws ServiceException {
 		User user = userService.getUserByIdWithCity(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_VIEW);
-		modelAndView.addObject(ControllerParamConstant.USER_JSON, serializationJSON.toJsonViewsInternalUserSubclass(user));
+		modelAndView.addObject(ControllerParamConstant.USER_JSON,
+				serializationJSON.toJsonViewsInternalUserSubclass(user));
 		modelAndView.addObject(ControllerParamConstant.ID_USER, idUser);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/rules", method = RequestMethod.GET)
 	public ModelAndView rules() throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_FOOTER_RULES);

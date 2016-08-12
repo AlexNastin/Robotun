@@ -300,11 +300,11 @@ var jsonData = '${lotJson}';
 			zoom = data.city.scale;
 			vm.lot = data;
 			vm.lot.indexImage = idPicture;
-			
-			// Start WebSockets
 			id = vm.lot.idLot;
 			latitude = vm.lot.latitude;
 			longitude = vm.lot.longitude;
+			
+			// Start WebSockets
 			var wsUri = "ws://" + document.location.host + "/jobster.by/messagesocket/"+id;
 			websocket = new WebSocket(wsUri);
 			websocket.onerror = function(evt) {

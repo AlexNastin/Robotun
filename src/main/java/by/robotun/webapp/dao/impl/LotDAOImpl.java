@@ -74,8 +74,7 @@ public class LotDAOImpl implements ILotDAO {
 		try {
 			lot = (Lot) entityManager.createNamedQuery("Lot.findLotById").setParameter("id", idLot).getSingleResult();
 		} catch (NoResultException e) {
-			throw new DaoException(e);
-
+			lot = null;
 		}
 		return lot;
 	}

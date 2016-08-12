@@ -39,8 +39,7 @@ public class ArchiveLotDAOImpl implements IArchiveLotDAO {
 		try {
 			archiveLot = (ArchiveLot) entityManager.createNamedQuery("ArchiveLot.findLotById").setParameter("id", idArchiveLot).getSingleResult();
 		} catch (NoResultException e) {
-			throw new DaoException(e);
-
+			archiveLot = null;
 		}
 		return archiveLot;
 	}
