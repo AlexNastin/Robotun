@@ -38,8 +38,10 @@ public class UpdatePasswordModeratorController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updatePassword(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_UPDATE_PASSWORD);
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		UpdateUserPasswordForm userUpdatePasswordForm = new UpdateUserPasswordForm();
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -50,6 +52,7 @@ public class UpdatePasswordModeratorController {
 		personalSecurityValidator.validate(userUpdatePasswordForm, result);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MODERATOR_UPDATE_PASSWORD);
 		modelAndView.addObject(ControllerParamConstant.UPDATE_PASSWORD_FORM, userUpdatePasswordForm);
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		if (!result.hasErrors()) {
 			String message = messages.getMessage(LocalizationParamNameProperties.MESSAGE_CHANGE_PASSWORD_SUCCESSFUL, null, locale);
 			userUpdatePasswordForm.setIdUser(person.getId());

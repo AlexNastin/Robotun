@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
+import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddModeratorForm;
 import by.robotun.webapp.form.validator.AddModeratorFormValidator;
 import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
@@ -36,8 +37,10 @@ public class AdminCreateModeratorController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView addModerator(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ADMIN_ADD_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.ADD_MODERATOR_FORM, new AddModeratorForm());
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
@@ -45,6 +48,7 @@ public class AdminCreateModeratorController {
 	public ModelAndView addModeratorValidation(@ModelAttribute(ControllerParamConstant.ADD_MODERATOR_FORM) AddModeratorForm addModeratorForm,
 		BindingResult result, HttpSession httpSession, Locale locale) throws Exception {
 		addModeratorFormValidator.validate(addModeratorForm, result);
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ADMIN_ADD_MODERATOR);
 		if (!result.hasErrors()) {
 			adminService.addModerator(addModeratorForm);
@@ -52,6 +56,7 @@ public class AdminCreateModeratorController {
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 			addModeratorForm = new AddModeratorForm();
 		}
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		modelAndView.addObject(ControllerParamConstant.ADD_MODERATOR_FORM, addModeratorForm);
 		return modelAndView;
 	}

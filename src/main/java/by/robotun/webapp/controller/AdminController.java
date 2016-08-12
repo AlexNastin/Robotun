@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IAdminService;
@@ -30,9 +30,11 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
 	public ModelAndView profileAdmin(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<User> moderators = adminService.getAllStaffs();
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_ADMIN);
 		modelAndView.addObject(ControllerParamConstant.LIST_USERS_JSON, serializationJSON.toJsonViewsInternalForListModerators(moderators));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 

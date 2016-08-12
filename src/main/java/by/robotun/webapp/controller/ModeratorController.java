@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Lot;
+import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.service.IModeratorService;
 import by.robotun.webapp.service.converter.SerializationJSON;
@@ -30,8 +31,10 @@ public class ModeratorController {
 	@RequestMapping(value = "/moderator/profile", method = RequestMethod.GET)
 	public ModelAndView profileModerator(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
 		List<Lot> lots = moderatorService.getAllLotsOnModeration();
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_MAIN_MODERATOR);
 		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsInternalRejectMessages(lots));
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
 
