@@ -111,7 +111,8 @@ $(document).ready(function(){
 	    rules: {
 	    	login: {
 		        required: true,
-		        email: true
+		        email: true,
+		        rangelength: [1, 50]
 		    },
 		    //phones: {
 			//    required: true,
@@ -180,7 +181,8 @@ messages:  {
 	//messages
 	login: {
 		required: 'Поле не может быть пустым.',
-		email: 'Неверный e-mail.'
+		email: 'Неверный e-mail.',
+		rangelength: "Не более 50 символов"
 		},
 	phones: {
 	regexp: 'Введите номер в формате +375XXXXXXXXX',
