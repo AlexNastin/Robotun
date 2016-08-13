@@ -58,12 +58,12 @@
 			<span class="error"><form:errors path="longitude" /></span>
 		</div>
 		<div class="form-group heightStyleValidation">
-		<form:input path="name" placeholder="Название" class="form-control"/>
+		<form:input path="name" placeholder="Название работы" class="form-control"/>
 		<form:errors path="name" />
 		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 5.5em;">
-		<form:textarea path="description" style="resize: none;" placeholder="Описание" class="form-control" />
+		<form:textarea path="description" style="resize: none;" placeholder="Описание работы" class="form-control" />
 		<form:errors path="description" />
 		<label class="error textStyleValidation" generated="true" for="description"></label>
 		</div>		
@@ -89,13 +89,13 @@
 					<span class="error"><form:errors path="idSubcategory" /></span>
 					</div>
 					<div class="form-group heightStyleValidation">
-					<input onkeydown="return false" type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца">
+					<input onkeydown="return false" type="text" class="form-control" name="Date" id="Date" placeholder="Дата окончания">
 					<label class="error textStyleValidation" generated="true" for="Date"></label>
 					</div>
 					<div class="form-group ignore" style="height: 4em;">
 					
-					   <input type="range" class="" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = timeInputId.value">
-					     <output class="ignore" style="text-align:center" name="timeOutputName" id="timeOutputId">12</output>
+					   <input type="range" class="" name="timeInputName" id="timeInputId" value="12" min="0" step="1" max="24" oninput="timeOutputId.value = 'в ' +timeInputId.value +' часов' ">
+					     <output class="ignore" style="text-align:center" name="timeOutputName" id="timeOutputId">в 12 часов</output>
 					<label class="error textStyleValidation" generated="true" for="timeInputId"></label>
 					</div>
 		<div hidden class="form-group heightStyleValidation">
@@ -130,6 +130,7 @@
 	</div>
 	<div class="col-md-6">
 	 <div id="YMapsID" style="width: 100%; height: 350px;"></div>
+	 <span>Перемещая маркер <img style="width:20px; height:20px" src="<c:url value="/resources/images/location_marker.png"  />" > на карте, Вы можете указать точное место, где нужна помощь</span>
 	 </div>
 	</div>
     <div class="col-md-1"></div>
