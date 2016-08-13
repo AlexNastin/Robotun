@@ -142,28 +142,31 @@
 
 										<security:authorize
 											access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-
+											<div class="col-md-12">
+        								
+    </div>
 											<div id="inputs" class="col-md-12" style="padding-left: 0px;"
 												ng-if="lotCtrl.isShowSendButton">
-												<div class="col-md-12" style="padding-left: 0px;">
-												<div class="input-group">												
-													<span class="input-group-btn"> <input id="myBtn1"
-														type="button" class="btn btn-danger btn-number" value="-"
-														data-type="minus" data-field="quant[2]">
-													</span> 
-													<input type="text" style="text-align: center;" disabled
-														id="cost" name="quant[2]"
-														class="form-control input-number" value="{{lotCtrl.lot.budget}}" min="1"
-														max="1000000"> 
-														<span style="" id="anchor"
-														class="input-group-btn"> 
-														<input id="displus"
-														type="button" class="btn btn-success btn-number" value="+"
-														data-type="plus" data-field="quant[2]">
-													</span>
-													
-												</div>
-												</div>
+												
+												
+												
+    
+    
+		<div class="col-md-12" style="
+    padding-left: 0px;">
+			<div class="input-group number-spinner">
+				<span class="input-group-btn data-dwn ">
+					<button class="btn btn-default btn-danger" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+				</span>
+				<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="cost" class="form-control text-center" value="{{lotCtrl.lot.budget}}" min="1" max="240000">
+				<span class="input-group-btn data-up">
+					<button class="btn btn-default btn-success" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+				</span>
+			</div>
+		</div>
+	
+    
+
 												<div class="col-md-12 btn-mobile"  style="padding-left: 0px;">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
@@ -173,13 +176,7 @@
 											
 
 										</security:authorize>
-										<div class="col-md-12">
-        								<form class="form-horizontal" role="form">
-            								<div class="form-group">
-               									<input id="demo2" type="text" value="{{lotCtrl.lot.budget}}" name="demo2" class="col-md-7 form-control">
-            								</div>
-       									 </form>
-    </div>
+										
 										<security:authorize access="hasRole('ROLE_GUEST')">
 											<a class="btn btn-default login-button-mini-style" style="color: #3abeb1" href='<c:url value="/login" />'>Войти</a>
 										</security:authorize>
@@ -449,105 +446,8 @@ var jsonData = '${lotJson}';
 	    }
 	     
 		// end map
+			
 		
-		
-		$( document ).ready(function() {
-		    $('.btn-number').click(function(e){
-		        e.preventDefault();
-		        var fieldName = $(this).attr('data-field');
-		        var type      = $(this).attr('data-type');
-		        var input = $("input[name='"+fieldName+"']");
-		        var currentVal = parseInt(input.val());
-		        if (!isNaN(currentVal)) {
-		            if(type == 'minus') {
-		            	
-		                var minValue = parseInt(input.attr('min')); 
-		                if(!minValue) minValue = 0;
-		                if(currentVal >= minValue) {
-		                	if(currentVal>=0){
-			                    input.val(currentVal - 100).change();
-			                }	if(currentVal>1000){
-			                    input.val(currentVal - 1000).change();
-			                }	if(currentVal>100000){
-			                    input.val(currentVal - 10000).change();
-			                }	if(currentVal>1000000){
-			                    input.val(currentVal - 100000).change();
-			                }	if(currentVal>1000000){
-			                    input.val(currentVal - 500000).change();
-			                }	
-		                } 
-		                if(parseInt(input.val()) == minValue) {
-		                    $(this).attr('disabled', true);
-		                }
-		    
-		            } else if(type == 'plus') {
-		                var maxValue = parseInt(input.attr('max'));
-		                if(!maxValue) maxValue = 9999999999999;
-		                if(currentVal <= maxValue) {
-		                	if(currentVal>=0){
-		                    input.val(currentVal + 100).change();
-		                }	if(currentVal>1000){
-		                    input.val(currentVal + 1000).change();
-		                }	if(currentVal>100000){
-		                    input.val(currentVal + 10000).change();
-		                }	if(currentVal>1000000){
-		                    input.val(currentVal + 100000).change();
-		                }	if(currentVal>1000000){
-		                    input.val(currentVal + 500000).change();
-		                }	
-		                }
-		                if(parseInt(input.val()) == maxValue) {
-		                    $(this).attr('disabled', true);
-		                }
-		    
-		            }
-		        } else {
-		            input.val(0);
-		        }
-		    });
-		    $('.input-number').focusin(function(){
-		       $(this).data('oldValue', $(this).val());
-		    });
-		    $('.input-number').change(function() {
-		        
-		        var minValue =  parseInt($(this).attr('min'));
-		        var maxValue =  parseInt($(this).attr('max'));
-		        if(!minValue) minValue = 1;
-		        if(!maxValue) maxValue = 9999999999999;
-		        var valueCurrent = parseInt($(this).val());
-		        
-		        var name = $(this).attr('name');
-		        if(valueCurrent >= minValue) {
-		            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
-		        } else {
-		            
-		            $(this).val($(this).data('oldValue'));
-		        }
-		        if(valueCurrent <= maxValue) {
-		            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
-		        } else {
-		            
-		            $(this).val($(this).data('oldValue'));
-		        }
-		        
-		        
-		    });
-		    $(".input-number").keydown(function (e) {
-		            // Allow: backspace, delete, tab, escape, enter and .
-		            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-		                 // Allow: Ctrl+A
-		                (e.keyCode == 65 && e.ctrlKey === true) || 
-		                 // Allow: home, end, left, right
-		                (e.keyCode >= 35 && e.keyCode <= 39)) {
-		                     // let it happen, don't do anything
-		                     return;
-		            }
-		            // Ensure that it is a number and stop the keypress
-		            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-		                e.preventDefault();
-		            }
-		    });
-		});
 		
 $(document).ready(function() {
 	$("a.scroll").click(function () { 
@@ -628,6 +528,7 @@ $('#btn').click(function() {
 });
 
 </script>
+
 <script>
 (function (e) {
     e.fn.countdown = function (t, n) {
@@ -701,19 +602,42 @@ setTimeout(addButton, timeBlockSendButton - showcounter);
 </script>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<script>
-            $("input[name='demo2']").TouchSpin({
-                min: 1,
-                max: 1000000000,
-                stepinterval: 50,
-                maxboostedstep: 10000000,
-                prefix: 'BYN'
-            });
-        </script>
+	
 	<script>
     prettyPrint();
 </script>
-	
+	<script>
+	$(function() {
+	    var action;
+	    $(".number-spinner button").mousedown(function () {
+	        btn = $(this);
+	        input = btn.closest('.number-spinner').find('input');
+	        btn.closest('.number-spinner').find('button').prop("disabled", false);
+
+	    	if (btn.attr('data-dir') == 'up') {
+	            action = setInterval(function(){
+	                if ( input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max')) ) {
+	                    input.val(parseInt(input.val())+1);
+	                }else{
+	                    btn.prop("disabled", true);
+	                    clearInterval(action);
+	                }
+	            }, 50);
+	    	} else {
+	            action = setInterval(function(){
+	                if ( input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min')) ) {
+	                    input.val(parseInt(input.val())-1);
+	                }else{
+	                    btn.prop("disabled", true);
+	                    clearInterval(action);
+	                }
+	            }, 50);
+	    	}
+	    }).mouseup(function(){
+	        clearInterval(action);
+	    });
+	});
+	</script>
 </body>
 </html>
 
