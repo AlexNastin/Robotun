@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 .users-legal-boards {
-	background-color: #f5f5f5; 
+	
 	min-height:10em;
 	margin-top:1em;
 	box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -57,4 +57,13 @@
 	text-align:center; 
 	padding: 0.3em; 
 	background-color: #f5f5f5;
+}
+.active-lot{
+	background-color:rgb(221, 245, 211);
+}
+.rejected-lot{
+	background-color:rgb(255, 200, 200);
+}
+.lot-modaration{
+	background-color:rgb(253, 239, 168);
 }

@@ -66,7 +66,7 @@
 							</c:if> -->
 						</div>
 <c:if test="${not empty param.error}">
-							<div class="messagesValidStyle row" role="">
+							<div class="messagesInValidStyle row" role="">
 								<font color="white">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 								</font>
 							</div>

@@ -361,4 +361,11 @@ a {
 	border-radius: 5px;
 	margin-bottom: 1em;
 }
+.messagesInValidStyle {
+	background-color: #be3a3a;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+	margin-bottom: 1em;
+}
 .required:after { content:" *"; }
