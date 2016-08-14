@@ -65,4 +65,7 @@ h2, small{
 img {
 	width: 230px;
     height: 150px;
+}
+.navbar-brand{
+	width:165px; !important
 }	
