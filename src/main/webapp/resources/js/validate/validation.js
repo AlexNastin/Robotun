@@ -161,13 +161,13 @@ $(document).ready(function(){
 			},
 			name: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/,
-				rangelength: [1, 40]
+				regexp: /^[А-яёЁ\\-]{2,40}$/,
+				rangelength: [2, 40]
 			},
 			surname: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/,
-				rangelength: [1, 40]
+				regexp: /^[А-яёЁ\\-]{2,40}$/,
+				rangelength: [2, 40]
 			},
 			text: {
 				required: true,
