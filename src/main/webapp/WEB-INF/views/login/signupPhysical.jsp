@@ -92,20 +92,18 @@
 	    </div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
-		<form:input class="form-control" path="name" placeholder="Имя" />
-		<form:errors path="name" />
-		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="name"></label>
-		</div>
-		</div>
-		<div class="form-group form-group-required heightStyleValidation">
-		<div>
 		<form:input class="form-control" path="surname" placeholder="Фамилия" />
 		<form:errors path="surname" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="surname"></label>
 		</div>
 		</div>
-		
-		
+		<div class="form-group form-group-required heightStyleValidation">
+		<div>
+		<form:input class="form-control" path="name" placeholder="Имя" />
+		<form:errors path="name" />
+		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="name"></label>
+		</div>
+		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:password class="form-control" path="password" placeholder="Пароль" />
