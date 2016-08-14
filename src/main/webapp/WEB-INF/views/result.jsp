@@ -150,9 +150,8 @@
                                 
                                     <a ng-href='/jobster.by/lot?id={{lot.id_lot}}&idPic={{lot.indexImage}}' class="list-group-item resize-result" ng-repeat="lot in lotsCtrl.lots" target="_blank">
                                     <div class="media col-md-3" >
-                                            <figure  class="pull-left ">
-                                                <img class="media-object img-rounded img-responsive centered-and-cropped" style=" width: 230px; height: 150px;"  ng-src="{{lot.logoImage}}">
-                                            </figure>
+                                       <img class="media-object img-rounded img-responsive centered-and-cropped" style=" margin: auto; width: 230px; height: 150px;"  ng-src="{{lot.logoImage}}">
+                                            
                                         </div>
                                         <div class="col-md-6">
                                             <h4 class="list-group-item-heading " style="font-size: 25px;">{{lot.name}}</h4>
