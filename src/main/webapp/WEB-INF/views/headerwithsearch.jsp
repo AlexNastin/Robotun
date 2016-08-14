@@ -35,12 +35,12 @@
            <a  href="<c:url value="/"/>"><img  style="margin-left: 15px;" class="navbar-brand" src="<c:url value="/resources/images/logotip.png"  />" alt="logo"></a>
         </div>
         <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav">
         <li ><a href="<c:url value="/user/addLot" />">Добавить работу </a></li>
         <li><a href="<c:url value="/result" />">Хочу работать</a></li>
         
       </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav navbar-right">
                <li class="dropdown">
                 <a class="dropdown-toggle" style="" data-toggle="dropdown" role="button">Аккаунт
                 <span class="caret"></span>

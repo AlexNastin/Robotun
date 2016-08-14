@@ -15,20 +15,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="global3dmod team">
-    <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
+    <meta name="author" content="">
+    <meta name="keywords" content=""> 
     
     <spring:message code="email.message.resetPassword.enteremailmessage" var="enteremailmessage"/>
    
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-    <link href="<c:url value="/resources/css/404.css"  />" rel="stylesheet" />
+
+    <link href="<c:url value="/resources/css/main/error.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
-    
+    <link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
    	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
    
 <body>
-
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container">
     <div class="row">
         <div class="col-md-12" style="padding-top: 3em;" >
@@ -69,6 +69,6 @@
 	</script>
             </div>
         </div>
-
+<%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>

@@ -41,7 +41,7 @@
         <li><a href="<c:url value="/result" />">Хочу работать</a></li>
         
       </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav navbar-right">
                <li class="dropdown">
                 <a class="dropdown-toggle font-weight-text-header" style="" data-toggle="dropdown" role="button">Аккаунт
                 <span class="caret"></span>
