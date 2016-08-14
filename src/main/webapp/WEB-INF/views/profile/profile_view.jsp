@@ -24,7 +24,7 @@
 <!--This stylesheet should be moved to the head of the document -->
  <div class="container main">
     <div class="row">
-        <div class=" col-lg-offset-2 col-lg-8">
+        <div class=" col-lg-offset-1 col-lg-10">
             <div class="panel panel-default">
             
                 <div class="panel-body" ng-controller="UserController as userCtrl" ng-cloak>
