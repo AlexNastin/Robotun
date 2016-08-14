@@ -13,17 +13,20 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 	 <link href="<c:url value="/resources/css/validation.css"  />"
 	rel="stylesheet" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em;">
+<div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+<div class="user-navigation">
 <a href='<c:url value="/admin/profile" />' class="list-group-item background-color-menu-profile ">Профиль</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Добавить модератора</a>
+</div>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>

@@ -22,10 +22,11 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
+<div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <div class="style-nickname">${nickname}</div>
+<div class="user-navigation">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
 <a href='<c:url value="/physical/profile/archiveLots" />' class="list-group-item background-color-menu-profile">Архив работ</a>
 <a href='<c:url value="/physical/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
@@ -33,6 +34,7 @@
 <a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
+</div>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>
@@ -81,5 +83,16 @@
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
 <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>   
+<script>
+		$(document).ready(function() {
+			if($(window).width() >= 992){
+				var dynamic = $('.user-navigation');
+			    var static = $('.ng-scope');
+			    
+			    dynamic.height(static.height());
+				}
+		    
+		});
+		</script>
 </body>
 </html>

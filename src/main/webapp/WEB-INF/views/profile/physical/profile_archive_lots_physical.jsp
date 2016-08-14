@@ -21,10 +21,11 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
+<div class="container user-profile">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <div class="style-nickname">${nickname}</div>
+<div class="user-navigation">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Архив работ</a>
 <a href='<c:url value="/physical/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
@@ -32,6 +33,7 @@
 <a href='<c:url value="/physical/secure/updatePassword" />' class="list-group-item background-color-menu-profile ">Сменить пароль</a>
 <a href='<c:url value="/physical/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile ">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
+</div>
 </div>
 <div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Архив работ:</div>
@@ -117,6 +119,17 @@ function mainLotsController ($scope) {
 							});
 						});
 			}
+		</script>
+		<script>
+		$(document).ready(function() {
+			if($(window).width() >= 992){
+				var dynamic = $('.user-navigation');
+			    var static = $('.ng-scope');
+			    
+			    dynamic.height(static.height());
+				}
+		    
+		});
 		</script>
 </body>
 </html>

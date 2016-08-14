@@ -26,7 +26,8 @@
 </head>
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
-<body class="body-color backgroundImageStyle nonpersonal">
+<body>
+<div class="body-color backgroundImageStyle nonpersonal">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	
 	<div class="container container-style-addlot">
@@ -134,6 +135,7 @@
 	 </div>
 	</div>
     <div class="col-md-1"></div>
+	</div>
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<!-- scripts -->

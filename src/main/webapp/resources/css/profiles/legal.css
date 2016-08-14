@@ -64,6 +64,23 @@
 .rejected-lot{
 	background-color:rgb(255, 200, 200);
 }
-.lot-modaration{
+.lot-moderation{
 	background-color:rgb(253, 239, 168);
+}
+.user-profile{
+	width:100%;
+	padding-left:0px;
+	 padding-right:0px;
+	 min-height:50em; 
+	 margin-bottom: 1em;
+	 background-color: white
+}
+.user-navigation{
+	background-color:#3abeb1;
+	
+}
+@media (min-width: 992px){
+	.user-navigation{
+	min-height:40em;
+	}
 }

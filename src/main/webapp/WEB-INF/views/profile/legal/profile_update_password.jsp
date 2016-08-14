@@ -21,10 +21,11 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
+<div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 <div class="style-nickname">${nickname}</div>
+<div class="user-navigation">
 <a href='<c:url value="/legal/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
 <a href='<c:url value="/legal/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
 <a href='<c:url value="/legal/profile/archiveLots" />' class="list-group-item background-color-menu-profile">Архив работ</a>
@@ -32,6 +33,7 @@
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
 <a href='<c:url value="/legal/profile/updatePersonalData" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
+</div>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>	

@@ -14,19 +14,21 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/profiles/admin.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/profiles/legal.css"  />" rel="stylesheet" />
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px;">
+<div class="container user-profile" >
 <div class="min-height-admin-page">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+<div class="user-navigation">
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
-		
+</div>		
 </div>
 <div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
 <div class="table-responsive" id="list-group">
@@ -45,7 +47,7 @@
 							<td>{{user.login}}</td>
 							<td>{{user.nickname}}</td>
 							<td>{{user.registrationDate | date:'yyyy-mm-dd HH:mm:ss'}}</td>
-							<td><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить этого урода</a></td>
+							<td><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить</a></td>
 							<td><a ng-href='/jobster.by/admin/resetModeratorPassword?id={{user.idUser}}'>Сбросить пароль по умолчанию</a></td>
 						</tr>
 					</tbody>

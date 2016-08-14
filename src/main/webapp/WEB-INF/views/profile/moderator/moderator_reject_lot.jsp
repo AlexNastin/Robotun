@@ -22,7 +22,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
+<div class="container user-profile" >
 <div class="col-md-12" style="text-align:center; font-weight: bold; font-size: 18pt; ">Проверка лота: </div>	
 <div class="col-md-3"></div>
 <div class="col-md-6 edit-users-legal-boards" style="padding-bottom:1em; margin-top: 1em;" ng-controller="LotController as lotCtrl" ng-cloak>
