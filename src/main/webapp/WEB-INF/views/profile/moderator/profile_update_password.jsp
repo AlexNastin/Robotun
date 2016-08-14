@@ -24,9 +24,8 @@
 <div class="container" style="width:100%; padding-left:0px; padding-right:0px; min-height:30em; margin-bottom: 1em;">
 <div class="col-md-2 nopadiing-left">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
-<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
+<a href='<c:url value="/moderator/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
-<a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile">Личные данные</a>
 </div>
 <div class="col-md-10">
 <div class="col-md-2"></div>	
