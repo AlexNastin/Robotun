@@ -78,16 +78,10 @@
 		<div class="row row-offcanvas row-offcanvas-left"
 			style="background-color: #3abeb1;">
 
-			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
-				role="navigation">
-
-				 
-
-
-			</div>
+			
 			<!--/span-->
 
-			<div class="col-sm-9 col-md-10 main">
+			<div class="col-sm-12 col-md-12 main">
 				
 				<div class="inbox-mail">
 
@@ -105,28 +99,10 @@
 								<div id="2" class="col-md-4 col-xs-4 well height-block-lot">
 									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
 								</div>
-								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
-									style="padding-bottom: 0px; padding-top: 6px;">
-									<div id="countdown">
-													   													    
-													    <ul class="countdown font-size-time">													    
-														<li><span class="days">00</span>
-														<a  style="color:white" class="seperator">:</a>
-														<p class="days_ref timeRefDays">дней</p></li>
-														
-														<li><span class="hours">00</span>
-														<a style="color:white" class="seperator">:</a>
-														<p class="hours_ref timeRefHours">часов</p></li>
-														
-														<li><span class="minutes">00</span>
-														<a style="color:white" class="seperator">:</a>
-														<p class="minutes_ref timeRefMinutes">минут</p></li>														
-														<li><span class="seconds">00</span>
-														<p class="seconds_ref timeRefSeconds">секунд</p></li>
-														</ul>
-                                     </div>
+								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"	>
+									<i class="fa fa-archive fa-lg" aria-hidden="true"></i> Лот в Архиве
 								</div>
-<div class="col-md-4">
+<div class="col-md-6">
 							<div class="header">
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
@@ -137,7 +113,8 @@
 									<span>{{lotCtrl.lot.description}}</span>
 								</div>
 								</div>
-								<div class="col-md-8">
+								</div>
+								<div class="col-md-6">
 								<div id="YMapsID" style="width: 100%; height: 350px;"></div>
 								</div>
 							</div>

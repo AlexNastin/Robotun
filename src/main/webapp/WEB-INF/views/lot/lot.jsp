@@ -124,7 +124,7 @@
 														</ul>
                                      </div>
 								</div>
-<div class="col-md-4">
+<div class="col-md-6">
 								<div class="header">
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
@@ -183,7 +183,7 @@
 									</div>
 								</div>
 								</div>
-								<div class="col-md-8">
+								<div class="col-md-6">
 								<div id="YMapsID" style="width: 100%; height: 350px;"></div>
 								</div>
 							</div>
