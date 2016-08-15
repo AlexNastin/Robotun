@@ -29,6 +29,7 @@
    
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+<div class="error">
 <div class="container">
     <div class="row">
         <div class="col-md-12" style="padding-top: 3em;" >
@@ -68,6 +69,7 @@
 	}
 	</script>
             </div>
+        </div>
         </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
