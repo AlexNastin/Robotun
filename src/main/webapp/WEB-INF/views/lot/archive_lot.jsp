@@ -302,6 +302,8 @@ var jsonData = '${lotJson}';
 	            center: [latitude, longitude],
 	            zoom: zoom
 	        });
+	        
+	        myMap.controls.remove('searchControl');
 	        // Создание макета содержимого хинта.
 	        // Макет создается через фабрику макетов с помощью текстового шаблона.
 	            HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +

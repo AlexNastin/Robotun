@@ -97,13 +97,13 @@
 							<div class="col-md-4 bg_blur " style="background-image: url(./resources/images/avatar_lot/{{lotCtrl.lot.indexImage}}.jpg);"></div>
 							<div class="col-md-8"
 								style="padding-left: 0px; padding-right: 0px">
-								<div id="1" class="col-md-4 col-xs-4 well height-block-lot">
+								<div id="countBets" class="col-md-4 col-xs-4 well height-block-lot">
 									<div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div>
 								</div>
-								<div id="2" class="col-md-4 col-xs-4 well height-block-lot">
+								<div id="countBudget" class="col-md-4 col-xs-4 well height-block-lot">
 									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
 								</div>
-								<div id="3" class="col-md-4 col-xs-4 well height-block-lot"
+								<div id="countTime" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
 									<div id="countdown">
 													   													    
@@ -406,6 +406,9 @@ var jsonData = '${lotJson}';
 	            center: [latitude, longitude],
 	            zoom: zoom
 	        });
+	        
+	        myMap.controls.remove('searchControl');
+	        
 	        // Создание макета содержимого хинта.
 	        // Макет создается через фабрику макетов с помощью текстового шаблона.
 	            HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +
@@ -517,9 +520,9 @@ function drawButtonPhoneOwner() {
 <script>
 if ( $(window).width() < 700) {  
 	
-	$( "#1" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
-	$( "#2" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
-	$( "#3" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#countBets" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#countBudget" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
+	$( "#countTime" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	} 
 </script>
 <script>
