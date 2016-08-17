@@ -184,7 +184,8 @@
     function init() {
         myMap = new ymaps.Map("YMapsID", {
             center: [latitude, longitude],
-            zoom: zoom
+            zoom: zoom,
+            controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
         });
      // Создание макета содержимого хинта.
         // Макет создается через фабрику макетов с помощью текстового шаблона.

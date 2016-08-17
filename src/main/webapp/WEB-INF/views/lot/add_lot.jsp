@@ -130,7 +130,17 @@
 	</form:form>
 	</div>
 	<div class="col-md-6">
-	 <div id="YMapsID" style="width: 100%; height: 350px;"></div>
+	
+	 <div id="YMapsID" style="width: 100%; height: 350px;position:relative">
+		 <form action="#">
+			 <div style='position:absolute; z-index:10; padding:10px; background-color: rgba(255,255,255,0);'>
+				<input id="textSearch" type="text" placeholder="Введите адрес">
+				<input type="button" value="Поиск" onclick="addressFind( $('#textSearch').val() )">
+				<input type="button" value="Очистить" onclick="$('#textSearch').val(''); $('#list').empty();">
+				<div id='list' style='background-color: rgba(255,255,255,0.7);'></div>
+			</div>
+		</form>
+	 </div>
 	 <span>Перемещая маркер <img style="width:20px; height:20px" src="<c:url value="/resources/images/location_marker.png"  />" > на карте, Вы можете указать точное место, где нужна помощь</span>
 	 </div>
 	</div>
@@ -167,10 +177,38 @@
 		myPlacemark.geometry.setCoordinates([latitude, longitude]);
 		
     }
+    
+    function addressOnMap(latitude, longitude) {
+    	$('#textSearch').val('');
+    	$('#list').empty();
+		myMap.setCenter([latitude, longitude], 15, {
+		    checkZoomRange: true
+		});
+		myPlacemark.geometry.setCoordinates([latitude, longitude]);
+		
+    }
+    
+    function addressFind(text) {
+    	$('#list').empty();
+    	var myGeocoder = ymaps.geocode(text);	
+    	myGeocoder.then(
+    	    function (res) {
+    	    	res.geoObjects.each(function (geoObject) {
+    	    	    console.log(geoObject);
+    	    	    $('#list').append('<a href="#" onclick="addressOnMap(' + geoObject.geometry._coordinates[0] +',' + geoObject.geometry._coordinates[1] + ')"><div>'+geoObject.properties._data.name+'<br>' + geoObject.properties._data.text + '</div></a>');
+    	    	});
+    	    },
+    	    function (err) {
+    	        console.log('Ошибка');
+    	    }
+    	);
+    }
+    
     function init() {
         myMap = new ymaps.Map("YMapsID", {
             center: [latitude, longitude],
-            zoom: zoom
+            zoom: zoom,
+            controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
         });
         
      // Создание макета содержимого хинта.

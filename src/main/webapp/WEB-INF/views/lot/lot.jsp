@@ -404,10 +404,9 @@ var jsonData = '${lotJson}';
 	    function init() {
 	        myMap = new ymaps.Map("YMapsID", {
 	            center: [latitude, longitude],
-	            zoom: zoom
+	            zoom: zoom,
+	            controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
 	        });
-	        
-	        myMap.controls.remove('searchControl');
 	        
 	        // Создание макета содержимого хинта.
 	        // Макет создается через фабрику макетов с помощью текстового шаблона.
