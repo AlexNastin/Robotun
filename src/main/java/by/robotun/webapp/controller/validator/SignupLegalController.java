@@ -48,7 +48,7 @@ public class SignupLegalController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView addUserLegalValidation(@ModelAttribute(ControllerParamConstant.ADD_USER_LEGAL_FORM) SignupUserLegalForm signupUserLegalForm, BindingResult result, Locale locale) throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_LEGAL);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
 		addUserLegalValidator.validate(signupUserLegalForm, result);
 		if (!result.hasErrors()) {
 			guestService.addUserLegal(signupUserLegalForm);

@@ -53,8 +53,7 @@ public class UserDAOImpl implements IUserDAO {
 	public User selectUser(String login) throws DaoException {
 		User user = null;
 		try {
-			user = (User) entityManager.createNamedQuery("User.findUserByLogin").setParameter("login", login)
-					.getSingleResult();
+			user = (User) entityManager.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
 		} catch (NoResultException e) {
 			return user;
 		}

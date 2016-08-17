@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +22,7 @@ import by.robotun.webapp.exception.DaoException;
 /**
  * @author Nastin
  */
-@Service("customUserDetailsService")
-@Transactional(readOnly = true)
+@Component("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
@@ -38,14 +38,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 		boolean credentialsNonExpired = true;
 		boolean accountNonLocked = true;
 		try {
+			System.out.println(login+" !");
 			userJobster = userDAO.selectUser(login);
+			System.out.println(userJobster+" !!");
+			System.out.println(userJobster.getLogin()+" !!!");
 			LOGGER.info("User: " + userJobster.getLogin() + " i entered this system");
 		} catch (DaoException e) {
 			LOGGER.error("Problem dao");
 		}
-		return new org.springframework.security.core.userdetails.User(userJobster.getLogin(),
-				userJobster.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired,
-				accountNonLocked, getAuthorities(userJobster.getIdRole()));
+		return new org.springframework.security.core.userdetails.User(userJobster.getLogin(),userJobster.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(userJobster.getIdRole()));
 
 	}
 

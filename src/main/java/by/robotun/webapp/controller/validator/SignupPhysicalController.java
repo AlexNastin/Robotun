@@ -49,7 +49,7 @@ public class SignupPhysicalController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView addUserPhysicalValidation(@ModelAttribute(ControllerParamConstant.ADD_USER_PHYSICAL_FORM) SignupUserPhysicalForm signupUserPhysicalForm, BindingResult result, HttpSession httpSession, Locale locale) throws ServiceException  {
 		addUserPhysicalValidator.validate(signupUserPhysicalForm, result);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_SIGNUP_PHYSICAL);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
 		if (!result.hasErrors()) {
 			guestService.addUserPhysical(signupUserPhysicalForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_SIGNUP_SUCCESSFUL, null, locale)); 
