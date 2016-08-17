@@ -38,7 +38,7 @@
 <div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Мои работы:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
-<div class="col-md-12 users-legal-boards">
+<div class="col-md-12 users-legal-boards {{lot.colorVisible}}">
 <div class="col-md-3">
 <img ng-src="{{lot.logoImage}}" class="img-responsive img-thumbnail users-legal-img" alt="Image">
 </div>
@@ -105,6 +105,13 @@ function mainLotsController ($scope) {
 		var randomInt = getRandomInt(0,vm.lotsImages.length-1);
 		lot.logoImage = vm.lotsImages[randomInt];
 		lot.indexImage = randomInt;
+		if(lot.isVisible == 1) {
+			lot.colorVisible = ' ';
+		} else if(lot.isVisible == 2) {
+			lot.colorVisible = 'moderation-lot';
+		} else if (lot.isVisible == 3) {
+			lot.colorVisible = 'rejected-lot';
+		}
 		vm.lots.push(lot);
 	});
 	vm.preRemoveLot;
@@ -154,6 +161,13 @@ function mainLotsController ($scope) {
 										var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
 										data[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
 										data[i].indexImage = randomInt;
+										if(data[i].isVisible == 1) {
+											data[i].colorVisible = ' ';
+										} else if(data[i].isVisible == 2) {
+											data[i].colorVisible = 'moderation-lot';
+										} else if (data[i].isVisible == 3) {
+											data[i].colorVisible = 'rejected-lot';
+										}
 										scope.lotsCtrl.lots.push(data[i]);
 									}
 									scope.$apply(function () {
