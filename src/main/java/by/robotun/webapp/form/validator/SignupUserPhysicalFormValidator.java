@@ -3,12 +3,16 @@ package by.robotun.webapp.form.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import by.robotun.webapp.dao.IUserDAO;
+import by.robotun.webapp.domain.User;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
@@ -17,7 +21,12 @@ import by.robotun.webapp.form.regex.RegExName;
 public class SignupUserPhysicalFormValidator implements Validator {
 
 	@Autowired
+	private IUserDAO userDAO;
+	
+	@Autowired
 	private RegExCollection regExCollection;
+	
+	private static Logger LOGGER = Logger.getLogger(SignupUserPhysicalFormValidator.class);
 	
 	@Override
 	public boolean supports(Class<?> cls) {
@@ -27,6 +36,15 @@ public class SignupUserPhysicalFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		SignupUserPhysicalForm addUserPhysicalForm = (SignupUserPhysicalForm) target;
+		try {
+			User user =  userDAO.selectUser(addUserPhysicalForm.getLogin());
+			System.out.println(user);
+			if (user != null) {	
+				errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN_EXIST);
+			}
+		} catch (DaoException e) {
+			LOGGER.error(e);
+		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternLogin = regExCollection.getRegExPattern(RegExName.REGEX_LOGIN);
 		Matcher matcherLogin = patternLogin.matcher(addUserPhysicalForm.getLogin());

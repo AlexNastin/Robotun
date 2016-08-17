@@ -13,6 +13,7 @@ public class LocalizationParamNameProperties {
 	
 	public static final String VALIDATION_SIGNUP_NAME_ENTERPRISE = "valid.signup.enterprise";
 	public static final String VALIDATION_SIGNUP_LOGIN = "valid.signup.login";
+	public static final String VALIDATION_SIGNUP_LOGIN_EXIST = "valid.signup.login.exist";
 	public static final String VALIDATION_SIGNUP_UNP = "valid.signup.unp";	
 	public static final String VALIDATION_SIGNUP_ADDRESS = "valid.signup.address";	
 	public static final String VALIDATION_SIGNUP_ZIPCODE = "valid.signup.zipcode";	

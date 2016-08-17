@@ -3,12 +3,16 @@ package by.robotun.webapp.form.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import by.robotun.webapp.dao.IUserDAO;
+import by.robotun.webapp.domain.User;
+import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
@@ -17,8 +21,13 @@ import by.robotun.webapp.form.regex.RegExName;
 public class SignupUserLegalFormValidator implements Validator {
 
 	@Autowired
+	private IUserDAO userDAO;
+	
+	@Autowired
 	private RegExCollection regExCollection;
 
+	private static Logger LOGGER = Logger.getLogger(SignupUserPhysicalFormValidator.class);
+	
 	@Override
 	public boolean supports(Class<?> cls) {
 		return SignupUserLegalForm.class.isAssignableFrom(cls);
@@ -27,6 +36,15 @@ public class SignupUserLegalFormValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		SignupUserLegalForm addUserLegalForm = (SignupUserLegalForm) target;
+		try {
+			User user =  userDAO.selectUser(addUserLegalForm.getLogin());
+			System.out.println(user);
+			if (user != null) {	
+				errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN_EXIST);
+			}
+		} catch (DaoException e) {
+			LOGGER.error(e);
+		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_NAME_ENTERPRISE, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		Pattern patternNameEnterprise = regExCollection.getRegExPattern(RegExName.REGEX_NAME_ENTERPRISE);
 		Matcher matcherNameEnterprise = patternNameEnterprise.matcher(addUserLegalForm.getNameEnterprise());
