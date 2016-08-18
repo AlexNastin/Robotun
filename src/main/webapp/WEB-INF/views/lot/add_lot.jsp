@@ -133,14 +133,19 @@
 	<div class="col-md-6">
 	
 	 <div id="YMapsID" style="width: 100%; height: 350px;position:relative">
+		 <div class="form-inline">
+		 <div class="form-group">
+		 
 		 <form action="#">
 			 <div style='position:absolute; z-index:10; padding:10px; background-color: rgba(255,255,255,0);'>
-				<input id="textSearch" type="text" placeholder="Введите адрес">
-				<input type="button" value="Поиск" onclick="addressFind( $('#textSearch').val() )">
-				<input type="button" value="Очистить" onclick="$('#textSearch').val(''); $('#list').empty();">
+				<input class="form-control" id="textSearch" type="text" placeholder="Введите адрес">
+				<input class="btn btn-default" type="button" value="Поиск" onclick="addressFind( $('#textSearch').val() )">
+				<input class="btn btn-default" type="button" value="Очистить" onclick="$('#textSearch').val(''); $('#list').empty();">
 				<div id='list' style='background-color: rgba(255,255,255,0.7);'></div>
 			</div>
 		</form>
+		</div>
+		</div>
 	 </div>
 	 <span>Перемещая маркер <img style="width:20px; height:20px" src="<c:url value="/resources/images/location_marker.png"  />" > на карте, Вы можете указать точное место, где нужна помощь</span>
 	 </div>
@@ -207,7 +212,7 @@
     	myGeocoder.then(
     	    function (res) {
     	    	res.geoObjects.each(function (geoObject) {
-    	    	    $('#list').append('<a href="#" onclick="addressOnMap(' + geoObject.geometry._coordinates[0] +',' + geoObject.geometry._coordinates[1] + ')"><div>'+geoObject.properties._data.name+'<br>' + geoObject.properties._data.text + '</div></a>');
+    	    	    $('#list').append('<a  href="#" onclick="addressOnMap(' + geoObject.geometry._coordinates[0] +',' + geoObject.geometry._coordinates[1] + ')"><div style="margin:0px; font-size:12px;opacity: 0.7;" class="well well-sm">'+geoObject.properties._data.name+'<br>' + geoObject.properties._data.text + '</div></a>');
     	    	});
     	    },
     	    function (err) {
