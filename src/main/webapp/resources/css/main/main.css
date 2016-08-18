@@ -337,18 +337,26 @@ body,
             font-family: Arial;
 }
 .load-button{
+	margin-bottom: 20px;
+    margin-top: 20px;
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
 }
 .load-button:hover{
+	margin-bottom: 20px;
+    margin-top: 20px;
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
 }
 .load-button:active{
+	margin-bottom: 20px;
+    margin-top: 20px;
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
 }
 .load-button:active:hover{
+	margin-bottom: 20px;
+    margin-top: 20px;
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
 }
