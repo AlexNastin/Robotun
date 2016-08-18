@@ -56,9 +56,8 @@
 </div>
 </div>
 <div style="text-align:center;">
-									<div style="text-align:center;">
-										<a class="btn btn-primary button-legal-style-main"
-											onclick='buttonLoader()'>Подгрузить еще</a>
+										<a class="btn btn-primary load-button"
+											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
             						</div>
 <div class="load"></div>
 </div>
