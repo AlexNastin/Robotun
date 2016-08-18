@@ -135,7 +135,7 @@
 		</div>
 		<div class="form-group col-md-12 form-group-required" style="margin-bottom:1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone1" class="form-control phone1" path="phones" placeholder="Телефон"  />
+		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Телефон"  />
 		<a id="open-close3" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<span class="error"><form:errors path="phones" /></span>
@@ -144,7 +144,7 @@
 		<div id="block-links3">
    		<div class="form-group col-md-12" style="margin-bottom:1.5em; padding: 0px;  height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone2" class="form-control phone2" path="phones" placeholder="Доп.телефон" />
+		<form:input id="phone2" class="form-control phone2" path="phones[1]" placeholder="Доп.телефон" />
 		<a id="open-close4" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<span class="error"><form:errors path="phones" /></span>
@@ -152,7 +152,7 @@
 		</div>
     	<div id="block-links4">
    		<div class="form-group fieldPhoneHeight">
-		<form:input id="phone3" class="form-control phone3" path="phones" placeholder="Доп.телефон" />
+		<form:input id="phone3" class="form-control phone3" path="phones[2]" placeholder="Доп.телефон" />
 		<span class="error"><form:errors path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		</div>

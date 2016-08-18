@@ -54,10 +54,10 @@ public class SignupLegalController {
 			modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
 			guestService.addUserLegal(signupUserLegalForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_SIGNUP_SUCCESSFUL, null, locale));
-			signupUserLegalForm = new SignupUserLegalForm();
+		} else {
+			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+			modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, signupUserLegalForm);
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ADD_USER_LEGAL_FORM, signupUserLegalForm);
 		return modelAndView;
 	}
 }

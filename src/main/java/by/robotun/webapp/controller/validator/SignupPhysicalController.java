@@ -54,9 +54,10 @@ public class SignupPhysicalController {
 			modelAndView = new ModelAndView(URLMapping.JSP_LOGIN);
 			guestService.addUserPhysical(signupUserPhysicalForm);
 			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_SIGNUP_SUCCESSFUL, null, locale)); 
+		} else {
+			modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
+			modelAndView.addObject(ControllerParamConstant.ADD_USER_PHYSICAL_FORM,  signupUserPhysicalForm);
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_CITIES, guestService.getAllCities());
-		modelAndView.addObject(ControllerParamConstant.ADD_USER_PHYSICAL_FORM,  signupUserPhysicalForm);
 		return modelAndView;
 	}
 }
