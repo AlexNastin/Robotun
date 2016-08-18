@@ -3,6 +3,10 @@ package by.robotun.webapp.security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +16,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exception.DaoException;
+import by.robotun.webapp.form.regex.RegExCollection;
+import by.robotun.webapp.form.regex.RegExName;
 
 /**
  * @author Nastin
@@ -26,28 +30,38 @@ import by.robotun.webapp.exception.DaoException;
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
+	private RegExCollection regExCollection;
+	
+	@Autowired
 	private IUserDAO userDAO;
-
+	
 	private static final Logger LOGGER = Logger.getLogger(CustomUserDetailsService.class);
 
+	private  Pattern patternEmail = null;
+	 
+	@PostConstruct
+	public void init() {
+		patternEmail = regExCollection.getRegExPattern(RegExName.REGEX_FIND_EMAIL);
+	}
+	
 	@Override
-	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
 		User userJobster = null;
 		boolean enabled = true;
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;
 		boolean accountNonLocked = true;
+		String login = "";
 		try {
-			System.out.println(login+" !");
+			Matcher matcherEmail = patternEmail.matcher(user);
+			if (matcherEmail.find()) {
+				login = matcherEmail.group();
+			}
 			userJobster = userDAO.selectUser(login);
-			System.out.println(userJobster+" !!");
-			System.out.println(userJobster.getLogin()+" !!!");
-			LOGGER.info("User: " + userJobster.getLogin() + " i entered this system");
 		} catch (DaoException e) {
-			LOGGER.error("Problem dao");
+			LOGGER.error("DAO ERROR");
 		}
 		return new org.springframework.security.core.userdetails.User(userJobster.getLogin(),userJobster.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(userJobster.getIdRole()));
-
 	}
 
 	/**

@@ -47,14 +47,15 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	/** @see AuthenticationProvider#authenticate(Authentication) */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
-//			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
-//		}
+		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
+			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
+		}
 		User profile = null;
 		try {
 			profile = userDAO.selectUser(authentication.getPrincipal().toString());
 		} catch (DaoException e) {
 			LOGGER.error("Проблема с извлечением пользователя из DAO-слоя, при аутентификации.");
+			throw new UsernameNotFoundException("Ошибка сервера.");
 		}
 		if (profile == null) {
 			throw new UsernameNotFoundException("Неверный логин и/или пароль.");

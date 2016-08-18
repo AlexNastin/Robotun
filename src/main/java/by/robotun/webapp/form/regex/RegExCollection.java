@@ -20,8 +20,8 @@ public final class RegExCollection {
 	private Pattern PATTERN_ADDRESS = Pattern.compile("^[^{}<>]{2,250}$");
 	private Pattern PATTERN_FIO = Pattern.compile("^[À-ÿ¸¨\\-]{2,40}$");
 	private Pattern PATTERN_PHONE = Pattern.compile("^[+][0-9]{10,13}$");
-	
-	
+	private Pattern PATTERN_FIND_EMAIL= Pattern.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+");
+
 
 	private Pattern PATTERN_UUID = Pattern.compile("^[0-9A-Fa-f]{8}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{12}$");
 	private Pattern PATTERN_FLAT_LETTER = Pattern.compile("^[À-ÿ¸¨]{1}$");
@@ -40,7 +40,7 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_PASSWORD, PATTERN_PASSWORD);
 		regEx.put(RegExName.REGEX_LOGIN, PATTERN_LOGIN);
 		regEx.put(RegExName.REGEX_NAME_LOT, PATTERN_NAME_LOT);
-		regEx.put(RegExName.REGEX_DESCRIPTION, PATTERN_ADDRESS);
+		regEx.put(RegExName.REGEX_DESCRIPTION, PATTERN_DESCRIPTION);
 		regEx.put(RegExName.REGEX_DATE, PATTERN_DATE);
 		regEx.put(RegExName.REGEX_NUMBERS, PATTERN_NUMBERS);
 		regEx.put(RegExName.REGEX_NAME_ENTERPRISE, PATTERN_NAME_ENTERPRISE);
@@ -49,7 +49,8 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_ADDRESS, PATTERN_ADDRESS);
 		regEx.put(RegExName.REGEX_PHONE, PATTERN_PHONE);
 		regEx.put(RegExName.REGEX_FIO, PATTERN_FIO);
-		
+		regEx.put(RegExName.REGEX_FIND_EMAIL, PATTERN_FIND_EMAIL);
+
 
 		regEx.put(RegExName.REGEX_ROLE, PATTERN_ROLE);
 		regEx.put(RegExName.REGEX_RUS_LETTERS, PATTERN_NO_RUS_LETTERS);

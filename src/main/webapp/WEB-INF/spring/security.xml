@@ -8,12 +8,12 @@
 
 	<http auto-config="false" use-expressions="true">
 		<access-denied-handler error-page="/403page" />
-		<anonymous username="GUEST" granted-authority="ROLE_GUEST" />
-		<remember-me authentication-success-handler-ref="webAppAuthenticationSuccessHandler" />
-
+		<anonymous username="GUEST" granted-authority="ROLE_GUEST" /> 
+		
+		<remember-me token-validity-seconds="1209600"  key="uniqueAndSecret"/>
 		<form-login login-page="/login" authentication-failure-url="/login?error=true" login-processing-url="/static/j_spring_security_check" authentication-success-handler-ref="webAppAuthenticationSuccessHandler" />
 
-		<logout logout-url="/logout" logout-success-url="/index" />
+		<logout logout-url="/logout" logout-success-url="/index" delete-cookies="JSESSIONID" invalidate-session="true" />
 
 		<!-- Role links -->
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
@@ -22,12 +22,11 @@
 		<intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" />
 		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
 		<intercept-url pattern="/**" access="hasAnyRole('ROLE_GUEST', 'ROLE_USER_LEGAL', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_USER_PHYSICAL')" />
-		</http>
-	
+	</http>
+
 	<!-- Beans -->
 	<beans:bean id="webAppAuthenticationSuccessHandler" class="by.robotun.webapp.security.WebAppAuthenticationSuccessHandler" />
 	<beans:bean id="produxAuthenticationProvider" class="by.robotun.webapp.security.ProduxAuthenticationProvider" />
-
 	<authentication-manager>
 		<authentication-provider ref="produxAuthenticationProvider">
 		</authentication-provider>
