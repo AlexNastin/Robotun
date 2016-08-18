@@ -70,6 +70,7 @@
 		</div>		
 		<div class="form-group">
 		 <form:select class="form-control" path="idCity" onchange="cityOnMap(this.selectedIndex)">
+								<option value="0">Не выбрано</option>
 							<c:forEach items="${listCities}" var="city">
 								<form:option value="${city.idCity}">${city.title}</form:option>
 							</c:forEach>
@@ -160,17 +161,25 @@
 <script type="text/javascript">
 	var cities = '${listCitiesJson}';
 		cities = JSON.parse(cities);
-	var latitude = cities[0].latitude;
-	var longitude = cities[0].longitude;
-	var zoom = cities[0].scale;
+	var latitude;
+	var longitude;
+	var zoom;
 	ymaps.ready(init);
 	var myMap;
 	var myPlacemark;
 	
     function cityOnMap(index) {
-    	var latitude = cities[index].latitude;
-    	var longitude = cities[index].longitude;
-		zoom = cities[index].scale;
+    	if(index == 0) {
+    		// Маркер - центр Минска 
+    		latitude = 53.907588432690744;
+        	longitude = 27.573501562499583;
+    		zoom = 6;
+    	} else {
+    		index--;
+    		latitude = cities[index].latitude;
+        	longitude = cities[index].longitude;
+    		zoom = cities[index].scale;
+    	}
 		myMap.setCenter([latitude, longitude], zoom, {
 		    checkZoomRange: true
 		});
@@ -191,7 +200,7 @@
     function addressFind(text) {
     	$('#list').empty();
     	var myGeocoder = ymaps.geocode(text, {
-            boundedBy: myMap.getBounds(),
+            boundedBy: [[51.212001111979866, 22.313501562499554], [56.439072125307426, 32.833501562499585]],
             strictBounds: true,
             results: 10
           });	
@@ -211,18 +220,10 @@
         myMap = new ymaps.Map("YMapsID", {
             center: [latitude, longitude],
             zoom: zoom,
-            controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
+            controls: ['fullscreenControl', 'zoomControl', 'rulerControl'],
+            // Область поиска - Беларусь, маркер - центр Минска
+        	bounds: [[51.212001111979866, 22.313501562499554], [56.439072125307426, 32.833501562499585]]
         });
-        
-        myMap.setBounds([
-                         /* Координаты юго-западного угла области просмотра
-                            карты */
-                         [51.2258, 22.8469],
-                         /* Координаты северо-восточного угла области
-                              просмотра карты */
-                         [56.2713, 33.3169]
-                         ]
-                       )
         
      // Создание макета содержимого хинта.
         // Макет создается через фабрику макетов с помощью текстового шаблона.
@@ -248,7 +249,7 @@
                     }
                 }
             );
-
+     
         myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
             message: "Здесь нужна помощь!"
         }, {

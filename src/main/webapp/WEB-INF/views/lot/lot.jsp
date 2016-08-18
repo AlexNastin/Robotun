@@ -132,6 +132,7 @@
 											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>
 									</h4>
 								    	<div class="lot-description">
+								    	<span>{{lotCtrl.lot.city.title}}</span>
 									<span>{{lotCtrl.lot.description}}</span>
 								</div>
 									<div id="showPhoneOwner">
@@ -382,7 +383,6 @@ var jsonData = '${lotJson}';
 						},
 						success:function(number) {
 							var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
-							console.log(number)
 							for(var i=0; i<number.length; i++) {
 								if(number[i] != "") {
 									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
