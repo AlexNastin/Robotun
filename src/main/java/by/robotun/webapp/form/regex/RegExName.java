@@ -17,6 +17,7 @@ public final class RegExName {
 	public static final String REGEX_ADDRESS = "address";
 	public static final String REGEX_ZIPCODE = "zipcode";
 	public static final String REGEX_FIO = "fio";
+	public static final String REGEX_FIND_EMAIL = "findEmail";
 	
 	
 	

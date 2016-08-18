@@ -38,7 +38,6 @@ public class SignupUserPhysicalFormValidator implements Validator {
 		SignupUserPhysicalForm addUserPhysicalForm = (SignupUserPhysicalForm) target;
 		try {
 			User user =  userDAO.selectUser(addUserPhysicalForm.getLogin());
-			System.out.println(user);
 			if (user != null) {	
 				errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN_EXIST);
 			}
@@ -49,6 +48,9 @@ public class SignupUserPhysicalFormValidator implements Validator {
 		Pattern patternLogin = regExCollection.getRegExPattern(RegExName.REGEX_LOGIN);
 		Matcher matcherLogin = patternLogin.matcher(addUserPhysicalForm.getLogin());
 		if (!matcherLogin.matches()) {
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN);
+		}
+		if (addUserPhysicalForm.getLogin().length() > 50) {
 			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN);
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_NAME_, LocalizationParamNameProperties.VALIDATION_EMPTY);

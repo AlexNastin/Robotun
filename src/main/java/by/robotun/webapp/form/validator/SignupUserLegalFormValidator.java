@@ -38,7 +38,6 @@ public class SignupUserLegalFormValidator implements Validator {
 		SignupUserLegalForm addUserLegalForm = (SignupUserLegalForm) target;
 		try {
 			User user =  userDAO.selectUser(addUserLegalForm.getLogin());
-			System.out.println(user);
 			if (user != null) {	
 				errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN_EXIST);
 			}
@@ -55,6 +54,9 @@ public class SignupUserLegalFormValidator implements Validator {
 		Pattern patternLogin = regExCollection.getRegExPattern(RegExName.REGEX_LOGIN);
 		Matcher matcherLogin = patternLogin.matcher(addUserLegalForm.getLogin());
 		if (!matcherLogin.matches()) {
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN);
+		}
+		if (addUserLegalForm.getLogin().length() > 50) {
 			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_LOGIN, LocalizationParamNameProperties.VALIDATION_SIGNUP_LOGIN);
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_UNP, LocalizationParamNameProperties.VALIDATION_EMPTY);
