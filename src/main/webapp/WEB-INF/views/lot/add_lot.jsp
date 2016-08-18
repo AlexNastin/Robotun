@@ -190,11 +190,14 @@
     
     function addressFind(text) {
     	$('#list').empty();
-    	var myGeocoder = ymaps.geocode(text);	
+    	var myGeocoder = ymaps.geocode(text, {
+            boundedBy: myMap.getBounds(),
+            strictBounds: true,
+            results: 10
+          });	
     	myGeocoder.then(
     	    function (res) {
     	    	res.geoObjects.each(function (geoObject) {
-    	    	    console.log(geoObject);
     	    	    $('#list').append('<a href="#" onclick="addressOnMap(' + geoObject.geometry._coordinates[0] +',' + geoObject.geometry._coordinates[1] + ')"><div>'+geoObject.properties._data.name+'<br>' + geoObject.properties._data.text + '</div></a>');
     	    	});
     	    },
@@ -210,6 +213,16 @@
             zoom: zoom,
             controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
         });
+        
+        myMap.setBounds([
+                         /* Координаты юго-западного угла области просмотра
+                            карты */
+                         [51.2258, 22.8469],
+                         /* Координаты северо-восточного угла области
+                              просмотра карты */
+                         [56.2713, 33.3169]
+                         ]
+                       )
         
      // Создание макета содержимого хинта.
         // Макет создается через фабрику макетов с помощью текстового шаблона.
