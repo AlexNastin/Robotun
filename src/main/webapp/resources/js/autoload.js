@@ -7,3 +7,10 @@ $(window).scroll(function () {
 		loader();
 	}
 });
+
+function buttonLoader() {
+	if(!block && !isEnd) {
+		block = true;
+		loader();
+	}
+};
