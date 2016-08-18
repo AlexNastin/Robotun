@@ -168,10 +168,11 @@
 	
     
 
-												<div class="col-md-12 btn-mobile"  style="padding-left: 0px;">
+												<div class="col-md-12 btn-mobile"  style="padding-left: 0px; z-index:1">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
 													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
+		                                        
 		                                        </div>
 											</div>
 											
