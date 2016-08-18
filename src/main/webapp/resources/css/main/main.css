@@ -352,5 +352,12 @@ body,
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
 }
-
+.my-hint{
+	width: 150px;
+    background-color: #3abeb1;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+}
 
