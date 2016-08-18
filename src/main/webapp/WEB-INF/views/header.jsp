@@ -37,8 +37,8 @@
         </div>
         <div class="navbar-collapse collapse">
         <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav">
-        <li ><a href="<c:url value="/user/addLot" />">Добавить работу </a></li>
         <li><a href="<c:url value="/result" />">Хочу работать</a></li>
+        <li ><a href="<c:url value="/user/addLot" />">Предлагаю работу</a></li>
         
       </ul>
             <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav navbar-right">

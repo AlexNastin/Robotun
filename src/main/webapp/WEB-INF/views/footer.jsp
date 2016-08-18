@@ -18,8 +18,7 @@
 			<div class="footer-left">
 
 				<p class="footer-links">
-					<a href="#">Контакты</a>
-					·
+					
 					<a href="#">О проекте</a>
 					·
 					<a href="<c:url value="/rules" />">Правила использования</a>
@@ -28,7 +27,8 @@
 					·
 					<a href="#">FAQ</a>
 					·
-					<a href="#">Поддержка</a>
+					<a href="#">Контакты</a>
+					
 				</p>
 
 				<p>Jobster &copy; 2016</p>
