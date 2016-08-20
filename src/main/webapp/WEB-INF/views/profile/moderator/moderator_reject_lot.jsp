@@ -75,7 +75,7 @@
 <form:form modelAttribute="rejectMessageForm" method="POST">
 <div class="form-group" style="height: 6em;">
 <form:textarea style="resize:none" class="form-control" path="text" placeholder="Причина"/>
-			<form:errors path="text" />
+			<form:errors class="textStyleValidation textStyleServerValidation" path="text" />
 			<label class="error textStyleValidation" generated="true" for="text"></label>
 	        </div>
 	        <div class="form-group">
