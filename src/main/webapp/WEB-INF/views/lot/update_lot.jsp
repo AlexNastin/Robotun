@@ -49,26 +49,26 @@
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="latitude" name="latitude" path="latitude"/> 
 			<label class="error" generated="true" for="latitude"></label>
-			<span class="error"><form:errors path="latitude" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="latitude" /></span>
 		</div>
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="longitude" name="longitude" path="longitude"/> 
 			<label class="error" generated="true" for="longitude"></label>
-			<span class="error"><form:errors path="longitude" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="longitude" /></span>
 		</div>
 		<div class="form-group heightStyleValidation">
 		<form:input path="name" placeholder="Название" class="form-control"/>
-		<span class="error"><form:errors path="name" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="name" /></span>
 		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 5.5em;">
 		<form:textarea style="resize: none;" path="description" placeholder="Описание" class="form-control"/>
 		<label class="error textStyleValidation" generated="true" for="description"></label>
-		<span class="error"><form:errors path="description" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="description" /></span>
 		</div>
 		<div class="form-group heightStyleValidation">
 		<form:input path="budget" placeholder="Бюджет" class="form-control"/>
-		<span class="error"><form:errors path="budget" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="budget" /></span>
 		<label class="error textStyleValidation" generated="true" for="budget"></label>
 		</div>
 		<div class="form-group">
@@ -78,20 +78,20 @@
 								</c:forEach>
 						</form:select>
 						</div>
-							<span class="error"><form:errors path="idCity" /></span>
+							<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="idCity" /></span>
 		<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
 				
 					<label class="error textStyleValidation" generated="true" for="idCategory"></label>
-					<span class="error"><form:errors path="idCategory" /></span>
+					<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="idCategory" /></span>
 					</div>
 					<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
 					<form:option value="0">Подкатегория</form:option>
 				</form:select>
 				    <label class="error textStyleValidation" generated="true" for="idSubcategory"></label>
-					<span class="error"><form:errors path="idSubcategory" /></span>
+					<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="idSubcategory" /></span>
 					</div>
 		<div class="form-group heightStyleValidation">
 					<input onkeydown="return false" type="text" class="form-control" name="Date" id="Date" placeholder="Дата конца" value="${dateEndLot}">
@@ -107,7 +107,7 @@
 					<div hidden class="form-group heightStyleValidation">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
 			<label class="error textStyleValidation" generated="true" for="endDate"></label>
-			<span class="error"><form:errors path="endDate" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="endDate" /></span>
 			</div>
 			<p style="text-align:center; color:black;">Кому звоним?</p>
     <div class="switch-field">
