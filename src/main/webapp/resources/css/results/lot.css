@@ -804,7 +804,11 @@ html, body {
         width: 100%;
         border-radius: 0;
         margin: 0;
+     
     }
+    .number-spinner{
+     	width: 100%;
+     }   
     .input-group {
         position: relative;   
     }
