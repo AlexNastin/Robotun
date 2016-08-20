@@ -41,7 +41,7 @@
 <form:form modelAttribute="addModeratorForm" method="POST">
 <div style="height: 2.8em;">
 <form:input class="form-control" path="login" placeholder="login" />
-			<form:errors path="login" />
+			<form:errors class="textStyleValidation textStyleServerValidation" path="login" />
 			<label class="error textStyleValidation" generated="true" for="login"></label>
 </div>
 <div class="col-md-12" style="padding-left: 0px; margin-bottom: 1em;"><input class="btn btn-default login-button-style" style="margin-top: 1em;" type="submit" value="Создать модератора" /></div>
