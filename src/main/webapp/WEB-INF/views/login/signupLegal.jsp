@@ -69,7 +69,7 @@
                                 <h1>Введите данные:</h1>
                                 <div id="home" >
 		<form:form modelAttribute="addUserLegalForm" action="${addUserLegal}" method="POST">
-		<div class="col-md-12">
+		<div class="col-md-12" style="line-height: 1">
 		<div class="messagesValidStyle">
 		<c:if test="${message != null }">
 	${message}
@@ -78,7 +78,7 @@
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="login" placeholder="Email" />
-		<span class="error"><form:errors path="login" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="login" /></span>
 		</div>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
 		</div>
@@ -93,28 +93,28 @@
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="nameEnterprise" placeholder="Название компании" />
-		<span class="error"><form:errors  path="nameEnterprise" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="nameEnterprise" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="nameEnterprise"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="unp" placeholder="УНП" />
-		<form:errors path="unp" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="unp" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="unp"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="address" placeholder="Адрес" />
-		<span class="error"><form:errors path="address" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="address" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="address"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="zipCode" placeholder="Индекс" />
-		<span class="error"><form:errors path="zipCode" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="zipCode" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="zipCode"></label>
 		</div>
 		</div>
@@ -122,14 +122,14 @@
 		<div class="form-group form-group-required " style="margin-bottom: 5px;">
 		<div>
 		<form:password class="form-control" path="password" placeholder="Пароль" />
-		<span class="error"><form:errors path="password" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="password" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required" style="margin-bottom: 0px;">
 		<div>
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
-		<span class="error"><form:errors path="confirmPassword" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirmPassword" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
 		</div>
 		</div>
@@ -138,7 +138,7 @@
 		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Телефон"  />
 		<a id="open-close3" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
-		<span class="error"><form:errors path="phones" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone1"></label>
 		</div>
 		<div id="block-links3">
@@ -147,13 +147,13 @@
 		<form:input id="phone2" class="form-control phone2" path="phones[1]" placeholder="Доп.телефон" />
 		<a id="open-close4" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
-		<span class="error"><form:errors path="phones" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone2"></label>
 		</div>
     	<div id="block-links4">
    		<div class="form-group fieldPhoneHeight">
 		<form:input id="phone3" class="form-control phone3" path="phones[2]" placeholder="Доп.телефон" />
-		<span class="error"><form:errors path="phones" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		</div>
     	</div>
@@ -167,7 +167,7 @@
 		Я согласен с <a style="color:#3abeb1" href="<c:url value="/signup/userPhysical"/>">правилами пользования</a> сайтом
 		</label>
 		</div>
-		<span class="error"><form:errors path="confirm" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirm" /></span>
 		<label  style="padding-left: 0px;" class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirm"></label>
 		</div>
 		</div>
