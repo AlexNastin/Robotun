@@ -49,9 +49,11 @@
 	<form:form modelAttribute="updatePersonalPhysicalForm" method="POST">
 		<div class="form-group heightStyleValidation2">
 		<form:input path="name" class="form-control" placeholder="name" value="${user.physical.name}"/>
+		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:input path="surname" class="form-control" placeholder="surname" value="${user.physical.surname}"/>
+		<label class="error textStyleValidation" generated="true" for="surname"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:select class="form-control" path="idCity">
@@ -67,7 +69,7 @@
 		</div>
 		<div class="form-group" style="height: 14em">
 		<c:forEach items="${user.phones}" var="phone">
-				<form:input  style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
+				<form:input style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
 		</c:forEach>
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />

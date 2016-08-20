@@ -47,21 +47,21 @@
 		<form:password id="oldPassword" name="oldPassword"
 			class="form-control input-md" path="oldPassword"
 			placeholder="Старый пароль"></form:password>		
-		<form:errors path="oldPassword" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="oldPassword" />
 		<label class="error textStyleValidation" generated="true" for="oldPassword"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em;">
 		<form:password id="password" name="password"
 			class="form-control input-md" path="password"
 			placeholder="Новый пароль"></form:password>
-		<form:errors path="password" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="password" />
 		<label class="error textStyleValidation" generated="true" for="password"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em;">
 		<form:password id="confirmPassword" name="confirmPassword"
 			class="form-control input-md" path="confirmPassword"
 			placeholder="Подтверждение нового пароля"></form:password>
-		<form:errors path="confirmPassword" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="confirmPassword" />
 		<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
 		<div class="messagesValidStyle">
