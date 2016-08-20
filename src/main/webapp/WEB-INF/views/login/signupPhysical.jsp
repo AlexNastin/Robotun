@@ -68,7 +68,7 @@
                                 <h1>Введите данные:</h1>
                                 <div id="home" >
 		<form:form modelAttribute="addUserPhysicalForm" action="${addUserPhysical}" method="POST">
-		<div class="col-md-12">
+		<div class="col-md-12" style="line-height: 1">
 		
 		<c:if test="${message != null }">
 	<div class="messagesValidStyle">
@@ -80,7 +80,7 @@
 		<div>
 		<form:input class="form-control" path="login" placeholder="Email" />
 			<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="login"></label>
-			<form:errors path="login" />
+			<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="login" />
 		</div>	
 		</div>
 		<div class="form-group">
@@ -93,28 +93,28 @@
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="surname" placeholder="Фамилия" />
-		<form:errors path="surname" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="surname" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="surname"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:input class="form-control" path="name" placeholder="Имя" />
-		<form:errors path="name" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="name" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="name"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:password class="form-control" path="password" placeholder="Пароль" />
-		<form:errors class="form-control" path="password" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="password" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
 		</div>
 		<div class="form-group form-group-required heightStyleValidation">
 		<div>
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
-		<form:errors path="confirmPassword" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirmPassword" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirmPassword"></label>
 		</div>
 		</div>
@@ -123,7 +123,7 @@
 		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Телефон"  />
 		<a id="open-close" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
-		<form:errors path="phones" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone1"></label>
 		</div>
 		
@@ -133,14 +133,14 @@
 		<form:input id="phone2" class="form-control phone2" path="phones[1]" placeholder="Доп.телефон" />		
 		<a id="open-close2" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>	
 		</div>
-		<form:errors path="phones" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone2"></label>
 		</div>
     	<div id="block-links2">
    		<div class="form-group fieldPhoneHeight">
 		<form:input id="phone3" class="form-control phone3" path="phones[2]" placeholder="Доп.телефон" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
-		<form:errors path="phones" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
 		</div>
     	</div>
 		</div>
@@ -153,7 +153,7 @@
 		Я согласен с <a style="color:#3abeb1" href="<c:url value="/signup/userPhysical"/>">правилами пользования</a> сайтом
 		</label>
 		</div>
-		<form:errors path="confirm" />
+		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirm" />
 		<label style="padding-left: 0px;" class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="confirm"></label>
 		</div>
 		</div>
