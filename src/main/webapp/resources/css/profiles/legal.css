@@ -59,13 +59,19 @@
 	background-color: #f5f5f5;
 }
 .active-lot{
-	background-color:rgb(221, 245, 211);
+	border-color: #3abeb1;
+    border-style: solid;
+    border-width: 8px;
 }
 .rejected-lot{
-	background-color:rgb(253, 220, 220);
+	border-color: #fddcdc;
+    border-style: solid;
+    border-width: 8px;
 }
-.moderation-lot{
-	background-color:rgb(253, 239, 168);
+.moderation-lot{	
+	border-color: #FCFF6B;
+    border-style: solid;
+    border-width: 8px;	
 }
 .user-profile{
 	width:100%;
