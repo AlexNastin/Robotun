@@ -272,16 +272,22 @@ messages:  {
 					{
 					regexp: /^(\+375)?[0-9]{9}$/
 					});	       */
-		 $.validator.addClassRules({
+		$.validator.messages.regexp = 'Введите номер в формате +375XXXXXXXXX';
+		$.validator.messages.required = 'Поле не может быть пустым'; 
+		$.validator.addClassRules({
 		        phone1:{
 		            required: true,
 		            regexp: /^(\+375)?[0-9]{9}$/
-		    },
+		        },
 		        phone2:{
 			        regexp: /^(\+375)?[0-9]{9}$/
 		        },
 		        phone3:{
 			        regexp: /^(\+375)?[0-9]{9}$/
+		        },
+		        messages: {
+		        	required: 'Поле пусто',
+		        	regexp: 'dsgvsv'
 		        }
 		    });
 		//Конец валидации телефона
