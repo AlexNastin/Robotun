@@ -171,9 +171,10 @@
 												<div class="col-md-12 btn-mobile"  style="padding-left: 0px; z-index:1">
 												<a id="btn"
 													class="button-on-add-lot btn btn-primary button-legal-style send-button"
-													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10);}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
+													onclick="someFunc(); defineText(); $('#btn').click(function() {$(this).hide(10); $('#message').show()}); setTimeout(function(){$('#btn').show()},600000);">Предложить</a>
 		                                        
 		                                        </div>
+		                                        <div id="message" class="tenminutes"><p>Должно пройти 10 минут перед следущей ставкой</p></div>
 											</div>
 											
 
@@ -525,12 +526,7 @@ if ( $(window).width() < 700) {
 	$( "#countTime" ).removeClass( "col-md-4 col-xs-4" ).addClass( "col-md-12 col-xs-12" );
 	} 
 </script>
-<script>
-$('#btn').click(function() {
-    $(this).hide(3000);
-});
 
-</script>
 
 <script>
 (function (e) {

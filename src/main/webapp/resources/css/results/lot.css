@@ -828,3 +828,8 @@ html, body {
     }
 
 }
+.tenminutes{
+	display:none;
+	color:#3abeb1;
+	font-weight:bold;
+}
