@@ -119,14 +119,14 @@
 		</div>
 		</div>
 			
-		<div class="form-group form-group-required " style="margin-bottom: 5px;">
+		<div class="form-group form-group-required " style="margin-bottom: 5px; height: 4em;">
 		<div>
 		<form:password class="form-control" path="password" placeholder="Пароль" />
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="password" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="password"></label>
 		</div>
 		</div>
-		<div class="form-group form-group-required" style="margin-bottom: 0px;">
+		<div class="form-group form-group-required" style="margin-bottom: 0px; height: 4em;">
 		<div>
 		<form:password class="form-control" path="confirmPassword" placeholder="Повторите пароль" />
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirmPassword" /></span>
