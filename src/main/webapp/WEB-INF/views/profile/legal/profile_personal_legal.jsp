@@ -49,15 +49,19 @@
 	<form:form modelAttribute="updatePersonalLegalForm" method="POST">
 		<div class="form-group heightStyleValidation2">
 		<form:input path="nameEnterprise" class="form-control" placeholder="nameEnterprise"/>
+		<label class="error textStyleValidation" generated="true" for="nameEnterprise"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:input path="unp" class="form-control" placeholder="unp"/>
+		<label class="error textStyleValidation" generated="true" for="unp"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:input path="address" class="form-control" placeholder="address"/>
+		<label class="error textStyleValidation" generated="true" for="address"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:input path="zipCode" class="form-control" placeholder="zipCode"/>
+		<label class="error textStyleValidation" generated="true" for="zipCode"></label>
 		</div>
 		<div class="form-group" >
 		<form:select class="form-control" path="idCity">
