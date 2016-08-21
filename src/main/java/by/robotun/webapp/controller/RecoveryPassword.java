@@ -51,8 +51,6 @@ public class RecoveryPassword {
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
 	public ModelAndView resetPassword(HttpServletRequest request, @RequestParam("email") String userEmail, Locale locale) {
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_LOGIN_FORGOT_PASSWORD);
-		System.out.println(locale);
-		System.out.println(locale.getClass());
 		if (helperValidator.validationLogin(userEmail)) {
 			User user;
 			try {
@@ -76,7 +74,8 @@ public class RecoveryPassword {
 					appUrl.append(request.getContextPath());
 					String message = messages.getMessage(LocalizationParamNameProperties.MESSAGE_EMAIL_RECOVERY_PASSWORD, null, locale);
 					String messageSubject = messages.getMessage(LocalizationParamNameProperties.MESSAGE_EMAIL_RECOVERY_PASSWORD_SUBJECT, null, locale);
-					mailService.sendMail(mailService.constructRecoveryPasswordMailMessage(appUrl.toString(), message, messageSubject, token, user));
+					mailService.sendSimpleMailMessage(mailService.constructRecoveryPasswordSimpleMailMessage(appUrl.toString(), message, messageSubject, token, user));
+//					mailService.sendMimeMessage(mailService.constructRecoveryPassdwordMimeMessage(appUrl.toString(), message, messageSubject, token, user));
 					modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_EMAIL_RECOVERY_PASSWORD_EMAIL_SEND, null, locale));
 					return modelAndView;
 				}
