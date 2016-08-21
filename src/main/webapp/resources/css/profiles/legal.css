@@ -41,6 +41,10 @@
 	border-color: #336f69;
 	width: 40%;
 }
+.btn-profile{
+	width:100%;
+	margin-bottom:10px;
+}
 .button-legal-style-main {
 	background-color: #3abeb1; 
 	border-color: #3abeb1;
@@ -89,4 +93,19 @@
 	.user-navigation{
 	min-height:40em;
 	}
+}
+#sameheight {
+    overflow: hidden; 
+}
+
+.main-right-col {
+    background:#fff;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.main-left-col {
+    background:#3abeb1;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
 }

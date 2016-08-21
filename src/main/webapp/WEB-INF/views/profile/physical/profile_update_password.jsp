@@ -24,7 +24,9 @@
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="style-nickname">${nickname}</div>
 <div class="user-navigation">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
