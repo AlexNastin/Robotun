@@ -30,7 +30,9 @@
 	<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 	<div class="container user-profile"		>
 		<div class="col-md-2 nopadiing-left">
-			<img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>"
+			<div style="background-color:white; text-align:center">
+<img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 				class="img-responsive img-thumbnail" alt="Image">
 				<div class="user-navigation">
 				 <a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>

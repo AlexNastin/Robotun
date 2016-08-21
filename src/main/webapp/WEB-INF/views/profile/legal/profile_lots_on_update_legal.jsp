@@ -22,8 +22,11 @@
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container user-profile" >
-<div class="col-md-2 nopadiing-left">
+<div id="sameheight">
+<div class="col-md-2 nopadiing-left main-left-col">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="style-nickname">${nickname}</div>
 <div class="user-navigation">
 <a href='<c:url value="/legal/profile/myResponses" />' class="list-group-item background-color-menu-profile">Мои отклики</a>
@@ -35,7 +38,7 @@
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 </div>
-<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
+<div class="col-md-10 main-right-col" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Замечания по работам:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards">
@@ -93,12 +96,15 @@
     </div>
   </div>
 </div>
-</div>
 <div style="text-align:center;">
 										<a class="btn btn-primary load-button"
 											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
             						</div>
 <div class="load"></div>
+</div>
+
+</div>
+
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
@@ -185,16 +191,6 @@ function mainLotsController ($scope) {
 						});
 			}
 		</script>
-		<script>
-		$(document).ready(function() {
-			if($(window).width() >= 992){
-				var dynamic = $('.user-navigation');
-			    var static = $('.ng-scope');
-			    
-			    dynamic.height(static.height());
-				}
-		    
-		});
-		</script>
+		
 </body>
 </html>
