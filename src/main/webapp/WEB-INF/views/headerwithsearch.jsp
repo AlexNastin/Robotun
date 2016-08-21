@@ -35,7 +35,7 @@
            <a  href="<c:url value="/"/>"><img  style="margin-left: 15px;" class="navbar-brand" src="<c:url value="/resources/images/logotip.png"  />" alt="logo"></a>
         </div>
         <div class="navbar-collapse collapse">
-        <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav">
+        <ul style="font-weight:bold; font-size:15px" class="nav navbar-nav tablet-links">
         <li><a href="<c:url value="/result" />">Хочу работать</a></li>
         <li ><a href="<c:url value="/user/addLot" />">Предлагаю работу</a></li>
         

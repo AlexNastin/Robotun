@@ -54,13 +54,13 @@
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
 <div class="col-md-12" style="text-align:right;">
 <div class="col-md-4">
-<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
+<a class="btn btn-primary button-legal-style-main btn-profile" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
 </div>
 <div class="col-md-4">
-<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/lot?id={{lot.idLot}}&idPic={{lot.indexImage}}'>Подробнее</a>
+<a class="btn btn-primary button-legal-style-main btn-profile" ng-href='/jobster.by/lot?id={{lot.idLot}}&idPic={{lot.indexImage}}'>Подробнее</a>
 </div>
 <div class="col-md-4">
-<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
+<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main btn-profile" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
 </div>
 </div>
 
