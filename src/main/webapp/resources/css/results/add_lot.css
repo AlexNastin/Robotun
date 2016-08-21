@@ -42,13 +42,16 @@
 }
 .switch-field {
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-
-  padding-left:30%;
   overflow: hidden;
   padding-bottom: 5%;
 
 }
-
+#switch_right1{
+	width:50%
+}
+#switch_left1{
+	width:50%
+}
 .switch-title {
   margin-bottom: 6px;
   color:white;
