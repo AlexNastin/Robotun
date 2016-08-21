@@ -14,6 +14,7 @@ public final class URLMapping {
 	public static final String JSP_ARCHIVE_LOT = "lot/archive_lot";
 	public static final String JSP_SIGNUP_PHYSICAL = "login/signupPhysical";
 	public static final String JSP_SIGNUP_LEGAL = "login/signupLegal";
+	public static final String JSP_LOGIN_FORGOT_PASSWORD = "login/forgot_password";
 	
 	public static final String JSP_FOOTER_RULES = "footer/rules";
 	
@@ -50,7 +51,8 @@ public final class URLMapping {
 	public static final String REDIRECT_PROFILE_LOTS_LEGAL = "redirect:/legal/profile/myLots";
 	public static final String REDIRECT_PROFILE_MAIN_ADMIN = "redirect:/admin/profile";
 	public static final String REDIRECT_PROFILE_MAIN_MODERATOR = "redirect:/moderator/profile";
-	
+	public static final String REDIRECT_SECURE_UPDATE_PASSWORD = "redirect:/secure/updatePassword";
+
 	/**
 	 * Error pages
 	 */

@@ -19,7 +19,7 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddModeratorForm;
 import by.robotun.webapp.form.validator.AddModeratorFormValidator;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IAdminService;
 
 @Controller

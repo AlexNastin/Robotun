@@ -21,7 +21,7 @@ import by.robotun.webapp.domain.City;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.AddLotForm;
 import by.robotun.webapp.form.validator.AddLotFormValidator;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 import by.robotun.webapp.service.converter.SerializationJSON;

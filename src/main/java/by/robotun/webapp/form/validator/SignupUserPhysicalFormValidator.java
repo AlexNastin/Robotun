@@ -16,6 +16,7 @@ import by.robotun.webapp.exception.DaoException;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 
 @Component
 public class SignupUserPhysicalFormValidator implements Validator {

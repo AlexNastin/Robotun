@@ -3,6 +3,7 @@ package by.robotun.webapp.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -22,22 +23,18 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	@Transactional
 	public void updatePasswordResetToken(PasswordResetToken passwordResetToken) throws DaoException {
 		em.merge(passwordResetToken);
-
 	}
 
 	@Override
 	@Transactional
 	public void insertPasswordResetToken(PasswordResetToken passwordResetToken) throws DaoException {
 		em.persist(passwordResetToken);
-
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PasswordResetToken> selectAllPasswordResetTokens() throws DaoException {
-		List<PasswordResetToken> passwordResetTokens = em.createNamedQuery("PasswordResetToken.findAll")
-				.getResultList();
-		return passwordResetTokens;
+		return em.createNamedQuery("PasswordResetToken.findAll").getResultList();
 	}
 
 	@Override
@@ -47,29 +44,27 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 		em.remove(passwordResetToken);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public PasswordResetToken selectTokenByUser(Integer idUser) throws DaoException {
 		PasswordResetToken passwordResetToken = null;
-		List<PasswordResetToken> passwordResetTokens = em.createNamedQuery("PasswordResetToken.findTokenByUser")
-				.setParameter("idUser", idUser).getResultList();
-		if (!passwordResetTokens.isEmpty()) {
-			passwordResetToken = passwordResetTokens.get(0);
+		try {
+			passwordResetToken = (PasswordResetToken) em.createNamedQuery("PasswordResetToken.findTokenByUser").setParameter("idUser", idUser).getSingleResult();
+		} catch (NoResultException e) {
+			return passwordResetToken;
 		}
 		return passwordResetToken;
-
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public PasswordResetToken selectTokenByToken(String token) throws DaoException {
 		PasswordResetToken passwordResetToken = null;
-		List<PasswordResetToken> passwordResetTokens = em.createNamedQuery("PasswordResetToken.findTokenByToken")
-				.setParameter("token", token).getResultList();
-		if (!passwordResetTokens.isEmpty()) {
-			passwordResetToken = passwordResetTokens.get(0);
+		try {
+			passwordResetToken = (PasswordResetToken) em.createNamedQuery("PasswordResetToken.findTokenByToken").setParameter("token", token).getSingleResult();
+		} catch (NoResultException e) {
+			return passwordResetToken;
 		}
 		return passwordResetToken;
-
 	}
 }

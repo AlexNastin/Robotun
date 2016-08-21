@@ -19,8 +19,8 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdatePersonalUserLegalFormValidator;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IGuestService;
 import by.robotun.webapp.service.IUserService;
 

@@ -38,8 +38,10 @@ public interface IGuestService {
 	User getSaffUser(int idUser) throws ServiceException;
 
 	User getUser(String login) throws ServiceException;
-
-	boolean createPasswordResetTokenForUser(User user, String token) throws ServiceException;
+	
+	void deletePasswordResetTokenForUser(User user) throws ServiceException;
+	
+	String createPasswordResetTokenForUser(User user) throws ServiceException;
 
 	void updateForgotPassword(User user, String password) throws ServiceException;
 

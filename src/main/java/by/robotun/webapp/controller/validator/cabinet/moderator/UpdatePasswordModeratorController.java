@@ -18,8 +18,8 @@ import by.robotun.webapp.controller.ControllerParamConstant;
 import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.domain.Person;
 import by.robotun.webapp.form.UpdateUserPasswordForm;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.UpdateUserPasswordFormValidator;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IGuestService;
 
 @Controller

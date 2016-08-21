@@ -1,6 +1,7 @@
-package by.robotun.webapp.form.validator;
+package by.robotun.webapp.localization;
 
 public class LocalizationParamNameProperties {
+	
 	public static final String VALIDATION_EMPTY = "valid.empty";
 	public static final String VALIDATION_DATE = "valid.date";
 	public static final String VALIDATION_LOT_NAME_PATTERN = "valid.lot.name.pattern";
@@ -27,4 +28,14 @@ public class LocalizationParamNameProperties {
 	public static final String MESSAGE_SIGNUP_SUCCESSFUL = "message.signup.successful";
 	public static final String MESSAGE_PERSONAL_DATA_UPDATE_SUCCESSFUL = "message.personaldata.udpate.successful";
 	public static final String MESSAGE_ADMIN_ADD_MODERATOR_SUCCESSFUL = "message.admin.addmoderator.successful";
+	public static final String MESSAGE_EMAIL_RECOVERY_PASSWORD_NOT_USER = "email.message.resetPasswordNotUser";
+	public static final String MESSAGE_EMAIL_RECOVERY_PASSWORD = "email.message.resetPassword";
+	public static final String MESSAGE_EMAIL_RECOVERY_PASSWORD_SUBJECT = "email.message.resetPasswordSubject";
+	public static final String MESSAGE_EMAIL_RECOVERY_PASSWORD_EMAIL_SEND = "email.message.resetPasswordEmailSend";
+	public static final String MESSAGE_EMAIL_RECOVERY_PASSWORD_EMAIL = 	"email.message.resetPasswordEmail";
+	public static final String MESSAGE_EMAIL_INVALID_TOKEN = "email.message.invalidToken";
+	public static final String MESSAGE_EMAIL_EXPIRED_TOKEN = "email.message.expired";
+	public static final String MESSAGE_EMAIL_RESET_PASSWORD_SUCCESSFUL = "email.message.resetpaswordsuccessful";
+	
+	public static final String MESSAGE_ERROR_SERVER = "message.server.error";
 }

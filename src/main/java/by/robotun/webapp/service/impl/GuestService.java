@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
@@ -271,32 +272,43 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public boolean createPasswordResetTokenForUser(User user, String token) throws ServiceException {
-		boolean isCreate = false;
+	public void deletePasswordResetTokenForUser(User user) throws ServiceException {
+		try {
+			PasswordResetToken passwordResetTokenOld = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			resetTokenDAO.deletePasswordResetToken(passwordResetTokenOld.getIdToken());
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+	}
+	
+	@Override
+	public String createPasswordResetTokenForUser(User user) throws ServiceException {
 		Date date = new Date();
+		String token = null;
 		try {
 			PasswordResetToken passwordResetTokenOld = resetTokenDAO.selectTokenByUser(user.getIdUser());
 			if (passwordResetTokenOld == null) {
+				token = UUID.randomUUID().toString();
 				PasswordResetToken passwordResetTokenNew = new PasswordResetToken();
 				passwordResetTokenNew.setExpiryDate(new Date(date.getTime() + 86400000l));
 				passwordResetTokenNew.setIdUser(user.getIdUser());
 				passwordResetTokenNew.setToken(token);
 				resetTokenDAO.insertPasswordResetToken(passwordResetTokenNew);
-				isCreate = true;
 			} else {
 				Calendar calendar = Calendar.getInstance();
 				if (passwordResetTokenOld.getExpiryDate().getTime() - calendar.getTime().getTime() <= 0) {
 					passwordResetTokenOld.setExpiryDate(new Date(date.getTime() + 86400000l));
+					token = UUID.randomUUID().toString();
 					passwordResetTokenOld.setToken(token);
 					resetTokenDAO.updatePasswordResetToken(passwordResetTokenOld);
-					isCreate = true;
 				}
 			}
 		} catch (DaoException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
-		return isCreate;
+		return token;
 	}
 
 	@Override
@@ -390,7 +402,7 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return count;
-	}
+	} 
 	
 	@Override
 	public long getCountArchiveBetByLotByUser(Integer idArchiveLot, Integer idUser) throws ServiceException {

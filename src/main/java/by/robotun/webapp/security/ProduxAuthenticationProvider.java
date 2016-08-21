@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import by.robotun.webapp.dao.IUserDAO;
 import by.robotun.webapp.domain.User;
 import by.robotun.webapp.exception.DaoException;
-import by.robotun.webapp.security.validator.AuthenticationValidator;
+import by.robotun.webapp.form.validator.HelperValidator;
 
 /**
  * Класс авторизации. Определяет роль пользователя и предоставляет доступ к
@@ -36,7 +36,7 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	private IUserDAO userDAO;
 
 	@Autowired
-	private AuthenticationValidator authenticationValidator;
+	private HelperValidator helperValidator;
 
 	/** @see AuthenticationProvider#supports(Class<?>) */
 	@Override
@@ -47,7 +47,7 @@ public class ProduxAuthenticationProvider implements AuthenticationProvider {
 	/** @see AuthenticationProvider#authenticate(Authentication) */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		if (!authenticationValidator.validation(authentication.getPrincipal().toString())) {
+		if (!helperValidator.validationLogin(authentication.getPrincipal().toString())) {
 			throw new UsernameNotFoundException("Неверный логин и/или пароль.");
 		}
 		User profile = null;

@@ -19,8 +19,8 @@ import by.robotun.webapp.controller.URLMapping;
 import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.SignupUserLegalForm;
 import by.robotun.webapp.form.SignupUserPhysicalForm;
-import by.robotun.webapp.form.validator.LocalizationParamNameProperties;
 import by.robotun.webapp.form.validator.SignupUserLegalFormValidator;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.IGuestService;
 
 @Controller

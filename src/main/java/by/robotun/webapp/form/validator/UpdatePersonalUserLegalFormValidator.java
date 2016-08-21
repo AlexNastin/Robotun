@@ -12,6 +12,7 @@ import org.springframework.validation.Validator;
 import by.robotun.webapp.form.UpdatePersonalUserLegalForm;
 import by.robotun.webapp.form.regex.RegExCollection;
 import by.robotun.webapp.form.regex.RegExName;
+import by.robotun.webapp.localization.LocalizationParamNameProperties;
 
 @Component
 public class UpdatePersonalUserLegalFormValidator implements Validator {
