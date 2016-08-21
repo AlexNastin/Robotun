@@ -23,7 +23,9 @@
 <div class="container user-profile" >
 <div class="min-height-admin-page">
 <div class="col-md-2 nopadiing-left">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="user-navigation">
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
