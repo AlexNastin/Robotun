@@ -45,27 +45,27 @@
 	<div class="text-style-add-lot col-md-6">Добавить работу</div>
 	</div>
 	
-	<div class="col-md-6">
+	<div class="col-md-6" style="line-height: 1">
 	<form:form modelAttribute="addLotForm" method="POST" oninput="endDate.value = Date.value+' '+timeInputId.value+':00:00'" >
 	
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="latitude" name="latitude" path="latitude"/> 
 			<label class="error" generated="true" for="latitude"></label>
-			<span class="error"><form:errors path="latitude" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="latitude" /></span>
 		</div>
 		<div hidden class="form-group">
 		<form:input type="text" class="form-control" id="longitude" name="longitude" path="longitude"/> 
 			<label class="error" generated="true" for="longitude"></label>
-			<span class="error"><form:errors path="longitude" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="longitude" /></span>
 		</div>
 		<div class="form-group heightStyleValidation">
 		<form:input path="name" placeholder="Название работы" class="form-control"/>
-		<form:errors path="name" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="name" />
 		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 5.5em;">
 		<form:textarea path="description"  style="resize: none;" placeholder="Описание работы" class="form-control" />
-		<form:errors path="description" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="description" />
 		<label class="error textStyleValidation" generated="true" for="description"></label>
 		</div>		
 		<div class="form-group">
@@ -76,19 +76,19 @@
 							</c:forEach>
 						</form:select>
 						</div>
-		<form:errors path="idCity" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="idCity" />
 		<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idCategory" path="idCategory">
 				</form:select>
 					<label class="error textStyleValidation" generated="true" for="idCategory"></label>
-					<span class="error"><form:errors path="idCategory" /></span>
+					<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="idCategory" /></span>
 					</div>
 					<div class="form-group heightStyleValidation">
 				<form:select class="form-control" id="idSubcategory" path="idSubcategory">
 					<form:option value="0">Подкатегория</form:option>
 				</form:select>
 				    <label class="error textStyleValidation" generated="true" for="idSubcategory"></label>
-					<span class="error"><form:errors path="idSubcategory" /></span>
+					<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="idSubcategory" /></span>
 					</div>
 					<div class="form-group heightStyleValidation">
 					<input onkeydown="return false" type="text" class="form-control" name="Date" id="Date" placeholder="Дата окончания">
@@ -103,11 +103,11 @@
 		<div hidden class="form-group heightStyleValidation">
 		<form:input type="text" class="form-control" id="endDate" name="calendar" path="endDate" placeholder="endDate"/> 
 			<label class="error" generated="true" for="endDate"></label>
-			<span class="error"><form:errors path="endDate" /></span>
+			<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="endDate" /></span>
 			</div>
 			<div class="form-group heightStyleValidation">
 		<form:input type="number" min="1" max="2147483647" path="budget" placeholder="Бюджет" class="form-control"/>
-		<span class="error"><form:errors path="budget" /></span>
+		<span class="error"><form:errors class="textStyleValidation textStyleServerValidation" path="budget" /></span>
 		<label class="error textStyleValidation" generated="true" for="budget"></label>
 		</div>
 		<div style="padding-bottom: 10px; text-align: center;">

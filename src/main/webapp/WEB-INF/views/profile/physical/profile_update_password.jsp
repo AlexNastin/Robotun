@@ -24,7 +24,9 @@
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="style-nickname">${nickname}</div>
 <div class="user-navigation">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
@@ -47,21 +49,21 @@
 		<form:password id="oldPassword" name="oldPassword"
 			class="form-control input-md" path="oldPassword"
 			placeholder="Старый пароль"></form:password>		
-		<form:errors path="oldPassword" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="oldPassword" />
 		<label class="error textStyleValidation" generated="true" for="oldPassword"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em;">
 		<form:password id="password" name="password"
 			class="form-control input-md" path="password"
 			placeholder="Новый пароль"></form:password>
-		<form:errors path="password" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="password" />
 		<label class="error textStyleValidation" generated="true" for="password"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em;">
 		<form:password id="confirmPassword" name="confirmPassword"
 			class="form-control input-md" path="confirmPassword"
 			placeholder="Подтверждение нового пароля"></form:password>
-		<form:errors path="confirmPassword" />
+		<form:errors class="textStyleValidation textStyleServerValidation" path="confirmPassword" />
 		<label class="error textStyleValidation" generated="true" for="confirmPassword"></label>
 		</div>
 		<div class="messagesValidStyle">

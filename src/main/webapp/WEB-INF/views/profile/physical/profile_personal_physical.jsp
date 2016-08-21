@@ -24,7 +24,9 @@
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container user-profile" >
 <div class="col-md-2 nopadiing-left">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="style-nickname">${nickname}</div>
 <div class="user-navigation">
 <a href='<c:url value="/physical/profile/myLots" />' class="list-group-item background-color-menu-profile">Мои работы</a>
@@ -49,9 +51,11 @@
 	<form:form modelAttribute="updatePersonalPhysicalForm" method="POST">
 		<div class="form-group heightStyleValidation2">
 		<form:input path="name" class="form-control" placeholder="name" value="${user.physical.name}"/>
+		<label class="error textStyleValidation" generated="true" for="name"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:input path="surname" class="form-control" placeholder="surname" value="${user.physical.surname}"/>
+		<label class="error textStyleValidation" generated="true" for="surname"></label>
 		</div>
 		<div class="form-group" style="height: 2.8em">
 		<form:select class="form-control" path="idCity">
@@ -67,7 +71,7 @@
 		</div>
 		<div class="form-group" style="height: 14em">
 		<c:forEach items="${user.phones}" var="phone">
-				<form:input  style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
+				<form:input style="margin-bottom:15px" path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
 		</c:forEach>
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />

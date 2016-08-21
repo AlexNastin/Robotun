@@ -22,8 +22,11 @@
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="container user-profile">
-<div class="col-md-2 nopadiing-left">
+<div id="sameheight">
+<div class="col-md-2 nopadiing-left main-left-col">
+<div style="background-color:white; text-align:center">
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
+</div>
 <div class="style-nickname">${nickname}</div>
 <div class="user-navigation">
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Мои работы</a>
@@ -35,7 +38,7 @@
 <a href='<c:url value="/user/addLot"/>' class="list-group-item background-color-menu-profile ">Добавить работу</a>
 </div>
 </div>
-<div class="col-md-10" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
+<div class="col-md-10 main-right-col" id="list-group" ng-controller="LotsController as lotsCtrl" ng-cloak>
 <div class="text-admin-page-main col-md-12">Мои работы:</div>
 <div ng-repeat="lot in lotsCtrl.lots">
 <div class="col-md-12 users-legal-boards {{lot.colorVisible}}">
@@ -49,14 +52,24 @@
 <div class="col-md-12 text-moderator-description legal-users-board-margin">Активен до: {{lot.endDate | date:'yyyy-MM-dd HH:mm:ss'}} </div>
 
 <div class="col-md-12" style="text-align:right;">
-<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
-<a class="btn btn-primary button-legal-style-main" ng-href='/jobster.by/lot?id={{lot.idLot}}&idPic={{lot.indexImage}}'>Подробнее</a>
-<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
+<div class="col-md-4">
+<a class="btn btn-primary button-legal-style-main btn-profile" ng-href='/jobster.by/user/updateLot?id={{lot.idLot}}'>Изменить</a>
+</div>
+<div class="col-md-4">
+<a class="btn btn-primary button-legal-style-main btn-profile" ng-href='/jobster.by/lot?id={{lot.idLot}}&idPic={{lot.indexImage}}'>Подробнее</a>
+</div>
+<div class="col-md-4">
+<button type="button" data-toggle="modal" data-target="#delete" class="btn btn-primary button-legal-style-main btn-profile" ng-click="lotsCtrl.preRemoveLot = lot">Удалить</button>
 </div>
 </div>
 </div>
-
-		
+</div>
+</div>
+		<div style="text-align:center;">
+										<a class="btn btn-primary load-button"
+											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
+            						</div>
+            						<div class="load"></div>
 		<div class="modal fade" id="delete" role="dialog">
     <div class="modal-dialog">
     
@@ -78,12 +91,10 @@
     </div>
   </div>
 </div>
+
 </div>
-<div style="text-align:center;">
-										<a class="btn btn-primary load-button"
-											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
-            						</div>
-<div class="load"></div>
+
+
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
