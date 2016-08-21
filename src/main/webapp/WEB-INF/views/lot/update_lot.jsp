@@ -113,9 +113,9 @@
     <div class="switch-field">
       
       <form:radiobutton id="switch_right" name="switch_2" value="false" path="isCall" />
-      <label for="switch_right">Мне</label>
+      <label id="switch_right1" for="switch_right">Мне</label>
       <form:radiobutton id="switch_left" name="switch_2" value="true" path="isCall"/>
-      <label for="switch_left">Я сам!</label>
+      <label id="switch_left1" for="switch_left">Я сам!</label>
     </div>
    
     
