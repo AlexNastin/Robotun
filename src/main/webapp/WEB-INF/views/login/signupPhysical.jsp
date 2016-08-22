@@ -120,7 +120,7 @@
 		</div>
 		<div class="form-group col-md-12 form-group-required" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Телефон"  />
+		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Номер телефона"  />
 		<a id="open-close" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
