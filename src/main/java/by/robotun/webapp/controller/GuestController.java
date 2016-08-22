@@ -171,11 +171,4 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.ID_USER, idUser);
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/rules", method = RequestMethod.GET)
-	public ModelAndView rules() throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_FOOTER_RULES);
-		return modelAndView;
-	}
-
 }

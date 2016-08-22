@@ -19,15 +19,15 @@
 
 				<p class="footer-links">
 					
-					<a href="#">О проекте</a>
+					<a href="<c:url value="/about" />">О проекте</a>
 					·
 					<a href="<c:url value="/rules" />">Правила использования</a>
 					·
-					<a href="#">Политика конфендециальности </a>
+					<a href="<c:url value="/policy" />">Политика конфендециальности </a>
 					·
-					<a href="#">FAQ</a>
+					<a href="<c:url value="/faq" />">FAQ</a>
 					·
-					<a href="#">Контакты</a>
+					<a href="<c:url value="/contacts" />">Контакты</a>
 					
 				</p>
 
