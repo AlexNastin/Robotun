@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.exception.ServiceException;
 import by.robotun.webapp.form.FeedBackFrom;
-import by.robotun.webapp.form.SignupUserPhysicalForm;
 import by.robotun.webapp.form.validator.HelperValidator;
 import by.robotun.webapp.localization.LocalizationParamNameProperties;
 import by.robotun.webapp.service.impl.MailService;

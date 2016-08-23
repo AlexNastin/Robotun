@@ -93,7 +93,7 @@ public class MailService {
 		StringBuilder subject = new StringBuilder(title);
 		subject.append(", от ");
 		subject.append(name);	
-		mailMessage.setSubject(name.toString());
+		mailMessage.setSubject(subject.toString());
 		StringBuilder textBuilder = new StringBuilder(email);
 		textBuilder.append(" ");
 		textBuilder.append(text);
