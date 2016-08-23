@@ -67,16 +67,18 @@ public class SignupUserPhysicalFormValidator implements Validator {
 		}
 		String[] phones = addUserPhysicalForm.getPhones();
 		Pattern patternPhone = regExCollection.getRegExPattern(RegExName.REGEX_PHONE);
-		Matcher matcherPhone = patternPhone.matcher(phones[0]);
-		if (!matcherPhone.matches()) {
-			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE);
-		}
+		int countPhone = 0;
 		for (int i = 1; i < phones.length; i++) {
 			if (!"".equals(phones[i])) {
+				countPhone++;
+				Matcher matcherPhone = patternPhone.matcher(phones[i]);
 				if (!matcherPhone.matches()) {
 					errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE);
 				}
 			}
+		}
+		if (countPhone == 0) {
+			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE_EMPTY);
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_CONFIRM_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);

@@ -21,6 +21,7 @@ public class LocalizationParamNameProperties {
 	public static final String VALIDATION_SIGNUP_NAME = "valid.signup.name";	
 	public static final String VALIDATION_SIGNUP_SURNAME = "valid.signup.surname";
 	public static final String VALIDATION_SIGNUP_PHONE = "valid.signup.phone";
+	public static final String VALIDATION_SIGNUP_PHONE_EMPTY = "valid.signup.phone.empty";
 	
 	public static final String MESSAGE_CHANGE_PASSWORD_SUCCESSFUL = "message.reset.password.successful";
 	public static final String MESSAGE_LOT_INSERT_SUCCESSFUL = "message.lot.insert.successful";
