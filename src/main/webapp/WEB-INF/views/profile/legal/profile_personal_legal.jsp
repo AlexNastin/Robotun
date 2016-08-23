@@ -73,9 +73,9 @@
 		</form:select>
 		</div>
 		
-		<c:forEach items="${user.phones}" var="phone">
+		<c:forEach items="${user.phones}" var="phone" varStatus="i">
 		<div class="form-group" style="height: 2.8em">
-				<form:input path="phones" class="form-control" placeholder="phone" value="${phone.phone}"/>
+				<form:input path="phones[${i.index}]" class="form-control" placeholder="phone" value="${phone.phone}"/>
 		</div>
 		</c:forEach> 
 		
