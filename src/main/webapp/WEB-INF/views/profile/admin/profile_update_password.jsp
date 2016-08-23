@@ -26,9 +26,9 @@
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 </div>
 <div class="user-navigation">
-<a href='<c:url value="/user/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
-<a href='#' class="list-group-item background-color-menu-profile active-menu">Сменить пароль</a>
-<a href='<c:url value="/user/secure/updatePersonalUserPhysical" />' class="list-group-item background-color-menu-profile">Личные данные</a>
+<a href='<c:url value="/admin/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
+<a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
+<a href='#' class="list-group-item background-color-menu-profile  active-menu">Сменить пароль</a>
 </div>
 </div>
 <div class="col-md-10">
