@@ -15,6 +15,7 @@ public final class ControllerParamConstant {
 	public static final String UPDATE_PERSONAL_PHYSICAL_FORM = "updatePersonalPhysicalForm";
 	public static final String UPDATE_PERSONAL_LEGAL_FORM = "updatePersonalLegalForm";
 	public static final String UPDATE_LOT_FORM = "updateLotForm";
+	public static final String FEEDBACK_FORM = "feedBackForm";
 
 	/**
 	 * List

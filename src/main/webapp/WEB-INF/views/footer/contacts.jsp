@@ -23,9 +23,17 @@
 	
 <title>Контакты</title>
 </head>
+<spring:url var="sendFeedback" value="/contacts/send" />
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-
+<form:form modelAttribute="feedBackForm" action="${sendFeedback}">
+<form:input path="email" placeholder="Ваш e-mail адресс" />
+<form:errors  path="email" />
+<form:input path="name" placeholder="Как к вам обращаться" />
+<form:input path="title" placeholder="Тема письма" />
+<form:input path="text" placeholder="Текст письма" />
+<input type="submit" value="SEND">
+</form:form>
 
 <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>

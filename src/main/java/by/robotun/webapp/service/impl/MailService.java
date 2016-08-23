@@ -17,7 +17,9 @@ import by.robotun.webapp.exception.ServiceException;
 @Service("defaultMailService")
 public class MailService {
 
-	static final Logger LOGGER = Logger.getLogger(MailService.class);
+	public static final Logger LOGGER = Logger.getLogger(MailService.class);
+	
+	private final String MAIL_SERVER = "jobster.by@gmail.com";
 
 	@Autowired
 	private JavaMailSender mailSender;
@@ -54,7 +56,7 @@ public class MailService {
 		text.append(" ");
 		text.append(url);
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
-		mailMessage.setFrom("jobster.by@gmail.com");
+		mailMessage.setFrom(MAIL_SERVER);
 		mailMessage.setTo(user.getLogin());
 		mailMessage.setSubject(messageSubject);
 		mailMessage.setText(text.toString());
@@ -74,13 +76,28 @@ public class MailService {
 		try {
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mailMessage, true);
 			mimeMessageHelper.setTo(user.getLogin());
-		    mimeMessageHelper.setFrom("jobster.by@gmail.com");
+		    mimeMessageHelper.setFrom(MAIL_SERVER);
 		    mimeMessageHelper.setSubject(messageSubject);
 		    mimeMessageHelper.setText(text.toString(),true);
 		} catch (MessagingException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
+		return mailMessage;
+	}
+	
+	public SimpleMailMessage constructFeedbackSimpleMailMessage(String email, String name, String title, String text) {
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setFrom(email);
+		mailMessage.setTo(MAIL_SERVER);
+		StringBuilder subject = new StringBuilder(title);
+		subject.append(", от ");
+		subject.append(name);	
+		mailMessage.setSubject(name.toString());
+		StringBuilder textBuilder = new StringBuilder(email);
+		textBuilder.append(" ");
+		textBuilder.append(text);
+		mailMessage.setText(textBuilder.toString());
 		return mailMessage;
 	}
 }

@@ -36,6 +36,6 @@ public class LocalizationParamNameProperties {
 	public static final String MESSAGE_EMAIL_INVALID_TOKEN = "email.message.invalidToken";
 	public static final String MESSAGE_EMAIL_EXPIRED_TOKEN = "email.message.expired";
 	public static final String MESSAGE_EMAIL_RESET_PASSWORD_SUCCESSFUL = "email.message.resetpaswordsuccessful";
-	
+	public static final String MESSAGE_FEEDBACK_SUCCESSFUL = "feedback.successful";
 	public static final String MESSAGE_ERROR_SERVER = "message.server.error";
 }
