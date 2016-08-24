@@ -174,6 +174,18 @@ $(document).ready(function(){
 				regexp: /^[^\{\}\<\>\']*$/,
 				rangelength: [1, 500],
 			},
+			"phones[0]": {
+				require_from_group: [1, ".phone-group"],
+				regexp: /^(\+375)?[0-9]{9}$/
+	         },
+			"phones[1]": {
+				require_from_group: [1, ".phone-group"],
+				regexp: /^(\+375)?[0-9]{9}$/
+			},
+			"phones[2]": {
+				require_from_group: [1, ".phone-group"],
+				regexp: /^(\+375)?[0-9]{9}$/
+			}
 			
 		   
 },
@@ -184,9 +196,17 @@ messages:  {
 		email: 'Неверный e-mail.',
 		rangelength: "Не более 50 символов"
 		},
-	phones: {
-	regexp: 'Введите номер в формате +375XXXXXXXXX',
-	required: 'Поле не может быть пустым.',
+	"phones[0]": {
+		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+        regexp: "Введите номер в формате +375XXXXXXXXX"
+	},
+	"phones[1]": {
+		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+		regexp: "Введите номер в формате +375XXXXXXXXX"
+	},
+	"phones[2]": {
+		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+		regexp: "Введите номер в формате +375XXXXXXXXX"
 	},
 	confirm: {
 		required: 'Для регистрации необходимо согласиться с правилами пользования сайтом.'
@@ -284,11 +304,7 @@ messages:  {
 		        },
 		        phone3:{
 			        regexp: /^(\+375)?[0-9]{9}$/
-		        },
-		        messages: {
-		        	required: 'Поле пусто',
-		        	regexp: 'dsgvsv'
-		        }
+		        }		        
 		    });
 		//Конец валидации телефона
 }); // end document.ready

@@ -71,7 +71,10 @@
 		</div>
 		<div class="form-group" style="height: 14em">
 		<c:forEach items="${user.phones}" var="phone" varStatus="i">
-				<form:input id="phone${i.count}" style="margin-bottom:15px" path="phones[${i.index}]" class="form-control" placeholder="Телефон" value="${phone.phone}"/>
+				<div style="height: 3.8em">
+				<form:input id="phone${i.count}" path="phones[${i.index}]" class="form-control phone-group" placeholder="Телефон" value="${phone.phone}"/>
+				<label class="error textStyleValidation" generated="true" for="phone${i.count}"></label>
+		        </div>
 		</c:forEach>
 		<div style="text-align:center;">
 		<input type="submit" style="margin-bottom: 1em" class="button-on-add-lot btn btn-primary button-legal-style" value="Изменить" />
@@ -85,8 +88,8 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
-<script src="<c:url value="/resources/js/validate/validation.js" />"> </script>   
-
+<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>  
+<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script>  
+<script src="<c:url value="/resources/js/validate/validation.js" />"> </script>
 </body>
 </html>
