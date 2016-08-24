@@ -164,7 +164,7 @@
 		</div>
 		<div>
 		<label style="color:white; padding-left: 0px;">
-		Я согласен с <a style="color:#3abeb1" href="<c:url value="/signup/userPhysical"/>">правилами пользования</a> сайтом
+		Я согласен с <a style="color:#3abeb1" href="<c:url value="/agreement" />">публичным договором</a>
 		</label>
 		</div>
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="confirm" /></span>

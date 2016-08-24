@@ -16,7 +16,7 @@ public final class URLMapping {
 	public static final String JSP_SIGNUP_LEGAL = "login/signupLegal";
 	public static final String JSP_LOGIN_FORGOT_PASSWORD = "login/forgot_password";
 	
-	public static final String JSP_FOOTER_RULES = "footer/rules";
+	public static final String JSP_FOOTER_AGREEMENT = "footer/agreement";
 	public static final String JSP_FOOTER_CONTACTS = "footer/contacts";
 	public static final String JSP_FOOTER_FAQ = "footer/faq";
 	public static final String JSP_FOOTER_POLICY = "footer/policy";

@@ -21,7 +21,7 @@
 					
 					<a href="<c:url value="/about" />">О проекте</a>
 					·
-					<a href="<c:url value="/rules" />">Правила использования</a>
+					<a href="<c:url value="/agreement" />">Публичный договор</a>
 					·
 					<a href="<c:url value="/policy" />">Политика конфендециальности </a>
 					·

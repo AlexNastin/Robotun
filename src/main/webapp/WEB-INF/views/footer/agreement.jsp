@@ -21,7 +21,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
-<title>Правила пользования сайтом</title>
+<title>Публичный договор</title>
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
@@ -29,11 +29,11 @@
 <div class="col-md-offset-2 col-md-8">
 <a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
 <i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
-<span style="font-size: 25px; color:white;" class="text-style-size-result ">Правила использования</span>
+<span style="font-size: 25px; color:white;" class="text-style-size-result ">Публичный договор</span>
 </div>
 <div class="col-md-offset-2 col-md-8 boardBackgroundColor">
 <div class=""></div>
-<div class="col-md-12 headlineTextStyle">Правила использования</div>
+<div class="col-md-12 headlineTextStyle">Публичный договор</div>
 <div class="col-md-12">
 <div id="accordion2" class="panel-group" style="margin: auto!important;">
 <div class="panel panel-default">

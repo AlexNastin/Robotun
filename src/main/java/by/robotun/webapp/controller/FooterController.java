@@ -30,9 +30,9 @@ public class FooterController {
 	@Autowired
 	private MessageSource messages;
 
-	@RequestMapping(value = "/rules", method = RequestMethod.GET)
-	public ModelAndView rules() throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_FOOTER_RULES);
+	@RequestMapping(value = "/agreement", method = RequestMethod.GET)
+	public ModelAndView agreement() throws ServiceException {
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_FOOTER_AGREEMENT);
 		return modelAndView;
 	}
 
