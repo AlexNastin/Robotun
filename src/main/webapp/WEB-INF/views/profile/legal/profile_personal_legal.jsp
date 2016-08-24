@@ -75,7 +75,8 @@
 		
 		<c:forEach items="${user.phones}" var="phone" varStatus="i">
 		<div class="form-group" style="height: 2.8em">
-				<form:input id="phone${i.count}" path="phones[${i.index}]" class="form-control" placeholder="phone" value="${phone.phone}"/>
+				<form:input id="phone${i.count}" path="phones[${i.index}]" class="form-control phone-group" placeholder="phone" value="${phone.phone}"/>
+				<label class="error textStyleValidation" generated="true" for="phone${i.count}"></label>
 		</div>
 		</c:forEach> 
 		
@@ -90,7 +91,8 @@
 <%@include file="/WEB-INF/views/footer.jsp"%>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>  
+<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script>  
 <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>   
 <script>
 		$(document).ready(function() {
