@@ -147,8 +147,24 @@
 	</form:form>
 	</div>
 	<div class="col-md-6">
-	<div id="YMapsID" style="width: 100%; height: 350px; padding-top:100px;"></div>
-	</div>
+	
+	 <div id="YMapsID" style="width: 100%; height: 350px;position:relative">
+		 <div class="form-inline">
+		 <div class="form-group">
+		 
+		 <form action="#">
+			 <div style='position:absolute; z-index:10; padding:10px; background-color: rgba(255,255,255,0);'>
+				<input class="form-control" id="textSearch" type="text" placeholder="Введите адрес">
+				<input class="btn btn-default" type="button" value="Поиск" onclick="addressFind( $('#textSearch').val() )">
+				<input class="btn btn-default" type="button" value="Очистить" onclick="$('#textSearch').val(''); $('#list').empty();">
+				<div id='list' style='background-color: rgba(255,255,255,0.7);'></div>
+			</div>
+		</form>
+		</div>
+		</div>
+	 </div>
+	 <span>Перемещая маркер <img style="width:20px; height:20px" src="<c:url value="/resources/images/location_marker.png"  />" > на карте, Вы можете указать точное место, где нужна помощь</span>
+	 </div>
 	</div>
     <div class="col-md-1"></div>
 	</div>
@@ -166,73 +182,119 @@
 		cities = JSON.parse(cities);
 	var latitude = ${lot.latitude};
 	var longitude = ${lot.longitude};
-	var zoom = cities[0].scale;
+	var zoom;
 	ymaps.ready(init);
 	var myMap;
 	var myPlacemark;
 	
-    function cityOnMap(index) {
-    	var latitude = cities[index].latitude;
-    	var longitude = cities[index].longitude;
+	function cityOnMap(index) {
+		latitude = cities[index].latitude;
+		longitude = cities[index].longitude;
 		zoom = cities[index].scale;
-		myMap.setCenter([latitude, longitude], zoom, {
-		    checkZoomRange: true
+		myMap.setCenter([ latitude, longitude ], zoom, {
+			checkZoomRange : true
 		});
-		myPlacemark.geometry.setCoordinates([latitude, longitude]);
-		
-    }
-    function init() {
-        myMap = new ymaps.Map("YMapsID", {
-            center: [latitude, longitude],
-            zoom: zoom,
-            controls: ['fullscreenControl', 'zoomControl', 'rulerControl']
-        });
-     // Создание макета содержимого хинта.
-        // Макет создается через фабрику макетов с помощью текстового шаблона.
-            HintLayout = ymaps.templateLayoutFactory.createClass( "<div class='my-hint'>" +
-                "<b>{{ properties.message }}</b><br /></div>", {
-                    // Определяем метод getShape, который
-                    // будет возвращать размеры макета хинта.
-                    // Это необходимо для того, чтобы хинт автоматически
-                    // сдвигал позицию при выходе за пределы карты.
-                    getShape: function () {
-                        var el = this.getElement(),
-                            result = null;
-                        if (el) {
-                            var firstChild = el.firstChild;
-                            result = new ymaps.shape.Rectangle(
-                                new ymaps.geometry.pixel.Rectangle([
-                                    [0, 0],
-                                    [firstChild.offsetWidth, firstChild.offsetHeight]
-                                ])
-                            );
-                        }
-                        return result;
-                    }
-                }
-            );
+		myPlacemark.geometry.setCoordinates([ latitude, longitude ]);
 
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            message: "Здесь нужна помощь!"
-        }, {
-            hintLayout: HintLayout,
-            draggable: true,
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#image',
-            // Своё изображение иконки метки.
-            iconImageHref: '/jobster.by/resources/images/location_marker.png'
-        });
+	}
 
-    	myMap.geoObjects.add(myPlacemark);
-    }
-    
-    function setCoordinates() {
-    	var coordinates = myPlacemark.geometry.getCoordinates();
-    	document.getElementById("latitude").value = coordinates[0];
-    	document.getElementById("longitude").value = coordinates[1];
-    }
-     
+	function addressOnMap(latitude, longitude) {
+		$('#textSearch').val('');
+		$('#list').empty();
+		myMap.setCenter([ latitude, longitude ], 15, {
+			checkZoomRange : true
+		});
+		myPlacemark.geometry.setCoordinates([ latitude, longitude ]);
+
+	}
+
+	function addressFind(text) {
+		$('#list').empty();
+		var myGeocoder = ymaps.geocode(text, {
+			boundedBy : [ [ 51.212001111979866, 22.313501562499554 ],
+					[ 56.439072125307426, 32.833501562499585 ] ],
+			strictBounds : true,
+			results : 10
+		});
+		myGeocoder
+				.then(
+						function(res) {
+							res.geoObjects
+									.each(function(geoObject) {
+										$('#list')
+												.append(
+														'<a  href="#" onclick="addressOnMap('
+																+ geoObject.geometry._coordinates[0]
+																+ ','
+																+ geoObject.geometry._coordinates[1]
+																+ ')"><div style="margin:0px; font-size:12px;opacity: 0.7;" class="well well-sm">'
+																+ geoObject.properties._data.name
+																+ '<br>'
+																+ geoObject.properties._data.text
+																+ '</div></a>');
+									});
+						}, function(err) {
+							console.log('Ошибка');
+						});
+	}
+
+	function init() {
+		myMap = new ymaps.Map("YMapsID", {
+			center : [ latitude, longitude ],
+			controls : [ 'fullscreenControl', 'zoomControl', 'rulerControl' ],
+			// Область поиска - Беларусь, маркер - центр Минска
+			bounds : [ [ 51.212001111979866, 22.313501562499554 ],
+					[ 56.439072125307426, 32.833501562499585 ] ]
+		});
+		// Создание макета содержимого хинта.
+		// Макет создается через фабрику макетов с помощью текстового шаблона.
+		HintLayout = ymaps.templateLayoutFactory
+				.createClass(
+						"<div class='my-hint'>"
+								+ "<b>{{ properties.message }}</b><br /></div>",
+						{
+							// Определяем метод getShape, который
+							// будет возвращать размеры макета хинта.
+							// Это необходимо для того, чтобы хинт автоматически
+							// сдвигал позицию при выходе за пределы карты.
+							getShape : function() {
+								var el = this.getElement(), result = null;
+								if (el) {
+									var firstChild = el.firstChild;
+									result = new ymaps.shape.Rectangle(
+											new ymaps.geometry.pixel.Rectangle(
+													[
+															[ 0, 0 ],
+															[
+																	firstChild.offsetWidth,
+																	firstChild.offsetHeight ] ]));
+								}
+								return result;
+							}
+						});
+
+		myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+			message : "Здесь нужна помощь!"
+		}, {
+			hintLayout : HintLayout,
+			draggable : true,
+			// Опции.
+			// Необходимо указать данный тип макета.
+			iconLayout : 'default#image',
+			// Своё изображение иконки метки.
+			iconImageHref : '/jobster.by/resources/images/location_marker.png'
+		});
+		myPlacemark.geometry._coordinates[0] = latitude;
+		myPlacemark.geometry._coordinates[1] = longitude;
+		console.log(myPlacemark.geometry._coordinates)
+		myMap.geoObjects.add(myPlacemark);
+	}
+
+	function setCoordinates() {
+		var coordinates = myPlacemark.geometry.getCoordinates();
+		document.getElementById("latitude").value = coordinates[0];
+		document.getElementById("longitude").value = coordinates[1];
+	}
 </script>
     <script type="text/javascript">
 	$(document)

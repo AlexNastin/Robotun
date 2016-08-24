@@ -174,6 +174,7 @@
 	var myPlacemark;
 	
     function cityOnMap(index) {
+    	console.log(index);
     	if(index == 0) {
     		// Маркер - центр Минска 
     		latitude = 53.907588432690744;
