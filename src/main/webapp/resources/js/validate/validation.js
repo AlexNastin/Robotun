@@ -197,15 +197,15 @@ messages:  {
 		rangelength: "Не более 50 символов"
 		},
 	"phones[0]": {
-		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+		require_from_group: "Пожалуйста, укажите телефон в одном из полей",
         regexp: "Введите номер в формате +375XXXXXXXXX"
 	},
 	"phones[1]": {
-		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+		require_from_group: "Пожалуйста, укажите телефон в одном из полей",
 		regexp: "Введите номер в формате +375XXXXXXXXX"
 	},
 	"phones[2]": {
-		require_from_group: "Пожалуйста, укажите телефона в одном из полей",
+		require_from_group: "Пожалуйста, укажите телефон в одном из полей",
 		regexp: "Введите номер в формате +375XXXXXXXXX"
 	},
 	confirm: {
