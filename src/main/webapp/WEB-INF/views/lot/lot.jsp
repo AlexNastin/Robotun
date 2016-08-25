@@ -101,7 +101,7 @@
 									<div class="fa fa-weixin fa-lg" id="countBet">{{lotCtrl.lot.bets.length}}</div>
 								</div>
 								<div id="countBudget" class="col-md-4 col-xs-4 well height-block-lot">
-									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}}
+									<i class="fa fa fa-money fa-lg"></i> {{lotCtrl.lot.budget}} BYN
 								</div>
 								<div id="countTime" class="col-md-4 col-xs-4 well height-block-lot"
 									style="padding-bottom: 0px; padding-top: 6px;">
@@ -175,6 +175,7 @@
 		                                        
 		                                        </div>
 		                                        <div id="message" class="tenminutes"><p>Должно пройти 10 минут перед следущей ставкой</p></div>
+		                                        <div><i>* Все предложения делаются в деноминированных рублях (BYN)</i></div>
 											</div>
 											
 
