@@ -349,7 +349,7 @@ a {
 }
 .form-group-required-password div:after {
     position:absolute;
-    content:'*';
+    content:"*';
     color:red;
     right:-10px;
     top:50px;
