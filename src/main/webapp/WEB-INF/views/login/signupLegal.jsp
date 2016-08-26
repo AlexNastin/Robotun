@@ -158,11 +158,11 @@
 		</div>
     	</div>
 		</div>
-		<div class="checkbox col-md-12 heightStyleValidation" style="padding-left:22px; height: 5.3em;">
+		<div class="checkbox col-md-12 heightStyleValidation" style="padding-top:10px;min-height:3em;padding-left:22px; background-color:rgba(0,0,0,.5)">
 		<div>
 		<form:checkbox path="confirm" />
 		</div>
-		<div>
+		<div style="text-align:center">
 		<label style="color:white; padding-left: 0px;">
 		Я согласен с <a style="color:#3abeb1" href="<c:url value="/agreement" />">публичным договором</a>
 		</label>
