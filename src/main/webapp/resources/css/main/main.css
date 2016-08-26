@@ -373,3 +373,11 @@ body,
 	display:none
 }
   }
+.policy{
+	padding: 20px;
+    background-color: #fff;
+    background-image: url(19.jpg);
+}
+.mainpolicy{
+	background-color:white
+}
