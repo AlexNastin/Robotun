@@ -23,26 +23,24 @@ public class VotingController {
 	@Autowired
 	private MessageSource messages;
 
-	@RequestMapping(value = "/voting", method = RequestMethod.GET)
-	public String voting(@RequestParam(value = "mark") int mark, @RequestParam(value = "idLot") String idLot,
-			@RequestParam(value = "idUser") int idUser, Locale locale) {
-		votingService.votingLot(mark, idLot, idUser);
+	@RequestMapping(value = "/voting", method = RequestMethod.POST)
+	public String voting(@RequestParam(value = "mark") Integer mark, @RequestParam(value = "idCandidate") String idCandidate, @RequestParam(value = "idUser") Integer idUser, Locale locale) {
+		votingService.votingLot(mark, idCandidate, idUser);
 		return messages.getMessage("voiting.insert", null, locale);
 	}
 
-	@RequestMapping(value = "/getVoting", method = RequestMethod.GET)
-	public float getVotingLot(@RequestParam(value = "idLot") String idLot) {
-		return votingService.getVotingLot(idLot);
+	@RequestMapping(value = "/getVoting", method = RequestMethod.POST)
+	public float getVotingLot(@RequestParam(value = "idCandidate") String idCandidate) {
+		return votingService.getVotingLot(idCandidate);
 	}
 
-	@RequestMapping(value = "/checkVoting", method = RequestMethod.GET)
-	public Integer checkVotingLot(@RequestParam(value = "idLot") String idLot, HttpSession httpSession) {
+	@RequestMapping(value = "/checkVoting", method = RequestMethod.POST)
+	public Integer checkVotingLot(@RequestParam(value = "idCandidate") String idCandidate, HttpSession httpSession) {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Integer vote = 0;
 		if (person != null) {
-			vote = votingService.checkVotingLot(idLot, person.getId());
+			vote = votingService.checkVotingLot(idCandidate, person.getId());
 		}
 		return vote;
 	}
-
 }
