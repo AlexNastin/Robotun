@@ -2,9 +2,9 @@ package by.robotun.webapp.service;
 
 public interface IVotingService {
 
-	void votingLot(int mark, String idLot, int idUser);
+	void votingLot(Integer mark, String idCandidate, Integer idUser);
 	
-	float getVotingLot(String idLot);
+	float getVotingLot(String idCandidate);
 	
-	Integer checkVotingLot(String idLot, int idUser);
+	Integer checkVotingLot(String idCandidate, Integer idUser);
 }

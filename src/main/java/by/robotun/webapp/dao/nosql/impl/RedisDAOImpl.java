@@ -17,21 +17,21 @@ public class RedisDAOImpl implements IRedisDAO {
 	private RedisTemplate<String, Map<Integer, Integer>> redisTemplate;
 
 	@Override
-	public void insertVotingLot(Integer mark, String idLot, Integer idUser) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
+	public void insertVotingLot(Integer mark, String idCandidate, Integer idUser) {
+		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
 		if (votingLot != null) {
 			votingLot.put(idUser, mark);
-			redisTemplate.opsForValue().set(idLot, votingLot);
+			redisTemplate.opsForValue().set(idCandidate, votingLot);
 		} else {
 			Map<Integer, Integer> value = new HashMap<>();
 			value.put(idUser, mark);
-			redisTemplate.opsForValue().set(idLot, value);
+			redisTemplate.opsForValue().set(idCandidate, value);
 		}
 	}
 
 	@Override
-	public Double getVotingLot(String idLot) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
+	public Double getVotingLot(String idCandidate) {
+		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
 		Collection<Integer> valuesVotingLot = votingLot.values();
 		Double summ = 0.0;
 		for (Integer integer : valuesVotingLot) {
@@ -42,13 +42,12 @@ public class RedisDAOImpl implements IRedisDAO {
 	}
 
 	@Override
-	public Integer checkVotingLot(String idLot, Integer idUser) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idLot);
+	public Integer checkVotingLot(String idCandidate, Integer idUser) {
+		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
 		Integer vote = votingLot.get(String.valueOf(idUser));
 		if (vote == null) {
 			vote = 0;
 		}
 		return vote;
-
 	}
 }

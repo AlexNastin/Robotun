@@ -16,17 +16,17 @@ public class VotingService implements IVotingService {
 	private IRedisDAO redisDAO;
 
 	@Override
-	public void votingLot(int mark, String idLot, int idUser) {
-		redisDAO.insertVotingLot(mark, idLot, idUser);
+	public void votingLot(Integer mark, String idCandidate, Integer idUser) {
+		redisDAO.insertVotingLot(mark, idCandidate, idUser);
 	}
 
 	@Override
-	public float getVotingLot(String idLot) {
-		return new BigDecimal(redisDAO.getVotingLot(idLot)).setScale(2, RoundingMode.HALF_UP).floatValue();
+	public float getVotingLot(String idCandidate) {
+		return new BigDecimal(redisDAO.getVotingLot(idCandidate)).setScale(2, RoundingMode.HALF_UP).floatValue();
 	}
 
 	@Override
-	public Integer checkVotingLot(String idLot, int idUser) {
-		return redisDAO.checkVotingLot(idLot, idUser);
+	public Integer checkVotingLot(String idCandidate, Integer idUser) {
+		return redisDAO.checkVotingLot(idCandidate, idUser);
 	}
 }
