@@ -25,13 +25,13 @@ public class VotingController {
 
 	@RequestMapping(value = "/voting", method = RequestMethod.POST)
 	public String voting(@RequestParam(value = "mark") Integer mark, @RequestParam(value = "idCandidate") String idCandidate, @RequestParam(value = "idUser") Integer idUser, Locale locale) {
-		votingService.votingLot(mark, idCandidate, idUser);
+		votingService.votingCandidate(mark, idCandidate, idUser);
 		return messages.getMessage("voiting.insert", null, locale);
 	}
 
-	@RequestMapping(value = "/getVoting", method = RequestMethod.POST)
+	@RequestMapping(value = "/getVoting", method = RequestMethod.GET)
 	public float getVotingLot(@RequestParam(value = "idCandidate") String idCandidate) {
-		return votingService.getVotingLot(idCandidate);
+		return votingService.getVotingCandidate(idCandidate);
 	}
 
 	@RequestMapping(value = "/checkVoting", method = RequestMethod.POST)
@@ -39,7 +39,7 @@ public class VotingController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Integer vote = 0;
 		if (person != null) {
-			vote = votingService.checkVotingLot(idCandidate, person.getId());
+			vote = votingService.checkVotingCandidate(idCandidate, person.getId());
 		}
 		return vote;
 	}

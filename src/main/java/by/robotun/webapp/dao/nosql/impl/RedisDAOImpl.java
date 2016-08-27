@@ -17,11 +17,13 @@ public class RedisDAOImpl implements IRedisDAO {
 	private RedisTemplate<String, Map<Integer, Integer>> redisTemplate;
 
 	@Override
-	public void insertVotingLot(Integer mark, String idCandidate, Integer idUser) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
-		if (votingLot != null) {
-			votingLot.put(idUser, mark);
-			redisTemplate.opsForValue().set(idCandidate, votingLot);
+	public void insertVotingCandidate(Integer mark, String idCandidate, Integer idUser) {
+		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		if (votingCandidate != null) {
+			if(checkVotingCandidate(idCandidate, idUser) == 0){
+			votingCandidate.put(idUser, mark);
+			redisTemplate.opsForValue().set(idCandidate, votingCandidate);
+			}
 		} else {
 			Map<Integer, Integer> value = new HashMap<>();
 			value.put(idUser, mark);
@@ -30,21 +32,21 @@ public class RedisDAOImpl implements IRedisDAO {
 	}
 
 	@Override
-	public Double getVotingLot(String idCandidate) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
-		Collection<Integer> valuesVotingLot = votingLot.values();
+	public Double getVotingCandidate(String idCandidate) {
+		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		Collection<Integer> valuesVotingCandidate = votingCandidate.values();
 		Double summ = 0.0;
-		for (Integer integer : valuesVotingLot) {
+		for (Integer integer : valuesVotingCandidate) {
 			summ += integer;
 		}
-		summ /= valuesVotingLot.size();
+		summ /= valuesVotingCandidate.size();
 		return summ;
 	}
 
 	@Override
-	public Integer checkVotingLot(String idCandidate, Integer idUser) {
-		Map<Integer, Integer> votingLot = redisTemplate.opsForValue().get(idCandidate);
-		Integer vote = votingLot.get(String.valueOf(idUser));
+	public Integer checkVotingCandidate(String idCandidate, Integer idUser) {
+		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		Integer vote = votingCandidate.get(idUser);
 		if (vote == null) {
 			vote = 0;
 		}
