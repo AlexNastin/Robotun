@@ -59,14 +59,16 @@
                     
                     <div class="col-md-4 col-md-offset-4">
                     <div style="margin:auto">
-                    
+                   
                     <select id="rating">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
-  <option value="4">4</option>
+  <option selected="selected" value="4">4</option>
   <option value="5">5</option>
 </select>
+<a id="votes" class="btn btn-success btn-sm main-button-style">Оценить!</a>
+
 </div>
 </div>
 
@@ -119,6 +121,24 @@
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/jquery.barrating.min.js" />"></script>
+<script>
+
+$(document).ready(function(){
+    $("#votes").click(function(){
+    	var userok = ${idUser};
+    	var rate= $('#rating').val();
+    	var rateint = parseInt(rate);
+    	var data =  {
+    	        mark: rateint,
+    	        idCandidate: userok,
+    	        
+    	      };
+        $.post("/jobster.by/voting",
+       data);
+    });
+});
+
+</script>
 <script>
 var q = '*:*';
 var fq = ['end_date:[* TO NOW+181DAY]',
