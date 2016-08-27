@@ -18,10 +18,13 @@ public class VotingController {
 	private IVotingService votingService;
 
 	@RequestMapping(value = "/voting", method = RequestMethod.POST)
-	public String voting(@RequestParam(value = "mark") Integer mark, @RequestParam(value = "idCandidate") String idCandidate, @RequestParam(value = "idUser") Integer idUser, HttpSession httpSession) {
+	public String voting(@RequestParam(value = "mark") Integer mark, @RequestParam(value = "idCandidate") String idCandidate, HttpSession httpSession) {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		votingService.votingCandidate(mark, idCandidate, person.getId());
-		return "ok";
+		if (person != null) {
+			votingService.votingCandidate(mark, idCandidate, person.getId());
+			return "ok";
+		}
+		return "none";
 	}
 
 	@RequestMapping(value = "/getVoting", method = RequestMethod.GET)
