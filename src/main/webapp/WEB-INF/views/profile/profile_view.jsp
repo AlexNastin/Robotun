@@ -70,6 +70,9 @@
 <a id="votes" class="btn btn-success btn-sm main-button-style">Оценить!</a>
 
 </div>
+<div id="tagscloud">
+<span></span>
+</div>
 </div>
 
 </div>
@@ -124,6 +127,11 @@
 <script>
 
 $(document).ready(function(){
+	var idPage=${idUser};
+	var url = '/jobster.by/getVoting?idCandidate='+idPage;
+      $.get(url,function(data){
+    	  $("#tagscloud span").text(data);
+        });
     $("#votes").click(function(){
     	var userok = ${idUser};
     	var rate= $('#rating').val();
@@ -133,12 +141,12 @@ $(document).ready(function(){
     	        idCandidate: userok,
     	        
     	      };
-        $.post("/jobster.by/voting",
-       data);
+        $.post("/jobster.by/voting", data);
     });
 });
 
 </script>
+
 <script>
 var q = '*:*';
 var fq = ['end_date:[* TO NOW+181DAY]',
