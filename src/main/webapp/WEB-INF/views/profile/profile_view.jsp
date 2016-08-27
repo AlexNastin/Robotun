@@ -70,8 +70,8 @@
 <a id="votes" class="btn btn-success btn-sm main-button-style">Оценить!</a>
 
 </div>
-<div id="tagscloud">
-<span></span>
+<div id="tagscloud">Текущий рейтинг:
+<span></span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i>
 </div>
 </div>
 
