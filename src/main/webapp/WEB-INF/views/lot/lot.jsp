@@ -9,7 +9,7 @@
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
-<title>Работа</title>
+<title>{{lotCtrl.lot.name}} | Jobster.by -  лучшая разовая работа</title>
 
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
@@ -30,16 +30,8 @@
 	rel="stylesheet" />
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<script
-	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
-<script src="<c:url value="/resources/js/script.js" />"></script>
 
 <!-- Custom plugin -->
-<link href="<c:url value="/resources/css/results/custom.css"  />"
-	rel="stylesheet" />
-<script src="<c:url value="/resources/js/results/custom.js" />"></script>
 
 
 <meta charset="utf-8">
@@ -49,20 +41,6 @@
 <meta name="author" content="">
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
-
-<!-- counter -->
-
-
-<link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css"  />"	rel="stylesheet" />
-<link href="<c:url value="/resources/css/jquery.bootstrap-touchspin.min.css"  />"	rel="stylesheet" />
-<script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" />"></script>
-<script src="<c:url value="/resources/js/jquery.bootstrap-touchspin.min.js" />"></script>
-
-
-        
-
-
-<!-- Bootstrap Core CSS -->
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -264,10 +242,34 @@
 	<div class="cd-popup-container">
 		<p>К сожалению, время принятия предложений вышло</p>
 		
-		<a href="#0" class="cd-popup-close img-replace">Close</a>
+		<a href="#0" class="cd-popup-close img-replace">Закрыть</a>
 	</div> <!-- cd-popup-container -->
 </div>
+
+
+
+
+
 	<!-- Menu Toggle Script -->
+	
+	
+	
+	
+	
+	
+	
+	<script src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/js/script.js" />"></script>
+	
+	
+	
+	<link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css"  />"	rel="stylesheet" />
+<link href="<c:url value="/resources/css/jquery.bootstrap-touchspin.min.css"  />"	rel="stylesheet" />
+<script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.bootstrap-touchspin.min.js" />"></script>
+	
+	
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
 		<script type="text/javascript"

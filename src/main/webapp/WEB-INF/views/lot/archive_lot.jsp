@@ -9,7 +9,7 @@
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
-<title>Архивная работа</title>
+<title>Архивная работа Jobster.by -  лучшая разовая работа </title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />

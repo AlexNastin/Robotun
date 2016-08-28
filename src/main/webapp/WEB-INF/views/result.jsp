@@ -12,7 +12,7 @@
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <meta charset="utf-8">
-<title>Работа</title>
+<title>Предложения о работе | Jobster.by -  лучшая разовая работа </title>
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />
@@ -20,25 +20,14 @@
 <!-- Spring Links -->
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
-	
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">  
-	 
-    <link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
-   
- 
+	<link href="<c:url value="/resources/css/results/lot.css"  />" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="<c:url value="/resources/css/jquery-ui.min.css"  />" rel="stylesheet" />
-    <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/results/jquery.metisMenu.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script> 
-	
-	
-	
+    	
 	<!-- Custom plugin -->
-	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" />
-	<script	src="<c:url value="/resources/js/results/custom.js" />"></script>    
+	<link href="<c:url value="/resources/css/results/custom.css"  />" rel="stylesheet" /> 
 
 
     <meta charset="utf-8">
@@ -186,6 +175,14 @@
 <!--/.container-->
 
 <!-- Menu Toggle Script -->
+	
+<div class="clearfix"></div>
+		  <%@include file="/WEB-INF/views/footer.jsp"%> 
+		  <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+	
+	<script	src="<c:url value="/resources/js/script.js" />"></script> 
+	  
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/constant.js" />"></script>
@@ -442,8 +439,6 @@ function() {
 	});
 });
 </script> 
-<div class="clearfix"></div>
-		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
 
