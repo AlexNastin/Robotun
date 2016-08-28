@@ -219,9 +219,9 @@
 												<div class="user-detail">
 													<h5 class="handle"> 
 </div>
-													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}
+													<a  ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}
 													
-													
+													<input id="bestbetter" value="{{bet.idUser}}" type="text" hidden>
 													
 													
 													</a> <div id="tagscloud" style="color:black">Текущий рейтинг:
@@ -360,7 +360,7 @@ var jsonData = '${lotJson}';
 		}
 		// End WebSockets
 		
-		function betController ($scope) {
+		function betController ($scope, $http) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.currentDate = ${currentDate};
@@ -368,16 +368,20 @@ var jsonData = '${lotJson}';
 			vm.betsByUser = [];
 			angular.forEach(vm.bets, function(bet) {
 				var url = '/jobster.by/getVoting?idCandidate=' + bet.user.idUser;
-				$.get(url,function(data){
-					bet.user.rating = data;
-				});
+				$http({
+					  method: 'GET',
+					  url: '/jobster.by/getVoting?idCandidate=' + bet.user.idUser
+					}).then(function successCallback(response) {
+						bet.user.rating=response.data;
+					    console.log(response.data);
+					  }, function errorCallback(response) {
+					    // called asynchronously if an error occurs
+					    // or server returns response with an error status.
+					  });
 				if(bet.idUser == idUser) {
 					vm.betsByUser.push(bet);
 				}
 			});
-			$scope.$apply(function () {
-	            $scope.bets = vm.bets;
-	        });
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser == '') {
 			} else if(vm.currentDate - vm.betsByUser[0].date >= timeBlockSendButton) {
