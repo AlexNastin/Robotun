@@ -56,7 +56,7 @@
 								</a>
 							</security:authorize> <security:authorize
 								access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-								<a style="text-align:left;" href="<c:url value="${profileURL}" />">Мой профиль<i
+								<a style="text-align:left;" href="<c:url value="${profileURL}" />">Мой профиль <i
 									class="fa fa-suitcase"></i>
 								</a>
 							</security:authorize></li>

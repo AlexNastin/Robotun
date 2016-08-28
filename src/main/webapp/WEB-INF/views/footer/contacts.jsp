@@ -37,19 +37,17 @@
 <div class="">
 <form:form modelAttribute="feedBackForm" action="${sendFeedback}">
 <div class="form-group">
-<form:input class="form-control" path="email" placeholder="Ваш e-mail адрес" />
+<form:input class="form-control"   path="email" placeholder="Ваш e-mail адрес" />
 </div>
-<div class="form-group">
 <form:errors  path="email" />
+<div class="form-group">
+<form:input class="form-control"   path="name"  placeholder="Как к вам обращаться?" />
 </div>
 <div class="form-group">
-<form:input class="form-control" path="name" placeholder="Как к вам обращаться?" />
+<form:input class="form-control"  path="title" placeholder="Тема письма" />
 </div>
 <div class="form-group">
-<form:input class="form-control" path="title" placeholder="Тема письма" />
-</div>
-<div class="form-group">
-<form:textarea class="form-control"  path="text" placeholder="Текст письма" rows="5" style="resize: none;"/>
+<form:textarea class="form-control"   path="text" placeholder="Текст письма" rows="5" style="resize: none;"/>
 </div>
 <div class="form-group">
 <input class="btn btn-info" type="submit" value="Отправить">

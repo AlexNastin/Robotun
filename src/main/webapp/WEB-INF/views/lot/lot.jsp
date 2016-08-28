@@ -224,7 +224,7 @@
 													<input id="bestbetter" value="{{bet.idUser}}" type="text" hidden>
 													
 													
-													</a> <div id="tagscloud" style="color:black">Текущий рейтинг:
+													</a> <div id="tagscloud" style="color:black">Рейтинг:
 <span>{{bet.user.rating}}</span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i></h5>
 													
 													<a href ng-if="betCtrl.isICall" id="{{$index}}a"
@@ -242,7 +242,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="qa-message-content" style="color: black">{{bet.cost}} BYN</div>
+											<div class="qa-message-content" style="color: black">Я выполню работу за {{bet.cost}} BYN</div>
 										</div>
 									</div>
 
