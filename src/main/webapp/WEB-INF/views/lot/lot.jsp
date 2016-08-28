@@ -367,11 +367,11 @@ var jsonData = '${lotJson}';
 			vm.bets = data.bets;
 			vm.betsByUser = [];
 			angular.forEach(vm.bets, function(bet) {
+				var url = '/jobster.by/getVoting?idCandidate=' + bet.user.idUser;
+				$.get(url,function(data){
+					bet.user.rating = data;
+				});
 				if(bet.idUser == idUser) {
-					var url = '/jobster.by/getVoting?idCandidate=' + bet.user.idUser;
-					$.get(url,function(data){
-						bet.user.rating = data;
-					});
 					vm.betsByUser.push(bet);
 				}
 			});
