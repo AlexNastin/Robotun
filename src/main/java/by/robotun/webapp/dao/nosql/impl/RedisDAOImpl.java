@@ -33,13 +33,15 @@ public class RedisDAOImpl implements IRedisDAO {
 
 	@Override
 	public Double getVotingCandidate(String idCandidate) {
-		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
-		Collection<Integer> valuesVotingCandidate = votingCandidate.values();
 		Double summ = 0.0;
-		for (Integer integer : valuesVotingCandidate) {
-			summ += integer;
+		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		if (votingCandidate != null) {
+			Collection<Integer> valuesVotingCandidate = votingCandidate.values();
+			for (Integer integer : valuesVotingCandidate) {
+				summ += integer;
+			}
+			summ /= valuesVotingCandidate.size();
 		}
-		summ /= valuesVotingCandidate.size();
 		return summ;
 	}
 
