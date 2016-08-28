@@ -67,8 +67,8 @@
   <option selected="selected" value="4">4</option>
   <option value="5">5</option>
 </select>
-<a id="votes" class="btn btn-success btn-sm main-button-style">Оценить!</a>
-
+<a id="votes" onclick="hider()" class="btn btn-success btn-sm main-button-style">Оценить!</a>
+<p id="thanks" style="display:none; background-color: #33b792; color: white; border-radius: 5px;" >Спасибо! Ваш голос учтён! Вы всегда можете изменить своё решение :)</p>
 </div>
 <div id="tagscloud">Текущий рейтинг:
 <span></span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i>
@@ -146,7 +146,12 @@ $(document).ready(function(){
 });
 
 </script>
-
+<script>
+function hider(){
+	$('#votes').hide();
+	$('#thanks').show();
+}
+</script>
 <script>
 var q = '*:*';
 var fq = ['end_date:[* TO NOW+181DAY]',
