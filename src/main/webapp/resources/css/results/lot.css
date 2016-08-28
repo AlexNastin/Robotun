@@ -557,6 +557,7 @@ h5 {
 	margin-bottom: 0.5em;
 }
 .result-description {
+	word-wrap: break-word;
 	text-align: justify;
 }
 /* -------------------------------- 

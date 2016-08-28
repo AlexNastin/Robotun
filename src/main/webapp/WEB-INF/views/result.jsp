@@ -125,7 +125,7 @@
 
         <div class="col-sm-9 col-md-10 main" style="min-height: 60em;">
             <p class="visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i></button>
+                <button type="button" class="btn btn-primary btn-xs load-button" data-toggle="offcanvas"><i class="fa fa-chevron-left"> <span>Фильтры</span></i></button>
             </p>
 
             <h2>
