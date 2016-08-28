@@ -11,7 +11,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
     <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
@@ -29,7 +29,7 @@
 <div class="policy">
 <div class="container mainpolicy">
 
-<h1>Политика конфиденциальности</h1>
+<h1 style="word-wrap: break-word;">Политика конфиденциальности</h1>
 
 <p>Создатели сайта Jobster.by (Сайт) с особым вниманием и уважением относятся к частной жизни, прикладывая максимальные усилия для использования сведений о частной жизни исключительно с личного разрешения «Пользователя» - лица, имеющее доступ к Сайту, посредством сети Интернет и использующее Сайт в строгом соответствии с нормами законодательства Республики Беларусь.
 <p>Jobster.by предлагает «Пользователю» оставлять о себе только следующие данные:

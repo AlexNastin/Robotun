@@ -6,15 +6,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
-
-
+<!DOCTYPE html>
 <html>
-
 <head>
-<title>Пользовательское соглашение</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
     <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
@@ -24,6 +21,10 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
+<title>Пользовательское соглашение</title>
+
+
+
 <style>
 <!--
  /* Font Definitions */
@@ -122,22 +123,20 @@ div.WordSection1
 	{page:WordSection1;}
 
 </style>
-
 </head>
 
 <body lang=RU style='tab-interval:36.0pt'>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="policy">
-<div class="container mainpolicy " style="word-break: break-word;">
+<div class="policy" style="word-wrap: break-word;">
+<div class="container mainpolicy">
 <div class=WordSection1>
 
-<h1 class=MsoNormal style='text-align:center;text-indent:35.45pt'><span
-style='font-family:"Times New Roman","serif"'>Публичный
-Договор <o:p></o:p></span></h1>
-<h1 class=MsoNormal style='text-align:center;text-indent:35.45pt'><span
-style='font-family:"Times New Roman","serif"'>(пользовательское соглашение)<o:p></o:p></span></h1>
+<h2 class=MsoNormal style='text-align:center;'><span
+style='font-family:"Times New Roman","serif"'>Публичный Договор <o:p></o:p></span></h2>
+<h2 class=MsoNormal style='text-align:center;'><span
+style='font-family:"Times New Roman","serif"'>(пользовательское соглашение)<o:p></o:p></span></h2>
 
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+<p class=MsoNormal style='text-align:justify;'><span
 style='font-size:15.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
@@ -647,5 +646,4 @@ style='font-size:15.0pt;font-family:"Times New Roman","serif"'>Этот Дого
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
-
 </html>
