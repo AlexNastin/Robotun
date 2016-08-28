@@ -128,6 +128,11 @@ div.WordSection1
 <body lang=RU style='tab-interval:36.0pt'>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 <div class="policy" style="word-wrap: break-word;">
+<div class="col-md-offset-2 col-md-8">
+<a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
+<i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
+<span style="font-size: 25px; color:white;" class="text-style-size-result ">Публичный Договор</span>
+</div>
 <div class="container mainpolicy">
 <div class=WordSection1>
 
