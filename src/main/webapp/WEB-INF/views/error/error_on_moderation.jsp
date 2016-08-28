@@ -18,8 +18,8 @@
 	<title>Лот на модерации</title>
 </head>
 <body>
-
-<div class="container" style="min-height: 50em;">
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+<div class="error" style="min-height: 50em;">
     <div class="row">
         <div class="col-md-12">
             <div class="error-template">
@@ -32,12 +32,14 @@
                 </div>
                 <div class="error-actions">
                     <a href='<c:url value="/index" />' class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        На главную </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Позвать на помощь </a>
+                        На главную </a><a href='<c:url value="/contacts" />' class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Позвать на помощь </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+    <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>

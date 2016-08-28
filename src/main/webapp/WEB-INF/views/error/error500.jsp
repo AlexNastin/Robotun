@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Test</title>
+	
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/error.css" />"	rel="stylesheet">
@@ -21,7 +21,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container" style="min-height: 50em;">
+<div class="error" style="min-height: 50em;">
     <div class="row">
         <div class="col-md-12">
             <div class="error-template">
@@ -41,5 +41,7 @@
     </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
+<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+    <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </body>
 </html>
