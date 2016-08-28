@@ -375,6 +375,9 @@ var jsonData = '${lotJson}';
 					vm.betsByUser.push(bet);
 				}
 			});
+			$scope.$apply(function () {
+	            $scope.bets = vm.bets;
+	        });
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			if(vm.betsByUser == '') {
 			} else if(vm.currentDate - vm.betsByUser[0].date >= timeBlockSendButton) {
