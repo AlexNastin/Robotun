@@ -25,7 +25,47 @@
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+<div class="container imageBackground" style="width: 100%; height: 80%; padding-top: 1em;">
+<div class="col-md-offset-2 col-md-8">
+<a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
+<i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
+<span style="font-size: 25px; color:white;" class="text-style-size-result ">Публичный договор</span>
+</div>
+<div class="col-md-offset-2 col-md-8 boardBackgroundColor">
+<div class=""></div>
+<div class="col-md-12 headlineTextStyle">Публичный договор</div>
+<div class="col-md-12">
+<div id="accordion2" class="panel-group" style="margin: auto!important;">
+<div class="panel panel-default">
+<div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2,#accordion3" data-target="#collapseOne22">
+<h4 class="panel-title">Option 1 ▼</h4>
+</div>
+<div id="collapseOne22" class="panel-collapse collapse">
+<div class="panel-body">Lorem ipsum</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2,#accordion3" data-target="#collapseTwo22">
+<h4 class="panel-title">Option 2 ▼</h4>
+</div>
+<div id="collapseTwo22" class="panel-collapse collapse">
+<div class="panel-body">Lorem ipsum</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2,#accordion3" data-target="#collapseThree22">
+<h4 class="panel-title">Option 3 ▼</h4>
+</div>
+<div id="collapseThree22" class="panel-collapse collapse">
+<div class="panel-body">Lorem ipsum</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--COLUMN TWO-->
 
+</div>
 
 <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
