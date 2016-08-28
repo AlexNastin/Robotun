@@ -222,25 +222,10 @@
 													<a ng-href="/jobster.by/viewUserProfile?id={{bet.idUser}}">{{bet.user.nickname}}
 													
 													
-													<script>
-													var better=idUser;
-
-$(document).ready(function(){
-	var idPage=better;
-	var url = '/jobster.by/getVoting?idCandidate={{bet.idUser}}';
-      $.get(url,function(data){
-    	  $("#tagscloud span").text(data);
-        });
-    
-});
-
-</script>
-													
-													
 													
 													
 													</a> <div id="tagscloud" style="color:black">Текущий рейтинг:
-<span></span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i></h5>
+<span>{{bet.user.rating}}</span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i></h5>
 													
 													<a href ng-if="betCtrl.isICall" id="{{$index}}a"
 														ng-click="betCtrl.showNumberICall(bet.idUser, $index)">Посмотреть номер</a>
@@ -383,6 +368,10 @@ var jsonData = '${lotJson}';
 			vm.betsByUser = [];
 			angular.forEach(vm.bets, function(bet) {
 				if(bet.idUser == idUser) {
+					var url = '/jobster.by/getVoting?idCandidate=' + bet.user.idUser;
+					$.get(url,function(data){
+						bet.user.rating = data;
+					});
 					vm.betsByUser.push(bet);
 				}
 			});
@@ -395,7 +384,7 @@ var jsonData = '${lotJson}';
 				document.documentElement.className = "js";
 							 		
 			}
-					
+				
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
 					$.ajax({
