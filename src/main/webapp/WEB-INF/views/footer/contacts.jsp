@@ -26,15 +26,39 @@
 <spring:url var="sendFeedback" value="/contacts/send" />
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
+<div class="policy" style="word-wrap: break-word; height:100%">
+<div class="col-md-offset-2 col-md-8">
+<a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
+<i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
+<span style="font-size: 25px; color:white;" class="text-style-size-result ">Связаться с нами</span>
+</div>
+<div class="container mainpolicy" style="    background-color: rgba(242, 222, 222, 0);">
+<div class="col-md-4 col-sm-4 col-sm-offset-4 col-md-offset-4">
+<div class="">
 <form:form modelAttribute="feedBackForm" action="${sendFeedback}">
-<form:input path="email" placeholder="Ваш e-mail адресс" />
+<div class="form-group">
+<form:input class="form-control" path="email" placeholder="Ваш e-mail адрес" />
+</div>
+<div class="form-group">
 <form:errors  path="email" />
-<form:input path="name" placeholder="Как к вам обращаться" />
-<form:input path="title" placeholder="Тема письма" />
-<form:input path="text" placeholder="Текст письма" />
-<input type="submit" value="SEND">
+</div>
+<div class="form-group">
+<form:input class="form-control" path="name" placeholder="Как к вам обращаться?" />
+</div>
+<div class="form-group">
+<form:input class="form-control" path="title" placeholder="Тема письма" />
+</div>
+<div class="form-group">
+<form:textarea class="form-control"  path="text" placeholder="Текст письма" rows="5" style="resize: none;"/>
+</div>
+<div class="form-group">
+<input class="btn btn-info" type="submit" value="Отправить">
+</div>
 </form:form>
-
+</div>
+</div>
+</div>
+</div>
 <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>

@@ -8,17 +8,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Test</title>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/error.css" />"	rel="stylesheet">
 		<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 	
-	<title>404</title>
+	<title>404 Ошибка</title>
 </head>
 <body>
+<%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <div class="container" style="min-height: 50em;">
     <div class="row">
@@ -33,7 +34,7 @@
                 </div>
                 <div class="error-actions">
                     <a href='<c:url value="/index" />' class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        На главную </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Позвать на помощь </a>
+                        На главную </a><a href='<c:url value="/contacts" />' class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Позвать на помощь </a>
                 </div>
             </div>
         </div>
