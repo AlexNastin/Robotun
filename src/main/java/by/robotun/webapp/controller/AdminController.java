@@ -38,14 +38,6 @@ public class AdminController {
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/admin/deleteModerator", method = RequestMethod.GET)
-	public ModelAndView deleteModerator(@RequestParam(value = "id", required = false) Integer idUser, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		adminService.deleteUser(idUser);
-		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
-		return modelAndView;
-	}
 	
 	@RequestMapping(value = "/admin/deleteUser", method = RequestMethod.GET)
 	@ResponseBody

@@ -81,7 +81,7 @@ var app = angular.module('app', []);
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Не удалять</button>
-          <a class="btn btn-danger" ng-click="usersCtrl.deleteUser(user.idUser, $index)">Удалить</a>
+          <button type="button" class="btn btn-danger" ng-click="usersCtrl.deleteUser(user.idUser, $index)" data-dismiss="modal">Удалить</button>
         </div>
       </div>
       
@@ -105,10 +105,6 @@ app.controller('UsersController', ['$scope', '$http', mainUsersController]);
 
 function mainUsersController ($scope, $http) {
 	var vm = this;
-	vm.updateCustomRequest = function (scope) {
-		vm.users = scope.usersCtrl.users;
-	};
-	//var data = JSON.parse(jsonData);
 	vm.users = [];
 	vm.find = function () {
 		var textName = document.getElementById("findName").value;

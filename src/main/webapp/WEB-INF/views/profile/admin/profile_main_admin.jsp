@@ -38,6 +38,7 @@ var app = angular.module('app', []);
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 </div>		
 </div>
+<span id="message"></span>
 <div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
 <div class="table-responsive" id="list-group">
 				<table class="table table-striped">
@@ -77,7 +78,7 @@ var app = angular.module('app', []);
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Не удалять</button>
-          <a class="btn btn-danger" ng-href='/jobster.by/admin/deleteModerator?id={{user.idUser}}'>Удалить</a>
+          <button type="button" class="btn btn-danger" ng-click="usersCtrl.deleteUser(user.idUser, $index)" data-dismiss="modal">Удалить</button>
         </div>
       </div>
       
@@ -99,7 +100,7 @@ var jsonData = '${listUsersJson}';
 app.controller('UsersController', ['$scope', '$http', mainUsersController]);
 
 
-function mainUsersController ($scope) {
+function mainUsersController ($scope, $http) {
 	var vm = this;
 	vm.updateCustomRequest = function (scope) {
 		vm.users = scope.usersCtrl.users;
@@ -109,6 +110,19 @@ function mainUsersController ($scope) {
 	angular.forEach(data, function(user) {
 		vm.users.push(user);
 	});
+	vm.deleteUser = function (idUser, index) {
+		$http({
+	        method : "GET",
+	        url : '/jobster.by/admin/deleteUser?id=' + idUser
+	    }).then(function mySucces(response) {
+	    	if(response.data == 1) {
+	    		 vm.users.splice(index, 1);
+	    		 document.getElementById("message").innerHTML = "Модератор успешно удалён"
+	    	} else {
+	    		document.getElementById("message").innerHTML = "Ошибка при удалении"
+	    	}
+	    });
+	}
 }
 
 		/* function loader(){       
