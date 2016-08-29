@@ -40,11 +40,19 @@ var app = angular.module('app', []);
 </div>
 <span id="message"></span>
 <div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
-<input placeholder="Имя или никнейм" id="findName"/>
-<input placeholder="ID" id="findID" type="number" min="1"/>
-<a type="button" class="btn btn-danger" ng-click="usersCtrl.find()">Найти совпадения</a>
+<form class="form-inline" style="padding-top:10px">
+  <div class="form-group">
+<input class="form-control" placeholder="Имя или никнейм" id="findName"/>
+</div>
+<div class="form-group">
+<input class="form-control" placeholder="ID" id="findID" type="number" min="1"/>
+</div>
+<div class="form-group">
+<a type="button" class="btn btn-sm btn-info" ng-click="usersCtrl.find()">Найти совпадения</a>
+</div>
+</form>
 <br>
-<span id="alertSearch"></span>
+<span class="btn-danger" id="alertSearch"></span>
 <div class="table-responsive" id="list-group">
 				<table class="table table-striped">
 					<thead>
