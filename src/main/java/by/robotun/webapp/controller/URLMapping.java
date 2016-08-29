@@ -23,6 +23,7 @@ public final class URLMapping {
 	public static final String JSP_FOOTER_ABOUT = "footer/about";
 	
 	public static final String JSP_PROFILE_MAIN_ADMIN = "profile/admin/profile_main_admin";
+	public static final String JSP_PROFILE_USERS_ADMIN = "profile/admin/profile_users_admin";
 	public static final String JSP_PROFILE_ADMIN_ADD_MODERATOR = "profile/admin/admin_add_moderator";
 	public static final String JSP_PROFILE_VIEW = "profile/profile_view";
 

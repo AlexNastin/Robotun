@@ -27,6 +27,7 @@
 </div>
 <div class="user-navigation">
 <a href='<c:url value="/admin/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
+<a href='<c:url value="/admin/users" />' class="list-group-item background-color-menu-profile">Пользователи</a>
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Добавить модератора</a>
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 </div>	

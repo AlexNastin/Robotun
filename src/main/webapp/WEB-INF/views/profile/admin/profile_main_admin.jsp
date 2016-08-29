@@ -33,6 +33,7 @@ var app = angular.module('app', []);
 </div>
 <div class="user-navigation">
 <a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
+<a href='<c:url value="/admin/users" />' class="list-group-item background-color-menu-profile">Пользователи</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 </div>		
