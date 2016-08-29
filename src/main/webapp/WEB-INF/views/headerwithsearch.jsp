@@ -79,8 +79,3 @@
         </div>
     </div>
 </nav>
-
-<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
-<script>
-var app = angular.module('app', []);
-</script>

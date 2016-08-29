@@ -4,7 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+<script>
+var app = angular.module('app', []);
+</script>
 <html ng-app="app">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

@@ -6,6 +6,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 		<!DOCTYPE HTML>
+			<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+<script>
+var app = angular.module('app', []);
+</script>
 <html ng-app="app">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
