@@ -5,10 +5,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
+<security:authorize access="hasRole('ROLE_GUEST')" var="userGuestBool" />
 <security:authorize access="hasRole('ROLE_USER_LEGAL')" var="userLegalBool" />
 <security:authorize access="hasRole('ROLE_USER_PHYSICAL')" var="userPhysicalBool" />
 <security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool" />
-<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool" />
 <c:if test="${userLegalBool}">
 	<c:set value="/legal/profile/myResponses" var="profileURL" />
 </c:if>

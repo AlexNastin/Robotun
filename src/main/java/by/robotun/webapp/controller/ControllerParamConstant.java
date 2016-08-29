@@ -41,6 +41,7 @@ public final class ControllerParamConstant {
 	 * ID
 	 */
 	public static final String ID_USER = "idUser";
+	public static final String ID_VISITED_USER = "idVisitedUser";
 	public static final String ID_ROLE = "idRole";
 	public static final String ID_CATEGORY = "idCategory";
 	public static final String ID_SUBCATEGORY = "idSubcategory";

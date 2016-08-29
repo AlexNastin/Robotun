@@ -164,10 +164,15 @@ public class GuestController {
 	@RequestMapping(value = "/viewUserProfile", method = RequestMethod.GET)
 	public ModelAndView profileUserView(@RequestParam(value = "id", required = true) Integer idUser, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		User user = userService.getUserByIdWithCity(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_VIEW);
-		modelAndView.addObject(ControllerParamConstant.USER_JSON,
-				serializationJSON.toJsonViewsInternalUserSubclass(user));
+		if(person != null) {
+			modelAndView.addObject(ControllerParamConstant.ID_VISITED_USER, person.getId());
+		} else {
+			modelAndView.addObject(ControllerParamConstant.ID_VISITED_USER, 0);
+		}
+		modelAndView.addObject(ControllerParamConstant.USER_JSON, serializationJSON.toJsonViewsInternalUserSubclass(user));
 		modelAndView.addObject(ControllerParamConstant.ID_USER, idUser);
 		return modelAndView;
 	}

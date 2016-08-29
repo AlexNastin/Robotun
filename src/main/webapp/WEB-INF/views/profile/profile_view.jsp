@@ -64,14 +64,17 @@ var app = angular.module('app', []);
                     <div class="col-md-4 col-md-offset-4">
                     <div style="margin:auto">
                    
-                    <select id="rating">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option selected="selected" value="4">4</option>
-  <option value="5">5</option>
-</select>
-<a id="votes" onclick="hider()" class="btn btn-success btn-sm main-button-style">Оценить!</a>
+                    
+<c:if test="${!userGuestBool && idUser != idVisitedUser}">
+	<select id="rating">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option selected="selected" value="4">4</option>
+	  <option value="5">5</option>
+	</select>
+	<a id="votes" onclick="hider()" class="btn btn-success btn-sm main-button-style">Оценить!</a>
+</c:if>
 <p id="thanks" style="display:none; background-color: #33b792; color: white; border-radius: 5px;" >Спасибо! Ваш голос учтён! Вы всегда можете изменить своё решение :)</p>
 </div>
 <div id="tagscloud">Текущий рейтинг:
