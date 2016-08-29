@@ -68,7 +68,7 @@ public class SignupUserPhysicalFormValidator implements Validator {
 		String[] phones = addUserPhysicalForm.getPhones();
 		Pattern patternPhone = regExCollection.getRegExPattern(RegExName.REGEX_PHONE);
 		int countPhone = 0;
-		for (int i = 1; i < phones.length; i++) {
+		for (int i = 0; i < phones.length; i++) {
 			if (!"".equals(phones[i])) {
 				countPhone++;
 				Matcher matcherPhone = patternPhone.matcher(phones[i]);
@@ -78,6 +78,7 @@ public class SignupUserPhysicalFormValidator implements Validator {
 			}
 		}
 		if (countPhone == 0) {
+			System.err.println("iffffffffff");
 			errors.rejectValue(ValidatorParamConstant.FIELD_FORM_REGISTRATION_PHONES, LocalizationParamNameProperties.VALIDATION_SIGNUP_PHONE_EMPTY);
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, ValidatorParamConstant.FIELD_FORM_REGISTRATION_PASSWORD, LocalizationParamNameProperties.VALIDATION_EMPTY);

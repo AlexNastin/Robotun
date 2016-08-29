@@ -97,7 +97,7 @@ public class SignupUserLegalFormValidator implements Validator {
 		String[] phones = addUserLegalForm.getPhones();
 		Pattern patternPhone = regExCollection.getRegExPattern(RegExName.REGEX_PHONE);
 		int countPhone = 0;
-		for (int i = 1; i < phones.length; i++) {
+		for (int i = 0; i < phones.length; i++) {
 			if (!"".equals(phones[i])) {
 				countPhone++;
 				Matcher matcherPhone = patternPhone.matcher(phones[i]);
