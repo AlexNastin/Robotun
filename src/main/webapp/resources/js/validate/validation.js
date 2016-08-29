@@ -292,7 +292,7 @@ messages:  {
 					{
 					regexp: /^(\+375)?[0-9]{9}$/
 					});	       */
-		$.validator.messages.regexp = 'Введите номер в формате +375XXXXXXXXX';
+		/*$.validator.messages.regexp = 'Введите номер в формате +375XXXXXXXXX';
 		$.validator.messages.required = 'Поле не может быть пустым'; 
 		$.validator.addClassRules({
 		        phone1:{
@@ -306,5 +306,5 @@ messages:  {
 			        regexp: /^(\+375)?[0-9]{9}$/
 		        }		        
 		    });
-		//Конец валидации телефона
+		//Конец валидации телефона*/
 }); // end document.ready

@@ -21,6 +21,7 @@
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/script.js" />"></script> 
 	<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+	<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>       
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -120,7 +121,7 @@
 		</div>
 		<div class="form-group col-md-12 form-group-required" style="margin-bottom: 1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Номер телефона"  />
+		<form:input id="phone1" class="form-control phone1 phone-group" path="phones[0]" placeholder="Номер телефона"  />
 		<a id="open-close" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
@@ -130,7 +131,7 @@
 		<div id="block-links">
    		<div class="form-group col-md-12" style="margin-bottom: 1.5em; padding: 0px;  height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone2" class="form-control phone2" path="phones[1]" placeholder="Доп.телефон" />		
+		<form:input id="phone2" class="form-control phone2 phone-group" path="phones[1]" placeholder="Доп.телефон" />		
 		<a id="open-close2" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>	
 		</div>
 		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
@@ -138,7 +139,7 @@
 		</div>
     	<div id="block-links2">
    		<div class="form-group fieldPhoneHeight">
-		<form:input id="phone3" class="form-control phone3" path="phones[2]" placeholder="Доп.телефон" />
+		<form:input id="phone3" class="form-control phone3 phone-group" path="phones[2]" placeholder="Доп.телефон" />
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		<form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" />
 		</div>

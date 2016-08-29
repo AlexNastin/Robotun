@@ -19,9 +19,7 @@
 	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">
 	<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script	src="<c:url value="/resources/js/script.js" />"></script>    
-	<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
-    <script src="<c:url value="/resources/js/validate/validation.js" />"> </script>         
+	<script	src="<c:url value="/resources/js/script.js" />"></script>     
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -135,7 +133,7 @@
 		</div>
 		<div class="form-group col-md-12 form-group-required" style="margin-bottom:1.5em; padding: 0px; height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone1" class="form-control phone1" path="phones[0]" placeholder="Номер телефона"  />
+		<form:input id="phone1" class="form-control phone1 phone-group" path="phones[0]" placeholder="Номер телефона"  />
 		<a id="open-close3" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
@@ -144,7 +142,7 @@
 		<div id="block-links3">
    		<div class="form-group col-md-12" style="margin-bottom:1.5em; padding: 0px;  height: 2.8em;">
 		<div class="input-group">
-		<form:input id="phone2" class="form-control phone2" path="phones[1]" placeholder="Доп.телефон" />
+		<form:input id="phone2" class="form-control phone2 phone-group" path="phones[1]" placeholder="Доп.телефон" />
 		<a id="open-close4" class="input-group-addon" href="#"><i class="fa fa-plus fa-1x" aria-hidden="true"></i></a>
 		</div>
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
@@ -152,7 +150,7 @@
 		</div>
     	<div id="block-links4">
    		<div class="form-group fieldPhoneHeight">
-		<form:input id="phone3" class="form-control phone3" path="phones[2]" placeholder="Доп.телефон" />
+		<form:input id="phone3" class="form-control phone3 phone-group" path="phones[2]" placeholder="Доп.телефон" />
 		<span class="error"><form:errors class="textStyleValidation textStyleValidationColorWhite textStyleServerValidation" path="phones" /></span>
 		<label class="error textStyleValidation textStyleValidationColorWhite" generated="true" for="phone3"></label>
 		</div>
@@ -227,6 +225,9 @@
         });
     });
 </script>
+<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script>  
+<script src="<c:url value="/resources/js/validate/validation.js" />"> </script>  
 <%@include file="/WEB-INF/views/footer.jsp"%>
 </body>
 </html>
