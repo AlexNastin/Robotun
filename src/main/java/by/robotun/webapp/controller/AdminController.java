@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import by.robotun.webapp.domain.Person;
@@ -41,9 +42,17 @@ public class AdminController {
 	@RequestMapping(value = "/admin/deleteModerator", method = RequestMethod.GET)
 	public ModelAndView deleteModerator(@RequestParam(value = "id", required = false) Integer idUser, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
-		adminService.deleteModerator(idUser);
+		adminService.deleteUser(idUser);
 		ModelAndView modelAndView = new ModelAndView(URLMapping.REDIRECT_PROFILE_MAIN_ADMIN);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/admin/deleteUser", method = RequestMethod.GET)
+	@ResponseBody
+	public int deleteUser(@RequestParam(value = "id", required = false) Integer idUser, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
+		int status = adminService.deleteUser(idUser);
+		return status;
 	}
 	
 	@RequestMapping(value = "/admin/resetModeratorPassword", method = RequestMethod.GET)
@@ -54,4 +63,19 @@ public class AdminController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+	public ModelAndView users(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_USERS_ADMIN);
+		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/admin/findUsers", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String findUsers(@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "id", required = false) Integer idUser) throws ServiceException {
+		List<User> users = adminService.findUsersCriteria(idUser, name.replace("*", "%"));
+		return serializationJSON.toJsonViewsPublic(users);
+	}
 }

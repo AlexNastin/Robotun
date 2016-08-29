@@ -14,10 +14,12 @@ public interface IAdminService {
 	
 	User getStaffById(int idUser) throws ServiceException;
 	
-	void deleteModerator(Integer id) throws ServiceException;
+	int deleteUser(Integer id) throws ServiceException;
 
 	void resetModeratorPassword(Integer idUser) throws ServiceException;
 	
 	void updatePasswordStaff(User userStaff) throws ServiceException;
+
+	List<User> findUsersCriteria(Integer idUser, String name) throws ServiceException;
 
 }

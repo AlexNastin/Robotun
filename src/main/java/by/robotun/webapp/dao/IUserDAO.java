@@ -25,4 +25,6 @@ public interface IUserDAO {
 
 	public User selectUserByIdWithCity(int idUser) throws DaoException;
 
+	public List<User> selectUsersSearchCriteria(Integer idUser, String name) throws DaoException;
+
 }

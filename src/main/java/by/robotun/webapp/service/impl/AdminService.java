@@ -74,13 +74,15 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public void deleteModerator(Integer id) throws ServiceException {
+	public int deleteUser(Integer id) throws ServiceException {
+		int status = 1;
 		try {
 			userDAO.deleteUser(id);
 		} catch (DaoException e) {
+			status = 0;
 			LOGGER.error(e.getMessage(), e);
-			throw new ServiceException(e);
-		}		
+		}	
+		return status;
 	}
 
 	@Override
@@ -105,5 +107,17 @@ public class AdminService implements IAdminService {
 			LOGGER.error(e.getMessage(), e);
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public List<User> findUsersCriteria(Integer idUser, String name) throws ServiceException {
+		List<User> users = new ArrayList<User>();
+		try {
+			users = userDAO.selectUsersSearchCriteria(idUser, name);
+		} catch (DaoException e) {
+			LOGGER.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+		return users;
 	}
 }

@@ -10,6 +10,7 @@ public final class DaoParamConstant {
 	
 	public static final String SORT_TYPE_CHEAP = "cheap";
 	
+	public static final int FIND_USERS_MAX_FOR_ADMIN = 25;
 	
 	
 	

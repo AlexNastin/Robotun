@@ -32,31 +32,35 @@ var app = angular.module('app', []);
 <img src="<c:url value="/resources/images/avatar_user/avatar_big/${avatarPath}.jpg"/>" class="img-responsive img-thumbnail" alt="Image">
 </div>
 <div class="user-navigation">
-<a href='#' class="list-group-item background-color-menu-profile active-menu">Профиль</a>
-<a href='<c:url value="/admin/users" />' class="list-group-item background-color-menu-profile">Пользователи</a>
+<a href='<c:url value="/admin/profile" />' class="list-group-item background-color-menu-profile">Профиль</a>
+<a href='#' class="list-group-item background-color-menu-profile active-menu">Пользователи</a>
 <a href='<c:url value="/admin/addModerator" />' class="list-group-item background-color-menu-profile">Добавить модератора</a>
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 </div>		
 </div>
+<span id="message"></span>
 <div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
+<input placeholder="Имя или никнейм" id="findName"/>
+<input placeholder="ID" id="findID" type="number" min="1"/>
+<a type="button" class="btn btn-danger" ng-click="usersCtrl.find()">Найти совпадения</a>
+<br>
+<span id="alertSearch"></span>
 <div class="table-responsive" id="list-group">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Логин</th>
+							<th>ID</th>
 							<th>Никнейм</th>
 							<th>Дата регистрации</th>
 							<th>Удалить</th>
-							<th>Сброс пароля</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat="user in usersCtrl.users">
-							<td>{{user.login}}</td>
+							<td>{{user.idUser}}</td>
 							<td>{{user.nickname}}</td>
 							<td>{{user.registrationDate | date:'yyyy-mm-dd HH:mm:ss'}}</td>
 							<td><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{user.idUser}}">Удалить</a></td>
-							<td><a ng-href='/jobster.by/admin/resetModeratorPassword?id={{user.idUser}}'>Сбросить пароль по умолчанию</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,11 +77,11 @@ var app = angular.module('app', []);
           <h4 class="modal-title">Подтверждение удаления</h4>
         </div>
         <div class="modal-body">
-          <p>Удалить модератора?</p>
+          <p>Удалить пользователя?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Не удалять</button>
-          <a class="btn btn-danger" ng-href='/jobster.by/admin/deleteModerator?id={{user.idUser}}'>Удалить</a>
+          <a class="btn btn-danger" ng-click="usersCtrl.deleteUser(user.idUser, $index)">Удалить</a>
         </div>
       </div>
       
@@ -94,51 +98,50 @@ var app = angular.module('app', []);
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript">
 
-var jsonData = '${listUsersJson}';
+//var jsonData = '${listUsersJson}';
 
 app.controller('UsersController', ['$scope', '$http', mainUsersController]);
 
 
-function mainUsersController ($scope) {
+function mainUsersController ($scope, $http) {
 	var vm = this;
 	vm.updateCustomRequest = function (scope) {
 		vm.users = scope.usersCtrl.users;
 	};
-	var data = JSON.parse(jsonData);
+	//var data = JSON.parse(jsonData);
 	vm.users = [];
-	angular.forEach(data, function(user) {
-		vm.users.push(user);
-	});
+	vm.find = function () {
+		var textName = document.getElementById("findName").value;
+		var textID = document.getElementById("findID").value;
+		if($.trim(textName) == '' && $.trim(textID) == '') {
+			document.getElementById("alertSearch").innerHTML = "Заполните хотя бы одно поле"
+		} else {
+			var link = '/jobster.by/admin/findUsers?name=' + textName + "&id=" + textID;
+			$http({
+		        method : "GET",
+		        url : link
+		    }).then(function mySucces(response) {
+		    	vm.users = [];
+		    	angular.forEach(response.data, function(user) {
+		    		vm.users.push(user);
+		    	});
+		    });
+		}
+	};
+	vm.deleteUser = function (idUser, index) {
+		$http({
+	        method : "GET",
+	        url : '/jobster.by/admin/deleteUser?id=' + idUser
+	    }).then(function mySucces(response) {
+	    	if(response.data == 1) {
+	    		 vm.users.splice(index, 1);
+	    		 document.getElementById("message").innerHTML = "Пользователь успешно удалён"
+	    	} else {
+	    		document.getElementById("message").innerHTML = "Ошибка при удалении"
+	    	}
+	    });
+	}
 }
-
-		/* function loader(){       
-			var scope = angular.element(document.getElementById("list-group")).scope();
-			// «теневой» запрос к серверу
-			$(".load").fadeIn(500, function () {
-							$.ajax({
-								url:"/jobster.by/autoloader/admin/moderators",
-								type:"GET",
-								data:{
-									//передаем параметры
-									offset: offset
-								},
-								success:function(data) {
-									var data = JSON.parse(data);
-									if(data.length == 0) {
-										isEnd = true;
-									}
-									for(var i=0; i<data.length; i++) {
-										scope.usersCtrl.users.push(data[i]);
-									}
-									scope.$apply(function () {
-										scope.usersCtrl.updateCustomRequest(scope);
-									});
-									offset++;
-									block = false;
-								}
-							});
-						});
-			} */
 		</script>
 </body>
 </html>
