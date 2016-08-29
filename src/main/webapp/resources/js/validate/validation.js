@@ -33,6 +33,62 @@ $(document).ready(function(){
 		    },
 		    "Please select a value");
 	
+	//Валидация формы обратной связи
+	$('#feedBackForm').validate({
+		rules:{
+			email: {
+				required: true,
+		        email: true,
+		        rangelength: [1, 50]
+			},
+			name: {
+				required: true,
+				regexp: /^[А-яёЁ\\-]{2,40}$/,
+				rangelength: [2, 40]
+			},
+			title: {
+				required: true,
+				regexp: /^[A-Za-zа-яА-ЯёЁ0-9\.\,\-\ ]+$/,
+				rangelength: [1, 100]
+			},
+			text: {
+				required: true,
+				regexp: /^[^\{\}\<\>\']*$/,
+				rangelength: [1, 500]
+			}
+		},
+		messages: {
+			email: {
+				required: 'Поле не может быть пустым.',
+				email: 'Неверный e-mail.',
+				rangelength: "Не более 50 символов"
+			},
+			name: {
+				required: 'Поле не может быть пустым.',
+				regexp: 'Некорректный ввод.',
+				rangelength: 'Не более 40 символов'
+			},
+			title: {
+				required: 'Поле не может быть пустым.',
+				regexp: 'Некорректный ввод.',
+				rangelength: 'Не более 100 символов.'
+			},
+			text: {
+				required: 'Поле не может быть пустым.',
+				regexp: 'Некорректный ввод.',
+				rangelength: 'Не более 500 символов.'	
+			}
+		},
+		highlight: function(element) {
+			$(element).closest('.control-group').removeClass('success').addClass('error');
+		},
+		success: function(element) {
+			element
+			.text('Успешно').addClass('valid')
+			.closest('.control-group').removeClass('error').addClass('success');
+		}
+	});
+	//Конец валидации формы обратной связи
 	
 	//Валидация на добавление и обновление работы
 	$('#addLotForm, #updateLotForm').validate({
@@ -305,6 +361,6 @@ messages:  {
 		        phone3:{
 			        regexp: /^(\+375)?[0-9]{9}$/
 		        }		        
-		    });
-		//Конец валидации телефона*/
+		    });*/
+		//Конец валидации телефона
 }); // end document.ready

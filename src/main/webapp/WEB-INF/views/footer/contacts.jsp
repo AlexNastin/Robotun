@@ -16,6 +16,7 @@
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
     <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/footer.css"  />" rel="stylesheet" />
+    <link href="<c:url value="/resources/css/validation.css"  />" rel="stylesheet" />
     <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
     <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
@@ -36,18 +37,22 @@
 <div class="col-md-4 col-sm-4 col-sm-offset-4 col-md-offset-4">
 <div class="">
 <form:form modelAttribute="feedBackForm" action="${sendFeedback}">
-<div class="form-group">
+<div class="form-group" style="height: 2.8em;">
 <form:input class="form-control"   path="email" placeholder="Ваш e-mail адрес" />
+<label for="email" class="error textStyleValidation textStyleValidationColorWhite" id="email-error"></label>
 </div>
 <form:errors  path="email" />
-<div class="form-group">
+<div class="form-group" style="height: 2.8em;">
 <form:input class="form-control"   path="name"  placeholder="Как к вам обращаться?" />
+<label for="name" class="error textStyleValidation textStyleValidationColorWhite" id="name-error"></label>
 </div>
-<div class="form-group">
+<div class="form-group" style="height: 2.8em;">
 <form:input class="form-control"  path="title" placeholder="Тема письма" />
+<label for="title" class="error textStyleValidation textStyleValidationColorWhite" id="title-error"></label>
 </div>
-<div class="form-group">
+<div class="form-group" style="height: 9.8em;">
 <form:textarea class="form-control"   path="text" placeholder="Текст письма" rows="5" style="resize: none;"/>
+<label for="text" class="error textStyleValidation textStyleValidationColorWhite" id="text-error"></label>
 </div>
 <div class="form-group">
 <input class="btn btn-info" type="submit" value="Отправить">
@@ -57,6 +62,9 @@
 </div>
 </div>
 </div>
+	<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
+	<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script> 
+    <script src="<c:url value="/resources/js/validate/validation.js" />"> </script> 
 <%@include file="/WEB-INF/views/footer.jsp"%> 
 </body>
 </html>
