@@ -50,10 +50,8 @@ public class FooterController {
 		modelAndView.addObject(ControllerParamConstant.FEEDBACK_FORM, new FeedBackFrom());
 		helperValidator.validationLogin(feedBackFrom.getEmail());
 		if (!result.hasErrors()) {
-			mailService.sendSimpleMailMessage(mailService.constructFeedbackSimpleMailMessage(feedBackFrom.getEmail(),
-					feedBackFrom.getName(), feedBackFrom.getTitle(), feedBackFrom.getText()));
-			modelAndView.addObject(ControllerParamConstant.MESSAGE,
-					messages.getMessage(LocalizationParamNameProperties.MESSAGE_FEEDBACK_SUCCESSFUL, null, locale));
+			mailService.sendSimpleMailMessage(mailService.constructFeedbackSimpleMailMessage(feedBackFrom.getEmail(), feedBackFrom.getName(), feedBackFrom.getTitle(), feedBackFrom.getText()));
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, messages.getMessage(LocalizationParamNameProperties.MESSAGE_FEEDBACK_SUCCESSFUL, null, locale));
 		}
 		return modelAndView;
 	}

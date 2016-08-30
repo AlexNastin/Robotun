@@ -9,7 +9,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
-<title>Забыл пароль</title>
+<title>Забыл пароль | Jobster.by -  лучшая разовая работа</title>
 <!-- Init search variable -->
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
