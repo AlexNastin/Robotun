@@ -13,7 +13,7 @@ var app = angular.module('app', []);
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
-<title>{{lotCtrl.lot.name}} | Jobster.by -  лучшая разовая работа</title>
+<title>Просмотр работы| Jobster.by -  лучшая разовая работа</title>
 
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
