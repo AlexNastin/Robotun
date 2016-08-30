@@ -39,6 +39,7 @@ public class SerializationJSON {
 	}
 
 	public String toJsonViewsInternalLot(Lot lot) throws ServiceException {
+		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		for (Bet bet : lot.getBets()) {
 			bet.getUser().setNickname(bet.getUser().getNickname().replace("\"", "\\\""));
 		}
@@ -53,6 +54,7 @@ public class SerializationJSON {
 	}
 	
 	public String toJsonViewsInternalLot(ArchiveLot archiveLot) throws ServiceException {
+		archiveLot.getUser().setNickname(archiveLot.getUser().getNickname().replace("\"", "\\\""));
 		for (ArchiveBet archiveBet : archiveLot.getBets()) {
 			archiveBet.getUser().setNickname(archiveBet.getUser().getNickname().replace("\"", "\\\""));
 		}
@@ -111,6 +113,7 @@ public class SerializationJSON {
 	}
 	
 	public String toJsonViewsInternalUserSubclass(User user) throws ServiceException {
+		user.setNickname(user.getNickname().replace("\"", "\\\""));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {

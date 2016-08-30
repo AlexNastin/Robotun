@@ -138,28 +138,16 @@ function mainLotsController ($scope) {
 	});
 	vm.preRemoveLot;
 	vm.remove = function(lot) {
-		var scope = angular.element(document.getElementById("list-group")).scope();
-		var index = scope.lotsCtrl.lots.indexOf(vm.preRemoveLot);
-		$.ajax({
-			url:"/jobster.by/user/deleteLot",
-			type:"GET",
-			data:{
-				//передаем параметры
-				id: vm.lots[index].idLot
-			},
-			success:function(data) {
-				if(data=='0'){
-					console.log(index);
-					scope.lotsCtrl.lots.splice(index, 1);
-					offset--;
-					scope.$apply(function () {
-							scope.lotsCtrl.updateCustomRequest(scope);
-					});
-				}
+		var index = vm.lots.indexOf(vm.preRemoveLot);
+		$http({
+	        method : "GET",
+	        url : '/jobster.by/user/deleteLot?id=' + vm.lots[index].idLot
+	    }).then(function mySucces(response) {
+	    	if(response.data=='0'){
+				vm.lots.splice(index, 1);
+				offset--;
 			}
-		});
-		  
-		  
+	    }); 
 	}
 }
 

@@ -204,7 +204,7 @@ var app = angular.module('app', []);
         $("#wrapper").toggleClass("toggled");
     });
 
-var nickname = "${nickname}";
+var nickname = '${nickname}';
 var idUser = ${idUser};
 var id;
 var isICall = ${isICall};
@@ -225,7 +225,7 @@ var jsonData = '${lotJson}';
 		app.controller('BetController', ['$scope', '$http', betController]);
 
 
-		function lotController ($scope) {
+		function lotController ($scope, $http) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			zoom = data.city.scale;
@@ -237,28 +237,23 @@ var jsonData = '${lotJson}';
 			vm.isMeCall = isMeCall;
 			vm.idUser = idUser;
 			vm.showNumberICall = function(idUser) {
-					$.ajax({
-						url:"lot/showNumber/archive/owner",
-						type:"GET",
-						data:{
-							//передаем параметры
-							idLot: vm.lot.idArchiveLot
-						},
-						success:function(number) {
-							var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
-							for(var i=0; i<number.length; i++) {
-								if(number[i] != "") {
-									contentNumber = contentNumber + '<a href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
-								}
+					$http({
+				        method : "GET",
+				        url : 'lot/showNumber/archive/owner?idLot=' + vm.lot.idArchiveLot
+				    }).then(function mySucces(response) {
+				    	var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
+						for(var i=0; i<response.data.length; i++) {
+							if(response.data[i] != "") {
+								contentNumber = contentNumber + '<a href="tel:'+ response.data[i] + '">' + response.data[i] + '</a><br>';
 							}
-							document.getElementById('ownerNumber').innerHTML = contentNumber;
-							document.getElementById('ownerNumbera').remove();
 						}
-					});
+						document.getElementById('ownerNumber').innerHTML = contentNumber;
+						document.getElementById('ownerNumbera').remove();
+				    });
 			}
 		}
 		
-		function betController ($scope) {
+		function betController ($scope, $http) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			vm.currentDate = ${currentDate};
@@ -272,26 +267,19 @@ var jsonData = '${lotJson}';
 			vm.betsByUser.sort(function(a, b){return b.date-a.date});
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
-					$.ajax({
-						url:"lot/showNumber/archive/client",
-						type:"GET",
-						data:{
-							//передаем параметры
-							id: idUser,
-							idLot: id
-						},
-						success:function(number) {
-							var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
-							console.log(number)
-							for(var i=0; i<number.length; i++) {
-								if(number[i] != "") {
-									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
-								}
+					$http({
+				        method : "GET",
+				        url : 'lot/showNumber/archive/client?idLot=' + id + '&id=' + idUser
+				    }).then(function mySucces(response) {
+				    	var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
+						for(var i=0; i<response.data.length; i++) {
+							if(response.data[i] != "") {
+								contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ response.data[i] + '">' + response.data[i] + '</a><br>';
 							}
-							document.getElementById(index).innerHTML = contentNumber;  
-							document.getElementById(index+'a').remove();
 						}
-					});
+						document.getElementById(index).innerHTML = contentNumber;  
+						document.getElementById(index+'a').remove();
+				    });
 			}
 		}
 		

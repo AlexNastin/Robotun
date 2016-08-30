@@ -285,7 +285,7 @@ var app = angular.module('app', []);
         $("#wrapper").toggleClass("toggled");
     });
 
-var nickname = "${nickname}";
+var nickname = '${nickname}';
 var idUser = ${idUser};
 var id;
 var isICall = ${isICall};
@@ -308,7 +308,7 @@ var jsonData = '${lotJson}';
 		app.controller('BetController', ['$scope', '$http', betController]);
 
 
-		function lotController ($scope) {
+		function lotController ($scope, $http) {
 			var vm = this;
 			var data = JSON.parse(jsonData);
 			zoom = data.city.scale;
@@ -333,24 +333,19 @@ var jsonData = '${lotJson}';
 			vm.idUser = idUser;
 			vm.isShowSendButton = !(vm.idUser == vm.lot.idUser);
 			vm.showNumberICall = function(idUser) {
-					$.ajax({
-						url:"lot/showNumber/owner",
-						type:"GET",
-						data:{
-							//передаем параметры
-							idLot: vm.lot.idLot
-						},
-						success:function(number) {
-							var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
-							for(var i=0; i<number.length; i++) {
-								if(number[i] != "") {
-									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
-								}
-							}
-							document.getElementById('ownerNumber').innerHTML = contentNumber;
-							document.getElementById('ownerNumbera').remove();
+				$http({
+			        method : "GET",
+			        url : 'lot/showNumber/owner?idLot=' + vm.lot.idLot
+			    }).then(function mySucces(response) {
+			    	var contentNumber = document.getElementById('ownerNumber').innerHTML + 'Связаться можно по телефонам:<br>';
+					for(var i=0; i<response.data.length; i++) {
+						if(response.data[i] != "") {
+							contentNumber = contentNumber + '<a href="tel:'+ response.data[i] + '">' + response.data[i] + '</a><br>';
 						}
-					});
+					}
+					document.getElementById('ownerNumber').innerHTML = contentNumber;
+					document.getElementById('ownerNumbera').remove();
+			    });
 			}
 		}
 		
@@ -373,7 +368,6 @@ var jsonData = '${lotJson}';
 			vm.bets = data.bets;
 			vm.betsByUser = [];
 			angular.forEach(vm.bets, function(bet) {
-				var url = '/jobster.by/getVoting?idCandidate=' + bet.user.idUser;
 				$http({
 					  method: 'GET',
 					  url: '/jobster.by/getVoting?idCandidate=' + bet.user.idUser
@@ -400,25 +394,19 @@ var jsonData = '${lotJson}';
 				
 			vm.isICall = isICall;
 			vm.showNumberICall = function(idUser, index) {
-					$.ajax({
-						url:"lot/showNumber/client",
-						type:"GET",
-						data:{
-							//передаем параметры
-							id: idUser,
-							idLot: id
-						},
-						success:function(number) {
-							var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
-							for(var i=0; i<number.length; i++) {
-								if(number[i] != "") {
-									contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ number[i] + '">' + number[i] + '</a><br>';
-								}
-							}
-							document.getElementById(index).innerHTML = contentNumber;  
-							document.getElementById(index+'a').remove();
+				$http({
+			        method : "GET",
+			        url : 'lot/showNumber/client?idLot=' + id + '&id=' + idUser
+			    }).then(function mySucces(response) {
+			    	var contentNumber = document.getElementById(index).innerHTML + 'Связаться можно по телефонам:<br>';
+					for(var i=0; i<response.data.length; i++) {
+						if(response.data[i] != "") {
+							contentNumber = contentNumber + '<a style="color: #3abeb1" href="tel:'+ response.data[i] + '">' + response.data[i] + '</a><br>';
 						}
-					});
+					}
+					document.getElementById(index).innerHTML = contentNumber;  
+					document.getElementById(index+'a').remove();
+			    });
 			}
 		}
 		
