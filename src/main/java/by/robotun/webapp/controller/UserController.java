@@ -57,7 +57,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicLot(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
@@ -68,7 +68,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicLot(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
@@ -79,7 +79,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<ArchiveLot> archiveLots = userService.getArchiveLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_PHYSICAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicArchiveLot(archiveLots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname());
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
@@ -103,7 +103,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_LOTS_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicLot(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
@@ -114,7 +114,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<ArchiveLot> archiveLots = userService.getArchiveLotsCreatedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_ARCHIVE_LOTS_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(archiveLots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicArchiveLot(archiveLots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
@@ -125,7 +125,7 @@ public class UserController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		List<Lot> lots = userService.getLotsRespondedUser(person.getId());
 		ModelAndView modelAndView = new ModelAndView(URLMapping.JSP_PROFILE_RESPONSES_LEGAL);
-		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublic(lots));
+		modelAndView.addObject(ControllerParamConstant.LIST_LOTS_JSON, serializationJSON.toJsonViewsPublicLot(lots));
 		modelAndView.addObject(ControllerParamConstant.NICKNAME, person.getNickname().replace("\\\"","\""));
 		modelAndView.addObject(ControllerParamConstant.AVATAR_PATH, person.getPath());
 		return modelAndView;
