@@ -25,26 +25,34 @@ function printText(json, isICall) {
 		var scope = angular.element(document.getElementById("wallmessages")).scope();
 		var json = JSON.parse(json);
 		var date = new Date().getTime();
-		var user = {
-				nickname: json.nickname,
-				avatar: {
-					path: json.avatarPath
-				}
-		}
-		var bet = {
-				cost: json.cost,
-				idUser: json.idUser,
-				idLot: json.idLot,
-				user: user,
-				date: date
-		}
-		scope.$apply(function () {
-			scope.betCtrl.bets.push(bet);
-		});
-	    var countBet = parseInt(document.getElementById("countBet").innerHTML);
-	    document.getElementById("countBet").innerHTML = countBet+=1;
-	    if(json.idUser == idUser) {
-	    	drawButtonPhoneOwner();
-	    }
+		var url = '/jobster.by/getVoting?idCandidate=' + json.idUser;
+		var rating;
+		$.get(url,function(data){
+			var user = {
+					nickname: json.nickname,
+					avatar: {
+						path: json.avatarPath
+					},
+					rating: data
+			}
+			var bet = {
+					cost: json.cost,
+					idUser: json.idUser,
+					idLot: json.idLot,
+					user: user,
+					date: date
+			}
+			scope.$apply(function () {
+				console.log(bet)
+				scope.betCtrl.bets.push(bet);
+			});
+		    var countBet = parseInt(document.getElementById("countBet").innerHTML);
+		    document.getElementById("countBet").innerHTML = countBet+=1;
+		    if(json.idUser == idUser) {
+		    	drawButtonPhoneOwner();
+		    }
+	    	  
+	   });
+		
 	}
 }

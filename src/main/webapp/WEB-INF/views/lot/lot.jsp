@@ -373,10 +373,6 @@ var jsonData = '${lotJson}';
 					  url: '/jobster.by/getVoting?idCandidate=' + bet.user.idUser
 					}).then(function successCallback(response) {
 						bet.user.rating=response.data;
-					    console.log(response.data);
-					  }, function errorCallback(response) {
-					    // called asynchronously if an error occurs
-					    // or server returns response with an error status.
 					  });
 				if(bet.idUser == idUser) {
 					vm.betsByUser.push(bet);

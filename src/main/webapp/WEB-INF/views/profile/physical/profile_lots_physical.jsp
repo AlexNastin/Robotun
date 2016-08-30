@@ -122,6 +122,7 @@ function mainLotsController ($scope) {
 	vm.lots = [];
 	angular.forEach(data, function(lot) {
 		var randomInt = getRandomInt(0,vm.lotsImages.length-1);
+		console.log(vm.lotsImages[randomInt])
 		lot.logoImage = vm.lotsImages[randomInt];
 		lot.indexImage = randomInt;
 		if(lot.isVisible == 1) {

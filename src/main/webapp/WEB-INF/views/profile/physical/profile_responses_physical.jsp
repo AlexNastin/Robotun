@@ -85,17 +85,18 @@ app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 function mainLotsController ($scope) {
 	var vm = this;
 	vm.lotsImages = lotsImages;
+	var data = JSON.parse(jsonData);
+	vm.lots = [];
 	vm.updateCustomRequest = function (scope) {
+		vm.lots = scope.lotsCtrl.lots;
+	};
+	angular.forEach(data, function(lot) {
 		var randomInt = getRandomInt(0,vm.lotsImages.length-1);
 		lot.logoImage = vm.lotsImages[randomInt];
 		lot.indexImage = randomInt;
-		vm.lots = scope.lotsCtrl.lots;
-	};
-	var data = JSON.parse(jsonData);
-	vm.lots = [];
-	angular.forEach(data, function(lot) {
 		vm.lots.push(lot);
 	});
+	
 }
 
 		function loader(){   
