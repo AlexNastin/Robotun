@@ -106,8 +106,6 @@ var app = angular.module('app', []);
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript">
 
-//var jsonData = '${listUsersJson}';
-
 app.controller('UsersController', ['$scope', '$http', mainUsersController]);
 
 

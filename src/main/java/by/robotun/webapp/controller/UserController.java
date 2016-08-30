@@ -220,7 +220,8 @@ public class UserController {
 		int idUser = guestService.getIdOwnerLot(idLot);
 		Integer confirm = 0;
 		if (idUser == person.getId()) {
-			confirm = userService.deleteLot(idLot);
+			System.err.println("Всё заебца");
+			//confirm = userService.deleteLot(idLot);
 		}
 		return confirm;
 	}

@@ -180,42 +180,29 @@ var jsonData = '${userJson}';
 		function mainLotsController ($scope, $http) {
 			var vm = this;
 			vm.lotsImages = lotsImages;
-			$.ajax({	
-				url: solrUrl,
-				type:"GET",
-				traditional: true,
-			    cache: true,
-			    async: true,
-			    dataType: 'jsonp',
-				data:{
-					//передаем параметры
-					q: q,
-					fq: fq,
-					sort: sort,
-					start: offsetStart,
-					rows: ajaxLotMaxSize,
-					wt: 'json',
-					indent: 'true'
-				},
-				success:function(data) {
-					vm.createByData(data);
-				},
-				jsonp: 'json.wrf'
-			});
+			vm.lots = [];
+			$http({
+				method: 'JSONP',
+		        url: solrUrl,
+		        params:{
+		        	'json.wrf': 'JSON_CALLBACK',
+		        	'q': q,
+		        	'fq': fq,
+		        	'sort': sort,
+					'start': offsetStart,
+					'rows': ajaxLotMaxSize,
+					'wt': 'json',
+					'indent': 'true'
+		        	}
+		        }).success(function(data) {
+					angular.forEach(data.response.docs, function(lot) {
+						lot.logoImage = vm.lotsImages[getRandomInt(0,vm.lotsImages.length-1)];
+						vm.lots.push(lot);
+					});
+				});
 			vm.updateCustomRequest = function (scope) {
 				vm.lots = scope.lotsCtrl.lots;
 			};
-			vm.lots = [];
-			vm.createByData = function(data) {
-				var scope = angular.element(document.getElementById("list-group")).scope();
-				angular.forEach(data.response.docs, function(lot) {
-					lot.logoImage = vm.lotsImages[getRandomInt(0,vm.lotsImages.length-1)];
-					scope.lotsCtrl.lots.push(lot);
-				});
-				scope.$apply(function () {
-					scope.lotsCtrl.updateCustomRequest(scope);
-				});
-			}
 		}
 		
 		function loader(){
