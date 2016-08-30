@@ -37,7 +37,7 @@
                 <ul class="nav nav-tabs" role="tablist">
 
                     <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Шаг 1">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
@@ -45,14 +45,14 @@
                     </li>
 
                     <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Шаг 2">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-list-alt"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Шаг 3">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-phone"></i>
                             </span>
@@ -60,7 +60,7 @@
                     </li>
 
                     <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Готово">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
