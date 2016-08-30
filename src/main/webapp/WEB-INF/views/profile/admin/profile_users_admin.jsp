@@ -38,7 +38,6 @@ var app = angular.module('app', []);
 <a href='<c:url value="/admin/secure/updatePassword" />' class="list-group-item background-color-menu-profile">Сменить пароль</a>
 </div>		
 </div>
-<span id="message"></span>
 <div class="col-md-10" ng-controller="UsersController as usersCtrl" ng-cloak>
 <form class="form-inline" style="padding-top:10px">
   <div class="form-group">
@@ -50,9 +49,15 @@ var app = angular.module('app', []);
 <div class="form-group">
 <a type="button" class="btn btn-sm btn-info" ng-click="usersCtrl.find()">Найти совпадения</a>
 </div>
+<span> Поиск идёт по маске, вместо любого символа ставить *, вместо любого одиночного _, зависит от регистра</span>
 </form>
-<br>
+
+<div class="col-md-12" style="text-align:center">
+<span class="killuser" id="message"></span>
 <span class="btn-danger" id="alertSearch"></span>
+</div>
+<br>
+
 <div class="table-responsive" id="list-group">
 				<table class="table table-striped">
 					<thead>
