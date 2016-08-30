@@ -96,7 +96,7 @@ $(document).ready(function(){
 		rules: {
 			name: {
 				required: true,
-				regexp: /^[A-Za-zа-яА-ЯёЁ0-9\.\,\-\ ]+$/,
+				regexp: /^[A-Za-zа-яА-ЯёЁ0-9\.\,\-"\ ]+$/,
 				rangelength: [1, 100]		    
 			},
 			description: {
