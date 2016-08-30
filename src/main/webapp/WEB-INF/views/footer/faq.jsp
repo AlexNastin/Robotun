@@ -25,7 +25,7 @@
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="container imageBackground" style="width: 100%;  padding-top: 1em;">
+<div class="container imageBackground" style="width: 100%;  padding-top: 1em; height: 100%;">
 <div class="col-md-offset-2 col-md-8">
 <a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
 <i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
