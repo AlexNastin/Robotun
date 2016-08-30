@@ -37,3 +37,24 @@
   border: 1px solid #C1D1E0 !important;
   border-radius: 3px !important;
 }
+.socialIconContactColor {
+	color: rgb(58, 190, 177);
+}
+.socialIconContactColor:active, .socialIconContactColor:focus, .socialIconContactColor:hover {
+	color: rgb(39, 161, 149);
+}  
+.textStyleContactPage {
+	color: white;
+	text-align: center;
+	font-size: 18pt;
+	border-bottom: 4px solid white;
+	margin-bottom: 0.5em;
+}
+.buttonStyleContact {
+	background-color: #3abeb1;
+	border-color: #3abeb1;
+}
+.buttonStyleContact:hover, .buttonStyleContact:active, .buttonStyleContact:focus {
+	background-color: #336f69 !important;
+	border-color: #336f69 !important;
+}

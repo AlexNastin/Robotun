@@ -33,9 +33,20 @@
 <i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
 <span style="font-size: 25px; color:white;" class="text-style-size-result ">Связаться с нами</span>
 </div>
-<div class="container mainpolicy" style="    background-color: rgba(242, 222, 222, 0);">
-<div class="col-md-4 col-sm-4 col-sm-offset-4 col-md-offset-4">
+<div class="container mainpolicy" style="background-color: rgba(242, 222, 222, 0);">
+<div class="col-md-12">
+<div class="col-md-2"></div>
+<div class="col-md-8" style="background-color: rgba(16,16,16, 0.8); padding: 2em;">
+<div class="col-md-6">
+<div class="textStyleContactPage">Мы в социальных сетях</div>
+<ul class="list-group">
+ 				<li class="list-group-item "><a target="_blank" href="https://vk.com/jobsterby" class="fa fa-vk fa-2x socialIconContactColor"> VK</a></li>
+ 				<li class="list-group-item"><a  href="${facebook}" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>           
+ </ul>
+</div>
+<div class="col-md-6">
 <div class="">
+<div class="textStyleContactPage">Обратная связь</div>
 <form:form modelAttribute="feedBackForm" action="${sendFeedback}">
 <div class="form-group" style="height: 2.8em;">
 <form:input class="form-control"   path="email" placeholder="Ваш e-mail адрес" />
@@ -55,13 +66,16 @@
 <label for="text" class="error textStyleValidation textStyleValidationColorWhite" id="text-error"></label>
 </div>
 <div class="form-group">
-<input class="btn btn-info" type="submit" value="Отправить">
+<input class="btn btn-info buttonStyleContact" type="submit" value="Отправить">
 </div>
 </form:form>
 <c:if test="${message != null }">
 ${message}
 </c:if>
 </div>
+</div>
+</div>
+<div class="col-md-2"></div>
 </div>
 </div>
 </div>
