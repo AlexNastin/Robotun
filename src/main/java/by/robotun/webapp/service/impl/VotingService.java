@@ -16,7 +16,7 @@ public class VotingService implements IVotingService {
 	private IRedisDAO redisDAO;
 
 	@Override
-	public void votingCandidate(Integer mark, String idCandidate, Integer idUser) {
+	public void votingCandidate(Integer mark, String idCandidate, String idUser) {
 		redisDAO.insertVotingCandidate(mark, idCandidate, idUser);
 	}
 
@@ -26,7 +26,7 @@ public class VotingService implements IVotingService {
 	}
 
 	@Override
-	public Integer checkVotingCandidate(String idCandidate, Integer idUser) {
+	public Integer checkVotingCandidate(String idCandidate, String idUser) {
 		return redisDAO.checkVotingCandidate(idCandidate, idUser);
 	}
 }

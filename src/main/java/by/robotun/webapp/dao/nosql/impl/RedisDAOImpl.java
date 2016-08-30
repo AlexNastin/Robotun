@@ -14,18 +14,30 @@ import by.robotun.webapp.dao.nosql.IRedisDAO;
 public class RedisDAOImpl implements IRedisDAO {
 
 	@Autowired
-	private RedisTemplate<String, Map<Integer, Integer>> redisTemplate;
+	private RedisTemplate<String, Map<String, Integer>> redisTemplate;
 
 	@Override
-	public void insertVotingCandidate(Integer mark, String idCandidate, Integer idUser) {
-		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+	public void insertVotingCandidate(Integer mark, String idCandidate, String idUser) {
+		Map<String, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
 		if (votingCandidate != null) {
-			if(checkVotingCandidate(idCandidate, idUser) == 0){
-			votingCandidate.put(idUser, mark);
-			redisTemplate.opsForValue().set(idCandidate, votingCandidate);
+			Integer vote = votingCandidate.get(String.valueOf(idUser));
+			System.out.println(vote);
+			if (vote == null) {
+				System.out.println("!");
+				vote = mark;
+				votingCandidate.put(idUser, vote);
+				redisTemplate.opsForValue().set(idCandidate, votingCandidate);
+			} else {
+				System.out.println("!!");
+				votingCandidate.replace(String.valueOf(idUser), mark);
+				for (Map.Entry<String, Integer> entry : votingCandidate.entrySet())
+				{
+				    System.out.println(entry.getKey() + "/" + entry.getValue());
+				}
+				redisTemplate.opsForValue().set(idCandidate, votingCandidate);
 			}
 		} else {
-			Map<Integer, Integer> value = new HashMap<>();
+			Map<String, Integer> value = new HashMap<>();
 			value.put(idUser, mark);
 			redisTemplate.opsForValue().set(idCandidate, value);
 		}
@@ -34,7 +46,7 @@ public class RedisDAOImpl implements IRedisDAO {
 	@Override
 	public Double getVotingCandidate(String idCandidate) {
 		Double summ = 0.0;
-		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		Map<String, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
 		if (votingCandidate != null) {
 			Collection<Integer> valuesVotingCandidate = votingCandidate.values();
 			for (Integer integer : valuesVotingCandidate) {
@@ -46,9 +58,9 @@ public class RedisDAOImpl implements IRedisDAO {
 	}
 
 	@Override
-	public Integer checkVotingCandidate(String idCandidate, Integer idUser) {
-		Map<Integer, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
-		Integer vote = votingCandidate.get(idUser);
+	public Integer checkVotingCandidate(String idCandidate, String idUser) {
+		Map<String, Integer> votingCandidate = redisTemplate.opsForValue().get(idCandidate);
+		Integer vote = votingCandidate.get(String.valueOf(idUser));
 		if (vote == null) {
 			vote = 0;
 		}

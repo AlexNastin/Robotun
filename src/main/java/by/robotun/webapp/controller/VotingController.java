@@ -21,7 +21,7 @@ public class VotingController {
 	public String voting(@RequestParam(value = "mark") Integer mark, @RequestParam(value = "idCandidate") String idCandidate, HttpSession httpSession) {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person != null) {
-			votingService.votingCandidate(mark, idCandidate, person.getId());
+			votingService.votingCandidate(mark, idCandidate, String.valueOf(person.getId()));
 			return "ok";
 		}
 		return "none";
@@ -37,7 +37,7 @@ public class VotingController {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		Integer vote = 0;
 		if (person != null) {
-			vote = votingService.checkVotingCandidate(idCandidate, person.getId());
+			vote = votingService.checkVotingCandidate(idCandidate, String.valueOf(person.getId()));
 		}
 		return vote;
 	}
