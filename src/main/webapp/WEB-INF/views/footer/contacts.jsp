@@ -58,6 +58,9 @@
 <input class="btn btn-info" type="submit" value="Отправить">
 </div>
 </form:form>
+<c:if test="${message != null }">
+${message}
+</c:if>
 </div>
 </div>
 </div>
