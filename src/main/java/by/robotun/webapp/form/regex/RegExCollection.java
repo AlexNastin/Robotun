@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public final class RegExCollection {
 	private Pattern PATTERN_PASSWORD = Pattern.compile("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
 	private Pattern PATTERN_LOGIN = Pattern.compile("^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$");
-	private Pattern PATTERN_NAME_LOT = Pattern.compile("^[À-ÿ0-9\\s.,]{2,100}$");
+	private Pattern PATTERN_NAME_LOT = Pattern.compile("^[À-ÿA-z0-9\\s\"\"''.,-]{2,100}$");
 	private Pattern PATTERN_DESCRIPTION = Pattern.compile("^[^{}<>]{2,500}$");
 	private Pattern PATTERN_DATE = Pattern.compile("^[0-9]{4}-[0-9]{2}-[0-9]{2}\\s{1}[0-9]{2}:{1}[0-9]{2}:{1}[0-9]{2}$");
 	private Pattern PATTERN_NUMBERS = Pattern.compile("^[0-9]+$");
