@@ -26,7 +26,7 @@
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="policy" style="height: 100%;">
+<div class="policy" >
 <h1 style="text-align:center; color:white">Как работает Jobster.by</h1>
 <div class="container">
 	<div class="row">
