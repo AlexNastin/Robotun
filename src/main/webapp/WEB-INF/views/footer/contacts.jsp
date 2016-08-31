@@ -41,7 +41,7 @@
 <div class="textStyleContactPage" style="color:white">Мы в социальных сетях</div>
 <ul class="list-group">
  				<li class="list-group-item "><a target="_blank" href="https://vk.com/jobsterby" class="fa fa-vk fa-2x socialIconContactColor"> VK</a></li>
- 				<li class="list-group-item"><a  href="${facebook}" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>           
+ 				<li class="list-group-item"><a  href="https://www.facebook.com/jobster.by/" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>           
  </ul>
 </div>
 <div class="col-md-6">
@@ -69,9 +69,11 @@
 <input class="btn btn-info buttonStyleContact" type="submit" value="Отправить">
 </div>
 </form:form>
+<div style="color:white">
 <c:if test="${message != null }">
 ${message}
 </c:if>
+</div>
 </div>
 </div>
 </div>

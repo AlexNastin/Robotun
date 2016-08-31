@@ -8,7 +8,7 @@
 
 			<div class="footer-right">
 
-				<a href=""><i class="fa fa-facebook"></i></a>
+				<a target="_blank" href="https://www.facebook.com/jobster.by/"><i class="fa fa-facebook"></i></a>
 				<a target="_blank" href="https://vk.com/jobsterby"><i class="fa fa-vk"></i></a>
 				
 
