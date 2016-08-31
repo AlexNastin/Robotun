@@ -48,7 +48,6 @@
             <ul class="nav nav-sidebar">
                 <li  ><a href="<c:url value="/signup/userPhysical"/>"><i style='float: left' class="fa fa-check-square-o fa-3x"></i> <p style="padding-top: 4%;">Физическое лицо</p></a></li>
                 <li class="active"><a href="<c:url value="/signup/userLegal"/>"><i style='float: left' class="fa fa-check-square-o fa-3x"></i> <p style="padding-top: 4%;">Юридическое лицо</p></a></li>
-                <li><a style="float:left" href ='#' class="fa fa-vk "></a> <a style="float:left" href ='#' class="fa fa-google-plus"></a><a style="float:left" href ='#' class="fa fa-twitter"></a><a style="float:left" href ='#' class="fa fa-facebook"></a> </li>
             </ul>
 
 
