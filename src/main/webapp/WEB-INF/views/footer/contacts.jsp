@@ -41,7 +41,8 @@
 <div class="textStyleContactPage" style="color:white">Мы в социальных сетях</div>
 <ul class="list-group">
  				<li class="list-group-item "><a target="_blank" href="https://vk.com/jobsterby" class="fa fa-vk fa-2x socialIconContactColor"> VK</a></li>
- 				<li class="list-group-item"><a  href="https://www.facebook.com/jobster.by/" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>           
+ 				<li class="list-group-item"><a  href="https://www.facebook.com/jobster.by/" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>  
+ 				<li class="list-group-item"><a  href="mailto:jobster.by@gmail.com" class="fa fa-envelope-o fa-2x socialIconContactColor" style="font-size:20px"> jobster.by@gmail.com</a></li>          
  </ul>
 </div>
 <div class="col-md-6">
