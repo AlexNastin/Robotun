@@ -121,7 +121,9 @@ span.GramE
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
-
+p {
+margin: 0px 0px 0px 0px !important; 
+}
 </style>
 </head>
 
@@ -154,41 +156,26 @@ style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>�
 </span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>&nbsp;</span></p>
-
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>I. Определения</span></p>
-
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'> </span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>II. Порядок
 заключения </span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>&nbsp;</span></p>
-
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>III. Права
 «Исполнителя» </span></p>
 
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>&nbsp;</span></p>
+
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>IV. Права
 «Пользователя»</span></p>
 
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>V. Ограничение
 ответственности </span></p>
-
-<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
-style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>&nbsp;</span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
 style='font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif'>VI. Другие
