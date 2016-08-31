@@ -369,3 +369,15 @@ a {
 	margin-bottom: 1em;
 }
 .required:after { content:" *"; }
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+   /* IE10+ specific styles go here */  
+   .signin-button{
+   margin-top: 0.5em;
+    color: inherit !important;
+    background-color: white !important;
+    border-color: white !important;
+    font-weight: bold !important;
+    font-size: 12pt;
+    outline-style: none !important;
+   }
+}

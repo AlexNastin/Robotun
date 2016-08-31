@@ -81,7 +81,7 @@
 
 							<div class="row" style="margin-bottom: 0.5em">
 								<button type="submit"
-									class="btn btn-default btn-outline btn-circle signin-button" style="color:black">Войти</button>
+									class="btn btn-default btn-outline btn-circle signin-button" >Войти</button>
 								<a class="btn btn-default btn-outline btn-circle signin-button"
 									href="<c:url value="/signup/userPhysical"/>">Зарегистрироваться</a>
 							</div>
