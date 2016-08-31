@@ -38,7 +38,7 @@
 <div class="col-md-2"></div>
 <div class="col-md-8" style="background-color: rgba(16,16,16, 0.8); padding: 2em;">
 <div class="col-md-6">
-<div class="textStyleContactPage">Мы в социальных сетях</div>
+<div class="textStyleContactPage" style="color:white">Мы в социальных сетях</div>
 <ul class="list-group">
  				<li class="list-group-item "><a target="_blank" href="https://vk.com/jobsterby" class="fa fa-vk fa-2x socialIconContactColor"> VK</a></li>
  				<li class="list-group-item"><a  href="${facebook}" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>           
