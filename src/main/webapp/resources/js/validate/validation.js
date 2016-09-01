@@ -96,13 +96,13 @@ $(document).ready(function(){
 		rules: {
 			name: {
 				required: true,
-				regexp: /^[A-Za-zа-яА-ЯёЁ0-9\.\,\-"\ ]+$/,
-				rangelength: [1, 100]		    
+				regexp: /^[^{}<>\\/]*$/,
+				rangelength: [2, 100]		    
 			},
 			description: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/,
-				rangelength: [1, 500]	
+				regexp: /^[^{}<>\\/]*$/,
+				rangelength: [2, 500]	
 			},
 			idCategory: {
 				aFunction: true,
@@ -125,13 +125,13 @@ $(document).ready(function(){
 		messages: {
 			name: {
 				required: 'Поле не может быть пустым.',
-				regexp: 'Некорректный ввод.',
-				rangelength: 'Не более 100 символов.'
+				regexp: 'Ввод символов <>{}/\\ запрещён.',
+				rangelength: 'Не менее 2 и не более 100 символов.'
 			},
 			description: {
 				required: 'Поле не может быть пустым.',
-				regexp: 'Некорректный ввод.',
-				rangelength: 'Не более 500 символов.'	
+				regexp: 'Ввод символов <>{}/\\ запрещён.',
+				rangelength: 'Не менее 2 и не более 500 символов.'	
 			},
 			idCategory: {
 				aFunction: 'Пожалуйста, выберите категорию.',
@@ -188,7 +188,8 @@ $(document).ready(function(){
 			},
 			nameEnterprise: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/
+				regexp: /^[^{}<>\\/]*$/,
+				rangelength: [2, 150],
 			},
 			unp: {
 				required: true,
@@ -196,8 +197,8 @@ $(document).ready(function(){
 			},
 			address: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/,
-				rangelength: [1, 150]
+				regexp: /^[^{}<>\\/]*$/,
+				rangelength: [2, 250]
 			},
 			zipCode: {
 				required: true,
@@ -278,7 +279,8 @@ messages:  {
 	 },
 	 nameEnterprise: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Проверьте корректность ввода.'
+			regexp: 'Ввод символов <>{}/\\ запрещён.',
+			rangelength: 'Не менее 2 и не более 150 символов.'
 		},
 	unp: {
 			required: 'Поле не может быть пустым.',
@@ -286,8 +288,8 @@ messages:  {
 	   },
 	   address: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Проверьте корректность ввода.',
-			rangelength: 'Не более 150 символов.'
+			regexp: 'Ввод символов <>{}/\\ запрещён.',
+			rangelength: 'Не менее 2 и не более 250 символов.'
 		},
 		zipCode: {
 			required: 'Поле не может быть пустым.',
