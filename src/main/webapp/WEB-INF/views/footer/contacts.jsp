@@ -27,25 +27,25 @@
 <spring:url var="sendFeedback" value="/contacts/send" />
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
-<div class="policy" style="word-wrap: break-word; height:100%">
+<div class="policy" style="word-wrap: break-word; min-height:100%">
 <div class="col-md-offset-2 col-md-8">
 <a style="font-size: 25px; color:white;" href="index.html" class="text-style-size-result">Главная</a>
 <i style="font-size: 25px; color:white;" class="fa fa-angle-right text-style-size-result"></i>
 <span style="font-size: 25px; color:white;" class="text-style-size-result ">Связаться с нами</span>
 </div>
-<div class="container mainpolicy" style="background-color: rgba(242, 222, 222, 0);">
-<div class="col-md-12">
-<div class="col-md-2"></div>
-<div class="col-md-8" style="background-color: rgba(16,16,16, 0.8); padding: 2em;">
-<div class="col-md-6">
+<div class="mainpolicy" style="background-color: rgba(242, 222, 222, 0);">
+
+
+<div class="col-md-10 col-md-offset-1" style="background-color: rgba(16,16,16, 0.8); padding: 2em;">
+<div class="col-md-5">
 <div class="textStyleContactPage" style="color:white">Мы в социальных сетях</div>
 <ul class="list-group">
  				<li class="list-group-item "><a target="_blank" href="https://vk.com/jobsterby" class="fa fa-vk fa-2x socialIconContactColor"> VK</a></li>
  				<li class="list-group-item"><a  href="https://www.facebook.com/jobster.by/" class="fa fa-facebook-official fa-2x socialIconContactColor"> Facebook</a></li>  
- 				<li class="list-group-item"><a  href="mailto:jobster.by@gmail.com" class="fa fa-envelope-o fa-2x socialIconContactColor" style="font-size:20px"> jobster.by@gmail.com</a></li>          
+ 				<li class="list-group-item"><a  href="mailto:jobster.by@gmail.com" class="fa fa-envelope-o fa-2x socialIconContactColor" style="font-size:19px"> jobster.by@gmail.com</a></li>          
  </ul>
 </div>
-<div class="col-md-6">
+<div class="col-md-5 col-md-offset-2">
 <div class="">
 <div class="textStyleContactPage">Обратная связь</div>
 <form:form modelAttribute="feedBackForm" action="${sendFeedback}">
@@ -81,7 +81,7 @@ ${message}
 <div class="col-md-2"></div>
 </div>
 </div>
-</div>
+
 	<script src="<c:url value="/resources/js/validate/jquery.validate.min.js" />"> </script>
 	<script src="<c:url value="/resources/js/validate/additional-methods.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/validate/validation.js" />"> </script> 

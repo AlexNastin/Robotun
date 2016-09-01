@@ -58,3 +58,12 @@
 	background-color: #336f69 !important;
 	border-color: #336f69 !important;
 }
+@media only screen and (max-height: 800px) {
+    .imageBackground {
+       min-height:1050px;
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+.imageBackground{height:100%}/* Styles */
+}
+
