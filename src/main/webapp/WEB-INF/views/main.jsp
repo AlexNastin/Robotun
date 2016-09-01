@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="yandex-verification" content="e6c5456914c00f39" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
