@@ -27,9 +27,7 @@ public class ScheduleDeltaIndexSolrJob extends QuartzJobBean {
 
 	@Override
 	protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-		System.err.println("ScheduleDeltaIndexSolrJob");
 		String json = httpClientSolrJ.solrImport(propertyManager.getValue(PropertyName.SOLR_URL_DELTA_IMPORT));
-		System.out.println(json);
 		LOGGER.info(json);
 	}
 }
