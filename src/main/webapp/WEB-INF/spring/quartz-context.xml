@@ -22,7 +22,7 @@
 	<bean id="cronTriggerFullIndexSolr"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="scheduleFullIndexSolrJob" />
-		<property name="cronExpression" value="0/360 * * 1/1 * ? *" />
+		<property name="cronExpression" value="0 0 4 ? * MON,TUE,WED,THU,FRI,SAT,SUN *" />
 	</bean>
 
 	<!--SolrDeltaIndexLots -->
@@ -43,7 +43,7 @@
 	<bean id="cronTriggerDeltaIndexSolr"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="scheduleDeltaIndexSolrJob" />
-		<property name="cronExpression" value="0/60 * * 1/1 * ? *" />
+		<property name="cronExpression" value="0 0/3 * 1/1 * ? *" />
 	</bean>
 
 	<!--Remove Expired Lot -->
@@ -62,7 +62,7 @@
 	<bean id="cronTriggerRemoveExpiredLot"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="removeExpiredLotJob" />
-		<property name="cronExpression" value="0/60 * * 1/1 * ? *" />
+		<property name="cronExpression" value="0 0 3 ? * MON,TUE,WED,THU,FRI,SAT,SUN *" />
 	</bean>
 
 	<!-- Scheduler factory bean to glue together jobDetails and triggers to 

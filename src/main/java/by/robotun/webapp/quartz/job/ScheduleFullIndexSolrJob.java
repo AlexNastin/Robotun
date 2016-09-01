@@ -27,9 +27,7 @@ public class ScheduleFullIndexSolrJob extends QuartzJobBean {
 
 	@Override
 	protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-		System.err.println("ScheduleFullIndexSolrJob");
 		String json = httpClientSolrJ.solrImport(propertyManager.getValue(PropertyName.SOLR_URL_FULL_IMPORT));
-		System.out.println(json);
 		LOGGER.info(json);
 	}
 }
