@@ -43,7 +43,7 @@ public class SerializationJSON {
 	public String toJsonViewsPublicLot(List<Lot> lots) throws ServiceException {
 		for (Lot lot : lots) {
 			lot.setName(lot.getName().replace("\"", "\\\""));
-			lot.setDescription(lot.getDescription().replace("\"", "\\\""));
+			lot.setDescription(lot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
@@ -58,7 +58,7 @@ public class SerializationJSON {
 	public String toJsonViewsPublicArchiveLot(List<ArchiveLot> archiveLots) throws ServiceException {
 		for (ArchiveLot archiveLot : archiveLots) {
 			archiveLot.setName(archiveLot.getName().replace("\"", "\\\""));
-			archiveLot.setDescription(archiveLot.getDescription().replace("\"", "\\\""));
+			archiveLot.setDescription(archiveLot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
@@ -73,7 +73,7 @@ public class SerializationJSON {
 	public String toJsonViewsInternalLot(Lot lot) throws ServiceException {
 		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		lot.setName(lot.getName().replace("\"", "\\\""));
-		lot.setDescription(lot.getDescription().replace("\"", "\\\""));
+		lot.setDescription(lot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		for (Bet bet : lot.getBets()) {
 			bet.getUser().setNickname(bet.getUser().getNickname().replace("\"", "\\\""));
 		}
@@ -90,7 +90,7 @@ public class SerializationJSON {
 	public String toJsonViewsInternalLot(ArchiveLot archiveLot) throws ServiceException {
 		archiveLot.getUser().setNickname(archiveLot.getUser().getNickname().replace("\"", "\\\""));
 		archiveLot.setName(archiveLot.getName().replace("\"", "\\\""));
-		archiveLot.setDescription(archiveLot.getDescription().replace("\"", "\\\""));
+		archiveLot.setDescription(archiveLot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		for (ArchiveBet archiveBet : archiveLot.getBets()) {
 			archiveBet.getUser().setNickname(archiveBet.getUser().getNickname().replace("\"", "\\\""));
 		}
@@ -107,7 +107,7 @@ public class SerializationJSON {
 	public String toJsonViewsInternalRejectMessages(List<Lot> lots) throws ServiceException {
 		for (Lot lot : lots) {
 			lot.setName(lot.getName().replace("\"", "\\\""));
-			lot.setDescription(lot.getDescription().replace("\"", "\\\""));
+			lot.setDescription(lot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
@@ -122,7 +122,7 @@ public class SerializationJSON {
 	public String toJsonViewsInternalConfirmLot(Lot lot) throws ServiceException {
 		lot.getUser().setNickname(lot.getUser().getNickname().replace("\"", "\\\""));
 		lot.setName(lot.getName().replace("\"", "\\\""));
-		lot.setDescription(lot.getDescription().replace("\"", "\\\""));
+		lot.setDescription(lot.getDescription().replace("\"", "\\\"").replace("\\", "\\\\"));
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonObjects = null;
 		try {
