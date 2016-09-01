@@ -98,8 +98,8 @@ var app = angular.module('app', []);
                     </figure>
                 </div>
                 <div class="col-md-6" style="text-align: center;">
-                    <h1 class="list-group-item-heading ">{{lot.name}}</h1>
-                    <p class="list-group-item-text result-description ">{{lot.description}}</p>
+                    <h1 style="font-size: 25px;" class="list-group-item-heading ">{{lot.name}}</h1>
+                    <p  class="list-group-item-text result-description ">{{lot.description}}</p>
                 </div>
                 <div class="col-md-3 text-center">
                      <h2>{{lot.budget}}<small> бел. руб. </small></h2>

@@ -81,3 +81,8 @@ img {
     font-size: 24px;
     color: #d17581;
 }
+
+.result-description{
+	text-align: justify;
+    word-wrap: break-word;
+}
