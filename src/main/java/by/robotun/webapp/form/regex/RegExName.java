@@ -18,23 +18,5 @@ public final class RegExName {
 	public static final String REGEX_ZIPCODE = "zipcode";
 	public static final String REGEX_FIO = "fio";
 	public static final String REGEX_FIND_EMAIL = "findEmail";
-	
-	
-	
-	
-	
-	
-	public static final String REGEX_PHONE = "phone";
-	public static final String REGEX_ROLE = "role";
-	public static final String REGEX_PERSONAL_NUMBER = "personalNumber";
-	public static final String REGEX_ENG_LETTERS_AND_NUMBERS = "engLettersAndNumbers";
-	public static final String REGEX_RUS_LETTERS = "rusLetters";
-	public static final String REGEX_PERSONAL_ACCOUNT = "personalAccount";
-	public static final String REGEX_FLAT_LETTER = "flatLetter";
-	public static final String REGEX_OKPO = "okpo";
-	public static final String REGEX_NO_LATIN_LETTERS = "noLatinLetters";
-	public static final String REGEX_SUB_BANK_CODE= "subBankCode";
-	public static final String REGEX_CORRESPONDING_ACCOUNTE= "correspondingAccounte";
-	
-	
+	public static final String REGEX_PHONE = "phone";	
 }
