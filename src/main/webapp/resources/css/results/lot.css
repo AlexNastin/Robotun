@@ -559,6 +559,10 @@ h5 {
 .result-description {
 	word-wrap: break-word;
 	text-align: justify;
+	font-size: 14px;
+    line-height: 20px;
+    max-height: 100px;
+    overflow: hidden;
 }
 /* -------------------------------- 
 
