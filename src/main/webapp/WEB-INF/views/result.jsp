@@ -52,13 +52,13 @@ var app = angular.module('app', []);
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="nonpersonal">
+<body  class="nonpersonal">
 
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>
 
 <div class="container-fluid" style='background-color:#3abeb1'>
 
-    <div class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
+    <div  class="row row-offcanvas row-offcanvas-left" style="background-color: #3abeb1;">
         
         <div class="col-sm-3 col-md-2 sidebar-offcanvas"  id="sidebar" role="navigation">
         <div class="sidebar-text-main-style">Фильтр</div>
@@ -159,21 +159,28 @@ var app = angular.module('app', []);
                                 </div>
                                 
 									<div style="text-align:center;">
+										
+										<a href="#top" class="btn btn-primary load-button"><i class="fa fa-arrow-up" aria-hidden="true"></i> Наверх</a>
 										<a class="btn btn-primary load-button"
-											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
+											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>	
+											
             						</div>
-                                <div class="load"></div>
+            						                                <div class="load"></div>
                            
                         </div>
+                        
                     </div>
 
-                 </div>
+      
 </div>
+         </div>
 <div class="clearfix"> </div>
 </div>
         </div><!--/row-->
     </div>
 </div>
+
+											
 </div>
 
 <!--/.container-->
@@ -429,6 +436,7 @@ function() {
 	});
 });
 </script> 
+
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
