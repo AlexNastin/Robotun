@@ -13,7 +13,7 @@ var app = angular.module('app', []);
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
-<title>Архивная работа Jobster.by -  лучшая разовая работа </title>
+<title>Архивная работа | Jobster.by  - Сервис разовой работы </title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />

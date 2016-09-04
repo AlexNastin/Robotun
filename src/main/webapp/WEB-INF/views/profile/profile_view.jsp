@@ -19,7 +19,7 @@ var app = angular.module('app', []);
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link href="<c:url value="/resources/css/profile/fontawesome-stars.css" />"	rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Просмотр профиля</title>
+	<title>Просмотр профиля | Jobster.by - Сервис разовой работы</title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 	
 </head>

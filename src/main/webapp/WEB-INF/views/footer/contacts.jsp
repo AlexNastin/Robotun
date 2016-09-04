@@ -22,7 +22,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
-<title>Контакты</title>
+<title>Контакты | Jobster.by  - Сервис разовой работы</title>
 </head>
 <spring:url var="sendFeedback" value="/contacts/send" />
 <body class="">

@@ -21,7 +21,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
-<title>FAQ</title>
+<title>FAQ | Jobster.by  - Сервис разовой работы</title>
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

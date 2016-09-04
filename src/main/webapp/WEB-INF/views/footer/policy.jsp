@@ -21,7 +21,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
-<title>Политика конфиденциальности</title>
+<title>Политика конфиденциальности | Jobster.by  - Сервис разовой работы</title>
 </head>
 <body>
 

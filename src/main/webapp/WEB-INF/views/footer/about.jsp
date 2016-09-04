@@ -22,7 +22,7 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
 	
-<title>Как это работает? | Jobster.by -  лучшая разовая работа</title>
+<title>Как это работает? | Jobster.by  - Сервис разовой работы</title>
 </head>
 <body class="">
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

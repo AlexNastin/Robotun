@@ -15,7 +15,7 @@
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/error.css" />"	rel="stylesheet">
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
-	<title>Лот на модерации</title>
+	<title>Лот на модерации | Jobster.by  - Сервис разовой работы</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

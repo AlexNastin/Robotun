@@ -13,7 +13,7 @@
 <spring:url var="addUserPhysical" value="/signup/userPhysical" />
 <spring:url var="addUserLegal" value="/signup/userLegal" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Регистрация</title>
+	<title>Регистрация | Jobster.by  - Сервис разовой работы</title>
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/main.css" />"	rel="stylesheet">
 	<link href="<c:url value="/resources/css/login/login.css" />"	rel="stylesheet">

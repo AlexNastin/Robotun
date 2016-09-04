@@ -16,7 +16,7 @@ var app = angular.module('app', []);
 <c:url value="/get/subcategories" var="getSubcategories" />
 <c:url value="/get/categories" var="getCategories" />
 <meta charset="utf-8">
-<title>Предложения о работе | Jobster.by -  лучшая разовая работа </title>
+<title>Предложения о работе | Jobster.by - Сервис разовой работы </title>
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
 
 <c:url value="/get/subcategories" var="getSubcategories" />

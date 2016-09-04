@@ -18,7 +18,7 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/validation.css"  />"
 	rel="stylesheet" />
-<title>Вход</title>
+<title>Вход | Jobster.by  - Сервис разовой работы</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">

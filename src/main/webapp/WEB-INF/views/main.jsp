@@ -25,7 +25,7 @@ Jobster.by  - совершенно новый сервис в Беларуси �
     <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
 	type="image/x-icon">
     
-<title>Jobster.by | Лучшая разовая работа</title>
+<title>Jobster.by - Сервис разовой работы</title>
 </head>
 <body class="nonpersonal">
 <%@include file="/WEB-INF/views/header.jsp"%>
