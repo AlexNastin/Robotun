@@ -43,17 +43,17 @@ $(document).ready(function(){
 			},
 			name: {
 				required: true,
-				regexp: /^[А-яёЁ\\-]{2,40}$/,
+				regexp: /^[^{}<>\\/]*$/,
 				rangelength: [2, 40]
 			},
 			title: {
 				required: true,
-				regexp: /^[A-Za-zа-яА-ЯёЁ0-9\.\,\-\ ]+$/,
+				regexp: /^[^{}<>\\/]*$/,
 				rangelength: [1, 100]
 			},
 			text: {
 				required: true,
-				regexp: /^[^\{\}\<\>\']*$/,
+				regexp: /^[^{}<>\\/]*$/,
 				rangelength: [1, 500]
 			}
 		},
@@ -65,17 +65,17 @@ $(document).ready(function(){
 			},
 			name: {
 				required: 'Поле не может быть пустым.',
-				regexp: 'Некорректный ввод.',
+				regexp: 'Ввод символов <>{}/\\ запрещён.',
 				rangelength: 'Не более 40 символов'
 			},
 			title: {
 				required: 'Поле не может быть пустым.',
-				regexp: 'Некорректный ввод.',
+				regexp: 'Ввод символов <>{}/\\ запрещён.',
 				rangelength: 'Не более 100 символов.'
 			},
 			text: {
 				required: 'Поле не может быть пустым.',
-				regexp: 'Некорректный ввод.',
+				regexp: 'Ввод символов <>{}/\\ запрещён.',
 				rangelength: 'Не более 500 символов.'	
 			}
 		},
