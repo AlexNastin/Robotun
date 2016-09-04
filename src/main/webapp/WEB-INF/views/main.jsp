@@ -12,11 +12,11 @@
 <meta name="yandex-verification" content="e6c5456914c00f39" />
 <meta name="google-site-verification" content="fWLSEgnvT-YWRdNU_zs0KVkjyC__AFH-jHA_rfNzQig" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content=" Jobster.by | Лучшая разовая работа" />
+<meta property="og:title" content=" Jobster.by | Сервис разовой работы" />
 <meta property="og:description" content="
 Jobster.by  - совершенно новый сервис в Беларуси по поиску разовой работы, где любой желающий может как подработать, так и найти тех, кто готов помочь." />
-<meta property="og:url" content="http://jobster.by/index" />
-<meta property="og:image" content="jobster.by/resources/images/logo.png" />
+<meta property="og:url" content="http://jobster.by" />
+<meta property="og:image" content="http://jobster.by/resources/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF8">
