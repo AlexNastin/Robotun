@@ -6,10 +6,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <!DOCTYPE html>
-	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
-<script>
-var app = angular.module('app', []);
-</script>
 <html ng-app="app">
 <head>
 
@@ -71,6 +67,10 @@ var app = angular.module('app', []);
 </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp"%>
+	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+<script>
+var app = angular.module('app', []);
+</script>
 <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 <script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/autoload.js" />"></script>
