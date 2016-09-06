@@ -191,7 +191,9 @@ var app = angular.module('app', []);
 		  <%@include file="/WEB-INF/views/footer.jsp"%> 
 		  <script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+	<script>
 	
+	</script>
 	<script	src="<c:url value="/resources/js/script.js" />"></script> 
 	  
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui.min.js" />"></script>

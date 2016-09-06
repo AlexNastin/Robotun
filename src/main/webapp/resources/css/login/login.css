@@ -2,7 +2,11 @@
  * Style tweaks
  * --------------------------------------------------
  */
+ 
 body {
+	     
+                -webkit-overflow-scrolling: touch;
+            
   background-color: #222;
 }
 footer {
@@ -76,6 +80,8 @@ footer {
   padding: 20px;
   background-color: #fff;
     background-image: url(19.jpg);
+    overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
    
 
 }
