@@ -6,10 +6,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <!DOCTYPE html>
-	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
-<script>
-var app = angular.module('app', []);
-</script>
 <html ng-app="app">
 <head>
 <meta charset="utf-8">
@@ -192,6 +188,10 @@ var app = angular.module('app', []);
 	</div> <!-- cd-popup-container -->
 </div>
 <!-- Menu Toggle Script -->
+	<script type="text/javascript" src="<c:url value="/resources/js/angular/angular.min.js" />"></script>
+<script>
+var app = angular.module('app', []);
+</script>
 <script type="text/javascript"
 		src="<c:url value="/resources/js/socket/message.js" />"></script>
 		<script type="text/javascript"
