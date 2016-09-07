@@ -26,3 +26,41 @@ lotsImages[8] = globalPath + '8.jpg';
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+var cities = [ {
+	id_city : 1,
+	title : "Минск"
+}, {
+	id_city : 2,
+	title : "Минская обл."
+}, {
+	id_city : 3,
+	title : "Витебск"
+}, {
+	id_city : 4,
+	title : "Витебская обл."
+}, {
+	id_city : 5,
+	title : "Могилев"
+}, {
+	id_city : 6,
+	title : "Могилевская обл."
+}, {
+	id_city : 7,
+	title : "Брест"
+}, {
+	id_city : 8,
+	title : "Брестская обл."
+}, {
+	id_city : 9,
+	title : "Гомель"
+}, {
+	id_city : 10,
+	title : "Гомельская обл."
+}, {
+	id_city : 11,
+	title : "Гродно"
+}, {
+	id_city : 12,
+	title : "Гродненская обл."
+} ];

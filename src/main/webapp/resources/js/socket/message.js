@@ -43,7 +43,6 @@ function printText(json, isICall) {
 					date: date
 			}
 			scope.$apply(function () {
-				console.log(bet)
 				scope.betCtrl.bets.push(bet);
 			});
 		    var countBet = parseInt(document.getElementById("countBet").innerHTML);

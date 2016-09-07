@@ -150,6 +150,7 @@
                                         <div class="col-md-3 text-center">
                                             <h2>{{lot.budget}}<small> бел. руб. </small></h2>
                                             <button type="button" class="btn btn-default btn-lg btn-block main-button-style"> Помочь! </button>
+                                            <h3>{{lot.city.title}}</h3>
                                         </div>
                                     </a>
                                     
@@ -287,140 +288,186 @@ function mainLotsController ($scope, $http) {
 	var vm = this;
 	vm.lotsImages = lotsImages;
 	vm.lots = [];
-	$http({
-		method: 'JSONP',
-        url: solrUrl,
-        params:{
-        	'json.wrf': 'JSON_CALLBACK',
-        	'q': q,
-        	'fq': fq,
-        	'sort': sort,
-			'start': offsetStart,
-			'rows': ajaxLotMaxSize,
-			'wt': 'json',
-			'indent': 'true'
-        	}
-        }).success(function(data) {
-    		angular.forEach(data.response.docs, function(lot) {
-    			var randomInt = getRandomInt(0,vm.lotsImages.length-1);
-    			lot.logoImage = vm.lotsImages[randomInt];
-    			lot.indexImage = randomInt;
-    			vm.lots.push(lot);
-    		});
-		});
-	vm.updateCustomRequest = function (scope) {
-		vm.lots = scope.lotsCtrl.lots;
-	};
-}
-
-function sortLots(){
- 	var scope = angular.element(document.getElementById("list-group")).scope();
- 	// «теневой» запрос к серверу
- 					$.ajax({
- 						url: solrUrl,
- 						type:"GET",
- 						traditional: true,
- 					    cache: true,
- 					    async: true,
- 					    dataType: 'jsonp',
- 						data:{
- 							//передаем параметры
- 							q: q,
- 							fq: fq,
- 							sort: sort,
- 							start: offsetStart,
- 							rows: ajaxLotMaxSize,
- 							wt: 'json',
- 							indent: 'true'
-						},
-						success:function(data) {
- 							scope.lotsCtrl.lots = [];
- 							for(var i=0; i<data.response.docs.length; i++) {
- 								var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
- 								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
- 								data.response.docs[i].indexImage = randomInt;
- 								scope.lotsCtrl.lots.push(data.response.docs[i]);
- 							}
- 							scope.$apply(function () {
- 								scope.lotsCtrl.updateCustomRequest(scope);
- 							});
- 							isEnd = false;
- 							block = false;
- 							offset = ajaxLotMaxSize;
-						},
-						jsonp: 'json.wrf'
-					});
-	}
-function loader(){
-	var scope = angular.element(document.getElementById("list-group")).scope();
-	// «теневой» запрос к серверу
-	$(".load").fadeIn(500, function () {
-					$.ajax({
-						url: solrUrl,
-						type:"GET",
-						traditional: true,
- 					    cache: true,
- 					    async: true,
- 					    dataType: 'jsonp',
-						data:{
-							//передаем параметры
-							q: q,
- 							fq: fq,
- 							sort: sort,
- 							start: offset,
- 							rows: ajaxLotMaxSize,
- 							wt: 'json',
- 							indent: 'true'
-						},
-						success:function(data) {
-							if(data.response.docs.length == 0) {
-								isEnd = true;
-							}
-							for(var i=0; i<data.response.docs.length; i++) {
-								var randomInt = getRandomInt(0,scope.lotsCtrl.lotsImages.length-1);
-								data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
- 								data.response.docs[i].indexImage = randomInt;
-								scope.lotsCtrl.lots.push(data.response.docs[i]);
-							}
-							scope.$apply(function () {
-								scope.lotsCtrl.updateCustomRequest(scope);
-							});
-							offset+=ajaxLotMaxSize;
-							block = false;
-						},
-						jsonp: 'json.wrf'
-					});
-				});
-	}
-	
-	
-$(function() {
-    $( "#endDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+365",changeMonth: true,
-		changeYear: true, minDate:"+0",
-		yearRange: "-0:+1"});
-    
-    $( "#startDate" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+0",changeMonth: true,
-		changeYear: true, minDate:"-3650",
-		yearRange: "-1:+0"});
-    
-  });
-$(document).ready(
-		function() {
-			$('#idCategory').change(function() {
-				$.getJSON('${getSubcategories}',{idCategory : $(this).val(),ajax : 'true'},
-					function(data) {
-						var html = '<option value="0">Подкатегория</option>';
-						var len = data.length;
-						for (var i = 0; i < len; i++) {
-							html += '<option value="' + data[i].idSubcategory + '">'
-								+ data[i].title
-								+ '</option>';
-						}
-						html += '</option>';
-						$('#idSubcategory').html(html);
-					});
+		$http({
+			method : 'JSONP',
+			url : solrUrl,
+			params : {
+				'json.wrf' : 'JSON_CALLBACK',
+				'q' : q,
+				'fq' : fq,
+				'sort' : sort,
+				'start' : offsetStart,
+				'rows' : ajaxLotMaxSize,
+				'wt' : 'json',
+				'indent' : 'true'
+			}
+		}).success(function(data) {
+			angular.forEach(data.response.docs, function(lot) {
+				var randomInt = getRandomInt(0, vm.lotsImages.length - 1);
+				lot.logoImage = vm.lotsImages[randomInt];
+				lot.indexImage = randomInt;
+				angular.forEach(cities, function(city) {
+					if(lot.id_city == city.id_city) {
+						lot.city = city;
+					}
+				})
+				vm.lots.push(lot);
 			});
 		});
+		vm.updateCustomRequest = function(scope) {
+			vm.lots = scope.lotsCtrl.lots;
+		};
+	}
+
+	function sortLots() {
+		var scope = angular.element(document.getElementById("list-group"))
+				.scope();
+		// «теневой» запрос к серверу
+		$
+				.ajax({
+					url : solrUrl,
+					type : "GET",
+					traditional : true,
+					cache : true,
+					async : true,
+					dataType : 'jsonp',
+					data : {
+						//передаем параметры
+						q : q,
+						fq : fq,
+						sort : sort,
+						start : offsetStart,
+						rows : ajaxLotMaxSize,
+						wt : 'json',
+						indent : 'true'
+					},
+					success : function(data) {
+						scope.lotsCtrl.lots = [];
+						for (var i = 0; i < data.response.docs.length; i++) {
+							var randomInt = getRandomInt(0,
+									scope.lotsCtrl.lotsImages.length - 1);
+							data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
+							data.response.docs[i].indexImage = randomInt;
+							angular.forEach(cities, function(city) {
+								if(data.response.docs[i].id_city == city.id_city) {
+									data.response.docs[i].city = city;
+								}
+							})
+							scope.lotsCtrl.lots.push(data.response.docs[i]);
+						}
+						scope.$apply(function() {
+							scope.lotsCtrl.updateCustomRequest(scope);
+						});
+						isEnd = false;
+						block = false;
+						offset = ajaxLotMaxSize;
+					},
+					jsonp : 'json.wrf'
+				});
+	}
+	function loader() {
+		var scope = angular.element(document.getElementById("list-group"))
+				.scope();
+		// «теневой» запрос к серверу
+		$(".load")
+				.fadeIn(
+						500,
+						function() {
+							$
+									.ajax({
+										url : solrUrl,
+										type : "GET",
+										traditional : true,
+										cache : true,
+										async : true,
+										dataType : 'jsonp',
+										data : {
+											//передаем параметры
+											q : q,
+											fq : fq,
+											sort : sort,
+											start : offset,
+											rows : ajaxLotMaxSize,
+											wt : 'json',
+											indent : 'true'
+										},
+										success : function(data) {
+											if (data.response.docs.length == 0) {
+												isEnd = true;
+											}
+											for (var i = 0; i < data.response.docs.length; i++) {
+												var randomInt = getRandomInt(0, scope.lotsCtrl.lotsImages.length - 1);
+												data.response.docs[i].logoImage = scope.lotsCtrl.lotsImages[randomInt];
+												data.response.docs[i].indexImage = randomInt;
+												angular.forEach(cities, function(city) {
+													if(data.response.docs[i].id_city == city.id_city) {
+														data.response.docs[i].city = city;
+													}
+												})
+												scope.lotsCtrl.lots.push(data.response.docs[i]);
+											}
+											scope.$apply(function() {
+														scope.lotsCtrl.updateCustomRequest(scope);
+													});
+											offset += ajaxLotMaxSize;
+											block = false;
+										},
+										jsonp : 'json.wrf'
+									});
+						});
+	}
+
+	$(function() {
+		$("#endDate").datepicker({
+			dateFormat : 'yy-mm-dd',
+			maxDate : "+365",
+			changeMonth : true,
+			changeYear : true,
+			minDate : "+0",
+			yearRange : "-0:+1"
+		});
+
+		$("#startDate").datepicker({
+			dateFormat : 'yy-mm-dd',
+			maxDate : "+0",
+			changeMonth : true,
+			changeYear : true,
+			minDate : "-3650",
+			yearRange : "-1:+0"
+		});
+
+	});
+	$(document)
+			.ready(
+					function() {
+						$('#idCategory')
+								.change(
+										function() {
+											$
+													.getJSON(
+															'${getSubcategories}',
+															{
+																idCategory : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<option value="0">Подкатегория</option>';
+																var len = data.length;
+																for (var i = 0; i < len; i++) {
+																	html += '<option value="' + data[i].idSubcategory + '">'
+																			+ data[i].title
+																			+ '</option>';
+																}
+																html += '</option>';
+																$(
+																		'#idSubcategory')
+																		.html(
+																				html);
+															});
+										});
+					});
 </script>
 <script type="text/javascript">
 $(document).ready(

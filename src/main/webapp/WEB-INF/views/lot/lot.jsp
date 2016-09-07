@@ -107,11 +107,14 @@
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
 										<a style="color: #3abeb1"
-											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>
+											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>, <span>{{lotCtrl.lot.city.title}}</span>
 									</h4>
 								    	<div class="lot-description">
-								    	<span>{{lotCtrl.lot.city.title}}</span>
 									<span>{{lotCtrl.lot.description}}</span>
+								</div>
+								<div>
+								<p class="h6" ng-if="lotCtrl.lot.isCall">После того как Вы откликнетесь на предложение заказчик будет иметь возможность позвонить Вам по номеру указанному при регистрации</p>
+								<p class="h6" ng-if="!lotCtrl.lot.isCall">После того как Вы откликнетесь на предложение Вы увидите под этим сообщением номер телефона заказчика</p>
 								</div>
 									<div id="showPhoneOwner">
 
