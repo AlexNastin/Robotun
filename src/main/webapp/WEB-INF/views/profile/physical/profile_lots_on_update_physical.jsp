@@ -121,7 +121,7 @@ var jsonData = '${listLotsJson}';
 app.controller('LotsController', ['$scope', '$http', mainLotsController]);
 
 
-function mainLotsController ($scope) {
+function mainLotsController ($scope, $http) {
 	var vm = this;
 	vm.lotsImages = lotsImages;
 	vm.updateCustomRequest = function (scope) {
