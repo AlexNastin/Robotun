@@ -107,7 +107,9 @@
 									<h1>{{lotCtrl.lot.name}}</h1>
 									<h4>
 										<a style="color: #3abeb1"
-											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a>, <span>{{lotCtrl.lot.city.title}}</span>
+											ng-href="/jobster.by/viewUserProfile?id={{lotCtrl.lot.user.idUser}}">{{lotCtrl.lot.user.nickname}}</a><br>
+											<span>{{lotCtrl.lot.city.title}}</span>, 
+											Рейтинг:<span>{{lotCtrl.lot.user.rating}}</span> <i class="fa fa-star" aria-hidden="true" style="color:#edb867"></i>
 									</h4>
 								    	<div class="lot-description">
 									<span>{{lotCtrl.lot.description}}</span>
@@ -305,6 +307,12 @@ var jsonData = '${lotJson}';
 			zoom = data.city.scale;
 			vm.lot = data;
 			vm.lot.indexImage = idPicture;
+			$http({
+				  method: 'GET',
+				  url: '/jobster.by/getVoting?idCandidate=' + vm.lot.user.idUser
+				}).then(function successCallback(response) {
+					vm.lot.user.rating=response.data;
+			});
 			id = vm.lot.idLot;
 			latitude = vm.lot.latitude;
 			longitude = vm.lot.longitude;
