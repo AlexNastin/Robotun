@@ -17,7 +17,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Просмотр профиля | Jobster.by - Сервис разовой работы</title>
 	<link rel="icon" href="<c:url value="/resources/images/favicon.ico" />">
-	
+	<meta property="og:type" content="website" />
+<meta property="og:title" content=" Jobster.by | Сервис разовой работы" />
+<meta property="og:description" content="
+Jobster.by  - совершенно новый сервис в Беларуси по поиску разовой работы, где любой желающий может как подработать, так и найти тех, кто готов помочь." />
+<meta property="og:url" content="http://jobster.by" />
+<meta property="og:image" content="https://pp.vk.me/c630821/v630821072/47bd9/bLXUaRDhR5k.jpg" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/headerwithsearch.jsp"%>

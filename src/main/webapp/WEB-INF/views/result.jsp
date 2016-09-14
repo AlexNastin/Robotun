@@ -37,7 +37,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    
+    <meta property="og:type" content="website" />
+<meta property="og:title" content=" Jobster.by | Сервис разовой работы" />
+<meta property="og:description" content="
+Jobster.by  - совершенно новый сервис в Беларуси по поиску разовой работы, где любой желающий может как подработать, так и найти тех, кто готов помочь." />
+<meta property="og:url" content="http://jobster.by" />
+<meta property="og:image" content="https://pp.vk.me/c630821/v630821072/47bd9/bLXUaRDhR5k.jpg" />
 
     <!-- Bootstrap Core CSS -->
    
