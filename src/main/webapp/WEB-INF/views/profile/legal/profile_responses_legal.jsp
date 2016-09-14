@@ -58,6 +58,7 @@
 </div>
 </div>
 <div style="text-align:center;">
+<a href="#top" class="btn btn-primary load-button"><i class="fa fa-arrow-up" aria-hidden="true"></i> Наверх</a>
 										<a class="btn btn-primary load-button"
 											onclick='buttonLoader()'><i class="fa fa-repeat" aria-hidden="true"></i> Подгрузить еще </a>
             						</div>

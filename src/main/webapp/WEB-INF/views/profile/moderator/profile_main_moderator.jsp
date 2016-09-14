@@ -63,6 +63,7 @@
 					</tbody>
 				</table>
 			<div style="text-align:center;">
+			<a href="#top" class="btn btn-primary load-button"><i class="fa fa-arrow-up" aria-hidden="true"></i> Наверх</a>
 			<a class="btn btn-primary button-legal-style-main"
 								onclick='loader()'>Подгрузить еще</a>
             </div>
