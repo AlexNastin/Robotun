@@ -182,7 +182,6 @@ $(document).ready(function(){
 			    required: true 	  
 			},
 			password: {
-			    regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 			    rangelength: [8, 32],
 			    required: true
 			},
@@ -213,7 +212,6 @@ $(document).ready(function(){
 			},
 			oldPassword: {
 				required: true,
-				regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 				rangelength: [8, 32],
 			},
 			name: {
@@ -274,7 +272,6 @@ messages:  {
 	    },
 	 password: {
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.',
-		    regexp: 'Пароль должен содержать от 8 до 32 символов, прописные и строчные символы латинского алфавита, а также цифры. Пример: abcdiF656',
 		    required: 'Поле не может быть пустым.'
 	 },
 	 nameEnterprise: {
@@ -304,7 +301,6 @@ messages:  {
 		},
 		oldPassword: {
 			required: 'Поле не может быть пустым.',
-			regexp: 'Пароль должен содержать от 8 до 32 символов, прописные и строчные символы латинского алфавита, а также цифры. Пример: abcdiF656',
 			rangelength: 'Пароль должен содержать от 8 до 32 символов.'
 		},
 		name: {
