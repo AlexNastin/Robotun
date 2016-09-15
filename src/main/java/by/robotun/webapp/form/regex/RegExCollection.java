@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class RegExCollection {
-	private Pattern PATTERN_PASSWORD = Pattern.compile("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+	private Pattern PATTERN_PASSWORD = Pattern.compile("[\\s\\S]{6,255}");
 	private Pattern PATTERN_LOGIN = Pattern.compile("^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$");
 	private Pattern PATTERN_NAME_LOT = Pattern.compile("^[^{}<>\\/]{2,100}$");
 	private Pattern PATTERN_DESCRIPTION = Pattern.compile("^[^{}<>\\/]{2,500}$");
