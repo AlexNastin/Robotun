@@ -374,6 +374,7 @@ body,
 }
   }
 .policy{
+	min-height: 100%;
 	padding: 20px;
     background-color: #fff;
     background-image: url(19.jpg);
