@@ -118,7 +118,7 @@ Jobster.by  - совершенно новый сервис в Беларуси �
 
         </div><!--/span-->
 
-        <div class="col-sm-9 col-md-10 main" style="min-height: 60em;">
+        <div class="col-sm-9 col-md-10 main" style="min-height: 60em; overflow-x: hidden; overflow-y: hidden;">
             <p class="visible-xs">
                 <button type="button" class="btn btn-primary btn-xs load-button" data-toggle="offcanvas"><i class="fa fa-chevron-left"> <span>Фильтры</span></i></button>
             </p>
