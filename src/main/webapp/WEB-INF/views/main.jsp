@@ -40,7 +40,7 @@ Jobster.by  - совершенно новый сервис в Беларуси �
        
         <form action="<c:url value="/result" />" method="get">
          <div class="input-group">
-            <input type="text" class="form-control search-style" placeholder="Введите запрос..." name="q">
+            <input type="text" class="form-control search-style" placeholder="Поиск работы" name="q">
       <span class="input-group-btn">
         <button class="btn btn-default search-button-style" type="submit">Поиск</button>
       </span>

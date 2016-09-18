@@ -90,7 +90,7 @@ Jobster.by  - совершенно новый сервис в Беларуси �
                     </div>
             <div class="col-md-12 margin-for-sidebar-text">
             
-            <input readonly="readonly" type="text" class="form-control" id="endDate" name="calendar" placeholder="Дата конца"/>
+            <input readonly="readonly" type="text" class="form-control" id="endDate" name="calendar" placeholder="Дата окончания"/>
             </div>
             <div class="row" style="padding-left:15px; padding-right:15px;">
             <div class="col-md-6 margin-for-sidebar-text">
