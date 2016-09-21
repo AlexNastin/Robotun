@@ -715,6 +715,10 @@ setTimeout(addButton, timeBlockSendButton - showcounter);
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/39345665" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script>
+$(document).attr("title", "New Title" + " | Jobster.by  - Сервис разовой работы");
+		
+</script>
 </body>
 </html>
 
