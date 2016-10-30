@@ -11,20 +11,22 @@
 		<anonymous username="GUEST" granted-authority="ROLE_GUEST" /> 
 		
 		<remember-me token-validity-seconds="1209600"  key="uniqueAndSecret"/>
-		<form-login login-page="/private" authentication-failure-url="/private?error=true" login-processing-url="/static/j_spring_security_check" authentication-success-handler-ref="webAppAuthenticationSuccessHandler" />
+		<form-login login-page="/login" authentication-failure-url="/login?error=true" login-processing-url="/static/j_spring_security_check" authentication-success-handler-ref="webAppAuthenticationSuccessHandler" />
 
-		<logout logout-url="/logout" logout-success-url="/private" delete-cookies="JSESSIONID" invalidate-session="true" />
+		<logout logout-url="/logout" logout-success-url="/index" delete-cookies="JSESSIONID" invalidate-session="true" />
 
 		<!-- Role links -->
-		<intercept-url pattern="/private/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/private/user/**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/private/main/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
-		<intercept-url pattern="/**" access="hasAnyRole('ROLE_GUEST', 'ROLE_ADMIN', 'ROLE_USER')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/physical/**" access="hasRole('ROLE_USER_PHYSICAL')" />
+		<intercept-url pattern="/legal/**" access="hasRole('ROLE_USER_LEGAL')" />
+		<intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER_LEGAL','ROLE_USER_PHYSICAL')" />
+		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_GUEST', 'ROLE_USER_LEGAL', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_USER_PHYSICAL')" />
 	</http>
 
 	<!-- Beans -->
-	<beans:bean id="webAppAuthenticationSuccessHandler" class="by.web.store.security.WebAppAuthenticationSuccessHandler" />
-	<beans:bean id="produxAuthenticationProvider" class="by.web.store.security.ProduxAuthenticationProvider" />
+	<beans:bean id="webAppAuthenticationSuccessHandler" class="by.robotun.webapp.security.WebAppAuthenticationSuccessHandler" />
+	<beans:bean id="produxAuthenticationProvider" class="by.robotun.webapp.security.ProduxAuthenticationProvider" />
 	<authentication-manager>
 		<authentication-provider ref="produxAuthenticationProvider">
 		</authentication-provider>

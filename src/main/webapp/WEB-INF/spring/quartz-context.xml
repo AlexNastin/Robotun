@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!--Solr FullIndex Lots -->
+	<bean name="scheduleFullIndexSolrJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="by.robotun.webapp.quartz.job.ScheduleFullIndexSolrJob" />
+		<property name="jobDataMap">
+			<map>
+				<entry key="httpClientSolrJ" value-ref="httpClientSolrJ" />
+				<entry key="propertyManager" value-ref="propertyManager" />
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+
+	<!--SolrFullIndexCronTrigger -->
+	<bean id="cronTriggerFullIndexSolr"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="scheduleFullIndexSolrJob" />
+		<property name="cronExpression" value="0 0 4 ? * MON,TUE,WED,THU,FRI,SAT,SUN *" />
+	</bean>
+
+	<!--SolrDeltaIndexLots -->
+	<bean name="scheduleDeltaIndexSolrJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="by.robotun.webapp.quartz.job.ScheduleDeltaIndexSolrJob" />
+		<property name="jobDataMap">
+			<map>
+				<entry key="httpClientSolrJ" value-ref="httpClientSolrJ" />
+				<entry key="propertyManager" value-ref="propertyManager" />
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+
+	<!--SolrFullIndexCronTrigger 0 0/10 * 1/1 * ? * -->
+	<bean id="cronTriggerDeltaIndexSolr"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="scheduleDeltaIndexSolrJob" />
+		<property name="cronExpression" value="0 0/3 * 1/1 * ? *" />
+	</bean>
+
+	<!--Remove Expired Lot -->
+	<bean name="removeExpiredLotJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="by.robotun.webapp.quartz.job.RemoveExpiredLotJob" />
+		<property name="jobDataMap">
+			<map>
+				<entry key="procedureManager" value-ref="procedureManager" />
+			</map>
+		</property>
+		<property name="durability" value="true" />
+	</bean>
+
+	<!--CronTrigger Remove ExpiredLot -->
+	<bean id="cronTriggerRemoveExpiredLot"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="removeExpiredLotJob" />
+		<property name="cronExpression" value="0 0 3 ? * MON,TUE,WED,THU,FRI,SAT,SUN *" />
+	</bean>
+
+	<!-- Scheduler factory bean to glue together jobDetails and triggers to 
+		Configure Quartz Scheduler -->
+	<bean id="stdScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="scheduleFullIndexSolrJob" />
+				<ref bean="scheduleDeltaIndexSolrJob" />
+				<ref bean="removeExpiredLotJob" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTriggerFullIndexSolr" />
+				<ref bean="cronTriggerDeltaIndexSolr" />
+				<ref bean="cronTriggerRemoveExpiredLot" />
+			</list>
+		</property>
+	</bean>
+</beans>

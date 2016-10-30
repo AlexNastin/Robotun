@@ -1,5 +1,5 @@
-var ajaxLotMaxSize = 10;
-var solrUrl = 'http://185.65.137.70:8983/solr/jcg/select';
+var ajaxLotMaxSize = 3;
+var solrUrl = 'http://localhost:8983/solr/jcg/select';
 
 // constants for autoload lots
 // offset is start number lot, which load after scroll window
@@ -10,7 +10,7 @@ var offsetStart = 0;
 var timeBlockSendButton = 600000;
 
 //URL images for lot`s logo
-var globalPath = '/resources/images/avatar_lot/';
+var globalPath = '/jobster.by/resources/images/avatar_lot/';
 var lotsImages = [];
 lotsImages[0] = globalPath + '0.jpg';
 lotsImages[1] = globalPath + '1.jpg';

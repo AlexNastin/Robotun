@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+.main {
+    background-color: #3abeb1 !important;
+}
+.imageBackground {
+	background-image: url(login/19.jpg);
+}
+.headlineTextStyle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 24pt;
+}
+.boardBackgroundColor {
+	background-color: #e5e3e1;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+	.panel-heading {
+  border: 1px solid #C1D1E0 !important;
+  border-radius: 3px !important;
+	color: #4A5664 !important;
+  cursor: pointer !important;
+  padding: 20px !important;
+}
+
+.panel-heading:hover, .panel-heading:active, .panel-heading:not([class*="collapsed"]) {
+  background-color: #3abeb1 !important;
+}
+
+.panel-title a {
+    display: block;
+    padding: 10px 15px;
+    margin: -10px -15px;
+}
+
+.panel-body {
+  border: 1px solid #C1D1E0 !important;
+  border-radius: 3px !important;
+}
+.socialIconContactColor {
+	color: rgb(58, 190, 177);
+}
+.socialIconContactColor:active, .socialIconContactColor:focus, .socialIconContactColor:hover {
+	color: rgb(39, 161, 149);
+}  
+.textStyleContactPage {
+	color: white;
+	text-align: center;
+	font-size: 18pt;
+	border-bottom: 4px solid white;
+	margin-bottom: 0.5em;
+}
+.buttonStyleContact {
+	background-color: #3abeb1;
+	border-color: #3abeb1;
+}
+.buttonStyleContact:hover, .buttonStyleContact:active, .buttonStyleContact:focus {
+	background-color: #336f69 !important;
+	border-color: #336f69 !important;
+}
+@media only screen and (max-height: 800px) {
+    .imageBackground {
+       min-height:1050px;
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+.imageBackground{height:100%}/* Styles */
+}
+

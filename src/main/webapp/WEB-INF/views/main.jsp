@@ -4,216 +4,98 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Web Store - Products</title>
-<link href="<c:url value="/resources/css/templatemo_style.css" />" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/ddsmoothmenu.css" />" />
-
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/ddsmoothmenu.js"/>"></script>
-
-<script type="text/javascript">
-
-ddsmoothmenu.init({
-	mainmenuid: "templatemo_menu", //menu DIV id
-	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-	classname: 'ddsmoothmenu', //class added to menu's outer DIV
-	//customtheme: ["#1c5a80", "#18374a"],
-	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-})
-
-function clearText(field)
-{
-    if (field.defaultValue == field.value) field.value = '';
-    else if (field.value == '') field.value = field.defaultValue;
-}
-</script>
-
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css"/>" />
-<script language="javascript" type="text/javascript" src="<c:url value="/resources/scripts/mootools-1.2.1-core.js"/>"></script>
-<script language="javascript" type="text/javascript" src="<c:url value="/resources/scripts/mootools-1.2-more.js"/>"></script>
-<script language="javascript" type="text/javascript" src="<c:url value="/resources/scripts/slideitmoo-1.1.js"/>"></script>
-<script language="javascript" type="text/javascript">
-	window.addEvents({
-		'domready': function(){
-			/* thumbnails example , div containers */
-			new SlideItMoo({
-						overallContainer: 'SlideItMoo_outer',
-						elementScrolled: 'SlideItMoo_inner',
-						thumbsContainer: 'SlideItMoo_items',		
-						itemsVisible: 5,
-						elemsSlide: 2,
-						duration: 200,
-						itemsSelector: '.SlideItMoo_element',
-						itemWidth: 171,
-						showControls:1});
-		},
-		
-	});
-</script>
-
+<meta name="yandex-verification" content="e6c5456914c00f39" />
+<meta name="google-site-verification" content="fWLSEgnvT-YWRdNU_zs0KVkjyC__AFH-jHA_rfNzQig" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content=" Jobster.by | Сервис разовой работы" />
+<meta property="og:description" content="
+Jobster.by  - совершенно новый сервис в Беларуси по поиску разовой работы, где любой желающий может как подработать, так и найти тех, кто готов помочь." />
+<meta property="og:url" content="http://jobster.by" />
+<meta property="og:image" content="https://pp.vk.me/c630821/v630821072/47bd9/bLXUaRDhR5k.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />"	rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/main.css"  />" rel="stylesheet" />
+    <link rel="icon" href="<c:url value="/resources/images/favicon.ico" />"
+	type="image/x-icon">
+    
+<title>Jobster.by - Сервис разовой работы</title>
 </head>
-
-<body id="subpage">
-
-<div id="templatemo_wrapper">
-	<%@include file="/WEB-INF/views/header.jsp"%>
-    
-    <div id="templatemo_menu" class="ddsmoothmenu">
-        <ul>
-            <li><a href="<c:url value="/" />" class="selected">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <br style="clear: left" />
-    </div> <!-- end of templatemo_menu -->
-    
-    <div class="cleaner h20"></div>
-    <div id="templatemo_main_top"></div>
-    <div id="templatemo_main">
-    	<div id="product_slider">
-    		<div id="SlideItMoo_outer">	
-                <div id="SlideItMoo_inner">			
-                    <div id="SlideItMoo_items">
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/1" target="_parent">
-                                <img src="<c:url value="/resources/images/gallery/01.jpg"/>" alt="product 1" /></a>
-                        </div>	
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/2" target="_parent">
-                                <img src="<c:url value="/resources/images/gallery/02.jpg"/>" alt="product 1" /></a>
-                        </div>
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/3" target="_parent">
-                                 <img src="<c:url value="/resources/images/gallery/03.jpg"/>" alt="product 1" /></a>
-                        </div>
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/4" target="_parent">
-                                <img src="<c:url value="/resources/images/gallery/04.jpg"/>" alt="product 1" /></a>
-                        </div>
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/5" target="_parent">
-                               <img src="<c:url value="/resources/images/gallery/05.jpg"/>" alt="product 1" /></a>
-                        </div>
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/6" target="_parent">
-                                <img src="<c:url value="/resources/images/gallery/06.jpg"/>" alt="product 1" /></a>
-                        </div>
-                        <div class="SlideItMoo_element">
-                                <a href="http://www.templatemo.com/page/6" target="_parent">
-                                <img src="<c:url value="/resources/images/gallery/07.jpg"/>" alt="product 1" /></a>
-                        </div>
-                    </div>			
-                </div>
-            </div>
-            <div class="cleaner"></div>
+<body class="nonpersonal">
+<%@include file="/WEB-INF/views/header.jsp"%>
+<!--Banner-image, search and buttons-->
+<div class="wrapper">
+<div class="content background-main-image search-margin-top blur">
+    <div class="container">
+        <div class="main-text-style">Ищете услугу?</div>
+        <div class="row row-margin">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+       
+        <form action="<c:url value="/result" />" method="get">
+         <div class="input-group">
+            <input type="text" class="form-control search-style" placeholder="Поиск работы" name="q">
+      <span class="input-group-btn">
+        <button class="btn btn-default search-button-style" type="submit">Поиск</button>
+      </span>
+      </div>
+      </form>
+        <!-- /input-group -->
+    </div>
+    <!-- /.col-lg-6 -->
+    <div class="col-lg-3"></div>
+    <div class="container">
+        <div class="col-md-5 button-align-left">
+            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href='<c:url value="/result"/>' role="button">Хочу работать</a>
         </div>
-        
-        <div id="sidebar">
-        	<h3>Categories</h3>
-            <ul class="sidebar_menu">
-			    <li><a href="#">Aenean et dolor diam</a></li>
-                <li><a href="#">Aenean pulvinar</a></li>				
-                <li><a href="#">Cras bibendum auctor</a></li>
-                <li><a href="#">Donec sodales bibendum</a></li>				
-            	<li><a href="#">Etiam in tellus</a></li>
-                <li><a href="#">Hendrerit justo</a></li>     
-                <li><a href="#">Integer interdum</a></li>				
-                <li><a href="#">Maecenas a diam</a></li>
-				<li><a href="#">Nullam in semper</a></li>
-				<li><a href="#">Posuere in commodo</a></li>
-				<li><a href="#">Tincidunt leo</a></li>
-                <li><a href="#">Vestibulum blandit</a></li>
-			</ul>
-            <h3>Newsletter</h3>
-            <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
-            <div id="newsletter">
-                <form action="#" method="get">
-                  <input type="text" value="Subscribe" name="email_newsletter" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-                  <input type="submit" name="subscribe" value="Subscribe" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn"  />
-                </form>
-                <div class="cleaner"></div>
-            </div>
-        </div> <!-- END of sidebar -->
-        
-        <div id="content">
-        	<h2>Etiam In Tellus</h2>
-        	<div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/01.jpg"/>" alt="Product 01" /></a>
-                <h3>Ut eu feugiat</h3>
-                <p class="product_price">$ 100</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/02.jpg"/>" alt="Product 02" /></a>
-                <h3>Curabitur et turpis</h3>
-                <p class="product_price">$ 200</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery no_margin_right">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/03.jpg"/>" alt="Product 03" /></a>
-                <h3>Mauris consectetur</h3>
-                <p class="product_price">$ 120</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>
-            <a href="#" class="more float_r">View all</a>
-			<div class="cleaner h50"></div>
-            
-            <h2>Hendrerit Justo</h2>
-            <div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/04.jpg"/>" alt="Product 04" /></a>
-                <h3>Proin volutpat</h3>
-                <p class="product_price">$ 260</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/05.jpg"/>" alt="Product 05" /></a>
-                <h3>Aenean tempus</h3>
-                <p class="product_price">$ 80</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery no_margin_right">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/06.jpg"/>" alt="Product 06" /></a>
-                <h3>Nulla luctus urna</h3>
-                <p class="product_price">$ 193</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>     	
-            <a href="#" class="more float_r">View all</a>
-            <div class="cleaner h50"></div>
-            
-            <h2>Maecenas A Diam</h2>
-            <div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/07.jpg"/>" alt="Product 07" /></a>
-                <h3>Pellentesque egestas</h3>
-                <p class="product_price">$ 30</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/08.jpg"/>" alt="Product 08" /></a>
-                <h3>Suspendisse porttitor</h3>
-                <p class="product_price">$ 220</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>        	
-            <div class="col col_14 product_gallery no_margin_right">
-            	<a href="productdetail.html"><img src="<c:url value="/resources/images/product/09.jpg"/>" alt="Product 09" /></a>
-                <h3>Nam vehicula</h3>
-                <p class="product_price">$ 65</p>
-                <a href="shoppingcart.html" class="add_to_cart">Add to Cart</a>
-            </div>
-            <a href="#" class="more float_r">View all</a>
-            <div class="cleaner"></div>
-        </div> <!-- END of content -->
-        <div class="cleaner"></div>
-    </div> <!-- END of main -->
+        <div class="col-md-2"></div>
+        <div class="col-md-5 button-align-right">
+            <a class="btn btn-primary btn-lg main-button-style" style="min-width: 11em" href='<c:url value="/user/addLot"/>' role="button">Предлагаю работу</a>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
     
-    <%@include file="/WEB-INF/views/footer.jsp"%>
-   
-</div>
+   </div>
+<%@include file="/WEB-INF/views/footer.jsp"%>
+<script	src="<c:url value="/resources/js/jquery-2.2.1.min.js" />"></script>
+<script	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter39345665 = new Ya.Metrika({
+                    id:39345665,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
 
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/39345665" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

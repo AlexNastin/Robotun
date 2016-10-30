@@ -17,14 +17,27 @@
 		configuration) -->
 	<context:annotation-config />
 
-	<context:component-scan base-package="by.web.store.dao" />
-	<context:component-scan base-package="by.web.store.service" />
-	<context:component-scan base-package="by.web.store.security" />
-	<context:component-scan base-package="by.web.store.form" />
+	<context:component-scan base-package="by.robotun.webapp.dao" />
+	<context:component-scan base-package="by.robotun.webapp.security" />
+	<context:component-scan base-package="by.robotun.webapp.property" />
+	<context:component-scan base-package="by.robotun.webapp.service" />
+	<context:component-scan base-package="by.robotun.webapp.form" />
+	<context:component-scan base-package="by.robotun.webapp.socket" />
+	<context:component-scan base-package="by.robotun.webapp.dao.solr.config" />
+	<context:component-scan base-package="by.robotun.webapp.quartz" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
-	
+
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" />
+
+	<!-- Файл с настройками Mail -->
+	<import resource="spring-mail.xml" />
+
+	<!-- Файл с настройками Redis -->
+	<import resource="redis.xml" />
+	
+	<!-- Файл с настройками Quartz -->
+	<import resource="quartz-context.xml" />
 </beans>

@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+.background-color-menu-profile {
+	background-color: #3abeb1;
+	color: white !important; 
+}
+.background-color-menu-profile:hover, .background-color-menu-profile:active, .background-color-menu-profile:focus{
+	background-color: black!important;
+}
+.nopadiing-left {
+	padding-left:0px;
+	padding-right:0px;
+}
+.avatar-img {
+	width:4em;
+	height:5em;
+}
+.active-menu {
+	background-color: #8fdad3;
+}
+.active-menu:hover,.active-menu:active, .active-menu:focus {
+	background-color: #8fdad3!important;
+}
+.text-admin-page-main {
+	text-align: left;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 18pt;
+}
+.moderator-boards {
+	background-color: #f5f5f5; 
+	min-height:10em;
+	margin-top:1em;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.moderators-img {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.moderator-descripton {
+	margin-top: 1em;
+}
+.text-moderator-description {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14pt;
+}
+.min-height-admin-page {
+	min-height:39em
+}
+.glyphicon-style {
+	color:black;
+}
+.glyphicon-style2 {
+	text-align:right; 
+	padding-top:0.5em;
+}
+.add-moderator-boards {
+	background-color: #f5f5f5; 
+	min-height:10em;
+	margin-top:1em;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	margin-top: 4em;
+	margin-bottom: 4em;
+}
+.messagesValidStyle {
+	background-color: #3abeb1;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+}
+.killuser{
+	background-color: #5bc0de;
+	text-align:center;
+	margin-top: 5px;
+    color: white;
+    border-radius: 4px;
+}
