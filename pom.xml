@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>by.robotun</groupId>
-	<artifactId>jobster.by</artifactId>
-	<name>Jobster.by</name>
+	<groupId>by.web</groupId>
+	<artifactId>store.by</artifactId>
+	<name>Store.by</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -61,37 +61,11 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-		<!-- Redis -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.6.4.RELEASE</version>
-		</dependency>
-
 		<!-- Commons-pool2 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
 			<version>2.4.2</version>
-		</dependency>
-
-		<!-- Redis.clients -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>2.7.3</version>
-		</dependency>
-
-		<!-- Solr -->
-		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-solrj</artifactId>
-			<version>5.5.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-solr</artifactId>
-			<version>2.0.1.RELEASE</version>
 		</dependency>
 
 		<!-- Spring security -->
@@ -139,13 +113,6 @@
 			<artifactId>HikariCP</artifactId>
 			<version>2.4.6</version>
 		</dependency>
-		
-		<!-- Quartz Scheduler -->
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.0</version>
-		</dependency>
 
 		<!-- Postgresql -->
 		<dependency>
@@ -171,13 +138,6 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
-		</dependency>
-
-		<!-- Java Mail API -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4</version>
 		</dependency>
 
 		<!-- @Inject -->
@@ -221,13 +181,6 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
-		</dependency>
-
-		<!-- WebSockets API -->
-		<dependency>
-			<groupId>javax.websocket</groupId>
-			<artifactId>javax.websocket-api</artifactId>
-			<version>1.1</version>
 		</dependency>
 
 		<!-- JSON -->

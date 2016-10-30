@@ -2,7 +2,7 @@
 	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
 	monitoring="autodetect" dynamicConfig="true" name="cacheManagerCSKA">
 
-	<diskStore path="java.io.tmpdir/CacheJobster" />
+	<diskStore path="java.io.tmpdir/CacheStore" />
 
 	<cache name="org.hibernate.cache.internal.StandardQueryCache"
 		maxElementsInMemory="10000" eternal="false" timeToLiveSeconds="86400"
